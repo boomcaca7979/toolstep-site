@@ -1,0 +1,297 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import { SITE_TITLE } from '../../consts';
+import { tools } from '../../data/tools';
+
+export function getStaticPaths() {
+	return tools.map((tool) => ({
+		params: { id: tool.id },
+	}));
+}
+
+const { id } = Astro.params;
+const tool = tools.find((t) => t.id === id);
+
+if (!tool) {
+	return Astro.redirect('/404');
+}
+
+const relatedTools = tools
+	.filter((t) => t.category === tool.category && t.id !== tool.id)
+	.slice(0, 2);
+
+function renderStars(rating: number): string {
+	const full = Math.floor(rating);
+	const empty = 5 - full;
+	return '★'.repeat(full) + '☆'.repeat(empty);
+}
+
+const toolDetails: Record<string, { detailDescription: string; pros: string[]; cons: string[] }> = {
+	smallpdf: {
+		detailDescription: 'Smallpdf is a comprehensive online PDF platform that has become the go-to solution for millions of users worldwide. Founded in 2013, it offers over 20 different PDF tools including conversion to and from Word, Excel, PowerPoint, and image formats. The platform features an intuitive drag-and-drop interface that makes PDF editing accessible to non-technical users. With bank-level 256-bit SSL encryption, Smallpdf ensures your documents remain secure during processing. The free tier handles basic tasks, while the Pro subscription unlocks batch processing, OCR capabilities, and desktop applications for Windows and Mac.',
+		pros: ['20+ PDF tools in one platform', 'Bank-level security encryption', 'Intuitive drag-and-drop interface'],
+		cons: ['Free version has daily usage limits', 'Some advanced features require Pro subscription'],
+	},
+	tinypng: {
+		detailDescription: 'TinyPNG has revolutionized image optimization since its launch, compressing over 1 billion images for developers and designers. Using smart lossy compression techniques, it reduces PNG and JPEG file sizes by up to 70% while maintaining near-perfect visual quality. The service analyzes each image to find the best optimization strategy, selectively decreasing the number of colors and removing unnecessary metadata. TinyPNG supports batch uploads of up to 20 images and provides a developer API for automated workflows. It is particularly valuable for web developers looking to improve page load speeds without compromising image quality.',
+		pros: ['Reduces file sizes by up to 70%', 'Maintains excellent visual quality', 'Simple drag-and-drop interface'],
+		cons: ['Free version limited to 20 images at once', 'No advanced editing features'],
+	},
+	'notion-ai': {
+		detailDescription: 'Notion AI transforms the already powerful Notion workspace into an intelligent productivity hub. Integrated directly into the note-taking and project management platform, this AI assistant helps users draft content, summarize long documents, brainstorm ideas, and translate text across multiple languages. Unlike standalone AI tools, Notion AI understands the context of your existing notes and databases, providing relevant suggestions based on your workspace content. The AI can generate blog posts, meeting summaries, action items, and even code snippets. With its natural language interface, users can ask questions about their own documents and receive accurate, contextual answers.',
+		pros: ['Deep integration with Notion workspace', 'Understands document context', 'Versatile content generation'],
+		cons: ['Requires Notion subscription for full access', 'AI responses occasionally need editing'],
+	},
+	deepl: {
+		detailDescription: 'DeepL has established itself as the most accurate machine translation service available, consistently outperforming Google Translate and Microsoft Translator in blind tests. Powered by advanced neural networks trained on billions of translated texts, DeepL produces translations that read naturally and capture subtle nuances, idioms, and context. The service supports 31 languages and offers features like document translation while preserving original formatting. DeepL Pro subscribers benefit from unlimited translations, enhanced data security, and API access. Professional translators and multinational corporations increasingly rely on DeepL as their primary translation tool.',
+		pros: ['Most accurate machine translation available', 'Preserves document formatting', 'Natural-sounding output'],
+		cons: ['Supports fewer languages than competitors', 'Free version has character limits'],
+	},
+	grammarly: {
+		detailDescription: 'Grammarly has become the world\'s most popular writing assistant, helping over 30 million users daily to communicate more effectively. Beyond basic spell checking, Grammarly analyzes your writing for clarity, engagement, delivery, and tone using advanced AI and natural language processing. The tool integrates seamlessly with browsers, Microsoft Office, email clients, and mobile keyboards. Its premium version offers vocabulary enhancement suggestions, plagiarism detection, and genre-specific writing style checks. Whether you\'re writing a casual email or a formal business proposal, Grammarly adapts its suggestions to match your intended tone and audience.',
+		pros: ['Works across all platforms and apps', 'Advanced tone and clarity suggestions', 'Real-time correction'],
+		cons: ['Premium features require subscription', 'Sometimes suggests overly formal alternatives'],
+	},
+	'obs-studio': {
+		detailDescription: 'OBS Studio stands as the gold standard for free screen recording and live streaming software, trusted by millions of content creators, educators, and professionals. This open-source powerhouse offers unlimited scene switching, real-time audio/video mixing, and support for virtually any streaming platform including Twitch, YouTube, and Facebook Live. Users can create professional broadcasts with multiple video sources, custom transitions, filters, and overlays. Despite its zero-dollar price tag, OBS rivals expensive commercial alternatives in functionality. The active open-source community continuously improves the software with regular updates, plugins, and comprehensive documentation.',
+		pros: ['Completely free and open-source', 'Professional-grade features', 'Supports all major streaming platforms'],
+		cons: ['Steep learning curve for beginners', 'High CPU usage during complex scenes'],
+	},
+	capcut: {
+		detailDescription: 'CapCut has emerged as one of the most popular video editing applications, particularly among social media content creators. Developed by ByteDance, the same company behind TikTok, CapCut offers a surprisingly robust feature set for a free editor including auto-captions, keyframe animation, chroma key, speed ramping, and hundreds of trendy effects and transitions. The intuitive timeline interface makes professional editing accessible to beginners, while advanced features satisfy experienced creators. Available on mobile, desktop, and web, CapCut enables seamless cross-platform editing workflows. Its extensive library of royalty-free music, stickers, and templates helps creators produce engaging content quickly.',
+		pros: ['Completely free with no watermark', 'Excellent auto-caption feature', 'Cross-platform availability'],
+		cons: ['Requires internet for some features', 'Occasional export quality inconsistencies'],
+	},
+	canva: {
+		detailDescription: 'Canva has democratized graphic design by making professional-quality design accessible to everyone regardless of skill level. With over 100 million monthly active users, this web-based platform offers hundreds of thousands of templates for social media posts, presentations, posters, logos, and marketing materials. The drag-and-drop editor, combined with an enormous library of stock photos, illustrations, fonts, and design elements, enables users to create stunning visuals in minutes. Canva\'s collaborative features allow teams to work together in real-time, while Brand Kit functionality ensures consistency across all designs. The Pro version unlocks premium templates, background removal, and the ability to resize designs for different platforms instantly.',
+		pros: ['Extensive template library', 'Real-time team collaboration', 'Easy brand consistency tools'],
+		cons: ['Some premium templates require Pro', 'Limited advanced design features compared to Illustrator'],
+	},
+	figma: {
+		detailDescription: 'Figma has fundamentally changed how design teams collaborate by bringing interface design into the browser. Unlike traditional desktop design tools, Figma enables multiple designers to work on the same file simultaneously with live cursor tracking and instant comment threads. The platform excels at UI/UX design, prototyping, and design systems management with features like auto-layout, component variants, and interactive prototypes that feel like real applications. Figma\'s plugin ecosystem extends its capabilities with accessibility checkers, content generators, and design token management. Since Adobe\'s acquisition, Figma has continued to innovate while maintaining its generous free tier for individual designers.',
+		pros: ['Real-time multiplayer collaboration', 'Powerful component system', 'Extensive plugin ecosystem'],
+		cons: ['Performance slows with very large files', 'Requires stable internet connection'],
+	},
+	xmind: {
+		detailDescription: 'XMind has been a leading mind mapping software for over a decade, helping professionals and students organize thoughts, brainstorm ideas, and plan projects visually. The latest version combines traditional mind mapping with modern productivity features including ZEN mode for distraction-free creation, pitch mode for presenting ideas, and audio notes for capturing thoughts on the go. XMind supports various chart types including logic charts, org charts, and timeline views beyond standard radial mind maps. The software strikes an excellent balance between simplicity and power, offering enough features for complex projects without overwhelming casual users. Cross-platform sync ensures your mind maps are accessible on desktop, mobile, and web.',
+		pros: ['Beautiful and intuitive interface', 'Multiple chart types available', 'Excellent presentation mode'],
+		cons: ['Free version limits map exports', 'Collaboration features are basic'],
+	},
+};
+
+const detail = toolDetails[tool.id] || {
+	detailDescription: `${tool.name} is a popular tool in its category. It offers a range of features designed to help users accomplish their tasks efficiently and effectively.`,
+	pros: ['Easy to use', 'Reliable performance', 'Regular updates'],
+	cons: ['May require learning curve', 'Some features are premium-only'],
+};
+
+const pageTitle = `${tool.name} Review — ${SITE_TITLE}`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={tool.description} />
+		<style>
+			.tool-detail-wrap {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 40px 24px;
+			}
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				font-size: 14px;
+				color: rgb(var(--gray));
+				text-decoration: none;
+				margin-bottom: 24px;
+				transition: color 0.2s ease;
+			}
+			.back-link:hover {
+				color: var(--accent);
+			}
+			.tool-header {
+				display: flex;
+				align-items: flex-start;
+				gap: 20px;
+				margin-bottom: 32px;
+				flex-wrap: wrap;
+			}
+			.tool-header-icon {
+				width: 64px;
+				height: 64px;
+				border-radius: 16px;
+				background: rgba(var(--accent-rgb), 0.1);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: var(--accent);
+				flex-shrink: 0;
+			}
+			.tool-header-icon svg {
+				width: 32px;
+				height: 32px;
+			}
+			.tool-header-info h1 {
+				margin: 0 0 8px 0;
+				font-size: 32px;
+			}
+			.tool-meta {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				flex-wrap: wrap;
+			}
+			.detail-desc {
+				font-size: 17px;
+				line-height: 1.8;
+				color: rgb(var(--gray-dark));
+				margin-bottom: 32px;
+			}
+			.pros-cons {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 24px;
+				margin-bottom: 32px;
+			}
+			.pros-cons h3 {
+				font-size: 18px;
+				margin-bottom: 12px;
+			}
+			.pros h3 {
+				color: #22c55e;
+			}
+			.cons h3 {
+				color: #ef4444;
+			}
+			.pros-cons ul {
+				margin: 0;
+				padding-left: 20px;
+			}
+			.pros-cons li {
+				font-size: 15px;
+				line-height: 1.7;
+				color: rgb(var(--gray-dark));
+				margin-bottom: 6px;
+			}
+			.cta-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				padding: 14px 28px;
+				background: var(--accent);
+				color: white;
+				font-size: 16px;
+				font-weight: 600;
+				border-radius: 10px;
+				text-decoration: none;
+				transition: all 0.2s ease;
+				margin-bottom: 40px;
+			}
+			.cta-btn:hover {
+				background: var(--accent-dark);
+				transform: translateY(-1px);
+			}
+			.related-section {
+				margin-top: 40px;
+				padding-top: 40px;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.related-section h2 {
+				font-size: 22px;
+				margin-bottom: 20px;
+			}
+			.related-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+				gap: 20px;
+			}
+			@media (max-width: 600px) {
+				.pros-cons {
+					grid-template-columns: 1fr;
+				}
+				.tool-header-info h1 {
+					font-size: 24px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<div class="tool-detail-wrap">
+			<a href="/" class="back-link">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+					<path d="M19 12H5"></path>
+					<polyline points="12 19 5 12 12 5"></polyline>
+				</svg>
+				Back to all tools
+			</a>
+
+			<div class="tool-header">
+				<div class="tool-header-icon">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d={tool.icon} />
+					</svg>
+				</div>
+				<div class="tool-header-info">
+					<h1>{tool.name}</h1>
+					<div class="tool-meta">
+						<div class="star-rating">
+							<span class="stars" aria-hidden="true">{renderStars(tool.rating)}</span>
+							<span class="rating-num">{tool.rating} / 5</span>
+						</div>
+						{tool.isEditorsPick && (
+							<span class="editor-pick-badge" style="position: static; border-radius: 6px;">Editor's Pick</span>
+						)}
+					</div>
+				</div>
+			</div>
+
+			<p class="detail-desc">{detail.detailDescription}</p>
+
+			<div class="pros-cons">
+				<div class="pros">
+					<h3>✓ Pros</h3>
+					<ul>
+						{detail.pros.map((pro) => (
+							<li>{pro}</li>
+						))}
+					</ul>
+				</div>
+				<div class="cons">
+					<h3>✗ Cons</h3>
+					<ul>
+						{detail.cons.map((con) => (
+							<li>{con}</li>
+						))}
+					</ul>
+				</div>
+			</div>
+
+			<a href={tool.affiliateLink} target="_blank" rel="noopener noreferrer" class="cta-btn">
+				Visit Official Site
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+					<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+					<polyline points="15 3 21 3 21 9"></polyline>
+					<line x1="10" y1="14" x2="21" y2="3"></line>
+				</svg>
+			</a>
+
+			{relatedTools.length > 0 && (
+				<div class="related-section">
+					<h2>Related Tools</h2>
+					<div class="related-grid">
+						{relatedTools.map((t) => (
+							<ToolCard tool={t} />
+						))}
+					</div>
+				</div>
+			)}
+		</div>
+		<Footer />
+	</body>
+</html>

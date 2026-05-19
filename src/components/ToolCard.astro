@@ -1,0 +1,138 @@
+---
+import type { Tool } from '../data/tools';
+
+interface Props {
+	tool: Tool;
+}
+
+const { tool } = Astro.props;
+
+function renderStars(rating: number): string {
+	const full = Math.floor(rating);
+	const empty = 5 - full;
+	return '★'.repeat(full) + '☆'.repeat(empty);
+}
+---
+
+<div class="tool-card" data-category={tool.category} data-name={tool.name.toLowerCase()} data-id={tool.id}>
+	{tool.isEditorsPick && (
+		<span class="editor-pick-badge">Editor's Pick</span>
+	)}
+	<div class="tool-icon-wrap">
+		<svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+			<path d={tool.icon} />
+		</svg>
+	</div>
+	<div class="tool-info">
+		<h4 class="tool-name">{tool.name}</h4>
+		<div class="star-rating">
+			<span class="stars" aria-hidden="true">{renderStars(tool.rating)}</span>
+			<span class="rating-num">{tool.rating}</span>
+		</div>
+		<p class="tool-desc">{tool.description}</p>
+	</div>
+	<div class="tool-actions">
+		<a href={`/tools/${tool.id}`} class="review-btn">Review →</a>
+		<a href={tool.affiliateLink} target="_blank" rel="noopener noreferrer" class="visit-btn">
+			<span>Visit</span>
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+				<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+				<polyline points="15 3 21 3 21 9"></polyline>
+				<line x1="10" y1="14" x2="21" y2="3"></line>
+			</svg>
+		</a>
+	</div>
+</div>
+
+<style>
+	.tool-card {
+		position: relative;
+		overflow: hidden;
+		background: var(--card-bg);
+		border: 1px solid var(--card-border);
+		border-radius: 14px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		transition: all 0.25s ease;
+		box-shadow: var(--card-shadow);
+	}
+	.tool-card:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--card-shadow-hover);
+		border-color: var(--accent);
+	}
+	.tool-icon-wrap {
+		width: 44px;
+		height: 44px;
+		border-radius: 12px;
+		background: rgba(var(--accent-rgb), 0.1);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--accent);
+	}
+	.tool-icon {
+		width: 22px;
+		height: 22px;
+	}
+	.tool-info {
+		flex: 1;
+	}
+	.tool-name {
+		margin: 0 0 4px 0;
+		font-size: 17px;
+		font-weight: 600;
+		color: rgb(var(--gray-dark));
+	}
+	.tool-desc {
+		margin: 6px 0 0 0;
+		font-size: 14px;
+		line-height: 1.5;
+		color: rgb(var(--gray));
+	}
+	.tool-actions {
+		display: flex;
+		gap: 8px;
+		margin-top: auto;
+		flex-wrap: wrap;
+	}
+	.review-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		padding: 8px 14px;
+		border-radius: 8px;
+		background: transparent;
+		border: 1px solid rgb(var(--gray-light));
+		color: rgb(var(--gray-dark));
+		font-size: 14px;
+		font-weight: 500;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+	.review-btn:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.visit-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+		padding: 8px 16px;
+		border-radius: 8px;
+		background: rgb(var(--gray-light));
+		color: rgb(var(--gray-dark));
+		font-size: 14px;
+		font-weight: 500;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+	.visit-btn:hover {
+		background: var(--accent);
+		color: white;
+	}
+</style>

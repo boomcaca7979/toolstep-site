@@ -1,0 +1,52 @@
+---
+---
+
+<div class="search-box">
+	<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		<circle cx="11" cy="11" r="8"></circle>
+		<path d="m21 21-4.3-4.3"></path>
+	</svg>
+	<input
+		type="text"
+		id="search-input"
+		placeholder="Search tools..."
+		autocomplete="off"
+	/>
+</div>
+
+<style>
+	.search-box {
+		position: relative;
+		width: 100%;
+		max-width: 420px;
+	}
+	.search-icon {
+		position: absolute;
+		left: 14px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 18px;
+		height: 18px;
+		color: rgb(var(--gray));
+		pointer-events: none;
+	}
+	input {
+		width: 100%;
+		padding: 10px 14px 10px 40px;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 10px;
+		font-size: 15px;
+		background: var(--card-bg);
+		color: rgb(var(--gray-dark));
+		outline: none;
+		transition: all 0.2s ease;
+		box-sizing: border-box;
+	}
+	input:focus {
+		border-color: var(--accent);
+		box-shadow: 0 0 0 3px rgba(35, 55, 255, 0.1);
+	}
+	input::placeholder {
+		color: rgb(var(--gray));
+	}
+</style>

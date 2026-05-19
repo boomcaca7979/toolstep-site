@@ -2,48 +2,157 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import ToolCard from '../components/ToolCard.astro';
+import SearchBox from '../components/SearchBox.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { tools } from '../data/tools';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.app-layout {
+				display: flex;
+				gap: 32px;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 32px 24px;
+				min-height: calc(100vh - 160px);
+			}
+			.main-content {
+				flex: 1;
+				min-width: 0;
+			}
+			.content-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin-bottom: 28px;
+				flex-wrap: wrap;
+				gap: 16px;
+			}
+			.content-header h1 {
+				margin: 0;
+				font-size: 24px;
+				font-weight: 700;
+				color: rgb(var(--gray-dark));
+			}
+			.tools-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 20px;
+			}
+			.tools-count {
+				font-size: 14px;
+				color: rgb(var(--gray));
+				font-weight: 500;
+				margin-bottom: 12px;
+			}
+			.empty-state {
+				text-align: center;
+				padding: 60px 20px;
+				color: rgb(var(--gray));
+			}
+			.empty-state svg {
+				width: 48px;
+				height: 48px;
+				margin-bottom: 12px;
+				opacity: 0.4;
+			}
+			@media (max-width: 768px) {
+				.app-layout {
+					flex-direction: column;
+					padding: 20px 16px;
+					gap: 20px;
+				}
+				.tools-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
+		<div class="app-layout">
+			<Sidebar activeCategory="all" />
+			<div class="main-content">
+				<div class="content-header">
+					<h1>All Tools</h1>
+					<SearchBox />
+				</div>
+				<div class="ad-banner">Advertisement</div>
+				<p class="tools-count" id="tools-count">{tools.length} tools</p>
+				<div class="tools-grid" id="tools-grid">
+					{tools.map((tool) => (
+						<ToolCard tool={tool} />
+					))}
+				</div>
+				<div class="empty-state" id="empty-state" style="display: none;">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+						<circle cx="11" cy="11" r="8"></circle>
+						<path d="m21 21-4.3-4.3"></path>
+					</svg>
+					<p>No tools found matching your search.</p>
+				</div>
+			</div>
+		</div>
+
+		<section class="newsletter-section">
+			<h2>Get Weekly Tool Recommendations</h2>
+			<p>Join 1,000+ subscribers receiving the best new tools every Monday.</p>
+			<form class="newsletter-form" onsubmit="event.preventDefault();">
+				<input type="email" placeholder="Enter your email" required />
+				<button type="submit">Subscribe</button>
+			</form>
+		</section>
+
 		<Footer />
+
+		<script>
+			const grid = document.getElementById('tools-grid');
+			const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+			const emptyState = document.getElementById('empty-state');
+			const countLabel = document.getElementById('tools-count');
+			const heading = document.querySelector('.content-header h1');
+
+			function filterTools(category: string, search: string) {
+				const cards = grid?.querySelectorAll<HTMLElement>('.tool-card');
+				if (!cards) return;
+
+				let visible = 0;
+				cards.forEach((card) => {
+					const cat = card.dataset.category || '';
+					const name = card.dataset.name || '';
+					const desc = card.querySelector('.tool-desc')?.textContent?.toLowerCase() || '';
+					const matchCat = category === 'all' || cat === category;
+					const matchSearch = !search || name.includes(search) || desc.includes(search);
+					const show = matchCat && matchSearch;
+					card.style.display = show ? '' : 'none';
+					if (show) visible++;
+				});
+
+				if (emptyState) {
+					emptyState.style.display = visible === 0 ? 'block' : 'none';
+				}
+				if (countLabel) {
+					countLabel.textContent = `${visible} tool${visible !== 1 ? 's' : ''}`;
+				}
+			}
+
+			let currentCategory = 'all';
+			window.addEventListener('categoryChange', ((e: CustomEvent) => {
+				currentCategory = e.detail;
+				const catName = document.querySelector(`.category-btn[data-category="${currentCategory}"] .cat-name`)?.textContent || 'All Tools';
+				if (heading) heading.textContent = catName;
+				filterTools(currentCategory, searchInput?.value?.toLowerCase() || '');
+			}) as EventListener);
+
+			searchInput?.addEventListener('input', () => {
+				filterTools(currentCategory, searchInput.value.toLowerCase());
+			});
+		</script>
 	</body>
 </html>

@@ -1,0 +1,111 @@
+---
+import { categories } from '../data/tools';
+
+interface Props {
+	activeCategory?: string;
+}
+
+const { activeCategory = 'all' } = Astro.props;
+---
+
+<aside class="sidebar">
+	<div class="sidebar-header">
+		<h3>Categories</h3>
+	</div>
+	<nav class="category-nav">
+		{
+			categories.map((cat) => (
+				<button
+					class={`category-btn ${cat.id === activeCategory ? 'active' : ''}`}
+					data-category={cat.id}
+				>
+					<svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d={cat.icon} />
+					</svg>
+					<span class="cat-name">{cat.name}</span>
+				</button>
+			))
+		}
+	</nav>
+</aside>
+
+<script>
+	const buttons = document.querySelectorAll<HTMLButtonElement>('.category-btn');
+	buttons.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const cat = btn.dataset.category || 'all';
+			window.dispatchEvent(new CustomEvent('categoryChange', { detail: cat }));
+			buttons.forEach((b) => b.classList.remove('active'));
+			btn.classList.add('active');
+		});
+	});
+</script>
+
+<style>
+	.sidebar {
+		width: 220px;
+		flex-shrink: 0;
+		position: sticky;
+		top: 80px;
+		height: fit-content;
+	}
+	.sidebar-header h3 {
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: rgb(var(--gray));
+		margin: 0 0 12px 0;
+	}
+	.category-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+	.category-btn {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 10px 12px;
+		border-radius: 10px;
+		border: none;
+		background: transparent;
+		color: rgb(var(--gray-dark));
+		font-size: 15px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		text-align: left;
+		width: 100%;
+	}
+	.category-btn:hover {
+		background: rgb(var(--gray-light));
+	}
+	.category-btn.active {
+		background: var(--accent);
+		color: white;
+	}
+	.cat-icon {
+		width: 18px;
+		height: 18px;
+		flex-shrink: 0;
+	}
+	.cat-name {
+		line-height: 1;
+	}
+	@media (max-width: 768px) {
+		.sidebar {
+			width: 100%;
+			position: static;
+		}
+		.category-nav {
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 6px;
+		}
+		.category-btn {
+			width: auto;
+			padding: 8px 12px;
+			font-size: 14px;
+		}
+	}
+</style>

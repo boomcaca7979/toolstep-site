@@ -7,6 +7,7 @@
 :root {
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
+	--accent-rgb: 35, 55, 255;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -15,7 +16,33 @@
 	--box-shadow:
 		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
+	--header-bg: white;
+	--card-bg: white;
+	--card-border: rgb(var(--gray-light));
+	--card-shadow: 0 1px 3px rgba(var(--black), 4%), 0 4px 12px rgba(var(--black), 6%);
+	--card-shadow-hover: 0 4px 12px rgba(var(--black), 8%), 0 12px 24px rgba(var(--black), 10%);
+	--gold: #f5a623;
+	--gold-dark: #e6951a;
 }
+
+html.dark {
+	--black: 228, 232, 242;
+	--gray: 140, 155, 190;
+	--gray-light: 45, 50, 65;
+	--gray-dark: 210, 218, 235;
+	--gray-gradient: #1a1d26, #12141a;
+	--accent: #5c7cff;
+	--accent-dark: #8aa4ff;
+	--accent-rgb: 92, 124, 255;
+	--header-bg: #181a22;
+	--card-bg: #1e202c;
+	--card-border: #2d2f3d;
+	--card-shadow: 0 1px 3px rgba(0, 0, 0, 20%), 0 4px 12px rgba(0, 0, 0, 30%);
+	--card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 35%), 0 12px 24px rgba(0, 0, 0, 45%);
+	--gold: #f5a623;
+	--gold-dark: #e6951a;
+}
+
 body {
 	font-family: var(--font-atkinson);
 	margin: 0;
@@ -130,12 +157,130 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
 	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* ===== Ad Banner ===== */
+.ad-banner {
+	background: #f0f0f0;
+	padding: 20px;
+	text-align: center;
+	border-radius: 8px;
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: rgb(var(--gray));
+	border: 1px dashed rgb(var(--gray-light));
+}
+
+html.dark .ad-banner {
+	background: #2a2d3a;
+	color: rgb(var(--gray));
+	border-color: #3d4050;
+}
+
+/* ===== Star Rating ===== */
+.star-rating {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+}
+.star-rating .stars {
+	color: var(--gold);
+	letter-spacing: 1px;
+}
+.star-rating .rating-num {
+	color: rgb(var(--gray));
+	font-weight: 500;
+}
+
+/* ===== Editor's Pick Badge ===== */
+.editor-pick-badge {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+	color: white;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 4px 10px;
+	border-radius: 0 14px 0 8px;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+	z-index: 2;
+}
+
+/* ===== Newsletter Section ===== */
+.newsletter-section {
+	background: linear-gradient(135deg, rgb(var(--gray-light)), rgba(var(--accent-rgb), 0.08));
+	padding: 60px 24px;
+	text-align: center;
+	margin-top: 40px;
+}
+
+html.dark .newsletter-section {
+	background: linear-gradient(135deg, #1e202c, rgba(var(--accent-rgb), 0.15));
+}
+
+.newsletter-section h2 {
+	font-size: 28px;
+	margin-bottom: 8px;
+}
+
+.newsletter-section p {
+	font-size: 16px;
+	color: rgb(var(--gray));
+	margin-bottom: 24px;
+}
+
+.newsletter-form {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	max-width: 480px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+}
+
+.newsletter-form input {
+	flex: 1;
+	min-width: 240px;
+	padding: 12px 16px;
+	border: 1px solid rgb(var(--gray-light));
+	border-radius: 10px;
+	background: var(--card-bg);
+	color: rgb(var(--gray-dark));
+	font-size: 15px;
+	outline: none;
+	transition: border-color 0.2s ease;
+}
+
+.newsletter-form input:focus {
+	border-color: var(--accent);
+}
+
+.newsletter-form button {
+	padding: 12px 28px;
+	background: var(--accent);
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.newsletter-form button:hover {
+	background: var(--accent-dark);
+}
+
+@media (max-width: 480px) {
+	.newsletter-form input,
+	.newsletter-form button {
+		width: 100%;
+	}
 }
