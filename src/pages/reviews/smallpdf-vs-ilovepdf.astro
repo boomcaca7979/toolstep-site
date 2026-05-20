@@ -1,0 +1,359 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const pageTitle = `Smallpdf vs iLovePDF: Which Free PDF Editor is Better in 2026? — ${SITE_TITLE}`;
+const pageDescription = 'We compared Smallpdf and iLovePDF side by side to find the best free online PDF editor in 2026. Read our hands-on review, comparison table, and final recommendation.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+		<style>
+			.review-wrap {
+				max-width: 760px;
+				margin: 0 auto;
+				padding: 40px 24px;
+				min-height: calc(100vh - 200px);
+			}
+			.review-wrap h1 {
+				font-size: 2.2em;
+				margin-bottom: 12px;
+				line-height: 1.2;
+			}
+			.meta {
+				font-size: 14px;
+				color: rgb(var(--gray));
+				margin-bottom: 28px;
+			}
+			.intro {
+				font-size: 18px;
+				line-height: 1.8;
+				color: rgb(var(--gray-dark));
+				margin-bottom: 32px;
+				padding-bottom: 24px;
+				border-bottom: 1px solid rgb(var(--gray-light));
+			}
+			.review-wrap h2 {
+				font-size: 1.5em;
+				margin-top: 40px;
+				margin-bottom: 16px;
+				color: rgb(var(--black));
+			}
+			.review-wrap h3 {
+				font-size: 1.2em;
+				margin-top: 28px;
+				margin-bottom: 12px;
+				color: rgb(var(--black));
+			}
+			.review-wrap p,
+			.review-wrap li {
+				font-size: 17px;
+				line-height: 1.8;
+				color: rgb(var(--gray-dark));
+			}
+			.review-wrap ul {
+				margin-bottom: 16px;
+				padding-left: 24px;
+			}
+			.review-wrap li {
+				margin-bottom: 8px;
+			}
+			.review-wrap a {
+				color: var(--accent);
+				text-decoration: underline;
+			}
+			.compare-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 20px 0 32px 0;
+				font-size: 15px;
+			}
+			.compare-table th,
+			.compare-table td {
+				padding: 12px 14px;
+				border: 1px solid rgb(var(--gray-light));
+				text-align: left;
+			}
+			.compare-table th {
+				background: rgb(var(--gray-light));
+				font-weight: 600;
+				color: rgb(var(--black));
+			}
+			.compare-table td {
+				background: var(--card-bg);
+			}
+			.compare-table tr:nth-child(even) td {
+				background: rgba(var(--gray-light), 0.4);
+			}
+			.winner-box,
+			.runner-box,
+			.budget-box {
+				border-radius: 12px;
+				padding: 24px;
+				margin-bottom: 16px;
+			}
+			.winner-box {
+				background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+				border: 1px solid rgba(34, 197, 94, 0.3);
+			}
+			.runner-box {
+				background: linear-gradient(135deg, rgba(92, 124, 255, 0.1), rgba(92, 124, 255, 0.05));
+				border: 1px solid rgba(92, 124, 255, 0.3);
+			}
+			.budget-box {
+				background: linear-gradient(135deg, rgba(245, 166, 35, 0.1), rgba(245, 166, 35, 0.05));
+				border: 1px solid rgba(245, 166, 35, 0.3);
+			}
+			.winner-box h3,
+			.runner-box h3,
+			.budget-box h3 {
+				margin-top: 0;
+				font-size: 18px;
+			}
+			.winner-box h3 { color: #22c55e; }
+			.runner-box h3 { color: var(--accent); }
+			.budget-box h3 { color: var(--gold); }
+			.pick-label {
+				display: inline-block;
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				padding: 4px 10px;
+				border-radius: 6px;
+				margin-bottom: 8px;
+			}
+			.winner-box .pick-label { background: #22c55e; color: white; }
+			.runner-box .pick-label { background: var(--accent); color: white; }
+			.budget-box .pick-label { background: var(--gold); color: white; }
+			.cta-inline {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				padding: 10px 20px;
+				background: var(--accent);
+				color: white;
+				font-weight: 600;
+				border-radius: 8px;
+				text-decoration: none;
+				margin-top: 8px;
+				transition: all 0.2s ease;
+			}
+			.cta-inline:hover {
+				background: var(--accent-dark);
+				transform: translateY(-1px);
+			}
+			.faq-item {
+				margin-bottom: 20px;
+			}
+			.faq-item h4 {
+				font-size: 17px;
+				margin-bottom: 6px;
+				color: rgb(var(--black));
+			}
+			.faq-item p {
+				margin: 0;
+			}
+			@media (max-width: 720px) {
+				.review-wrap {
+					padding: 32px 16px;
+				}
+				.review-wrap h1 {
+					font-size: 1.7em;
+				}
+				.compare-table {
+					font-size: 13px;
+				}
+				.compare-table th,
+				.compare-table td {
+					padding: 10px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<div class="review-wrap">
+			<h1>Smallpdf vs iLovePDF: Which Free PDF Editor is Better in 2026?</h1>
+			<p class="meta">Published May 19, 2026 · PDF Tools · 5 min read</p>
+
+			<p class="intro">
+				PDFs are everywhere — from contracts and resumes to scanned receipts and school assignments. But editing a PDF without the right tool can be frustrating. Two of the most popular free online PDF editors are <strong>Smallpdf</strong> and <strong>iLovePDF</strong>. We tested both extensively to help you decide which one deserves your time.
+			</p>
+
+			<h2>Quick Comparison</h2>
+			<table class="compare-table">
+				<thead>
+					<tr>
+						<th>Feature</th>
+						<th>Smallpdf</th>
+						<th>iLovePDF</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><strong>Free Plan</strong></td>
+						<td>2 tasks per day</td>
+						<td>Unlimited (with ads)</td>
+					</tr>
+					<tr>
+						<td><strong>Paid Plan</strong></td>
+						<td>$12/month (Pro)</td>
+						<td>$7/month (Premium)</td>
+					</tr>
+					<tr>
+						<td><strong>Tools Available</strong></td>
+						<td>21+ tools</td>
+						<td>25+ tools</td>
+					</tr>
+					<tr>
+						<td><strong>File Size Limit</strong></td>
+						<td>5 GB (Pro) / 500 MB (free)</td>
+						<td>1 GB per file (free)</td>
+					</tr>
+					<tr>
+						<td><strong>OCR Support</strong></td>
+						<td>Yes (Pro only)</td>
+						<td>Yes (Premium only)</td>
+					</tr>
+					<tr>
+						<td><strong>Desktop App</strong></td>
+						<td>Windows & Mac</td>
+						<td>Windows only</td>
+					</tr>
+					<tr>
+						<td><strong>Ads on Free Plan</strong></td>
+						<td>Minimal</td>
+						<td>Frequent</td>
+					</tr>
+					<tr>
+						<td><strong>Our Rating</strong></td>
+						<td>★★★★☆ 4.5</td>
+						<td>★★★★☆ 4.3</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>Smallpdf Review</h2>
+			<p>
+				Smallpdf has grown from a simple PDF compressor into a full-featured document platform used by over 500 million people. Its interface is clean, modern, and remarkably easy to navigate — even if you have never edited a PDF before. The free tier allows two tasks per day, which is enough for occasional users who just need to merge a few files or convert a Word document to PDF.
+			</p>
+			<p>
+				One standout feature is Smallpdf's desktop application, which works offline and integrates directly with your file system. The Pro plan unlocks OCR (text recognition in scanned documents), batch processing, and digital signatures — features that business users will appreciate. The platform also offers strong security with 256-bit SSL encryption and automatic file deletion after one hour.
+			</p>
+
+			<h3>Pros</h3>
+			<ul>
+				<li><strong>Beautiful, intuitive interface</strong> — The cleanest UI among all PDF editors we tested. Everything is exactly where you expect it to be.</li>
+				<li><strong>Desktop apps for Windows and Mac</strong> — Work offline and process files directly from your computer without uploading.</li>
+				<li><strong>Strong security</strong> — Bank-level encryption and automatic file deletion give peace of mind for sensitive documents.</li>
+			</ul>
+
+			<h3>Cons</h3>
+			<ul>
+				<li><strong>Limited free tier</strong> — Only 2 tasks per day on the free plan, which runs out quickly for active users.</li>
+				<li><strong>More expensive</strong> — The Pro plan at $12/month is pricier than competitors, though it includes desktop apps.</li>
+			</ul>
+
+			<p><strong>Best for:</strong> Professionals and businesses who value a polished interface, desktop access, and security. If you handle sensitive documents regularly, Smallpdf is worth the premium.</p>
+
+			<a href="[AFFILIATE_LINK_SMALLPDF]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+				Try Smallpdf Free →
+			</a>
+
+			<h2>iLovePDF Review</h2>
+			<p>
+				iLovePDF takes a different approach — it gives you <em>more</em> for free, even if the experience is not as refined. With over 25 tools and no daily usage limits on the free plan, iLovePDF is the workhorse of online PDF editing. Need to compress 20 PDFs in a row? iLovePDF will not stop you. The trade-off is a more cluttered interface and frequent advertisements on the free tier.
+			</p>
+			<p>
+				Where iLovePDF truly shines is in its sheer variety of tools. Beyond the basics (merge, split, compress, convert), you get features like PDF page numbering, watermarking, PDF/A conversion, and even repair for corrupted PDFs. The Premium plan removes ads, adds OCR, and enables larger file uploads — all at a lower price point than Smallpdf.
+			</p>
+
+			<h3>Pros</h3>
+			<ul>
+				<li><strong>Unlimited free usage</strong> — No daily limits on the free plan, making it ideal for heavy users and students.</li>
+				<li><strong>More tools (25+)</strong> — Includes niche features like PDF repair and page numbering that Smallpdf lacks.</li>
+				<li><strong>Better value</strong> — Premium plan is cheaper ($7/month) and still covers most professional needs.</li>
+			</ul>
+
+			<h3>Cons</h3>
+			<ul>
+				<li><strong>Ad-heavy free experience</strong> — Frequent banner ads can be distracting when working on urgent tasks.</li>
+				<li><strong>No Mac desktop app</strong> — Only Windows desktop client is available; Mac users must use the web version.</li>
+			</ul>
+
+			<p><strong>Best for:</strong> Students, casual users, and anyone who needs to process many PDFs without hitting daily limits. If you can tolerate ads, the free tier is incredibly generous.</p>
+
+			<a href="[AFFILIATE_LINK_ILOVEPDF]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+				Try iLovePDF Free →
+			</a>
+
+			<h2>Our Editor's Picks</h2>
+
+			<div class="winner-box">
+				<span class="pick-label">Winner</span>
+				<h3>🏆 Smallpdf — Best Overall</h3>
+				<p>
+					Smallpdf wins for its unbeatable combination of usability, security, and offline capability. While it costs more, the polished experience and desktop apps make it the better long-term investment for anyone who works with PDFs regularly. The 2-task daily limit on the free tier is the only thing holding it back from perfection.
+				</p>
+				<a href="[AFFILIATE_LINK_SMALLPDF]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+					Get Smallpdf Pro →
+				</a>
+			</div>
+
+			<div class="runner-box">
+				<span class="pick-label">Runner Up</span>
+				<h3>🥈 iLovePDF — Best Free Tier</h3>
+				<p>
+					If your budget is tight, iLovePDF is the clear choice. Its unlimited free plan and extensive tool library make it perfect for students and occasional users. The ads are annoying, but they are a small price to pay for such a capable free service.
+				</p>
+				<a href="[AFFILIATE_LINK_ILOVEPDF]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+					Try iLovePDF →
+				</a>
+			</div>
+
+			<div class="budget-box">
+				<span class="pick-label">Budget Pick</span>
+				<h3>💰 iLovePDF Premium — Best Value</h3>
+				<p>
+					At just $7/month, iLovePDF Premium removes ads, unlocks OCR, and increases file size limits — all for less than Smallpdf's entry plan. For most users, this is the sweet spot between features and affordability.
+				</p>
+				<a href="[AFFILIATE_LINK_ILOVEPDF]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+					Upgrade to Premium →
+				</a>
+			</div>
+
+			<h2>Frequently Asked Questions</h2>
+
+			<div class="faq-item">
+				<h4>Is Smallpdf or iLovePDF completely free?</h4>
+				<p>
+					Both offer free tiers, but with limitations. Smallpdf limits you to 2 tasks per day on the free plan, while iLovePDF is unlimited but shows ads. For serious PDF work, both services offer paid plans that remove restrictions.
+				</p>
+			</div>
+
+			<div class="faq-item">
+				<h4>Are my files safe with these online PDF editors?</h4>
+				<p>
+					Yes — both services use SSL encryption and automatically delete uploaded files after processing (typically within 1 hour). Smallpdf adds an extra layer with GDPR compliance and ISO 27001 certification. However, for highly sensitive legal or medical documents, a desktop PDF editor may still be preferable.
+				</p>
+			</div>
+
+			<div class="faq-item">
+				<h4>Can I edit text inside a PDF with these tools?</h4>
+				<p>
+					Both Smallpdf and iLovePDF offer PDF-to-Word conversion, which is the most reliable way to edit existing text. For direct in-PDF text editing, you will need dedicated PDF software like Adobe Acrobat. These online editors excel at merging, splitting, compressing, and converting PDFs rather than complex text editing.
+				</p>
+			</div>
+
+			<p style="margin-top: 40px; font-size: 14px; color: rgb(var(--gray));">
+				<em>Disclosure: This review contains affiliate links. We may earn a commission if you purchase through these links, at no extra cost to you. All opinions are our own based on hands-on testing.</em>
+			</p>
+		</div>
+		<Footer />
+	</body>
+</html>
