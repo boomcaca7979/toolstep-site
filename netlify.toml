@@ -1,0 +1,7 @@
+[build]
+  publish = "dist"
+
+[dev]
+  command = "npx astro dev"
+  targetPort = 4321
+  publish = "dist"

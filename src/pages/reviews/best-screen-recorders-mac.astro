@@ -1,0 +1,388 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const pageTitle = `Best Free Screen Recorders for Mac in 2026 — ${SITE_TITLE}`;
+const pageDescription = 'We tested OBS Studio, QuickTime Player, and CapCut to find the best free screen recorder for Mac in 2026. Read our comparison, reviews, and top pick.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+		<style>
+			.review-wrap {
+				max-width: 760px;
+				margin: 0 auto;
+				padding: 40px 24px;
+				min-height: calc(100vh - 200px);
+			}
+			.review-wrap h1 {
+				font-size: 2.2em;
+				margin-bottom: 12px;
+				line-height: 1.2;
+			}
+			.meta {
+				font-size: 14px;
+				color: rgb(var(--gray));
+				margin-bottom: 28px;
+			}
+			.intro {
+				font-size: 18px;
+				line-height: 1.8;
+				color: rgb(var(--gray-dark));
+				margin-bottom: 32px;
+				padding-bottom: 24px;
+				border-bottom: 1px solid rgb(var(--gray-light));
+			}
+			.review-wrap h2 {
+				font-size: 1.5em;
+				margin-top: 40px;
+				margin-bottom: 16px;
+				color: rgb(var(--black));
+			}
+			.review-wrap h3 {
+				font-size: 1.2em;
+				margin-top: 28px;
+				margin-bottom: 12px;
+				color: rgb(var(--black));
+			}
+			.review-wrap p,
+			.review-wrap li {
+				font-size: 17px;
+				line-height: 1.8;
+				color: rgb(var(--gray-dark));
+			}
+			.review-wrap ul {
+				margin-bottom: 16px;
+				padding-left: 24px;
+			}
+			.review-wrap li {
+				margin-bottom: 8px;
+			}
+			.review-wrap a {
+				color: var(--accent);
+				text-decoration: underline;
+			}
+			.compare-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 20px 0 32px 0;
+				font-size: 15px;
+			}
+			.compare-table th,
+			.compare-table td {
+				padding: 12px 14px;
+				border: 1px solid rgb(var(--gray-light));
+				text-align: left;
+			}
+			.compare-table th {
+				background: rgb(var(--gray-light));
+				font-weight: 600;
+				color: rgb(var(--black));
+			}
+			.compare-table td {
+				background: var(--card-bg);
+			}
+			.compare-table tr:nth-child(even) td {
+				background: rgba(var(--gray-light), 0.4);
+			}
+			.winner-box,
+			.runner-box,
+			.budget-box {
+				border-radius: 12px;
+				padding: 24px;
+				margin-bottom: 16px;
+			}
+			.winner-box {
+				background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+				border: 1px solid rgba(34, 197, 94, 0.3);
+			}
+			.runner-box {
+				background: linear-gradient(135deg, rgba(92, 124, 255, 0.1), rgba(92, 124, 255, 0.05));
+				border: 1px solid rgba(92, 124, 255, 0.3);
+			}
+			.budget-box {
+				background: linear-gradient(135deg, rgba(245, 166, 35, 0.1), rgba(245, 166, 35, 0.05));
+				border: 1px solid rgba(245, 166, 35, 0.3);
+			}
+			.winner-box h3,
+			.runner-box h3,
+			.budget-box h3 {
+				margin-top: 0;
+				font-size: 18px;
+			}
+			.winner-box h3 { color: #22c55e; }
+			.runner-box h3 { color: var(--accent); }
+			.budget-box h3 { color: #f5a623; }
+			.pick-label {
+				display: inline-block;
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				padding: 4px 10px;
+				border-radius: 6px;
+				margin-bottom: 8px;
+			}
+			.winner-box .pick-label { background: #22c55e; color: white; }
+			.runner-box .pick-label { background: var(--accent); color: white; }
+			.budget-box .pick-label { background: #f5a623; color: white; }
+			.cta-inline {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				padding: 10px 20px;
+				background: var(--accent);
+				color: white;
+				font-weight: 600;
+				border-radius: 8px;
+				text-decoration: none;
+				margin-top: 8px;
+				transition: all 0.2s ease;
+			}
+			.cta-inline:hover {
+				background: var(--accent-dark);
+				transform: translateY(-1px);
+			}
+			.faq-item {
+				margin-bottom: 20px;
+			}
+			.faq-item h4 {
+				font-size: 17px;
+				margin-bottom: 6px;
+				color: rgb(var(--black));
+			}
+			.faq-item p {
+				margin: 0;
+			}
+			@media (max-width: 720px) {
+				.review-wrap {
+					padding: 32px 16px;
+				}
+				.review-wrap h1 {
+					font-size: 1.7em;
+				}
+				.compare-table {
+					font-size: 13px;
+				}
+				.compare-table th,
+				.compare-table td {
+					padding: 10px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<div class="review-wrap">
+			<h1>Best Free Screen Recorders for Mac in 2026</h1>
+			<p class="meta">Published May 19, 2026 · Video Tools · 7 min read</p>
+
+			<p class="intro">
+				Whether you are creating a tutorial for YouTube, recording a product demo for your startup, or capturing a video call for reference, a reliable screen recorder is essential for every Mac user. The good news: you do not need to spend a dime. We tested the three best free options — <strong>OBS Studio</strong>, <strong>QuickTime Player</strong>, and <strong>CapCut</strong> — to help you find the perfect tool for your workflow.
+			</p>
+
+			<h2>Quick Comparison</h2>
+			<table class="compare-table">
+				<thead>
+					<tr>
+						<th>Feature</th>
+						<th>OBS Studio</th>
+						<th>QuickTime</th>
+						<th>CapCut</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><strong>Price</strong></td>
+						<td>Free & open-source</td>
+						<td>Free (built-in)</td>
+						<td>Free</td>
+					</tr>
+					<tr>
+						<td><strong>Best For</strong></td>
+						<td>Streaming & professionals</td>
+						<td>Quick, simple recordings</td>
+						<td>Recording + editing</td>
+					</tr>
+					<tr>
+						<td><strong>Max Resolution</strong></td>
+						<td>Up to 8K</td>
+						<td>Up to 4K</td>
+						<td>Up to 4K</td>
+					</tr>
+					<tr>
+						<td><strong>Multi-source</strong></td>
+						<td>Unlimited scenes & sources</td>
+						<td>Screen or camera only</td>
+						<td>Screen + camera + audio</td>
+					</tr>
+					<tr>
+						<td><strong>Live Streaming</strong></td>
+						<td>YouTube, Twitch, etc.</td>
+						<td>No</td>
+						<td>No</td>
+					</tr>
+					<tr>
+						<td><strong>Built-in Editor</strong></td>
+						<td>No</td>
+						<td>Basic trim only</td>
+						<td>Full video editor</td>
+					</tr>
+					<tr>
+						<td><strong>Watermark</strong></td>
+						<td>None</td>
+						<td>None</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td><strong>Our Rating</strong></td>
+						<td>★★★★★ 4.9</td>
+						<td>★★★★☆ 4.0</td>
+						<td>★★★★☆ 4.4</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>OBS Studio Review</h2>
+			<p>
+				OBS Studio is the undisputed king of free screen recording and live streaming, and it is not even close. Originally built for gamers streaming to Twitch, OBS has evolved into a professional broadcast tool used by educators, podcasters, webinar hosts, and corporate trainers. On Mac, it runs natively via Apple Silicon or Intel, delivering hardware-accelerated encoding that keeps CPU usage surprisingly manageable.
+			</p>
+			<p>
+				What sets OBS apart is its modular "scene" system. You can create unlimited scenes with different layouts — one for full-screen capture, one for picture-in-picture with your webcam, one for slides plus facecam — and switch between them instantly with hotkeys. Add filters, chroma key (green screen), audio noise suppression, and custom transitions, and you have a setup that rivals $500 commercial software. The only catch: all this power comes with a learning curve that intimidates first-time users.
+			</p>
+
+			<h3>Pros</h3>
+			<ul>
+				<li><strong>Unlimited customization</strong> — Scenes, sources, filters, and plugins let you build any recording or streaming setup imaginable.</li>
+				<li><strong>Direct streaming to all platforms</strong> — Native integration with YouTube, Twitch, Facebook Live, and custom RTMP servers.</li>
+				<li><strong>Zero cost, zero watermarks</strong> — Completely free and open-source with no restrictions on recording length or quality.</li>
+			</ul>
+
+			<h3>Cons</h3>
+			<ul>
+				<li><strong>Steep learning curve</strong> — New users often feel overwhelmed by the interface. Expect to spend an hour watching tutorials before your first recording.</li>
+				<li><strong>No built-in editor</strong> — You will need a separate app like DaVinci Resolve or iMovie to edit your recordings after capture.</li>
+			</ul>
+
+			<p><strong>Best for:</strong> YouTubers, streamers, online course creators, and anyone who needs professional multi-source recordings or live streaming. If you are willing to invest time in learning, OBS is unbeatable.</p>
+
+			<a href="[AFFILIATE_LINK_OBS_STUDIO]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+				Download OBS Studio →
+			</a>
+
+			<h2>QuickTime Player Review</h2>
+			<p>
+				QuickTime Player is the screen recorder you already own. Every Mac ships with it, and its screen recording feature is hidden behind a simple File → New Screen Recording menu. There is nothing to download, no account to create, and no settings to configure. Click the red button, select your screen area, and you are recording. For Mac users who need to capture something quickly and move on, this zero-friction workflow is genuinely unbeatable.
+			</p>
+			<p>
+				The trade-off is functionality. QuickTime records your screen and microphone, period. No webcam overlay, no system audio capture (without third-party plugins), no annotations, and no streaming. After recording, you get a basic trim tool and the ability to export. That is it. But for many users — especially teachers sending quick video explanations or colleagues sharing bug reproductions — that simplicity is exactly what they want.
+			</p>
+
+			<h3>Pros</h3>
+			<ul>
+				<li><strong>Already installed on every Mac</strong> — Zero setup time. Open QuickTime and start recording in under 10 seconds.</li>
+				<li><strong>Dead simple interface</strong> — One red button. No menus, no scenes, no confusing options.</li>
+				<li><strong>Lightweight and efficient</strong> — Uses minimal system resources, making it ideal for older Macs or recording while running heavy apps.</li>
+			</ul>
+
+			<h3>Cons</h3>
+			<ul>
+				<li><strong>No system audio recording</strong> — By default, QuickTime cannot capture audio from your Mac's speakers. You need a third-party loopback driver like BlackHole.</li>
+				<li><strong>Extremely limited features</strong> — No webcam overlay, no annotations, no multi-source recording, no live streaming, and virtually no editing.</li>
+			</ul>
+
+			<p><strong>Best for:</strong> Casual users, teachers, and anyone who needs to record their screen occasionally without installing anything. If your needs are basic, QuickTime is the fastest path from idea to recording.</p>
+
+			<h2>CapCut Review</h2>
+			<p>
+				CapCut occupies a unique position: it is the only tool on this list that combines screen recording with a full-featured video editor. Record your screen, drop the footage into CapCut's timeline, add auto-captions, insert transitions, apply color grading, and export — all without leaving the app. For content creators who need polished videos fast, this integration saves enormous time compared to recording in OBS and editing elsewhere.
+			</p>
+			<p>
+				On Mac, CapCut delivers a surprisingly robust feature set for a free app. Screen recording supports up to 4K resolution with simultaneous webcam and microphone capture. The editor includes keyframe animation, chroma key, speed ramping, and hundreds of trendy effects and transitions that appeal to TikTok and YouTube Shorts creators. The auto-caption feature alone is worth downloading the app for — it transcribes speech with impressive accuracy and syncs the text to your video automatically.
+			</p>
+
+			<h3>Pros</h3>
+			<ul>
+				<li><strong>All-in-one workflow</strong> — Record and edit in the same app, eliminating the need to export between multiple tools.</li>
+				<li><strong>Excellent auto-captions</strong> — Automatically transcribes speech and generates editable captions, a huge time-saver for accessibility.</li>
+				<li><strong>No watermarks, no export limits</strong> — Completely free with professional-grade export quality up to 4K.</li>
+			</ul>
+
+			<h3>Cons</h3>
+			<ul>
+				<li><strong>No live streaming</strong> — CapCut is strictly for pre-recorded content. If you need to stream live, you still need OBS.</li>
+				<li><strong>Requires internet for some features</strong> — Effects library, cloud storage, and certain AI features need an active connection.</li>
+			</ul>
+
+			<p><strong>Best for:</strong> Social media creators, educators making polished tutorials, and anyone who wants to record and edit without learning multiple apps. If your end goal is a finished video (not a live stream), CapCut is the most efficient choice.</p>
+
+			<a href="[AFFILIATE_LINK_CAPCUT]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+				Download CapCut →
+			</a>
+
+			<h2>Our Editor's Picks</h2>
+
+			<div class="winner-box">
+				<span class="pick-label">Winner</span>
+				<h3>🏆 OBS Studio — Best Overall</h3>
+				<p>
+					For serious recording and streaming, nothing beats OBS. Its unlimited scenes, plugin ecosystem, and direct streaming integration make it the professional standard — and it is completely free. Yes, it takes time to learn, but the investment pays dividends every time you hit record.
+				</p>
+				<a href="[AFFILIATE_LINK_OBS_STUDIO]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+					Get OBS Studio →
+				</a>
+			</div>
+
+			<div class="runner-box">
+				<span class="pick-label">Runner Up</span>
+				<h3>🥈 CapCut — Best for Creators</h3>
+				<p>
+					If you need finished videos (not raw recordings), CapCut's all-in-one workflow is unbeatable. The auto-caption feature alone saves hours of tedious work. It is the best choice for YouTubers, educators, and social media creators who want polished output without juggling multiple apps.
+				</p>
+				<a href="[AFFILIATE_LINK_CAPCUT]" target="_blank" rel="noopener noreferrer" class="cta-inline">
+					Try CapCut →
+				</a>
+			</div>
+
+			<div class="budget-box">
+				<span class="pick-label">Built-in Pick</span>
+				<h3>💻 QuickTime — Best for Quick Jobs</h3>
+				<p>
+					Sometimes the best tool is the one you already have. For casual screen recordings, bug reports, and quick video messages, QuickTime Player is perfectly adequate — and it requires zero setup. Just remember that you will need a workaround for system audio recording.
+				</p>
+			</div>
+
+			<h2>Frequently Asked Questions</h2>
+
+			<div class="faq-item">
+				<h4>Does macOS have a built-in screen recorder?</h4>
+				<p>
+					Yes — QuickTime Player can record your screen and is pre-installed on every Mac. Additionally, macOS includes a screenshot toolbar (press Shift + Command + 5) that offers a simple screen recording option with a timer and save location selector. However, for anything beyond basic recordings, a dedicated tool like OBS or CapCut is recommended.
+				</p>
+			</div>
+
+			<div class="faq-item">
+				<h4>Can I record system audio on Mac?</h4>
+				<p>
+					QuickTime cannot record system audio by default. To capture audio from your Mac's speakers, you need a free virtual audio driver like BlackHole or Loopback. OBS Studio and CapCut handle this more gracefully — OBS can capture system audio directly on macOS 13+, while CapCut records screen audio natively during capture.
+				</p>
+			</div>
+
+			<div class="faq-item">
+				<h4>Which screen recorder is best for YouTube videos?</h4>
+				<p>
+					It depends on your workflow. If you live stream, OBS Studio is essential. If you produce edited tutorials, CapCut's record-and-edit integration saves the most time. For simple talking-head videos recorded in one take, QuickTime is sufficient. Many successful YouTubers actually use a combination: OBS for complex multi-source recordings, and CapCut for quick screen-capture tutorials that need captions.
+				</p>
+			</div>
+
+			<p style="margin-top: 40px; font-size: 14px; color: rgb(var(--gray));">
+				<em>Disclosure: This review contains affiliate links. We may earn a commission if you purchase through these links, at no extra cost to you. All opinions are our own based on hands-on testing.</em>
+			</p>
+		</div>
+		<Footer />
+	</body>
+</html>

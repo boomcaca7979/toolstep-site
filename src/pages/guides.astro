@@ -1,0 +1,84 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const pageTitle = `Tool Guides & Tutorials — ${SITE_TITLE}`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+		<style>
+			.guides-wrap {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 80px 24px;
+				text-align: center;
+				min-height: calc(100vh - 200px);
+			}
+			.guides-wrap h1 {
+				font-size: 2.2em;
+				margin-bottom: 16px;
+			}
+			.coming-soon-icon {
+				width: 64px;
+				height: 64px;
+				margin: 0 auto 24px auto;
+				color: rgb(var(--gray));
+				opacity: 0.5;
+			}
+			.guides-wrap p {
+				font-size: 18px;
+				color: rgb(var(--gray));
+				line-height: 1.7;
+				margin-bottom: 32px;
+			}
+			.back-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				padding: 12px 24px;
+				background: var(--accent);
+				color: white;
+				font-size: 15px;
+				font-weight: 600;
+				border-radius: 10px;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+			.back-btn:hover {
+				background: var(--accent-dark);
+				transform: translateY(-1px);
+			}
+			@media (max-width: 720px) {
+				.guides-wrap {
+					padding: 60px 16px;
+				}
+				.guides-wrap h1 {
+					font-size: 1.8em;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<div class="guides-wrap">
+			<svg class="coming-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path>
+			</svg>
+			<h1>Tool Guides & Tutorials</h1>
+			<p>Coming soon — we're working on detailed step-by-step guides for every tool in our directory. Check back soon for tutorials on PDF editing, image compression, AI writing, video recording, and more.</p>
+			<a href="/" class="back-btn">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+					<path d="M19 12H5"></path>
+					<polyline points="12 19 5 12 12 5"></polyline>
+				</svg>
+				Back to Home
+			</a>
+		</div>
+		<Footer />
+	</body>
+</html>
