@@ -18,7 +18,7 @@ const twitterImageUrl = 'https://example.com/twitter-image.jpg';
 ---
 
 <BlogPost title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage}>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} articleSchema={{headline: title, description: description, datePublished: '2026-05', authorName: 'Toolwise Team'}} />
     <Header />
     <main class="container mx-auto px-4 py-8">
         <article class="prose dark:prose-invert max-w-none">

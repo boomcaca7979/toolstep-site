@@ -5,6 +5,13 @@ import Header from '../../components/Header.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import { SITE_TITLE } from '../../consts';
 import { tools } from '../../data/tools';
+const appCategoryMap: Record<string, string> = {
+	'pdf': 'BusinessApplication',
+	'image': 'Multimedia',
+	'ai-writing': 'BusinessApplication',
+	'video': 'Multimedia',
+	'productivity': 'BusinessApplication',
+};
 
 export function getStaticPaths() {
 	return tools.map((tool) => ({
@@ -94,7 +101,12 @@ const pageTitle = `${tool.name} Review — ${SITE_TITLE}`;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={pageTitle} description={tool.description} />
+		<BaseHead title={pageTitle} description={tool.description} softwareSchema={{
+  name: tool.name,
+  description: tool.description,
+  url: tool.url,
+  applicationCategory: appCategoryMap[tool.category] || 'Application',
+}} />
 		<style>
 			.tool-detail-wrap {
 				max-width: 800px;

@@ -13,7 +13,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} articleSchema={{
+  headline: title,
+  description: description,
+  datePublished: typeof pubDate === 'string' ? pubDate : pubDate.toISOString().split('T')[0],
+  dateModified: updatedDate ? (typeof updatedDate === 'string' ? updatedDate : updatedDate.toISOString().split('T')[0]) : undefined,
+  authorName: 'Toolwise Team',
+}} />
 		<style>
 			main {
 				width: calc(100% - 2em);

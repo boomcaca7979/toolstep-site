@@ -11,11 +11,37 @@ interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	articleSchema?: {
+		headline: string;
+		description: string;
+		datePublished: string;
+		dateModified?: string;
+		authorName?: string;
+		imageUrl?: string;
+	};
+	softwareSchema?: {
+		name: string;
+		description: string;
+		url: string;
+		applicationCategory: string;
+		operatingSystem?: string;
+		price?: number;
+		priceCurrency?: string;
+	};
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const {
+	title,
+	description,
+	image = FallbackImage,
+	articleSchema,
+	softwareSchema,
+} = Astro.props;
+
+const siteOrigin = new URL(Astro.site).origin;
+const currentURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!-- Global Metadata -->
@@ -31,6 +57,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 	href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
+
 
 <Font cssVariable="--font-atkinson" preload />
 
@@ -56,3 +83,65 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
 <meta name="google-site-verification" content="MaWD-eevKzbPGbi-dPNYwWafiv2nlfvgSJuKBkX8pm8" />
+
+<!-- Schema.org Structured Data: Organization + WebSite -->
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"name": "Toolwise",
+			"url": siteOrigin,
+			"description": "Curated directory of the best online tools for productivity, design, AI, and creativity.",
+			"foundingDate": "2026",
+		},
+		{
+			"@type": "WebSite",
+			"name": "Toolwise",
+			"url": siteOrigin,
+			"description": "Curated directory of online tools for productivity, design, AI, and creativity.",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": {
+					"@type": "EntryPoint",
+					"urlTemplate": siteOrigin + "/?q={search_term_string}"
+				},
+				"query-input": "required name=search_term_string"
+			}
+		}
+	]
+})} />
+
+{articleSchema && (
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": articleSchema.headline,
+		"description": articleSchema.description,
+		"datePublished": articleSchema.datePublished,
+		"dateModified": articleSchema.dateModified || articleSchema.datePublished,
+		"author": {
+			"@type": "Person",
+			"name": articleSchema.authorName || "Toolwise Team"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "Toolwise",
+			"url": siteOrigin
+		},
+		"mainEntityOfPage": { "@type": "WebPage", "@id": String(currentURL) }
+	})} />
+)}
+
+{softwareSchema && (
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "SoftwareApplication",
+		"name": softwareSchema.name,
+		"description": softwareSchema.description,
+		"url": softwareSchema.url,
+		"applicationCategory": softwareSchema.applicationCategory,
+		"operatingSystem": softwareSchema.operatingSystem || "Web, Windows, macOS, iOS, Android",
+		"offers": softwareSchema.price !== undefined ? { "@type": "Offer", "price": softwareSchema.price, "priceCurrency": softwareSchema.priceCurrency || "USD" } : undefined
+	})} />
+)}
