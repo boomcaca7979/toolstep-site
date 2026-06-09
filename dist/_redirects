@@ -1,6 +1,0 @@
-/about      /about/index.html      200!
-/guides     /guides/index.html     200!
-/reviews    /reviews/index.html    200!
-/reviews/*  /reviews/:splat/index.html 200!
-/privacy    /privacy/index.html    200!
-/tools/*    /tools/:splat/index.html 200!
