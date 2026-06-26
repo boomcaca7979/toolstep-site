@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
 
 const pageTitle = 'Best Monitor Light Bar (2026 Tested)';
@@ -12,6 +16,40 @@ const heroImage = heroImg.src;
 const ratingValue = 4.7;
 const bestPrice = 129;
 const author = 'Toolwise Team';
+const productSlug = 'best-monitor-light-bar';
+const productName = 'BenQ ScreenBar Halo';
+const brand = 'BenQ';
+const pros = [
+  'Asymmetric optics eliminate screen glare completely — even on glossy displays',
+  'Auto-dimming actually works, holding desk illumination within 50 lux of target',
+  'Color temperature range 2700K to 6500K covers warm evening to cool daytime',
+  'USB-C and USB-A input options included in the box',
+  'Wireless dial controller adjusts brightness and color without reaching up',
+  'Counterweight clamp fits monitors 0.4" to 1.1" thick without scratching',
+  'Halo backlight adds bias lighting behind the monitor for reduced eye strain',
+];
+const cons = [
+  '$129 is steep — the Quntis covers 70% of the same features at a quarter the price',
+  'The wireless dial needs a coin-cell battery (CR2032) — included but replaceable',
+  'Only fits monitors with flat top bezels — curved and ultra-thin monitors may not work',
+  'The Halo backlight is a nice-to-have, not essential; adds $30 over the non-Halo ScreenBar',
+  'Auto-dimming can be overly aggressive in mixed-light rooms',
+  'No RGB or gaming aesthetic — purely functional design',
+];
+const bestFor = [
+  'Anyone who works at a monitor past sunset for 4+ hours',
+  'People with glossy screens or iMac displays prone to reflections',
+  'Open-office workers who need task light without a desk lamp footprint',
+  'Photographers and designers who need consistent desk illumination',
+  'Anyone prone to evening eye strain or tension headaches',
+];
+const notFor = [
+  'Your monitor has a curved top bezel — most light bars will not mount',
+  'Your monitor bezel is thicker than 1.1 inches or thinner than 0.4 inches',
+  'You already have a well-positioned biased-light strip behind your monitor',
+  'Your budget tops out at $35 — get the Quntis Screen Light Bar',
+  'You only use a laptop screen — laptop light bars are a different category',
+];
 
 const faqs = [
   { q: 'Is a monitor light bar better than a desk lamp?', a: 'For monitor users, yes. A monitor light bar uses an asymmetric lens to direct light at a 45-degree angle onto your desk and keyboard, completely avoiding the monitor surface. This eliminates screen glare, which is the single biggest source of eye strain from desk lamps. A traditional desk lamp bounces light off the screen and creates visible reflections.' },
@@ -141,6 +179,15 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
 
       <img src={heroImage} alt="Best monitor light bar mounted above a monitor on a clean desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,56 +219,11 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
 
       <p>One light bar pulled clearly ahead. Below we break down why the BenQ ScreenBar Halo wins, where it falls short, and how the runner-up and budget picks stack up. For the full deep dive on our top pick, see our <a href="/reviews/benq-screenbar-halo-review/">BenQ ScreenBar Halo review</a>.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Asymmetric optics eliminate screen glare completely — even on glossy displays</li>
-            <li>Auto-dimming actually works, holding desk illumination within 50 lux of target</li>
-            <li>Color temperature range 2700K to 6500K covers warm evening to cool daytime</li>
-            <li>USB-C and USB-A input options included in the box</li>
-            <li>Wireless dial controller adjusts brightness and color without reaching up</li>
-            <li>Counterweight clamp fits monitors 0.4" to 1.1" thick without scratching</li>
-            <li>Halo backlight adds bias lighting behind the monitor for reduced eye strain</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>$129 is steep — the Quntis covers 70% of the same features at a quarter the price</li>
-            <li>The wireless dial needs a coin-cell battery (CR2032) — included but replaceable</li>
-            <li>Only fits monitors with flat top bezels — curved and ultra-thin monitors may not work</li>
-            <li>The Halo backlight is a nice-to-have, not essential; adds $30 over the non-Halo ScreenBar</li>
-            <li>Auto-dimming can be overly aggressive in mixed-light rooms</li>
-            <li>No RGB or gaming aesthetic — purely functional design</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Anyone who works at a monitor past sunset for 4+ hours</li>
-            <li>People with glossy screens or iMac displays prone to reflections</li>
-            <li>Open-office workers who need task light without a desk lamp footprint</li>
-            <li>Photographers and designers who need consistent desk illumination</li>
-            <li>Anyone prone to evening eye strain or tension headaches</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>Your monitor has a curved top bezel — most light bars will not mount</li>
-            <li>Your monitor bezel is thicker than 1.1 inches or thinner than 0.4 inches</li>
-            <li>You already have a well-positioned biased-light strip behind your monitor</li>
-            <li>Your budget tops out at $35 — get the Quntis Screen Light Bar</li>
-            <li>You only use a laptop screen — laptop light bars are a different category</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -385,10 +387,9 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This roundup is based on 45 nights of independent hands-on testing across eight light bars. We purchased every unit at retail price; none were provided as review units.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

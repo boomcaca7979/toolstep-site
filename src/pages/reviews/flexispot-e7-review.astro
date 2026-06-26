@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
 
 const pageTitle = 'FlexiSpot E7 Standing Desk Review (2026)';
@@ -12,6 +16,40 @@ const heroImage = heroImg.src;
 const ratingValue = 4.6;
 const bestPrice = 249;
 const author = 'Toolwise Team';
+const productSlug = 'flexispot-e7-review';
+const productName = 'FlexiSpot E7 Standing Desk';
+const brand = 'FlexiSpot';
+const pros = [
+  'Dual-motor frame rated for 220 lbs — leads every desk under $300',
+  '22.6 to 48.4 inch height range fits users from 5\'0" to 6\'7"',
+  'Lift speed of 1.5 in/s with motor noise at 48 dB',
+  'Four programmable presets with a clear LED height display',
+  '5-year warranty on frame and motor — best in this price tier',
+  'Solo assembly in 26 minutes — no second person needed',
+  'Frame available separately ($169) to pair with your own top',
+];
+const cons = [
+  'Laminate top scratches easily — budget for a desk pad',
+  'Cable management tray is a $19 add-on, not included',
+  'Controller keypad feels mushy and the display is small',
+  'No Bluetooth, app, or sit-stand reminders',
+  '60-inch tops flex noticeably on the same frame — stick to 48 inches',
+  'Only two top finishes available at the $249 price',
+];
+const bestFor = [
+  'First-time standing desk buyers on a budget',
+  'Remote workers who sit-stand 4+ times per day',
+  'Households sharing a desk — four presets cover different heights',
+  'Anyone with one or two monitors under 35 lbs total',
+  'Apartment renters who may move within 5 years',
+];
+const notFor = [
+  'You want a real-wood or bamboo top — the E7 is laminate only',
+  'You need a 60-inch top for three monitors — the frame flexes',
+  'You want app-controlled presets or scheduling reminders',
+  'Your budget can stretch to $500+, where the Branch is meaningfully better',
+  'You need a desk for a heavy drafting setup over 80 lbs',
+];
 
 const faqs = [
   { q: 'Is the FlexiSpot E7 stable enough for a heavy monitor?', a: 'Yes. We tested the E7 with a 34-inch ultrawide monitor weighing 18 lbs plus 15 lbs of gear, and at maximum height (48.4 inches) the wobble measured under 2mm. It is not as rock-solid as a $600 desk, but it beats every other sub-$300 desk we have tested.' },
@@ -141,6 +179,15 @@ const nextPost = { title: 'Uplift V2 Review', href: '/reviews/uplift-v2-review/'
 
       <img src={heroImage} alt="FlexiSpot E7 standing desk in a minimal home office with single monitor" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,56 +219,11 @@ const nextPost = { title: 'Uplift V2 Review', href: '/reviews/uplift-v2-review/'
 
       <p>We tested the E7 for 90 days straight, swapping between sitting and standing 6 to 8 times per day on average — roughly 700 height adjustments over the test period. We loaded it with an 18-lb ultrawide monitor, a 16-inch laptop, a mechanical keyboard, and 15 lbs of books and gear. We measured wobble at every 6 inches of height, timed the lift, tracked motor noise with a decibel meter, and disassembled it once to inspect the column tolerances.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Dual-motor frame rated for 220 lbs — leads every desk under $300</li>
-            <li>22.6 to 48.4 inch height range fits users from 5'0" to 6'7"</li>
-            <li>Lift speed of 1.5 in/s with motor noise at 48 dB</li>
-            <li>Four programmable presets with a clear LED height display</li>
-            <li>5-year warranty on frame and motor — best in this price tier</li>
-            <li>Solo assembly in 26 minutes — no second person needed</li>
-            <li>Frame available separately ($169) to pair with your own top</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>Laminate top scratches easily — budget for a desk pad</li>
-            <li>Cable management tray is a $19 add-on, not included</li>
-            <li>Controller keypad feels mushy and the display is small</li>
-            <li>No Bluetooth, app, or sit-stand reminders</li>
-            <li>60-inch tops flex noticeably on the same frame — stick to 48 inches</li>
-            <li>Only two top finishes available at the $249 price</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>First-time standing desk buyers on a budget</li>
-            <li>Remote workers who sit-stand 4+ times per day</li>
-            <li>Households sharing a desk — four presets cover different heights</li>
-            <li>Anyone with one or two monitors under 35 lbs total</li>
-            <li>Apartment renters who may move within 5 years</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You want a real-wood or bamboo top — the E7 is laminate only</li>
-            <li>You need a 60-inch top for three monitors — the frame flexes</li>
-            <li>You want app-controlled presets or scheduling reminders</li>
-            <li>Your budget can stretch to $500+, where the Branch is meaningfully better</li>
-            <li>You need a desk for a heavy drafting setup over 80 lbs</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -392,10 +394,9 @@ const nextPost = { title: 'Uplift V2 Review', href: '/reviews/uplift-v2-review/'
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 90 days of independent hands-on testing. We purchased the FlexiSpot E7 at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

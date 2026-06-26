@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-4.jpg';
 
 const pageTitle = 'Best USB-C Dock for MacBook (2026)';
@@ -12,6 +16,40 @@ const heroImage = heroImg.src;
 const ratingValue = 4.7;
 const bestPrice = 399;
 const author = 'Toolwise Team';
+const productSlug = 'best-usbc-dock-macbook';
+const productName = 'CalDigit TS4 Thunderbolt Dock';
+const brand = 'CalDigit';
+const pros = [
+  '18 ports including 5 Thunderbolt 4 downstream ports — the most we tested',
+  '98W charging handles a 16-inch MacBook Pro under full load',
+  'Drives dual 4K monitors at 60Hz without flicker or signal drops',
+  'Supports 8K@30Hz or 6K@60Hz for future-proofing on Apple Silicon Max chips',
+  'Thunderbolt 4 daisy-chaining for up to 6 additional devices',
+  'Aluminum build, runs cool even under sustained load',
+  'Firmware is stable — no reconnect loops in 60 days',
+];
+const cons = [
+  '$399 is steep — twice the price of the Anker 555',
+  'Requires a Thunderbolt 3 or 4 port; will not work on plain USB-C only laptops',
+  'Bulky — takes up real desk space at 9 x 9 x 2 inches',
+  'The 0.5m Thunderbolt 4 cable included is short; longer cables cost extra',
+  'M1 MacBooks still limited to one external display regardless of dock',
+  'Fanless design means it gets warm to the touch under sustained 4K playback',
+];
+const bestFor = [
+  'MacBook Pro users with dual 4K monitors or a single 5K/6K/8K display',
+  'Anyone who wants one-cable docking — power, display, data, ethernet',
+  'Creators working with external NVMe SSDs at full Thunderbolt speed',
+  'People who leave their laptop on a stand most of the day',
+  'Anyone with an M2 Pro, M3 Pro, or Max chip that supports dual displays',
+];
+const notFor = [
+  'You use a base M1 MacBook — limited to one external display regardless of dock',
+  'You only need one monitor, a couple of USB ports, and charging — get the Anker 555',
+  'You travel often — the TS4 is a desktop dock, not a portable hub',
+  'You have a non-Thunderbolt USB-C laptop — the TS4 will not work at full speed',
+  'Your budget tops out at $200 — see our <a href="/reviews/best-usb-c-hub-macbook/">USB-C hub guide</a> instead',
+];
 
 const faqs = [
   { q: 'Do I need a Thunderbolt 4 dock or is USB-C enough for MacBook?', a: 'If you drive dual 4K monitors, want 40 Gbps data transfer, or need full 100W charging, get a Thunderbolt 4 dock like the CalDigit TS4. If you only need one external monitor, a couple of USB ports, and charging, a USB-C dock like the Anker 555 is enough and costs less.' },
@@ -141,6 +179,15 @@ const nextPost = { title: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-re
 
       <img src={heroImage} alt="Best USB-C dock for MacBook on a clean desk with multiple cables" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,56 +219,11 @@ const nextPost = { title: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-re
 
       <p>One dock pulled clearly ahead. Below we break down why the CalDigit TS4 wins, where it falls short, and how the runner-up and budget picks stack up. For the full deep dive on our top pick, see our <a href="/reviews/caldigit-ts4-review/">CalDigit TS4 review</a>.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>18 ports including 5 Thunderbolt 4 downstream ports — the most we tested</li>
-            <li>98W charging handles a 16-inch MacBook Pro under full load</li>
-            <li>Drives dual 4K monitors at 60Hz without flicker or signal drops</li>
-            <li>Supports 8K@30Hz or 6K@60Hz for future-proofing on Apple Silicon Max chips</li>
-            <li>Thunderbolt 4 daisy-chaining for up to 6 additional devices</li>
-            <li>Aluminum build, runs cool even under sustained load</li>
-            <li>Firmware is stable — no reconnect loops in 60 days</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>$399 is steep — twice the price of the Anker 555</li>
-            <li>Requires a Thunderbolt 3 or 4 port; will not work on plain USB-C only laptops</li>
-            <li>Bulky — takes up real desk space at 9 x 9 x 2 inches</li>
-            <li>The 0.5m Thunderbolt 4 cable included is short; longer cables cost extra</li>
-            <li>M1 MacBooks still limited to one external display regardless of dock</li>
-            <li>Fanless design means it gets warm to the touch under sustained 4K playback</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>MacBook Pro users with dual 4K monitors or a single 5K/6K/8K display</li>
-            <li>Anyone who wants one-cable docking — power, display, data, ethernet</li>
-            <li>Creators working with external NVMe SSDs at full Thunderbolt speed</li>
-            <li>People who leave their laptop on a stand most of the day</li>
-            <li>Anyone with an M2 Pro, M3 Pro, or Max chip that supports dual displays</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You use a base M1 MacBook — limited to one external display regardless of dock</li>
-            <li>You only need one monitor, a couple of USB ports, and charging — get the Anker 555</li>
-            <li>You travel often — the TS4 is a desktop dock, not a portable hub</li>
-            <li>You have a non-Thunderbolt USB-C laptop — the TS4 will not work at full speed</li>
-            <li>Your budget tops out at $200 — see our <a href="/reviews/best-usb-c-hub-macbook/">USB-C hub guide</a> instead</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -383,10 +385,9 @@ const nextPost = { title: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-re
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This roundup is based on 60 days of independent hands-on testing across seven docks. We purchased every unit at retail price; none were provided as review units.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

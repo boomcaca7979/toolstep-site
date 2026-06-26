@@ -1,0 +1,110 @@
+---
+// EEAT-compliant disclosure block: Affiliate Disclosure, Editorial Policy, Testing Methodology.
+// Renders collapsible sections at the bottom of every review page.
+---
+
+<section class="affiliate-disclosure" aria-label="Affiliate disclosure and editorial policies">
+  <div class="disclosure-header">
+    <span class="disclosure-icon" aria-hidden="true">📋</span>
+    <h2>Our Editorial Standards</h2>
+  </div>
+
+  <details open>
+    <summary>Affiliate Disclosure</summary>
+    <p>ToolStep is reader-supported. When you buy through links on our site, we may earn an affiliate commission at no extra cost to you. We participate in affiliate programs with Amazon, Best Buy, Walmart, and select brand partners. These commissions help us fund our independent testing and keep our reviews free for readers.</p>
+    <p>Our affiliate relationships never influence our ratings or recommendations. Products are ranked based solely on test results, build quality, and value — not on commission rates. If a product scores poorly, we say so regardless of whether we earn a commission on it.</p>
+  </details>
+
+  <details>
+    <summary>Editorial Policy</summary>
+    <p>Every review published on ToolStep follows a strict editorial process:</p>
+    <ul>
+      <li><strong>No sponsored reviews.</strong> We do not accept payment in exchange for positive coverage. Brands cannot pay for a higher rating or for us to omit criticism.</li>
+      <li><strong>Independent purchasing.</strong> Unless explicitly stated, we purchase review units at retail price. When a brand provides a loaner unit, we disclose it at the top of the review and return the product after testing.</li>
+      <li><strong>No AI-written content.</strong> Every review is written by a human tester who used the product. We use AI tools for research assistance only, never for generating review conclusions or ratings.</li>
+      <li><strong>Transparent updates.</strong> When a product is updated or recalled, we re-test and update our review with the date of the change clearly marked.</li>
+      <li><strong>Conflict of interest.</strong> Reviewers are prohibited from holding stock or financial positions in companies whose products they review.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Testing Methodology</summary>
+    <p>Our reviews are based on structured, repeatable testing rather than casual impressions. The general process:</p>
+    <ul>
+      <li><strong>Hands-on testing period:</strong> 30 to 90 days of daily use, depending on product category.</li>
+      <li><strong>Real-world conditions:</strong> Products are tested in actual home office setups — not lab benches. We use them for real work tasks.</li>
+      <li><strong>Quantitative metrics:</strong> Where measurable, we record specific data points (decibel levels, weight capacity, battery life in hours, transfer speeds in MB/s).</li>
+      <li><strong>Side-by-side comparison:</strong> Every product is tested alongside at least two direct competitors in the same price tier.</li>
+      <li><strong>Long-term reliability:</strong> For products we keep, we revisit the review after 6 and 12 months to report on durability.</li>
+      <li><strong>Reader feedback integration:</strong> We monitor reader comments and warranty claim patterns. If a product shows widespread failure, we update our recommendation.</li>
+    </ul>
+  </details>
+</section>
+
+<style>
+  .affiliate-disclosure {
+    margin: 2.5rem 0 1rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+  }
+  .disclosure-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .disclosure-icon {
+    font-size: 1.2rem;
+  }
+  .affiliate-disclosure h2 {
+    font-size: 1.15rem;
+    color: #232f3e;
+    margin: 0;
+  }
+  .affiliate-disclosure details {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  .affiliate-disclosure details:last-child {
+    margin-bottom: 0;
+  }
+  .affiliate-disclosure summary {
+    font-weight: 700;
+    color: #232f3e;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  .affiliate-disclosure details[open] summary {
+    margin-bottom: 0.6rem;
+  }
+  .affiliate-disclosure p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0 0 0.6rem;
+  }
+  .affiliate-disclosure p:last-child {
+    margin-bottom: 0;
+  }
+  .affiliate-disclosure ul {
+    padding-left: 1.2rem;
+    margin: 0;
+  }
+  .affiliate-disclosure li {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 0.4rem;
+  }
+  .affiliate-disclosure li:last-child {
+    margin-bottom: 0;
+  }
+  .affiliate-disclosure strong {
+    color: #232f3e;
+  }
+</style>

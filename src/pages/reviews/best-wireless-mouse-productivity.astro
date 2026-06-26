@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-2.jpg';
 
 const pageTitle = 'Best Wireless Mouse for Productivity (2026)';
@@ -12,6 +16,38 @@ const heroImage = heroImg.src;
 const ratingValue = 4.7;
 const bestPrice = 99;
 const author = 'Toolwise Team';
+const productSlug = 'best-wireless-mouse-productivity';
+const productName = 'Logitech MX Master 3S';
+const brand = 'Logitech';
+const pros = [
+  'MagSpeed scroll wheel shifts from ratchet to free-spin in under a second',
+  '8000 DPI sensor tracks reliably on glass, cloth, and glossy surfaces',
+  'Flow lets you control three computers with one cursor — including file drag',
+  'Quiet clicks are 90% quieter than the older MX Master 3',
+  'USB-C charging works while in use; 1-minute charge gives 3 hours',
+  'Thumb wheel handles horizontal scroll without modifier keys',
+];
+const cons = [
+  '$99 is steep when a $40 M720 covers 80% of the same features',
+  'The humpback shape favors palm grip; claw grip users feel cramped',
+  'Logi Options+ software is required for Flow and per-app button mapping',
+  'Right-handed only — lefties are out of luck',
+  'At 141 g it is heavier than gaming mice some users are used to',
+];
+const bestFor = [
+  'Knowledge workers who spend 6+ hours a day at the computer',
+  'Anyone switching between two or three machines — Mac, PC, or iPad',
+  'People who scroll through long PDFs, spreadsheets, or code reviews daily',
+  'Palm-grip users with medium to large hands (7 to 8.5 inches)',
+  'Anyone sharing an open office where loud clicks would annoy coworkers',
+];
+const notFor = [
+  'You are a left-handed mouse user — there is no lefty version',
+  'You mainly game; this is too heavy and the polling rate is too low',
+  'You use a claw or fingertip grip — the humpback shape fights you',
+  'Your budget tops out at $40 — get the M720 Triathlon instead',
+  'You need a mouse for a tablet-only setup with no second device',
+];
 
 const faqs = [
   { q: 'Is the Logitech MX Master 3S worth $99?', a: 'Yes, if you spend 4+ hours a day at a computer. The MagSpeed scroll wheel, 8000 DPI sensor, and Flow cross-computer control solve problems that cheaper mice cannot. For light users, the $40 M720 delivers 80% of the value at half the price.' },
@@ -141,6 +177,15 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
 
       <img src={heroImage} alt="Best wireless mouse for productivity on a clean wood desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,54 +217,11 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
 
       <p>One mouse pulled clearly ahead. Below we break down why the MX Master 3S wins, where it falls short, and how the runner-up and budget picks stack up. If you want the full breakdown on our top pick, see our <a href="/reviews/logitech-mx-master-3s-review/">Logitech MX Master 3S review</a>.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>MagSpeed scroll wheel shifts from ratchet to free-spin in under a second</li>
-            <li>8000 DPI sensor tracks reliably on glass, cloth, and glossy surfaces</li>
-            <li>Flow lets you control three computers with one cursor — including file drag</li>
-            <li>Quiet clicks are 90% quieter than the older MX Master 3</li>
-            <li>USB-C charging works while in use; 1-minute charge gives 3 hours</li>
-            <li>Thumb wheel handles horizontal scroll without modifier keys</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>$99 is steep when a $40 M720 covers 80% of the same features</li>
-            <li>The humpback shape favors palm grip; claw grip users feel cramped</li>
-            <li>Logi Options+ software is required for Flow and per-app button mapping</li>
-            <li>Right-handed only — lefties are out of luck</li>
-            <li>At 141 g it is heavier than gaming mice some users are used to</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Knowledge workers who spend 6+ hours a day at the computer</li>
-            <li>Anyone switching between two or three machines — Mac, PC, or iPad</li>
-            <li>People who scroll through long PDFs, spreadsheets, or code reviews daily</li>
-            <li>Palm-grip users with medium to large hands (7 to 8.5 inches)</li>
-            <li>Anyone sharing an open office where loud clicks would annoy coworkers</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You are a left-handed mouse user — there is no lefty version</li>
-            <li>You mainly game; this is too heavy and the polling rate is too low</li>
-            <li>You use a claw or fingertip grip — the humpback shape fights you</li>
-            <li>Your budget tops out at $40 — get the M720 Triathlon instead</li>
-            <li>You need a mouse for a tablet-only setup with no second device</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -375,10 +377,9 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This roundup is based on 60 days of independent hands-on testing across nine mice. We purchased every unit at retail price; none were provided as review units.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

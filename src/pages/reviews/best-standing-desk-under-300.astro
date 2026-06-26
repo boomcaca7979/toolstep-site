@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
 
 const pageTitle = 'Best Standing Desk Under $300: 2026 Tested';
@@ -12,6 +16,35 @@ const heroImage = heroImg.src;
 const ratingValue = 4.6;
 const bestPrice = 249;
 const author = 'Toolwise Team';
+const productSlug = 'best-standing-desk-under-300';
+const productName = 'FlexiSpot E7 Standing Desk';
+const brand = 'FlexiSpot';
+const pros = [
+  'Rock-solid stability up to 47 inches, even with a heavy ultrawide monitor',
+  'Dual-motor lift is quiet at 48 dB and moves 1.5 inches per second',
+  '220-lb weight capacity leads this price tier by a wide margin',
+  'Four programmable height presets cover every family member',
+  '5-year warranty on the frame and motor — rare under $300',
+  'Assembly takes under 30 minutes with one person',
+];
+const cons = [
+  'The included laminate top scratches more easily than solid wood',
+  'Cable management tray is a separate $19 add-on, not included',
+  'Controller has no child-lock, so pets can bump the buttons',
+  'Only available in two top finishes at this price',
+];
+const bestFor = [
+  'Remote workers who sit 6+ hours and want to stand without buying a $700 desk',
+  'Anyone with a single or dual monitor setup under 35 lbs total',
+  'People who share a desk with a partner or kid (four presets solve height differences)',
+  'First-time standing desk buyers who want a low-risk entry point',
+];
+const notFor = [
+  'You need a 60+ inch top for three monitors or a drafting setup',
+  'You want a solid wood or bamboo top — budget models use laminate',
+  'You need programmable sit-stand reminders (the E7 lacks this)',
+  'Your budget can stretch to $600+, where the Uplift V2 is meaningfully better',
+];
 
 const faqs = [
   { q: 'Is a standing desk under $300 actually stable?', a: 'Yes. The FlexiSpot E7 and Vari Basic both hold dual monitors at full height with minimal wobble. Cheaper no-name desks under $200 tend to flex noticeably once you pass 42 inches, so we recommend sticking with established brands in this price band.' },
@@ -141,6 +174,15 @@ const nextPost = { title: 'Best Standing Desk for Home Office', href: '/reviews/
 
       <img src={heroImage} alt="Best standing desk under 300 dollars in a bright home office" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,51 +214,11 @@ const nextPost = { title: 'Best Standing Desk for Home Office', href: '/reviews/
 
       <p>One desk pulled clearly ahead. Below we break down why the FlexiSpot E7 wins, where it falls short, and how the alternatives stack up.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Rock-solid stability up to 47 inches, even with a heavy ultrawide monitor</li>
-            <li>Dual-motor lift is quiet at 48 dB and moves 1.5 inches per second</li>
-            <li>220-lb weight capacity leads this price tier by a wide margin</li>
-            <li>Four programmable height presets cover every family member</li>
-            <li>5-year warranty on the frame and motor — rare under $300</li>
-            <li>Assembly takes under 30 minutes with one person</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>The included laminate top scratches more easily than solid wood</li>
-            <li>Cable management tray is a separate $19 add-on, not included</li>
-            <li>Controller has no child-lock, so pets can bump the buttons</li>
-            <li>Only available in two top finishes at this price</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
       <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Remote workers who sit 6+ hours and want to stand without buying a $700 desk</li>
-            <li>Anyone with a single or dual monitor setup under 35 lbs total</li>
-            <li>People who share a desk with a partner or kid (four presets solve height differences)</li>
-            <li>First-time standing desk buyers who want a low-risk entry point</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You need a 60+ inch top for three monitors or a drafting setup</li>
-            <li>You want a solid wood or bamboo top — budget models use laminate</li>
-            <li>You need programmable sit-stand reminders (the E7 lacks this)</li>
-            <li>Your budget can stretch to $600+, where the Uplift V2 is meaningfully better</li>
-          </ul>
-        </div>
-      </div>
+      <p>The summary above breaks down the pros, cons, and ideal audience at a glance. In short: if you sit 6+ hours a day, have a single or dual monitor setup, and want to try standing work without spending $700, the E7 is for you. Skip it if you need a 60-inch top, solid wood, or have a $600+ budget.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -356,10 +358,9 @@ const nextPost = { title: 'Best Standing Desk for Home Office', href: '/reviews/
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 90 days of independent hands-on testing. We purchased every desk at retail price; none were provided as review units.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

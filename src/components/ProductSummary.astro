@@ -1,0 +1,186 @@
+---
+interface Props {
+  pros: string[];
+  cons: string[];
+  bestFor: string[];
+  notFor: string[];
+}
+
+const { pros, cons, bestFor, notFor } = Astro.props;
+---
+
+<section class="product-summary" aria-label="Product summary">
+  <div class="summary-grid">
+    <div class="summary-card pros-card">
+      <div class="card-header">
+        <span class="card-icon pros-icon">✓</span>
+        <h3>Pros</h3>
+      </div>
+      <ul class="pros-list">
+        {pros.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="summary-card cons-card">
+      <div class="card-header">
+        <span class="card-icon cons-icon">✗</span>
+        <h3>Cons</h3>
+      </div>
+      <ul class="cons-list">
+        {cons.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="summary-card best-for-card">
+      <div class="card-header">
+        <span class="card-icon best-icon">👍</span>
+        <h3>Best For</h3>
+      </div>
+      <ul class="best-for-list">
+        {bestFor.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="summary-card not-for-card">
+      <div class="card-header">
+        <span class="card-icon not-for-icon">👎</span>
+        <h3>Not Recommended For</h3>
+      </div>
+      <ul class="not-for-list">
+        {notFor.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-summary {
+    margin: 1.5rem 0;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .summary-card {
+    border-radius: 12px;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid;
+  }
+  .pros-card {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+  }
+  .cons-card {
+    background: #fef2f2;
+    border-color: #fecaca;
+  }
+  .best-for-card {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+  .not-for-card {
+    background: #fff7ed;
+    border-color: #fed7aa;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+  .pros-icon {
+    background: #059669;
+    color: #fff;
+  }
+  .cons-icon {
+    background: #dc2626;
+    color: #fff;
+  }
+  .best-icon {
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.75rem;
+  }
+  .not-for-icon {
+    background: #ea580c;
+    color: #fff;
+    font-size: 0.75rem;
+  }
+  .summary-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .pros-card h3 { color: #047857; }
+  .cons-card h3 { color: #b91c1c; }
+  .best-for-card h3 { color: #1e40af; }
+  .not-for-card h3 { color: #c2410c; }
+  .summary-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .summary-card li {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #374151;
+    padding: 0.3rem 0 0.3rem 1.4rem;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+  .summary-card li:last-child {
+    border-bottom: none;
+  }
+  .pros-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #059669;
+    font-weight: bold;
+  }
+  .cons-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+    font-weight: bold;
+  }
+  .best-for-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: bold;
+  }
+  .not-for-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #ea580c;
+    font-weight: bold;
+  }
+  @media (max-width: 600px) {
+    .summary-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

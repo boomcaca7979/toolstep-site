@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
 
 const pageTitle = 'Logitech MX Keys S Review (2026)';
@@ -12,6 +16,40 @@ const heroImage = heroImg.src;
 const ratingValue = 4.7;
 const bestPrice = 109;
 const author = 'Toolwise Team';
+const productSlug = 'logitech-mx-keys-s-review';
+const productName = 'Logitech MX Keys S';
+const brand = 'Logitech';
+const pros = [
+  'Perfect Stroke keys offer the best low-profile typing feel we have tested',
+  'Smart backlight turns on when hands approach — extends battery to 10 days',
+  'Flow cross-computer control works seamlessly between Mac and Windows',
+  'USB-C charging works while typing, full charge in 3 hours',
+  'Dual-printed keycaps work for both Mac and Windows layouts',
+  'Pairs with 3 devices via Bluetooth or Logi Bolt receiver',
+  'Quietest keyboard we tested — only 38 dB during sustained typing',
+];
+const cons = [
+  'Not mechanical — no tactile feedback or switch customization',
+  'Keys collect fingerprints and dust visibly — requires regular cleaning',
+  'Logi Bolt receiver is required for Flow (Bluetooth does not support it)',
+  'Heavy for a low-profile keyboard — 1.7 lbs, more than the Magic Keyboard',
+  'Cannot replace keycaps — they are integrated into the scissor mechanism',
+  'No tilt adjustment options beyond the two flip-out feet',
+];
+const bestFor = [
+  'Users coming from a laptop keyboard who want a low-profile feel',
+  'Anyone who works across two computers (Flow is genuinely useful)',
+  'Office users who want the quietest possible typing experience',
+  'Mac users who want a wireless keyboard with proper Mac keycaps',
+  'Buyers who want a 10-day battery life without backlight management',
+];
+const notFor = [
+  'You want mechanical switches — see our Keychron K8 review',
+  'You need a numeric keypad — get the MX Keys S with numeric pad ($149)',
+  'You want per-key RGB lighting (the MX Keys S has only white backlight)',
+  'Your budget caps at $80 — the Keychron K8 is the better value',
+  'You need QMK/VIA programmable firmware — the MX Keys S uses Logi software only',
+];
 
 const faqs = [
   { q: 'Is the Logitech MX Keys S worth $109?', a: 'For most office users, yes. The MX Keys S has the best low-profile typing feel of any keyboard we tested, the smart backlight genuinely extends battery life (10 days per charge), and Flow cross-computer control is a game-changer for multi-machine setups. The only reason to skip it is if you specifically want mechanical switches — in that case, see our Keychron K8 review.' },
@@ -141,6 +179,15 @@ const nextPost = { title: 'Best Wireless Mouse for Productivity', href: '/review
 
       <img src={heroImage} alt="Logitech MX Keys S low-profile wireless keyboard in graphite on a wooden desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -170,56 +217,11 @@ const nextPost = { title: 'Best Wireless Mouse for Productivity', href: '/review
 
       <p>We bought an MX Keys S at retail and put it through 60 days of daily use — roughly 720,000 keystrokes across three testers. We typed an average of 12,000 words per day, tested Flow across two Macs and a Windows PC, measured battery life with the smart backlight on and off, and compared it head-to-head with the Keychron K8, the Apple Magic Keyboard, and the Keychron K1 Low Profile. Here is what we found.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Perfect Stroke keys offer the best low-profile typing feel we have tested</li>
-            <li>Smart backlight turns on when hands approach — extends battery to 10 days</li>
-            <li>Flow cross-computer control works seamlessly between Mac and Windows</li>
-            <li>USB-C charging works while typing, full charge in 3 hours</li>
-            <li>Dual-printed keycaps work for both Mac and Windows layouts</li>
-            <li>Pairs with 3 devices via Bluetooth or Logi Bolt receiver</li>
-            <li>Quietest keyboard we tested — only 38 dB during sustained typing</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>Not mechanical — no tactile feedback or switch customization</li>
-            <li>Keys collect fingerprints and dust visibly — requires regular cleaning</li>
-            <li>Logi Bolt receiver is required for Flow (Bluetooth does not support it)</li>
-            <li>Heavy for a low-profile keyboard — 1.7 lbs, more than the Magic Keyboard</li>
-            <li>Cannot replace keycaps — they are integrated into the scissor mechanism</li>
-            <li>No tilt adjustment options beyond the two flip-out feet</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Users coming from a laptop keyboard who want a low-profile feel</li>
-            <li>Anyone who works across two computers (Flow is genuinely useful)</li>
-            <li>Office users who want the quietest possible typing experience</li>
-            <li>Mac users who want a wireless keyboard with proper Mac keycaps</li>
-            <li>Buyers who want a 10-day battery life without backlight management</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You want mechanical switches — see our <a href="/reviews/keychron-k8-review/">Keychron K8 review</a></li>
-            <li>You need a numeric keypad — get the MX Keys S with numeric pad ($149)</li>
-            <li>You want per-key RGB lighting (the MX Keys S has only white backlight)</li>
-            <li>Your budget caps at $80 — the Keychron K8 is the better value</li>
-            <li>You need QMK/VIA programmable firmware — the MX Keys S uses Logi software only</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -376,10 +378,9 @@ const nextPost = { title: 'Best Wireless Mouse for Productivity', href: '/review
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 60 days of independent hands-on testing. We purchased the MX Keys S at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

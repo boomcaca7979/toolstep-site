@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
 
 const pageTitle = 'Steelcase Leap V2 Chair Review (2026)';
@@ -12,6 +16,39 @@ const heroImage = heroImg.src;
 const ratingValue = 4.8;
 const bestPrice = 1029;
 const author = 'Toolwise Team';
+const productSlug = 'steelcase-leap-v2-review';
+const productName = 'Steelcase Leap V2 Chair';
+const brand = 'Steelcase';
+const pros = [
+  'LiveBack flex tracks your spine as you shift — genuinely adaptive, not static lumbar pressure',
+  '4D armrests (height, width, depth, pivot) beat every chair in this price tier',
+  'Natural Glide seat slides forward as you recline, keeping keyboard in reach',
+  'Lifetime warranty (defined as 10 years single-shift) covers everything including upholstery',
+  'Optional headrest works for users above 5\'8" — rare in this category',
+  'Thermal comfort perforations on the seat back reduce sweat versus solid upholstery',
+];
+const cons = [
+  'Foam seat builds up heat after 6+ hours — not as cool as the Aeron\'s mesh',
+  'Optional headrest pushes head forward for users under 5\'8"',
+  'Lumbar depth adjustment is limited — PostureFit SL on the Aeron is more granular',
+  'Standard upholstery shows wear faster than the Aeron\'s Pellicle mesh',
+  'Chair weighs 68 lbs — heavier than the Aeron and harder to move between rooms',
+  'Assembly requires attaching the back to the base (10 minutes, two bolts)',
+];
+const bestFor = [
+  'Buyers who want premium ergonomics but find the Aeron\'s mesh too firm or cold',
+  'Programmers and writers who use 4D armrests heavily to track elbows',
+  'People who want a headrest — the Leap V2 is the only premium chair with a good one',
+  'Anyone in a cooler climate where heat buildup is not a problem',
+  'Buyers who plan to share the chair — the adjustment range fits 5\'2" to 6\'5"',
+];
+const notFor = [
+  'You sit in hot environments or run warm — get the Aeron\'s Pellicle mesh',
+  'You want a chair that arrives fully assembled (Leap V2 needs minor assembly)',
+  'Your budget caps at $500 — see our sub-$500 roundup',
+  'You need the absolute longest warranty — Aeron\'s 12 years is more concrete than Steelcase\'s "lifetime"',
+  'You want to curl up cross-legged — the seat pan is shaped for upright sitting',
+];
 
 const faqs = [
   { q: 'Is the Steelcase Leap V2 better than the Herman Miller Aeron?', a: 'It depends on your priorities. The Leap V2 has 4D armrests, a softer seat, and costs $466 less. The Aeron runs cooler over long sessions, has a more durable mesh seat, and a longer documented track record. We prefer the Aeron for hot climates and 8+ hour days, the Leap V2 for everyone else.' },
@@ -141,6 +178,15 @@ const nextPost = { title: 'Best Mechanical Keyboard for Office', href: '/reviews
 
       <img src={heroImage} alt="Steelcase Leap V2 ergonomic office chair in black upholstery in a modern office" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -170,55 +216,11 @@ const nextPost = { title: 'Best Mechanical Keyboard for Office', href: '/reviews
 
       <p>We bought a Leap V2 in black standard upholstery with 4D armrests and the optional headrest at retail, then put it through 4 months of daily use across three testers (5'6" to 6'1", 140 to 195 lbs). We logged back pain, posture, heat, and compared it head-to-head with our <a href="/reviews/herman-miller-aeron-review/">Herman Miller Aeron</a>, the <a href="/reviews/branch-ergonomic-chair-review/">Branch Ergonomic Chair</a>, and the Secretlab Titan Evo. Here is what we found.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>LiveBack flex tracks your spine as you shift — genuinely adaptive, not static lumbar pressure</li>
-            <li>4D armrests (height, width, depth, pivot) beat every chair in this price tier</li>
-            <li>Natural Glide seat slides forward as you recline, keeping keyboard in reach</li>
-            <li>Lifetime warranty (defined as 10 years single-shift) covers everything including upholstery</li>
-            <li>Optional headrest works for users above 5'8" — rare in this category</li>
-            <li>Thermal comfort perforations on the seat back reduce sweat versus solid upholstery</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>Foam seat builds up heat after 6+ hours — not as cool as the Aeron's mesh</li>
-            <li>Optional headrest pushes head forward for users under 5'8"</li>
-            <li>Lumbar depth adjustment is limited — PostureFit SL on the Aeron is more granular</li>
-            <li>Standard upholstery shows wear faster than the Aeron's Pellicle mesh</li>
-            <li>Chair weighs 68 lbs — heavier than the Aeron and harder to move between rooms</li>
-            <li>Assembly requires attaching the back to the base (10 minutes, two bolts)</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Buyers who want premium ergonomics but find the Aeron's mesh too firm or cold</li>
-            <li>Programmers and writers who use 4D armrests heavily to track elbows</li>
-            <li>People who want a headrest — the Leap V2 is the only premium chair with a good one</li>
-            <li>Anyone in a cooler climate where heat buildup is not a problem</li>
-            <li>Buyers who plan to share the chair — the adjustment range fits 5'2" to 6'5"</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You sit in hot environments or run warm — get the Aeron's Pellicle mesh</li>
-            <li>You want a chair that arrives fully assembled (Leap V2 needs minor assembly)</li>
-            <li>Your budget caps at $500 — see our <a href="/reviews/best-ergonomic-chair-under-500/">sub-$500 roundup</a></li>
-            <li>You need the absolute longest warranty — Aeron's 12 years is more concrete than Steelcase's "lifetime"</li>
-            <li>You want to curl up cross-legged — the seat pan is shaped for upright sitting</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -367,10 +369,9 @@ const nextPost = { title: 'Best Mechanical Keyboard for Office', href: '/reviews
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 4 months of independent hands-on testing. We purchased the Leap V2 at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

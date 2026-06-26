@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-5.jpg';
 
 const pageTitle = 'Best Noise Cancelling Headphones (2026)';
@@ -12,6 +16,38 @@ const heroImage = heroImg.src;
 const ratingValue = 4.8;
 const bestPrice = 399;
 const author = 'Toolwise Team';
+const productSlug = 'best-noise-cancelling-headphones-work';
+const productName = 'Sony WH-1000XM5';
+const brand = 'Sony';
+const pros = [
+  'Class-leading ANC cuts 25 dB of low-frequency noise',
+  'Excellent call quality with wind noise reduction',
+  '30-hour battery with ANC on, 40 hours with ANC off',
+  'Comfortable for 8-hour work days with plush earcups',
+  'Multi-point Bluetooth pairs with laptop and phone simultaneously',
+  'Quick charge: 3 minutes for 3 hours of playback',
+];
+const cons = [
+  '$399 is expensive — $50 more than the previous XM4 at launch',
+  'Folds flat but does not collapse like the XM4 — case is larger',
+  'Touch controls can be finicky in cold weather with gloves',
+  'USB-C port is for charging only, no wired USB audio',
+  'Sony Headphones Connect app pushes firmware updates aggressively',
+];
+const bestFor = [
+  'Remote workers in noisy environments (kids, traffic, open offices)',
+  'People on daily video calls who need good mic quality',
+  'Frequent travelers who want airplane-grade ANC',
+  'Anyone who wants one pair of headphones for work and music',
+  'Users with multiple devices — multi-point pairing is excellent',
+];
+const notFor = [
+  'You work in a quiet home office — ANC is wasted on you',
+  'You are an audiophile — look at the Sennheiser Momentum 4',
+  'You need wired USB audio for gaming or video editing',
+  'Your budget is under $100 — see the Soundcore Life Q30',
+  'You wear glasses with thick temples — ANC seal is compromised',
+];
 
 const faqs = [
   { q: 'Are noise cancelling headphones worth it for remote work?', a: 'Yes. If you work in a noisy environment — kids, traffic, construction, or an open office — ANC headphones cut background noise by 20-30 decibels, which is the difference between distraction and focus. The Sony WH-1000XM5 also has excellent call quality, which most ANC headphones do not.' },
@@ -141,6 +177,15 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
 
       <img src={heroImage} alt="Best noise cancelling headphones for work on a minimalist desk in a home office" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,54 +217,11 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
 
       <p>Three headphones pulled clearly ahead. Below we break down why the Sony WH-1000XM5 wins for most remote workers, where the Bose QuietComfort Ultra justifies its premium price, and why the Soundcore Life Q30 is the budget pick that punches above its weight. Note: our site also publishes an alternate roundup under the "canceling" spelling at <a href="/reviews/best-noise-canceling-headphones-work/">best noise canceling headphones for work</a> — same picks, different URL.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons (Top Pick)</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Class-leading ANC cuts 25 dB of low-frequency noise</li>
-            <li>Excellent call quality with wind noise reduction</li>
-            <li>30-hour battery with ANC on, 40 hours with ANC off</li>
-            <li>Comfortable for 8-hour work days with plush earcups</li>
-            <li>Multi-point Bluetooth pairs with laptop and phone simultaneously</li>
-            <li>Quick charge: 3 minutes for 3 hours of playback</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>$399 is expensive — $50 more than the previous XM4 at launch</li>
-            <li>Folds flat but does not collapse like the XM4 — case is larger</li>
-            <li>Touch controls can be finicky in cold weather with gloves</li>
-            <li>USB-C port is for charging only, no wired USB audio</li>
-            <li>Sony Headphones Connect app pushes firmware updates aggressively</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy What — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Remote workers in noisy environments (kids, traffic, open offices)</li>
-            <li>People on daily video calls who need good mic quality</li>
-            <li>Frequent travelers who want airplane-grade ANC</li>
-            <li>Anyone who wants one pair of headphones for work and music</li>
-            <li>Users with multiple devices — multi-point pairing is excellent</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You work in a quiet home office — ANC is wasted on you</li>
-            <li>You are an audiophile — look at the Sennheiser Momentum 4</li>
-            <li>You need wired USB audio for gaming or video editing</li>
-            <li>Your budget is under $100 — see the Soundcore Life Q30</li>
-            <li>You wear glasses with thick temples — ANC seal is compromised</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -375,10 +377,9 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This roundup is based on 90 days of independent hands-on testing. We purchased every pair of headphones at retail price; none were provided as review units.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

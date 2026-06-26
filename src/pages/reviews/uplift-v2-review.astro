@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-4.jpg';
 
 const pageTitle = 'Uplift V2 Standing Desk Review (2026)';
@@ -12,6 +16,40 @@ const heroImage = heroImg.src;
 const ratingValue = 4.8;
 const bestPrice = 595;
 const author = 'Toolwise Team';
+const productSlug = 'uplift-v2-review';
+const productName = 'Uplift V2 Standing Desk';
+const brand = 'Uplift';
+const pros = [
+  '355-lb capacity — the highest of any desk we have tested',
+  '20+ top finishes including bamboo, solid wood, reclaimed, and standing-stall',
+  'Dual-motor lift at 1.8 in/s — fastest in this guide',
+  '10-year warranty on frame, motor, and electronics',
+  'Best-in-class accessory ecosystem (monitor arms, power strips, keyboard trays)',
+  'Optional advanced controller with Bluetooth and sit-stand reminders',
+  '50.5-inch max height — fits users up to 6\'9"',
+];
+const cons = [
+  '$595 base climbs to $900+ with popular options',
+  'Assembly needs two people — solid tops are heavy',
+  '20+ options create decision fatigue at checkout',
+  'Lead times stretch to 3-5 weeks on specialty tops',
+  'Advanced controller is a $70 add-on, not standard',
+  'Heavier than competitors — hard to move once built',
+];
+const bestFor = [
+  'Buyers who plan to keep their desk for 10+ years',
+  'Heavy setups — multi-monitor, monitor arms, heavy speakers',
+  'Tall users over 6\'4" who need the 50.5-inch max height',
+  'Anyone who wants a specific top (bamboo, reclaimed, live-edge)',
+  'Buyers building a permanent home office they will not move',
+];
+const notFor = [
+  'Your budget is under $500 — see the Branch or FlexiSpot E7',
+  'You only use a laptop and one monitor — the V2 is overkill',
+  'You expect to move within 3 years — it is heavy to transport',
+  'You hate making choices — 20+ tops will paralyze you',
+  'You need a desk immediately — lead times are 2 to 5 weeks',
+];
 
 const faqs = [
   { q: 'Is the Uplift V2 worth the money?', a: 'For most buyers, no — the Branch Standing Desk at $495 delivers 90 percent of the V2 performance for $100 less. The V2 is worth it if you want one of the 20+ specialty tops, a 355-lb capacity frame, or the advanced V2 Commercial controller with Bluetooth and sit-stand reminders.' },
@@ -141,6 +179,15 @@ const nextPost = { title: 'Branch Ergonomic Chair Review', href: '/reviews/branc
 
       <img src={heroImage} alt="Uplift V2 standing desk in a premium office with bamboo top and dual monitors" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,56 +219,11 @@ const nextPost = { title: 'Branch Ergonomic Chair Review', href: '/reviews/branc
 
       <p>This review is the deep dive. The V2 also appears as the premium benchmark in our <a href="/reviews/best-standing-desk-home-office/">home office standing desk roundup</a>, and it is the desk most <a href="/reviews/flexispot-e7-review/">FlexiSpot E7</a> owners eventually upgrade to. Below we explain when the upgrade is worth it — and when it is not.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>355-lb capacity — the highest of any desk we have tested</li>
-            <li>20+ top finishes including bamboo, solid wood, reclaimed, and standing-stall</li>
-            <li>Dual-motor lift at 1.8 in/s — fastest in this guide</li>
-            <li>10-year warranty on frame, motor, and electronics</li>
-            <li>Best-in-class accessory ecosystem (monitor arms, power strips, keyboard trays)</li>
-            <li>Optional advanced controller with Bluetooth and sit-stand reminders</li>
-            <li>50.5-inch max height — fits users up to 6'9"</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>$595 base climbs to $900+ with popular options</li>
-            <li>Assembly needs two people — solid tops are heavy</li>
-            <li>20+ options create decision fatigue at checkout</li>
-            <li>Lead times stretch to 3-5 weeks on specialty tops</li>
-            <li>Advanced controller is a $70 add-on, not standard</li>
-            <li>Heavier than competitors — hard to move once built</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Buyers who plan to keep their desk for 10+ years</li>
-            <li>Heavy setups — multi-monitor, monitor arms, heavy speakers</li>
-            <li>Tall users over 6'4" who need the 50.5-inch max height</li>
-            <li>Anyone who wants a specific top (bamboo, reclaimed, live-edge)</li>
-            <li>Buyers building a permanent home office they will not move</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>Your budget is under $500 — see the Branch or FlexiSpot E7</li>
-            <li>You only use a laptop and one monitor — the V2 is overkill</li>
-            <li>You expect to move within 3 years — it is heavy to transport</li>
-            <li>You hate making choices — 20+ tops will paralyze you</li>
-            <li>You need a desk immediately — lead times are 2 to 5 weeks</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -388,10 +390,9 @@ const nextPost = { title: 'Branch Ergonomic Chair Review', href: '/reviews/branc
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 90 days of independent hands-on testing. We purchased the Uplift V2 at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

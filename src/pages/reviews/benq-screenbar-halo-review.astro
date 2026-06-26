@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-2.jpg';
 
 const pageTitle = 'BenQ ScreenBar Halo Review (2026)';
@@ -12,6 +16,37 @@ const heroImage = heroImg.src;
 const ratingValue = 4.8;
 const bestPrice = 129;
 const author = 'Toolwise Team';
+const productSlug = 'benq-screenbar-halo-review';
+const productName = 'BenQ ScreenBar Halo';
+const brand = 'BenQ';
+const pros = [
+  'Asymmetric optics produce zero screen reflection, even on glossy panels',
+  'Wireless knob is rechargeable via USB-C and runs roughly 40 days per charge',
+  'Auto-dimming sensor matched our manual brightness choices in 8 of 10 scenarios',
+  'Color temperature tunable from 2700K warm to 6500K cool in 100K steps',
+  'Curved-monitor adapter included in the box, no extra purchase',
+  'USB-C input means no proprietary power brick to lose',
+];
+const cons = [
+  '$129 is steep — $30 more than the already-excellent ScreenBar Plus',
+  'The wireless knob is magnetic and can be knocked off the desk by accident',
+  'Auto-dimming occasionally dips too low in mixed afternoon-and-lamp light',
+  'No physical power button on the bar itself — you must use the knob',
+  'Cable is USB-A to USB-C; USB-C only monitors need their own cable',
+];
+const bestFor = [
+  'Remote workers who write or code at a monitor after sunset every day',
+  'Anyone with a curved or glossy ultrawide panel that reflects everything',
+  'Users who want one-touch brightness without reaching for an in-line dial',
+  'People who already own a Desk Bar Plus and want auto-dimming added',
+  'Video editors and designers who need a tunable 2700K-6500K range',
+];
+const notFor = [
+  'You only work during daylight hours — a desk lamp is half the price',
+  'Your monitor is mounted on an articulating arm with no top edge to clip onto',
+  'You cannot justify $129 when the original ScreenBar Plus is $99',
+  'You use a laptop-only setup with no external monitor',
+];
 
 const faqs = [
   { q: 'Does the BenQ ScreenBar Halo fit on a curved monitor?', a: 'Yes. BenQ ships the Halo with a curved-monitor adapter that clips onto displays up to 1.5 inches thick, including most 1000R and 1500R ultrawides. We tested it on a 34-inch 1800R ultrawide and it sat flush without sagging over three months of daily use.' },
@@ -141,6 +176,15 @@ const nextPost = { title: 'Best Webcam for Remote Work', href: '/reviews/best-we
 
       <img src={heroImage} alt="BenQ ScreenBar Halo mounted on an ultrawide monitor in a dark home office" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,53 +216,11 @@ const nextPost = { title: 'Best Webcam for Remote Work', href: '/reviews/best-we
 
       <p>If you want the short version: the Halo is the new benchmark, but it is not the right purchase for every desk. Below we break down where it earns its price and where the original ScreenBar Plus is still the smarter call.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Asymmetric optics produce zero screen reflection, even on glossy panels</li>
-            <li>Wireless knob is rechargeable via USB-C and runs roughly 40 days per charge</li>
-            <li>Auto-dimming sensor matched our manual brightness choices in 8 of 10 scenarios</li>
-            <li>Color temperature tunable from 2700K warm to 6500K cool in 100K steps</li>
-            <li>Curved-monitor adapter included in the box, no extra purchase</li>
-            <li>USB-C input means no proprietary power brick to lose</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>$129 is steep — $30 more than the already-excellent ScreenBar Plus</li>
-            <li>The wireless knob is magnetic and can be knocked off the desk by accident</li>
-            <li>Auto-dimming occasionally dips too low in mixed afternoon-and-lamp light</li>
-            <li>No physical power button on the bar itself — you must use the knob</li>
-            <li>Cable is USB-A to USB-C; USB-C only monitors need their own cable</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Remote workers who write or code at a monitor after sunset every day</li>
-            <li>Anyone with a curved or glossy ultrawide panel that reflects everything</li>
-            <li>Users who want one-touch brightness without reaching for an in-line dial</li>
-            <li>People who already own a Desk Bar Plus and want auto-dimming added</li>
-            <li>Video editors and designers who need a tunable 2700K-6500K range</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You only work during daylight hours — a desk lamp is half the price</li>
-            <li>Your monitor is mounted on an articulating arm with no top edge to clip onto</li>
-            <li>You cannot justify $129 when the original ScreenBar Plus is $99</li>
-            <li>You use a laptop-only setup with no external monitor</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -368,10 +370,9 @@ const nextPost = { title: 'Best Webcam for Remote Work', href: '/reviews/best-we
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 90 days of independent hands-on testing. We purchased the ScreenBar Halo at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
 
 const pageTitle = 'Best Ergonomic Chair Under $500 (2026)';
@@ -12,6 +16,40 @@ const heroImage = heroImg.src;
 const ratingValue = 4.5;
 const bestPrice = 345;
 const author = 'Toolwise Team';
+const productSlug = 'best-ergonomic-chair-under-500';
+const productName = 'Branch Ergonomic Chair';
+const brand = 'Branch';
+const pros = [
+  'Adjustable lumbar support (height and depth) — rare under $500',
+  'Breathable mesh back stays cool through 8-hour sessions',
+  '4D armrests adjust in height, width, depth, and pivot',
+  'Seat depth slide fits a wider range of body types',
+  'Synchro-tilt mechanism keeps feet flat when reclined',
+  '7-year warranty — longest in this price tier',
+  '20-minute solo assembly — no second person needed',
+];
+const cons = [
+  'Seat foam flattens after 7 hours — firm foam would help',
+  'Headrest is a $49 add-on, not included',
+  'Recline tension is stiff even at the lowest setting',
+  'Max user height of about 6\'2" — tall users need more',
+  'Castors are basic — struggle on medium-pile carpet',
+  'Only two fabric colors (black and gray)',
+];
+const bestFor = [
+  'Remote workers who sit 6+ hours per day, every day',
+  'Anyone who wants real lumbar support without spending $1,000+',
+  'People between 5\'4" and 6\'2" — the adjustment range fits well',
+  'Buyers in hot offices — the mesh back breathes',
+  'Anyone who wants a 7-year warranty at a mid-tier price',
+];
+const notFor = [
+  'You sit fewer than 4 hours a day — a budget chair is fine',
+  'You are over 6\'2" — the seat and backrest are too short',
+  'You want a headrest included as standard (try the SIHOO M18)',
+  'Your budget can stretch to $1,400 for an Aeron or Leap V2',
+  'You need premium upholstery or color options',
+];
 
 const faqs = [
   { q: 'What is the best ergonomic chair under $500?', a: 'The Branch Ergonomic Chair is our top pick. At $345 it offers adjustable lumbar support (height and depth), a breathable mesh back, 4D armrests, and a 7-year warranty — features that usually cost $1,000+ in premium chairs.' },
@@ -141,6 +179,15 @@ const nextPost = { title: 'Herman Miller Aeron Review', href: '/reviews/herman-m
 
       <img src={heroImage} alt="Best ergonomic chair under 500 dollars with mesh back in a home office" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,56 +219,11 @@ const nextPost = { title: 'Herman Miller Aeron Review', href: '/reviews/herman-m
 
       <p>One chair separated itself from the pack. Below we break down why the Branch Ergonomic Chair wins, where it falls short, and how the alternatives — including the premium <a href="/reviews/herman-miller-aeron-review/">Herman Miller Aeron</a> and the <a href="/reviews/steelcase-leap-v2-review/">Steelcase Leap V2</a> — stack up against it.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Adjustable lumbar support (height and depth) — rare under $500</li>
-            <li>Breathable mesh back stays cool through 8-hour sessions</li>
-            <li>4D armrests adjust in height, width, depth, and pivot</li>
-            <li>Seat depth slide fits a wider range of body types</li>
-            <li>Synchro-tilt mechanism keeps feet flat when reclined</li>
-            <li>7-year warranty — longest in this price tier</li>
-            <li>20-minute solo assembly — no second person needed</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>Seat foam flattens after 7 hours — firm foam would help</li>
-            <li>Headrest is a $49 add-on, not included</li>
-            <li>Recline tension is stiff even at the lowest setting</li>
-            <li>Max user height of about 6'2" — tall users need more</li>
-            <li>Castors are basic — struggle on medium-pile carpet</li>
-            <li>Only two fabric colors (black and gray)</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Remote workers who sit 6+ hours per day, every day</li>
-            <li>Anyone who wants real lumbar support without spending $1,000+</li>
-            <li>People between 5'4" and 6'2" — the adjustment range fits well</li>
-            <li>Buyers in hot offices — the mesh back breathes</li>
-            <li>Anyone who wants a 7-year warranty at a mid-tier price</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You sit fewer than 4 hours a day — a budget chair is fine</li>
-            <li>You are over 6'2" — the seat and backrest are too short</li>
-            <li>You want a headrest included as standard (try the SIHOO M18)</li>
-            <li>Your budget can stretch to $1,400 for an Aeron or Leap V2</li>
-            <li>You need premium upholstery or color options</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -381,10 +383,9 @@ const nextPost = { title: 'Herman Miller Aeron Review', href: '/reviews/herman-m
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This roundup is based on 90 days of independent hands-on testing. We purchased every chair at retail price; none were provided as review units.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

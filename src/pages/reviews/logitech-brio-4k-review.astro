@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-4.jpg';
 
 const pageTitle = 'Logitech Brio 4K Webcam Review (2026)';
@@ -12,6 +16,40 @@ const heroImage = heroImg.src;
 const ratingValue = 4.6;
 const bestPrice = 129;
 const author = 'Toolwise Team';
+const productSlug = 'logitech-brio-4k-review';
+const productName = 'Logitech Brio 4K Webcam';
+const brand = 'Logitech';
+const pros = [
+  '4K30 and 1080p60 video with crisp detail in good light',
+  'RightLight 3 HDR preserves faces in backlit window scenarios',
+  '5x digital zoom stays sharp through 3x magnification',
+  'IR sensor enables Windows Hello face unlock',
+  'Dual noise-canceling mics are the best of any webcam we tested',
+  'Sturdy clip mounts on both flat and curved monitors',
+  'Both USB-A and USB-C cables included in the box',
+];
+const cons = [
+  '65-degree default field of view feels tight for two-person calls',
+  'Autofocus hunts in very low light and occasionally focuses on background',
+  'No physical privacy shutter — you must unplug or angle it down',
+  'Logi Tune software required to unlock 4K and zoom presets',
+  'Requires USB 3.0 for 4K; drops to 1080p on USB 2.0',
+  'Price has crept up to $129 from $99 since launch',
+];
+const bestFor = [
+  'Remote workers on daily Zoom, Teams, or Google Meet calls',
+  'Anyone with a window behind their desk who needs HDR',
+  'Windows users who want face unlock without buying a new laptop',
+  'Content creators who record talking-head video at their desk',
+  'People who want one webcam to last five years',
+];
+const notFor = [
+  'You only join internal standups once a week — a $55 webcam is enough',
+  'You stream on Twitch or YouTube — get a Sony ZV-1 or mirrorless camera',
+  'You need auto-framing or gesture controls — buy the Insta360 Link',
+  'Your desk is poorly lit and you will not add a light — fix lighting first',
+  'You need uncompressed HDMI output — get the Elgato Facecam Pro',
+];
 
 const faqs = [
   { q: 'Does the Logitech Brio 4K work with Mac?', a: 'Yes. The Brio is UVC-compliant and works plug-and-play on macOS, Windows, ChromeOS, and most Linux distributions. The webcam itself works without drivers, but Logi Tune software (which unlocks 4K, zoom presets, and color tuning) is available for both Mac and Windows.' },
@@ -141,6 +179,15 @@ const nextPost = { title: 'Best Noise Cancelling Headphones for Work', href: '/r
 
       <img src={heroImage} alt="Logitech Brio 4K webcam on a minimalist desk next to an ultrawide monitor" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,56 +219,11 @@ const nextPost = { title: 'Best Noise Cancelling Headphones for Work', href: '/r
 
       <p>If you want the short version: the Brio is the right pick for most people, but it is not flawless. Below we break down where it earns its price and where it shows its age. For a wider field of options, see our <a href="/reviews/best-webcam-remote-work/">best webcam for remote work</a> roundup.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>4K30 and 1080p60 video with crisp detail in good light</li>
-            <li>RightLight 3 HDR preserves faces in backlit window scenarios</li>
-            <li>5x digital zoom stays sharp through 3x magnification</li>
-            <li>IR sensor enables Windows Hello face unlock</li>
-            <li>Dual noise-canceling mics are the best of any webcam we tested</li>
-            <li>Sturdy clip mounts on both flat and curved monitors</li>
-            <li>Both USB-A and USB-C cables included in the box</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>65-degree default field of view feels tight for two-person calls</li>
-            <li>Autofocus hunts in very low light and occasionally focuses on background</li>
-            <li>No physical privacy shutter — you must unplug or angle it down</li>
-            <li>Logi Tune software required to unlock 4K and zoom presets</li>
-            <li>Requires USB 3.0 for 4K; drops to 1080p on USB 2.0</li>
-            <li>Price has crept up to $129 from $99 since launch</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Remote workers on daily Zoom, Teams, or Google Meet calls</li>
-            <li>Anyone with a window behind their desk who needs HDR</li>
-            <li>Windows users who want face unlock without buying a new laptop</li>
-            <li>Content creators who record talking-head video at their desk</li>
-            <li>People who want one webcam to last five years</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You only join internal standups once a week — a $55 webcam is enough</li>
-            <li>You stream on Twitch or YouTube — get a Sony ZV-1 or mirrorless camera</li>
-            <li>You need auto-framing or gesture controls — buy the Insta360 Link</li>
-            <li>Your desk is poorly lit and you will not add a light — fix lighting first</li>
-            <li>You need uncompressed HDMI output — get the Elgato Facecam Pro</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -383,10 +385,9 @@ const nextPost = { title: 'Best Noise Cancelling Headphones for Work', href: '/r
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 90 days of independent hands-on testing. We purchased the Brio 4K at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

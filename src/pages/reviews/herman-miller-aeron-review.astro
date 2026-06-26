@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-2.jpg';
 
 const pageTitle = 'Herman Miller Aeron Chair Review (2026)';
@@ -12,6 +16,38 @@ const heroImage = heroImg.src;
 const ratingValue = 4.9;
 const bestPrice = 1495;
 const author = 'Toolwise Team';
+const productSlug = 'herman-miller-aeron-review';
+const productName = 'Herman Miller Aeron Chair';
+const brand = 'Herman Miller';
+const pros = [
+  'Pellicle mesh stays cool through 8+ hours of sitting — zero heat buildup in summer',
+  'PostureFit SL adapts to your spine as you shift, not just static lumbar pressure',
+  '12-year comprehensive warranty covers parts, labor, and even the mesh',
+  'Tilt limiter and forward-tilt let you lock in 5 distinct recline angles',
+  'Three sizes (A, B, C) mean the chair actually fits your body, not the other way around',
+  'Holds resale value better than any chair we tracked — used Aerons still sell for $700+',
+];
+const cons = [
+  'Front seat edge can dig into thighs for shorter users, even in Size B',
+  'Pellicle mesh feels cold in winter without a blanket or cushion',
+  'No headrest option from Herman Miller — third-party add-ons cost $150+',
+  'Armrests are width- and height-adjustable but not 4D like the Leap V2',
+  'Price is genuinely steep — financing through Herman Miller runs $125/month for a year',
+];
+const bestFor = [
+  'Programmers, writers, and analysts who sit 6 to 10 hours a day, 5+ days a week',
+  'Anyone with chronic lower-back pain that flares up in cheaper chairs',
+  'Hot sleepers and people who run warm — the mesh eliminates the sweaty-back problem',
+  'Buyers who plan to keep one chair for a decade-plus and want warranty peace of mind',
+  'Shared workspaces — the Aeron fits a wide range of body types after a 30-second adjustment',
+];
+const notFor = [
+  'You sit fewer than 4 hours a day — a $300 chair from our budget roundup will be 90% as good',
+  'You want to curl up, cross-legged or reclined — the Aeron demands an upright posture',
+  'You need a headrest for napping between calls (look at the Leap V2 instead)',
+  'Your budget caps at $500 — see our sub-$500 picks',
+  'You have wide hips — even Size C can feel narrow across the pelvis for users over 230 lbs',
+];
 
 const faqs = [
   { q: 'Is the Herman Miller Aeron worth $1,495?', a: 'For most people who sit 6 or more hours a day, yes. The Aeron outlasts cheaper chairs by a decade, the 12-year warranty is fully comprehensive, and the PostureFit SL support genuinely reduces lower-back fatigue in our testing. If you sit less than 4 hours daily, a $400 chair like the Branch Ergonomic is the smarter use of money.' },
@@ -141,6 +177,15 @@ const nextPost = { title: 'Steelcase Leap V2 Review', href: '/reviews/steelcase-
 
       <img src={heroImage} alt="Herman Miller Aeron chair in graphite pellicle mesh in a minimal home office" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -170,54 +215,11 @@ const nextPost = { title: 'Steelcase Leap V2 Review', href: '/reviews/steelcase-
 
       <p>We bought a Size B Aeron in graphite with PostureFit SL at retail and put it through six months of daily use — roughly 1,050 hours of seated work across three testers ranging from 5'6" to 6'1", 140 to 195 lbs. We tracked back pain, posture changes, heat buildup, and compared it head-to-head against our <a href="/reviews/steelcase-leap-v2-review/">Steelcase Leap V2</a>, the <a href="/reviews/branch-ergonomic-chair-review/">Branch Ergonomic Chair</a>, and three other premium chairs. Here is what we found.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Pellicle mesh stays cool through 8+ hours of sitting — zero heat buildup in summer</li>
-            <li>PostureFit SL adapts to your spine as you shift, not just static lumbar pressure</li>
-            <li>12-year comprehensive warranty covers parts, labor, and even the mesh</li>
-            <li>Tilt limiter and forward-tilt let you lock in 5 distinct recline angles</li>
-            <li>Three sizes (A, B, C) mean the chair actually fits your body, not the other way around</li>
-            <li>Holds resale value better than any chair we tracked — used Aerons still sell for $700+</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>Front seat edge can dig into thighs for shorter users, even in Size B</li>
-            <li>Pellicle mesh feels cold in winter without a blanket or cushion</li>
-            <li>No headrest option from Herman Miller — third-party add-ons cost $150+</li>
-            <li>Armrests are width- and height-adjustable but not 4D like the Leap V2</li>
-            <li>Price is genuinely steep — financing through Herman Miller runs $125/month for a year</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Programmers, writers, and analysts who sit 6 to 10 hours a day, 5+ days a week</li>
-            <li>Anyone with chronic lower-back pain that flares up in cheaper chairs</li>
-            <li>Hot sleepers and people who run warm — the mesh eliminates the sweaty-back problem</li>
-            <li>Buyers who plan to keep one chair for a decade-plus and want warranty peace of mind</li>
-            <li>Shared workspaces — the Aeron fits a wide range of body types after a 30-second adjustment</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You sit fewer than 4 hours a day — a $300 chair from our <a href="/reviews/best-ergonomic-chair-budget/">budget roundup</a> will be 90% as good</li>
-            <li>You want to curl up, cross-legged or reclined — the Aeron demands an upright posture</li>
-            <li>You need a headrest for napping between calls (look at the Leap V2 instead)</li>
-            <li>Your budget caps at $500 — see our <a href="/reviews/best-ergonomic-chair-under-500/">sub-$500 picks</a></li>
-            <li>You have wide hips — even Size C can feel narrow across the pelvis for users over 230 lbs</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -369,10 +371,9 @@ const nextPost = { title: 'Steelcase Leap V2 Review', href: '/reviews/steelcase-
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 6 months of independent hands-on testing. We purchased the Aeron at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

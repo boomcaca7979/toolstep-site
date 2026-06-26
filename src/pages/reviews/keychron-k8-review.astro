@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-5.jpg';
 
 const pageTitle = 'Keychron K8 Keyboard Review (2026)';
@@ -12,6 +16,39 @@ const heroImage = heroImg.src;
 const ratingValue = 4.5;
 const bestPrice = 84;
 const author = 'Toolwise Team';
+const productSlug = 'keychron-k8-review';
+const productName = 'Keychron K8 Wireless Keyboard';
+const brand = 'Keychron';
+const pros = [
+  'Gateron brown switches are tactile and office-quiet at 50 dB',
+  'Bluetooth 5.1 pairs with 3 devices and switches with a key combo',
+  'Hot-swappable version lets you change switches without soldering',
+  '78-hour battery life with RGB off — full week of heavy use per charge',
+  'USB-C charging works while typing, full charge in 3 hours',
+  'Dual-printed keycaps work for both Mac and Windows layouts',
+];
+const cons = [
+  'Plastic case flexes slightly under heavy typing pressure',
+  'Bluetooth switching between devices has a 1 to 2 second delay',
+  'RGB lighting drains battery 4x faster and looks unprofessional',
+  'Tenkeyless layout lacks a numeric keypad (good or bad depending on your needs)',
+  'Keycaps are thin ABS plastic that will shine within 6 months of heavy use',
+  'Per-key RGB is finicky to customize — no software, only key combinations',
+];
+const bestFor = [
+  'First-time mechanical keyboard buyers who want a low-risk entry point',
+  'Programmers, writers, and analysts who type 4+ hours a day',
+  'Users who switch between laptop, tablet, and phone (multi-device Bluetooth)',
+  'Anyone who wants to try different switch types without buying a new keyboard',
+  'Mac users who want a mechanical keyboard with proper Mac keycaps',
+];
+const notFor = [
+  'You need a numeric keypad — get the Keychron K4 or K10 instead',
+  'You want a low-profile keyboard — see our MX Keys S review',
+  'You game competitively and need sub-1ms latency (wired only)',
+  'You want premium aluminum build quality — look at the Keychron K2 Pro ($130)',
+  'You need per-key RGB customization software — the K8 has only key combos',
+];
 
 const faqs = [
   { q: 'Is the Keychron K8 good for typing?', a: 'Yes. The Gateron Brown switches offer a tactile bump at 2 mm of travel that gives clear feedback without the loud click of blue switches. We typed an average of 12,000 words per day on the K8 for 60 days and found typing accuracy improved 8% versus our previous membrane keyboards.' },
@@ -141,6 +178,15 @@ const nextPost = { title: 'Logitech MX Keys S Review', href: '/reviews/logitech-
 
       <img src={heroImage} alt="Keychron K8 wireless mechanical keyboard with brown switches on a white desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -170,55 +216,11 @@ const nextPost = { title: 'Logitech MX Keys S Review', href: '/reviews/logitech-
 
       <p>We bought a hot-swappable Keychron K8 with Gateron brown switches at retail and put it through 60 days of daily use — roughly 720,000 keystrokes across three testers. We typed an average of 12,000 words per day, switched between three Bluetooth-paired devices, and measured battery life, decibel output, and typing accuracy. Here is what we found, with a comparison against our <a href="/reviews/best-office-mechanical-keyboard/">broader office mechanical keyboard roundup</a>.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>Gateron brown switches are tactile and office-quiet at 50 dB</li>
-            <li>Bluetooth 5.1 pairs with 3 devices and switches with a key combo</li>
-            <li>Hot-swappable version lets you change switches without soldering</li>
-            <li>78-hour battery life with RGB off — full week of heavy use per charge</li>
-            <li>USB-C charging works while typing, full charge in 3 hours</li>
-            <li>Dual-printed keycaps work for both Mac and Windows layouts</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>Plastic case flexes slightly under heavy typing pressure</li>
-            <li>Bluetooth switching between devices has a 1 to 2 second delay</li>
-            <li>RGB lighting drains battery 4x faster and looks unprofessional</li>
-            <li>Tenkeyless layout lacks a numeric keypad (good or bad depending on your needs)</li>
-            <li>Keycaps are thin ABS plastic that will shine within 6 months of heavy use</li>
-            <li>Per-key RGB is finicky to customize — no software, only key combinations</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>First-time mechanical keyboard buyers who want a low-risk entry point</li>
-            <li>Programmers, writers, and analysts who type 4+ hours a day</li>
-            <li>Users who switch between laptop, tablet, and phone (multi-device Bluetooth)</li>
-            <li>Anyone who wants to try different switch types without buying a new keyboard</li>
-            <li>Mac users who want a mechanical keyboard with proper Mac keycaps</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>You need a numeric keypad — get the Keychron K4 or K10 instead</li>
-            <li>You want a low-profile keyboard — see our <a href="/reviews/logitech-mx-keys-s-review/">MX Keys S review</a></li>
-            <li>You game competitively and need sub-1ms latency (wired only)</li>
-            <li>You want premium aluminum build quality — look at the Keychron K2 Pro ($130)</li>
-            <li>You need per-key RGB customization software — the K8 has only key combos</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -380,10 +382,9 @@ const nextPost = { title: 'Logitech MX Keys S Review', href: '/reviews/logitech-
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This review is based on 60 days of independent hands-on testing. We purchased the Keychron K8 at retail price; it was not provided as a review unit.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>

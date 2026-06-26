@@ -2,6 +2,10 @@
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import ProductCTACard from '../../components/ProductCTACard.astro';
+import ProductSummary from '../../components/ProductSummary.astro';
+import StickyCTA from '../../components/StickyCTA.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import heroImg from '../../assets/blog-placeholder-2.jpg';
 
 const pageTitle = 'Best Standing Desk for Home Office (2026)';
@@ -12,6 +16,38 @@ const heroImage = heroImg.src;
 const ratingValue = 4.5;
 const bestPrice = 495;
 const author = 'Toolwise Team';
+const productSlug = 'best-standing-desk-home-office';
+const productName = 'Branch Standing Desk';
+const brand = 'Branch';
+const pros = [
+  '275-lb capacity frame stayed rock-solid at 49 inches with a heavy ultrawide monitor',
+  'Real-wood top (oak or walnut) looks like furniture, not office equipment',
+  'Integrated cable tray and grommet included — no upsell required',
+  'Dual-motor lift is quiet at 46 dB and moves 1.6 inches per second',
+  'Four programmable presets with a clear LED height display',
+  '10-year warranty on the frame, 5 years on the motor',
+];
+const cons = [
+  '$495 base price is steep if you only sit-stand occasionally',
+  'Assembly needs two people — the solid-wood top is heavy',
+  'Only two top sizes (48x30 and 60x30) — no compact option',
+  'Controller has no Bluetooth or app integration',
+  'Lag time of 3-4 weeks on popular finishes during sales',
+];
+const bestFor = [
+  'Full-time remote workers who sit-stand 6+ times per day, every day',
+  'Anyone who wants their desk to look like furniture, not gym equipment',
+  'Households sharing a desk — the four presets cover everyone\'s height',
+  'Buyers who hate cable clutter and want a clean, routed setup',
+  'People with a 34-inch or larger monitor that needs a stable base',
+];
+const notFor = [
+  'Your budget is firmly under $300 — see our budget roundup instead',
+  'You want a bamboo or reclaimed-wood top — Branch only offers oak and walnut',
+  'You need app-controlled presets or scheduling reminders',
+  'You live alone and cannot recruit a second person for assembly',
+  'You want a desk smaller than 48 inches wide',
+];
 
 const faqs = [
   { q: 'What is the best standing desk for a home office?', a: 'The Branch Standing Desk is our top pick. At $495 it pairs a 275-lb capacity dual-motor frame with a real-wood top, integrated cable management, and a programmable controller that handled our 90-day sit-stand cycle without drift.' },
@@ -141,6 +177,15 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
 
       <img src={heroImage} alt="Best standing desk for home office with dual monitors and warm lighting" class="hero-img" loading="lazy" width="1280" height="720" />
 
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
+
       <nav class="toc" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
@@ -172,54 +217,11 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
 
       <p>One desk separated itself from the pack. Below we break down why the Branch Standing Desk wins, where it falls short, and how the alternatives — including the premium <a href="/reviews/uplift-v2-review/">Uplift V2</a> and the budget <a href="/reviews/flexispot-e7-review/">FlexiSpot E7</a> — stack up.</p>
 
-      <h2 id="pros-and-cons">Pros &amp; Cons</h2>
-      <div class="pros-cons">
-        <div class="pros">
-          <h3>Pros</h3>
-          <ul>
-            <li>275-lb capacity frame stayed rock-solid at 49 inches with a heavy ultrawide monitor</li>
-            <li>Real-wood top (oak or walnut) looks like furniture, not office equipment</li>
-            <li>Integrated cable tray and grommet included — no upsell required</li>
-            <li>Dual-motor lift is quiet at 46 dB and moves 1.6 inches per second</li>
-            <li>Four programmable presets with a clear LED height display</li>
-            <li>10-year warranty on the frame, 5 years on the motor</li>
-          </ul>
-        </div>
-        <div class="cons">
-          <h3>Cons</h3>
-          <ul>
-            <li>$495 base price is steep if you only sit-stand occasionally</li>
-            <li>Assembly needs two people — the solid-wood top is heavy</li>
-            <li>Only two top sizes (48x30 and 60x30) — no compact option</li>
-            <li>Controller has no Bluetooth or app integration</li>
-            <li>Lag time of 3-4 weeks on popular finishes during sales</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="pros-and-cons">Product Summary</h2>
+      <ProductSummary pros={pros} cons={cons} bestFor={bestFor} notFor={notFor} />
 
-      <h2 id="who-should-buy">Who Should Buy This — and Who Shouldn't</h2>
-      <div class="audience">
-        <div class="for">
-          <h3>Great for</h3>
-          <ul>
-            <li>Full-time remote workers who sit-stand 6+ times per day, every day</li>
-            <li>Anyone who wants their desk to look like furniture, not gym equipment</li>
-            <li>Households sharing a desk — the four presets cover everyone's height</li>
-            <li>Buyers who hate cable clutter and want a clean, routed setup</li>
-            <li>People with a 34-inch or larger monitor that needs a stable base</li>
-          </ul>
-        </div>
-        <div class="not-for">
-          <h3>Skip it if</h3>
-          <ul>
-            <li>Your budget is firmly under $300 — see our budget roundup instead</li>
-            <li>You want a bamboo or reclaimed-wood top — Branch only offers oak and walnut</li>
-            <li>You need app-controlled presets or scheduling reminders</li>
-            <li>You live alone and cannot recruit a second person for assembly</li>
-            <li>You want a desk smaller than 48 inches wide</li>
-          </ul>
-        </div>
-      </div>
+      <h2 id="who-should-buy">Who Should Buy This</h2>
+      <p>See the summary above for a quick breakdown of who this product is best for and who should skip it.</p>
 
       <h2 id="detailed-review">Detailed Review</h2>
 
@@ -366,10 +368,9 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
         </a>
       </nav>
 
-      <div class="disclaimer">
-        Disclosure: As an Amazon Associate we earn from qualifying purchases. This roundup is based on 90 days of independent hands-on testing. We purchased every desk at retail price; none were provided as review units.
-      </div>
+      <AffiliateDisclosure />
     </main>
+    <StickyCTA productName={productName} rating={ratingValue} price={bestPrice} slug={productSlug} />
     <Footer />
   </body>
 </html>
