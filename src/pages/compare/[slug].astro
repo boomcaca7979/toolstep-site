@@ -1,0 +1,655 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { compareData } from '../../data/compare';
+import { authors } from '../../data/authors';
+import { reviews } from '../../data/reviews';
+
+export function getStaticPaths() {
+  return compareData.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { productA, productB } = entry;
+const author = authors.find(a => a.slug === entry.authorSlug);
+const authorName = author?.name || 'ToolStep Team';
+
+const publishDate = '2026-06-26';
+const pageUrl = new URL(`/compare/${entry.slug}/`, Astro.site).toString();
+
+// Find prev/next for navigation
+const idx = compareData.findIndex(e => e.slug === entry.slug);
+const prevEntry = idx > 0 ? compareData[idx - 1] : null;
+const nextEntry = idx < compareData.length - 1 ? compareData[idx + 1] : null;
+
+// Related reviews (resolve titles from reviews data)
+const relatedReviewItems = entry.relatedReviews
+  .map(href => {
+    const slug = href.replace('/reviews/', '').replace(/\/$/, '');
+    const r = reviews.find(rv => rv.href.includes(slug));
+    return r ? { title: r.title, href, desc: r.desc } : null;
+  })
+  .filter((r): r is NonNullable<typeof r> => r !== null);
+
+// Stars helper
+function stars(rating: number): string {
+  return '★★★★★'.slice(0, Math.round(rating)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(rating));
+}
+
+function winnerLabel(winner: 'A' | 'B' | 'tie'): string {
+  if (winner === 'A') return productA.name;
+  if (winner === 'B') return productB.name;
+  return 'Tie';
+}
+
+// === Schemas ===
+
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  itemReviewed: {
+    '@type': 'Product',
+    name: entry.title,
+    description: entry.description,
+    category: entry.category,
+  },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: Math.max(productA.rating, productB.rating),
+    bestRating: 5,
+    worstRating: 1,
+  },
+  author: { '@type': 'Person', name: authorName },
+  publisher: { '@type': 'Organization', name: 'ToolStep' },
+  datePublished: publishDate,
+  reviewBody: entry.quickWinnerReason,
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: entry.faqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Compare', item: new URL('/compare/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: entry.title, item: pageUrl },
+  ],
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: entry.title,
+  description: entry.description,
+  datePublished: publishDate,
+  dateModified: publishDate,
+  author: { '@type': 'Person', name: authorName },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ToolStep',
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${entry.title} — ToolStep Compare`} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <style>
+      .compare-page {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+        min-height: calc(100vh - 200px);
+      }
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        font-size: 0.82rem;
+        color: rgb(var(--gray));
+        margin-bottom: 1.5rem;
+      }
+      .breadcrumb a {
+        color: rgb(var(--gray));
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+      .breadcrumb .sep {
+        color: rgb(var(--gray-light));
+      }
+      .breadcrumb .current {
+        color: rgb(var(--gray-dark));
+        font-weight: 600;
+      }
+
+      /* Hero */
+      .hero {
+        margin-bottom: 2rem;
+      }
+      .hero .category-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 4px 12px;
+        border-radius: 12px;
+        margin-bottom: 0.75rem;
+        color: white;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin: 0 0 0.75rem;
+        color: rgb(var(--black));
+      }
+      .hero .desc {
+        font-size: 1.1rem;
+        color: rgb(var(--gray));
+        line-height: 1.6;
+        margin: 0;
+      }
+      .hero-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: rgb(var(--gray));
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      .hero-meta a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .hero-meta .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgb(var(--gray-light));
+      }
+
+      /* Quick Winner */
+      .quick-winner {
+        background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.06), rgba(var(--accent-rgb), 0.02));
+        border: 1px solid rgba(var(--accent-rgb), 0.15);
+        border-radius: 14px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+      .quick-winner .label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .quick-winner .winner-name {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: rgb(var(--black));
+        margin-bottom: 0.5rem;
+      }
+      .quick-winner .reason {
+        font-size: 0.95rem;
+        color: rgb(var(--gray-dark));
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Score cards */
+      .score-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+      .score-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .score-card .product-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: rgb(var(--black));
+        margin-bottom: 0.5rem;
+      }
+      .score-card .score {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 0.25rem;
+      }
+      .score-card .score .out {
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgb(var(--gray));
+      }
+      .score-card.a .score { color: #059669; }
+      .score-card.b .score { color: #2563eb; }
+      .score-card .stars {
+        color: #f59e0b;
+        letter-spacing: 2px;
+        font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        margin: 2.5rem 0 1rem;
+        color: rgb(var(--black));
+        scroll-margin-top: 80px;
+      }
+
+      /* Comparison table */
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.92rem;
+      }
+      .compare-table th,
+      .compare-table td {
+        border: 1px solid var(--card-border);
+        padding: 0.75rem 1rem;
+        text-align: left;
+      }
+      .compare-table th {
+        background: rgba(var(--gray-light), 40%);
+        font-weight: 700;
+        color: rgb(var(--black));
+      }
+      .compare-table th.col-a { color: #059669; }
+      .compare-table th.col-b { color: #2563eb; }
+      .compare-table td.row-label {
+        font-weight: 600;
+        color: rgb(var(--gray-dark));
+        background: rgba(var(--gray-light), 25%);
+        width: 30%;
+      }
+      .compare-table .win-a { color: #059669; font-weight: 700; }
+      .compare-table .win-b { color: #2563eb; font-weight: 700; }
+      .compare-table .win-tie { color: rgb(var(--gray)); font-weight: 600; }
+
+      /* Pros / Cons */
+      .pros-cons-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      .pros-cons-block {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.25rem;
+      }
+      .pros-cons-block h3 {
+        font-size: 1rem;
+        margin: 0 0 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .pros-cons-block.pros h3 { color: #059669; }
+      .pros-cons-block.cons h3 { color: #dc2626; }
+      .pros-cons-block ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .pros-cons-block li {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        padding: 0.3rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        color: rgb(var(--gray-dark));
+      }
+      .pros-cons-block.pros li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #059669;
+        font-weight: bold;
+      }
+      .pros-cons-block.cons li::before {
+        content: '✗';
+        position: absolute;
+        left: 0;
+        color: #dc2626;
+        font-weight: bold;
+      }
+      .product-header {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: rgb(var(--gray));
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Who Wins */
+      .who-wins-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+      .who-wins-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+      .who-wins-list .scenario {
+        flex: 1;
+        color: rgb(var(--gray-dark));
+      }
+      .who-wins-list .badge {
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+      .badge.win-a { color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; }
+      .badge.win-b { color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe; }
+      .badge.win-tie { color: #92400e; background: #fffbeb; border: 1px solid #fde68a; }
+
+      /* FAQ */
+      .faq-list {
+        margin: 1rem 0;
+      }
+      .faq-list details {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+      .faq-list summary {
+        font-weight: 700;
+        color: rgb(var(--black));
+        cursor: pointer;
+        font-size: 0.98rem;
+      }
+      .faq-list details[open] summary {
+        margin-bottom: 0.75rem;
+      }
+      .faq-list details p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: rgb(var(--gray-dark));
+      }
+
+      /* Related reviews */
+      .related-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+      .related-list li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--card-border);
+      }
+      .related-list li:last-child {
+        border-bottom: none;
+      }
+      .related-list a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+      .related-list a:hover {
+        text-decoration: underline;
+      }
+      .related-list .desc {
+        font-size: 0.85rem;
+        color: rgb(var(--gray));
+        margin-top: 0.2rem;
+      }
+
+      /* Prev / Next nav */
+      .nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 2.5rem 0;
+      }
+      .nav-links a {
+        display: block;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .nav-links a:hover {
+        box-shadow: var(--card-shadow);
+      }
+      .nav-links .nav-label {
+        display: block;
+        font-size: 0.75rem;
+        color: rgb(var(--gray));
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+      }
+      .nav-links .next {
+        text-align: right;
+      }
+
+      @media (max-width: 640px) {
+        .score-cards,
+        .pros-cons-grid,
+        .nav-links {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <div class="compare-page">
+      {/* Breadcrumb */}
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/compare/">Compare</a>
+        <span class="sep">/</span>
+        <span class="current">{entry.title}</span>
+      </nav>
+
+      {/* Hero */}
+      <div class="hero">
+        <span class="category-tag" style={`background: ${entry.color}`}>{entry.category}</span>
+        <h1>{entry.title}</h1>
+        <p class="desc">{entry.description}</p>
+        <div class="hero-meta">
+          <span>By <a href={`/authors/${entry.authorSlug}`}>{authorName}</a></span>
+          <span class="dot"></span>
+          <span>Updated {entry.lastUpdated}</span>
+          <span class="dot"></span>
+          <span>Tested over {entry.testingDuration}</span>
+        </div>
+      </div>
+
+      {/* Quick Winner */}
+      <div class="quick-winner" id="quick-winner">
+        <div class="label">Quick Winner</div>
+        <div class="winner-name">
+          {entry.quickWinner === 'tie' ? "It's a tie" : winnerLabel(entry.quickWinner)}
+        </div>
+        <p class="reason">{entry.quickWinnerReason}</p>
+      </div>
+
+      {/* Score */}
+      <h2 id="score">Score</h2>
+      <div class="score-cards">
+        <div class="score-card a">
+          <div class="product-name">{productA.name}</div>
+          <div class="score">{productA.rating}<span class="out">/5</span></div>
+          <div class="stars">{stars(productA.rating)}</div>
+        </div>
+        <div class="score-card b">
+          <div class="product-name">{productB.name}</div>
+          <div class="score">{productB.rating}<span class="out">/5</span></div>
+          <div class="stars">{stars(productB.rating)}</div>
+        </div>
+      </div>
+
+      {/* Comparison Table */}
+      <h2 id="comparison">Comparison Table</h2>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Spec</th>
+            <th class="col-a">{productA.name}</th>
+            <th class="col-b">{productB.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {entry.specs.map((spec) => (
+            <tr>
+              <td class="row-label">{spec.label}</td>
+              <td class={spec.winner === 'A' ? 'win-a' : ''}>{spec.productA}</td>
+              <td class={spec.winner === 'B' ? 'win-b' : ''}>{spec.productB}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* Pros */}
+      <h2 id="pros">Pros</h2>
+      <div class="pros-cons-grid">
+        <div class="pros-cons-block pros">
+          <div class="product-header">{productA.name}</div>
+          <h3>Pros</h3>
+          <ul>
+            {productA.pros.map(pro => <li>{pro}</li>)}
+          </ul>
+        </div>
+        <div class="pros-cons-block pros">
+          <div class="product-header">{productB.name}</div>
+          <h3>Pros</h3>
+          <ul>
+            {productB.pros.map(pro => <li>{pro}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      {/* Cons */}
+      <h2 id="cons">Cons</h2>
+      <div class="pros-cons-grid">
+        <div class="pros-cons-block cons">
+          <div class="product-header">{productA.name}</div>
+          <h3>Cons</h3>
+          <ul>
+            {productA.cons.map(con => <li>{con}</li>)}
+          </ul>
+        </div>
+        <div class="pros-cons-block cons">
+          <div class="product-header">{productB.name}</div>
+          <h3>Cons</h3>
+          <ul>
+            {productB.cons.map(con => <li>{con}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      {/* Who Wins */}
+      <h2 id="who-wins">Who Wins?</h2>
+      <ul class="who-wins-list">
+        {entry.whoWins.map(w => (
+          <li>
+            <span class="scenario">{w.scenario}</span>
+            <span class={`badge win-${w.winner}`}>{winnerLabel(w.winner)}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* FAQ */}
+      <h2 id="faq">FAQ</h2>
+      <div class="faq-list">
+        {entry.faqs.map(faq => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+
+      {/* Related Reviews */}
+      {relatedReviewItems.length > 0 && (
+        <>
+          <h2 id="related">Related Reviews</h2>
+          <ul class="related-list">
+            {relatedReviewItems.map(r => (
+              <li>
+                <a href={r.href}>{r.title}</a>
+                <div class="desc">{r.desc}</div>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {/* Previous / Next */}
+      <div class="nav-links">
+        {prevEntry ? (
+          <a href={`/compare/${prevEntry.slug}/`}>
+            <span class="nav-label">← Previous</span>
+            {prevEntry.title}
+          </a>
+        ) : <span></span>}
+        {nextEntry ? (
+          <a href={`/compare/${nextEntry.slug}/`} class="next">
+            <span class="nav-label">Next →</span>
+            {nextEntry.title}
+          </a>
+        ) : <span></span>}
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>
