@@ -1,0 +1,834 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { alternativesData } from '../../data/alternatives';
+import { authors } from '../../data/authors';
+
+export function getStaticPaths() {
+  return alternativesData.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const author = authors.find(a => a.slug === entry.authorSlug);
+const authorName = author?.name || 'ToolStep Team';
+
+const publishDate = '2026-06-26';
+const pageUrl = new URL(`/alternatives/${entry.slug}/`, Astro.site).toString();
+
+// Find prev/next for navigation
+const idx = alternativesData.findIndex(e => e.slug === entry.slug);
+const prevEntry = idx > 0 ? alternativesData[idx - 1] : null;
+const nextEntry = idx < alternativesData.length - 1 ? alternativesData[idx + 1] : null;
+
+// Resolve internal links
+const relatedItems = entry.internalLinks
+  .map(slug => alternativesData.find(a => a.slug === slug))
+  .filter((a): a is NonNullable<typeof a> => a !== undefined)
+  .slice(0, 4);
+
+// Stars helper
+function stars(rating: number): string {
+  return '★★★★★'.slice(0, Math.round(rating)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(rating));
+}
+
+// Top alternative for review schema
+const topAlt = entry.alternatives[0];
+
+// TOC sections
+const tocSections = [
+  { id: 'alternatives-table', label: 'Alternatives Table' },
+  { id: 'why-choose', label: 'Why Choose' },
+  { id: 'pros-cons', label: 'Pros & Cons' },
+  { id: 'pricing', label: 'Pricing' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+// === Schemas ===
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: entry.title,
+  description: entry.description,
+  numberOfItems: entry.alternatives.length,
+  itemListElement: entry.alternatives.map((a, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: a.name,
+  })),
+};
+
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  itemReviewed: {
+    '@type': 'SoftwareApplication',
+    name: entry.toolName,
+    applicationCategory: entry.category,
+    description: entry.description,
+  },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: topAlt?.rating || 4.5,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  author: { '@type': 'Person', name: authorName },
+  publisher: { '@type': 'Organization', name: 'ToolStep' },
+  datePublished: publishDate,
+  reviewBody: entry.intro,
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: entry.faqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Alternatives', item: new URL('/alternatives/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: entry.title, item: pageUrl },
+  ],
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: entry.title,
+  description: entry.description,
+  datePublished: publishDate,
+  dateModified: publishDate,
+  author: { '@type': 'Person', name: authorName },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ToolStep',
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${entry.title} — ToolStep Alternatives`} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <style>
+      .alt-page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+        min-height: calc(100vh - 200px);
+      }
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        font-size: 0.82rem;
+        color: rgb(var(--gray));
+        margin-bottom: 1.5rem;
+      }
+      .breadcrumb a {
+        color: rgb(var(--gray));
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+      .breadcrumb .sep {
+        color: rgb(var(--gray-light));
+      }
+      .breadcrumb .current {
+        color: rgb(var(--gray-dark));
+        font-weight: 600;
+      }
+
+      /* Layout */
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr 220px;
+        gap: 2rem;
+      }
+      .main-col {
+        min-width: 0;
+      }
+      .toc-col {
+        position: sticky;
+        top: 80px;
+        align-self: start;
+      }
+      .toc {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+      }
+      .toc-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgb(var(--gray));
+        margin: 0 0 0.5rem;
+      }
+      .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .toc li {
+        padding: 0.2rem 0;
+      }
+      .toc a {
+        font-size: 0.82rem;
+        color: rgb(var(--gray-dark));
+        text-decoration: none;
+        line-height: 1.4;
+        display: block;
+        padding: 0.15rem 0;
+      }
+      .toc a:hover {
+        color: var(--accent);
+      }
+
+      /* Hero */
+      .hero {
+        margin-bottom: 2rem;
+      }
+      .hero .category-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 4px 12px;
+        border-radius: 12px;
+        margin-bottom: 0.75rem;
+        color: white;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin: 0 0 0.75rem;
+        color: rgb(var(--black));
+      }
+      .hero .desc {
+        font-size: 1.1rem;
+        color: rgb(var(--gray));
+        line-height: 1.6;
+        margin: 0 0 1rem;
+      }
+      .hero-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: rgb(var(--gray));
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      .hero-meta a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .hero-meta .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgb(var(--gray-light));
+      }
+      .hero-stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+      }
+      .hero-stat {
+        text-align: left;
+      }
+      .hero-stat .num {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .hero-stat .label {
+        font-size: 0.75rem;
+        color: rgb(var(--gray));
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        margin-top: 0.25rem;
+      }
+
+      /* Intro */
+      .intro {
+        background: rgba(var(--accent-rgb), 0.03);
+        border-left: 4px solid var(--accent);
+        padding: 1rem 1.25rem;
+        border-radius: 0 8px 8px 0;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        color: rgb(var(--gray-dark));
+        margin: 1.5rem 0 2rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        margin: 2.5rem 0 1rem;
+        color: rgb(var(--black));
+        scroll-margin-top: 80px;
+      }
+
+      /* Alternatives table */
+      .alt-table-wrap {
+        overflow-x: auto;
+        margin: 1rem 0;
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+      }
+      .alt-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+        background: var(--card-bg);
+      }
+      .alt-table th,
+      .alt-table td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--card-border);
+        vertical-align: top;
+      }
+      .alt-table th {
+        background: rgba(var(--gray-light), 40%);
+        font-weight: 700;
+        color: rgb(var(--black));
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .alt-table tr:last-child td {
+        border-bottom: none;
+      }
+      .alt-table .rank-cell {
+        width: 44px;
+        text-align: center;
+        font-weight: 800;
+        color: var(--accent);
+        font-size: 1.1rem;
+      }
+      .alt-table .name-cell {
+        font-weight: 700;
+        color: rgb(var(--black));
+      }
+      .alt-table .best-for-cell {
+        color: rgb(var(--gray-dark));
+        font-size: 0.88rem;
+      }
+      .alt-table .rating-cell {
+        text-align: center;
+        white-space: nowrap;
+      }
+      .alt-table .stars {
+        color: #f59e0b;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        display: block;
+      }
+      .alt-table .rating-num {
+        font-size: 0.75rem;
+        color: rgb(var(--gray));
+        font-weight: 600;
+      }
+      .alt-table .pricing-cell {
+        font-weight: 600;
+        color: rgb(var(--gray-dark));
+        white-space: nowrap;
+      }
+
+      /* Why choose */
+      .why-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+      .why-list li {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        padding: 0.75rem 1rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: rgb(var(--gray-dark));
+      }
+      .why-list li::before {
+        content: '→';
+        color: var(--accent);
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+
+      /* Pros / Cons per alternative */
+      .alt-cards {
+        display: grid;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      .alt-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.25rem;
+      }
+      .alt-card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--card-border);
+      }
+      .alt-card-rank {
+        background: var(--accent);
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+      }
+      .alt-card-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: rgb(var(--black));
+      }
+      .alt-card-best {
+        font-size: 0.85rem;
+        color: rgb(var(--gray));
+        margin-top: 0.1rem;
+      }
+      .alt-card-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .pc-block h4 {
+        font-size: 0.78rem;
+        margin: 0 0 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-weight: 700;
+      }
+      .pc-block.pros h4 { color: #059669; }
+      .pc-block.cons h4 { color: #dc2626; }
+      .pc-block ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .pc-block li {
+        font-size: 0.88rem;
+        line-height: 1.55;
+        padding: 0.2rem 0 0.2rem 1.25rem;
+        position: relative;
+        color: rgb(var(--gray-dark));
+      }
+      .pc-block.pros li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #059669;
+        font-weight: bold;
+      }
+      .pc-block.cons li::before {
+        content: '✗';
+        position: absolute;
+        left: 0;
+        color: #dc2626;
+        font-weight: bold;
+      }
+      .alt-card-footer {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--card-border);
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+      }
+      .alt-card-footer .field {
+        display: flex;
+        gap: 0.4rem;
+      }
+      .alt-card-footer .field-label {
+        color: rgb(var(--gray));
+        font-weight: 600;
+      }
+      .alt-card-footer .field-val {
+        color: rgb(var(--gray-dark));
+        font-weight: 600;
+      }
+      .alt-card-footer .stars {
+        color: #f59e0b;
+        letter-spacing: 1px;
+      }
+
+      /* Pricing summary */
+      .pricing-summary {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin: 1rem 0;
+      }
+      .pricing-summary ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .pricing-summary li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px dashed var(--card-border);
+        font-size: 0.92rem;
+      }
+      .pricing-summary li:last-child {
+        border-bottom: none;
+      }
+      .pricing-summary .p-name {
+        font-weight: 700;
+        color: rgb(var(--black));
+      }
+      .pricing-summary .p-price {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* FAQ */
+      .faq-list {
+        margin: 1rem 0;
+      }
+      .faq-list details {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+      .faq-list summary {
+        font-weight: 700;
+        color: rgb(var(--black));
+        cursor: pointer;
+        font-size: 0.98rem;
+      }
+      .faq-list details[open] summary {
+        margin-bottom: 0.75rem;
+      }
+      .faq-list details p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: rgb(var(--gray-dark));
+      }
+
+      /* Internal links */
+      .internal-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 0.75rem;
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+      .internal-list a {
+        display: block;
+        padding: 0.85rem 1rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 0.92rem;
+        transition: box-shadow 0.15s ease, transform 0.15s ease;
+      }
+      .internal-list a:hover {
+        box-shadow: var(--card-shadow-hover);
+        transform: translateY(-1px);
+      }
+      .internal-list .internal-desc {
+        font-size: 0.8rem;
+        color: rgb(var(--gray));
+        font-weight: 400;
+        margin-top: 0.2rem;
+        line-height: 1.4;
+      }
+
+      /* Prev / Next nav */
+      .nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 2.5rem 0;
+      }
+      .nav-links a {
+        display: block;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .nav-links a:hover {
+        box-shadow: var(--card-shadow);
+      }
+      .nav-links .nav-label {
+        display: block;
+        font-size: 0.75rem;
+        color: rgb(var(--gray));
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+      }
+      .nav-links .next {
+        text-align: right;
+      }
+      .nav-links .empty {
+        visibility: hidden;
+      }
+
+      @media (max-width: 720px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .toc-col {
+          display: none;
+        }
+        .alt-card-body {
+          grid-template-columns: 1fr;
+        }
+        .nav-links {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="alt-page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/alternatives/">Alternatives</a>
+        <span class="sep">/</span>
+        <span class="current">{entry.title}</span>
+      </nav>
+
+      <div class="layout">
+        <div class="main-col">
+          <section class="hero">
+            <span class="category-tag" style={`background: ${entry.color}`}>{entry.category}</span>
+            <h1>{entry.title}</h1>
+            <p class="desc">{entry.description}</p>
+            <div class="hero-meta">
+              <span>By <a href={`/authors/${entry.authorSlug}/`}>{authorName}</a></span>
+              <span class="dot"></span>
+              <span>Updated {entry.lastUpdated}</span>
+              <span class="dot"></span>
+              <span>Tested over {entry.testingDuration}</span>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="num">{entry.alternatives.length}</div>
+                <div class="label">Alternatives</div>
+              </div>
+              <div class="hero-stat">
+                <div class="num">{entry.testingDuration}</div>
+                <div class="label">Tested</div>
+              </div>
+              <div class="hero-stat">
+                <div class="num">{entry.faqs.length}</div>
+                <div class="label">FAQs</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="intro">{entry.intro}</div>
+
+          <h2 id="alternatives-table">Alternatives Table</h2>
+          <div class="alt-table-wrap">
+            <table class="alt-table">
+              <thead>
+                <tr>
+                  <th class="rank-cell">#</th>
+                  <th>Alternative</th>
+                  <th>Best For</th>
+                  <th class="rating-cell">Rating</th>
+                  <th>Pricing</th>
+                </tr>
+              </thead>
+              <tbody>
+                {entry.alternatives.map((alt) => (
+                  <tr>
+                    <td class="rank-cell">{alt.rank}</td>
+                    <td class="name-cell">{alt.name}</td>
+                    <td class="best-for-cell">{alt.bestFor}</td>
+                    <td class="rating-cell">
+                      <span class="stars">{stars(alt.rating)}</span>
+                      <span class="rating-num">{alt.rating.toFixed(1)}/5</span>
+                    </td>
+                    <td class="pricing-cell">{alt.pricing}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="pros-cons">Pros &amp; Cons by Alternative</h2>
+          <div class="alt-cards">
+            {entry.alternatives.map((alt) => (
+              <article class="alt-card">
+                <div class="alt-card-header">
+                  <div class="alt-card-rank">{alt.rank}</div>
+                  <div>
+                    <div class="alt-card-name">{alt.name}</div>
+                    <div class="alt-card-best">Best for: {alt.bestFor}</div>
+                  </div>
+                </div>
+                <div class="alt-card-body">
+                  <div class="pc-block pros">
+                    <h4>Pros</h4>
+                    <ul>
+                      {alt.pros.map((p) => <li>{p}</li>)}
+                    </ul>
+                  </div>
+                  <div class="pc-block cons">
+                    <h4>Cons</h4>
+                    <ul>
+                      {alt.cons.map((c) => <li>{c}</li>)}
+                    </ul>
+                  </div>
+                </div>
+                <div class="alt-card-footer">
+                  <div class="field">
+                    <span class="field-label">Pricing:</span>
+                    <span class="field-val">{alt.pricing}</span>
+                  </div>
+                  <div class="field">
+                    <span class="field-label">Rating:</span>
+                    <span class="stars">{stars(alt.rating)}</span>
+                    <span class="field-val">{alt.rating.toFixed(1)}/5</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <h2 id="pricing">Pricing Comparison</h2>
+          <div class="pricing-summary">
+            <ul>
+              {entry.alternatives.map((alt) => (
+                <li>
+                  <span class="p-name">{alt.name}</span>
+                  <span class="p-price">{alt.pricing}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <h2 id="why-choose">Why Choose an Alternative</h2>
+          <ul class="why-list">
+            {entry.whyChoose.map((reason) => <li>{reason}</li>)}
+          </ul>
+
+          <h2 id="faq">FAQ</h2>
+          <div class="faq-list">
+            {entry.faqs.map((f) => (
+              <details>
+                <summary>{f.question}</summary>
+                <p>{f.answer}</p>
+              </details>
+            ))}
+          </div>
+
+          {relatedItems.length > 0 && (
+            <>
+              <h2 id="related">Related Alternatives</h2>
+              <ul class="internal-list">
+                {relatedItems.map((rel) => (
+                  <li>
+                    <a href={`/alternatives/${rel.slug}/`}>
+                      {rel.title}
+                      <div class="internal-desc">{rel.description}</div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <nav class="nav-links" aria-label="Alternatives navigation">
+            {prevEntry ? (
+              <a href={`/alternatives/${prevEntry.slug}/`} class="prev">
+                <span class="nav-label">← Previous</span>
+                {prevEntry.title}
+              </a>
+            ) : <span class="empty"></span>}
+            {nextEntry ? (
+              <a href={`/alternatives/${nextEntry.slug}/`} class="next">
+                <span class="nav-label">Next →</span>
+                {nextEntry.title}
+              </a>
+            ) : <span class="empty"></span>}
+          </nav>
+        </div>
+
+        <aside class="toc-col">
+          <div class="toc">
+            <p class="toc-label">On this page</p>
+            <ul>
+              {tocSections.map((s) => (
+                <li><a href={`#${s.id}`}>{s.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
