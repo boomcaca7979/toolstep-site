@@ -1,0 +1,420 @@
+---
+import { storiesData } from '../../data/stories';
+import { authors } from '../../data/authors';
+
+export function getStaticPaths() {
+  return storiesData.map((story) => ({
+    params: { slug: story.slug },
+    props: { story },
+  }));
+}
+
+const { story } = Astro.props;
+const author = authors.find(a => a.slug === story.authorSlug);
+const authorName = author?.name || 'ToolStep Team';
+const pageUrl = new URL(`/stories/${story.slug}/`, Astro.site).toString();
+const publisherUrl = new URL('/', Astro.site).toString();
+const storiesIndexUrl = new URL('/stories/', Astro.site).toString();
+
+// Story metadata schema (Discover-friendly)
+const storySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: story.title,
+  description: story.description,
+  datePublished: story.datePublished,
+  dateModified: story.datePublished,
+  author: { '@type': 'Person', name: authorName },
+  publisher: {
+    '@type': 'Organization',
+    name: 'ToolStep',
+    logo: {
+      '@type': 'ImageObject',
+      url: story.publisherLogo,
+    },
+  },
+  image: [story.poster, story.posterLandscape],
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+};
+
+// Breadcrumb schema
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: publisherUrl },
+    { '@type': 'ListItem', position: 2, name: 'Stories', item: storiesIndexUrl },
+    { '@type': 'ListItem', position: 3, name: story.title, item: pageUrl },
+  ],
+};
+---
+
+<!doctype html>
+<html ⚡ lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <title>{story.title} — ToolStep Web Stories</title>
+    <meta name="description" content={story.description} />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="amphtml" href={pageUrl} />
+
+    {/* Open Graph + Twitter for share-friendly */}
+    <meta property="og:title" content={story.title} />
+    <meta property="og:description" content={story.description} />
+    <meta property="og:image" content={story.poster} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={story.title} />
+    <meta name="twitter:description" content={story.description} />
+    <meta name="twitter:image" content={story.poster} />
+
+    {/* AMP runtime */}
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
+
+    {/* Story metadata schema */}
+    <script type="application/ld+json" set:html={JSON.stringify(storySchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+    {/* AMP boilerplate CSS */}
+    <style is:inline amp-boilerplate>
+      body {
+        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      }
+      @-webkit-keyframes -amp-start {
+        from { visibility: hidden; }
+        to { visibility: visible; }
+      }
+      @-moz-keyframes -amp-start {
+        from { visibility: hidden; }
+        to { visibility: visible; }
+      }
+      @-ms-keyframes -amp-start {
+        from { visibility: hidden; }
+        to { visibility: visible; }
+      }
+      @-o-keyframes -amp-start {
+        from { visibility: hidden; }
+        to { visibility: visible; }
+      }
+      @keyframes -amp-start {
+        from { visibility: hidden; }
+        to { visibility: visible; }
+      }
+    </style>
+    <noscript>
+      <style is:inline amp-boilerplate>
+        body {
+          -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          animation: none;
+        }
+      </style>
+    </noscript>
+
+    {/* Custom styles — AMP-safe (no external fonts, no !important on layout) */}
+    <style is:inline amp-custom>
+      :root {
+        --story-accent: {story.color};
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #1a1a1a;
+      }
+      amp-story {
+        background: #1a1a1a;
+      }
+
+      /* Cover slide */
+      .cover-headline {
+        font-size: 2.4rem;
+        font-weight: 800;
+        line-height: 1.15;
+        color: #ffffff;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+        margin: 0 0 0.5rem;
+      }
+      .cover-subtext {
+        font-size: 1.05rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.92);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+        margin: 0;
+      }
+
+      /* Content slide headlines */
+      .slide-headline {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #ffffff;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+        margin: 0 0 0.5rem;
+      }
+      .slide-subtext {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.92);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
+        font-weight: 500;
+        margin: 0;
+      }
+
+      /* CTA slide */
+      .cta-headline {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 0.5rem;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+      }
+      .cta-subtext {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.88);
+        margin: 0 0 1.5rem;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Gradient overlay layer (for readability) */
+      .gradient-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.0) 35%,
+          rgba(0, 0, 0, 0.0) 55%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Category badge */
+      .category-badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 4px 10px;
+        border-radius: 6px;
+        margin-bottom: 0.75rem;
+        color: #ffffff;
+      }
+
+      /* Publisher / author footer text */
+      .publisher-text {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 0.5rem;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Related stories section (fallback for non-AMP viewers) */
+      .fallback-wrapper {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 3rem;
+        background: #ffffff;
+      }
+      .fallback-wrapper h2 {
+        font-size: 1.3rem;
+        margin: 0 0 1rem;
+        color: #1a1a1a;
+      }
+      .fallback-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+      .fallback-card {
+        text-decoration: none;
+        color: inherit;
+      }
+      .fallback-card img {
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        border: 1px solid #e5e5e5;
+      }
+      .fallback-card .ft-title {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-top: 0.4rem;
+        line-height: 1.3;
+      }
+      .fallback-card .ft-desc {
+        font-size: 0.72rem;
+        color: #666;
+        margin-top: 0.15rem;
+        line-height: 1.4;
+      }
+      .share-section {
+        margin: 2rem 0;
+        padding: 1rem 0;
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .share-section h3 {
+        font-size: 0.95rem;
+        margin: 0 0 0.75rem;
+        color: #1a1a1a;
+      }
+      .share-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .share-buttons a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #ffffff;
+      }
+      .share-twitter { background: #1da1f2; }
+      .share-facebook { background: #1877f2; }
+      .share-linkedin { background: #0a66c2; }
+      .share-copy { background: #333; }
+    </style>
+  </head>
+  <body>
+    <amp-story
+      standalone
+      title={story.title}
+      publisher="ToolStep"
+      publisher-logo-src={story.publisherLogo}
+      poster-portrait-src={story.poster}
+      poster-square-src={story.posterSquare}
+      poster-landscape-src={story.posterLandscape}
+    >
+      {story.pages.map((page, i) => (
+        <amp-story-page id={page.id}>
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src={page.image}
+              width="720"
+              height="1280"
+              layout="responsive"
+            />
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="fill">
+            <div class="gradient-overlay"></div>
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="vertical" class="text-layer">
+            {i === 0 && (
+              <>
+                <span class="category-badge" style={`background: ${story.color}`}>{story.category}</span>
+                <h1 class="cover-headline">{page.headline}</h1>
+                {page.subtext && <p class="cover-subtext">{page.subtext}</p>}
+                <p class="publisher-text">By {authorName} · ToolStep</p>
+              </>
+            )}
+            {i > 0 && i < story.pages.length - 1 && (
+              <>
+                <h2 class="slide-headline">{page.headline}</h2>
+                {page.subtext && <p class="slide-subtext">{page.subtext}</p>}
+              </>
+            )}
+            {i === story.pages.length - 1 && (
+              <>
+                <h2 class="cta-headline">{page.headline}</h2>
+                {page.subtext && <p class="cta-subtext">{page.subtext}</p>}
+              </>
+            )}
+          </amp-story-grid-layer>
+          {page.ctaLabel && page.ctaUrl && (
+            <amp-story-cta-layer>
+              <a
+                href={page.ctaUrl}
+                style="display: inline-block; padding: 0.8rem 2rem; border-radius: 50px; background: var(--story-accent); color: white; font-weight: 700; font-size: 1rem; text-decoration: none; text-align: center; margin: 0 auto;"
+              >{page.ctaLabel}</a>
+            </amp-story-cta-layer>
+          )}
+        </amp-story-page>
+      ))}
+
+      {/* Related stories */}
+      {story.relatedStories.length > 0 && (
+        <amp-story-page id="related">
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src={story.posterLandscape}
+              width="1280"
+              height="720"
+              layout="responsive"
+            />
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="fill">
+            <div class="gradient-overlay"></div>
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="vertical" class="text-layer">
+            <h2 class="cta-headline">More Stories</h2>
+            <p class="cta-subtext">Swipe to explore more from ToolStep</p>
+          </amp-story-grid-layer>
+          <amp-story-cta-layer>
+            <a
+              href={storiesIndexUrl}
+              style="display: inline-block; padding: 0.8rem 2rem; border-radius: 50px; background: var(--story-accent); color: white; font-weight: 700; font-size: 1rem; text-decoration: none; text-align: center; margin: 0 auto;"
+            >Browse All Stories</a>
+          </amp-story-cta-layer>
+        </amp-story-page>
+      )}
+    </amp-story>
+
+    {/* Fallback content for non-AMP viewers (SEO + share) */}
+    <div class="fallback-wrapper">
+      <h1>{story.title}</h1>
+      <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">{story.description}</p>
+
+      {/* Share buttons */}
+      <div class="share-section">
+        <h3>Share this story</h3>
+        <div class="share-buttons">
+          <a class="share-twitter" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(story.title)}&url=${encodeURIComponent(pageUrl)}`} target="_blank" rel="noopener">Twitter</a>
+          <a class="share-facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`} target="_blank" rel="noopener">Facebook</a>
+          <a class="share-linkedin" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`} target="_blank" rel="noopener">LinkedIn</a>
+          <a class="share-copy" href={pageUrl}>Copy Link</a>
+        </div>
+      </div>
+
+      {/* Related stories grid */}
+      {story.relatedStories.length > 0 && (
+        <>
+          <h2>Related Stories</h2>
+          <div class="fallback-grid">
+            {story.relatedStories.map((slug) => {
+              const rel = storiesData.find(s => s.slug === slug);
+              if (!rel) return null;
+              return (
+                <a class="fallback-card" href={`/stories/${rel.slug}/`}>
+                  <img src={rel.poster} alt={rel.title} width="180" height="320" loading="lazy" />
+                  <div class="ft-title">{rel.title}</div>
+                  <div class="ft-desc">{rel.description}</div>
+                </a>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+      <div style="margin-top: 2rem; text-align: center;">
+        <a href="/stories/" style="color: var(--story-accent); text-decoration: none; font-weight: 600;">← Back to All Stories</a>
+      </div>
+    </div>
+  </body>
+</html>
