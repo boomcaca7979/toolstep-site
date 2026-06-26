@@ -19,7 +19,7 @@ const storiesIndexUrl = new URL('/stories/', Astro.site).toString();
 // Story metadata schema (Discover-friendly)
 const storySchema = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
+  '@type': 'WebStory',
   headline: story.title,
   description: story.description,
   datePublished: story.datePublished,

@@ -7,7 +7,7 @@ import ThemeToggle from './ThemeToggle.astro';
 <header>
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
+		<div class="internal-links" id="nav-menu">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/reviews">Reviews</HeaderLink>
 			<HeaderLink href="/best">Best</HeaderLink>
@@ -20,10 +20,34 @@ import ThemeToggle from './ThemeToggle.astro';
 			<HeaderLink href="/contact">Contact</HeaderLink>
 		</div>
 		<div class="right-actions">
+			<button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+				<span class="menu-bar"></span>
+				<span class="menu-bar"></span>
+				<span class="menu-bar"></span>
+			</button>
 			<ThemeToggle />
 		</div>
 	</nav>
 </header>
+<script>
+	const toggle = document.getElementById('menu-toggle');
+	const menu = document.getElementById('nav-menu');
+	if (toggle && menu) {
+		toggle.addEventListener('click', () => {
+			const isOpen = menu.classList.toggle('open');
+			toggle.classList.toggle('active', isOpen);
+			toggle.setAttribute('aria-expanded', String(isOpen));
+		});
+		// Close menu when a link is clicked
+		menu.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => {
+				menu.classList.remove('open');
+				toggle.classList.remove('active');
+				toggle.setAttribute('aria-expanded', 'false');
+			});
+		});
+	}
+</script>
 <style>
 	header {
 		margin: 0;
@@ -64,9 +88,65 @@ import ThemeToggle from './ThemeToggle.astro';
 		align-items: center;
 		gap: 12px;
 	}
+	/* Hamburger menu button — hidden on desktop, visible on mobile */
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 4px;
+		width: 36px;
+		height: 36px;
+		padding: 6px;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		border-radius: 6px;
+	}
+	.menu-toggle:hover {
+		background: rgba(var(--gray-light), 50%);
+	}
+	.menu-bar {
+		display: block;
+		height: 2px;
+		width: 100%;
+		background: rgb(var(--black));
+		border-radius: 2px;
+		transition: transform 0.2s ease, opacity 0.2s ease;
+	}
+	.menu-toggle.active .menu-bar:nth-child(1) {
+		transform: translateY(6px) rotate(45deg);
+	}
+	.menu-toggle.active .menu-bar:nth-child(2) {
+		opacity: 0;
+	}
+	.menu-toggle.active .menu-bar:nth-child(3) {
+		transform: translateY(-6px) rotate(-45deg);
+	}
 	@media (max-width: 720px) {
+		.menu-toggle {
+			display: flex;
+		}
 		.internal-links {
 			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			background: var(--header-bg);
+			box-shadow: 0 4px 12px rgba(var(--black), 10%);
+			padding: 0.5em 1em;
+			border-top: 1px solid var(--card-border);
+		}
+		.internal-links.open {
+			display: flex;
+		}
+		.internal-links a {
+			padding: 0.75em 0.5em;
+			border-bottom: 1px solid var(--card-border);
+		}
+		.internal-links a:last-child {
+			border-bottom: none;
 		}
 	}
 </style>

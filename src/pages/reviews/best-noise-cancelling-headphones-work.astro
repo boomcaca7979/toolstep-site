@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -105,9 +106,9 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.toolstep.top/" },
-        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": "https://www.toolstep.top/reviews/" },
-        { "@type": "ListItem", "position": 3, "name": "Best Noise Cancelling Headphones for Work", "item": "https://www.toolstep.top/reviews/best-noise-cancelling-headphones-work/" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Best Noise Cancelling Headphones for Work", "item": new URL('/reviews/best-noise-cancelling-headphones-work/', Astro.site).toString() }
       ]
     })} />
     <style>
@@ -180,7 +181,7 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
       <div class="meta">Updated June 2026 · 14 min read</div>
       <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
-      <img src={heroImage} alt="Best noise cancelling headphones for work on a minimalist desk in a home office" class="hero-img" loading="lazy" width="1280" height="720" />
+      <Image src={heroImg} alt="Best noise cancelling headphones for work on a minimalist desk in a home office" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
       <ProductCTACard
         productName={productName}

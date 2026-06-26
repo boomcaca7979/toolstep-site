@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -107,9 +108,9 @@ const nextPost = { title: 'Best Ergonomic Chair Under $500', href: '/reviews/bes
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.toolstep.top/" },
-        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": "https://www.toolstep.top/reviews/" },
-        { "@type": "ListItem", "position": 3, "name": "Branch Ergonomic Chair Review", "item": "https://www.toolstep.top/reviews/branch-ergonomic-chair-review/" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Branch Ergonomic Chair Review", "item": new URL('/reviews/branch-ergonomic-chair-review/', Astro.site).toString() }
       ]
     })} />
     <style>
@@ -182,7 +183,7 @@ const nextPost = { title: 'Best Ergonomic Chair Under $500', href: '/reviews/bes
       <div class="meta">Updated June 2026 · 11 min read</div>
       <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
-      <img src={heroImage} alt="Branch ergonomic chair with mesh back in a bright home office" class="hero-img" loading="lazy" width="1280" height="720" />
+      <Image src={heroImg} alt="Branch ergonomic chair with mesh back in a bright home office" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
       <ProductCTACard
         productName={productName}

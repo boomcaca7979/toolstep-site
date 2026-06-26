@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const pageTitle = 'OBS Studio Complete Guide: How to Record Your Screen for Free in 2026 - ' + SITE_TITLE;
@@ -72,9 +73,11 @@ const pageDescription = 'A step-by-step guide to using OBS Studio for screen rec
 			<p><strong>Q: Can I use OBS on Mac?</strong><br>A: Yes. OBS works on Windows, Mac, and Linux.</p>
 			<p><strong>Q: Why is my recording laggy?</strong><br>A: Lower your resolution/FPS or switch to hardware encoding (NVENC/AMF) if you have a dedicated GPU.</p>
 
-			<p><a href="https://www.amazon.com/s?k=streaming+microphone&tag=toolwise20-20">Download OBS Studio Free</a></p>
+			<p><a href="https://obsproject.com" target="_blank" rel="noopener noreferrer nofollow sponsored">Download OBS Studio Free</a></p>
 
 			<p><em>Disclaimer: This post contains affiliate links. We may earn a commission if you purchase through these links.</em></p>
+
+			<AffiliateDisclosure />
 		</main>
 		<Footer />
 	</body>

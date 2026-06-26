@@ -205,8 +205,9 @@ const breadcrumbSchema = itemListElements.length > 0 ? {
     </style>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header />
-    <div class="eeat-wrap">
+    <div class="eeat-wrap" id="main-content">
       {breadcrumbs.length > 0 && (
         <nav class="breadcrumb" aria-label="Breadcrumb">
           {breadcrumbs.map((crumb, i) => (

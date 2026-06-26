@@ -10,30 +10,15 @@ const description = "Need a writing assistant? Compare Grammarly and ProWritingA
 <html lang="en">
 <head>
   <BaseHead title={title} description={description} articleSchema={{headline: title, description: description, datePublished: '2026-06-01', dateModified: '2026-06-02', authorName: 'Toolwise Editorial Team'}} />
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.toolstep.top"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Reviews",
-      "item": "https://www.toolstep.top/reviews/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Grammarly vs ProWritingAid: Which AI Writing Tool Is Better in 2026?",
-      "item": "https://www.toolstep.top/reviews/grammarly-vs-prowritingaid/"
-    }
-  ]
-}</script>
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Grammarly vs ProWritingAid: Which AI Writing Tool Is Better in 2026?", "item": new URL('/reviews/grammarly-vs-prowritingaid/', Astro.site).toString() }
+      ]
+    })} />
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",

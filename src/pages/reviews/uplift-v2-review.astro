@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -107,9 +108,9 @@ const nextPost = { title: 'Branch Ergonomic Chair Review', href: '/reviews/branc
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.toolstep.top/" },
-        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": "https://www.toolstep.top/reviews/" },
-        { "@type": "ListItem", "position": 3, "name": "Uplift V2 Review", "item": "https://www.toolstep.top/reviews/uplift-v2-review/" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Uplift V2 Review", "item": new URL('/reviews/uplift-v2-review/', Astro.site).toString() }
       ]
     })} />
     <style>
@@ -182,7 +183,7 @@ const nextPost = { title: 'Branch Ergonomic Chair Review', href: '/reviews/branc
       <div class="meta">Updated June 2026 · 12 min read</div>
       <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
-      <img src={heroImage} alt="Uplift V2 standing desk in a premium office with bamboo top and dual monitors" class="hero-img" loading="lazy" width="1280" height="720" />
+      <Image src={heroImg} alt="Uplift V2 standing desk in a premium office with bamboo top and dual monitors" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
       <ProductCTACard
         productName={productName}

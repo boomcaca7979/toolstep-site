@@ -1,0 +1,23 @@
+{
+  "name": "ToolStep — Best Tools, Reviews & Comparisons",
+  "short_name": "ToolStep",
+  "description": "Curated directory of the best online tools for productivity, design, AI, and creativity. Honest reviews and comparisons.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2337ff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["productivity", "reviews", "technology"]
+}

@@ -10,30 +10,15 @@ const description = "Google Drive vs Dropbox vs OneDrive: Compare storage, sync,
 <html lang="en">
 <head>
   <BaseHead title={title} description={description} articleSchema={{headline: title, description: description, datePublished: '2026-06-01', dateModified: '2026-06-02', authorName: 'Toolwise Editorial Team'}} />
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.toolstep.top"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Reviews",
-      "item": "https://www.toolstep.top/reviews/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Google Drive vs Dropbox vs OneDrive: Which Cloud Storage Is Best in 2026?",
-      "item": "https://www.toolstep.top/reviews/google-drive-vs-dropbox-vs-onedrive/"
-    }
-  ]
-}</script>
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Google Drive vs Dropbox vs OneDrive: Which Cloud Storage Is Best in 2026?", "item": new URL('/reviews/google-drive-vs-dropbox-vs-onedrive/', Astro.site).toString() }
+      ]
+    })} />
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",

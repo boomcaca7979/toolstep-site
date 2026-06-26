@@ -8,6 +8,12 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
 	site: 'https://www.toolstep.top',
 	integrations: [mdx(), sitemap()],
+	image: {
+		remotePatterns: [
+			{ protocol: 'https', hostname: 'trae-api-cn.mchost.guru' },
+			{ protocol: 'https', hostname: 'i.pravatar.cc' },
+		],
+	},
 	fonts: [
 		{
 			provider: fontProviders.local(),

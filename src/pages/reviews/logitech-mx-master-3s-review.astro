@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -108,9 +109,9 @@ const nextPost = { title: 'Best USB-C Dock for MacBook', href: '/reviews/best-us
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.toolstep.top/" },
-        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": "https://www.toolstep.top/reviews/" },
-        { "@type": "ListItem", "position": 3, "name": "Logitech MX Master 3S Review", "item": "https://www.toolstep.top/reviews/logitech-mx-master-3s-review/" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Logitech MX Master 3S Review", "item": new URL('/reviews/logitech-mx-master-3s-review/', Astro.site).toString() }
       ]
     })} />
     <style>
@@ -183,7 +184,7 @@ const nextPost = { title: 'Best USB-C Dock for MacBook', href: '/reviews/best-us
       <div class="meta">Updated June 2026 · 12 min read</div>
       <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
-      <img src={heroImage} alt="Logitech MX Master 3S mouse close up on a dark desk" class="hero-img" loading="lazy" width="1280" height="720" />
+      <Image src={heroImg} alt="Logitech MX Master 3S mouse close up on a dark desk" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
       <ProductCTACard
         productName={productName}

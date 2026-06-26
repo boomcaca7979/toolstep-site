@@ -13,6 +13,18 @@ import { tools } from '../data/tools';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "ToolStep Tools Directory",
+			"description": SITE_DESCRIPTION,
+			"itemListElement": tools.slice(0, 10).map((tool, i) => ({
+				"@type": "ListItem",
+				"position": i + 1,
+				"name": tool.name,
+				"url": new URL(`/tools/${tool.id}/`, Astro.site).toString(),
+			})),
+		})} />
 		<style>
 			.app-layout {
 				display: flex;
@@ -103,8 +115,10 @@ import { tools } from '../data/tools';
 		<section class="newsletter-section">
 			<h2>Get Weekly Tool Recommendations</h2>
 			<p>Join 1,000+ subscribers receiving the best new tools every Monday.</p>
-			<form class="newsletter-form" onsubmit="event.preventDefault();">
-				<input type="email" placeholder="Enter your email" required />
+			<form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/toolstep" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/toolstep', 'popupwindow')">
+				<label for="newsletter-email" class="sr-only">Enter your email</label>
+				<input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required />
+				<input type="hidden" value="1" name="embed" />
 				<button type="submit">Subscribe</button>
 			</form>
 		</section>
