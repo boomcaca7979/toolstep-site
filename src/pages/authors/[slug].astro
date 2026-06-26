@@ -1,0 +1,355 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { authors } from '../../data/authors';
+import { reviews } from '../../data/reviews';
+
+export function getStaticPaths() {
+  return authors.map((author) => ({
+    params: { slug: author.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const author = authors.find(a => a.slug === slug)!;
+
+// Get published review entries that match this author's review slugs
+const authorReviews = author.reviews
+  .map(rSlug => reviews.find(r => r.href.includes(rSlug)))
+  .filter((r): r is NonNullable<typeof r> => r !== undefined);
+
+const pageTitle = `${author.name} — ${author.role} | ToolStep`;
+const pageDescription = author.bio.slice(0, 155);
+const lastUpdated = 'June 2026';
+
+// Author schema for SEO
+const authorSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: author.name,
+  jobTitle: author.role,
+  description: author.bio,
+  image: author.avatar,
+  url: new URL(`/authors/${author.slug}`, Astro.site).toString(),
+  worksFor: {
+    '@type': 'Organization',
+    name: 'ToolStep',
+  },
+  knowsAbout: author.expertise,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Authors', item: new URL('/authors', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: author.name, item: new URL(`/authors/${author.slug}`, Astro.site).toString() },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={pageDescription} />
+    <script type="application/ld+json" set:html={JSON.stringify(authorSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <style>
+      .author-page {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+        min-height: calc(100vh - 200px);
+      }
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        font-size: 0.82rem;
+        color: rgb(var(--gray));
+        margin-bottom: 2rem;
+      }
+      .breadcrumb a {
+        color: rgb(var(--gray));
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+      .breadcrumb .separator {
+        color: rgb(var(--gray-light));
+      }
+      .breadcrumb .current {
+        color: rgb(var(--gray-dark));
+        font-weight: 600;
+      }
+      .author-header {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgb(var(--gray-light));
+      }
+      .author-avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        border: 4px solid var(--card-bg);
+        box-shadow: var(--card-shadow);
+      }
+      .author-header-info h1 {
+        font-size: 2rem;
+        margin: 0 0 0.3rem;
+      }
+      .author-role {
+        font-size: 1.1rem;
+        color: var(--accent);
+        font-weight: 600;
+        margin: 0 0 0.5rem;
+      }
+      .author-experience-short {
+        font-size: 0.9rem;
+        color: rgb(var(--gray));
+        margin: 0;
+      }
+      .author-social {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+      .author-social a {
+        font-size: 0.82rem;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .author-social a:hover {
+        text-decoration: underline;
+      }
+      .section {
+        margin-bottom: 2.5rem;
+      }
+      .section h2 {
+        font-size: 1.4rem;
+        margin: 0 0 1rem;
+        color: rgb(var(--black));
+      }
+      .section p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: rgb(var(--gray-dark));
+        margin: 0 0 1rem;
+      }
+      .equipment-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .equipment-list li {
+        font-size: 0.9rem;
+        color: rgb(var(--gray-dark));
+        padding: 0.5rem 0.75rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        line-height: 1.4;
+      }
+      .expertise-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .expertise-tag {
+        background: rgba(var(--accent-rgb), 0.08);
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 16px;
+      }
+      .stat-row {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      .stat-box {
+        text-align: left;
+      }
+      .stat-number {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 0.78rem;
+        color: rgb(var(--gray));
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        margin-top: 0.25rem;
+      }
+      .reviews-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .review-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        color: inherit;
+        transition: box-shadow 0.15s ease, transform 0.15s ease;
+      }
+      .review-item:hover {
+        box-shadow: var(--card-shadow);
+        transform: translateY(-1px);
+      }
+      .review-cat {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #fff;
+        background: var(--accent);
+        padding: 2px 8px;
+        border-radius: 10px;
+        white-space: nowrap;
+      }
+      .review-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: rgb(var(--black));
+        flex: 1;
+      }
+      .review-arrow {
+        color: rgb(var(--gray));
+        font-size: 0.85rem;
+      }
+      @media (max-width: 600px) {
+        .author-page {
+          padding: 32px 16px 48px;
+        }
+        .author-header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .equipment-list {
+          grid-template-columns: 1fr;
+        }
+        .stat-row {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <div class="author-page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="separator">/</span>
+        <a href="/authors">Authors</a>
+        <span class="separator">/</span>
+        <span class="current">{author.name}</span>
+      </nav>
+
+      <div class="author-header">
+        <img src={author.avatar} alt={`${author.name} portrait`} class="author-avatar" loading="lazy" width="140" height="140" />
+        <div class="author-header-info">
+          <h1>{author.name}</h1>
+          <p class="author-role">{author.role}</p>
+          <p class="author-experience-short">{author.experience}</p>
+          {author.social && (
+            <div class="author-social">
+              {author.social.twitter && <a href={author.social.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>}
+              {author.social.linkedin && <a href={author.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
+              {author.social.email && <a href={`mailto:${author.social.email}`}>Email</a>}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-number">{authorReviews.length}</div>
+          <div class="stat-label">Reviews Published</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">{author.expertise.length}</div>
+          <div class="stat-label">Expertise Areas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">{author.equipment.length}</div>
+          <div class="stat-label">Test Equipment</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>About</h2>
+        <p>{author.bio}</p>
+      </div>
+
+      <div class="section">
+        <h2>Expertise</h2>
+        <div class="expertise-tags">
+          {author.expertise.map((exp) => (
+            <span class="expertise-tag">{exp}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Testing Equipment</h2>
+        <p>Equipment {author.name.split(' ')[0]} uses for product testing:</p>
+        <ul class="equipment-list">
+          {author.equipment.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Review Experience</h2>
+        <p>{author.experience}</p>
+      </div>
+
+      {authorReviews.length > 0 && (
+        <div class="section">
+          <h2>Published Reviews ({authorReviews.length})</h2>
+          <div class="reviews-list">
+            {authorReviews.map((review) => (
+              <a href={review.href} class="review-item">
+                <span class="review-cat">{review.category}</span>
+                <span class="review-title">{review.title}</span>
+                <span class="review-arrow">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="section">
+        <h2>Editorial Standards</h2>
+        <p>
+          {author.name} follows ToolStep's strict <a href="/editorial-policy">Editorial Policy</a> and <a href="/how-we-test">Testing Methodology</a>. All reviews are based on hands-on testing with documented measurement data.
+        </p>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>

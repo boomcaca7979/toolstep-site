@@ -1,0 +1,99 @@
+---
+import PageLayout from '../components/PageLayout.astro';
+
+const pageTitle = 'Affiliate Disclosure — ToolStep';
+const pageDescription = 'How ToolStep makes money through affiliate commissions, and why our ratings are never influenced by affiliate partnerships.';
+const lastUpdated = 'June 2026';
+---
+
+<PageLayout
+  title="Affiliate Disclosure"
+  description={pageDescription}
+  subtitle="We believe in full transparency about how we make money. Here's exactly how it works — and why it doesn't affect our ratings."
+  lastUpdated={lastUpdated}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Affiliate Disclosure' },
+  ]}
+>
+  <h2>How We Make Money</h2>
+  <p>
+    ToolStep is reader-supported. When you buy through links on our site, we may earn an affiliate commission at no extra cost to you. We participate in the following affiliate programs:
+  </p>
+  <ul>
+    <li><strong>Amazon Associates:</strong> We earn a commission (typically 1-4%) on qualifying purchases made through our Amazon affiliate links.</li>
+    <li><strong>Best Buy Affiliate Program:</strong> We earn a commission on purchases made through our Best Buy links.</li>
+    <li><strong>Walmart Affiliate Program:</strong> We earn a commission on purchases made through our Walmart links.</li>
+    <li><strong>Brand Direct Programs:</strong> Some brands (e.g., Herman Miller, Branch, FlexiSpot) have direct affiliate programs. We earn a commission on purchases made through these brand links.</li>
+  </ul>
+  <p>
+    These commissions help us fund our independent testing and keep our reviews free for readers.
+  </p>
+
+  <h2>Why It Doesn't Affect Our Ratings</h2>
+  <div class="info-card">
+    <h3>The core promise</h3>
+    <p>
+      Our affiliate relationships <strong>never influence our ratings or recommendations</strong>. Products are ranked based solely on test results, build quality, and value — not on commission rates.
+    </p>
+    <p>
+      If a product scores poorly, we say so regardless of whether we earn a commission on it. If a competing product with zero commission scores higher, we rank it higher.
+    </p>
+  </div>
+
+  <h3>How we enforce this</h3>
+  <ul>
+    <li><strong>Separation of teams:</strong> The editorial/testing team does not see affiliate commission rates before or during testing. The affiliate team does not see reviews before publication.</li>
+    <li><strong>Standardized scoring:</strong> Ratings are calculated from test data using a fixed formula. See our <a href="/how-we-test">scoring system</a> for details.</li>
+    <li><strong>No brand preview:</strong> Brands cannot see our reviews before publication, and they cannot pay to have criticism removed.</li>
+    <li><strong>Equal treatment:</strong> Products from brands with affiliate programs and products from brands without affiliate programs follow the exact same testing process.</li>
+  </ul>
+
+  <h2>How to Identify Affiliate Links</h2>
+  <p>
+    All affiliate links on ToolStep are marked with one of these behaviors:
+  </p>
+  <ul>
+    <li>Amazon links contain our affiliate tag (<code>tag=toolwise20-20</code>) in the URL</li>
+    <li>Best Buy and Walmart links are tracked through their respective affiliate programs</li>
+    <li>Brand direct links may use tracking parameters or redirect through affiliate networks</li>
+    <li>All affiliate buttons on review pages use <code>rel="noopener sponsored nofollow"</code> attributes</li>
+  </ul>
+  <p>
+    You can verify this by hovering over any "Check Price" or "Official Website" button and checking the browser's link preview.
+  </p>
+
+  <h2>What We Do With the Money</h2>
+  <p>
+    Affiliate commissions fund our ongoing testing operations:
+  </p>
+  <ul>
+    <li><strong>Product purchases:</strong> We buy the majority of our review units at retail price. Commission revenue pays for these purchases.</li>
+    <li><strong>Testing equipment:</strong> Decibel meters, luggage scales, color checkers, and other measurement tools.</li>
+    <li><strong>Lab space:</strong> The room where we keep 6 desks and 12 chairs in rotation costs money to maintain.</li>
+    <li><strong>Editorial salaries:</strong> Our reviewers are paid staff, not unpaid volunteers or AI content farms.</li>
+  </ul>
+
+  <h2>Your Cost</h2>
+  <p>
+    You pay <strong>the exact same price</strong> whether you use our affiliate link or go directly to the retailer's website. The commission comes out of the retailer's margin, not your wallet. Using our links is a way to support our work at no cost to you.
+  </p>
+
+  <h2>Products Without Affiliate Programs</h2>
+  <p>
+    Not every product we review has an affiliate program. When we review a product from a brand that doesn't offer affiliate commissions, we still review it and still link to where you can buy it — we just don't earn anything if you click through.
+  </p>
+  <p>
+    This happens regularly with smaller brands and direct-to-consumer companies. We review these products because they're relevant to our readers, not because they generate revenue.
+  </p>
+
+  <h2>Changes to This Disclosure</h2>
+  <p>
+    If we add or remove affiliate partnerships, we update this page and note the change date. We will never add a new affiliate partnership and retroactively change a review's rating to favor the new partner.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    If you have questions about our affiliate practices, email us at <a href="mailto:disclosure@toolstep.com">disclosure@toolstep.com</a>. For editorial questions, see our <a href="/editorial-policy">Editorial Policy</a> or <a href="/contact">contact page</a>.
+  </p>
+</PageLayout>

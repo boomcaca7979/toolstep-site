@@ -1,0 +1,151 @@
+---
+import PageLayout from '../components/PageLayout.astro';
+
+const pageTitle = 'How We Test — ToolStep Testing Methodology';
+const pageDescription = 'Our testing methodology: 30-90 day test periods, real-world conditions, quantitative measurements, and side-by-side competitor comparisons.';
+const lastUpdated = 'June 2026';
+---
+
+<PageLayout
+  title="How We Test"
+  description={pageDescription}
+  subtitle="Our reviews are based on structured, repeatable testing — not casual impressions. Here's exactly how we do it."
+  lastUpdated={lastUpdated}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'How We Test' },
+  ]}
+>
+  <h2>Testing Duration</h2>
+  <p>
+    Every product we review goes through a minimum testing period before we publish:
+  </p>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">30</div>
+      <div class="stat-label">Min Days (Software)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">60</div>
+      <div class="stat-label">Min Days (Peripherals)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">90</div>
+      <div class="stat-label">Min Days (Furniture)</div>
+    </div>
+  </div>
+  <ul>
+    <li><strong>Software tools:</strong> Minimum 30 days of daily use in our actual workflow.</li>
+    <li><strong>Peripherals (keyboards, mice, webcams):</strong> Minimum 60 days of daily use.</li>
+    <li><strong>Furniture (desks, chairs):</strong> Minimum 90 days of daily use — we need to see if it causes back pain or develops squeaks over time.</li>
+    <li><strong>Long-term reliability:</strong> For products we keep, we revisit the review after 6 and 12 months to report on durability.</li>
+  </ul>
+
+  <h2>Testing Conditions</h2>
+  <p>
+    We test in <strong>real-world home office conditions</strong>, not lab benches. Our testing lab is a functioning home office:
+  </p>
+  <ul>
+    <li>6 standing desks in rotation, each set up with a real monitor, keyboard, and mouse</li>
+    <li>12 ergonomic chairs tested by reviewers of different heights (5'0" to 6'4") and weights</li>
+    <li>A real MacBook Pro and Windows laptop for dock and peripheral testing</li>
+    <li>A 27" 4K monitor and a 34" ultrawide for stability testing</li>
+    <li>Real work tasks: 8-hour workdays, video calls, coding sessions, writing sessions</li>
+  </ul>
+
+  <h2>Quantitative Measurements</h2>
+  <p>
+    Where a spec is measurable, we measure it. We don't rely on manufacturer claims. Here's what we measure for each product category:
+  </p>
+
+  <h3>Standing Desks</h3>
+  <ul>
+    <li><strong>Stability test:</strong> 35 lb monitor on top, desk at max height, we apply lateral force and measure wobble</li>
+    <li><strong>Noise level:</strong> Decibel meter (Reed R8050) at 3 feet during full height transition</li>
+    <li><strong>Speed:</strong> Time to go from min to max height ( stopwatch)</li>
+    <li><strong>Weight capacity:</strong> Incremental weight loading until desk stops or motor strains</li>
+    <li><strong>Height range:</strong> Actual measured min and max heights (not manufacturer specs)</li>
+  </ul>
+
+  <h3>Ergonomic Chairs</h3>
+  <ul>
+    <li><strong>Adjustability:</strong> Count of independent adjustments (seat height, armrest, lumbar, tilt, seat depth)</li>
+    <li><strong>Lumbar support:</strong> Pressure measurement at different sitting positions</li>
+    <li><strong>Breathability:</strong> Airflow test through mesh back</li>
+    <li><strong>Build quality:</strong> Material inspection, weld quality, gas cylinder smoothness</li>
+    <li><strong>Long-term comfort:</strong> 8-hour sitting sessions, comfort rated at hours 1, 4, and 8</li>
+  </ul>
+
+  <h3>Keyboards &amp; Mice</h3>
+  <ul>
+    <li><strong>Typing speed:</strong> 10-minute typing test, words per minute</li>
+    <li><strong>Switch feel:</strong> Actuation force (grams), tactile bump profile</li>
+    <li><strong>Battery life:</strong> Continuous use until depletion (backlight on/off)</li>
+    <li><strong>Latency:</strong> Input lag measurement for wireless models</li>
+    <li><strong>Ergonomics:</strong> Wrist angle measurement, comfort over 4+ hour sessions</li>
+  </ul>
+
+  <h3>USB-C Docks</h3>
+  <ul>
+    <li><strong>Transfer speed:</strong> CrystalDiskMark benchmark on connected SSD</li>
+    <li><strong>Charging speed:</strong> Power delivery measurement under load</li>
+    <li><strong>Multi-monitor:</strong> Dual 4K @ 60Hz stability test</li>
+    <li><strong>Thermal performance:</strong> Temperature under sustained load</li>
+    <li><strong>Compatibility:</strong> Tested on MacBook, Windows, and iPad</li>
+  </ul>
+
+  <h3>Webcams</h3>
+  <ul>
+    <li><strong>Image quality:</strong> Test chart capture, resolution verification</li>
+    <li><strong>Low-light performance:</strong> 50 lux and 10 lux test environments</li>
+    <li><strong>Color accuracy:</strong> Color checker comparison</li>
+    <li><strong>Autofocus:</strong> Speed and accuracy during subject movement</li>
+    <li><strong>Audio:</strong> Built-in mic frequency response</li>
+  </ul>
+
+  <h2>Side-by-Side Comparison</h2>
+  <p>
+    Every product is tested alongside at least <strong>two direct competitors</strong> in the same price tier. We don't review products in isolation — we compare them to what else you could buy with the same money.
+  </p>
+  <p>
+    For example, when we review the FlexiSpot E7 standing desk, we test it alongside the Vari Electric Desk and the Branch Standing Desk in the same price range, on the same testing bench, with the same monitor and weight setup.
+  </p>
+
+  <h2>Our Scoring System</h2>
+  <div class="info-card">
+    <h3>How we calculate the overall score (out of 5)</h3>
+    <p>Each product is scored on 5 weighted categories:</p>
+    <ul>
+      <li><strong>Performance (30%):</strong> How well does it do its primary job? For a desk: stability, speed, noise. For a chair: comfort, adjustability, support.</li>
+      <li><strong>Build Quality (25%):</strong> Materials, construction, expected durability, warranty length.</li>
+      <li><strong>Value (20%):</strong> Price relative to competitors with similar performance. A $300 desk that performs like a $500 desk scores high here.</li>
+      <li><strong>Ergonomics (15%):</strong> How does it feel during 8+ hours of daily use? Does it cause strain or prevent it?</li>
+      <li><strong>Features (10%):</strong> Programmable presets, connectivity, adjustability — the extras that matter.</li>
+    </ul>
+    <p>
+      The overall score is a weighted average. We also give an "Editor's Choice" badge to products that score 4.5 or above and offer exceptional value.
+    </p>
+  </div>
+
+  <h2>Review Process</h2>
+  <p>Every review goes through this pipeline before publication:</p>
+  <ol>
+    <li><strong>Product selection:</strong> We choose products based on reader interest, market relevance, and price tier coverage.</li>
+    <li><strong>Sourcing:</strong> We purchase or arrange a loaner unit. Sourcing method is documented.</li>
+    <li><strong>Initial inspection:</strong> Unboxing, material quality check, assembly time measurement.</li>
+    <li><strong>Setup:</strong> Product is installed in our testing lab alongside competitors.</li>
+    <li><strong>Testing period:</strong> 30-90 days of daily use, depending on category. Measurements taken at set intervals.</li>
+    <li><strong>Side-by-side testing:</strong> Direct comparison with 2+ competitors in the same price tier.</li>
+    <li><strong>Scoring:</strong> Weighted scoring across 5 categories, calculated from test data.</li>
+    <li><strong>Draft writing:</strong> The primary tester writes the review draft.</li>
+    <li><strong>Editorial review:</strong> A senior editor reviews for accuracy, fairness, and clarity.</li>
+    <li><strong>Fact-check:</strong> All specs, prices, and claims are verified against manufacturer data and our measurements.</li>
+    <li><strong>Publication:</strong> Review is published with the tester's byline and a link to their author page.</li>
+    <li><strong>Long-term monitoring:</strong> We revisit after 6 and 12 months. If the product fails or is updated, we re-test and update the review.</li>
+  </ol>
+
+  <h2>Editorial Independence</h2>
+  <p>
+    Our testing process is completely independent of our affiliate partnerships. The affiliate team does not see reviews before publication. The testing team does not know which products have higher commission rates. See our <a href="/editorial-policy">Editorial Policy</a> for the full independence rules.
+  </p>
+</PageLayout>

@@ -6,6 +6,7 @@ import ProductCTACard from '../../components/ProductCTACard.astro';
 import ProductSummary from '../../components/ProductSummary.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-2.jpg';
 
 const pageTitle = 'Best Wireless Mouse for Productivity (2026)';
@@ -16,6 +17,10 @@ const heroImage = heroImg.src;
 const ratingValue = 4.7;
 const bestPrice = 99;
 const author = 'Toolwise Team';
+const authorSlug = 'sarah-park';
+const lastUpdated = 'June 2026';
+const testingDuration = '60 days';
+const productsTested = 4;
 const productSlug = 'best-wireless-mouse-productivity';
 const productName = 'Logitech MX Master 3S';
 const brand = 'Logitech';
@@ -173,7 +178,7 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
     <main>
       <h1>Best Wireless Mouse for Productivity</h1>
       <div class="meta">Updated June 2026 · 11 min read</div>
-      <div class="author">By {author}</div>
+      <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
       <img src={heroImage} alt="Best wireless mouse for productivity on a clean wood desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
@@ -184,6 +189,13 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
         price={bestPrice}
         slug={productSlug}
         editorChoice={true}
+      />
+
+      <ReviewMeta
+        authorSlug={authorSlug}
+        lastUpdated={lastUpdated}
+        testingDuration={testingDuration}
+        productsTested={productsTested}
       />
 
       <nav class="toc" aria-label="Table of contents">

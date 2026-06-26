@@ -1,0 +1,134 @@
+---
+import PageLayout from '../components/PageLayout.astro';
+
+const pageTitle = 'Contact ToolStep — Get in Touch';
+const pageDescription = 'Contact ToolStep for editorial questions, corrections, product suggestions, partnerships, or press inquiries.';
+const lastUpdated = 'June 2026';
+---
+
+<PageLayout
+  title="Contact Us"
+  description={pageDescription}
+  subtitle="Questions, corrections, product suggestions, or partnership inquiries — we read every message."
+  lastUpdated={lastUpdated}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Contact' },
+  ]}
+>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">✍️</div>
+      <h3>Editorial &amp; Corrections</h3>
+      <p>Spotted an error in a review? Disagree with a rating? Want to challenge our methodology?</p>
+      <a href="mailto:editorial@toolstep.com">editorial@toolstep.com</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-icon">📦</div>
+      <h3>Product Suggestions</h3>
+      <p>Want us to review a specific product? Have a product you think we missed in a roundup?</p>
+      <a href="mailto:suggestions@toolstep.com">suggestions@toolstep.com</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-icon">🤝</div>
+      <h3>Partnerships &amp; PR</h3>
+      <p>Brand partnership inquiries, loaner unit requests, or affiliate program questions.</p>
+      <a href="mailto:partnerships@toolstep.com">partnerships@toolstep.com</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-icon">🔒</div>
+      <h3>Privacy &amp; Legal</h3>
+      <p>Privacy requests, data deletion, DMCA, or legal inquiries.</p>
+      <a href="mailto:privacy@toolstep.com">privacy@toolstep.com</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-icon">💼</div>
+      <h3>Careers</h3>
+      <p>Want to join our review team? We hire domain experts, not generalist writers.</p>
+      <a href="mailto:careers@toolstep.com">careers@toolstep.com</a>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-icon">💬</div>
+      <h3>General Inquiries</h3>
+      <p>Anything else? Press, media, or just want to say hello.</p>
+      <a href="mailto:hello@toolstep.com">hello@toolstep.com</a>
+    </div>
+  </div>
+
+  <h2>Before You Email</h2>
+  <p>
+    To help us respond faster, please include the following in your email:
+  </p>
+  <ul>
+    <li><strong>For corrections:</strong> The review URL and the specific claim you believe is incorrect</li>
+    <li><strong>For product suggestions:</strong> The product name, category, and why you think it deserves a review</li>
+    <li><strong>For partnerships:</strong> Your company name, the product you'd like us to review, and whether you're offering a loaner unit</li>
+  </ul>
+
+  <h2>Response Time</h2>
+  <p>
+    We aim to respond to all emails within <strong>2 business days</strong>. Editorial corrections are prioritized and typically addressed within 24 hours. If you don't hear back within a week, your email may have been caught in our spam filter — please resend.
+  </p>
+
+  <h2>Mailing Address</h2>
+  <div class="info-card">
+    <p>
+      <strong>ToolStep Editorial</strong><br />
+      548 Market St, PMB 72211<br />
+      San Francisco, CA 94104<br />
+      United States
+    </p>
+    <p style="font-size: 0.85rem; color: rgb(var(--gray)); margin: 0;">
+      This is a mailing address only — we do not accept product shipments at this address. For loaner unit logistics, email partnerships@toolstep.com first.
+    </p>
+  </div>
+</PageLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .contact-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: left;
+    transition: box-shadow 0.15s ease;
+  }
+  .contact-card:hover {
+    box-shadow: var(--card-shadow);
+  }
+  .contact-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .contact-card h3 {
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+    color: rgb(var(--black));
+  }
+  .contact-card p {
+    font-size: 0.88rem;
+    color: rgb(var(--gray));
+    line-height: 1.5;
+    margin: 0 0 0.5rem;
+  }
+  .contact-card a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .contact-card a:hover {
+    text-decoration: underline;
+  }
+</style>

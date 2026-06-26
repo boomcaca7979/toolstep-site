@@ -1,139 +1,103 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import PageLayout from '../components/PageLayout.astro';
+import { authors } from '../data/authors';
 
-const pageTitle = `About ${SITE_TITLE}`;
+const pageTitle = 'About ToolStep — Who We Are and How We Review';
+const pageDescription = 'ToolStep is an independent product review site focused on home office hardware. Meet our team and learn why our reviews are trusted.';
+const lastUpdated = 'June 2026';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
-		<style>
-			.about-wrap {
-				max-width: 720px;
-				margin: 0 auto;
-				padding: 48px 24px;
-				min-height: calc(100vh - 200px);
-			}
-			.about-wrap h1 {
-				font-size: 2.2em;
-				margin-bottom: 24px;
-			}
-			.about-wrap h2 {
-				font-size: 1.4em;
-				margin-top: 36px;
-				margin-bottom: 14px;
-				color: rgb(var(--black));
-			}
-			.about-wrap p,
-			.about-wrap li {
-				font-size: 17px;
-				line-height: 1.8;
-				color: rgb(var(--gray-dark));
-			}
-			.about-wrap ul {
-				margin-bottom: 16px;
-				padding-left: 24px;
-			}
-			.about-wrap li {
-				margin-bottom: 10px;
-			}
-			.about-wrap a {
-				color: var(--accent);
-				text-decoration: underline;
-			}
-			.contact-box {
-				background: var(--card-bg);
-				border: 1px solid var(--card-border);
-				border-radius: 12px;
-				padding: 24px;
-				margin-top: 32px;
-				box-shadow: var(--card-shadow);
-			}
-			.contact-box h2 {
-				margin-top: 0;
-			}
-			.email-link {
-				font-weight: 600;
-			}
-			.mission-box {
-				background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.08), rgba(var(--accent-rgb), 0.03));
-				border: 1px solid rgba(var(--accent-rgb), 0.15);
-				border-radius: 12px;
-				padding: 24px;
-				margin-bottom: 32px;
-			}
-			.mission-box p {
-				margin: 0;
-				font-size: 18px;
-			}
-			@media (max-width: 720px) {
-				.about-wrap {
-					padding: 32px 16px;
-				}
-				.about-wrap h1 {
-					font-size: 1.8em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<div class="about-wrap">
-			<h1>About ToolWise</h1>
+<PageLayout
+  title="About ToolStep"
+  description={pageDescription}
+  subtitle="We test home office hardware so you don't have to guess. Every recommendation comes from real, hands-on use — never from a press release."
+  lastUpdated={lastUpdated}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'About' },
+  ]}
+>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">200+</div>
+      <div class="stat-label">Products Tested</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">8 yrs</div>
+      <div class="stat-label">Avg Reviewer Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">90 days</div>
+      <div class="stat-label">Avg Test Period</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Sponsored Reviews</div>
+    </div>
+  </div>
 
-			<div class="mission-box">
-				<p>
-					<strong>ToolWise</strong> is a curated directory of the best online tools for productivity, design, AI, and creativity. We cut through the noise to help you find the right tool for the job — fast.
-				</p>
-			</div>
+  <h2>Our Mission</h2>
+  <p>
+    ToolStep exists to solve one specific problem: the home office gear market is flooded with options, and most "reviews" online are either rewritten spec sheets or thinly veiled affiliate spam. We started this site because we were tired of guessing — and we figured you were too.
+  </p>
+  <p>
+    We focus exclusively on <strong>home office hardware</strong>: standing desks, ergonomic chairs, keyboards, mice, docks, webcams, monitor lights, and headphones. This is gear you use 8+ hours a day. Getting it wrong means back pain, wrist strain, or wasted money. Getting it right means your workspace disappears and you can just work.
+  </p>
 
-			<h2>What We Do</h2>
-			<p>
-				Every day, dozens of new apps and online tools launch. Sorting through them is exhausting. ToolWise exists to solve that problem. We personally test every tool before it appears on our site, evaluate it against real-world use cases, and present our findings in honest, jargon-free reviews.
-			</p>
-			<p>
-				Whether you need to compress an image, edit a PDF, record your screen, or draft a blog post with AI — we have tested the options and will point you to the best one.
-			</p>
+  <h2>What Makes Us Different</h2>
+  <div class="info-card">
+    <h3>We buy what we test</h3>
+    <p>
+      Unless explicitly stated, we purchase review units at retail price. When a brand sends us a loaner unit, we disclose it at the top of the review and return the product after testing. This means our incentives are aligned with yours — if a product is bad, we're just as annoyed as you would be.
+    </p>
+  </div>
+  <div class="info-card">
+    <h3>We test for weeks, not hours</h3>
+    <p>
+      A chair that feels great on day one can cause back pain by week three. A desk motor that's quiet in the store can develop a grinding noise after 50 cycles. We test every product for <strong>30 to 90 days of daily use</strong> before publishing a review. Some products stay in our rotation for a year or more.
+    </p>
+  </div>
+  <div class="info-card">
+    <h3>We measure, then we write</h3>
+    <p>
+      Where a spec is measurable, we measure it. Decibel levels, weight capacities, transfer speeds, battery life — we record actual numbers, not impressions. When we say a desk is "stable at 47 inches," that's because we put a 35 lb monitor on it and wiggled it.
+    </p>
+  </div>
 
-			<h2>Our Review Standards</h2>
-			<p>Every tool on ToolWise is evaluated against the same criteria:</p>
-			<ul>
-				<li>
-					<strong>Hands-on testing</strong> — We use each tool for real tasks, not just a quick click-through. If it is a PDF editor, we edit PDFs. If it is a screen recorder, we record screens.
-				</li>
-				<li>
-					<strong>Free tier fairness</strong> — We evaluate what you actually get for free, not just the paid features. Many of our readers are students, freelancers, and small teams with tight budgets.
-				</li>
-				<li>
-					<strong>Transparency</strong> — We disclose affiliate relationships and never let them influence our ratings. Our "Editor's Pick" badges are based on testing, not commissions.
-				</li>
-				<li>
-					<strong>Real user needs</strong> — We rate tools based on who they are actually for. A professional video editor and a casual screen recorder serve different audiences, and we review them accordingly.
-				</li>
-			</ul>
+  <h2>Our Team</h2>
+  <p>
+    ToolStep is a small, specialized team. Every reviewer has a specific area of expertise, and we don't let anyone review products outside their lane. Our hardware reviewer doesn't write about software, and our productivity editor doesn't test standing desks.
+  </p>
+  <p>
+    <a href="/team">Meet our full team →</a>
+  </p>
 
-			<h2>Why Trust Us</h2>
-			<p>
-				ToolWise is independently operated. We do not accept paid placement in our directory, and we do not let brands preview or edit our reviews before publication. Our editorial team has collectively tested hundreds of productivity and creative tools over the past decade across design, development, writing, and video production.
-			</p>
+  <h2>How We Make Money</h2>
+  <p>
+    ToolStep is reader-supported. When you buy through links on our site, we may earn an affiliate commission at no extra cost to you. We participate in affiliate programs with Amazon, Best Buy, Walmart, and select brand partners.
+  </p>
+  <p>
+    Our affiliate relationships <strong>never influence our ratings or recommendations</strong>. Products are ranked based solely on test results, build quality, and value — not on commission rates. If a product scores poorly, we say so regardless of whether we earn a commission on it.
+  </p>
+  <p>
+    <a href="/affiliate-disclosure">Read our full affiliate disclosure →</a>
+  </p>
 
-			<div class="contact-box">
-				<h2>Get in Touch</h2>
-				<p>
-					Have a tool suggestion? Found an outdated review? Want to partner with us? We would love to hear from you.
-				</p>
-				<p>
-					📧 <a href="mailto:hello@toolwise.com" class="email-link">hello@toolwise.com</a>
-				</p>
-				<p style="margin-top: 12px; font-size: 15px; color: rgb(var(--gray));">
-					For privacy-related inquiries, please visit our <a href="/privacy">Privacy Policy</a> page.
-				</p>
-			</div>
-		</div>
-		<Footer />
-	</body>
-</html>
+  <h2>Our Editorial Standards</h2>
+  <p>
+    We follow strict editorial standards designed to keep our reviews honest, independent, and useful. These standards are publicly documented and apply to every review we publish.
+  </p>
+  <ul>
+    <li><a href="/editorial-policy">Editorial Policy</a> — rules on independence, conflicts of interest, and content integrity</li>
+    <li><a href="/how-we-test">How We Test</a> — our testing methodology, scoring system, and review process</li>
+    <li><a href="/affiliate-disclosure">Affiliate Disclosure</a> — how we make money and why it doesn't affect our ratings</li>
+  </ul>
+
+  <h2>Get in Touch</h2>
+  <p>
+    Found an error in a review? Have a product suggestion? Want to challenge our rating? We welcome all of it.
+  </p>
+  <p>
+    <a href="/contact">Contact our team →</a>
+  </p>
+</PageLayout>

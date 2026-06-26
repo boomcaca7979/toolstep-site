@@ -6,6 +6,7 @@ import ProductCTACard from '../../components/ProductCTACard.astro';
 import ProductSummary from '../../components/ProductSummary.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-4.jpg';
 
 const pageTitle = 'Best Office Mechanical Keyboard (2026)';
@@ -16,6 +17,10 @@ const heroImage = heroImg.src;
 const ratingValue = 4.5;
 const bestPrice = 84;
 const author = 'Toolwise Team';
+const authorSlug = 'marcus-chen';
+const lastUpdated = 'June 2026';
+const testingDuration = '60 days';
+const productsTested = 5;
 const productSlug = 'best-office-mechanical-keyboard';
 const productName = 'Keychron K8 Mechanical Keyboard';
 const brand = 'Keychron';
@@ -172,7 +177,7 @@ const nextPost = { title: 'Keychron K8 Review', href: '/reviews/keychron-k8-revi
     <main>
       <h1>Best Mechanical Keyboard for Office</h1>
       <div class="meta">Updated June 2026 · 11 min read</div>
-      <div class="author">By {author}</div>
+      <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
       <img src={heroImage} alt="Mechanical keyboard with brown switches on a wooden desk in a minimal home office" class="hero-img" loading="lazy" width="1280" height="720" />
 
@@ -183,6 +188,13 @@ const nextPost = { title: 'Keychron K8 Review', href: '/reviews/keychron-k8-revi
         price={bestPrice}
         slug={productSlug}
         editorChoice={true}
+      />
+
+      <ReviewMeta
+        authorSlug={authorSlug}
+        lastUpdated={lastUpdated}
+        testingDuration={testingDuration}
+        productsTested={productsTested}
       />
 
       <nav class="toc" aria-label="Table of contents">

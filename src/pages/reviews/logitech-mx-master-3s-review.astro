@@ -6,6 +6,7 @@ import ProductCTACard from '../../components/ProductCTACard.astro';
 import ProductSummary from '../../components/ProductSummary.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
 
 const pageTitle = 'Logitech MX Master 3S Review (2026)';
@@ -16,6 +17,10 @@ const heroImage = heroImg.src;
 const ratingValue = 4.8;
 const bestPrice = 99;
 const author = 'Toolwise Team';
+const authorSlug = 'sarah-park';
+const lastUpdated = 'June 2026';
+const testingDuration = '60 days';
+const productsTested = 3;
 const productSlug = 'logitech-mx-master-3s-review';
 const productName = 'Logitech MX Master 3S';
 const brand = 'Logitech';
@@ -176,7 +181,7 @@ const nextPost = { title: 'Best USB-C Dock for MacBook', href: '/reviews/best-us
     <main>
       <h1>Logitech MX Master 3S Review</h1>
       <div class="meta">Updated June 2026 · 12 min read</div>
-      <div class="author">By {author}</div>
+      <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
       <img src={heroImage} alt="Logitech MX Master 3S mouse close up on a dark desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
@@ -187,6 +192,13 @@ const nextPost = { title: 'Best USB-C Dock for MacBook', href: '/reviews/best-us
         price={bestPrice}
         slug={productSlug}
         editorChoice={true}
+      />
+
+      <ReviewMeta
+        authorSlug={authorSlug}
+        lastUpdated={lastUpdated}
+        testingDuration={testingDuration}
+        productsTested={productsTested}
       />
 
       <nav class="toc" aria-label="Table of contents">

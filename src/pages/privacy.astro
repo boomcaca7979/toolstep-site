@@ -1,198 +1,130 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import PageLayout from '../components/PageLayout.astro';
+import { SITE_TITLE } from '../consts';
 
-const pageTitle = `Privacy Policy — ${SITE_TITLE}`;
+const pageTitle = 'Privacy Policy — ToolStep';
+const pageDescription = 'How ToolStep collects, uses, and protects your personal data. Your rights regarding cookies, analytics, and email subscriptions.';
+const lastUpdated = 'June 2026';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
-		<style>
-			.privacy-wrap {
-				max-width: 720px;
-				margin: 0 auto;
-				padding: 48px 24px;
-				min-height: calc(100vh - 200px);
-			}
-			.privacy-wrap h1 {
-				font-size: 2.2em;
-				margin-bottom: 8px;
-			}
-			.last-updated {
-				font-size: 14px;
-				color: rgb(var(--gray));
-				margin-bottom: 32px;
-			}
-			.privacy-wrap h2 {
-				font-size: 1.4em;
-				margin-top: 36px;
-				margin-bottom: 12px;
-				color: rgb(var(--black));
-			}
-			.privacy-wrap p,
-			.privacy-wrap li {
-				font-size: 17px;
-				line-height: 1.8;
-				color: rgb(var(--gray-dark));
-			}
-			.privacy-wrap ul {
-				margin-bottom: 16px;
-				padding-left: 24px;
-			}
-			.privacy-wrap li {
-				margin-bottom: 8px;
-			}
-			.privacy-wrap a {
-				color: var(--accent);
-				text-decoration: underline;
-			}
-			.contact-box {
-				background: var(--card-bg);
-				border: 1px solid var(--card-border);
-				border-radius: 12px;
-				padding: 24px;
-				margin-top: 32px;
-				box-shadow: var(--card-shadow);
-			}
-			.contact-box h2 {
-				margin-top: 0;
-			}
-			.email-link {
-				font-weight: 600;
-			}
-			@media (max-width: 720px) {
-				.privacy-wrap {
-					padding: 32px 16px;
-				}
-				.privacy-wrap h1 {
-					font-size: 1.8em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<div class="privacy-wrap">
-			<h1>Privacy Policy</h1>
-			<p class="last-updated">Last updated: May 19, 2026</p>
+<PageLayout
+  title="Privacy Policy"
+  description={pageDescription}
+  subtitle="We take your privacy seriously. This policy explains what we collect, how we use it, and your rights."
+  lastUpdated={lastUpdated}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Privacy Policy' },
+  ]}
+>
+  <p>
+    At <strong>{SITE_TITLE}</strong>, we take your privacy seriously. This Privacy Policy explains what information we collect, how we use it, and your rights regarding your personal data when you use our website.
+  </p>
 
-			<p>
-				At <strong>{SITE_TITLE}</strong>, we take your privacy seriously. This Privacy Policy explains what information we collect, how we use it, and your rights regarding your personal data when you use our website.
-			</p>
+  <h2>1. Information We Collect</h2>
+  <p>We may collect the following types of information when you visit or interact with our website:</p>
+  <ul>
+    <li>
+      <strong>Email subscriptions</strong> — When you sign up for our weekly tool recommendations newsletter, we collect your email address.
+    </li>
+    <li>
+      <strong>Cookies and tracking technologies</strong> — We use cookies to understand how visitors interact with our site, remember preferences, and deliver relevant content.
+    </li>
+    <li>
+      <strong>Analytics data</strong> — We collect anonymized data about page views, clicks, device types, and geographic regions through third-party analytics services.
+    </li>
+    <li>
+      <strong>Usage data</strong> — Information about how you navigate and use our website, including tools you view and search queries you enter.
+    </li>
+  </ul>
 
-			<h2>1. Information We Collect</h2>
-			<p>We may collect the following types of information when you visit or interact with our website:</p>
-			<ul>
-				<li>
-					<strong>Email subscriptions</strong> — When you sign up for our weekly tool recommendations newsletter, we collect your email address.
-				</li>
-				<li>
-					<strong>Cookies and tracking technologies</strong> — We use cookies to understand how visitors interact with our site, remember preferences, and deliver relevant content.
-				</li>
-				<li>
-					<strong>Analytics data</strong> — We collect anonymized data about page views, clicks, device types, and geographic regions through third-party analytics services.
-				</li>
-				<li>
-					<strong>Usage data</strong> — Information about how you navigate and use our website, including tools you view and search queries you enter.
-				</li>
-			</ul>
+  <h2>2. How We Use Your Information</h2>
+  <p>We use the information we collect for the following purposes:</p>
+  <ul>
+    <li>To improve our website functionality, content, and user experience</li>
+    <li>To send you our weekly email newsletter with tool recommendations (if subscribed)</li>
+    <li>To analyze traffic patterns and understand which tools are most popular</li>
+    <li>To display relevant advertisements through our advertising partners</li>
+    <li>To respond to your inquiries and provide customer support</li>
+  </ul>
 
-			<h2>2. How We Use Your Information</h2>
-			<p>We use the information we collect for the following purposes:</p>
-			<ul>
-				<li>To improve our website functionality, content, and user experience</li>
-				<li>To send you our weekly email newsletter with tool recommendations (if subscribed)</li>
-				<li>To analyze traffic patterns and understand which tools are most popular</li>
-				<li>To display relevant advertisements through our advertising partners</li>
-				<li>To respond to your inquiries and provide customer support</li>
-			</ul>
+  <h2>3. Cookie Policy</h2>
+  <p>
+    We use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small text files stored on your device that help us recognize you and understand how you use our site.
+  </p>
+  <p>Types of cookies we use:</p>
+  <ul>
+    <li>
+      <strong>Essential cookies</strong> — Required for the website to function properly (e.g., theme preference, session management).
+    </li>
+    <li>
+      <strong>Analytics cookies</strong> — Help us understand how visitors interact with our website so we can improve it.
+    </li>
+    <li>
+      <strong>Advertising cookies</strong> — Used by Google AdSense and other partners to deliver personalized ads based on your interests and browsing history.
+    </li>
+  </ul>
+  <p>
+    You can control or delete cookies through your browser settings. Please note that disabling certain cookies may affect your experience on our website.
+  </p>
 
-			<h2>3. Cookie Policy</h2>
-			<p>
-				We use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small text files stored on your device that help us recognize you and understand how you use our site.
-			</p>
-			<p>Types of cookies we use:</p>
-			<ul>
-				<li>
-					<strong>Essential cookies</strong> — Required for the website to function properly (e.g., theme preference, session management).
-				</li>
-				<li>
-					<strong>Analytics cookies</strong> — Help us understand how visitors interact with our website so we can improve it.
-				</li>
-				<li>
-					<strong>Advertising cookies</strong> — Used by Google AdSense and other partners to deliver personalized ads based on your interests and browsing history.
-				</li>
-			</ul>
-			<p>
-				You can control or delete cookies through your browser settings. Please note that disabling certain cookies may affect your experience on our website.
-			</p>
+  <h2>4. Third-Party Services</h2>
+  <p>We work with trusted third-party services to operate and improve our website:</p>
+  <ul>
+    <li>
+      <strong>Google AdSense</strong> — We display advertisements through Google AdSense. Google uses cookies to serve ads based on your prior visits to our website and other sites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ad Settings</a>.
+    </li>
+    <li>
+      <strong>Google Analytics</strong> — We use Google Analytics to collect anonymized traffic data and understand how visitors use our site. Google Analytics does not identify individual users.
+    </li>
+    <li>
+      <strong>Affiliate partners</strong> — Some links on our site are affiliate links (Amazon, Best Buy, Walmart, brand direct). When you click these links and make a purchase, we may earn a commission. See our <a href="/affiliate-disclosure">Affiliate Disclosure</a> for details.
+    </li>
+  </ul>
+  <p>
+    We do not sell, trade, or otherwise transfer your personal information to outside parties except as described above.
+  </p>
 
-			<h2>4. Third-Party Services</h2>
-			<p>We work with trusted third-party services to operate and improve our website:</p>
-			<ul>
-				<li>
-					<strong>Google AdSense</strong> — We display advertisements through Google AdSense. Google uses cookies to serve ads based on your prior visits to our website and other sites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ad Settings</a>.
-				</li>
-				<li>
-					<strong>Google Analytics</strong> — We use Google Analytics to collect anonymized traffic data and understand how visitors use our site. Google Analytics does not identify individual users.
-				</li>
-				<li>
-					<strong>Affiliate partners</strong> — Some links on our site are affiliate links. When you click these links and make a purchase or sign up, we may earn a commission. These third parties have their own privacy policies.
-				</li>
-			</ul>
-			<p>
-				We do not sell, trade, or otherwise transfer your personal information to outside parties except as described above.
-			</p>
+  <h2>5. Your Rights</h2>
+  <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+  <ul>
+    <li>
+      <strong>Access</strong> — You have the right to request a copy of the personal information we hold about you.
+    </li>
+    <li>
+      <strong>Correction</strong> — You can request that we correct any inaccurate or incomplete information.
+    </li>
+    <li>
+      <strong>Deletion</strong> — You can request that we delete your personal data, subject to certain legal obligations.
+    </li>
+    <li>
+      <strong>Opt-out</strong> — You can unsubscribe from our newsletter at any time by clicking the "Unsubscribe" link in any email we send.
+    </li>
+    <li>
+      <strong>Cookie preferences</strong> — You can manage cookie preferences through your browser settings at any time.
+    </li>
+  </ul>
+  <p>
+    To exercise any of these rights, email <a href="mailto:privacy@toolstep.com">privacy@toolstep.com</a>.
+  </p>
 
-			<h2>5. Your Rights</h2>
-			<p>Depending on your location, you may have the following rights regarding your personal data:</p>
-			<ul>
-				<li>
-					<strong>Access</strong> — You have the right to request a copy of the personal information we hold about you.
-				</li>
-				<li>
-					<strong>Correction</strong> — You can request that we correct any inaccurate or incomplete information.
-				</li>
-				<li>
-					<strong>Deletion</strong> — You can request that we delete your personal data, subject to certain legal obligations.
-				</li>
-				<li>
-					<strong>Opt-out</strong> — You can unsubscribe from our newsletter at any time by clicking the "Unsubscribe" link in any email we send.
-				</li>
-				<li>
-					<strong>Cookie preferences</strong> — You can manage cookie preferences through your browser settings at any time.
-				</li>
-			</ul>
+  <h2>6. Data Security</h2>
+  <p>
+    We implement reasonable security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+  </p>
 
-			<h2>6. Data Security</h2>
-			<p>
-				We implement reasonable security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
-			</p>
+  <h2>7. Children's Privacy</h2>
+  <p>
+    Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us and we will delete it promptly.
+  </p>
 
-			<h2>7. Children's Privacy</h2>
-			<p>
-				Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us and we will delete it promptly.
-			</p>
+  <h2>8. Changes to This Policy</h2>
+  <p>
+    We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically.
+  </p>
 
-			<h2>8. Changes to This Policy</h2>
-			<p>
-				We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically.
-			</p>
-
-			<div class="contact-box">
-				<h2>9. Contact Us</h2>
-				<p>
-					If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us at:
-				</p>
-				<p>
-					📧 <a href="mailto:privacy@toolwise.com" class="email-link">privacy@toolwise.com</a>
-				</p>
-			</div>
-		</div>
-		<Footer />
-	</body>
-</html>
+  <h2>9. Contact Us</h2>
+  <p>
+    If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us at <a href="mailto:privacy@toolstep.com">privacy@toolstep.com</a> or visit our <a href="/contact">contact page</a>.
+  </p>
+</PageLayout>

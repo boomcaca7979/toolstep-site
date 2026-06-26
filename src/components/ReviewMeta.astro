@@ -1,0 +1,118 @@
+---
+import { getAuthor } from '../data/authors';
+
+interface Props {
+  /** Author slug (e.g., 'marcus-chen') */
+  authorSlug: string;
+  /** Last updated date (e.g., 'June 2026') */
+  lastUpdated: string;
+  /** Testing duration (e.g., '90 days') */
+  testingDuration: string;
+  /** Number of products tested for this review/comparison */
+  productsTested: number;
+}
+
+const { authorSlug, lastUpdated, testingDuration, productsTested } = Astro.props;
+const author = getAuthor(authorSlug);
+---
+
+<div class="review-meta">
+  <div class="meta-row">
+    <div class="meta-item">
+      <span class="meta-label">Reviewed by</span>
+      <a href={`/authors/${author.slug}`} class="meta-value author-link">
+        <img src={author.avatar} alt="" class="author-avatar" loading="lazy" width="24" height="24" />
+        {author.name}
+      </a>
+    </div>
+    <div class="meta-divider"></div>
+    <div class="meta-item">
+      <span class="meta-label">Last Updated</span>
+      <span class="meta-value">{lastUpdated}</span>
+    </div>
+  </div>
+  <div class="meta-row">
+    <div class="meta-item">
+      <span class="meta-label">Testing Duration</span>
+      <span class="meta-value">{testingDuration}</span>
+    </div>
+    <div class="meta-divider"></div>
+    <div class="meta-item">
+      <span class="meta-label">Products Tested</span>
+      <span class="meta-value">{productsTested} models</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .review-meta {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--card-shadow);
+  }
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .meta-row + .meta-row {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgb(var(--gray-light));
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+  }
+  .meta-label {
+    font-size: 0.7rem;
+    color: rgb(var(--gray));
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .meta-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: rgb(var(--black));
+  }
+  .author-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--accent);
+    transition: text-decoration 0.15s ease;
+  }
+  .author-link:hover {
+    text-decoration: underline;
+  }
+  .author-avatar {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+  }
+  .meta-divider {
+    width: 1px;
+    height: 28px;
+    background: rgb(var(--gray-light));
+    flex-shrink: 0;
+  }
+  @media (max-width: 480px) {
+    .meta-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .meta-divider {
+      width: 100%;
+      height: 1px;
+    }
+  }
+</style>

@@ -6,6 +6,7 @@ import ProductCTACard from '../../components/ProductCTACard.astro';
 import ProductSummary from '../../components/ProductSummary.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-5.jpg';
 
 const pageTitle = 'Keychron K8 Keyboard Review (2026)';
@@ -16,6 +17,10 @@ const heroImage = heroImg.src;
 const ratingValue = 4.5;
 const bestPrice = 84;
 const author = 'Toolwise Team';
+const authorSlug = 'marcus-chen';
+const lastUpdated = 'June 2026';
+const testingDuration = '60 days';
+const productsTested = 3;
 const productSlug = 'keychron-k8-review';
 const productName = 'Keychron K8 Wireless Keyboard';
 const brand = 'Keychron';
@@ -174,7 +179,7 @@ const nextPost = { title: 'Logitech MX Keys S Review', href: '/reviews/logitech-
     <main>
       <h1>Keychron K8 Review</h1>
       <div class="meta">Updated June 2026 · 12 min read</div>
-      <div class="author">By {author}</div>
+      <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
       <img src={heroImage} alt="Keychron K8 wireless mechanical keyboard with brown switches on a white desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
@@ -185,6 +190,13 @@ const nextPost = { title: 'Logitech MX Keys S Review', href: '/reviews/logitech-
         price={bestPrice}
         slug={productSlug}
         editorChoice={true}
+      />
+
+      <ReviewMeta
+        authorSlug={authorSlug}
+        lastUpdated={lastUpdated}
+        testingDuration={testingDuration}
+        productsTested={productsTested}
       />
 
       <nav class="toc" aria-label="Table of contents">

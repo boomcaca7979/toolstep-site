@@ -1,0 +1,121 @@
+---
+import PageLayout from '../components/PageLayout.astro';
+import { authors } from '../data/authors';
+
+const pageTitle = 'Our Team — ToolStep Reviewers';
+const pageDescription = 'Meet the ToolStep reviewers. Each has a specific area of expertise and years of hands-on testing experience.';
+const lastUpdated = 'June 2026';
+---
+
+<PageLayout
+  title="Our Team"
+  description={pageDescription}
+  subtitle="Small, specialized, and accountable. Every review is written by a real person with a real byline."
+  lastUpdated={lastUpdated}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Team' },
+  ]}
+>
+  <p>
+    ToolStep is a small team by design. We don't hire anonymous freelance writers to churn out reviews. Every reviewer has a public author page, a specific area of expertise, and is accountable for the ratings they assign.
+  </p>
+
+  <div class="team-grid">
+    {authors.map((author) => (
+      <a href={`/authors/${author.slug}`} class="team-card">
+        <img src={author.avatar} alt={`${author.name} portrait`} loading="lazy" width="80" height="80" />
+        <div class="team-info">
+          <h3>{author.name}</h3>
+          <p class="team-role">{author.role}</p>
+          <p class="team-experience">{author.experience.split('.')[0]}.</p>
+          <div class="team-expertise">
+            {author.expertise.slice(0, 2).map((exp) => (
+              <span class="expertise-tag">{exp}</span>
+            ))}
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <h2>Accountability</h2>
+  <p>
+    Every review on ToolStep is published under a real person's name. If you disagree with a rating, you can find the reviewer's contact information on their author page and reach out directly. We don't hide behind "ToolStep Team" except for collaborative roundups.
+  </p>
+  <p>
+    Our reviewers are also bound by our <a href="/editorial-policy">Editorial Policy</a>, which prohibits conflicts of interest, brand payments, and AI-written content. If a reviewer violates these rules, we remove their reviews and publish a correction.
+  </p>
+
+  <h2>Want to Join?</h2>
+  <p>
+    We're always looking for experienced reviewers with deep expertise in a specific product category. If you've spent years testing a category of products (e.g., mechanical keyboards, ergonomic chairs, audio equipment) and want to write for us, reach out at <a href="mailto:careers@toolstep.com">careers@toolstep.com</a>.
+  </p>
+  <p>
+    We do not hire generalist content writers. We hire domain experts. If you can't tell the difference between a Gateron Red and a Cherry MX Brown by feel, we won't hire you to review keyboards.
+  </p>
+</PageLayout>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .team-card {
+    display: flex;
+    gap: 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    text-decoration: none;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    color: inherit;
+  }
+  .team-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+  .team-card img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .team-info {
+    min-width: 0;
+  }
+  .team-info h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.2rem;
+    color: rgb(var(--black));
+  }
+  .team-role {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+  }
+  .team-experience {
+    font-size: 0.82rem;
+    color: rgb(var(--gray));
+    line-height: 1.5;
+    margin: 0 0 0.5rem;
+  }
+  .team-expertise {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .expertise-tag {
+    background: rgba(var(--accent-rgb), 0.08);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+</style>

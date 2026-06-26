@@ -6,6 +6,7 @@ import ProductCTACard from '../../components/ProductCTACard.astro';
 import ProductSummary from '../../components/ProductSummary.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-5.jpg';
 
 const pageTitle = 'Best Noise Cancelling Headphones (2026)';
@@ -16,6 +17,10 @@ const heroImage = heroImg.src;
 const ratingValue = 4.8;
 const bestPrice = 399;
 const author = 'Toolwise Team';
+const authorSlug = 'sarah-park';
+const lastUpdated = 'June 2026';
+const testingDuration = '60 days';
+const productsTested = 5;
 const productSlug = 'best-noise-cancelling-headphones-work';
 const productName = 'Sony WH-1000XM5';
 const brand = 'Sony';
@@ -173,7 +178,7 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
     <main>
       <h1>Best Noise Cancelling Headphones for Work</h1>
       <div class="meta">Updated June 2026 · 14 min read</div>
-      <div class="author">By {author}</div>
+      <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
       <img src={heroImage} alt="Best noise cancelling headphones for work on a minimalist desk in a home office" class="hero-img" loading="lazy" width="1280" height="720" />
 
@@ -184,6 +189,13 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
         price={bestPrice}
         slug={productSlug}
         editorChoice={true}
+      />
+
+      <ReviewMeta
+        authorSlug={authorSlug}
+        lastUpdated={lastUpdated}
+        testingDuration={testingDuration}
+        productsTested={productsTested}
       />
 
       <nav class="toc" aria-label="Table of contents">

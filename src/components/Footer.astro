@@ -4,6 +4,16 @@ const today = new Date();
 
 <footer>
 	&copy; {today.getFullYear()} ToolWise. All rights reserved.
+	<div class="footer-links">
+		<a href="/about">About</a>
+		<a href="/team">Team</a>
+		<a href="/authors">Authors</a>
+		<a href="/how-we-test">How We Test</a>
+		<a href="/editorial-policy">Editorial Policy</a>
+		<a href="/affiliate-disclosure">Affiliate Disclosure</a>
+		<a href="/contact">Contact</a>
+		<a href="/privacy">Privacy</a>
+	</div>
 	<div class="social-links">
 		<a href="https://m.webtoo.ls/@astro" target="_blank">
 			<span class="sr-only">Follow Astro on Mastodon</span>
@@ -45,6 +55,22 @@ const today = new Date();
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
+	}
+	.footer-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75em 1.5em;
+		margin-bottom: 1.5em;
+		font-size: 14px;
+	}
+	.footer-links a {
+		color: rgb(var(--gray));
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+	.footer-links a:hover {
+		color: var(--accent);
 	}
 	.social-links {
 		display: flex;

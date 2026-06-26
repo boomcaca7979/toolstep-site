@@ -1,0 +1,110 @@
+---
+import PageLayout from '../components/PageLayout.astro';
+
+const pageTitle = 'Editorial Policy — ToolStep';
+const pageDescription = 'Our editorial independence rules: no sponsored reviews, no brand preview, no AI-written content, and strict conflict-of-interest policies.';
+const lastUpdated = 'June 2026';
+---
+
+<PageLayout
+  title="Editorial Policy"
+  description={pageDescription}
+  subtitle="These rules govern every review we publish. They exist to protect you, the reader, and to keep our recommendations trustworthy."
+  lastUpdated={lastUpdated}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Editorial Policy' },
+  ]}
+>
+  <h2>1. Editorial Independence</h2>
+  <p>
+    ToolStep's editorial team operates independently of our business and affiliate partnerships. The editorial team decides what to review, how to test it, and what rating to give it. The business team does not preview, edit, or veto reviews before publication.
+  </p>
+  <p>
+    No brand — whether an affiliate partner or not — can pay for a higher rating, a more favorable review, or the removal of criticism. If a brand threatens to pull their affiliate program over a negative review, we accept the loss and publish anyway.
+  </p>
+
+  <h2>2. No Sponsored Reviews</h2>
+  <p>
+    We do not accept payment in exchange for writing a review. We do not accept payment in exchange for a positive review. We do not accept "sponsored content" disguised as reviews.
+  </p>
+  <p>
+    If we ever publish sponsored content (e.g., a brand-paid guide), it will be clearly labeled as "Sponsored" at the top of the article and will never appear in our review section.
+  </p>
+
+  <h2>3. Product Sourcing</h2>
+  <p>
+    We source review products in three ways, and we disclose which method was used at the top of every review:
+  </p>
+  <ul>
+    <li>
+      <strong>Purchased at retail (default):</strong> We buy the product ourselves at full price from Amazon, Best Buy, or the brand's website. This is the majority of our reviews.
+    </li>
+    <li>
+      <strong>Loaner unit from brand:</strong> The brand sends us a unit for testing. We disclose this at the top of the review and return the product after the test period. Loaner status does not affect our rating.
+    </li>
+    <li>
+      <strong>Reader-provided:</strong> A reader lends us a product they own for testing. We disclose this and return the product.
+    </li>
+  </ul>
+  <p>
+    We never keep products provided by brands beyond the testing period unless we explicitly state that we purchased the unit from the brand at a media discount.
+  </p>
+
+  <h2>4. No AI-Written Content</h2>
+  <p>
+    Every review on ToolStep is written by a human tester who used the product. We use AI tools for research assistance (e.g., summarizing competing reviews, checking spec comparisons), but <strong>AI never writes review conclusions, ratings, or recommendations</strong>.
+  </p>
+  <p>
+    If we ever use AI to generate a non-review article (e.g., a glossary entry), it will be reviewed and edited by a human before publication and labeled accordingly.
+  </p>
+
+  <h2>5. Conflict of Interest</h2>
+  <p>
+    Our reviewers are prohibited from:
+  </p>
+  <ul>
+    <li>Holding stock or financial positions in companies whose products they review</li>
+    <li>Accepting gifts, consulting fees, or "advisory" payments from brands they cover</li>
+    <li>Reviewing products made by companies where they have a spouse or family member employed</li>
+    <li>Accepting free products in exchange for coverage (beyond the loaner units disclosed in reviews)</li>
+  </ul>
+
+  <h2>6. Transparent Updates</h2>
+  <p>
+    Products change. Firmware updates fix bugs. New models replace old ones. When a product we've reviewed is updated, recalled, or discontinued, we:
+  </p>
+  <ul>
+    <li>Re-test the product with the update applied</li>
+    <li>Update the review with the new findings</li>
+    <li>Mark the update date prominently at the top of the review</li>
+    <li>Keep a changelog of what was updated and why</li>
+  </ul>
+  <p>
+    If a product is recalled for safety reasons, we update our review immediately with a "Do Not Buy" warning until the recall is resolved.
+  </p>
+
+  <h2>7. Rating Integrity</h2>
+  <p>
+    Our ratings are based on a standardized scoring system documented in our <a href="/how-we-test">How We Test</a> page. The rating is calculated from test results, not assigned by the reviewer's "gut feeling."
+  </p>
+  <p>
+    Once a rating is published, it can only be changed by re-testing the product and documenting the reason for the change. We do not retroactively lower ratings to punish a brand or raise ratings to reward a brand.
+  </p>
+
+  <h2>8. Reader Feedback</h2>
+  <p>
+    We monitor reader comments and warranty claim patterns. If multiple readers report a widespread failure (e.g., a desk motor dying after 6 months), we investigate, re-test, and update our recommendation.
+  </p>
+  <p>
+    You can report issues with any of our reviews at <a href="/contact">our contact page</a>.
+  </p>
+
+  <h2>9. Corrections</h2>
+  <p>
+    If we publish a factual error, we correct it as soon as we become aware. Corrections are noted at the bottom of the article with the date and a description of what was changed.
+  </p>
+  <p>
+    We do not silently edit reviews after publication. The only exception is typo fixes and formatting, which do not change the content's meaning.
+  </p>
+</PageLayout>

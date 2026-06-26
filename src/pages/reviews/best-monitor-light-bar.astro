@@ -6,6 +6,7 @@ import ProductCTACard from '../../components/ProductCTACard.astro';
 import ProductSummary from '../../components/ProductSummary.astro';
 import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
 
 const pageTitle = 'Best Monitor Light Bar (2026 Tested)';
@@ -16,6 +17,10 @@ const heroImage = heroImg.src;
 const ratingValue = 4.7;
 const bestPrice = 129;
 const author = 'Toolwise Team';
+const authorSlug = 'marcus-chen';
+const lastUpdated = 'June 2026';
+const testingDuration = '60 days';
+const productsTested = 4;
 const productSlug = 'best-monitor-light-bar';
 const productName = 'BenQ ScreenBar Halo';
 const brand = 'BenQ';
@@ -175,7 +180,7 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
     <main>
       <h1>Best Monitor Light Bar</h1>
       <div class="meta">Updated June 2026 · 11 min read</div>
-      <div class="author">By {author}</div>
+      <div class="author">By <a href={`/authors/${authorSlug}`}>{author}</a></div>
 
       <img src={heroImage} alt="Best monitor light bar mounted above a monitor on a clean desk" class="hero-img" loading="lazy" width="1280" height="720" />
 
@@ -186,6 +191,13 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
         price={bestPrice}
         slug={productSlug}
         editorChoice={true}
+      />
+
+      <ReviewMeta
+        authorSlug={authorSlug}
+        lastUpdated={lastUpdated}
+        testingDuration={testingDuration}
+        productsTested={productsTested}
       />
 
       <nav class="toc" aria-label="Table of contents">
