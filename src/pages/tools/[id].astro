@@ -36,56 +36,66 @@ function renderStars(rating: number): string {
 	return '★'.repeat(full) + '☆'.repeat(empty);
 }
 
-const toolDetails: Record<string, { detailDescription: string; pros: string[]; cons: string[] }> = {
+const toolDetails: Record<string, { detailDescription: string; pros: string[]; cons: string[]; metaDescription: string }> = {
 	smallpdf: {
 		detailDescription: 'Smallpdf is a comprehensive online PDF platform that has become the go-to solution for millions of users worldwide. Founded in 2013, it offers over 20 different PDF tools including conversion to and from Word, Excel, PowerPoint, and image formats. The platform features an intuitive drag-and-drop interface that makes PDF editing accessible to non-technical users. With bank-level 256-bit SSL encryption, Smallpdf ensures your documents remain secure during processing. The free tier handles basic tasks, while the Pro subscription unlocks batch processing, OCR capabilities, and desktop applications for Windows and Mac.',
 		pros: ['20+ PDF tools in one platform', 'Bank-level security encryption', 'Intuitive drag-and-drop interface'],
 		cons: ['Free version has daily usage limits', 'Some advanced features require Pro subscription'],
+		metaDescription: 'Smallpdf review: 20+ PDF tools for merge, compress, convert & edit. Bank-level encryption, drag-and-drop interface. Free tier + Pro from $12/mo. Tested 2026.',
 	},
 	tinypng: {
 		detailDescription: 'TinyPNG has revolutionized image optimization since its launch, compressing over 1 billion images for developers and designers. Using smart lossy compression techniques, it reduces PNG and JPEG file sizes by up to 70% while maintaining near-perfect visual quality. The service analyzes each image to find the best optimization strategy, selectively decreasing the number of colors and removing unnecessary metadata. TinyPNG supports batch uploads of up to 20 images and provides a developer API for automated workflows. It is particularly valuable for web developers looking to improve page load speeds without compromising image quality.',
 		pros: ['Reduces file sizes by up to 70%', 'Maintains excellent visual quality', 'Simple drag-and-drop interface'],
 		cons: ['Free version limited to 20 images at once', 'No advanced editing features'],
+		metaDescription: 'TinyPNG review: compress PNG & JPEG up to 70% with near-perfect quality. Batch upload, developer API, drag-and-drop. Free tier available. Tested 2026.',
 	},
 	'notion-ai': {
 		detailDescription: 'Notion AI transforms the already powerful Notion workspace into an intelligent productivity hub. Integrated directly into the note-taking and project management platform, this AI assistant helps users draft content, summarize long documents, brainstorm ideas, and translate text across multiple languages. Unlike standalone AI tools, Notion AI understands the context of your existing notes and databases, providing relevant suggestions based on your workspace content. The AI can generate blog posts, meeting summaries, action items, and even code snippets. With its natural language interface, users can ask questions about their own documents and receive accurate, contextual answers.',
 		pros: ['Deep integration with Notion workspace', 'Understands document context', 'Versatile content generation'],
 		cons: ['Requires Notion subscription for full access', 'AI responses occasionally need editing'],
+		metaDescription: 'Notion AI review: AI writing & summarization inside your Notion workspace. Draft, brainstorm, translate & summarize with context awareness. From $10/mo. Tested 2026.',
 	},
 	deepl: {
 		detailDescription: 'DeepL has established itself as the most accurate machine translation service available, consistently outperforming Google Translate and Microsoft Translator in blind tests. Powered by advanced neural networks trained on billions of translated texts, DeepL produces translations that read naturally and capture subtle nuances, idioms, and context. The service supports 31 languages and offers features like document translation while preserving original formatting. DeepL Pro subscribers benefit from unlimited translations, enhanced data security, and API access. Professional translators and multinational corporations increasingly rely on DeepL as their primary translation tool.',
 		pros: ['Most accurate machine translation available', 'Preserves document formatting', 'Natural-sounding output'],
 		cons: ['Supports fewer languages than competitors', 'Free version has character limits'],
+		metaDescription: 'DeepL review: the most accurate AI translator, beating Google Translate in blind tests. 31 languages, document translation, API access. Free tier + Pro from $8.74/mo. Tested 2026.',
 	},
 	grammarly: {
 		detailDescription: 'Grammarly has become the world\'s most popular writing assistant, helping over 30 million users daily to communicate more effectively. Beyond basic spell checking, Grammarly analyzes your writing for clarity, engagement, delivery, and tone using advanced AI and natural language processing. The tool integrates seamlessly with browsers, Microsoft Office, email clients, and mobile keyboards. Its premium version offers vocabulary enhancement suggestions, plagiarism detection, and genre-specific writing style checks. Whether you\'re writing a casual email or a formal business proposal, Grammarly adapts its suggestions to match your intended tone and audience.',
 		pros: ['Works across all platforms and apps', 'Advanced tone and clarity suggestions', 'Real-time correction'],
 		cons: ['Premium features require subscription', 'Sometimes suggests overly formal alternatives'],
+		metaDescription: 'Grammarly review: AI writing assistant for grammar, clarity & tone. Works in browser, Office & email. Plagiarism check, real-time corrections. Free tier + Premium from $12/mo. Tested 2026.',
 	},
 	'obs-studio': {
 		detailDescription: 'OBS Studio stands as the gold standard for free screen recording and live streaming software, trusted by millions of content creators, educators, and professionals. This open-source powerhouse offers unlimited scene switching, real-time audio/video mixing, and support for virtually any streaming platform including Twitch, YouTube, and Facebook Live. Users can create professional broadcasts with multiple video sources, custom transitions, filters, and overlays. Despite its zero-dollar price tag, OBS rivals expensive commercial alternatives in functionality. The active open-source community continuously improves the software with regular updates, plugins, and comprehensive documentation.',
 		pros: ['Completely free and open-source', 'Professional-grade features', 'Supports all major streaming platforms'],
 		cons: ['Steep learning curve for beginners', 'High CPU usage during complex scenes'],
+		metaDescription: 'OBS Studio review: free open-source screen recorder & streaming software. Unlimited scenes, real-time mixing, Twitch/YouTube support. 100% free. Tested 2026.',
 	},
 	capcut: {
 		detailDescription: 'CapCut has emerged as one of the most popular video editing applications, particularly among social media content creators. Developed by ByteDance, the same company behind TikTok, CapCut offers a surprisingly robust feature set for a free editor including auto-captions, keyframe animation, chroma key, speed ramping, and hundreds of trendy effects and transitions. The intuitive timeline interface makes professional editing accessible to beginners, while advanced features satisfy experienced creators. Available on mobile, desktop, and web, CapCut enables seamless cross-platform editing workflows. Its extensive library of royalty-free music, stickers, and templates helps creators produce engaging content quickly.',
 		pros: ['Completely free with no watermark', 'Excellent auto-caption feature', 'Cross-platform availability'],
 		cons: ['Requires internet for some features', 'Occasional export quality inconsistencies'],
+		metaDescription: 'CapCut review: free video editor with auto-captions, keyframe animation & chroma key. Mobile, desktop & web. No watermark. 100% free. Tested 2026.',
 	},
 	canva: {
 		detailDescription: 'Canva has democratized graphic design by making professional-quality design accessible to everyone regardless of skill level. With over 100 million monthly active users, this web-based platform offers hundreds of thousands of templates for social media posts, presentations, posters, logos, and marketing materials. The drag-and-drop editor, combined with an enormous library of stock photos, illustrations, fonts, and design elements, enables users to create stunning visuals in minutes. Canva\'s collaborative features allow teams to work together in real-time, while Brand Kit functionality ensures consistency across all designs. The Pro version unlocks premium templates, background removal, and the ability to resize designs for different platforms instantly.',
 		pros: ['Extensive template library', 'Real-time team collaboration', 'Easy brand consistency tools'],
 		cons: ['Some premium templates require Pro', 'Limited advanced design features compared to Illustrator'],
+		metaDescription: 'Canva review: drag-and-drop graphic design with 100K+ templates. Real-time collaboration, brand kit, stock photos. Free tier + Pro from $13/mo. Tested 2026.',
 	},
 	figma: {
 		detailDescription: 'Figma has fundamentally changed how design teams collaborate by bringing interface design into the browser. Unlike traditional desktop design tools, Figma enables multiple designers to work on the same file simultaneously with live cursor tracking and instant comment threads. The platform excels at UI/UX design, prototyping, and design systems management with features like auto-layout, component variants, and interactive prototypes that feel like real applications. Figma\'s plugin ecosystem extends its capabilities with accessibility checkers, content generators, and design token management. Since Adobe\'s acquisition, Figma has continued to innovate while maintaining its generous free tier for individual designers.',
 		pros: ['Real-time multiplayer collaboration', 'Powerful component system', 'Extensive plugin ecosystem'],
 		cons: ['Performance slows with very large files', 'Requires stable internet connection'],
+		metaDescription: 'Figma review: browser-based UI/UX design with real-time collaboration, auto-layout & prototyping. Plugin ecosystem. Free tier + Pro from $15/mo. Tested 2026.',
 	},
 	xmind: {
 		detailDescription: 'XMind has been a leading mind mapping software for over a decade, helping professionals and students organize thoughts, brainstorm ideas, and plan projects visually. The latest version combines traditional mind mapping with modern productivity features including ZEN mode for distraction-free creation, pitch mode for presenting ideas, and audio notes for capturing thoughts on the go. XMind supports various chart types including logic charts, org charts, and timeline views beyond standard radial mind maps. The software strikes an excellent balance between simplicity and power, offering enough features for complex projects without overwhelming casual users. Cross-platform sync ensures your mind maps are accessible on desktop, mobile, and web.',
 		pros: ['Beautiful and intuitive interface', 'Multiple chart types available', 'Excellent presentation mode'],
 		cons: ['Free version limits map exports', 'Collaboration features are basic'],
+		metaDescription: 'XMind review: mind mapping & brainstorming with ZEN mode, pitch mode & audio notes. Logic charts, org charts, timelines. Free tier + Pro from $4.92/mo. Tested 2026.',
 	},
 };
 
@@ -93,6 +103,7 @@ const detail = toolDetails[tool.id] || {
 	detailDescription: `${tool.name} is a popular tool in its category. It offers a range of features designed to help users accomplish their tasks efficiently and effectively.`,
 	pros: ['Easy to use', 'Reliable performance', 'Regular updates'],
 	cons: ['May require learning curve', 'Some features are premium-only'],
+	metaDescription: `${tool.name} review: features, pros, cons, and pricing. Tested and rated by our team in 2026.`,
 };
 
 const pageTitle = `${tool.name} Review — ${SITE_TITLE}`;
@@ -101,7 +112,7 @@ const pageTitle = `${tool.name} Review — ${SITE_TITLE}`;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={pageTitle} description={tool.description} softwareSchema={{
+		<BaseHead title={pageTitle} description={detail.metaDescription} softwareSchema={{
   name: tool.name,
   description: tool.description,
   url: tool.url,
