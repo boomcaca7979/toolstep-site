@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import AdSlot from '../../components/AdSlot.astro';
 import { bestData } from '../../data/best';
 import { authors } from '../../data/authors';
 
@@ -665,6 +666,8 @@ const articleSchema = {
           {/* Intro */}
           <div class="intro">{entry.intro}</div>
 
+          <AdSlot position="hero-below" />
+
           {/* Top 10 Picks */}
           <h2 id="top-picks">Top 10 Picks</h2>
           <div class="picks-list">
@@ -729,6 +732,8 @@ const articleSchema = {
             </table>
           </div>
 
+          <AdSlot position="content-mid" />
+
           {/* Pros & Cons Summary */}
           <h2 id="pros-cons">Pros & Cons Summary</h2>
           <div class="pros-cons-summary">
@@ -769,6 +774,8 @@ const articleSchema = {
           )}
 
           {/* Previous / Next */}
+          <AdSlot position="content-end" />
+
           <div class="nav-links">
             {prevEntry ? (
               <a href={`/best/${prevEntry.slug}/`}>
@@ -795,9 +802,11 @@ const articleSchema = {
               ))}
             </ul>
           </nav>
+          <AdSlot position="sidebar" />
         </aside>
       </div>
     </div>
+    <AdSlot position="mobile-bottom" />
     <Footer />
   </body>
 </html>

@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import AdSlot from '../../components/AdSlot.astro';
 import { alternativesData } from '../../data/alternatives';
 import { authors } from '../../data/authors';
 
@@ -687,6 +688,8 @@ const articleSchema = {
             </div>
           </section>
 
+          <AdSlot position="hero-below" />
+
           <div class="intro">{entry.intro}</div>
 
           <h2 id="alternatives-table">Alternatives Table</h2>
@@ -770,6 +773,8 @@ const articleSchema = {
             </ul>
           </div>
 
+          <AdSlot position="content-mid" />
+
           <h2 id="why-choose">Why Choose an Alternative</h2>
           <ul class="why-list">
             {entry.whyChoose.map((reason) => <li>{reason}</li>)}
@@ -801,6 +806,8 @@ const articleSchema = {
             </>
           )}
 
+          <AdSlot position="content-end" />
+
           <nav class="nav-links" aria-label="Alternatives navigation">
             {prevEntry ? (
               <a href={`/alternatives/${prevEntry.slug}/`} class="prev">
@@ -826,8 +833,10 @@ const articleSchema = {
               ))}
             </ul>
           </div>
+          <AdSlot position="sidebar" />
         </aside>
       </div>
+      <AdSlot position="mobile-bottom" />
     </main>
     <Footer />
   </body>

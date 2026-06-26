@@ -1,0 +1,262 @@
+---
+// Unified Google AdSense slot component.
+//
+// Usage:  <AdSlot position="hero-below" />
+//
+// Features:
+// - Lazy loads ads via IntersectionObserver (ad request only fires when the
+//   slot is about to enter the viewport — never blocks first paint or LCP).
+// - Reserves fixed min dimensions per slot so CLS stays at 0 even before the
+//   ad creative renders.
+// - The AdSense library (adsbygoogle.js) is injected once, lazily, the first
+//   time any AdSlot becomes visible — so pages with no visible ads never pay
+//   the network cost.
+// - Master switch via ADSENSE_CONFIG.enabled in src/config/adsense.ts.
+// - Self-contained: every page that uses <AdSlot /> automatically gets the
+//   loader script deduped.
+
+import { ADSENSE_CONFIG, getAdSlot, type AdSlotPosition } from '../config/adsense';
+
+interface Props {
+  position: AdSlotPosition;
+  /** Override the ad format hint for this slot. */
+  format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle';
+  /** Extra class names for layout-specific styling. */
+  class?: string;
+}
+
+const { position, format, class: className = '' } = Astro.props;
+const slot = getAdSlot(position);
+const resolvedFormat = format ?? slot?.format ?? 'auto';
+---
+
+{slot && (
+  <div
+    class={`ad-slot ad-${position} ${className}`.trim()}
+    role="complementary"
+    aria-label={slot.label}
+    data-ad-position={position}
+    data-ad-slot-id={slot.id}
+    data-ad-format={resolvedFormat}
+  >
+    <div
+      class="ad-frame"
+      style={`min-width:${slot.minWidth}px; min-height:${slot.minHeight}px;`}
+    >
+      <ins
+        class="adsbygoogle"
+        style={`display:block; width:100%; height:100%;`}
+        data-ad-client={ADSENSE_CONFIG.client}
+        data-ad-slot={slot.id}
+        data-ad-format={resolvedFormat}
+        data-full-width-responsive="true"
+      ></ins>
+      <noscript>
+        <span class="ad-noscript">{slot.label}</span>
+      </noscript>
+    </div>
+  </div>
+)}
+
+<script>
+  // Lazy AdSense loader — runs once per page.
+  // 1. Find all .ad-slot elements on the page.
+  // 2. Observe each with IntersectionObserver (preload via rootMargin).
+  // 3. When a slot enters the preload zone:
+  //    a. Inject the AdSense library script (only once, deduped).
+  //    b. After the library is ready, push (adsbygoogle = window.adsbygoogle || []).push({})
+  //       for that specific slot.
+  // 4. Unobserve the slot so we never push twice.
+  (() => {
+    const slots = document.querySelectorAll<HTMLElement>('.ad-slot');
+    if (slots.length === 0) return;
+
+    // Honor Do Not Track + save-data without breaking the build.
+    const saveData =
+      typeof navigator !== 'undefined' &&
+      (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    if (saveData) {
+      // Skip ad loading entirely on save-data connections to protect CWV.
+      return;
+    }
+
+    let scriptLoading: Promise<void> | null = null;
+    const loadedSlots = new WeakSet<Element>();
+
+    function loadAdsenseLibrary(): Promise<void> {
+      if (scriptLoading) return scriptLoading;
+      scriptLoading = new Promise((resolve) => {
+        // AdSense library may already be present if a previous slot loaded it.
+        const existing = document.querySelector<HTMLScriptElement>(
+          'script[data-adsense-loader="1"]',
+        );
+        if (existing) {
+          if (existing.dataset.loaded === '1') {
+            resolve();
+          } else {
+            existing.addEventListener('load', () => resolve(), { once: true });
+          }
+          return;
+        }
+        const s = document.createElement('script');
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        s.dataset.adsenseLoader = '1';
+        const client = document
+          .querySelector<HTMLElement>('.ad-slot [data-ad-client]')
+          ?.dataset.adClient;
+        s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js${
+          client ? `?client=${client}` : ''
+        }`;
+        s.addEventListener('load', () => {
+          s.dataset.loaded = '1';
+          resolve();
+        });
+        s.addEventListener('error', () => resolve(), { once: true });
+        document.head.appendChild(s);
+      });
+      return scriptLoading;
+    }
+
+    function pushAd(slotEl: HTMLElement) {
+      try {
+        const ins = slotEl.querySelector<HTMLElement>('.adsbygoogle');
+        if (!ins) return;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const w = window as unknown as { adsbygoogle?: unknown[] };
+        w.adsbygoogle = w.adsbygoogle || [];
+        w.adsbygoogle.push({});
+        slotEl.dataset.adPushed = '1';
+      } catch {
+        // AdSense not ready — silently ignore. The next intersection will retry.
+      }
+    }
+
+    function activate(slotEl: HTMLElement) {
+      if (loadedSlots.has(slotEl)) return;
+      loadedSlots.add(slotEl);
+      loadAdsenseLibrary().then(() => pushAd(slotEl));
+    }
+
+    // Preload ads when within 400px of viewport (don't wait for actual intersection
+    // — that would delay ad rendering and hurt viewability + revenue).
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            activate(entry.target as HTMLElement);
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: '400px 0px', threshold: 0 },
+    );
+
+    slots.forEach((slotEl) => io.observe(slotEl));
+
+    // Reserve page bottom padding when a mobile anchor ad is present so it
+    // never overlaps content (preserves CLS = 0 on mobile).
+    const hasMobileAnchor = document.querySelector('.ad-mobile-bottom');
+    if (hasMobileAnchor) {
+      document.body.classList.add('has-mobile-anchor-ad');
+    }
+
+    // Fallback: if IO is unavailable (very old browsers), push all ads immediately.
+    if (typeof IntersectionObserver === 'undefined') {
+      slots.forEach((slotEl) => activate(slotEl as HTMLElement));
+    }
+  })();
+</script>
+
+<style>
+  .ad-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    clear: both;
+  }
+  .ad-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* min-width/min-height set inline per slot — guarantees CLS = 0. */
+    background: rgba(var(--gray-light, 240, 240, 240), 0.35);
+    border: 1px dashed rgba(var(--gray, 120, 120, 120), 0.25);
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .adsbygoogle {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: inherit;
+    display: block;
+  }
+  .ad-noscript {
+    font-size: 0.78rem;
+    color: rgba(var(--gray, 120, 120, 120), 0.8);
+    font-style: italic;
+  }
+
+  /* Slot-specific layout adjustments. */
+  .ad-hero-below {
+    margin: 1.5rem auto 2rem;
+  }
+  .ad-content-mid {
+    margin: 2.5rem auto;
+  }
+  .ad-content-end {
+    margin: 2rem auto;
+  }
+  .ad-sidebar {
+    margin: 1.5rem 0;
+    position: sticky;
+    top: 100px;
+  }
+
+  /* Mobile sticky bottom — only visible on small screens. */
+  .ad-mobile-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    margin: 0;
+    padding: 6px 8px env(safe-area-inset-bottom, 8px);
+    background: var(--header-bg, #ffffff);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+    display: none; /* toggled below via media query */
+  }
+  .ad-mobile-bottom .ad-frame {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 720px) {
+    .ad-mobile-bottom {
+      display: flex;
+    }
+    /* On mobile, give the page bottom enough padding so the sticky ad
+       never overlaps content. */
+    body.has-mobile-anchor-ad {
+      padding-bottom: 70px;
+    }
+    /* Sidebar slot becomes inline on mobile (no longer sticky). */
+    .ad-sidebar {
+      position: static;
+    }
+  }
+
+  /* Hide sidebar / hero-below on very narrow screens to avoid overflow. */
+  @media (max-width: 480px) {
+    .ad-hero-below,
+    .ad-sidebar {
+      display: none;
+    }
+  }
+</style>
