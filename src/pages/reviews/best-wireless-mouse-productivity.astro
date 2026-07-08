@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-2.jpg';
+import { buildBestTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Best Wireless Mouse for Productivity (2026)';
+const pageTitle = buildBestTitle('Wireless Mouse for Productivity');
 const pageDescription = 'We tested 9 wireless mice for productivity over 60 days. See which one wins on ergonomics, scroll, multi-device and sensor precision.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -367,17 +369,7 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
         <a href="https://www.amazon.com/s?k=logitech+mx+master+3s&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

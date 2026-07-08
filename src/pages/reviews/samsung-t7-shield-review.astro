@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-2.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Samsung T7 Shield Review (2026)';
+const pageTitle = buildReviewTitle('Samsung T7 Shield');
 const pageDescription = 'We tested the Samsung T7 Shield for 60 days. See how the IP65 rugged design, 1050MB/s read speed, and drop resistance hold up to travel and outdoor shoots.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -376,17 +378,7 @@ const nextPost = { title: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-re
         <a href="https://www.amazon.com/s?k=samsung+t7+shield&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

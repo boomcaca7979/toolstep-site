@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
+import { buildBestTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Best Standing Desk Under $300: 2026 Tested';
+const pageTitle = buildBestTitle('Standing Desk Under $300');
 const pageDescription = 'We tested every standing desk under $300 for stability, height range, and noise. See which budget desk actually holds up to daily use.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -348,17 +350,7 @@ const nextPost = { title: 'Best Standing Desk for Home Office', href: '/reviews/
         <a href="https://www.amazon.com/s?k=flexispot+e7+standing+desk&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

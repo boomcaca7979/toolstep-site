@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Apple AirPods Pro 2 Review (2026)';
+const pageTitle = buildReviewTitle('Apple AirPods Pro 2');
 const pageDescription = 'We tested the Apple AirPods Pro 2 (2nd gen) for 60 days. See how the upgraded ANC, adaptive transparency, and USB-C case hold up to daily commuting, calls, and workouts.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -373,17 +375,7 @@ const nextPost = { title: 'Sennheiser Momentum 4 Review', href: '/reviews/sennhe
         <a href="https://www.amazon.com/s?k=airpods+pro+2&tag=toolwise20-20" class="btn" target="_blank" rel="noopener noreferrer nofollow">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

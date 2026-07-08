@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-4.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Obsidian Review (2026)';
+const pageTitle = buildReviewTitle('Obsidian');
 const pageDescription = 'We tested Obsidian for 60 days. Local markdown files, bi-directional linking, graph view, 1000+ plugins, and cross-platform sync — see if this free PKM app is worth it.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -380,17 +382,7 @@ const nextPost = { title: 'Claude vs ChatGPT', href: '/reviews/claude-vs-chatgpt
         <a href="https://obsidian.md" class="btn" target="_blank" rel="noopener noreferrer nofollow">Download Obsidian Free</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

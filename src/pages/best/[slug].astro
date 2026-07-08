@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { bestData } from '../../data/best';
 import { authors } from '../../data/authors';
+import { buildBestTitle } from '../../utils/seo';
 
 export function getStaticPaths() {
   return bestData.map((entry) => ({
@@ -43,12 +44,15 @@ const avgRating = (entry.products.reduce((sum, p) => sum + p.rating, 0) / entry.
 const tocSections = [
   { id: 'top-picks', label: 'Top 10 Picks' },
   { id: 'comparison', label: 'Comparison Table' },
-  ...entry.products.slice(0, 3).map((p, i) => ({ id: `product-${i + 1}`, label: `${i + 1}. ${p.name}` })),
+  ...entry.products.slice(0, 3).map((p, i) => ({ id: `pick-${i + 1}`, label: `${i + 1}. ${p.name}` })),
   { id: 'pros-cons', label: 'Pros & Cons' },
   { id: 'faq', label: 'FAQ' },
 ];
 
 // === Schemas ===
+// Note: /best/ pages are Best list / buying guide pages, NOT product detail pages.
+// We use Article + ItemList schemas instead of Product/Review to comply with
+// Google Rich Results requirements and avoid the "offers/review/aggregateRating" error.
 
 const itemListSchema = {
   '@context': 'https://schema.org',
@@ -62,28 +66,6 @@ const itemListSchema = {
     name: p.name,
     url: pageUrl,
   })),
-};
-
-const reviewSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Review',
-  itemReviewed: {
-    '@type': 'Product',
-    name: entry.products[0]?.name,
-    description: entry.products[0]?.summary,
-    brand: { '@type': 'Brand', name: entry.products[0]?.brand },
-    category: entry.category,
-  },
-  reviewRating: {
-    '@type': 'Rating',
-    ratingValue: entry.products[0]?.rating,
-    bestRating: 5,
-    worstRating: 1,
-  },
-  author: { '@type': 'Person', name: authorName },
-  publisher: { '@type': 'Organization', name: 'ToolStep' },
-  datePublished: publishDate,
-  reviewBody: entry.intro,
 };
 
 const faqSchema = {
@@ -125,9 +107,8 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`${entry.title} — ToolStep Best`} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <BaseHead title={buildBestTitle(entry.title)} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -672,7 +653,7 @@ const articleSchema = {
           <h2 id="top-picks">Top 10 Picks</h2>
           <div class="picks-list">
             {entry.products.map((p, i) => (
-              <div class="pick-card" id={`product-${i + 1}`}>
+              <div class="pick-card" id={`pick-${i + 1}`}>
                 <div class={`pick-rank ${i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : ''}`}>{p.rank}</div>
                 <div class="pick-info">
                   <h3>{p.name}</h3>
@@ -709,7 +690,7 @@ const articleSchema = {
               <thead>
                 <tr>
                   <th class="rank-col">#</th>
-                  <th>Product</th>
+                  <th>Name</th>
                   <th>Brand</th>
                   <th>Rating</th>
                   <th>Price</th>

@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Steelcase Leap V2 Chair Review (2026)';
+const pageTitle = buildReviewTitle('Steelcase Leap V2 Chair');
 const pageDescription = 'We tested the Steelcase Leap V2 for 4 months of daily use. LiveBack flex, 4D armrests, thermal comfort — see if it beats the Aeron for $466 less.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -359,17 +361,7 @@ const nextPost = { title: 'Best Mechanical Keyboard for Office', href: '/reviews
         <a href="https://www.amazon.com/s?k=steelcase+leap+v2+chair&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

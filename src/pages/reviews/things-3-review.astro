@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Things 3 Task Manager App Review (2026)';
+const pageTitle = buildReviewTitle('Things 3 for Mac');
 const pageDescription = 'We tested the Things 3 task manager for 60 days on Mac and iOS. See how the award-winning design, GTD workflow, Things Cloud sync, and one-time purchase hold up for personal productivity.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -378,17 +380,7 @@ const nextPost = { title: 'Linear Review', href: '/reviews/linear-review/' };
         <a href="https://apps.apple.com/app/things-3-for-mac/id904280696" class="btn" target="_blank" rel="noopener noreferrer nofollow">Download Things 3 on the Mac App Store</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

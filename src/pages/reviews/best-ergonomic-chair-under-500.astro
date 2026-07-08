@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
+import { buildBestTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Best Ergonomic Chair Under $500 (2026)';
+const pageTitle = buildBestTitle('Ergonomic Chair Under $500');
 const pageDescription = 'We tested ergonomic chairs under $500 for lumbar support, breathability, and 8-hour comfort. See which chairs actually support your back through a full workday.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -373,17 +375,7 @@ const nextPost = { title: 'Herman Miller Aeron Review', href: '/reviews/herman-m
         <a href="https://www.amazon.com/s?k=ergonomic+office+chair+under+500&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

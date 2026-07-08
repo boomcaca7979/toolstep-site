@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Satechi Thunderbolt 4 Dock Review (2026)';
+const pageTitle = buildReviewTitle('Satechi Thunderbolt 4 Dock');
 const pageDescription = 'We tested the Satechi Thunderbolt 4 Dock for 60 days. 40Gbps bandwidth, 96W charging, 3 downstream TB4 ports, dual 4K output, and daisy-chain support.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -373,17 +375,7 @@ const nextPost = { title: 'Plugable USB-C Triple Review', href: '/reviews/plugab
         <a href="https://satechi.net/products/thunderbolt-4-dock?ref=toolwise" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Satechi</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Anker Prime 20000 PD Power Bank Review (2026)';
+const pageTitle = buildReviewTitle('Anker Prime 20000 PD Power Bank');
 const pageDescription = 'We tested the Anker Prime 20000 PD power bank for 60 days. See how the 200W output, 100W USB-C PD, smart display, and 3-port charging hold up for laptop and travel use.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -383,17 +385,7 @@ const nextPost = { title: 'Best USB-C Hub for MacBook', href: '/reviews/best-usb
         <a href="https://www.amazon.com/s?k=anker+prime+20000&tag=toolwise20-20" class="btn" target="_blank" rel="noopener noreferrer nofollow">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

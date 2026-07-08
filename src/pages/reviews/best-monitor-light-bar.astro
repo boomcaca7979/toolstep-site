@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
+import { buildBestTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Best Monitor Light Bar (2026 Tested)';
+const pageTitle = buildBestTitle('Monitor Light Bar');
 const pageDescription = 'We tested 8 monitor light bars over 45 nights. See which one wins on asymmetric optics, color temperature, auto-dimming and USB power.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -377,17 +379,7 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
         <a href="https://www.amazon.com/s?k=benq+screenbar+halo&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

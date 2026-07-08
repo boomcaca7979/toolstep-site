@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Linear Review (2026)';
+const pageTitle = buildReviewTitle('Linear');
 const pageDescription = 'We tested Linear for 60 days across a software team. See how the fastest issue tracker, keyboard-first UI, and GitHub integration hold up to daily agile workflows.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -380,17 +382,7 @@ const nextPost = { title: 'Notion vs Obsidian', href: '/reviews/notion-vs-obsidi
         <a href="https://linear.app" class="btn" target="_blank" rel="noopener noreferrer nofollow">Start Free on linear.app</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

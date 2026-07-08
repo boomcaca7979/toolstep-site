@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-4.jpg';
+import { buildBestTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Best USB-C Dock for MacBook (2026)';
+const pageTitle = buildBestTitle('USB-C Dock for MacBook');
 const pageDescription = 'We tested 7 USB-C and Thunderbolt docks for MacBook. See which one wins on ports, charging wattage, and dual-monitor support.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -375,17 +377,7 @@ const nextPost = { title: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-re
         <a href="https://www.amazon.com/s?k=caldigit+ts4+thunderbolt+dock&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

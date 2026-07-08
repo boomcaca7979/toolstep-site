@@ -1,0 +1,142 @@
+---
+import { compareData } from '../data/compare';
+import { alternativesData } from '../data/alternatives';
+
+interface RelatedItem {
+  title: string;
+  href: string;
+  desc: string;
+}
+
+interface Props {
+  productName: string;
+  productSlug: string;
+  related?: RelatedItem[];
+}
+
+const { productName, productSlug, related = [] } = Astro.props;
+
+// Normalize product name tokens for matching against compare/alternatives slugs
+const nameTokens = productName
+  .toLowerCase()
+  .replace(/[^a-z0-9\s-]/g, '')
+  .split(/\s+/)
+  .filter((t) => t.length >= 3);
+
+// Find comparisons that include this product (match by either productA or productB name)
+const relatedCompares = compareData
+  .filter((c) => {
+    const a = c.productA.name.toLowerCase();
+    const b = c.productB.name.toLowerCase();
+    return nameTokens.some((t) => a.includes(t) || b.includes(t));
+  })
+  .slice(0, 3)
+  .map((c) => ({
+    title: c.title,
+    href: `/compare/${c.slug}/`,
+    desc: c.description,
+  }));
+
+// Find alternatives page that matches this product
+const relatedAlternatives = alternativesData
+  .filter((a) => {
+    const toolName = a.toolName.toLowerCase();
+    return nameTokens.some((t) => toolName.includes(t));
+  })
+  .slice(0, 2)
+  .map((a) => ({
+    title: a.title,
+    href: `/alternatives/${a.slug}/`,
+    desc: a.description,
+  }));
+---
+
+{(relatedCompares.length > 0 || relatedAlternatives.length > 0 || related.length > 0) && (
+  <section class="related-links-section" aria-label="Related content">
+    {relatedAlternatives.length > 0 && (
+      <div class="link-block">
+        <h2>Best Alternatives</h2>
+        <ul>
+          {relatedAlternatives.map((r) => (
+            <li>
+              <a href={r.href}>{r.title}</a>
+              <div class="desc">{r.desc}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {relatedCompares.length > 0 && (
+      <div class="link-block">
+        <h2>Compare with Similar Products</h2>
+        <ul>
+          {relatedCompares.map((r) => (
+            <li>
+              <a href={r.href}>{r.title}</a>
+              <div class="desc">{r.desc}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {related.length > 0 && (
+      <div class="link-block">
+        <h2>Related Reviews</h2>
+        <ul>
+          {related.map((r) => (
+            <li>
+              <a href={r.href}>{r.title}</a>
+              <div class="desc">{r.desc}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </section>
+)}
+
+<style>
+  .related-links-section {
+    margin: 2rem 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+  .link-block {
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  .link-block h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.15rem;
+    color: #232f3e;
+  }
+  .link-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .link-block li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  .link-block li:last-child {
+    border-bottom: none;
+  }
+  .link-block a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .link-block a:hover {
+    text-decoration: underline;
+  }
+  .link-block .desc {
+    color: #666;
+    font-size: 0.88rem;
+    margin-top: 0.2rem;
+  }
+</style>

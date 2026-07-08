@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { alternativesData } from '../../data/alternatives';
 import { authors } from '../../data/authors';
+import { buildAlternativesTitle } from '../../utils/seo';
 
 export function getStaticPaths() {
   return alternativesData.map((entry) => ({
@@ -123,7 +124,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`${entry.title} — ToolStep Alternatives`} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <BaseHead title={buildAlternativesTitle(entry.toolName)} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

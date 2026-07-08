@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Logitech MX Keys S Review (2026)';
+const pageTitle = buildReviewTitle('Logitech MX Keys S');
 const pageDescription = 'We tested the Logitech MX Keys S for 60 days. Perfect Stroke keys, smart backlight, Flow cross-computer, USB-C — see if this $109 keyboard is worth it.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -368,17 +370,7 @@ const nextPost = { title: 'Best Wireless Mouse for Productivity', href: '/review
         <a href="https://www.amazon.com/s?k=logitech+mx+keys+s&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

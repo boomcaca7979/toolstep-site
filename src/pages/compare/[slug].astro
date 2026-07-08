@@ -6,6 +6,7 @@ import AdSlot from '../../components/AdSlot.astro';
 import { compareData } from '../../data/compare';
 import { authors } from '../../data/authors';
 import { reviews } from '../../data/reviews';
+import { buildCompareTitle } from '../../utils/seo';
 
 export function getStaticPaths() {
   return compareData.map((entry) => ({
@@ -49,6 +50,9 @@ function winnerLabel(winner: 'A' | 'B' | 'tie'): string {
 
 // === Schemas ===
 
+const topRating = Math.max(productA.rating, productB.rating);
+const bestPrice = Math.min(productA.price, productB.price);
+
 const reviewSchema = {
   '@context': 'https://schema.org',
   '@type': 'Review',
@@ -57,10 +61,17 @@ const reviewSchema = {
     name: entry.title,
     description: entry.description,
     category: entry.category,
+    brand: { '@type': 'Brand', name: productA.brand },
+    offers: {
+      '@type': 'Offer',
+      price: bestPrice,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
   },
   reviewRating: {
     '@type': 'Rating',
-    ratingValue: Math.max(productA.rating, productB.rating),
+    ratingValue: topRating,
     bestRating: 5,
     worstRating: 1,
   },
@@ -109,7 +120,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`${entry.title} — ToolStep Compare`} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
     <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

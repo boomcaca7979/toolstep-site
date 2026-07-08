@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Elgato Stream Deck MK.2 Review (2026)';
+const pageTitle = buildReviewTitle('Elgato Stream Deck MK.2 (15 keys)');
 const pageDescription = 'We tested the Elgato Stream Deck MK.2 (15 keys) for 50 days. See how the customizable LCD keys, multi-app profiles, and workflow automation hold up for streaming and productivity.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -374,17 +376,7 @@ const nextPost = { title: 'Best Webcam for Work From Home', href: '/reviews/best
         <a href="https://www.amazon.com/s?k=elgato+stream+deck+mk2&tag=toolwise20-20" class="btn" target="_blank" rel="noopener noreferrer nofollow">Check Current Price on Amazon</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

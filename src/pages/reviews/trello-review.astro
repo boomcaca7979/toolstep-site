@@ -9,8 +9,10 @@ import StickyCTA from '../../components/StickyCTA.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-3.jpg';
+import { buildReviewTitle } from '../../utils/seo';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 
-const pageTitle = 'Trello Review (2026)';
+const pageTitle = buildReviewTitle('Trello');
 const pageDescription = 'We tested Trello for 60 days across a marketing team. See how the Kanban boards, Butler automation, and Power-Ups hold up to project management for small teams.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
@@ -367,17 +369,7 @@ const nextPost = { title: 'Monday vs Asana', href: '/reviews/monday-vs-asana/' }
         <a href="https://trello.com" class="btn" target="_blank" rel="noopener noreferrer nofollow">Start Free on Trello</a>
       </div>
 
-      <section class="related">
-        <h2>Related Reviews</h2>
-        <ul>
-          {related.map((r) => (
-            <li>
-              <a href={r.href}>{r.title}</a>
-              <div class="desc">{r.desc}</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>
