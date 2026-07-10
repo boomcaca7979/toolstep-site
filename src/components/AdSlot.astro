@@ -86,9 +86,10 @@ const resolvedFormat = format ?? slot?.format ?? 'auto';
     function loadAdsenseLibrary(): Promise<void> {
       if (scriptLoading) return scriptLoading;
       scriptLoading = new Promise((resolve) => {
-        // AdSense library may already be present if a previous slot loaded it.
+        // AdSense library may already be present — either loaded by BaseHead
+        // (standard script tag) or by a previous AdSlot (data-adsense-loader).
         const existing = document.querySelector<HTMLScriptElement>(
-          'script[data-adsense-loader="1"]',
+          'script[data-adsense-loader="1"], script[src*="adsbygoogle.js"]',
         );
         if (existing) {
           if (existing.dataset.loaded === '1') {
