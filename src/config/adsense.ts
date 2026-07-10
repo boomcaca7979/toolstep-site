@@ -36,7 +36,7 @@ export const ADSENSE_CONFIG: AdsenseConfig = {
   // Master switch — flip to false to disable ads site-wide without code changes.
   enabled: true,
   // Replace with your real publisher ID. Placeholder keeps build clean.
-  client: 'ca-pub-0000000000000000',
+  client: 'ca-pub-4267926791604017',
   slots: {
     'hero-below': {
       id: '1111111111',
