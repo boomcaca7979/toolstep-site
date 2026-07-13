@@ -3,7 +3,6 @@ import BlogPost from '../../layouts/BlogPost.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import ThemeToggle from '../../components/ThemeToggle.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 
@@ -200,10 +199,7 @@ const twitterImageUrl = 'https://example.com/twitter-image-canva-figma.jpg';
 <style is:global>
     /* Add any specific styles for this page if needed */
     .prose h2, .prose h3 {
-        color: var(--text-color-dark); /* Ensure headings adapt to dark mode */
-    }
-    .dark .prose h2, .dark .prose h3 {
-        color: var(--text-color-light);
+        color: var(--text-color-dark);
     }
     /* Basic table styling for responsiveness */
     table {

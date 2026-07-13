@@ -67,17 +67,6 @@ const currentURL = new URL(Astro.url.pathname, Astro.site);
 
 <Font cssVariable="--font-atkinson" preload />
 
-<!-- Dark mode: set theme class synchronously to prevent FOUC -->
-<script is:inline>
-	(function () {
-		const stored = localStorage.getItem('theme');
-		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		if (stored === 'dark' || (!stored && prefersDark)) {
-			document.documentElement.classList.add('dark');
-		}
-	})();
-</script>
-
 <!-- Google AdSense — loaded once globally with async to protect CWV -->
 {ADSENSE_CONFIG.enabled && (
   <script
