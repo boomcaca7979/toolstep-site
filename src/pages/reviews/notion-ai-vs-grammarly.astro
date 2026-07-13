@@ -6,13 +6,31 @@ import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import { SITE_TITLE } from '../../consts';
 
 const pageTitle = `Notion AI vs Grammarly: Which AI Writing Tool Wins in 2026? — ${SITE_TITLE}`;
-const pageDescription = 'We compared Notion AI and Grammarly to find the best AI writing assistant in 2026. Read our hands-on review, feature comparison, and final recommendation.';
+const pageDescription = 'Notion AI vs Grammarly compared for features, pricing, writing capabilities, and practical workflows. Feature comparison and final recommendation for the best AI writing assistant in 2026.';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={pageTitle} description={pageDescription} articleSchema={{headline: pageTitle, description: pageDescription, datePublished: '2026-05', authorName: 'Toolwise Team'}} />
+		<BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: '2026-05', authorName: 'ToolStep Team'}} />
+		<script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": pageTitle, "item": new URL('/reviews/notion-ai-vs-grammarly/', Astro.site).toString() }
+      ]
+    })} />
+		<script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Can I use both Notion AI and Grammarly together?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely — and many writers do. Use Notion AI to generate first drafts, brainstorm ideas, and summarize research inside Notion. Then copy the finished draft into Grammarly (via the browser extension or desktop app) for final grammar, tone, and clarity polishing before publishing." } },
+        { "@type": "Question", "name": "Is Grammarly Premium worth the $12/month?", "acceptedAnswer": { "@type": "Answer", "text": "For professional writers, students, and non-native English speakers, yes. The tone detector, vocabulary enhancement, and plagiarism checker are features you will use daily. Casual writers can get by with the free tier indefinitely. Grammarly often runs 40% off promotions for annual subscriptions." } },
+        { "@type": "Question", "name": "Does Notion AI require a paid Notion plan?", "acceptedAnswer": { "@type": "Answer", "text": "Notion AI is a paid add-on ($10/user/month) on top of any Notion plan, including the free plan. However, every Notion workspace gets a limited number of free AI responses to test the feature. The AI add-on is available for both free and paid Notion plans — it is not included in Notion Plus or Business by default." } }
+      ]
+    })} />
 		<style>
 			.review-wrap {
 				max-width: 760px;
@@ -328,6 +346,7 @@ const pageDescription = 'We compared Notion AI and Grammarly to find the best AI
 				</a>
 			</div>
 
+			<p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
 			<h2>Frequently Asked Questions</h2>
 
 			<div class="faq-item">
@@ -352,7 +371,7 @@ const pageDescription = 'We compared Notion AI and Grammarly to find the best AI
 			</div>
 
 			<p style="margin-top: 40px; font-size: 14px; color: rgb(var(--gray));">
-				<em>Disclosure: This review contains affiliate links. We may earn a commission if you purchase through these links, at no extra cost to you. All opinions are our own based on hands-on testing.</em>
+				<em>Disclosure: This review contains affiliate links. We may earn a commission if you purchase through these links, at no extra cost to you. All opinions are our own based on feature comparison and specification analysis.</em>
 			</p>
 
 			<AffiliateDisclosure />

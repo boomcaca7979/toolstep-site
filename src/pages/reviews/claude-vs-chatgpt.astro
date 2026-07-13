@@ -3,13 +3,32 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-const title = "Claude vs ChatGPT: Which AI Is Better in 2026? | ToolWise";
+const title = "Claude vs ChatGPT: Which AI Is Better in 2026? | ToolStep";
 const description = "Honest comparison of Claude 4 and ChatGPT for writing, coding, and pricing.";
 ---
 
 <html lang="en">
 <head>
-  <BaseHead title={title} description={description} articleSchema={{headline: title, description: description, datePublished: '2026-05', authorName: 'Toolwise Team'}} />
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: title, description: description, datePublished: '2026-05', authorName: 'ToolStep Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": title, "item": new URL('/reviews/claude-vs-chatgpt/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Is Claude better for writing?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Claude consistently produces more natural prose and handles long-form better than any other AI assistant available today." } },
+      { "@type": "Question", "name": "Which is better for coding?", "acceptedAnswer": { "@type": "Answer", "text": "Claude for large refactoring and codebase analysis; ChatGPT for quick scripts, debugging, and data analysis with Code Interpreter." } },
+      { "@type": "Question", "name": "Can I use both together?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Many professionals now use Claude for writing and document analysis while relying on ChatGPT for everything else, including image generation, web research, and coding." } },
+      { "@type": "Question", "name": "Does ChatGPT have a better free tier?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. ChatGPT's free tier offers GPT-4o with daily usage limits plus limited DALL-E 3 access. Claude's free tier is more restricted with lower rate limits." } }
+    ]
+  })} />
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -391,6 +410,7 @@ const description = "Honest comparison of Claude 4 and ChatGPT for writing, codi
       </div>
     </div>
 
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
     <h2>FAQ</h2>
     <h3>Is Claude better for writing?</h3>
     <p>Yes. Claude consistently produces more natural prose and handles long-form better than any other AI assistant available today.</p>

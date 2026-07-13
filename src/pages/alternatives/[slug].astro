@@ -3,12 +3,13 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
-import { alternativesData } from '../../data/alternatives';
+import AdUnit from '../../components/ads/AdUnit.astro';
+import { getAlternativeEntries, getAlternativeEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildAlternativesTitle } from '../../utils/seo';
 
 export function getStaticPaths() {
-  return alternativesData.map((entry) => ({
+  return getAlternativeEntries().map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -22,13 +23,14 @@ const publishDate = '2026-06-26';
 const pageUrl = new URL(`/alternatives/${entry.slug}/`, Astro.site).toString();
 
 // Find prev/next for navigation
-const idx = alternativesData.findIndex(e => e.slug === entry.slug);
-const prevEntry = idx > 0 ? alternativesData[idx - 1] : null;
-const nextEntry = idx < alternativesData.length - 1 ? alternativesData[idx + 1] : null;
+const allAlts = getAlternativeEntries();
+const idx = allAlts.findIndex(e => e.slug === entry.slug);
+const prevEntry = idx > 0 ? allAlts[idx - 1] : null;
+const nextEntry = idx < allAlts.length - 1 ? allAlts[idx + 1] : null;
 
 // Resolve internal links
 const relatedItems = entry.internalLinks
-  .map(slug => alternativesData.find(a => a.slug === slug))
+  .map(slug => getAlternativeEntryBySlug(slug))
   .filter((a): a is NonNullable<typeof a> => a !== undefined)
   .slice(0, 4);
 
@@ -693,6 +695,8 @@ const articleSchema = {
 
           <div class="intro">{entry.intro}</div>
 
+          <AdUnit slot="1111111111" format="horizontal" layout="in-article" />
+
           <h2 id="alternatives-table">Alternatives Table</h2>
           <div class="alt-table-wrap">
             <table class="alt-table">
@@ -780,6 +784,8 @@ const articleSchema = {
           <ul class="why-list">
             {entry.whyChoose.map((reason) => <li>{reason}</li>)}
           </ul>
+
+          <AdUnit slot="3333333333" format="auto" layout="responsive" />
 
           <h2 id="faq">FAQ</h2>
           <div class="faq-list">

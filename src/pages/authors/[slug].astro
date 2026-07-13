@@ -25,20 +25,38 @@ const pageDescription = author.bio.slice(0, 155);
 const lastUpdated = 'June 2026';
 
 // Author schema for SEO
-const authorSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: author.name,
-  jobTitle: author.role,
-  description: author.bio,
-  image: author.avatar,
-  url: new URL(`/authors/${author.slug}`, Astro.site).toString(),
-  worksFor: {
-    '@type': 'Organization',
-    name: 'ToolStep',
-  },
-  knowsAbout: author.expertise,
-};
+const isOrg = author.slug === 'toolstep-team';
+const authorSchema = isOrg
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: author.name,
+      description: author.bio,
+      url: new URL(`/authors/${author.slug}`, Astro.site).toString(),
+      logo: author.avatar,
+      sameAs: [
+        author.social.twitter,
+        author.social.linkedin,
+      ].filter(Boolean),
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: author.name,
+      jobTitle: author.role,
+      description: author.bio,
+      image: author.avatar,
+      url: new URL(`/authors/${author.slug}`, Astro.site).toString(),
+      worksFor: {
+        '@type': 'Organization',
+        name: 'ToolStep',
+      },
+      knowsAbout: author.expertise,
+      sameAs: [
+        author.social.twitter,
+        author.social.linkedin,
+      ].filter(Boolean),
+    };
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -346,7 +364,7 @@ const breadcrumbSchema = {
       <div class="section">
         <h2>Editorial Standards</h2>
         <p>
-          {author.name} follows ToolStep's strict <a href="/editorial-policy">Editorial Policy</a> and <a href="/how-we-test">Testing Methodology</a>. All reviews are based on hands-on testing with documented measurement data.
+          {author.name} follows ToolStep's strict <a href="/editorial-policy">Editorial Policy</a> and <a href="/how-we-test">Testing Methodology</a>. All reviews are based on product documentation, specification analysis, feature evaluation, and workflow assessment.
         </p>
       </div>
     </div>

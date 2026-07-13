@@ -1,0 +1,336 @@
+---
+// BestReviewTemplate.astro
+// Unified template for all "Best X" list/buying-guide pages.
+// Usage: <BestReviewTemplate entry={bestEntry} authorName={authorName} />
+// New best pages only need data in src/data/best.ts — no HTML to write.
+
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AdSlot from '../components/AdSlot.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import { buildBestPageMeta } from '../lib/seo';
+import { getRelatedForBest } from '../lib/related';
+import type { BestEntry } from '../data/best';
+
+interface Props {
+  entry: BestEntry;
+  authorName: string;
+  publishDate?: string;
+}
+
+const { entry, authorName, publishDate = '2026-06-26' } = Astro.props;
+const meta = buildBestPageMeta(entry, authorName, publishDate);
+const related = getRelatedForBest(entry.slug, entry.products.map(p => p.name), entry.category);
+const pageUrl = new URL(`/best/${entry.slug}/`, Astro.site).toString();
+
+function stars(rating: number): string {
+  return '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
+}
+
+const avgRating = (entry.products.reduce((sum, p) => sum + p.rating, 0) / entry.products.length).toFixed(1);
+
+const tocSections = [
+  { id: 'how-we-evaluated', label: 'How We Evaluated' },
+  { id: 'ranking-methodology', label: 'Ranking Methodology' },
+  { id: 'quick-comparison', label: 'Quick Comparison' },
+  { id: 'top-picks', label: 'Top Picks' },
+  { id: 'pros-cons', label: 'Pros & Cons' },
+  { id: 'who-should-buy', label: 'Who Should Buy' },
+  { id: 'who-should-avoid', label: 'Who Should Avoid' },
+  { id: 'buying-guide', label: 'Buying Guide' },
+  { id: 'faq', label: 'FAQ' },
+  { id: 'final-verdict', label: 'Final Verdict' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={meta.title}
+      description={meta.description}
+      ogType="article"
+      articleSchema={{ headline: entry.title, description: entry.description, datePublished: publishDate, authorName }}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(meta.itemListSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(meta.faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(meta.breadcrumbSchema)} />
+    <link rel="canonical" href={meta.canonical} />
+    <style>
+      .best-page { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; min-height: calc(100vh - 200px); }
+      .breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; font-size: 0.82rem; color: #666; margin-bottom: 1.5rem; }
+      .breadcrumb a { color: #666; text-decoration: none; }
+      .breadcrumb a:hover { color: #2563eb; }
+      .breadcrumb .sep { color: #aaa; }
+      .breadcrumb .current { color: #232f3e; font-weight: 600; }
+      .hero { margin-bottom: 2rem; }
+      .hero .category-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 12px; border-radius: 12px; margin-bottom: 0.75rem; color: white; }
+      .hero h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 0.75rem; color: #232f3e; }
+      .hero .desc { font-size: 1.1rem; color: #666; line-height: 1.6; margin: 0 0 1rem; }
+      .hero-stats { display: flex; gap: 1.5rem; margin-top: 1rem; padding: 1rem; background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 12px; }
+      .hero-stat .num { font-size: 1.5rem; font-weight: 800; color: #2563eb; line-height: 1; }
+      .hero-stat .label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; margin-top: 0.25rem; }
+      .intro { background: rgba(37, 99, 235, 0.03); border-left: 4px solid #2563eb; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; font-size: 0.98rem; line-height: 1.7; color: #374151; margin: 1.5rem 0 2rem; }
+      h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #232f3e; scroll-margin-top: 80px; }
+      .toc { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+      .toc h2 { margin-top: 0; font-size: 1.1rem; }
+      .toc ol { padding-left: 1.4rem; margin: 0; }
+      .toc li { margin: 0.3rem 0; }
+      .toc a { color: #2563eb; text-decoration: none; }
+      .toc a:hover { text-decoration: underline; }
+      .compare-table-wrap { overflow-x: auto; margin: 1rem 0; }
+      .compare-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 600px; }
+      .compare-table th, .compare-table td { border: 1px solid #e5e7eb; padding: 0.6rem 0.75rem; text-align: left; }
+      .compare-table th { background: #f3f4f6; font-weight: 700; color: #232f3e; }
+      .compare-table td.rank { font-weight: 800; text-align: center; color: #2563eb; }
+      .compare-table td.name { font-weight: 700; color: #232f3e; }
+      .picks-list { display: flex; flex-direction: column; gap: 1rem; margin: 1rem 0; }
+      .pick-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.25rem; display: grid; grid-template-columns: 60px 1fr auto; gap: 1rem; align-items: start; }
+      .pick-rank { font-size: 1.8rem; font-weight: 800; color: #2563eb; line-height: 1; text-align: center; }
+      .pick-rank.gold { color: #f59e0b; }
+      .pick-rank.silver { color: #94a3b8; }
+      .pick-rank.bronze { color: #b45309; }
+      .pick-info h3 { font-size: 1.15rem; margin: 0 0 0.3rem; color: #232f3e; }
+      .pick-info .pick-brand { font-size: 0.78rem; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+      .pick-info .pick-summary { font-size: 0.9rem; color: #374151; line-height: 1.6; margin: 0 0 0.5rem; }
+      .pick-pros, .pick-cons { font-size: 0.82rem; }
+      .pick-pros strong { color: #059669; display: block; margin-bottom: 0.2rem; }
+      .pick-cons strong { color: #dc2626; display: block; margin-bottom: 0.2rem; }
+      .pick-pros ul, .pick-cons ul { list-style: none; padding: 0; margin: 0; }
+      .pick-pros li { padding-left: 1rem; position: relative; line-height: 1.5; color: #374151; margin-bottom: 0.15rem; }
+      .pick-cons li { padding-left: 1rem; position: relative; line-height: 1.5; color: #374151; margin-bottom: 0.15rem; }
+      .pick-pros li::before { content: '✓'; position: absolute; left: 0; color: #059669; font-weight: bold; }
+      .pick-cons li::before { content: '✗'; position: absolute; left: 0; color: #dc2626; font-weight: bold; }
+      .pick-meta { text-align: right; border-left: 1px solid #e5e7eb; padding-left: 1rem; }
+      .pick-rating { font-size: 1.6rem; font-weight: 800; color: #2563eb; line-height: 1; }
+      .pick-rating .out { font-size: 0.85rem; color: #666; font-weight: 500; }
+      .pick-stars { color: #f59e0b; letter-spacing: 1px; font-size: 0.95rem; margin-top: 0.2rem; }
+      .pick-price { font-size: 1.1rem; font-weight: 700; color: #232f3e; margin-top: 0.5rem; }
+      .pros-cons-summary { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0; }
+      .pc-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem; }
+      .pc-card h4 { font-size: 0.95rem; margin: 0 0 0.5rem; color: #232f3e; }
+      .pc-card .rating-row { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+      .pc-card .pros-line { color: #059669; font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.3rem; }
+      .pc-card .cons-line { color: #dc2626; font-size: 0.82rem; line-height: 1.5; }
+      .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+      @media (max-width: 600px) { .audience-grid { grid-template-columns: 1fr; } }
+      .audience-box { background: #f8f9fa; border-radius: 10px; padding: 1rem 1.25rem; border: 1px solid #e5e7eb; }
+      .audience-box h3 { margin-top: 0; font-size: 1rem; }
+      .audience-box.buy h3 { color: #059669; }
+      .audience-box.avoid h3 { color: #dc2626; }
+      .faq-list details { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+      .faq-list summary { font-weight: 700; color: #232f3e; cursor: pointer; font-size: 0.98rem; }
+      .faq-list details[open] summary { margin-bottom: 0.75rem; }
+      .faq-list details p { margin: 0; font-size: 0.92rem; line-height: 1.7; color: #374151; }
+      .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+      .related-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 0.85rem 1rem; text-decoration: none; color: #2563eb; font-weight: 600; font-size: 0.9rem; }
+      .related-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); transform: translateY(-1px); }
+      .related-card .cat { font-size: 0.72rem; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.2rem; }
+      .nav-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2.5rem 0; }
+      .nav-links a { display: block; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1rem 1.25rem; text-decoration: none; color: #2563eb; font-weight: 600; font-size: 0.95rem; }
+      .nav-links .next { text-align: right; }
+      @media (max-width: 880px) { .pick-card { grid-template-columns: 50px 1fr; } .pick-meta { grid-column: 1 / -1; border-left: none; border-top: 1px solid #e5e7eb; padding-left: 0; padding-top: 0.75rem; text-align: left; display: flex; gap: 1.5rem; } }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <div class="best-page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/best/">Best</a>
+        <span class="sep">/</span>
+        <span class="current">{entry.title}</span>
+      </nav>
+
+      <div class="hero">
+        <span class="category-tag" style={`background: ${entry.color}`}>{entry.category}</span>
+        <h1>{entry.title}</h1>
+        <p class="desc">{entry.description}</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num">{entry.products.length}</div>
+            <div class="label">Products Evaluated</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">{avgRating}</div>
+            <div class="label">Avg Rating</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">{entry.testingDuration}</div>
+            <div class="label">Evaluation Period</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro">{entry.intro}</div>
+
+      <AdSlot position="hero-below" />
+
+      <nav class="toc" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          {tocSections.map(s => <li><a href={`#${s.id}`}>{s.label}</a></li>)}
+        </ol>
+      </nav>
+
+      <h2 id="how-we-evaluated">How We Evaluated</h2>
+      <p>We evaluated {entry.products.length} products based on product documentation, specifications, feature analysis, and pricing comparison. Our evaluation methodology follows the <a href="/how-we-test/">ToolStep review protocol</a>, analyzing product documentation, specifications, features, and pricing. Each product was assessed across identical criteria to ensure fair comparison.</p>
+
+      <h2 id="ranking-methodology">Ranking Methodology</h2>
+      <p>Our rankings are based on weighted scoring across four dimensions:</p>
+      <ul>
+        <li><strong>Performance (30%)</strong> — How well does the product perform its core function?</li>
+        <li><strong>Build Quality (25%)</strong> — Materials, durability, and construction quality</li>
+        <li><strong>Value (20%)</strong> — Price-to-performance ratio compared to alternatives</li>
+        <li><strong>Ease of Use (25%)</strong> — Setup, daily use, and maintenance</li>
+      </ul>
+
+      <h2 id="quick-comparison">Quick Comparison</h2>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th class="rank-col">#</th>
+              <th>Name</th>
+              <th>Brand</th>
+              <th>Rating</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {entry.products.map((p) => (
+              <tr>
+                <td class="rank">{p.rank}</td>
+                <td class="name">{p.name}</td>
+                <td>{p.brand}</td>
+                <td>{p.rating}/5 <span style="color:#f59e0b;">{stars(p.rating)}</span></td>
+                <td>${p.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="top-picks">Top Picks</h2>
+      <div class="picks-list">
+        {entry.products.map((p, i) => (
+          <div class="pick-card" id={`pick-${i + 1}`}>
+            <div class={`pick-rank ${i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : ''}`}>{p.rank}</div>
+            <div class="pick-info">
+              <h3>{p.name}</h3>
+              <div class="pick-brand">{p.brand}</div>
+              <p class="pick-summary">{p.summary}</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                <div class="pick-pros">
+                  <strong>Pros</strong>
+                  <ul>{p.pros.map(pro => <li>{pro}</li>)}</ul>
+                </div>
+                <div class="pick-cons">
+                  <strong>Cons</strong>
+                  <ul>{p.cons.map(con => <li>{con}</li>)}</ul>
+                </div>
+              </div>
+            </div>
+            <div class="pick-meta">
+              <div class="pick-rating">{p.rating}<span class="out">/5</span></div>
+              <div class="pick-stars">{stars(p.rating)}</div>
+              <div class="pick-price">${p.price}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <AdSlot position="content-mid" />
+
+      <h2 id="pros-cons">Pros & Cons Summary</h2>
+      <div class="pros-cons-summary">
+        {entry.products.slice(0, 5).map((p) => (
+          <div class="pc-card">
+            <h4>{p.name}</h4>
+            <div class="rating-row">Rating: {p.rating}/5 · ${p.price}</div>
+            <div class="pros-line">+ {p.pros[0]}</div>
+            <div class="cons-line">− {p.cons[0]}</div>
+          </div>
+        ))}
+      </div>
+
+      <h2 id="who-should-buy">Who Should Buy</h2>
+      <div class="audience-grid">
+        <div class="audience-box buy">
+          <h3>Best For</h3>
+          <ul>
+            <li>Users who want the best {entry.category.toLowerCase()} in this category</li>
+            <li>Buyers who value long-term reliability over initial savings</li>
+            <li>Professionals who need proven, tested products</li>
+          </ul>
+        </div>
+        <div class="audience-box avoid">
+          <h3>Who Should Wait</h3>
+          <ul>
+            <li>Budget buyers who can accept trade-offs for lower price</li>
+            <li>Users with niche needs not covered by top picks</li>
+            <li>Those who already own a product from this list</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="who-should-avoid">Who Should Avoid</h2>
+      <p>If your needs are highly specialized — for example, you need a product for an unusual environment or a very tight budget — check the individual product reviews linked above. A product ranked #5 on our list might be the best choice for your specific situation.</p>
+
+      <h2 id="buying-guide">Buying Guide</h2>
+      <p>When choosing a {entry.category.toLowerCase()}, prioritize your actual usage over specifications. A product that ranks #1 in our test may not be the best fit for your workflow if you do not need its premium features. Consider your budget, space constraints, and how often you will use the product.</p>
+      <p>We recommend reading individual <a href="/reviews/">product reviews</a> for deeper analysis, and using our <a href="/compare/">comparison pages</a> for head-to-head matchups between specific products.</p>
+      <p>Learn more about our <a href="/how-we-test/">evaluation methodology</a> and <a href="/editorial-policy/">editorial policy</a>.</p>
+
+      <h2 id="faq">FAQ</h2>
+      <div class="faq-list">
+        {entry.faqs.map(faq => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+
+      <h2 id="final-verdict">Final Verdict</h2>
+      <p>Based on product documentation, specification analysis, feature evaluation, and workflow assessment, our top pick is the <strong>{entry.products[0].name}</strong> for its {entry.products[0].pros[0].toLowerCase()}. If you want the best value, the <strong>{entry.products[1].name}</strong> at ${entry.products[1].price} delivers the most performance per dollar. All products on this list have been evaluated against consistent criteria and meet our quality standards.</p>
+
+      {/* Related Reviews */}
+      {related.relatedReviews.length > 0 && (
+        <>
+          <h2 id="related-reviews">Related Reviews</h2>
+          <div class="related-grid">
+            {related.relatedReviews.map(r => (
+              <a href={r.href} class="related-card">
+                <div class="cat">Review</div>
+                {r.title}
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Related Comparisons */}
+      {related.relatedComparisons.length > 0 && (
+        <>
+          <h2 id="related-comparisons">Related Comparisons</h2>
+          <div class="related-grid">
+            {related.relatedComparisons.map(r => (
+              <a href={r.href} class="related-card">
+                <div class="cat">Compare</div>
+                {r.title}
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+
+      <AdSlot position="content-end" />
+      <AffiliateDisclosure />
+    </div>
+    <AdSlot position="mobile-bottom" />
+    <Footer />
+  </body>
+</html>

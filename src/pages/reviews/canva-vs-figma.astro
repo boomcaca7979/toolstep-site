@@ -19,7 +19,25 @@ const twitterImageUrl = 'https://example.com/twitter-image-canva-figma.jpg';
 ---
 
 <BlogPost title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage}>
-    <BaseHead title={title} description={description} articleSchema={{headline: title, description: description, datePublished: '2026-05', authorName: 'Toolwise Team'}} />
+    <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: title, description: description, datePublished: '2026-05', authorName: 'ToolStep Team'}} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": title, "item": new URL('/reviews/canva-vs-figma/', Astro.site).toString() }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Canva和Figma可以互相导入文件吗？", "acceptedAnswer": { "@type": "Answer", "text": "直接互相导入原始设计文件通常是不支持的。Canva主要处理位图和矢量图形的组合，而Figma则专注于矢量和UI/UX原型。你可以导出图片或SVG等通用格式，然后在另一个工具中作为素材导入，但不可编辑的源文件功能会丢失。" } },
+        { "@type": "Question", "name": "我应该同时学习Canva和Figma吗？", "acceptedAnswer": { "@type": "Answer", "text": "这取决于你的具体需求。如果你主要负责社交媒体营销和快速内容制作，Canva可能就足够了。如果你是一名有志于从事产品或UI/UX设计的人，那么学习Figma是必不可少的。许多设计师会同时使用两者：用Canva快速制作营销材料，用Figma进行专业的产品设计。" } },
+        { "@type": "Question", "name": "Figma的免费版够用吗？", "acceptedAnswer": { "@type": "Answer", "text": "对于个人项目和小型团队，Figma的免费版功能非常强大且足以满足大部分需求，包括创建无限文件（在草稿空间），最多三个项目，以及完整的原型和协作功能。但如果需要无限的项目、更高级的版本历史、或团队库等功能，则需要升级到付费版本。" } }
+      ]
+    })} />
     <Header />
     <main class="container mx-auto px-4 py-8">
         <article class="prose dark:prose-invert max-w-none">
@@ -142,6 +160,7 @@ const twitterImageUrl = 'https://example.com/twitter-image-canva-figma.jpg';
 
             <!-- FAQ -->
             <section class="mb-12">
+                <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
                 <h2 class="text-3xl font-semibold mb-4">常见问题 (FAQ)</h2>
                 <div class="space-y-4">
                     <div>

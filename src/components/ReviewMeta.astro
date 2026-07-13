@@ -4,6 +4,8 @@ import { getAuthor } from '../data/authors';
 interface Props {
   /** Author slug (e.g., 'marcus-chen') */
   authorSlug: string;
+  /** ISO publish date (e.g., '2026-06-26'). Optional for backward compatibility with best-list pages. */
+  publishDate?: string;
   /** Last updated date (e.g., 'June 2026') */
   lastUpdated: string;
   /** Testing duration (e.g., '90 days') */
@@ -12,8 +14,19 @@ interface Props {
   productsTested: number;
 }
 
-const { authorSlug, lastUpdated, testingDuration, productsTested } = Astro.props;
+const { authorSlug, publishDate, lastUpdated, testingDuration, productsTested } = Astro.props;
 const author = getAuthor(authorSlug);
+
+/** Format ISO date to human-readable (e.g., 'June 26, 2026') */
+function formatDate(iso: string): string {
+  try {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  } catch {
+    return iso;
+  }
+}
 ---
 
 <div class="review-meta">
@@ -24,8 +37,18 @@ const author = getAuthor(authorSlug);
         <img src={author.avatar} alt="" class="author-avatar" loading="lazy" width="24" height="24" />
         {author.name}
       </a>
+      <span class="author-role">{author.role}</span>
     </div>
     <div class="meta-divider"></div>
+    {publishDate && (
+      <>
+        <div class="meta-item">
+          <span class="meta-label">Published</span>
+          <time class="meta-value" datetime={publishDate}>{formatDate(publishDate)}</time>
+        </div>
+        <div class="meta-divider"></div>
+      </>
+    )}
     <div class="meta-item">
       <span class="meta-label">Last Updated</span>
       <span class="meta-value">{lastUpdated}</span>
@@ -33,12 +56,12 @@ const author = getAuthor(authorSlug);
   </div>
   <div class="meta-row">
     <div class="meta-item">
-      <span class="meta-label">Testing Duration</span>
+      <span class="meta-label">Evaluation Period</span>
       <span class="meta-value">{testingDuration}</span>
     </div>
     <div class="meta-divider"></div>
     <div class="meta-item">
-      <span class="meta-label">Products Tested</span>
+      <span class="meta-label">Products Evaluated</span>
       <span class="meta-value">{productsTested} models</span>
     </div>
   </div>
@@ -97,6 +120,11 @@ const author = getAuthor(authorSlug);
     width: 24px;
     height: 24px;
     object-fit: cover;
+  }
+  .author-role {
+    font-size: 0.78rem;
+    color: rgb(var(--gray));
+    font-weight: 500;
   }
   .meta-divider {
     width: 1px;

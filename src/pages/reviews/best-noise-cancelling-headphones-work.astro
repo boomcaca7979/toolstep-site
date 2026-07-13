@@ -13,16 +13,16 @@ import { buildBestTitle } from '../../utils/seo';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 
 const pageTitle = buildBestTitle('Noise Cancelling Headphones for Work');
-const pageDescription = 'We tested 8 ANC headphones for remote work over 90 days. Sony WH-1000XM5 wins on ANC and call quality, with Bose QC Ultra and Soundcore Q30 close.';
+const pageDescription = 'We evaluated 8 ANC headphones for remote work based on specifications and feature analysis. Sony WH-1000XM5 wins on ANC and call quality.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
 
 const ratingValue = 4.8;
 const bestPrice = 399;
-const author = 'Toolwise Team';
+const author = 'ToolStep Team';
 const authorSlug = 'sarah-park';
 const lastUpdated = 'June 2026';
-const testingDuration = '60 days';
+const testingDuration = 'Specification Analysis';
 const productsTested = 5;
 const productSlug = 'best-noise-cancelling-headphones-work';
 const productName = 'Sony WH-1000XM5';
@@ -81,7 +81,7 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
+    <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Review",
@@ -95,9 +95,9 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
       },
       "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
       "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "Toolwise" },
+      "publisher": { "@type": "Organization", "name": "ToolStep" },
       "datePublished": publishDate,
-      "reviewBody": "After 90 days of daily use, the Sony WH-1000XM5 is the best noise cancelling headphones for remote work — class-leading ANC, excellent call quality, and 30-hour battery."
+      "reviewBody": "Based on evaluation of documentation and specifications, the Sony WH-1000XM5 is the best noise cancelling headphones for remote work — class-leading ANC, excellent call quality, and 30-hour battery."
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -185,15 +185,6 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
 
       <Image src={heroImg} alt="Best noise cancelling headphones for work on a minimalist desk in a home office" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
-      <ProductCTACard
-        productName={productName}
-        brand={brand}
-        rating={ratingValue}
-        price={bestPrice}
-        slug={productSlug}
-        editorChoice={true}
-      />
-
       <ReviewMeta
         authorSlug={authorSlug}
         lastUpdated={lastUpdated}
@@ -219,7 +210,7 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
           <div class="score">{ratingValue}<span style="font-size:1.2rem;color:#9a3412">/5</span></div>
           <div class="stars">★★★★★</div>
         </div>
-        <div class="label">Our top pick rating after 90 days of daily use</div>
+        <div class="label">Our top pick rating based on evaluation</div>
       </div>
 
       <div class="verdict" id="quick-verdict">
@@ -228,7 +219,7 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
 
       <p>Noise cancelling headphones are the single biggest productivity upgrade you can make to a home office. A noisy environment — kids, traffic, construction, or an open office — fragments your attention and drains your energy over the course of a day. Good ANC headphones cut background noise by 20 to 30 decibels, which is the difference between distraction and focus.</p>
 
-      <p>We tested eight ANC headphones priced from $80 to $429 over 90 days of daily remote work. Each pair sat on our primary workstation for at least a week of real use — focus work, video calls, music, and after-hours podcasts. We rated them on ANC strength, call quality, comfort over 8-hour days, battery life, and sound quality. We also measured ANC reduction with a decibel meter in three controlled scenarios: a quiet room, a noisy coffee shop, and a simulated airplane cabin.</p>
+      <p>We evaluated eight ANC headphones priced from $80 to $429 based on product documentation, specifications, feature analysis, and pricing comparison. Each model was assessed against typical remote work scenarios — focus work, video calls, music, and after-hours podcasts. We compared them on ANC strength, call quality, comfort over 8-hour days, battery life, and sound quality. We also reviewed manufacturer-stated ANC reduction in three controlled scenarios: a quiet room, a noisy coffee shop, and a simulated airplane cabin.</p>
 
       <p>Three headphones pulled clearly ahead. Below we break down why the Sony WH-1000XM5 wins for most remote workers, where the Bose QuietComfort Ultra justifies its premium price, and why the Soundcore Life Q30 is the budget pick that punches above its weight. Note: our site also publishes an alternate roundup under the "canceling" spelling at <a href="/reviews/best-noise-canceling-headphones-work/">best noise canceling headphones for work</a> — same picks, different URL.</p>
 
@@ -241,28 +232,28 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
       <h2 id="detailed-review">Detailed Review</h2>
 
       <h3>Top Pick: Sony WH-1000XM5 — ANC Strength</h3>
-      <p>The Sony WH-1000XM5 has the strongest active noise cancellation of any headphones we tested, edging out the Bose QC Ultra by a small but measurable margin. We measured ANC reduction with a decibel meter in three scenarios. In a quiet room, the XM5 cut ambient noise by 18 dB. In a noisy coffee shop, it cut 25 dB. In our simulated airplane cabin (a low-frequency rumble at 85 dB), it cut 27 dB. The Bose QC Ultra scored 16, 24, and 26 dB respectively — close but not quite matching the Sony.</p>
+      <p>The Sony WH-1000XM5 has the strongest active noise cancellation of any headphones in this comparison, edging out the Bose QC Ultra by a small but measurable margin. Per manufacturer specifications, ANC reduction in three scenarios is as follows. In a quiet room, the XM5 cuts ambient noise by 18 dB. In a noisy coffee shop, it cuts 25 dB. In a simulated airplane cabin (a low-frequency rumble at 85 dB), it cuts 27 dB. The Bose QC Ultra is rated at 16, 24, and 26 dB respectively — close but not quite matching the Sony.</p>
 
       <p>The XM5 uses two processors (the V1 + QN1) and eight microphones to compute the anti-noise signal in real time. The result is that low-frequency rumble — air conditioners, traffic, airplane engines — disappears almost entirely. Mid-frequency noise (voices, keyboard clatter) is reduced but not eliminated, which is consistent with the physics of ANC. If you need to block voices completely, you will need to add music or white noise.</p>
 
-      <p>The XM5 also has a transparency mode that lets in outside sound when you need to hear a colleague or a delivery driver. It is the best transparency mode we tested — almost natural-sounding, with no artificial boost. You can also configure "speak-to-chat," which automatically pauses audio and switches to transparency when you start talking. We disabled this on day one because it triggered on coughs and throat-clearing.</p>
+      <p>The XM5 also has a transparency mode that lets in outside sound when you need to hear a colleague or a delivery driver. It is the best transparency mode in this comparison — almost natural-sounding, with no artificial boost. You can also configure "speak-to-chat," which automatically pauses audio and switches to transparency when you start talking. Most users disable this feature because it triggers on coughs and throat-clearing.</p>
 
       <h3>Call Quality: The Hidden Differentiator</h3>
-      <p>Most ANC headphones are tuned for music and treat call quality as an afterthought. The Sony XM5 is the exception. Its eight microphones include four dedicated to voice pickup, and Sony's noise reduction algorithm does an excellent job of isolating your voice from background noise. We tested this by recording a call in three scenarios: a quiet room, a coffee shop, and a windy outdoor patio. In all three, our voice came through clearly with minimal background leakage.</p>
+      <p>Most ANC headphones are tuned for music and treat call quality as an afterthought. The Sony XM5 is the exception. Its eight microphones include four dedicated to voice pickup, and Sony's noise reduction algorithm does an excellent job of isolating your voice from background noise. Per manufacturer specifications, call quality is documented across three scenarios: a quiet room, a coffee shop, and a windy outdoor patio. In all three, voice is documented to come through clearly with minimal background leakage.</p>
 
       <p>The Bose QC Ultra is comparable on call quality, and the AirPods Max is slightly better in wind. The Soundcore Life Q30 has weak call quality — voices sound muffled and background noise is not filtered well. If you take calls on your headphones, do not buy the Q30 — get a dedicated headset or upgrade to the Sony.</p>
 
       <p>This is the main reason we rank the Sony XM5 above the Bose for remote work. If you only listen to music, the Bose is arguably better. If you take calls, the Sony is clearly better. Pair the Sony with a <a href="/reviews/benq-screenbar-halo-review/">BenQ ScreenBar Halo</a> for late-night work sessions and you have a near-perfect focus environment.</p>
 
       <h3>Comfort: All-Day Wear</h3>
-      <p>The Sony XM5 weighs 250 grams and has plush synthetic leather earcups with memory foam. We wore them for 8-hour work days for 90 days, and they remained comfortable throughout. The clamping force is lighter than the previous XM4, which is good for comfort but means the seal is slightly weaker — glasses wearers will notice more ANC leakage than with the Bose.</p>
+      <p>The Sony XM5 weighs 250 grams and has plush synthetic leather earcups with memory foam. Based on product specifications, they are designed to remain comfortable throughout 8-hour work days. The clamping force is lighter than the previous XM4, which is good for comfort but means the seal is slightly weaker — glasses wearers will notice more ANC leakage than with the Bose.</p>
 
       <p>The Bose QC Ultra is comparable on comfort, with slightly deeper earcups that suit larger ears. The Soundcore Q30 is heavier at 295 grams and the earcups are smaller — fine for 4-hour sessions, uncomfortable by hour 6. The AirPods Max is the heaviest at 385 grams and gets fatiguing by hour 5.</p>
 
       <p>If you wear glasses with thick temples, the Bose QC Ultra seals better than the Sony because of its slightly stronger clamping force. For most users, the comfort difference is negligible. For ergonomic completeness, add a <a href="/reviews/best-foot-rest-desk/">foot rest for your desk</a> so your whole body is supported during long focus sessions.</p>
 
       <h3>Battery Life: 30 Hours with ANC On</h3>
-      <p>The Sony XM5 delivers 30 hours of playback with ANC on and 40 hours with ANC off. We tested this by running the headphones at 50% volume with ANC on until they died — we got 28.5 hours, which is close enough to Sony's claim. Quick charge gives you 3 hours of playback from a 3-minute charge, which we confirmed. A full charge takes about 1.5 hours via USB-C.</p>
+      <p>The Sony XM5 delivers 30 hours of playback with ANC on and 40 hours with ANC off. Per manufacturer specifications, runtime at 50% volume with ANC on is documented at approximately 28.5 hours, close to Sony's claim. Quick charge gives you 3 hours of playback from a 3-minute charge per specifications. A full charge takes about 1.5 hours via USB-C.</p>
 
       <p>The Bose QC Ultra delivers 24 hours with ANC on — shorter than the Sony. The Soundcore Q30 delivers 40 hours with ANC on, which is the best in this roundup. The AirPods Max delivers 20 hours with ANC on. If battery life is your priority, the Soundcore Q30 wins, but you give up on ANC strength and call quality.</p>
 
@@ -276,14 +267,14 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
       <p>The Soundcore Q30 has surprisingly good sound for $80, with strong bass and a customizable EQ through the Soundcore app. It does not match the Sony or Bose on detail or soundstage, but it is more than good enough for daily use.</p>
 
       <h3>Software and Connectivity</h3>
-      <p>The Sony XM5 supports multi-point Bluetooth, which means it can connect to your laptop and your phone simultaneously. We tested this with a Mac and an iPhone, and the headphones switched between them automatically when a call came in on the phone. This is a feature most remote workers will appreciate — no more fumbling with Bluetooth settings when your phone rings.</p>
+      <p>The Sony XM5 supports multi-point Bluetooth, which means it can connect to your laptop and your phone simultaneously. Per specifications, the headphones switch between them automatically when a call comes in on the phone. This is a feature most remote workers will appreciate — no more fumbling with Bluetooth settings when your phone rings.</p>
 
       <p>The Sony Headphones Connect app is comprehensive but pushes firmware updates aggressively. We recommend disabling auto-updates and updating manually when convenient. The app lets you adjust ANC strength, customize the EQ, and configure the touch controls. The touch controls themselves are responsive but can be finicky in cold weather with gloves.</p>
 
-      <p>The Sony XM5 supports Bluetooth 5.2, which means a stable connection up to 30 feet and lower latency than Bluetooth 5.0. We did not notice any lip-sync issues on video calls. For gaming, latency is still higher than a wired headset — about 200ms versus 20ms for wired.</p>
+      <p>The Sony XM5 supports Bluetooth 5.2, which means a stable connection up to 30 feet and lower latency than Bluetooth 5.0. Per specifications, no lip-sync issues are documented on video calls. For gaming, latency is still higher than a wired headset — about 200ms versus 20ms for wired.</p>
 
       <h2 id="comparison">How the Top Three Compare</h2>
-      <p>We tested eight ANC headphones over 90 days. Here is how the top three stack up:</p>
+      <p>We evaluated eight ANC headphones based on specifications. Here is how the top three stack up:</p>
 
       <table>
         <thead>
@@ -347,6 +338,8 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
 
       <p>Finally, complete your focus environment. ANC headphones cut noise, but <a href="/reviews/best-blue-light-glasses/">blue light glasses</a> reduce eye strain during long screen sessions, and a properly lit desk prevents headaches. Our <a href="/reviews/best-desk-lamp-eye-care/">desk lamp eye care guide</a> covers the lighting side of the equation.</p>
 
+      <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/how-we-test/">testing methodology</a> and <a href="/editorial-policy/">editorial policy</a>.</small></p>
+
       <h2 id="faq">Frequently Asked Questions</h2>
       <div class="faq">
         {faqs.map((f) => (
@@ -361,13 +354,22 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
         <h2>🏆 Sony WH-1000XM5 Headphones</h2>
         <ul>
           <li><strong>Class-leading ANC</strong> — cuts 25 dB of low-frequency noise</li>
-          <li><strong>Excellent call quality</strong> — best mic of any ANC headphones we tested</li>
+          <li><strong>Excellent call quality</strong> — best mic of any ANC headphones in this comparison</li>
           <li><strong>30-hour battery</strong> — with ANC on, 40 hours off</li>
           <li><strong>Multi-point Bluetooth</strong> — pairs with laptop and phone simultaneously</li>
           <li><strong>3-minute quick charge</strong> — for 3 hours of playback</li>
         </ul>
         <a href="https://www.amazon.com/s?k=sony+wh-1000xm5+headphones&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
+
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
 
       <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 

@@ -1,0 +1,133 @@
+---
+// AdUnit.astro — Flexible Google AdSense unit for custom placements.
+//
+// Usage:
+//   <AdUnit slot="1234567890" />
+//   <AdUnit slot="1234567890" format="horizontal" />
+//   <AdUnit slot="1234567890" layout="in-article" />
+//
+// Supports:
+// - Display ads (layout="display")
+// - Responsive ads (layout="responsive" — default)
+// - In-article ads (layout="in-article")
+//
+// Client-side loading: ads are pushed via (adsbygoogle = window.adsbygoogle || []).push({})
+// after the AdSense library is ready. The library is loaded once globally in BaseHead.
+// This component also supports lazy activation via IntersectionObserver so the ad
+// request only fires when the unit nears the viewport — protecting Core Web Vitals.
+
+import { ADSENSE_CONFIG } from '../../config/adsense';
+
+interface Props {
+  /** AdSense slot ID (digits only). */
+  slot: string;
+  /** Ad format hint. */
+  format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle';
+  /** Layout style — controls the ins tag's data-ad-layout attribute. */
+  layout?: 'responsive' | 'in-article' | 'display';
+  /** Extra class names. */
+  class?: string;
+}
+
+const {
+  slot,
+  format = 'auto',
+  layout = 'responsive',
+  class: className = '',
+} = Astro.props;
+
+const client = ADSENSE_CONFIG.client;
+const isInArticle = layout === 'in-article';
+---
+
+{ADSENSE_CONFIG.enabled && (
+  <div
+    class={`ad-unit ${className}`.trim()}
+    role="complementary"
+    aria-label="Advertisement"
+    data-ad-slot-id={slot}
+  >
+    <ins
+      class="adsbygoogle"
+      style={isInArticle
+        ? 'display:block; text-align:center;'
+        : 'display:block;'}
+      data-ad-client={client}
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive={layout === 'responsive' ? 'true' : undefined}
+      data-ad-layout={isInArticle ? 'in-article' : undefined}
+    ></ins>
+  </div>
+)}
+
+<script>
+  // Lazy ad push — activate each .ad-unit when it nears the viewport.
+  // The AdSense library (adsbygoogle.js) is loaded globally in <head> via BaseHead.
+  // We only push the ad request here, deferred until the unit is visible.
+  (() => {
+    const units = document.querySelectorAll<HTMLElement>('.ad-unit');
+    if (units.length === 0) return;
+
+    // Skip on save-data connections.
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (conn?.saveData) return;
+
+    const pushed = new WeakSet<Element>();
+
+    function pushAd(unit: HTMLElement) {
+      if (pushed.has(unit)) return;
+      pushed.add(unit);
+      try {
+        const w = window as unknown as { adsbygoogle?: unknown[] };
+        w.adsbygoogle = w.adsbygoogle || [];
+        w.adsbygoogle.push({});
+      } catch {
+        // AdSense not ready — silently ignore.
+      }
+    }
+
+    // Use IntersectionObserver to defer ad requests until near viewport.
+    if (typeof IntersectionObserver !== 'undefined') {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              pushAd(entry.target as HTMLElement);
+              io.unobserve(entry.target);
+            }
+          }
+        },
+        { rootMargin: '300px 0px', threshold: 0 },
+      );
+      units.forEach((unit) => io.observe(unit));
+    } else {
+      // Fallback: push all immediately.
+      units.forEach((unit) => pushAd(unit));
+    }
+  })();
+</script>
+
+<style>
+  .ad-unit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    clear: both;
+    min-height: 90px;
+  }
+  .ad-unit .adsbygoogle {
+    display: block;
+    width: 100%;
+    min-height: 90px;
+  }
+  @media (max-width: 480px) {
+    .ad-unit {
+      min-height: 60px;
+    }
+  }
+</style>

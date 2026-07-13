@@ -19,6 +19,8 @@ interface Props {
 		datePublished: string;
 		dateModified?: string;
 		authorName?: string;
+		authorUrl?: string;
+		authorJobTitle?: string;
 		imageUrl?: string;
 	};
 	softwareSchema?: {
@@ -151,7 +153,9 @@ const currentURL = new URL(Astro.url.pathname, Astro.site);
 		"dateModified": articleSchema.dateModified || articleSchema.datePublished,
 		"author": {
 			"@type": "Person",
-			"name": articleSchema.authorName || "ToolStep Team"
+			"name": articleSchema.authorName || "ToolStep Team",
+			...(articleSchema.authorUrl ? { "url": articleSchema.authorUrl } : {}),
+			...(articleSchema.authorJobTitle ? { "jobTitle": articleSchema.authorJobTitle } : {})
 		},
 		"publisher": {
 			"@type": "Organization",

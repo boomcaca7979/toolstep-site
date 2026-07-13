@@ -48,7 +48,7 @@ export const compareData: CompareEntry[] = [
     title: 'FlexiSpot E7 vs Uplift V2',
     category: 'Standing Desks',
     color: '#ea580c',
-    description: 'Budget champion vs premium leader. We tested both standing desks for 90 days to compare stability, motor noise, and value.',
+    description: 'Budget champion vs premium leader. Based on product documentation, both standing desks compared for stability, motor noise, and value.',
     productA: {
       name: 'FlexiSpot E7', brand: 'FlexiSpot', price: 249, rating: 4.6,
       pros: ['Half the price of the Uplift V2', '220-lb weight capacity leads the budget tier', 'Dual-motor lift is quiet at 48 dB', '5-year warranty is rare under $300'],
@@ -89,7 +89,7 @@ export const compareData: CompareEntry[] = [
     slug: 'flexispot-e7-vs-branch-standing-desk',
     title: 'FlexiSpot E7 vs Branch Standing Desk',
     category: 'Standing Desks', color: '#ea580c',
-    description: 'Two popular budget standing desks compared. We tested stability, motor quality, and warranty to find the winner.',
+    description: 'Two popular budget standing desks compared. Based on product documentation, stability, motor quality, and warranty are compared to find the winner.',
     productA: {
       name: 'FlexiSpot E7', brand: 'FlexiSpot', price: 249, rating: 4.6,
       pros: ['Lower price by $146', 'Higher weight capacity (220 lbs vs 150 lbs)', 'Wider height range', 'Available on Amazon with fast shipping'],
@@ -238,7 +238,7 @@ export const compareData: CompareEntry[] = [
     slug: 'herman-miller-aeron-vs-steelcase-leap-v2',
     title: 'Herman Miller Aeron vs Steelcase Leap V2',
     category: 'Ergonomic Chairs', color: '#ea580c',
-    description: 'The two most iconic ergonomic chairs compared. We tested both for 6 months to find which is better for long-term comfort.',
+    description: 'The two most iconic ergonomic chairs compared. Based on product documentation, both are compared for long-term comfort.',
     productA: {
       name: 'Herman Miller Aeron', brand: 'Herman Miller', price: 1495, rating: 4.7,
       pros: ['Iconic mesh design never sags', 'Best breathability for hot climates', '12-year warranty', 'Holds resale value better than any chair'],
@@ -429,7 +429,7 @@ export const compareData: CompareEntry[] = [
     slug: 'keychron-k8-vs-logitech-mx-keys-s',
     title: 'Keychron K8 vs Logitech MX Keys S',
     category: 'Keyboards', color: '#ea580c',
-    description: 'Mechanical vs membrane. We compared the Keychron K8 mechanical keyboard with the Logitech MX Keys S low-profile keyboard.',
+    description: 'Mechanical vs membrane. Based on product documentation, the Keychron K8 mechanical keyboard is compared with the Logitech MX Keys S low-profile keyboard.',
     productA: {
       name: 'Keychron K8', brand: 'Keychron', price: 89, rating: 4.4,
       pros: ['Mechanical switches for tactile feedback', 'Hot-swappable switches', 'Bluetooth + USB-C dual mode', 'RGB backlight option', '$51 cheaper'],
@@ -657,7 +657,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-mx-master-3s-vs-razer-pro-click',
     title: 'Logitech MX Master 3S vs Razer Pro Click',
     category: 'Mice', color: '#ea580c',
-    description: 'Productivity vs gaming-brand mouse. We compared the MX Master 3S with the Razer Pro Click for office use.',
+    description: 'Productivity vs gaming-brand mouse. Based on product documentation, the MX Master 3S is compared with the Razer Pro Click for office use.',
     productA: {
       name: 'Logitech MX Master 3S', brand: 'Logitech', price: 99, rating: 4.7,
       pros: ['Better ergonomics', 'MagSpeed scroll wheel', 'Multi-device switching', '70-day battery life', 'Quiet clicks'],
@@ -1909,7 +1909,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-mx-master-3s-vs-razer-basilisk-v3-pro',
     title: 'Logitech MX Master 3S vs Razer Basilisk V3 Pro',
     category: 'Mice', color: '#3b82f6',
-    description: 'Productivity king vs gaming flagship. We tested both mice for 45 days across spreadsheets, video editing, and FPS sessions to find the right pick for each workflow.',
+    description: 'Productivity king vs gaming flagship. Based on product documentation, both mice are compared across spreadsheets, video editing, and FPS sessions to find the right pick for each workflow.',
     productA: {
       name: 'Logitech MX Master 3S', brand: 'Logitech', price: 99, rating: 4.8,
       pros: ['MagSpeed scroll wheel switches between ratchet and free-spin', 'Flow control across two computers', '70-day battery life leads the category', 'Quiet clicks are 90% quieter than the MX Master 3'],
@@ -1950,7 +1950,7 @@ export const compareData: CompareEntry[] = [
     slug: 'keychron-q1-vs-keychron-k8',
     title: 'Keychron Q1 vs Keychron K8',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'Premium aluminum build vs portable wireless value. We tested both Keychron boards for 40 days of typing, gaming, and travel to find the right fit.',
+    description: 'Premium aluminum build vs portable wireless value. Based on product documentation, both Keychron boards are compared for typing, gaming, and travel to find the right fit.',
     productA: {
       name: 'Keychron Q1', brand: 'Keychron', price: 149, rating: 4.7,
       pros: ['CNC aluminum body feels tank-solid', 'Gasket mount gives a cushioned typing feel', 'QMK/VIA support for deep customization', 'Hot-swappable switches out of the box'],
@@ -1991,7 +1991,7 @@ export const compareData: CompareEntry[] = [
     slug: 'caldigit-ts4-vs-plugable-usb-c-triple',
     title: 'CalDigit TS4 vs Plugable USB-C Triple',
     category: 'USB-C Docks', color: '#8b5cf6',
-    description: 'Premium Thunderbolt 4 dock vs budget USB-C dock. We tested both for 50 days driving dual 4K monitors, fast charging, and a full desk of peripherals.',
+    description: 'Premium Thunderbolt 4 dock vs budget USB-C dock. Based on product documentation, both are compared for dual 4K monitor support, fast charging, and a full desk of peripherals.',
     productA: {
       name: 'CalDigit TS4', brand: 'CalDigit', price: 399, rating: 4.8,
       pros: ['18 ports including dual Thunderbolt 4 downstream', '98W host charging keeps 16-inch laptops fed', 'Dual 4K60 or single 8K display support', 'Solid aluminum build runs cool under load'],
@@ -2032,7 +2032,7 @@ export const compareData: CompareEntry[] = [
     slug: 'benq-screenbar-halo-vs-yeelight-monitor-light',
     title: 'BenQ ScreenBar Halo vs Yeelight Monitor Light',
     category: 'Monitor Lights', color: '#f59e0b',
-    description: 'Premium monitor light vs budget alternative. We tested both for 35 days of late-night coding and video calls to compare glare, color accuracy, and value.',
+    description: 'Premium monitor light vs budget alternative. Based on product documentation, both are compared for late-night coding and video calls to assess glare, color accuracy, and value.',
     productA: {
       name: 'BenQ ScreenBar Halo', brand: 'BenQ', price: 169, rating: 4.7,
       pros: ['Asymmetric optics eliminate screen glare', 'Auto-dim ambient sensor adjusts brightness', 'Tunable color temperature 2700K-6500K', 'Wireless knob controller is premium'],
@@ -2073,7 +2073,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-brio-4k-vs-razer-kiyo-pro',
     title: 'Logitech Brio 4K vs Razer Kiyo Pro',
     category: 'Webcams', color: '#10b981',
-    description: 'Versatile 4K webcam vs low-light specialist. We tested both for 30 days of video calls, streaming, and dim-room recording to compare image quality and value.',
+    description: 'Versatile 4K webcam vs low-light specialist. Based on product documentation, both are compared for video calls, streaming, and dim-room recording to assess image quality and value.',
     productA: {
       name: 'Logitech Brio 4K', brand: 'Logitech', price: 199, rating: 4.6,
       pros: ['4K30 and 1080p60 capture', 'Windows Hello and facial recognition', '5x digital zoom with adjustable FOV', 'HDR for high-contrast lighting'],
@@ -2114,7 +2114,7 @@ export const compareData: CompareEntry[] = [
     slug: 'sony-wh-1000xm5-vs-sennheiser-momentum-4',
     title: 'Sony WH-1000XM5 vs Sennheiser Momentum 4',
     category: 'Headphones', color: '#e11d48',
-    description: 'ANC champion vs battery king. We tested both for 45 days of flights, office calls, and commutes to compare noise cancellation, sound quality, and stamina.',
+    description: 'ANC champion vs battery king. Based on product documentation, both are compared for flights, office calls, and commutes to assess noise cancellation, sound quality, and stamina.',
     productA: {
       name: 'Sony WH-1000XM5', brand: 'Sony', price: 399, rating: 4.7,
       pros: ['Class-leading active noise cancellation', 'Lighter and more comfortable than the XM4', 'Crystal-clear call quality with 8 mics', 'LDAC for hi-res wireless audio'],
@@ -2144,7 +2144,7 @@ export const compareData: CompareEntry[] = [
     ],
     faqs: [
       { question: 'Which has better noise cancellation?', answer: 'The Sony WH-1000XM5. Its V1 processor and 8 mics deliver class-leading ANC that noticeably beats the Momentum 4 on planes and trains, especially in low-frequency rumble.' },
-      { question: 'Is the 60-hour battery of the Momentum 4 real?', answer: 'Yes, with ANC on Sennheiser rates it at 60 hours and we measured ~58 hours in mixed use. The Sony XM5 drops to 30 hours, a real step down from the XM4 40-hour runtime.' },
+      { question: 'Is the 60-hour battery of the Momentum 4 real?', answer: 'Yes, with ANC on Sennheiser rates it at 60 hours per official specification. The Sony XM5 drops to 30 hours, a real step down from the XM4 40-hour runtime.' },
       { question: 'Which sounds better?', answer: 'Subjective, but most testers preferred the Momentum 4 warmer, richer sound for music. The Sony is more balanced and neutral, which some prefer for podcasts and calls.' },
       { question: 'Which is better for calls?', answer: 'The Sony. Its 8-mic array and processing deliver clearer voice on calls, while the Momentum 4 picks up more ambient noise. If you take calls all day, get the Sony.' },
     ],
@@ -2155,7 +2155,7 @@ export const compareData: CompareEntry[] = [
     slug: 'claude-vs-perplexity',
     title: 'Claude vs Perplexity',
     category: 'AI Chatbot', color: '#7c3aed',
-    description: 'Reasoning specialist vs search specialist. We tested both for 30 days of research, writing, coding, and quick factual lookups to find where each AI shines.',
+    description: 'Reasoning specialist vs search specialist. Based on product documentation, both are compared for research, writing, coding, and quick factual lookups to find where each AI shines.',
     productA: {
       name: 'Claude', brand: 'Anthropic', price: 20, rating: 4.7,
       pros: ['Best-in-class long-context reasoning (200K tokens)', 'Stronger creative and long-form writing', 'More careful, factual answers', 'Excellent at coding and analysis'],
@@ -2196,7 +2196,7 @@ export const compareData: CompareEntry[] = [
     slug: 'notion-vs-todoist',
     title: 'Notion vs Todoist',
     category: 'Productivity', color: '#7c3aed',
-    description: 'All-in-one workspace vs focused task manager. We tested both for 40 days of project management, daily tasks, and notes to find the right tool for each workflow.',
+    description: 'All-in-one workspace vs focused task manager. Based on product documentation, both are compared for project management, daily tasks, and notes to find the right tool for each workflow.',
     productA: {
       name: 'Notion', brand: 'Notion', price: 10, rating: 4.5,
       pros: ['Flexible all-in-one workspace for notes, docs, and tasks', 'Powerful databases with views and relations', 'Great for knowledge management and wikis', 'Strong collaboration and sharing'],
@@ -2237,7 +2237,7 @@ export const compareData: CompareEntry[] = [
     slug: 'herman-miller-aeron-vs-embody',
     title: 'Herman Miller Aeron vs Embody',
     category: 'Ergonomic Chairs', color: '#ea580c',
-    description: 'Two legendary Herman Miller chairs face off. We tested the Aeron and Embody for 90 days to compare lumbar support, fit range, and long-term comfort.',
+    description: 'Two legendary Herman Miller chairs face off. Based on product documentation, the Aeron and Embody are compared for lumbar support, fit range, and long-term comfort.',
     productA: {
       name: 'Herman Miller Aeron', brand: 'Herman Miller', price: 1495, rating: 4.8,
       pros: ['Iconic breathable mesh that never sags', 'Three size options (A/B/C) for a precise fit', '12-year warranty covering all parts', 'Holds resale value better than any chair on the market'],
@@ -2278,7 +2278,7 @@ export const compareData: CompareEntry[] = [
     slug: 'flexispot-e7-vs-autonomous-smartdesk-2',
     title: 'FlexiSpot E7 vs Autonomous SmartDesk 2',
     category: 'Standing Desks', color: '#ea580c',
-    description: 'Two budget standing desks under $300. We tested stability, motor noise, and wobble at full height.',
+    description: 'Two budget standing desks under $300. Based on product documentation, stability, motor noise, and wobble at full height are compared.',
     productA: {
       name: 'FlexiSpot E7', brand: 'FlexiSpot', price: 249, rating: 4.6,
       pros: ['$50 cheaper than the SmartDesk 2', 'More stable at full height with heavier loads', 'Faster 1.5"/s lift speed', 'Amazon Prime shipping with easy returns'],
@@ -2319,7 +2319,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-mx-keys-s-vs-keychron-q1',
     title: 'Logitech MX Keys S vs Keychron Q1',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'Wireless productivity vs mechanical custom. We tested both keyboards for 60 days across coding, writing, and gaming.',
+    description: 'Wireless productivity vs mechanical custom. Based on product documentation, both keyboards are compared for coding, writing, and gaming.',
     productA: {
       name: 'Logitech MX Keys S', brand: 'Logitech', price: 119, rating: 4.7,
       pros: ['Best-in-class multi-device switching (3 devices via Flow)', 'Low-profile scissor switches are quiet and fast', 'USB-C fast charging lasts 10 days on 5 min', 'Rechargeable battery (no AA batteries needed)'],
@@ -2360,7 +2360,7 @@ export const compareData: CompareEntry[] = [
     slug: 'sony-wh-1000xm5-vs-jabra-elite-85h',
     title: 'Sony WH-1000XM5 vs Jabra Elite 85h',
     category: 'Headphones', color: '#e11d48',
-    description: 'Premium ANC vs budget battery champion. We tested noise cancellation, sound quality, and call clarity.',
+    description: 'Premium ANC vs budget battery champion. Based on product documentation, noise cancellation, sound quality, and call clarity are compared.',
     productA: {
       name: 'Sony WH-1000XM5', brand: 'Sony', price: 399, rating: 4.7,
       pros: ['Class-leading ANC with 8 microphones and 2 processors', 'LDAC support for hi-res audio streaming', 'Multipoint Bluetooth connects 2 devices simultaneously', 'Speak-to-chat auto-pauses when you talk'],
@@ -2401,7 +2401,7 @@ export const compareData: CompareEntry[] = [
     slug: 'claude-vs-github-copilot',
     title: 'Claude vs GitHub Copilot',
     category: 'AI Coding', color: '#7c3aed',
-    description: 'AI chatbot vs AI code completion. We tested both for 30 days across real coding tasks.',
+    description: 'AI chatbot vs AI code completion. Based on product documentation, both are compared across real coding tasks.',
     productA: {
       name: 'Claude (Anthropic)', brand: 'Anthropic', price: 20, rating: 4.7,
       pros: ['200K token context window fits large codebases', 'Excellent at explaining code and reasoning about bugs', 'Superior at architectural and code review discussions', 'Better at generating complete features from natural language specs'],
@@ -2442,7 +2442,7 @@ export const compareData: CompareEntry[] = [
     slug: 'midjourney-vs-stable-diffusion',
     title: 'Midjourney vs Stable Diffusion',
     category: 'AI Image', color: '#7c3aed',
-    description: 'Polished cloud AI vs open-source local. We tested image quality, control, and cost over 30 days.',
+    description: 'Polished cloud AI vs open-source local. Based on product documentation, image quality, control, and cost are compared.',
     productA: {
       name: 'Midjourney', brand: 'Midjourney', price: 10, rating: 4.6,
       pros: ['Most aesthetically polished results out of the box', 'V6 Niji mode excels at anime and illustration styles', 'Simple Discord and web interface with no setup', 'Active community gallery for prompt inspiration'],
@@ -2483,7 +2483,7 @@ export const compareData: CompareEntry[] = [
     slug: 'satechi-thunderbolt-4-vs-plugable-usb-c-triple',
     title: 'Satechi Thunderbolt 4 vs Plugable USB-C Triple',
     category: 'USB-C Docks', color: '#8b5cf6',
-    description: 'Thunderbolt 4 vs DisplayLink. We tested dual-monitor support, charging speed, and compatibility.',
+    description: 'Thunderbolt 4 vs DisplayLink. Based on product documentation, dual-monitor support, charging speed, and compatibility are compared.',
     productA: {
       name: 'Satechi Thunderbolt 4 Dock', brand: 'Satechi', price: 299, rating: 4.5,
       pros: ['Thunderbolt 4 delivers 40 Gbps bandwidth and dual 4K at 60Hz', '90W host charging powers most laptops', 'Three Thunderbolt 4 downstream ports for daisy-chaining', 'No driver needed on macOS and Windows'],
@@ -2524,7 +2524,7 @@ export const compareData: CompareEntry[] = [
     slug: 'obsidian-vs-roam-research',
     title: 'Obsidian vs Roam Research',
     category: 'Productivity', color: '#7c3aed',
-    description: 'Local markdown vs cloud block-reference. We tested both note-taking apps for 60 days.',
+    description: 'Local markdown vs cloud block-reference. Based on product documentation, both note-taking apps are compared.',
     productA: {
       name: 'Obsidian', brand: 'Obsidian', price: 0, rating: 4.6,
       pros: ['Free for personal use — local markdown files you own', 'Plugin ecosystem with 1,500+ community plugins', 'Fast search and instant sync across devices', 'Works offline — your notes never leave your machine'],
@@ -2565,7 +2565,7 @@ export const compareData: CompareEntry[] = [
     slug: 'branch-ergonomic-chair-vs-hon-agreement',
     title: 'Branch Ergonomic Chair vs HON Agreement',
     category: 'Ergonomic Chairs', color: '#ea580c',
-    description: 'Two mid-range ergonomic chairs at the same price. We tested lumbar support, adjustability, and build quality for 60 days.',
+    description: 'Two mid-range ergonomic chairs at the same price. Based on product documentation, lumbar support, adjustability, and build quality are compared.',
     productA: {
       name: 'Branch Ergonomic Chair', brand: 'Branch', price: 349, rating: 4.4,
       pros: ['Adjustable lumbar support with depth control', 'Modern minimalist design fits any office', '7-year warranty is generous at this price', 'Breathable mesh back keeps you cool'],
@@ -2606,7 +2606,7 @@ export const compareData: CompareEntry[] = [
     slug: 'steelcase-leap-v2-vs-haworth-zody',
     title: 'Steelcase Leap V2 vs Haworth Zody',
     category: 'Ergonomic Chairs', color: '#ea580c',
-    description: 'Two premium ergonomic chairs under $1000. We tested them for 90 days comparing lumbar support and fit range.',
+    description: 'Two premium ergonomic chairs under $1000. Based on product documentation, both are compared for lumbar support and fit range.',
     productA: {
       name: 'Steelcase Leap V2', brand: 'Steelcase', price: 949, rating: 4.7,
       pros: ['LiveBack technology flexes with your spine', 'Highly adjustable lumbar support', 'Excellent build quality lasts 15+ years', 'Wide range of upholstery options'],
@@ -2647,7 +2647,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-brio-4k-vs-elgato-facecam',
     title: 'Logitech Brio 4K vs Elgato Facecam',
     category: 'Webcams', color: '#10b981',
-    description: '4K versatility vs 1080p60 streaming. We tested both webcams for streaming, calls, and low-light performance.',
+    description: '4K versatility vs 1080p60 streaming. Based on product documentation, both webcams are compared for streaming, calls, and low-light performance.',
     productA: {
       name: 'Logitech Brio 4K', brand: 'Logitech', price: 199, rating: 4.6,
       pros: ['True 4K30 capture for sharp video', 'Windows Hello IR support built-in', '90-degree wide FOV with HDR', 'Versatile mounting and USB-C connection'],
@@ -2688,7 +2688,7 @@ export const compareData: CompareEntry[] = [
     slug: 'keychron-k8-vs-royal-kludge-rk61',
     title: 'Keychron K8 vs Royal Kludge RK61',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'Premium budget vs ultra-budget mechanical keyboard. We tested both for typing feel, build quality, and wireless reliability.',
+    description: 'Premium budget vs ultra-budget mechanical keyboard. Based on product documentation, both are compared for typing feel, build quality, and wireless reliability.',
     productA: {
       name: 'Keychron K8', brand: 'Keychron', price: 89, rating: 4.4,
       pros: ['Bluetooth + USB-C dual connectivity', 'Solid aluminum frame option', 'Compatible with Mac and Windows', 'Hot-swappable switches on newer models'],
@@ -2729,7 +2729,7 @@ export const compareData: CompareEntry[] = [
     slug: 'notion-vs-coda',
     title: 'Notion vs Coda',
     category: 'Productivity', color: '#7c3aed',
-    description: 'Two all-in-one productivity docs. We tested databases, formulas, and automation for 60 days.',
+    description: 'Two all-in-one productivity docs. Based on product documentation, databases, formulas, and automation are compared.',
     productA: {
       name: 'Notion', brand: 'Notion', price: 10, rating: 4.5,
       pros: ['Superior database views (board, gallery, calendar, timeline)', 'Large community with 1M+ templates', 'Cleaner, more intuitive UI', 'AI features included in Plus plan'],
@@ -2770,7 +2770,7 @@ export const compareData: CompareEntry[] = [
     slug: 'figma-vs-adobe-xd',
     title: 'Figma vs Adobe XD',
     category: 'Design', color: '#ec4899',
-    description: 'Cloud-native vs Adobe ecosystem. We tested both design tools for real-time collaboration and prototyping.',
+    description: 'Cloud-native vs Adobe ecosystem. Based on product documentation, both design tools are compared for real-time collaboration and prototyping.',
     productA: {
       name: 'Figma', brand: 'Figma', price: 12, rating: 4.8,
       pros: ['Real-time multiplayer collaboration is unmatched', 'Huge plugin ecosystem (1,000+)', 'Variants and component properties are powerful', 'Runs in any browser on any OS'],
@@ -2811,7 +2811,7 @@ export const compareData: CompareEntry[] = [
     slug: 'premiere-pro-vs-davinci-resolve',
     title: 'Premiere Pro vs DaVinci Resolve',
     category: 'Video & Audio', color: '#e11d48',
-    description: 'Industry standard vs free powerhouse. We tested both NLEs for editing, color grading, and performance.',
+    description: 'Industry standard vs free powerhouse. Based on product documentation, both NLEs are compared for editing, color grading, and performance.',
     productA: {
       name: 'Premiere Pro', brand: 'Adobe', price: 22.99, rating: 4.3,
       pros: ['Industry standard with massive tutorial library', 'Tight integration with After Effects and Photoshop', 'Dynamic Link to other Adobe apps', 'Broad hardware and plugin support'],
@@ -2852,7 +2852,7 @@ export const compareData: CompareEntry[] = [
     slug: '1password-vs-dashlane',
     title: '1Password vs Dashlane',
     category: 'Security', color: '#8b5cf6',
-    description: 'Two premium password managers. We tested security, autofill, and family plans for 60 days.',
+    description: 'Two premium password managers. Based on product documentation, security, autofill, and family plans are compared.',
     productA: {
       name: '1Password', brand: '1Password', price: 3, rating: 4.7,
       pros: ['Travel Mode hides vaults at border crossings', 'Secret Key adds extra encryption layer', 'Watchtower alerts for breached passwords', 'Excellent apps across all platforms'],
@@ -2894,7 +2894,7 @@ export const compareData: CompareEntry[] = [
     slug: 'herman-miller-embody-vs-steelcase-gesture',
     title: 'Herman Miller Embody vs Steelcase Gesture',
     category: 'Office Chairs', color: '#0d9488',
-    description: 'Two flagship ergonomic chairs tested over 90 days. We compared spine support, armrest adjustability, and long-term comfort for programmers.',
+    description: 'Two flagship ergonomic chairs compared based on product documentation. Spine support, armrest adjustability, and long-term comfort for programmers are assessed.',
     productA: {
       name: 'Herman Miller Embody', brand: 'Herman Miller', price: 1495, rating: 4.7,
       pros: ['Pixelated support layer adapts to your spine micro-movements', '7 ergonomic adjustment points for precise fit', 'Layered textile stays cool over long sessions', '12-year warranty covers everything including foam'],
@@ -2935,7 +2935,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-mx-master-3s-vs-mx-master-3',
     title: 'Logitech MX Master 3S vs MX Master 3',
     category: 'Mice', color: '#dc2626',
-    description: 'Quiet clicks vs older flagship. We tested both MX Master generations for 60 days to see if the 3S upgrade is worth it.',
+    description: 'Quiet clicks vs older flagship. Based on product documentation, both MX Master generations are compared to see if the 3S upgrade is worth it.',
     productA: {
       name: 'Logitech MX Master 3S', brand: 'Logitech', price: 99, rating: 4.7,
       pros: ['90% quieter clicks than the MX Master 3', '8K DPI sensor (up from 4K)', 'Same flagship ergonomics and scroll wheel', 'Logi Flow works across 3 devices'],
@@ -2976,7 +2976,7 @@ export const compareData: CompareEntry[] = [
     slug: 'keychron-q1-vs-keychron-k2',
     title: 'Keychron Q1 vs Keychron K2',
     category: 'Keyboards', color: '#2563eb',
-    description: 'Premium aluminum vs budget wireless. We compared these two Keychron hot-swap keyboards for 60 days to find the best value.',
+    description: 'Premium aluminum vs budget wireless. Based on product documentation, these two Keychron hot-swap keyboards are compared to assess the best value.',
     productA: {
       name: 'Keychron Q1', brand: 'Keychron', price: 169, rating: 4.7,
       pros: ['CNC aluminum chassis feels premium', 'Gasket mount delivers a soft typing feel', 'QMK/VIA firmware for full customization', 'Rotary knob and hot-swap PCB included'],
@@ -3017,7 +3017,7 @@ export const compareData: CompareEntry[] = [
     slug: 'sennheiser-momentum-4-vs-bose-qc-ultra',
     title: 'Sennheiser Momentum 4 vs Bose QC Ultra',
     category: 'Headphones', color: '#7c3aed',
-    description: 'Sound vs silence. We tested the Momentum 4 against the QC Ultra Headphones for 60 days to compare ANC, battery, and audio quality.',
+    description: 'Sound vs silence. Based on product documentation, the Momentum 4 is compared against the QC Ultra Headphones for ANC, battery, and audio quality.',
     productA: {
       name: 'Sennheiser Momentum 4 Wireless', brand: 'Sennheiser', price: 299, rating: 4.6,
       pros: ['Class-leading 60-hour battery life', 'Superior audiophile sound signature', 'Folds compactly for travel', 'Lighter at 293 g for all-day comfort'],
@@ -3058,7 +3058,7 @@ export const compareData: CompareEntry[] = [
     slug: 'elgato-stream-deck-mk2-vs-razer-stream-controller',
     title: 'Elgato Stream Deck MK.2 vs Razer Stream Controller',
     category: 'Streaming', color: '#db2777',
-    description: 'The streaming control standard vs the touchscreen challenger. We tested both for 45 days across live streams and video editing.',
+    description: 'The streaming control standard vs the touchscreen challenger. Based on product documentation, both are compared across live streams and video editing.',
     productA: {
       name: 'Elgato Stream Deck MK.2', brand: 'Elgato', price: 149, rating: 4.7,
       pros: ['Mature, rock-solid software ecosystem', 'Hundreds of plugins and integrations', 'Mechanical keys with crisp tactile feedback', 'Detachable USB-C cable for travel'],
@@ -3099,7 +3099,7 @@ export const compareData: CompareEntry[] = [
     slug: 'apple-magic-keyboard-vs-logitech-craft',
     title: 'Apple Magic Keyboard vs Logitech Craft',
     category: 'Keyboards', color: '#2563eb',
-    description: 'Minimal Mac typing vs the crown-dial creative keyboard. We tested both for 60 days across Mac and Windows workflows.',
+    description: 'Minimal Mac typing vs the crown-dial creative keyboard. Based on product documentation, both are compared across Mac and Windows workflows.',
     productA: {
       name: 'Apple Magic Keyboard', brand: 'Apple', price: 99, rating: 4.5,
       pros: ['Perfect Mac integration with native function keys', 'Slim scissor switches are quiet and reliable', 'Rechargeable via Lightning, month-long battery', 'Touch ID variant unlocks Mac instantly'],
@@ -3140,7 +3140,7 @@ export const compareData: CompareEntry[] = [
     slug: 'obsidian-vs-logseq',
     title: 'Obsidian vs Logseq',
     category: 'Productivity Software', color: '#0891b2',
-    description: 'Two local-first note apps tested for 60 days. We compared the graph, outliner workflow, plugins, and daily-note habits.',
+    description: 'Two local-first note apps compared based on product documentation. The graph, outliner workflow, plugins, and daily-note habits are assessed.',
     productA: {
       name: 'Obsidian', brand: 'Obsidian', price: 0, rating: 4.8,
       pros: ['Massive plugin ecosystem with 2,000+ community plugins', 'Canvas and whiteboard for visual thinking', 'Polished mobile apps with sync', 'Themes and CSS customization are unmatched'],
@@ -3181,7 +3181,7 @@ export const compareData: CompareEntry[] = [
     slug: 'figma-vs-framer',
     title: 'Figma vs Framer',
     category: 'Design Software', color: '#9333ea',
-    description: 'Design-first vs code-first web design. We tested both for 45 days across real client projects to compare design, prototyping, and shipping.',
+    description: 'Design-first vs code-first web design. Based on product documentation, both are compared across real client projects to assess design, prototyping, and shipping.',
     productA: {
       name: 'Figma', brand: 'Figma', price: 12, rating: 4.8,
       pros: ['Industry-standard real-time collaboration', 'Component variants and auto layout are powerful', 'Massive plugin and community asset library', 'Dev Mode hands off specs to engineers cleanly'],
@@ -3223,7 +3223,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-g-pro-x-vs-razer-deathadder-v3',
     title: 'Logitech G PRO X Superlight 2 vs Razer DeathAdder V3 Pro',
     category: 'Mice', color: '#7c3aed',
-    description: 'Two of the best competitive gaming mice ever made. We tested both for 60 days across FPS, MOBA, and productivity work to compare weight, sensor precision, and value.',
+    description: 'Two of the best competitive gaming mice ever made. Based on product documentation, both are compared across FPS, MOBA, and productivity work for weight, sensor precision, and value.',
     productA: {
       name: 'Logitech G PRO X Superlight 2', brand: 'Logitech', price: 159, rating: 4.7,
       pros: ['Featherlight 60g shell is among the lightest available', 'HERO 2 sensor tracks flawlessly up to 32K DPI', 'Lightspeed wireless has zero perceptible lag', 'Up to 95 hours of battery life'],
@@ -3264,7 +3264,7 @@ export const compareData: CompareEntry[] = [
     slug: 'asus-proart-vs-dell-ultrasharp',
     title: 'ASUS ProArt PA279CV vs Dell UltraSharp U2723QE',
     category: 'Monitors', color: '#0ea5e9',
-    description: 'Two 27-inch 4K USB-C monitors aimed at creators and pros. We tested color accuracy, USB-C hub features, and ergonomics over 45 days of daily design work.',
+    description: 'Two 27-inch 4K USB-C monitors aimed at creators and pros. Based on product documentation, color accuracy, USB-C hub features, and ergonomics are compared for daily design work.',
     productA: {
       name: 'ASUS ProArt PA279CV', brand: 'ASUS', price: 469, rating: 4.5,
       pros: ['Factory-calibrated Delta-E under 2 out of the box', '96W USB-C power delivery charges a MacBook', 'Full Adobe RGB and sRGB coverage', 'Solid ergonomic stand with pivot and swivel'],
@@ -3305,7 +3305,7 @@ export const compareData: CompareEntry[] = [
     slug: 'bose-qc45-vs-sony-wh-1000xm5',
     title: 'Bose QuietComfort 45 vs Sony WH-1000XM5',
     category: 'Headphones', color: '#7c3aed',
-    description: 'The two biggest names in noise-cancelling headphones. We wore both for 90 days of flights, open offices, and commutes to compare ANC, comfort, and call quality.',
+    description: 'The two biggest names in noise-cancelling headphones. Based on product documentation, both are compared across flights, open offices, and commutes for ANC, comfort, and call quality.',
     productA: {
       name: 'Bose QuietComfort 45', brand: 'Bose', price: 329, rating: 4.5,
       pros: ['Best-in-class ANC blocks low engine rumble', 'Most comfortable over-ear fit for long flights', 'Simple, reliable physical controls', 'Up to 24 hours of battery life'],
@@ -3346,7 +3346,7 @@ export const compareData: CompareEntry[] = [
     slug: 'mx-keys-mini-vs-magic-keyboard',
     title: 'Logitech MX Keys Mini vs Apple Magic Keyboard',
     category: 'Keyboards', color: '#2563eb',
-    description: 'Two compact Bluetooth keyboards for Mac and iPad users. We typed on both for 60 days to compare feel, connectivity, and portability.',
+    description: 'Two compact Bluetooth keyboards for Mac and iPad users. Based on product documentation, both are compared for feel, connectivity, and portability.',
     productA: {
       name: 'Logitech MX Keys Mini', brand: 'Logitech', price: 99, rating: 4.5,
       pros: ['Backlit keys with hand proximity sensor', 'Perfect Mac layout including Cmd and Option', 'Three-device switching via Easy-Switch keys', 'USB-C charging lasts up to 10 days backlit'],
@@ -3387,7 +3387,7 @@ export const compareData: CompareEntry[] = [
     slug: 'ableton-vs-fl-studio',
     title: 'Ableton Live 12 vs FL Studio',
     category: 'Music Software', color: '#f59e0b',
-    description: 'Two of the most popular DAWs for producers. We made full tracks in both for 60 days to compare workflow, instruments, and value for different genres.',
+    description: 'Two of the most popular DAWs for producers. Based on product documentation, both are compared for workflow, instruments, and value for different genres.',
     productA: {
       name: 'Ableton Live 12 Suite', brand: 'Ableton', price: 749, rating: 4.7,
       pros: ['Session View is unmatched for live performance and sketching', 'Best-in-class MIDI and clip warping', 'Push controller integration is seamless', 'Huge built-in instrument and sample library'],
@@ -3428,7 +3428,7 @@ export const compareData: CompareEntry[] = [
     slug: 'microsoft-teams-vs-zoom',
     title: 'Microsoft Teams vs Zoom',
     category: 'Collaboration Software', color: '#4f46e5',
-    description: 'The two leaders in video meetings and team chat. We ran a 30-person team on each for 45 days to compare call quality, pricing, and daily workflow.',
+    description: 'The two leaders in video meetings and team chat. Based on product documentation, both are compared for call quality, pricing, and daily workflow.',
     productA: {
       name: 'Microsoft Teams', brand: 'Microsoft', price: 4, rating: 4.2,
       pros: ['Bundled with Microsoft 365 at $4/user for Business Basic', 'Deep Outlook and SharePoint integration', 'Channel-based chat organizes work by project', 'Live captions and transcription are solid'],
@@ -3469,7 +3469,7 @@ export const compareData: CompareEntry[] = [
     slug: 'bitwarden-vs-lastpass',
     title: 'Bitwarden vs LastPass',
     category: 'Security', color: '#8b5cf6',
-    description: 'Two of the most popular password managers. We used both across personal and team vaults for 60 days to compare security, value, and everyday usability.',
+    description: 'Two of the most popular password managers. Based on product documentation, both are compared across personal and team vaults for security, value, and everyday usability.',
     productA: {
       name: 'Bitwarden Premium', brand: 'Bitwarden', price: 10, rating: 4.7,
       pros: ['Open-source code is fully auditable', 'Just $10/year for Premium, free tier is generous', 'Self-hosting option for full control', 'Strong cross-platform app and browser extension support'],
@@ -3510,7 +3510,7 @@ export const compareData: CompareEntry[] = [
     slug: 'apple-studio-display-vs-lg-ultrafine',
     title: 'Apple Studio Display vs LG UltraFine 5K',
     category: 'Monitors', color: '#0d9488',
-    description: 'Two 5K Retina monitors built for Mac creators. We used both for 45 days with a MacBook Pro to compare color, sound, webcam, and value.',
+    description: 'Two 5K Retina monitors built for Mac creators. Based on product documentation, both are compared with a MacBook Pro for color, sound, webcam, and value.',
     productA: {
       name: 'Apple Studio Display', brand: 'Apple', price: 1599, rating: 4.4,
       pros: ['True 5K Retina with P3 wide color and True Tone', 'Built-in 12MP ultrawide Center Stage webcam', 'Six-speaker spatial audio system is best in any monitor', 'Seamless macOS integration and single-cable setup'],
@@ -3552,10 +3552,10 @@ export const compareData: CompareEntry[] = [
     slug: 'secretlab-titan-vs-herman-miller-aeron',
     title: 'Secretlab Titan Evo vs Herman Miller Aeron',
     category: 'Gaming Chairs', color: '#dc2626',
-    description: 'Gaming chair vs ergonomic icon. We sat in both for 60 days across 8-hour work sessions to compare lumbar support, durability, and long-term comfort.',
+    description: 'Gaming chair vs ergonomic icon. Based on product documentation, both are compared across 8-hour work sessions for lumbar support, durability, and long-term comfort.',
     productA: {
       name: 'Secretlab Titan Evo 2022', brand: 'Secretlab', price: 549, rating: 4.6,
-      pros: ['Built-in adjustable lumbar support knob', 'Magnetic memory foam head pillow included', 'Cold-cure foam retains shape after 60 days of testing', 'Cold-swap covers in 3 fabrics incl. SoftWeave Plus'],
+      pros: ['Built-in adjustable lumbar support knob', 'Magnetic memory foam head pillow included', 'Cold-cure foam retains shape over long-term use', 'Cold-swap covers in 3 fabrics incl. SoftWeave Plus'],
       cons: ['Heavy at 70 lbs and hard to move', 'Side bolsters trap heat in summer', 'Armrests wobble slightly at full extension', 'Assembly takes 45 minutes'],
     },
     productB: {
@@ -3593,7 +3593,7 @@ export const compareData: CompareEntry[] = [
     slug: 'lg-c2-vs-samsung-s95b',
     title: 'LG C2 vs Samsung S95B OLED',
     category: 'TVs', color: '#0d9488',
-    description: 'Two flagship OLED TVs compared over 45 days of movies, gaming, and bright-room viewing. We measured peak brightness, color accuracy, and burn-in behavior.',
+    description: 'Two flagship OLED TVs compared based on product documentation across movies, gaming, and bright-room viewing. Peak brightness, color accuracy, and burn-in behavior are assessed.',
     productA: {
       name: 'LG OLED C2 (OLED65C2)', brand: 'LG', price: 1599, rating: 4.8,
       pros: ['Infinite contrast and perfect blacks from OLED panel', 'WebOS 22 is fast and app-rich', 'Four full HDMI 2.1 ports for 4K 120Hz gaming', 'a9 Gen5 AI upscaling cleans low-res content'],
@@ -3634,10 +3634,10 @@ export const compareData: CompareEntry[] = [
     slug: 'airpods-pro-2-vs-galaxy-buds-3-pro',
     title: 'AirPods Pro 2 vs Galaxy Buds 3 Pro',
     category: 'Earbuds', color: '#0ea5e9',
-    description: 'Two flagship ANC earbuds compared for 30 days across iOS and Android. We tested noise cancellation, call quality, battery life, and ecosystem fit.',
+    description: 'Two flagship ANC earbuds compared based on product documentation across iOS and Android. Noise cancellation, call quality, battery life, and ecosystem fit are assessed.',
     productA: {
       name: 'AirPods Pro (2nd gen)', brand: 'Apple', price: 249, rating: 4.7,
-      pros: ['Best-in-class active noise cancellation', 'Seamless iPhone and Mac switching via iCloud', 'Adaptive Transparency is the most natural we have tested', 'Spatial Audio with head tracking for Apple Music'],
+      pros: ['Best-in-class active noise cancellation', 'Seamless iPhone and Mac switching via iCloud', 'Adaptive Transparency is the most natural available', 'Spatial Audio with head tracking for Apple Music'],
       cons: ['Locked to Apple ecosystem for full features', 'Stem design looks dated to some', 'No high-res or lossless audio codec', 'Eartips fit small ears poorly'],
     },
     productB: {
@@ -3675,7 +3675,7 @@ export const compareData: CompareEntry[] = [
     slug: 'logitech-g915-vs-razer-huntsman',
     title: 'Logitech G915 vs Razer Huntsman V2',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'Two flagship wireless gaming keyboards compared for 45 days of FPS, MMO, and productivity work. We measured actuation latency, build, and battery life.',
+    description: 'Two flagship wireless gaming keyboards compared based on product documentation for FPS, MMO, and productivity work. Actuation latency, build, and battery life are assessed.',
     productA: {
       name: 'Logitech G915 TKL', brand: 'Logitech', price: 229, rating: 4.6,
       pros: ['Aircraft-grade aluminum frame with zero flex', 'Lightspeed wireless with sub-1ms latency', '30-hour battery with RGB at 100% brightness', 'Low-profile GL switches feel great for typing too'],
@@ -3716,7 +3716,7 @@ export const compareData: CompareEntry[] = [
     slug: 'final-cut-pro-vs-davinci-resolve',
     title: 'Final Cut Pro vs DaVinci Resolve',
     category: 'Video Software', color: '#e11d48',
-    description: 'Two leading pro video editors compared for 60 days on YouTube, short films, and a 4K documentary. We tested render times, color grading, and learning curve.',
+    description: 'Two leading pro video editors compared based on product documentation for YouTube, short films, and a 4K documentary. Render times, color grading, and learning curve are assessed.',
     productA: {
       name: 'Final Cut Pro', brand: 'Apple', price: 299, rating: 4.6,
       pros: ['One-time $299 purchase, no subscription', 'Optimized for Apple Silicon with blazing render speeds', 'Magnetic Timeline speeds up rough cuts', 'Deep integration with Mac Photos and Motion'],
@@ -3732,7 +3732,7 @@ export const compareData: CompareEntry[] = [
     specs: [
       { label: 'Price', productA: '$299 one-time', productB: '$295 (free tier available)', winner: 'B' },
       { label: 'Platform', productA: 'macOS only', productB: 'macOS, Windows, Linux', winner: 'B' },
-      { label: 'Render Speed (M2 Pro)', productA: 'Fastest we tested', productB: 'Fast', winner: 'A' },
+      { label: 'Render Speed (M2 Pro)', productA: 'Fastest in class', productB: 'Fast', winner: 'A' },
       { label: 'Color Grading', productA: 'Good (wheels)', productB: 'Industry best (nodes)', winner: 'B' },
       { label: 'Motion Graphics', productA: 'Requires Motion ($49)', productB: 'Fusion built in', winner: 'B' },
       { label: 'Learning Curve', productA: 'Beginner friendly', productB: 'Steep', winner: 'A' },
@@ -3757,7 +3757,7 @@ export const compareData: CompareEntry[] = [
     slug: 'trello-vs-asana',
     title: 'Trello vs Asana',
     category: 'Productivity Software', color: '#0891b2',
-    description: 'Two popular project management tools compared for 45 days across a 12-person team. We tested workflow automation, reporting, and pricing at scale.',
+    description: 'Two popular project management tools compared based on product documentation across a 12-person team. Workflow automation, reporting, and pricing at scale are assessed.',
     productA: {
       name: 'Trello', brand: 'Atlassian', price: 5, rating: 4.4,
       pros: ['Simple Kanban boards are intuitive in minutes', 'Free tier supports up to 10 boards', '$5/user/month Standard plan is the cheapest paid option', 'Butler automation included in paid tiers'],
@@ -3798,7 +3798,7 @@ export const compareData: CompareEntry[] = [
     slug: 'surfshark-vs-nordvpn',
     title: 'Surfshark vs NordVPN',
     category: 'VPN Software', color: '#8b5cf6',
-    description: 'Two popular VPNs compared over 30 days of streaming, torrenting, and daily browsing. We tested speeds, unblocking, and simultaneous device limits.',
+    description: 'Two popular VPNs compared based on product documentation across streaming, torrenting, and daily browsing. Speeds, unblocking, and simultaneous device limits are assessed.',
     productA: {
       name: 'Surfshark', brand: 'Surfshark', price: 2.19, rating: 4.5,
       pros: ['Unlimited simultaneous devices, best value in class', '$2.19/month on the 2-year plan', 'CleanWeb blocks ads and trackers at no extra cost', 'RAM-only servers and audited no-logs policy'],
@@ -3839,7 +3839,7 @@ export const compareData: CompareEntry[] = [
     slug: 'ipad-pro-vs-samsung-tab-s9',
     title: 'iPad Pro vs Samsung Galaxy Tab S9 Ultra',
     category: 'Tablets', color: '#7c3aed',
-    description: 'Two flagship tablets compared for 60 days of drawing, video editing, and note-taking. We tested stylus latency, app ecosystem, and desktop-mode productivity.',
+    description: 'Two flagship tablets compared based on product documentation for drawing, video editing, and note-taking. Stylus latency, app ecosystem, and desktop-mode productivity are assessed.',
     productA: {
       name: 'iPad Pro 12.9" (M2)', brand: 'Apple', price: 1099, rating: 4.8,
       pros: ['M2 chip matches a MacBook Pro for video editing', 'ProMotion 120Hz mini-LED display hits 1600 nits', 'Apple Pencil 2 hovers and snaps magnetically', 'Procreate and LumaFusion are class-leading apps'],

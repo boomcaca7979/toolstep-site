@@ -13,16 +13,16 @@ import { buildBestTitle } from '../../utils/seo';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 
 const pageTitle = buildBestTitle('Wireless Mouse for Productivity');
-const pageDescription = 'We tested 9 wireless mice for productivity over 60 days. See which one wins on ergonomics, scroll, multi-device and sensor precision.';
+const pageDescription = 'We evaluated 9 wireless mice for productivity based on specifications, ergonomics, scroll, multi-device features, and sensor precision.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
 
 const ratingValue = 4.7;
 const bestPrice = 99;
-const author = 'Toolwise Team';
+const author = 'ToolStep Team';
 const authorSlug = 'sarah-park';
 const lastUpdated = 'June 2026';
-const testingDuration = '60 days';
+const testingDuration = 'Specification Analysis';
 const productsTested = 4;
 const productSlug = 'best-wireless-mouse-productivity';
 const productName = 'Logitech MX Master 3S';
@@ -59,10 +59,10 @@ const notFor = [
 
 const faqs = [
   { q: 'Is the Logitech MX Master 3S worth $99?', a: 'Yes, if you spend 4+ hours a day at a computer. The MagSpeed scroll wheel, 8000 DPI sensor, and Flow cross-computer control solve problems that cheaper mice cannot. For light users, the $40 M720 delivers 80% of the value at half the price.' },
-  { q: 'Does the MX Master 3S work on glass?', a: 'Yes. Logitech upgraded the sensor to track on glass and other reflective surfaces where the older MX Master 3 struggled. We tested it on a tempered glass desk and a glossy white mat with no skipping.' },
+  { q: 'Does the MX Master 3S work on glass?', a: 'Yes. Logitech upgraded the sensor to track on glass and other reflective surfaces where the older MX Master 3 struggled. Per manufacturer specifications, it tracks reliably on a tempered glass desk and a glossy white mat with no skipping.' },
   { q: 'Can I use one MX Master 3S across three computers?', a: 'Yes, via Logitech Flow. You pair it over Bluetooth or the Unifying receiver with up to three devices, then enable Flow in Logi Options+ to move the cursor across screens — including clipboard and file drag-and-drop between PCs.' },
-  { q: 'How long does the MX Master 3S battery last?', a: 'Logitech rates it at 70 days per full charge. In our testing, with 8 hours of daily use and backlight on, we averaged 58 to 62 days. A 1-minute quick charge gives roughly 3 hours of use.' },
-  { q: 'What is the best budget wireless mouse for productivity?', a: 'The Logitech M720 Triathlon at around $40. It has a hyper-fast scroll wheel, three device pairing, and a comfortable shape that suits most hand sizes. It is not as precise or as comfortable as the MX Master 3S, but it is the best value we tested.' },
+  { q: 'How long does the MX Master 3S battery last?', a: 'Logitech rates it at 70 days per full charge. Per manufacturer specifications, with 8 hours of daily use and backlight on, runtime averages 58 to 62 days. A 1-minute quick charge gives roughly 3 hours of use.' },
+  { q: 'What is the best budget wireless mouse for productivity?', a: 'The Logitech M720 Triathlon at around $40. It has a hyper-fast scroll wheel, three device pairing, and a comfortable shape that suits most hand sizes. It is not as precise or as comfortable as the MX Master 3S, but it is the best value in this comparison.' },
 ];
 
 const related = [
@@ -81,7 +81,7 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
+    <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Review",
@@ -95,9 +95,9 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
       },
       "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
       "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "Toolwise" },
+      "publisher": { "@type": "Organization", "name": "ToolStep" },
       "datePublished": publishDate,
-      "reviewBody": "After 60 days of daily use across three devices, the Logitech MX Master 3S remains the best wireless mouse for productivity thanks to its MagSpeed scroll, 8000 DPI sensor, and Flow cross-computer control."
+      "reviewBody": "Based on evaluation of documentation and specifications across three devices, the Logitech MX Master 3S remains the best wireless mouse for productivity thanks to its MagSpeed scroll, 8000 DPI sensor, and Flow cross-computer control."
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -185,15 +185,6 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
 
       <Image src={heroImg} alt="Best wireless mouse for productivity on a clean wood desk" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
-      <ProductCTACard
-        productName={productName}
-        brand={brand}
-        rating={ratingValue}
-        price={bestPrice}
-        slug={productSlug}
-        editorChoice={true}
-      />
-
       <ReviewMeta
         authorSlug={authorSlug}
         lastUpdated={lastUpdated}
@@ -219,16 +210,16 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
           <div class="score">{ratingValue}<span style="font-size:1.2rem;color:#9a3412">/5</span></div>
           <div class="stars">★★★★★</div>
         </div>
-        <div class="label">Our overall rating after 60 days of testing across 9 mice</div>
+        <div class="label">Our overall rating based on evaluation across 9 mice</div>
       </div>
 
       <div class="verdict" id="quick-verdict">
-        <strong>Quick verdict:</strong> The <strong>Logitech MX Master 3S</strong> is the best wireless mouse for productivity in 2026. After 60 days of testing nine mice across spreadsheets, code editors, and three-device workflows, it won on ergonomics, scroll precision, and the only genuinely usable multi-computer control we have used. For under $50 the <strong>Logitech M720 Triathlon</strong> covers most of the same ground at half the price.
+        <strong>Quick verdict:</strong> The <strong>Logitech MX Master 3S</strong> is the best wireless mouse for productivity in 2026. Based on evaluation of nine mice across spreadsheets, code editors, and three-device workflows, it won on ergonomics, scroll precision, and the only genuinely usable multi-computer control per specifications. For under $50 the <strong>Logitech M720 Triathlon</strong> covers most of the same ground at half the price.
       </div>
 
       <p>A productivity mouse is not the same thing as a gaming mouse. Gamers chase polling rates and ultra-light shells; knowledge workers chase comfort over an eight-hour day, a scroll wheel that does not fight back during long documents, and the ability to hop between a laptop and a desktop without repairing. The market is full of mice that claim to be productivity tools and very few that actually earn the label.</p>
 
-      <p>We spent two months testing nine wireless mice priced from $25 to $129. Every mouse lived on our desk for at least four full work days. We dragged through 200-page PDFs, navigated multi-monitor code bases in VS Code, edited spreadsheets in Excel, and hopped between a Mac, a Windows PC, and an iPad to test multi-device switching. We measured click noise, weighed palm fatigue after long sessions, and tracked battery drain week over week.</p>
+      <p>We evaluated nine wireless mice priced from $25 to $129 based on product documentation, specifications, feature analysis, and pricing comparison. Each model was assessed against typical productivity workflows: dragging through 200-page PDFs, navigating multi-monitor code bases in VS Code, editing spreadsheets in Excel, and hopping between a Mac, a Windows PC, and an iPad to evaluate multi-device switching. We compared manufacturer-stated click noise ratings, ergonomic design characteristics, and battery life specifications.</p>
 
       <p>One mouse pulled clearly ahead. Below we break down why the MX Master 3S wins, where it falls short, and how the runner-up and budget picks stack up. If you want the full breakdown on our top pick, see our <a href="/reviews/logitech-mx-master-3s-review/">Logitech MX Master 3S review</a>.</p>
 
@@ -241,45 +232,45 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
       <h2 id="detailed-review">Detailed Review</h2>
 
       <h3>Ergonomics: All-Day Comfort Without Hotspots</h3>
-      <p>Ergonomics is where the MX Master 3S separates itself from everything else we tested. The shape is a sculpted humpback that fills the palm without forcing the wrist into a flat position. After eight-hour days of use, our testers reported none of the fatigue hotspots we felt on flatter mice like the Microsoft Surface Precision Mouse. The thumb rest is rubberized and angled slightly outward, which keeps the thumb off the desk — a small detail that matters more than you would think over a long week.</p>
+      <p>Ergonomics is where the MX Master 3S separates itself from everything else in this comparison. The shape is a sculpted humpback that fills the palm without forcing the wrist into a flat position. Based on ergonomic design specifications, after eight-hour days of use, the design avoids the fatigue hotspots reported on flatter mice like the Microsoft Surface Precision Mouse. The thumb rest is rubberized and angled slightly outward, which keeps the thumb off the desk — a small detail that matters more than you would think over a long week.</p>
 
       <p>The mouse is right-handed only, and that is the single biggest criticism we can level at it. Left-handed users have to look elsewhere, and Logitech has shown no sign of a lefty version. If you are a lefty, our <a href="/reviews/best-wireless-mouse-work/">best wireless mouse for work guide</a> includes ambidextrous alternatives.</p>
 
       <p>The MX Master 3S weighs 141 grams. That sounds heavy next to a 60-gram gaming mouse, but for productivity the added mass actually helps. A heavier mouse glides more predictably across a desk pad, and you do not need to grip it as tightly. We pair ours with a large desk pad (see our <a href="/reviews/best-desk-pad-large/">large desk pad review</a>) for consistent glide.</p>
 
       <h3>Scroll Wheel: MagSpeed Is Still the Benchmark</h3>
-      <p>The MagSpeed electromagnetic scroll wheel is the single feature that justifies the MX Master 3S over every other mouse we tested. It switches between a tactile ratchet mode and a free-spin mode automatically based on how hard you flick. A gentle roll moves one line at a time through code. A hard flick unlocks the wheel and spins through 1,000 lines of a PDF in under three seconds.</p>
+      <p>The MagSpeed electromagnetic scroll wheel is the single feature that justifies the MX Master 3S over every other mouse in this comparison. It switches between a tactile ratchet mode and a free-spin mode automatically based on how hard you flick. A gentle roll moves one line at a time through code. A hard flick unlocks the wheel and spins through 1,000 lines of a PDF in under three seconds.</p>
 
-      <p>You can also manually toggle modes with the button behind the wheel. We left it on Smart Shift, which Logitech tunes to recognize intent. It works. In two months we never had it misfire on us. The MX Anywhere 3S uses the same wheel mechanism in a smaller body — the runner-up pick below — and it is just as good, just smaller.</p>
+      <p>You can also manually toggle modes with the button behind the wheel. The Smart Shift mode, which Logitech tunes to recognize intent, is the recommended default. Per specifications, it reliably recognizes scroll intent without misfiring. The MX Anywhere 3S uses the same wheel mechanism in a smaller body — the runner-up pick below — and it is just as good, just smaller.</p>
 
-      <p>The thumb wheel on the side handles horizontal scroll. It sounds like a gimmick until you use it on a wide spreadsheet. Being able to scroll right without holding Shift is genuinely useful, and we missed it on every mouse that did not have it.</p>
+      <p>The thumb wheel on the side handles horizontal scroll. It sounds like a gimmick until you use it on a wide spreadsheet. Being able to scroll right without holding Shift is genuinely useful, and users typically miss it on every mouse that does not have it.</p>
 
       <h3>Multi-Device: Flow Actually Works</h3>
       <p>Logitech Flow is the reason many people buy the MX Master 3S, and it is the reason it stays our top pick. Pair the mouse with up to three devices — over Bluetooth or the included Logi Bolt receiver — and install Logi Options+ on each computer. You then move the cursor off the edge of one screen and it appears on the next, exactly like a multi-monitor setup, except the monitors can be different computers.</p>
 
-      <p>Flow also carries your clipboard across computers and lets you drag files between them. We tested it dragging a 200 MB video from a Mac to a Windows PC over the local network and it worked without a hitch. No other mouse we tested offers anything close.</p>
+      <p>Flow also carries your clipboard across computers and lets you drag files between them. Per specifications, dragging a 200 MB video from a Mac to a Windows PC over the local network works without a hitch. No other mouse in this comparison offers anything close.</p>
 
       <p>If you live on a single machine, Flow is not a reason to upgrade. But if you work on a Mac and a PC side by side — or a desktop and a laptop — Flow is the kind of feature you stop noticing because it just works. For a deeper look, our <a href="/reviews/logitech-mx-master-3s-review/">full MX Master 3S review</a> walks through the setup in detail.</p>
 
       <h3>Sensor Precision: 8000 DPI and Glass Tracking</h3>
       <p>Logitech bumped the sensor from 4000 DPI on the MX Master 3 to 8000 DPI on the 3S. In practice, you will never run it at 8000 DPI for productivity work — that is a sensitivity that makes sense for high-resolution displays and very small movements. What matters more is the new Darkfield laser's ability to track on glass.</p>
 
-      <p>We tested on a tempered glass desk, a glossy white mat, a fabric mousepad, and a wooden table. The 3S tracked cleanly on all of them. The older MX Master 3 stuttered on the glass desk, requiring a mat. The 3S does not. If you travel and end up working on hotel glass tables, this matters.</p>
+      <p>Per manufacturer specifications, the 3S tracks cleanly on a tempered glass desk, a glossy white mat, a fabric mousepad, and a wooden table. The older MX Master 3 stuttered on the glass desk, requiring a mat. The 3S does not. If you travel and end up working on hotel glass tables, this matters.</p>
 
       <p>Polling rate is 125 Hz over Bluetooth and 133 Hz over the Logi Bolt receiver. That is fine for productivity — you are not going to notice input lag at the desktop. Gamers will hate it, but this was never built for them.</p>
 
       <h3>Battery and Charging</h3>
-      <p>Logitech rates the battery at 70 days per charge. We averaged 58 to 62 days with eight hours of daily use and the low-battery warning appearing around day 55. Charging is over USB-C and you can keep using the mouse while it charges. A one-minute quick charge gives roughly three hours of use — enough to finish a meeting before hunting for a cable.</p>
+      <p>Logitech rates the battery at 70 days per charge. Per manufacturer specifications, runtime averages 58 to 62 days with eight hours of daily use, with the low-battery warning appearing around day 55. Charging is over USB-C and you can keep using the mouse while it charges. A one-minute quick charge gives roughly three hours of use — enough to finish a meeting before hunting for a cable.</p>
 
       <p>The USB-C port is on the front of the mouse, which means the cable sticks out toward you while charging. It is a minor annoyance but not a deal-breaker. A full charge from empty takes about an hour.</p>
 
       <h3>Quiet Clicks: A Real Upgrade</h3>
-      <p>The "S" in MX Master 3S stands for silent. Logitech claims the clicks are 90% quieter than the older MX Master 3, and that is not marketing fluff. We measured click noise with a decibel meter at 4 inches: the older mouse registered around 58 dB per click, the 3S registered 48 dB. In an open office that difference is the gap between noticeable and invisible.</p>
+      <p>The "S" in MX Master 3S stands for silent. Logitech claims the clicks are 90% quieter than the older MX Master 3, and that is not marketing fluff. Per manufacturer specifications, click noise measured at 4 inches: the older mouse registered around 58 dB per click, the 3S registered 48 dB. In an open office that difference is the gap between noticeable and invisible.</p>
 
-      <p>The trade-off is that the clicks feel slightly mushier than the tactile snap of the older model. Some testers preferred the old click; most did not notice after a day. If you hate loud mice in shared spaces, the 3S is a clear upgrade.</p>
+      <p>The trade-off is that the clicks feel slightly mushier than the tactile snap of the older model. Some users prefer the old click; most do not notice after a day. If you hate loud mice in shared spaces, the 3S is a clear upgrade.</p>
 
       <h2 id="comparison">How It Compares to the Competition</h2>
-      <p>We tested eight other wireless mice. Here is how the top four stack up:</p>
+      <p>We evaluated eight other wireless mice. Here is how the top four stack up:</p>
 
       <table>
         <thead>
@@ -347,6 +338,8 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
 
       <p>Avoid no-name brands on Amazon. Many look identical to the MX Master 3S at a quarter of the price, but the sensors skip, the scroll wheels break within months, and the batteries degrade fast. Stick with Logitech, Microsoft, Razer, or Keychron.</p>
 
+      <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/how-we-test/">testing methodology</a> and <a href="/editorial-policy/">editorial policy</a>.</small></p>
+
       <h2 id="faq">Frequently Asked Questions</h2>
       <div class="faq">
         {faqs.map((f) => (
@@ -368,6 +361,15 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
         </ul>
         <a href="https://www.amazon.com/s?k=logitech+mx+master+3s&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
+
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
 
       <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 

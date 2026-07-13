@@ -3,13 +3,13 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-const title = "Claude vs Gemini: Which AI Is Better in 2026? | ToolWise";
+const title = "Claude vs Gemini: Which AI Is Better in 2026? | ToolStep";
 const description = "Claude 4 vs Gemini 2.5 Pro: We test writing quality, coding capabilities, context windows, and research accuracy. Find out which AI assistant fits your work.";
 ---
 
 <html lang="en">
 <head>
-  <BaseHead title={title} description={description} articleSchema={{headline: title, description: description, datePublished: '2026-06-01', dateModified: '2026-06-02', authorName: 'Toolwise Editorial Team'}} />
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: title, description: description, datePublished: '2026-06-01', dateModified: '2026-06-02', authorName: 'ToolStep Editorial Team'}} />
   <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -272,6 +272,7 @@ const description = "Claude 4 vs Gemini 2.5 Pro: We test writing quality, coding
     </div>
 
 
+        <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
         <h2>FAQ</h2>
     <h3>Is Claude or Gemini better for writing blog posts and articles?</h3>
     <p>Claude produces more natural, engaging prose with better tone consistency, making it the better choice for long-form writing. Gemini's writing is more factual and structured, suitable for research summaries but less engaging for creative or marketing content.</p>

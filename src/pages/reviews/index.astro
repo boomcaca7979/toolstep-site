@@ -6,13 +6,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import { reviews } from '../../data/reviews';
 
 const pageTitle = 'Tool Reviews & Comparisons - ' + SITE_TITLE;
-const pageDescription = 'Honest, hands-on reviews of the best online tools and hardware. Every product is tested before we recommend it.';
+const pageDescription = 'Independent analysis of the best online tools and hardware. Every product is evaluated based on specifications, features, and pricing before we recommend it.';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} articleSchema={{headline: pageTitle, description: pageDescription, datePublished: '2026-05', authorName: 'Toolwise Team'}} />
+    <BaseHead title={pageTitle} description={pageDescription} articleSchema={{headline: pageTitle, description: pageDescription, datePublished: '2026-05', authorName: 'ToolStep Team'}} />
     <style>
       main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
       .grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; }
@@ -37,7 +37,7 @@ const pageDescription = 'Honest, hands-on reviews of the best online tools and h
     <Header />
     <main>
       <h1>Tool Reviews & Comparisons</h1>
-      <p class="subtitle">Honest, hands-on reviews of the best online tools and hardware. Every product is tested before we recommend it.</p>
+      <p class="subtitle">Independent analysis of the best online tools and hardware. Every product is evaluated based on specifications, features, and pricing before we recommend it.</p>
       <div class="count">📦 {reviews.length} reviews published</div>
 
       <div class="grid">

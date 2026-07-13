@@ -130,7 +130,7 @@ export const storiesData: StoryEntry[] = [
     'Best Office Chairs 2026',
     'Hardware',
     '#ea580c',
-    'Top 5 ergonomic chairs we tested for 8 hours a day — which supports your back best?',
+    'Based on documented specifications, the top 5 ergonomic chairs — which supports your back best?',
     'Herman Miller Aeron chair in modern office, cinematic product photo, vertical',
     [
       { headline: 'Herman Miller Aeron', subtext: 'Best overall — $1,395', image: img('Herman Miller Aeron chair close-up, vertical', 'portrait_16_9') },
@@ -149,7 +149,7 @@ export const storiesData: StoryEntry[] = [
     'Best Mechanical Keyboards 2026',
     'Hardware',
     '#ea580c',
-    '5 mechanical keyboards we typed on for 6 months — which feels best for work?',
+    'Based on documented specifications, 5 mechanical keyboards — which feels best for work?',
     'Mechanical keyboard on wooden desk with RGB lighting, product photo, vertical',
     [
       { headline: 'Keychron K8', subtext: 'Best wireless — $79', image: img('Keychron K8 mechanical keyboard on desk, vertical', 'portrait_16_9') },
@@ -398,7 +398,7 @@ export const storiesData: StoryEntry[] = [
     'Notion vs Obsidian: Which Wins?',
     'Software',
     '#7c3aed',
-    'We used both for 60 days. See which is better for notes, tasks, and knowledge management.',
+    'Based on product documentation, both compared. See which is better for notes, tasks, and knowledge management.',
     'Notion vs Obsidian app interface comparison, vertical',
     [
       { headline: 'Notion', subtext: 'Best for teams and databases', image: img('Notion app interface, vertical', 'portrait_16_9') },
@@ -417,7 +417,7 @@ export const storiesData: StoryEntry[] = [
     'Slack vs Teams: Which Wins?',
     'Software',
     '#7c3aed',
-    'We used both for team communication for 90 days. See which is better for your team.',
+    'Based on product documentation, both compared for team communication. See which is better for your team.',
     'Slack vs Microsoft Teams interface comparison, vertical',
     [
       { headline: 'Slack', subtext: 'Best for startups and integrations', image: img('Slack app interface, vertical', 'portrait_16_9') },
@@ -436,7 +436,7 @@ export const storiesData: StoryEntry[] = [
     'Zoom vs Google Meet',
     'Software',
     '#7c3aed',
-    'We ran 100 video calls on both. See which is better for meetings in 2026.',
+    'Based on documented specifications, both compared for video calls. See which is better for meetings in 2026.',
     'Zoom vs Google Meet video call interface, vertical',
     [
       { headline: 'Zoom', subtext: 'Best for large meetings', image: img('Zoom video call interface, vertical', 'portrait_16_9') },
@@ -455,7 +455,7 @@ export const storiesData: StoryEntry[] = [
     'Todoist vs TickTick',
     'Software',
     '#7c3aed',
-    'We managed tasks on both for 60 days. See which is better for productivity.',
+    'Based on product documentation, both compared for task management. See which is better for productivity.',
     'Todoist vs TickTick task app interface, vertical',
     [
       { headline: 'Todoist', subtext: 'Best for simplicity', image: img('Todoist app interface, vertical', 'portrait_16_9') },
@@ -474,7 +474,7 @@ export const storiesData: StoryEntry[] = [
     'Notion vs Confluence',
     'Software',
     '#7c3aed',
-    'We built wikis on both. See which is better for team documentation.',
+    'Based on product documentation, both compared for wikis. See which is better for team documentation.',
     'Notion vs Confluence wiki interface, vertical',
     [
       { headline: 'Notion', subtext: 'Best for flexibility', image: img('Notion wiki interface, vertical', 'portrait_16_9') },
@@ -493,7 +493,7 @@ export const storiesData: StoryEntry[] = [
     'Linear vs Jira',
     'Software',
     '#7c3aed',
-    'We tracked sprints on both. See which is better for software teams.',
+    'Based on product documentation, both compared for sprint tracking. See which is better for software teams.',
     'Linear vs Jira project management interface, vertical',
     [
       { headline: 'Linear', subtext: 'Best for speed and design', image: img('Linear app interface, vertical', 'portrait_16_9') },
@@ -512,7 +512,7 @@ export const storiesData: StoryEntry[] = [
     'Monday.com vs Asana',
     'Software',
     '#7c3aed',
-    'We managed projects on both for 60 days. See which is better for teams.',
+    'Based on product documentation, both compared for project management. See which is better for teams.',
     'Monday.com vs Asana project management interface, vertical',
     [
       { headline: 'Monday.com', subtext: 'Best for visual workflows', image: img('Monday.com interface, vertical', 'portrait_16_9') },
@@ -531,7 +531,7 @@ export const storiesData: StoryEntry[] = [
     'ChatGPT vs Claude',
     'AI',
     '#9333ea',
-    'We tested both AI assistants for 60 days. See which is better for writing and coding.',
+    'Based on product documentation, both AI assistants compared. See which is better for writing and coding.',
     'ChatGPT vs Claude AI assistant interface, vertical',
     [
       { headline: 'ChatGPT', subtext: 'Best for general use', image: img('ChatGPT interface, vertical', 'portrait_16_9') },
@@ -550,7 +550,7 @@ export const storiesData: StoryEntry[] = [
     'ChatGPT vs Gemini',
     'AI',
     '#9333ea',
-    'We tested both for 60 days. See which AI assistant is better in 2026.',
+    'Based on product documentation, both compared. See which AI assistant is better in 2026.',
     'ChatGPT vs Google Gemini AI interface, vertical',
     [
       { headline: 'ChatGPT', subtext: 'Best for versatility', image: img('ChatGPT interface, vertical', 'portrait_16_9') },
@@ -569,7 +569,7 @@ export const storiesData: StoryEntry[] = [
     'Claude vs Gemini',
     'AI',
     '#9333ea',
-    'We tested both AI assistants for writing, coding, and research. See which wins.',
+    'Based on product documentation, both AI assistants compared for writing, coding, and research. See which wins.',
     'Claude vs Google Gemini AI assistant, vertical',
     [
       { headline: 'Claude', subtext: 'Best for nuanced writing', image: img('Claude AI interface, vertical', 'portrait_16_9') },
@@ -588,7 +588,7 @@ export const storiesData: StoryEntry[] = [
     'ChatGPT vs Copilot',
     'AI',
     '#9333ea',
-    'We tested both for Office productivity. See which AI assistant wins for work.',
+    'Based on product documentation, both compared for Office productivity. See which AI assistant wins for work.',
     'ChatGPT vs Microsoft Copilot AI assistant, vertical',
     [
       { headline: 'ChatGPT', subtext: 'Best for general AI', image: img('ChatGPT interface, vertical', 'portrait_16_9') },
@@ -607,7 +607,7 @@ export const storiesData: StoryEntry[] = [
     'Perplexity vs ChatGPT',
     'AI',
     '#9333ea',
-    'We tested both for research. See which AI is better for finding accurate answers.',
+    'Based on product documentation, both compared for research. See which AI is better for finding accurate answers.',
     'Perplexity vs ChatGPT search interface, vertical',
     [
       { headline: 'Perplexity', subtext: 'Best for research with sources', image: img('Perplexity AI interface, vertical', 'portrait_16_9') },
@@ -626,7 +626,7 @@ export const storiesData: StoryEntry[] = [
     'Midjourney vs DALL-E 3',
     'AI',
     '#db2777',
-    'We generated 500 images on both. See which AI image generator wins in 2026.',
+    'Based on product documentation, both AI image generators compared. See which wins in 2026.',
     'Midjourney vs DALL-E 3 AI image comparison, vertical',
     [
       { headline: 'Midjourney', subtext: 'Best for artistic quality', image: img('Midjourney AI art, vertical', 'portrait_16_9') },
@@ -645,7 +645,7 @@ export const storiesData: StoryEntry[] = [
     'Midjourney vs Stable Diffusion',
     'AI',
     '#db2777',
-    'We tested both for 30 days. See which AI image generator gives you more control.',
+    'Based on product documentation, both AI image generators compared. See which gives you more control.',
     'Midjourney vs Stable Diffusion AI image, vertical',
     [
       { headline: 'Midjourney', subtext: 'Best for quality out of box', image: img('Midjourney AI art, vertical', 'portrait_16_9') },
@@ -664,7 +664,7 @@ export const storiesData: StoryEntry[] = [
     'Cursor vs GitHub Copilot',
     'AI',
     '#059669',
-    'We coded with both for 30 days. See which AI coding assistant is better.',
+    'Based on product documentation, both AI coding assistants compared. See which is better.',
     'Cursor vs GitHub Copilot AI coding, vertical',
     [
       { headline: 'Cursor', subtext: 'Best for AI-first editing', image: img('Cursor AI editor, vertical', 'portrait_16_9') },
@@ -683,7 +683,7 @@ export const storiesData: StoryEntry[] = [
     'Claude Code vs Cursor',
     'AI',
     '#059669',
-    'We tested both AI coding tools for 30 days. See which is better for developers.',
+    'Based on product documentation, both AI coding tools compared. See which is better for developers.',
     'Claude Code vs Cursor AI coding assistant, vertical',
     [
       { headline: 'Claude Code', subtext: 'Best for terminal workflows', image: img('Claude Code terminal, vertical', 'portrait_16_9') },
@@ -702,7 +702,7 @@ export const storiesData: StoryEntry[] = [
     'Cursor vs Windsurf',
     'AI',
     '#059669',
-    'We tested both AI-first editors for 30 days. See which is better for coding.',
+    'Based on product documentation, both AI-first editors compared. See which is better for coding.',
     'Cursor vs Windsurf AI editor comparison, vertical',
     [
       { headline: 'Cursor', subtext: 'Best for AI chat editing', image: img('Cursor AI editor, vertical', 'portrait_16_9') },
@@ -721,7 +721,7 @@ export const storiesData: StoryEntry[] = [
     'Best AI Coding Assistant 2026',
     'AI',
     '#059669',
-    'We ranked the top 5 AI coding assistants. See which is best for developers.',
+    'Based on product documentation, the top 5 AI coding assistants ranked. See which is best for developers.',
     'AI coding assistant comparison ranking, vertical',
     [
       { headline: 'Cursor', subtext: 'Best overall — $20/mo', image: img('Cursor AI editor, vertical', 'portrait_16_9') },
@@ -742,7 +742,7 @@ export const storiesData: StoryEntry[] = [
     'Canva vs Figma',
     'Design',
     '#db2777',
-    'We designed on both for 60 days. See which is better for your design workflow.',
+    'Based on product documentation, both design tools compared. See which is better for your design workflow.',
     'Canva vs Figma design tool interface, vertical',
     [
       { headline: 'Canva', subtext: 'Best for non-designers', image: img('Canva interface, vertical', 'portrait_16_9') },
@@ -761,7 +761,7 @@ export const storiesData: StoryEntry[] = [
     'Canva vs Adobe Express',
     'Design',
     '#db2777',
-    'We tested both for 60 days. See which is better for social media content.',
+    'Based on product documentation, both compared. See which is better for social media content.',
     'Canva vs Adobe Express design tool, vertical',
     [
       { headline: 'Canva', subtext: 'Best for templates', image: img('Canva interface, vertical', 'portrait_16_9') },
@@ -780,7 +780,7 @@ export const storiesData: StoryEntry[] = [
     'Figma vs Sketch',
     'Design',
     '#db2777',
-    'We designed UI on both. See which is better for UI/UX in 2026.',
+    'Based on product documentation, both compared for UI design. See which is better for UI/UX in 2026.',
     'Figma vs Sketch UI design tool, vertical',
     [
       { headline: 'Figma', subtext: 'Best for collaboration', image: img('Figma interface, vertical', 'portrait_16_9') },
@@ -799,7 +799,7 @@ export const storiesData: StoryEntry[] = [
     'Runway vs Pika',
     'AI Video',
     '#dc2626',
-    'We generated AI videos on both for 30 days. See which is better for video creation.',
+    'Based on product documentation, both AI video generators compared. See which is better for video creation.',
     'Runway vs Pika AI video generator, vertical',
     [
       { headline: 'Runway Gen-3', subtext: 'Best for quality', image: img('Runway AI video, vertical', 'portrait_16_9') },
@@ -818,7 +818,7 @@ export const storiesData: StoryEntry[] = [
     'Best Free Video Editors 2026',
     'Video',
     '#dc2626',
-    'We tested 5 free video editors. See which is best for beginners.',
+    'Based on product documentation, 5 free video editors compared. See which is best for beginners.',
     'Free video editing software comparison, vertical',
     [
       { headline: 'CapCut', subtext: 'Best for social — Free', image: img('CapCut video editor, vertical', 'portrait_16_9') },
@@ -856,7 +856,7 @@ export const storiesData: StoryEntry[] = [
     'Best Screen Recorders for Mac',
     'Video',
     '#dc2626',
-    'We tested 5 screen recorders on Mac. See which is best for tutorials and demos.',
+    'Based on product documentation, 5 screen recorders compared for Mac. See which is best for tutorials and demos.',
     'Screen recording software on Mac, vertical',
     [
       { headline: 'OBS Studio', subtext: 'Best overall — Free', image: img('OBS Studio screen recording, vertical', 'portrait_16_9') },
@@ -877,7 +877,7 @@ export const storiesData: StoryEntry[] = [
     'ExpressVPN vs NordVPN',
     'Security',
     '#059669',
-    'We tested both VPNs for 60 days. See which is better for privacy and streaming.',
+    'Based on product documentation, both VPNs compared. See which is better for privacy and streaming.',
     'ExpressVPN vs NordVPN comparison, vertical',
     [
       { headline: 'ExpressVPN', subtext: 'Best for streaming', image: img('ExpressVPN interface, vertical', 'portrait_16_9') },
@@ -896,7 +896,7 @@ export const storiesData: StoryEntry[] = [
     'Best Password Managers 2026',
     'Security',
     '#059669',
-    'We tested 5 password managers for 60 days. See which keeps your accounts safest.',
+    'Based on product documentation, 5 password managers compared. See which keeps your accounts safest.',
     'Password manager app comparison, vertical',
     [
       { headline: 'Bitwarden', subtext: 'Best free — $0', image: img('Bitwarden password manager, vertical', 'portrait_16_9') },
@@ -915,7 +915,7 @@ export const storiesData: StoryEntry[] = [
     'Best Cloud Storage 2026',
     'Security',
     '#059669',
-    'We tested 5 cloud storage services. See which is best for backup and sharing.',
+    'Based on product documentation, 5 cloud storage services compared. See which is best for backup and sharing.',
     'Cloud storage service comparison, vertical',
     [
       { headline: 'Google Drive', subtext: 'Best overall — 15GB free', image: img('Google Drive interface, vertical', 'portrait_16_9') },
@@ -934,7 +934,7 @@ export const storiesData: StoryEntry[] = [
     'Best VPN Services 2026',
     'Security',
     '#059669',
-    'We tested 5 VPNs for speed, privacy, and streaming. See which is best.',
+    'Based on product documentation, 5 VPNs compared for speed, privacy, and streaming. See which is best.',
     'VPN service comparison ranking, vertical',
     [
       { headline: 'NordVPN', subtext: 'Best overall — $3.39/mo', image: img('NordVPN interface, vertical', 'portrait_16_9') },
@@ -953,7 +953,7 @@ export const storiesData: StoryEntry[] = [
     'Grammarly vs ProWritingAid',
     'AI Writing',
     '#059669',
-    'We wrote on both for 60 days. See which AI writing tool is better for you.',
+    'Based on product documentation, both AI writing tools compared. See which is better for you.',
     'Grammarly vs ProWritingAid writing tool, vertical',
     [
       { headline: 'Grammarly', subtext: 'Best for quick edits', image: img('Grammarly interface, vertical', 'portrait_16_9') },
@@ -974,7 +974,7 @@ export const storiesData: StoryEntry[] = [
     'WordPress vs Webflow',
     'Website',
     '#7c3aed',
-    'We built sites on both for 60 days. See which is better for your website.',
+    'Based on product documentation, both website builders compared. See which is better for your website.',
     'WordPress vs Webflow website builder, vertical',
     [
       { headline: 'WordPress', subtext: 'Best for blogs and stores', image: img('WordPress interface, vertical', 'portrait_16_9') },
@@ -993,7 +993,7 @@ export const storiesData: StoryEntry[] = [
     'Squarespace vs Wix',
     'Website',
     '#7c3aed',
-    'We built sites on both. See which is better for DIY website building.',
+    'Based on product documentation, both website builders compared. See which is better for DIY website building.',
     'Squarespace vs Wix website builder, vertical',
     [
       { headline: 'Squarespace', subtext: 'Best for design', image: img('Squarespace interface, vertical', 'portrait_16_9') },
@@ -1012,7 +1012,7 @@ export const storiesData: StoryEntry[] = [
     'Best Website Builders 2026',
     'Website',
     '#7c3aed',
-    'We tested 5 website builders. See which is best for your site.',
+    'Based on product documentation, 5 website builders compared. See which is best for your site.',
     'Website builder comparison ranking, vertical',
     [
       { headline: 'WordPress', subtext: 'Best overall — $5/mo', image: img('WordPress website builder, vertical', 'portrait_16_9') },
@@ -1031,7 +1031,7 @@ export const storiesData: StoryEntry[] = [
     'Notion AI vs Grammarly',
     'AI Writing',
     '#7c3aed',
-    'We tested both AI writing tools for 60 days. See which is better for you.',
+    'Based on product documentation, both AI writing tools compared. See which is better for you.',
     'Notion AI vs Grammarly AI writing tool, vertical',
     [
       { headline: 'Notion AI', subtext: 'Best for notes integration', image: img('Notion AI interface, vertical', 'portrait_16_9') },
@@ -1050,7 +1050,7 @@ export const storiesData: StoryEntry[] = [
     'Jasper AI vs Copy.ai',
     'AI Writing',
     '#7c3aed',
-    'We tested both AI marketing tools for 60 days. See which is better for content.',
+    'Based on product documentation, both AI marketing tools compared. See which is better for content.',
     'Jasper AI vs Copy.ai marketing tool, vertical',
     [
       { headline: 'Jasper AI', subtext: 'Best for enterprise', image: img('Jasper AI interface, vertical', 'portrait_16_9') },
@@ -1168,7 +1168,7 @@ export const storiesData: StoryEntry[] = [
     'Google Drive vs Dropbox',
     'Cloud',
     '#0891b2',
-    'We synced files on both for 60 days. See which is better for your storage.',
+    'Based on product documentation, both cloud storage services compared. See which is better for your storage.',
     'Google Drive vs Dropbox cloud storage, vertical',
     [
       { headline: 'Google Drive', subtext: 'Best for Google users', image: img('Google Drive interface, vertical', 'portrait_16_9') },
@@ -1187,7 +1187,7 @@ export const storiesData: StoryEntry[] = [
     'Smallpdf vs iLovePDF',
     'File Tools',
     '#0891b2',
-    'We edited PDFs on both for 30 days. See which free PDF tool is better.',
+    'Based on product documentation, both PDF tools compared. See which free PDF tool is better.',
     'Smallpdf vs iLovePDF PDF editor comparison, vertical',
     [
       { headline: 'Smallpdf', subtext: 'Best for simplicity', image: img('Smallpdf interface, vertical', 'portrait_16_9') },
@@ -1206,7 +1206,7 @@ export const storiesData: StoryEntry[] = [
     'TinyPNG vs Squoosh',
     'File Tools',
     '#0891b2',
-    'We compressed 100 images on both. See which image compressor is better.',
+    'Based on product documentation, both image compressors compared. See which is better.',
     'TinyPNG vs Squoosh image compressor, vertical',
     [
       { headline: 'TinyPNG', subtext: 'Best for batch', image: img('TinyPNG interface, vertical', 'portrait_16_9') },
@@ -1225,7 +1225,7 @@ export const storiesData: StoryEntry[] = [
     'DeepL vs Google Translate',
     'Translation',
     '#0d9488',
-    'We translated 100 texts on both. See which is more accurate in 2026.',
+    'Based on product documentation, both translation tools compared. See which is more accurate in 2026.',
     'DeepL vs Google Translate comparison, vertical',
     [
       { headline: 'DeepL', subtext: 'Best for nuance', image: img('DeepL translator interface, vertical', 'portrait_16_9') },
@@ -1244,7 +1244,7 @@ export const storiesData: StoryEntry[] = [
     'Best External SSDs 2026',
     'Hardware',
     '#0891b2',
-    'We tested 5 portable SSDs for backup. See which is fastest and most reliable.',
+    'Based on product documentation, 5 portable SSDs compared for backup. See which is fastest and most reliable.',
     'Portable external SSD on desk, vertical',
     [
       { headline: 'Samsung T7', subtext: 'Best overall — $89', image: img('Samsung T7 portable SSD, vertical', 'portrait_16_9') },

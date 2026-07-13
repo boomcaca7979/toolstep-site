@@ -39,10 +39,10 @@ export const bestData: BestEntry[] = [
     slug: 'best-standing-desk',
     title: 'Best Standing Desk',
     category: 'Standing Desks', color: '#ea580c',
-    description: 'The 10 best standing desks we tested in 2026, ranked by stability, motor quality, and value.',
-    intro: 'We spent 90 days testing standing desks for stability at full height, motor noise, weight capacity, and warranty coverage. These are the 10 that survived daily use without wobbling, squeaking, or sagging.',
+    description: 'The 10 best standing desks in 2026, ranked by stability, motor quality, and value.',
+    intro: 'Based on product documentation, standing desks are compared for stability at full height, motor noise, weight capacity, and warranty coverage. These are the 10 that perform best for daily use without wobbling, squeaking, or sagging.',
     products: [
-      { rank: 1, name: 'Uplift V2', brand: 'Uplift', price: 599, rating: 4.8, summary: 'The most stable desk we tested. Dual-motor, 355-lb capacity, 73 top options.', pros: ['Rock-solid at full height', '73 top finishes and sizes', 'Best-in-class warranty'], cons: ['Expensive', 'Top sold separately'] },
+      { rank: 1, name: 'Uplift V2', brand: 'Uplift', price: 599, rating: 4.8, summary: 'The most stable desk available. Dual-motor, 355-lb capacity, 73 top options.', pros: ['Rock-solid at full height', '73 top finishes and sizes', 'Best-in-class warranty'], cons: ['Expensive', 'Top sold separately'] },
       { rank: 2, name: 'FlexiSpot E7', brand: 'FlexiSpot', price: 249, rating: 4.6, summary: 'Best value under $300. 220-lb capacity, dual-motor, 4 presets.', pros: ['Best stability under $300', '220-lb weight capacity', '5-year warranty'], cons: ['Laminate top scratches easily', 'Cable tray is extra'] },
       { rank: 3, name: 'Vari Electric', brand: 'Vari', price: 395, rating: 4.5, summary: 'Solid mid-range pick with a built-in cable tray and 60-inch top.', pros: ['Includes cable management', '60-inch top fits dual monitors', '25-year frame warranty'], cons: ['Single motor is slower', 'Fewer presets than rivals'] },
       { rank: 4, name: 'Branch Standing Desk', brand: 'Branch', price: 549, rating: 4.4, summary: 'Sleek design with bamboo top option and quiet motor.', pros: ['Beautiful bamboo top', 'Whisper-quiet motor', 'Clean cable management'], cons: ['Premium price', 'Limited sizes'] },
@@ -68,8 +68,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-standing-desk-under-300',
     title: 'Best Standing Desk Under $300',
     category: 'Standing Desks', color: '#ea580c',
-    description: 'The 10 best standing desks under $300, tested for stability, motor noise, and build quality.',
-    intro: 'Budget standing desks have improved dramatically. We tested every desk under $300 for 90 days and ranked them by stability at full height, motor quality, and warranty coverage.',
+    description: 'The 10 best standing desks under $300, compared for stability, motor noise, and build quality.',
+    intro: 'Budget standing desks have improved dramatically. Based on product documentation, every desk under $300 is compared and ranked by stability at full height, motor quality, and warranty coverage.',
     products: [
       { rank: 1, name: 'FlexiSpot E7', brand: 'FlexiSpot', price: 249, rating: 4.6, summary: 'Best budget desk. 220-lb capacity, dual-motor, 5-year warranty.', pros: ['Dual-motor lift', '220-lb capacity', '5-year warranty'], cons: ['Laminate top', 'Cable tray extra'] },
       { rank: 2, name: 'Vari Electric 48x30', brand: 'Vari', price: 295, rating: 4.4, summary: 'Compact footprint with included cable management.', pros: ['Includes cable tray', 'Compact for apartments', '25-year warranty'], cons: ['Small top', 'Single motor'] },
@@ -97,8 +97,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-standing-desk-for-home-office',
     title: 'Best Standing Desk for Home Office',
     category: 'Standing Desks', color: '#ea580c',
-    description: 'The 10 best standing desks for home offices, tested for noise, aesthetics, and cable management.',
-    intro: 'Home offices need desks that are quiet, good-looking, and cable-friendly. We tested 10 standing desks in real home office setups for 60 days.',
+    description: 'The 10 best standing desks for home offices, compared for noise, aesthetics, and cable management.',
+    intro: 'Home offices need desks that are quiet, good-looking, and cable-friendly. Based on product documentation, 10 standing desks are compared in real home office setups.',
     products: [
       { rank: 1, name: 'Branch Standing Desk', brand: 'Branch', price: 549, rating: 4.6, summary: 'Best looking desk with bamboo top and hidden cable management.', pros: ['Beautiful bamboo top', 'Hidden cable tray', 'Quiet motor'], cons: ['Premium price', 'Limited sizes'] },
       { rank: 2, name: 'Uplift V2', brand: 'Uplift', price: 599, rating: 4.8, summary: 'Most stable desk with 73 top options for any decor.', pros: ['73 top options', 'Rock-solid', 'Best warranty'], cons: ['Expensive', 'Top is separate'] },
@@ -127,7 +127,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Standing Desk Converter',
     category: 'Standing Desks', color: '#ea580c',
     description: 'The 10 best standing desk converters that turn any desk into a sit-stand workspace.',
-    intro: 'No room for a full standing desk? A converter sits on your existing desk and lifts your monitor and keyboard. We tested 10 for stability, height range, and ease of adjustment.',
+    intro: 'No room for a full standing desk? A converter sits on your existing desk and lifts your monitor and keyboard. Based on product documentation, 10 are compared for stability, height range, and ease of adjustment.',
     products: [
       { rank: 1, name: 'Vari Converter', brand: 'Vari', price: 175, rating: 4.6, summary: 'Best overall converter with a wide keyboard deck and 17-inch lift.', pros: ['17-inch height range', 'Wide keyboard deck', 'No assembly'], cons: ['Heavy at 28 lbs', 'No memory presets'] },
       { rank: 2, name: 'FlexiSpot M2B', brand: 'FlexiSpot', price: 140, rating: 4.5, summary: 'Best value with a smooth spring-lift mechanism.', pros: ['Under $150', 'Smooth lift', 'Compact'], cons: ['Smaller deck', 'Spring not motorized'] },
@@ -156,7 +156,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Standing Desk for Small Spaces',
     category: 'Standing Desks', color: '#ea580c',
     description: 'The 10 best standing desks for small apartments and tight home office corners.',
-    intro: 'Small spaces need compact desks that still wobble-free at full height. We tested 10 standing desks under 48 inches wide for stability, footprint, and fold-ability.',
+    intro: 'Small spaces need compact desks that still wobble-free at full height. Based on product documentation, 10 standing desks under 48 inches wide are compared for stability, footprint, and fold-ability.',
     products: [
       { rank: 1, name: 'Vari Electric 48x30', brand: 'Vari', price: 295, rating: 4.5, summary: 'Best compact desk with 48-inch top and cable tray.', pros: ['48-inch top', 'Cable tray included', 'Compact base'], cons: ['Single motor', 'Fewer presets'] },
       { rank: 2, name: 'FlexiSpot E7 48x24', brand: 'FlexiSpot', price: 249, rating: 4.5, summary: 'Narrow 24-inch depth fits tight corners.', pros: ['24-inch depth', 'Dual motor', 'Under $300'], cons: ['Narrow top', 'Laminate'] },
@@ -185,8 +185,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-office-chair',
     title: 'Best Office Chair',
     category: 'Office Chairs', color: '#0891b2',
-    description: 'The 10 best office chairs tested for 8-hour comfort, lumbar support, and build quality.',
-    intro: 'We sat in 50+ office chairs for 8 hours a day over 6 months. These 10 survived daily use without back pain, sagging, or squeaking.',
+    description: 'The 10 best office chairs compared for 8-hour comfort, lumbar support, and build quality.',
+    intro: 'Based on product documentation, 50+ office chairs are compared for 8-hour daily use over extended periods. These 10 perform best for daily use without back pain, sagging, or squeaking.',
     products: [
       { rank: 1, name: 'Herman Miller Aeron', brand: 'Herman Miller', price: 1495, rating: 4.8, summary: 'The gold standard. 12-year warranty, breathable mesh, unmatched lumbar support.', pros: ['12-year warranty', 'Breathable mesh', 'Best lumbar support'], cons: ['Very expensive', 'Mesh can tear'] },
       { rank: 2, name: 'Steelcase Leap V2', brand: 'Steelcase', price: 979, rating: 4.7, summary: 'LiveBack technology flexes with your spine. 4D armrests, lifetime warranty.', pros: ['LiveBack flexes with spine', '4D armrests', 'Lifetime warranty'], cons: ['Expensive', 'Firm seat'] },
@@ -215,7 +215,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Ergonomic Chair',
     category: 'Office Chairs', color: '#0891b2',
     description: 'The 10 best ergonomic chairs with adjustable lumbar, armrests, and seat depth.',
-    intro: 'Ergonomic chairs must support your spine, allow movement, and fit your body. We tested 10 for adjustability, lumbar quality, and all-day comfort.',
+    intro: 'Ergonomic chairs must support your spine, allow movement, and fit your body. Based on product documentation, 10 are compared for adjustability, lumbar quality, and all-day comfort.',
     products: [
       { rank: 1, name: 'Herman Miller Aeron', brand: 'Herman Miller', price: 1495, rating: 4.8, summary: 'Best ergonomic chair with PostureFit lumbar and breathable mesh.', pros: ['PostureFit lumbar', 'Breathable mesh', '12-year warranty'], cons: ['Very expensive', 'Mesh tears'] },
       { rank: 2, name: 'Steelcase Leap V2', brand: 'Steelcase', price: 979, rating: 4.7, summary: 'LiveBack flexes with your spine. Best 4D armrests.', pros: ['LiveBack technology', '4D armrests', 'Lifetime warranty'], cons: ['Expensive', 'Firm'] },
@@ -244,7 +244,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Ergonomic Chair Under $500',
     category: 'Office Chairs', color: '#0891b2',
     description: 'The 10 best ergonomic chairs under $500 with lumbar support and breathable mesh.',
-    intro: 'You do not need to spend $1000 for an ergonomic chair. We tested 10 chairs under $500 for lumbar quality, mesh durability, and 8-hour comfort.',
+    intro: 'You do not need to spend $1000 for an ergonomic chair. Based on product documentation, 10 chairs under $500 are compared for lumbar quality, mesh durability, and 8-hour comfort.',
     products: [
       { rank: 1, name: 'Branch Ergonomic Chair', brand: 'Branch', price: 345, rating: 4.5, summary: 'Best value. Adjustable lumbar, mesh back, under $400.', pros: ['Adjustable lumbar', 'Mesh back', 'Under $400'], cons: ['Basic armrests', 'Cushion thins'] },
       { rank: 2, name: 'Ergohuman Plus', brand: 'Ergohuman', price: 499, rating: 4.4, summary: 'Flex zones and headrest at the top of the budget tier.', pros: ['Flex zones', 'Headrest', 'Under $500'], cons: ['Bulky', 'Mesh durability'] },
@@ -273,7 +273,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Ergonomic Chair Under $150',
     category: 'Office Chairs', color: '#0891b2',
     description: 'The 10 best ergonomic chairs under $150 for budget home offices.',
-    intro: 'Under $150, ergonomic chairs sacrifice adjustability for price. We tested 10 for basic lumbar support, mesh quality, and durability.',
+    intro: 'Under $150, ergonomic chairs sacrifice adjustability for price. Based on product documentation, 10 are compared for basic lumbar support, mesh quality, and durability.',
     products: [
       { rank: 1, name: 'Hbada E3', brand: 'Hbada', price: 199, rating: 4.0, summary: 'Best budget mesh chair with recline and decent lumbar.', pros: ['Mesh back', 'Recline', 'Decent lumbar'], cons: ['Fixed arms', 'Basic'] },
       { rank: 2, name: 'SMUGDESK Ergonomic', brand: 'SMUGDESK', price: 149, rating: 3.8, summary: 'Budget mesh with headrest and basic lumbar.', pros: ['Headrest', 'Mesh back', 'Under $150'], cons: ['Weak lumbar', 'Build quality'] },
@@ -302,7 +302,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Gaming Chair',
     category: 'Office Chairs', color: '#0891b2',
     description: 'The 10 best gaming chairs tested for long sessions, recline, and lumbar support.',
-    intro: 'Gaming chairs prioritize recline, headrests, and racing aesthetics. We tested 10 for 8-hour gaming sessions, lumbar quality, and build durability.',
+    intro: 'Gaming chairs prioritize recline, headrests, and racing aesthetics. Based on product documentation, 10 are compared for 8-hour gaming sessions, lumbar quality, and build durability.',
     products: [
       { rank: 1, name: 'Secretlab Titan Evo', brand: 'Secretlab', price: 549, rating: 4.7, summary: 'Best gaming chair with magnetic lumbar and 165-degree recline.', pros: ['Magnetic lumbar', '165-degree recline', 'Premium build'], cons: ['Expensive', 'Heavy'] },
       { rank: 2, name: 'Herman Miller x Logitech G', brand: 'Herman Miller', price: 1495, rating: 4.6, summary: 'Embody designed for gaming with cooling foam.', pros: ['Cooling foam', 'Pixelated support', '12-year warranty'], cons: ['Very expensive', 'No recline'] },
@@ -332,7 +332,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Mechanical Keyboard',
     category: 'Keyboards', color: '#7c3aed',
     description: 'The 10 best mechanical keyboards tested for typing feel, build quality, and switch options.',
-    intro: 'Mechanical keyboards are about feel. We tested 10 for switch quality, build, acoustics, and wireless reliability over 90 days of daily typing.',
+    intro: 'Mechanical keyboards are about feel. Based on product documentation, 10 are compared for switch quality, build, acoustics, and wireless reliability for daily typing.',
     products: [
       { rank: 1, name: 'Keychron Q1 Pro', brand: 'Keychron', price: 199, rating: 4.8, summary: 'Best overall. CNC aluminum, hot-swappable, wireless, gasket mount.', pros: ['CNC aluminum', 'Hot-swappable', 'Wireless + wired'], cons: ['Heavy', 'Premium price'] },
       { rank: 2, name: 'Logitech MX Keys S', brand: 'Logitech', price: 109, rating: 4.6, summary: 'Best office keyboard. Low profile, smart backlit, multi-device.', pros: ['Multi-device', 'Smart backlit', 'Low profile'], cons: ['Not mechanical', 'Membrane feel'] },
@@ -361,7 +361,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Office Mechanical Keyboard',
     category: 'Keyboards', color: '#7c3aed',
     description: 'The 10 best mechanical keyboards for office use, tested for quietness and comfort.',
-    intro: 'Office keyboards need to be quiet, comfortable, and professional-looking. We tested 10 for switch noise, typing comfort, and wireless reliability.',
+    intro: 'Office keyboards need to be quiet, comfortable, and professional-looking. Based on product documentation, 10 are compared for switch noise, typing comfort, and wireless reliability.',
     products: [
       { rank: 1, name: 'Logitech MX Keys S', brand: 'Logitech', price: 109, rating: 4.6, summary: 'Best office keyboard. Low profile, quiet, multi-device.', pros: ['Multi-device', 'Quiet', 'Smart backlit'], cons: ['Not mechanical', 'Membrane feel'] },
       { rank: 2, name: 'Keychron K8', brand: 'Keychron', price: 89, rating: 4.5, summary: 'Budget TKL wireless with brown switches for office quiet.', pros: ['Wireless', 'Brown switches', 'Under $90'], cons: ['Plastic case', 'No RGB base'] },
@@ -390,7 +390,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Wireless Keyboard',
     category: 'Keyboards', color: '#7c3aed',
     description: 'The 10 best wireless keyboards for clean desks and multi-device setups.',
-    intro: 'Wireless keyboards cut cable clutter and switch between devices. We tested 10 for battery life, latency, and multi-device switching reliability.',
+    intro: 'Wireless keyboards cut cable clutter and switch between devices. Based on product documentation, 10 are compared for battery life, latency, and multi-device switching reliability.',
     products: [
       { rank: 1, name: 'Logitech MX Keys S', brand: 'Logitech', price: 109, rating: 4.6, summary: 'Best wireless keyboard. Multi-device, backlit, USB-C charging.', pros: ['3-device switching', 'Backlit', 'USB-C'], cons: ['Membrane feel', 'No mechanical'] },
       { rank: 2, name: 'Keychron K8', brand: 'Keychron', price: 89, rating: 4.5, summary: 'Budget wireless mechanical with Bluetooth and 2.4GHz.', pros: ['Wireless mechanical', 'Under $90', 'Bluetooth + 2.4GHz'], cons: ['Plastic case', 'Battery life average'] },
@@ -419,7 +419,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget Mechanical Keyboard',
     category: 'Keyboards', color: '#7c3aed',
     description: 'The 10 best mechanical keyboards under $100 tested for value and build quality.',
-    intro: 'You do not need to spend $200 for a good mechanical keyboard. We tested 10 keyboards under $100 for switch quality, build, and durability.',
+    intro: 'You do not need to spend $200 for a good mechanical keyboard. Based on product documentation, 10 keyboards under $100 are compared for switch quality, build, and durability.',
     products: [
       { rank: 1, name: 'Keychron K8', brand: 'Keychron', price: 89, rating: 4.5, summary: 'Best budget wireless mechanical. Hot-swappable, TKL.', pros: ['Wireless', 'Hot-swappable', 'Under $90'], cons: ['Plastic case', 'No RGB base'] },
       { rank: 2, name: 'Keychron K3', brand: 'Keychron', price: 79, rating: 4.3, summary: 'Low-profile wireless mechanical under $80.', pros: ['Low profile', 'Wireless', 'Under $80'], cons: ['Shallow travel', 'Plastic'] },
@@ -448,7 +448,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Ergonomic Keyboard',
     category: 'Keyboards', color: '#7c3aed',
     description: 'The 10 best ergonomic keyboards for wrist health and comfortable typing.',
-    intro: 'Ergonomic keyboards reduce wrist strain with split designs and tented layouts. We tested 10 for wrist comfort, learning curve, and typing speed.',
+    intro: 'Ergonomic keyboards reduce wrist strain with split designs and tented layouts. Based on product documentation, 10 are compared for wrist comfort, learning curve, and typing speed.',
     products: [
       { rank: 1, name: 'Logitech Ergo K860', brand: 'Logitech', price: 149, rating: 4.4, summary: 'Best ergonomic. Split design, wrist rest, multi-device.', pros: ['Split design', 'Wrist rest', 'Multi-device'], cons: ['Learning curve', 'Bulky'] },
       { rank: 2, name: 'Microsoft Sculpt', brand: 'Microsoft', price: 79, rating: 4.2, summary: 'Budget split ergonomic with palm rest.', pros: ['Under $80', 'Split design', 'Palm rest'], cons: ['Membrane', 'Cheap build'] },
@@ -478,7 +478,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Mouse',
     category: 'Mice', color: '#059669',
     description: 'The 10 best mice tested for ergonomics, sensor accuracy, and build quality.',
-    intro: 'A good mouse prevents wrist strain and improves precision. We tested 10 mice for ergonomics, sensor quality, and durability over 60 days of daily use.',
+    intro: 'A good mouse prevents wrist strain and improves precision. Based on product documentation, 10 mice are compared for ergonomics, sensor quality, and durability for daily use.',
     products: [
       { rank: 1, name: 'Logitech MX Master 3S', brand: 'Logitech', price: 99, rating: 4.8, summary: 'Best overall. Ergonomic, quiet clicks, multi-device, MagSpeed wheel.', pros: ['Ergonomic shape', 'Quiet clicks', 'Multi-device', 'MagSpeed scroll'], cons: ['Heavy for some', 'Pricey'] },
       { rank: 2, name: 'Logitech MX Anywhere 3S', brand: 'Logitech', price: 79, rating: 4.6, summary: 'Best compact mouse. Track on glass, multi-device.', pros: ['Compact', 'Glass tracking', 'Multi-device'], cons: ['Small for large hands', 'No thumb rest'] },
@@ -507,7 +507,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Wireless Mouse',
     category: 'Mice', color: '#059669',
     description: 'The 10 best wireless mice for clean desks and multi-device setups.',
-    intro: 'Wireless mice have no latency issues anymore. We tested 10 for battery life, multi-device switching, and ergonomics.',
+    intro: 'Wireless mice have no latency issues anymore. Based on product documentation, 10 are compared for battery life, multi-device switching, and ergonomics.',
     products: [
       { rank: 1, name: 'Logitech MX Master 3S', brand: 'Logitech', price: 99, rating: 4.8, summary: 'Best wireless mouse. Ergonomic, multi-device, quiet clicks.', pros: ['Multi-device', 'Quiet clicks', 'MagSpeed wheel'], cons: ['Heavy', 'Pricey'] },
       { rank: 2, name: 'Logitech MX Anywhere 3S', brand: 'Logitech', price: 79, rating: 4.6, summary: 'Best compact wireless. Tracks on glass.', pros: ['Compact', 'Glass tracking', 'Multi-device'], cons: ['Small for big hands'] },
@@ -536,7 +536,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Gaming Mouse',
     category: 'Mice', color: '#059669',
     description: 'The 10 best gaming mice tested for sensor accuracy, weight, and click latency.',
-    intro: 'Gaming mice need top sensors, low latency, and lightweight builds. We tested 10 for sensor accuracy, click latency, and grip comfort.',
+    intro: 'Gaming mice need top sensors, low latency, and lightweight builds. Based on product documentation, 10 are compared for sensor accuracy, click latency, and grip comfort.',
     products: [
       { rank: 1, name: 'Razer DeathAdder V3', brand: 'Razer', price: 99, rating: 4.5, summary: 'Best gaming mouse. Lightweight, ergonomic, top sensor.', pros: ['Lightweight', 'Top sensor', 'Ergonomic'], cons: ['Wired', 'No wireless'] },
       { rank: 2, name: 'Logitech G Pro X', brand: 'Logitech', price: 129, rating: 4.4, summary: 'Wireless gaming with zero latency.', pros: ['Wireless', 'Zero latency', 'Lightweight'], cons: ['Expensive', 'Small'] },
@@ -565,7 +565,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Ergonomic Mouse',
     category: 'Mice', color: '#059669',
     description: 'The 10 best ergonomic mice for wrist health and comfortable daily use.',
-    intro: 'Ergonomic mice reduce wrist pronation and prevent RSI. We tested 10 for wrist comfort, grip styles, and daily use.',
+    intro: 'Ergonomic mice reduce wrist pronation and prevent RSI. Based on product documentation, 10 are compared for wrist comfort, grip styles, and daily use.',
     products: [
       { rank: 1, name: 'Logitech MX Master 3S', brand: 'Logitech', price: 99, rating: 4.8, summary: 'Best ergonomic mouse. Sculpted shape, thumb rest, quiet clicks.', pros: ['Sculpted shape', 'Thumb rest', 'Quiet clicks'], cons: ['Heavy', 'Pricey'] },
       { rank: 2, name: 'Logitech MX Vertical', brand: 'Logitech', price: 79, rating: 4.3, summary: 'Vertical mouse reduces wrist pronation by 10 degrees.', pros: ['Vertical design', 'Reduces wrist strain', 'Multi-device'], cons: ['Learning curve', 'Tall'] },
@@ -594,7 +594,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget Wireless Mouse',
     category: 'Mice', color: '#059669',
     description: 'The 10 best wireless mice under $40 tested for value and reliability.',
-    intro: 'You do not need to spend $100 for a good wireless mouse. We tested 10 under $40 for battery life, ergonomics, and reliability.',
+    intro: 'You do not need to spend $100 for a good wireless mouse. Based on product documentation, 10 under $40 are compared for battery life, ergonomics, and reliability.',
     products: [
       { rank: 1, name: 'Logitech M510', brand: 'Logitech', price: 29, rating: 4.0, summary: 'Best budget wireless. Decent ergonomics, reliable.', pros: ['Under $30', 'Decent shape', 'Reliable'], cons: ['Basic sensor', 'No multi-device'] },
       { rank: 2, name: 'Logitech M720 Triathlon', brand: 'Logitech', price: 39, rating: 4.1, summary: 'Multi-device wireless under $40.', pros: ['Multi-device', 'Under $40', 'Ergonomic'], cons: ['Basic sensor', 'Clicky'] },
@@ -624,7 +624,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Monitor',
     category: 'Monitors', color: '#2563eb',
     description: 'The 10 best monitors tested for color accuracy, ergonomics, and value.',
-    intro: 'A monitor is your primary workspace. We tested 10 for color accuracy, ergonomics, resolution, and value across 90 days of daily use.',
+    intro: 'A monitor is your primary workspace. Based on product documentation, 10 are compared for color accuracy, ergonomics, resolution, and value for daily use.',
     products: [
       { rank: 1, name: 'Dell U2723QE', brand: 'Dell', price: 599, rating: 4.7, summary: 'Best overall. 4K USB-C, IPS Black, 98% DCI-P3.', pros: ['4K USB-C', 'IPS Black', '98% DCI-P3', 'KVM switch'], cons: ['Expensive', 'Heavy'] },
       { rank: 2, name: 'LG 27UP850-W', brand: 'LG', price: 449, rating: 4.5, summary: 'Best value 4K with USB-C and 96% DCI-P3.', pros: ['4K', 'USB-C 96W', '96% DCI-P3'], cons: ['No KVM', 'Stand basic'] },
@@ -653,7 +653,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Monitor for Work',
     category: 'Monitors', color: '#2563eb',
     description: 'The 10 best monitors for productivity, tested for text clarity and USB-C.',
-    intro: 'Work monitors need sharp text, USB-C charging, and ergonomic stands. We tested 10 for text clarity, eye comfort, and productivity features.',
+    intro: 'Work monitors need sharp text, USB-C charging, and ergonomic stands. Based on product documentation, 10 are compared for text clarity, eye comfort, and productivity features.',
     products: [
       { rank: 1, name: 'Dell U2723QE', brand: 'Dell', price: 599, rating: 4.7, summary: 'Best work monitor. 4K USB-C, KVM, IPS Black.', pros: ['4K USB-C', 'KVM switch', 'IPS Black', '90W charging'], cons: ['Expensive', 'Heavy'] },
       { rank: 2, name: 'LG 27UP850-W', brand: 'LG', price: 449, rating: 4.5, summary: 'Best value 4K with USB-C and wide color.', pros: ['4K', 'USB-C 96W', '96% DCI-P3'], cons: ['No KVM', 'Basic stand'] },
@@ -682,7 +682,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Portable Monitor',
     category: 'Monitors', color: '#2563eb',
     description: 'The 10 best portable monitors for travel and dual-screen productivity.',
-    intro: 'Portable monitors give you a second screen anywhere. We tested 10 for weight, brightness, USB-C, and travel durability.',
+    intro: 'Portable monitors give you a second screen anywhere. Based on product documentation, 10 are compared for weight, brightness, USB-C, and travel durability.',
     products: [
       { rank: 1, name: 'ASUS ZenScreen MB16ACE', brand: 'ASUS', price: 199, rating: 4.4, summary: 'Best portable. 15.6-inch 1080p, USB-C, 1.7 lbs.', pros: ['Lightweight 1.7 lbs', 'USB-C', 'Smart case'], cons: ['1080p only', 'No touch'] },
       { rank: 2, name: 'LG Gram +View', brand: 'LG', price: 299, rating: 4.3, summary: 'Premium 16-inch 1600p portable with USB-C.', pros: ['1600p resolution', '16-inch', 'USB-C', 'Lightweight'], cons: ['Expensive', 'No touch'] },
@@ -711,7 +711,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Ultrawide Monitor',
     category: 'Monitors', color: '#2563eb',
     description: 'The 10 best ultrawide monitors for productivity and immersive work.',
-    intro: 'Ultrawide monitors replace dual-monitor setups with one wide screen. We tested 10 for productivity, color, and curve quality.',
+    intro: 'Ultrawide monitors replace dual-monitor setups with one wide screen. Based on product documentation, 10 are compared for productivity, color, and curve quality.',
     products: [
       { rank: 1, name: 'LG 34WN80C-B', brand: 'LG', price: 599, rating: 4.5, summary: 'Best ultrawide for work. 34-inch 1440p, USB-C, HDR.', pros: ['34-inch 1440p', 'USB-C 60W', 'HDR10', 'Ergonomic stand'], cons: ['60Hz only', 'Expensive'] },
       { rank: 2, name: 'Dell U3425WE', brand: 'Dell', price: 799, rating: 4.6, summary: 'Premium 34-inch with USB-C 90W and KVM.', pros: ['USB-C 90W', 'KVM switch', 'Thunderbolt 4', 'IPS Black'], cons: ['Very expensive', 'Heavy'] },
@@ -740,7 +740,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget Monitor',
     category: 'Monitors', color: '#2563eb',
     description: 'The 10 best budget monitors under $300 tested for value and quality.',
-    intro: 'Budget monitors have improved. We tested 10 under $300 for text clarity, color accuracy, and build quality.',
+    intro: 'Budget monitors have improved. Based on product documentation, 10 under $300 are compared for text clarity, color accuracy, and build quality.',
     products: [
       { rank: 1, name: 'ASUS ProArt PA278CV', brand: 'ASUS', price: 329, rating: 4.4, summary: 'Best budget 1440p with USB-C and ProArt color.', pros: ['1440p', 'USB-C', 'ProArt calibrated', 'Ergonomic stand'], cons: ['Over $300', '60Hz'] },
       { rank: 2, name: 'Dell S2721QS', brand: 'Dell', price: 349, rating: 4.3, summary: 'Budget 4K with thin bezels and good color.', pros: ['4K', 'Thin bezels', 'Good color'], cons: ['Over $300', 'No USB-C'] },
@@ -770,7 +770,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Webcam',
     category: 'Webcams', color: '#dc2626',
     description: 'The 10 best webcams tested for image quality, autofocus, and low-light.',
-    intro: 'A good webcam makes you look professional on calls. We tested 10 for image quality, autofocus, low-light, and microphone quality.',
+    intro: 'A good webcam makes you look professional on calls. Based on product documentation, 10 are compared for image quality, autofocus, low-light, and microphone quality.',
     products: [
       { rank: 1, name: 'Logitech Brio 4K', brand: 'Logitech', price: 199, rating: 4.6, summary: 'Best webcam. 4K, HDR, IR for Windows Hello.', pros: ['4K 30fps', 'HDR', 'Windows Hello IR', '5x zoom'], cons: ['Expensive', 'Heavy'] },
       { rank: 2, name: 'Insta360 Link', brand: 'Insta360', price: 299, rating: 4.6, summary: 'AI-powered 4K with auto-framing and tracking.', pros: ['4K 60fps', 'AI tracking', 'Auto-framing', 'Gimbal'], cons: ['Very expensive', 'Software complex'] },
@@ -799,7 +799,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Webcam for Mac',
     category: 'Webcams', color: '#dc2626',
     description: 'The 10 best webcams for Mac, tested for macOS compatibility and image quality.',
-    intro: 'Mac webcams need macOS drivers and USB-C compatibility. We tested 10 for macOS plug-and-play, image quality, and software support.',
+    intro: 'Mac webcams need macOS drivers and USB-C compatibility. Based on product documentation, 10 are compared for macOS plug-and-play, image quality, and software support.',
     products: [
       { rank: 1, name: 'Logitech Brio 4K', brand: 'Logitech', price: 199, rating: 4.6, summary: 'Best for Mac. 4K, HDR, USB-C, works with FaceTime.', pros: ['4K', 'HDR', 'USB-C', 'macOS compatible'], cons: ['Expensive', 'Heavy'] },
       { rank: 2, name: 'Logitech C920x', brand: 'Logitech', price: 69, rating: 4.4, summary: 'Best value 1080p for Mac.', pros: ['1080p', 'Under $70', 'macOS compatible', 'Reliable'], cons: ['No 4K', 'USB-A only'] },
@@ -828,7 +828,7 @@ export const bestData: BestEntry[] = [
     title: 'Best 4K Webcam',
     category: 'Webcams', color: '#dc2626',
     description: 'The 10 best 4K webcams tested for image quality and features.',
-    intro: '4K webcams future-proof your calls and recordings. We tested 10 for true 4K, HDR, and software features.',
+    intro: '4K webcams future-proof your calls and recordings. Based on product documentation, 10 are compared for true 4K, HDR, and software features.',
     products: [
       { rank: 1, name: 'Logitech Brio 4K', brand: 'Logitech', price: 199, rating: 4.6, summary: 'Best 4K webcam. HDR, IR, 5x zoom.', pros: ['4K 30fps', 'HDR', 'Windows Hello IR', '5x zoom'], cons: ['Expensive', 'Heavy'] },
       { rank: 2, name: 'Insta360 Link', brand: 'Insta360', price: 299, rating: 4.6, summary: 'AI 4K 60fps with gimbal tracking.', pros: ['4K 60fps', 'AI tracking', 'Gimbal', 'Auto-framing'], cons: ['Very expensive', 'Complex'] },
@@ -858,7 +858,7 @@ export const bestData: BestEntry[] = [
     title: 'Best USB-C Dock',
     category: 'USB-C Docks', color: '#0891b2',
     description: 'The 10 best USB-C docks tested for charging, display, and port selection.',
-    intro: 'USB-C docks turn one port into many. We tested 10 for charging speed, dual display support, and port variety over 60 days.',
+    intro: 'USB-C docks turn one port into many. Based on product documentation, 10 are compared for charging speed, dual display support, and port variety.',
     products: [
       { rank: 1, name: 'CalDigit TS4', brand: 'CalDigit', price: 399, rating: 4.8, summary: 'Best dock. 18 ports, 98W charging, dual 4K display.', pros: ['18 ports', '98W charging', 'Dual 4K', 'Thunderbolt 4'], cons: ['Very expensive', 'Large'] },
       { rank: 2, name: 'Satechi Thunderbolt 4', brand: 'Satechi', price: 299, rating: 4.5, summary: 'Premium aluminum dock with 96W charging.', pros: ['96W charging', 'Aluminum build', 'Dual 4K', 'Thunderbolt 4'], cons: ['Expensive', 'No SD card slot'] },
@@ -887,7 +887,7 @@ export const bestData: BestEntry[] = [
     title: 'Best USB-C Hub',
     category: 'USB-C Docks', color: '#0891b2',
     description: 'The 10 best USB-C hubs for expanding laptop connectivity.',
-    intro: 'USB-C hubs add ports to laptops. We tested 10 for port variety, charging, and portability.',
+    intro: 'USB-C hubs add ports to laptops. Based on product documentation, 10 are compared for port variety, charging, and portability.',
     products: [
       { rank: 1, name: 'Anker 777', brand: 'Anker', price: 249, rating: 4.4, summary: 'Best hub. 12-in-1 with 100W charging and dual display.', pros: ['12-in-1', '100W charging', 'Dual display'], cons: ['No Thunderbolt', 'Bulky'] },
       { rank: 2, name: 'Satechi USB-C Multiport', brand: 'Satechi', price: 99, rating: 4.0, summary: 'Compact 7-in-1 hub with 100W passthrough.', pros: ['7 ports', '100W passthrough', 'Under $100'], cons: ['No dual display', 'Plastic'] },
@@ -916,7 +916,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Thunderbolt Dock',
     category: 'USB-C Docks', color: '#0891b2',
     description: 'The 10 best Thunderbolt 4 docks for high-speed connectivity.',
-    intro: 'Thunderbolt 4 docks offer 40Gbps speeds and dual 4K displays. We tested 10 for speed, charging, and reliability.',
+    intro: 'Thunderbolt 4 docks offer 40Gbps speeds and dual 4K displays. Based on product documentation, 10 are compared for speed, charging, and reliability.',
     products: [
       { rank: 1, name: 'CalDigit TS4', brand: 'CalDigit', price: 399, rating: 4.8, summary: 'Best Thunderbolt dock. 18 ports, 98W, dual 4K.', pros: ['18 ports', '98W charging', 'Dual 4K', 'Thunderbolt 4'], cons: ['Very expensive', 'Large'] },
       { rank: 2, name: 'Satechi Thunderbolt 4', brand: 'Satechi', price: 299, rating: 4.5, summary: 'Premium aluminum dock with 96W charging.', pros: ['96W charging', 'Aluminum', 'Dual 4K', 'Thunderbolt 4'], cons: ['Expensive', 'No SD slot'] },
@@ -945,7 +945,7 @@ export const bestData: BestEntry[] = [
     title: 'Best USB-C Hub for MacBook',
     category: 'USB-C Docks', color: '#0891b2',
     description: 'The 10 best USB-C hubs for MacBook, tested for macOS compatibility.',
-    intro: 'MacBooks have limited ports. We tested 10 USB-C hubs for macOS compatibility, charging, and design.',
+    intro: 'MacBooks have limited ports. Based on product documentation, 10 USB-C hubs are compared for macOS compatibility, charging, and design.',
     products: [
       { rank: 1, name: 'Satechi USB-C Multiport', brand: 'Satechi', price: 99, rating: 4.0, summary: 'Best for MacBook. 7-in-1, 100W passthrough, aluminum.', pros: ['7 ports', '100W passthrough', 'Aluminum', 'macOS compatible'], cons: ['No dual display', 'Pricey'] },
       { rank: 2, name: 'Anker 555', brand: 'Anker', price: 149, rating: 4.2, summary: '8-in-1 with 85W charging and HDMI for Mac.', pros: ['85W charging', '8 ports', 'HDMI', 'macOS compatible'], cons: ['No dual 4K', 'Plastic'] },
@@ -974,7 +974,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget USB-C Hub',
     category: 'USB-C Docks', color: '#0891b2',
     description: 'The 10 best USB-C hubs under $50 tested for value and reliability.',
-    intro: 'Budget USB-C hubs add ports without breaking the bank. We tested 10 under $50 for reliability and port selection.',
+    intro: 'Budget USB-C hubs add ports without breaking the bank. Based on product documentation, 10 under $50 are compared for reliability and port selection.',
     products: [
       { rank: 1, name: 'Belkin 7-in-1', brand: 'Belkin', price: 49, rating: 3.9, summary: 'Best budget hub. 7 ports, HDMI, reliable.', pros: ['Under $50', '7 ports', 'HDMI', 'Reliable'], cons: ['Low charging', 'Plastic'] },
       { rank: 2, name: 'UGREEN 9-in-1', brand: 'UGREEN', price: 39, rating: 3.8, summary: '9 ports for under $40, decent value.', pros: ['Under $40', '9 ports'], cons: ['Basic build', 'Low charging'] },
@@ -1004,7 +1004,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Headphones',
     category: 'Headphones', color: '#9333ea',
     description: 'The 10 best headphones tested for sound quality, ANC, and comfort.',
-    intro: 'We tested 50+ headphones for sound quality, noise cancellation, comfort, and battery life. These 10 excelled across all categories.',
+    intro: 'Based on product documentation, 50+ headphones are compared for sound quality, noise cancellation, comfort, and battery life. These 10 excelled across all categories.',
     products: [
       { rank: 1, name: 'Sony WH-1000XM5', brand: 'Sony', price: 399, rating: 4.8, summary: 'Best overall. Best ANC, 30-hour battery, LDAC.', pros: ['Best ANC', '30-hour battery', 'LDAC', 'Comfortable'], cons: ['Expensive', 'No 3.5mm jack'] },
       { rank: 2, name: 'Bose QC Ultra', brand: 'Bose', price: 429, rating: 4.7, summary: 'Best ANC alternative with immersive audio.', pros: ['Immersive audio', 'Excellent ANC', 'Comfortable'], cons: ['Very expensive', '6-hour battery (immersive)'] },
@@ -1033,7 +1033,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Noise Canceling Headphones',
     category: 'Headphones', color: '#9333ea',
     description: 'The 10 best ANC headphones for blocking office and travel noise.',
-    intro: 'ANC headphones block background noise. We tested 10 for ANC strength, sound quality, and comfort in noisy environments.',
+    intro: 'ANC headphones block background noise. Based on product documentation, 10 are compared for ANC strength, sound quality, and comfort in noisy environments.',
     products: [
       { rank: 1, name: 'Sony WH-1000XM5', brand: 'Sony', price: 399, rating: 4.8, summary: 'Best ANC. 8 mics, 30-hour battery, LDAC.', pros: ['Best ANC', '8 mics', '30-hour battery', 'LDAC'], cons: ['Expensive', 'No 3.5mm'] },
       { rank: 2, name: 'Bose QC Ultra', brand: 'Bose', price: 429, rating: 4.7, summary: 'Immersive audio with excellent ANC.', pros: ['Immersive audio', 'Excellent ANC', 'Comfortable'], cons: ['Very expensive', '6-hour (immersive)'] },
@@ -1062,7 +1062,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Wireless Headphones',
     category: 'Headphones', color: '#9333ea',
     description: 'The 10 best wireless headphones for cable-free listening.',
-    intro: 'Wireless headphones have matured. We tested 10 for Bluetooth stability, battery life, and sound quality.',
+    intro: 'Wireless headphones have matured. Based on product documentation, 10 are compared for Bluetooth stability, battery life, and sound quality.',
     products: [
       { rank: 1, name: 'Sony WH-1000XM5', brand: 'Sony', price: 399, rating: 4.8, summary: 'Best wireless. 30-hour battery, LDAC, multipoint.', pros: ['30-hour battery', 'LDAC', 'Multipoint Bluetooth', 'ANC'], cons: ['Expensive', 'No 3.5mm'] },
       { rank: 2, name: 'Sennheiser Momentum 4', brand: 'Sennheiser', price: 379, rating: 4.5, summary: 'Best sound with 60-hour battery.', pros: ['Best sound', '60-hour battery', 'AptX Adaptive'], cons: ['Expensive', 'ANC average'] },
@@ -1091,7 +1091,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget Headphones',
     category: 'Headphones', color: '#9333ea',
     description: 'The 10 best headphones under $100 tested for value and sound.',
-    intro: 'Budget headphones have improved. We tested 10 under $100 for sound quality, build, and battery life.',
+    intro: 'Budget headphones have improved. Based on product documentation, 10 under $100 are compared for sound quality, build, and battery life.',
     products: [
       { rank: 1, name: 'Soundcore Q45', brand: 'Anker', price: 99, rating: 4.4, summary: 'Best budget. LDAC, ANC, 50-hour battery.', pros: ['LDAC', 'ANC', '50-hour battery', 'Under $100'], cons: ['ANC basic', 'Plastic'] },
       { rank: 2, name: 'Soundcore Life Q30', brand: 'Anker', price: 79, rating: 4.2, summary: 'Budget ANC under $80.', pros: ['Under $80', 'ANC', '40-hour battery'], cons: ['Basic sound', 'Plastic'] },
@@ -1120,7 +1120,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Headphones for Work',
     category: 'Headphones', color: '#9333ea',
     description: 'The 10 best headphones for office work, calls, and focus.',
-    intro: 'Work headphones need ANC for focus, good mics for calls, and all-day comfort. We tested 10 for office environments.',
+    intro: 'Work headphones need ANC for focus, good mics for calls, and all-day comfort. Based on product documentation, 10 are compared for office environments.',
     products: [
       { rank: 1, name: 'Sony WH-1000XM5', brand: 'Sony', price: 399, rating: 4.8, summary: 'Best for work. ANC, 8 mics, 30-hour battery.', pros: ['Best ANC', '8 mics for calls', '30-hour battery', 'Comfortable'], cons: ['Expensive', 'No 3.5mm'] },
       { rank: 2, name: 'Jabra Evolve2 85', brand: 'Jabra', price: 349, rating: 4.5, summary: 'Business headphones with boom mic.', pros: ['Boom mic', 'UC certified', 'ANC', 'Comfortable'], cons: ['Expensive', 'Business look'] },
@@ -1150,8 +1150,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-monitor-light',
     title: 'Best Monitor Light',
     category: 'Monitor Lights', color: '#0d9488',
-    description: 'The 10 best monitor light bars we tested in 2026, ranked by color accuracy, dimming, and eye comfort.',
-    intro: 'We tested 30 monitor light bars for asymmetric light distribution, CRI, flicker, and color temperature. These 10 lit up keyboards without screen glare.',
+    description: 'The 10 best monitor light bars in 2026, ranked by color accuracy, dimming, and eye comfort.',
+    intro: 'Based on product documentation, 30 monitor light bars are compared for asymmetric light distribution, CRI, flicker, and color temperature. These 10 lit up keyboards without screen glare.',
     products: [
       { rank: 1, name: 'BenQ ScreenBar Halo', brand: 'BenQ', price: 169, rating: 4.9, summary: 'Best-in-class asymmetric light with wireless dial.', pros: ['No screen glare', 'Wireless dial', 'Adjustable color temp', 'High CRI 95'], cons: ['Expensive'] },
       { rank: 2, name: 'BenQ ScreenBar Plus', brand: 'BenQ', price: 109, rating: 4.7, summary: 'Previous-gen favorite with dial and great CRI.', pros: ['Asymmetric design', 'Good CRI 90+', 'Touch dial', 'Reliable'], cons: ['Wired dial'] },
@@ -1180,7 +1180,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Screen Bar',
     category: 'Monitor Lights', color: '#0d9488',
     description: 'The 10 best screen light bars for 2026, tested for asymmetric light, flicker, and build quality.',
-    intro: 'We tested 25 screen bars for asymmetric light output, flicker, and color temperature accuracy. These 10 lit our desks without screen reflection.',
+    intro: 'Based on product documentation, 25 screen bars are compared for asymmetric light output, flicker, and color temperature accuracy. These 10 lit our desks without screen reflection.',
     products: [
       { rank: 1, name: 'BenQ ScreenBar Halo', brand: 'BenQ', price: 169, rating: 4.9, summary: 'Best screen bar with wireless dial and ambient sensor.', pros: ['Wireless dial', 'Ambient sensor', 'Asymmetric', 'CRI 95'], cons: ['Expensive'] },
       { rank: 2, name: 'BenQ ScreenBar Plus', brand: 'BenQ', price: 109, rating: 4.7, summary: 'Reliable wired screen bar with touch dial.', pros: ['Touch dial', 'Asymmetric', 'CRI 90+', 'Durable'], cons: ['Wired'] },
@@ -1209,7 +1209,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Desk Lamp',
     category: 'Monitor Lights', color: '#0d9488',
     description: 'The 10 best desk lamps for 2026, ranked by brightness, color temperature, and adjustability.',
-    intro: 'We tested 30 desk lamps for brightness range, color temperature, arm stability, and CRI. These 10 are the best for office and home work.',
+    intro: 'Based on product documentation, 30 desk lamps are compared for brightness range, color temperature, arm stability, and CRI. These 10 are the best for office and home work.',
     products: [
       { rank: 1, name: 'TaoTronics TT-DL16B', brand: 'TaoTronics', price: 36, rating: 4.6, summary: 'Affordable LED lamp with USB charging port.', pros: ['Affordable', 'USB port', 'Touch dimming', '5 modes'], cons: ['Arm not very stable'] },
       { rank: 2, name: 'IKEA FORSÅ', brand: 'IKEA', price: 49, rating: 4.5, summary: 'Classic adjustable arm lamp.', pros: ['Adjustable arm', 'Bulb swap', 'Sturdy', 'Durable'], cons: ['No LED included'] },
@@ -1238,7 +1238,7 @@ export const bestData: BestEntry[] = [
     title: 'Best LED Monitor Light',
     category: 'Monitor Lights', color: '#0d9488',
     description: 'The 10 best LED monitor lights for 2026, ranked by LED quality, CRI, and flicker-free operation.',
-    intro: 'We tested 20 LED monitor lights for CRI, flicker, color temperature stability, and longevity. These 10 LEDs provide flicker-free illumination with accurate colors.',
+    intro: 'Based on product documentation, 20 LED monitor lights are compared for CRI, flicker, color temperature stability, and longevity. These 10 LEDs provide flicker-free illumination with accurate colors.',
     products: [
       { rank: 1, name: 'BenQ ScreenBar Halo', brand: 'BenQ', price: 169, rating: 4.9, summary: 'Premium LED with CRI 95 and flicker-free.', pros: ['CRI 95', 'Flicker-free', 'Wireless dial', 'Auto-dim'], cons: ['Expensive'] },
       { rank: 2, name: 'BenQ ScreenBar Plus', brand: 'BenQ', price: 109, rating: 4.7, summary: 'Reliable LED with CRI 90+.', pros: ['CRI 90+', 'Flicker-free', 'Touch dial', 'Durable'], cons: ['Wired'] },
@@ -1267,7 +1267,7 @@ export const bestData: BestEntry[] = [
     title: 'Best RGB Monitor Light',
     category: 'Monitor Lights', color: '#0d9488',
     description: 'The 10 best RGB monitor lights for 2026, ranked by color accuracy, effects, and ambient lighting.',
-    intro: 'We tested 25 RGB monitor lights for color gamut, brightness, effects, and software control. These 10 provide the best RGB ambient lighting for gaming and content creation.',
+    intro: 'Based on product documentation, 25 RGB monitor lights are compared for color gamut, brightness, effects, and software control. These 10 provide the best RGB ambient lighting for gaming and content creation.',
     products: [
       { rank: 1, name: 'Nanoleaf Lines', brand: 'Nanoleaf', price: 199, rating: 4.8, summary: 'Best RGB ambient lighting with smart control.', pros: ['Smart control', 'Bright', 'App + voice', 'Modular'], cons: ['Expensive'] },
       { rank: 2, name: 'Govee Glide Wall Light', brand: 'Govee', price: 99, rating: 4.6, summary: 'Affordable RGB wall light with app.', pros: ['Affordable', 'App control', 'Bright', 'Many effects'], cons: ['Mounting'] },
@@ -1298,7 +1298,7 @@ export const bestData: BestEntry[] = [
     title: 'Best USB Microphone',
     category: 'Microphones', color: '#7c3aed',
     description: 'The 10 best USB microphones for 2026, ranked by sound quality, ease of use, and value.',
-    intro: 'We tested 25 USB microphones for frequency response, self-noise, polar patterns, and ease of setup. These 10 are plug-and-play with no audio interface needed.',
+    intro: 'Based on product documentation, 25 USB microphones are compared for frequency response, self-noise, polar patterns, and ease of setup. These 10 are plug-and-play with no audio interface needed.',
     products: [
       { rank: 1, name: 'Blue Yeti X', brand: 'Blue', price: 169, rating: 4.7, summary: 'Best all-round USB mic with 4 patterns.', pros: ['4 patterns', 'Onboard controls', 'RGB meter', 'Great sound'], cons: ['Heavy', 'Picks up noise'] },
       { rank: 2, name: 'Audio-Technica AT2020USB+', brand: 'Audio-Technica', price: 149, rating: 4.6, summary: 'Studio-quality cardioid USB mic.', pros: ['Clear sound', 'Sturdy build', 'Good value', 'Mix control'], cons: ['Cardioid only'] },
@@ -1327,7 +1327,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Streaming Microphone',
     category: 'Microphones', color: '#7c3aed',
     description: 'The 10 best streaming microphones for 2026, tested for clarity, RGB integration, and software control.',
-    intro: 'We tested 20 streaming microphones for voice clarity, RGB sync, software features, and tap-to-mute. These 10 are tuned for Twitch and YouTube streaming.',
+    intro: 'Based on product documentation, 20 streaming microphones are compared for voice clarity, RGB sync, software features, and tap-to-mute. These 10 are tuned for Twitch and YouTube streaming.',
     products: [
       { rank: 1, name: 'Shure SM7B', brand: 'Shure', price: 399, rating: 4.9, summary: 'Industry-standard streaming mic (XLR).', pros: ['Broadcast quality', 'Rejects noise', 'Durable', 'Proven'], cons: ['Needs interface', 'Expensive'] },
       { rank: 2, name: 'Blue Yeti X', brand: 'Blue', price: 169, rating: 4.7, summary: 'Best USB streaming mic with RGB meter.', pros: ['4 patterns', 'RGB meter', 'Onboard controls', 'USB'], cons: ['Heavy'] },
@@ -1356,7 +1356,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Podcast Microphone',
     category: 'Microphones', color: '#7c3aed',
     description: 'The 10 best podcast microphones for 2026, ranked by voice warmth, noise rejection, and value.',
-    intro: 'We tested 25 microphones for podcast use, focusing on voice clarity, room noise rejection, and durability. These 10 are the best for podcast recording.',
+    intro: 'Based on product documentation, 25 microphones are compared for podcast use, focusing on voice clarity, room noise rejection, and durability. These 10 are the best for podcast recording.',
     products: [
       { rank: 1, name: 'Shure SM7B', brand: 'Shure', price: 399, rating: 4.9, summary: 'Industry-standard podcast mic.', pros: ['Broadcast quality', 'Noise rejection', 'Durable', 'Proven'], cons: ['Needs interface', 'Expensive'] },
       { rank: 2, name: 'Rode PodMic', brand: 'Rode', price: 99, rating: 4.6, summary: 'Affordable XLR podcast mic.', pros: ['Affordable', 'Built-in shock mount', 'Pop filter', 'Sturdy'], cons: ['XLR only'] },
@@ -1385,7 +1385,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget Microphone',
     category: 'Microphones', color: '#7c3aed',
     description: 'The 10 best budget microphones under $100 for 2026, ranked by sound quality and value.',
-    intro: 'We tested 30 budget microphones under $100 for sound quality, build, and ease of use. These 10 punch above their price for streaming and podcasting.',
+    intro: 'Based on product documentation, 30 budget microphones under $100 are compared for sound quality, build, and ease of use. These 10 punch above their price for streaming and podcasting.',
     products: [
       { rank: 1, name: 'Fifine K669B', brand: 'Fifine', price: 32, rating: 4.3, summary: 'Best budget USB mic under $40.', pros: ['Very cheap', 'Good sound', 'Plug-and-play', 'Sturdy'], cons: ['No software'] },
       { rank: 2, name: 'Samson Q2U', brand: 'Samson', price: 69, rating: 4.5, summary: 'Best value USB/XLR hybrid.', pros: ['USB + XLR', 'Affordable', 'Includes cable', 'Good sound'], cons: ['Basic build'] },
@@ -1414,7 +1414,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Condenser Microphone',
     category: 'Microphones', color: '#7c3aed',
     description: 'The 10 best condenser microphones for 2026, ranked by sensitivity, frequency response, and value.',
-    intro: 'We tested 25 condenser microphones for sensitivity, self-noise, frequency response, and build quality. These 10 capture detail-rich vocals and instruments.',
+    intro: 'Based on product documentation, 25 condenser microphones are compared for sensitivity, self-noise, frequency response, and build quality. These 10 capture detail-rich vocals and instruments.',
     products: [
       { rank: 1, name: 'Audio-Technica AT2020', brand: 'Audio-Technica', price: 99, rating: 4.5, summary: 'Best budget studio condenser.', pros: ['Clear sound', 'Sturdy', 'Good value', 'Cardioid'], cons: ['XLR only'] },
       { rank: 2, name: 'Rode NT1-A', brand: 'Rode', price: 229, rating: 4.8, summary: 'Ultra-quiet condenser mic.', pros: ['Low self-noise', 'Clear sound', 'Includes shock mount', 'Durable'], cons: ['Expensive'] },
@@ -1445,7 +1445,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Desk Mat',
     category: 'Desk Accessories', color: '#0891b2',
     description: 'The 10 best desk mats for 2026, ranked by material quality, size options, and durability.',
-    intro: 'We tested 25 desk mats for material quality, edge stitching, surface smoothness, and durability. These 10 protect desks while providing a smooth surface for mouse and keyboard.',
+    intro: 'Based on product documentation, 25 desk mats are compared for material quality, edge stitching, surface smoothness, and durability. These 10 protect desks while providing a smooth surface for mouse and keyboard.',
     products: [
       { rank: 1, name: 'Glorious Extended Gaming Mouse Pad', brand: 'Glorious', price: 25, rating: 4.7, summary: 'Best budget large desk mat.', pros: ['Large size', 'Smooth surface', 'Stitched edges', 'Machine washable'], cons: ['Thin'] },
       { rank: 2, name: 'SteelSeries QcK XL', brand: 'SteelSeries', price: 30, rating: 4.6, summary: 'Premium cloth mouse pad.', pros: ['Smooth surface', 'Non-slip base', 'Durable', 'Proven'], cons: ['Edges fray'] },
@@ -1474,7 +1474,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Desk Organizer',
     category: 'Desk Accessories', color: '#0891b2',
     description: 'The 10 best desk organizers for 2026, ranked by storage capacity, build quality, and design.',
-    intro: 'We tested 30 desk organizers for storage capacity, build quality, and design. These 10 keep desks tidy without taking up too much space.',
+    intro: 'Based on product documentation, 30 desk organizers are compared for storage capacity, build quality, and design. These 10 keep desks tidy without taking up too much space.',
     products: [
       { rank: 1, name: 'Bamboo Desktop Organizer', brand: 'Bamboo', price: 35, rating: 4.6, summary: 'Eco-friendly bamboo organizer with drawers.', pros: ['Bamboo eco', 'Drawers', 'Multiple slots', 'Sturdy'], cons: ['Heavy'] },
       { rank: 2, name: 'SimpleHouseware Mesh Organizer', brand: 'SimpleHouseware', price: 22, rating: 4.5, summary: 'Budget mesh organizer with multiple compartments.', pros: ['Affordable', 'Mesh design', 'Multiple compartments', 'Sturdy'], cons: ['No drawers'] },
@@ -1503,7 +1503,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Cable Management',
     category: 'Desk Accessories', color: '#0891b2',
     description: 'The 10 best cable management solutions for 2026, ranked by ease of installation and effectiveness.',
-    intro: 'We tested 20 cable management solutions for ease of installation, cable capacity, and aesthetics. These 10 tame desk cable clutter effectively.',
+    intro: 'Based on product documentation, 20 cable management solutions are compared for ease of installation, cable capacity, and aesthetics. These 10 tame desk cable clutter effectively.',
     products: [
       { rank: 1, name: 'JOTO Cable Management Sleeves', brand: 'JOTO', price: 9, rating: 4.6, summary: 'Best budget neoprene cable sleeve.', pros: ['Cheap', 'Neoprene', 'Zip-up', 'Flexible'], cons: ['Limited capacity'] },
       { rank: 2, name: 'Delamu Under Desk Cable Tray', brand: 'Delamu', price: 25, rating: 4.7, summary: 'Metal under-desk cable tray.', pros: ['Metal', 'Under-desk', 'Easy install', 'Holds many cables'], cons: ['Needs screws'] },
@@ -1532,7 +1532,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Monitor Stand',
     category: 'Desk Accessories', color: '#0891b2',
     description: 'The 10 best monitor stands for 2026, ranked by height adjustability, build quality, and storage.',
-    intro: 'We tested 25 monitor stands for height adjustability, build quality, weight capacity, and storage. These 10 elevate monitors for better ergonomics.',
+    intro: 'Based on product documentation, 25 monitor stands are compared for height adjustability, build quality, weight capacity, and storage. These 10 elevate monitors for better ergonomics.',
     products: [
       { rank: 1, name: 'Wal-Electric Monitor Stand', brand: 'Wal', price: 35, rating: 4.6, summary: 'Metal monitor stand with storage.', pros: ['Metal', 'Storage drawer', 'Adjustable height', 'Sturdy'], cons: ['Assembly'] },
       { rank: 2, name: 'Bamboo Monitor Stand Riser', brand: 'Bamboo', price: 30, rating: 4.6, summary: 'Bamboo stand with storage shelf.', pros: ['Bamboo', 'Storage shelf', 'Sturdy', 'Aesthetic'], cons: ['Fixed height'] },
@@ -1561,7 +1561,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Desk Pad',
     category: 'Desk Accessories', color: '#0891b2',
     description: 'The 10 best desk pads for 2026, ranked by surface quality, size, and comfort.',
-    intro: 'We tested 20 desk pads for surface smoothness, size options, material quality, and comfort. These 10 protect desks while providing a premium writing surface.',
+    intro: 'Based on product documentation, 20 desk pads are compared for surface smoothness, size options, material quality, and comfort. These 10 protect desks while providing a premium writing surface.',
     products: [
       { rank: 1, name: 'Knodel Desk Pad', brand: 'Knodel', price: 25, rating: 4.6, summary: 'PU leather desk pad, waterproof.', pros: ['Waterproof', 'PU leather', 'Sturdy', 'Rollable'], cons: ['Can curl'] },
       { rank: 2, name: 'Londo Desk Pad', brand: 'Londo', price: 35, rating: 4.5, summary: 'Premium genuine leather desk pad.', pros: ['Genuine leather', 'Premium', 'Sturdy', 'Ages well'], cons: ['Expensive'] },
@@ -1592,7 +1592,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Productivity Software',
     category: 'Software', color: '#be123c',
     description: 'The 10 best productivity software tools for 2026, ranked by features, integrations, and value.',
-    intro: 'We tested 30 productivity apps for features, integrations, ease of use, and value. These 10 help manage tasks, time, and workflows effectively.',
+    intro: 'Based on product documentation, 30 productivity apps are compared for features, integrations, ease of use, and value. These 10 help manage tasks, time, and workflows effectively.',
     products: [
       { rank: 1, name: 'Notion', brand: 'Notion', price: 0, rating: 4.8, summary: 'All-in-one workspace for notes, tasks, and databases.', pros: ['Free tier', 'Flexible', 'Database views', 'Team collaboration'], cons: ['Learning curve'] },
       { rank: 2, name: 'Todoist', brand: 'Todoist', price: 4, rating: 4.7, summary: 'Best task manager with natural language.', pros: ['Natural language', 'Clean UI', 'Cross-platform', 'Karma'], cons: ['Free limits'] },
@@ -1621,7 +1621,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Note Taking App',
     category: 'Software', color: '#be123c',
     description: 'The 10 best note-taking apps for 2026, ranked by organization, sync, and features.',
-    intro: 'We tested 25 note-taking apps for organization, sync speed, markdown support, and features. These 10 are best for students, professionals, and writers.',
+    intro: 'Based on product documentation, 25 note-taking apps are compared for organization, sync speed, markdown support, and features. These 10 are best for students, professionals, and writers.',
     products: [
       { rank: 1, name: 'Obsidian', brand: 'Obsidian', price: 0, rating: 4.7, summary: 'Markdown notes with linked thinking.', pros: ['Markdown', 'Linked notes', 'Local storage', 'Plugins', 'Free'], cons: ['No free sync'] },
       { rank: 2, name: 'Notion', brand: 'Notion', price: 0, rating: 4.8, summary: 'All-in-one workspace with databases.', pros: ['Free tier', 'Database views', 'Team collab', 'Flexible'], cons: ['Learning curve'] },
@@ -1650,7 +1650,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Project Management Software',
     category: 'Software', color: '#be123c',
     description: 'The 10 best project management software for 2026, ranked by features, team size, and value.',
-    intro: 'We tested 20 project management tools for features, team collaboration, integrations, and pricing. These 10 are best for teams of all sizes.',
+    intro: 'Based on product documentation, 20 project management tools are compared for features, team collaboration, integrations, and pricing. These 10 are best for teams of all sizes.',
     products: [
       { rank: 1, name: 'Asana', brand: 'Asana', price: 11, rating: 4.5, summary: 'Best for team project management.', pros: ['Timeline view', 'Team features', 'Integrations', 'Easy'], cons: ['Expensive'] },
       { rank: 2, name: 'ClickUp', brand: 'ClickUp', price: 5, rating: 4.4, summary: 'All-in-one productivity platform.', pros: ['All-in-one', 'Multiple views', 'Docs', 'Affordable'], cons: ['Complex'] },
@@ -1679,7 +1679,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Time Tracking Software',
     category: 'Software', color: '#be123c',
     description: 'The 10 best time tracking software for 2026, ranked by accuracy, reporting, and integrations.',
-    intro: 'We tested 20 time tracking apps for accuracy, reporting, invoicing, and integrations. These 10 are best for freelancers, agencies, and teams.',
+    intro: 'Based on product documentation, 20 time tracking apps are compared for accuracy, reporting, invoicing, and integrations. These 10 are best for freelancers, agencies, and teams.',
     products: [
       { rank: 1, name: 'Toggl Track', brand: 'Toggl', price: 9, rating: 4.7, summary: 'Best overall time tracking with reports.', pros: ['Easy', 'Reports', 'Integrations', 'Cross-platform'], cons: ['Free limits'] },
       { rank: 2, name: 'RescueTime', brand: 'RescueTime', price: 12, rating: 4.5, summary: 'Automatic time tracking for productivity.', pros: ['Automatic', 'Productivity scores', 'Detailed reports'], cons: ['Privacy'] },
@@ -1708,7 +1708,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Password Manager',
     category: 'Software', color: '#be123c',
     description: 'The 10 best password managers for 2026, ranked by security, features, and value.',
-    intro: 'We tested 15 password managers for security, autofill, sync, and value. These 10 protect credentials across all devices with strong encryption.',
+    intro: 'Based on product documentation, 15 password managers are compared for security, autofill, sync, and value. These 10 protect credentials across all devices with strong encryption.',
     products: [
       { rank: 1, name: '1Password', brand: '1Password', price: 3, rating: 4.8, summary: 'Best overall password manager.', pros: ['Best UI', 'Watchtower', 'Travel mode', 'Family plan'], cons: ['No free tier'] },
       { rank: 2, name: 'Bitwarden', brand: 'Bitwarden', price: 0, rating: 4.7, summary: 'Best free open-source password manager.', pros: ['Free unlimited', 'Open-source', 'Self-host', 'Cross-platform'], cons: ['UI basic'] },
@@ -1739,7 +1739,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Laptop Stand',
     category: 'Laptop Stands', color: '#15803d',
     description: 'The 10 best laptop stands for 2026, ranked by ergonomics, build quality, and portability.',
-    intro: 'We tested 25 laptop stands for ergonomics, build quality, cooling, and portability. These 10 elevate laptops for better posture and airflow.',
+    intro: 'Based on product documentation, 25 laptop stands are compared for ergonomics, build quality, cooling, and portability. These 10 elevate laptops for better posture and airflow.',
     products: [
       { rank: 1, name: 'Roost V2', brand: 'Roost', price: 90, rating: 4.8, summary: 'Best portable laptop stand.', pros: ['Lightweight', 'Adjustable height', 'Folds flat', 'Durable'], cons: ['Expensive'] },
       { rank: 2, name: 'Nextstand K2', brand: 'Nextstand', price: 40, rating: 4.7, summary: 'Best budget adjustable stand.', pros: ['Affordable', '8 height levels', 'Folds flat', 'Lightweight'], cons: ['Plastic'] },
@@ -1768,7 +1768,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Laptop Riser',
     category: 'Laptop Stands', color: '#15803d',
     description: 'The 10 best laptop risers for 2026, ranked by height adjustability, stability, and value.',
-    intro: 'We tested 20 laptop risers for height adjustability, stability, build quality, and value. These 10 raise laptops for better ergonomics.',
+    intro: 'Based on product documentation, 20 laptop risers are compared for height adjustability, stability, build quality, and value. These 10 raise laptops for better ergonomics.',
     products: [
       { rank: 1, name: 'Rain Design mStand', brand: 'Rain Design', price: 43, rating: 4.6, summary: 'Premium aluminum fixed riser.', pros: ['Aluminum', 'Sturdy', 'Cable hole', 'Aesthetic'], cons: ['Fixed height'] },
       { rank: 2, name: 'BoYata Laptop Riser', brand: 'BoYata', price: 35, rating: 4.6, summary: 'Adjustable aluminum riser.', pros: ['Aluminum', 'Adjustable', 'Sturdy', 'Heat dissipation'], cons: ['Heavy'] },
@@ -1797,7 +1797,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Portable Laptop Stand',
     category: 'Laptop Stands', color: '#15803d',
     description: 'The 10 best portable laptop stands for 2026, ranked by weight, foldability, and durability.',
-    intro: 'We tested 25 portable laptop stands for weight, foldability, durability, and height adjustability. These 10 are best for travel and remote work.',
+    intro: 'Based on product documentation, 25 portable laptop stands are compared for weight, foldability, durability, and height adjustability. These 10 are best for travel and remote work.',
     products: [
       { rank: 1, name: 'Roost V2', brand: 'Roost', price: 90, rating: 4.8, summary: 'Best portable stand overall.', pros: ['Lightweight', 'Adjustable', 'Folds flat', 'Durable'], cons: ['Expensive'] },
       { rank: 2, name: 'Nextstand K2', brand: 'Nextstand', price: 40, rating: 4.7, summary: 'Best budget portable stand.', pros: ['Affordable', 'Folds flat', '8 heights', 'Lightweight'], cons: ['Plastic'] },
@@ -1826,7 +1826,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Cooling Laptop Stand',
     category: 'Laptop Stands', color: '#15803d',
     description: 'The 10 best cooling laptop stands for 2026, ranked by airflow, fan quality, and noise.',
-    intro: 'We tested 20 cooling laptop stands for airflow, fan noise, build quality, and effectiveness. These 10 keep laptops cool under heavy load.',
+    intro: 'Based on product documentation, 20 cooling laptop stands are compared for airflow, fan noise, build quality, and effectiveness. These 10 keep laptops cool under heavy load.',
     products: [
       { rank: 1, name: 'Kootek Cooling Pad', brand: 'Kootek', price: 30, rating: 4.5, summary: 'Best cooling pad with 5 fans.', pros: ['5 fans', 'Adjustable height', 'LED', 'Affordable'], cons: ['Loud'] },
       { rank: 2, name: 'Havit HV-F2056', brand: 'Havit', price: 22, rating: 4.4, summary: 'Best budget cooling pad with 3 fans.', pros: ['Affordable', '3 fans', 'Quiet', 'Ergonomic'], cons: ['Plastic'] },
@@ -1855,7 +1855,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Adjustable Laptop Stand',
     category: 'Laptop Stands', color: '#15803d',
     description: 'The 10 best adjustable laptop stands for 2026, ranked by height range, stability, and value.',
-    intro: 'We tested 25 adjustable laptop stands for height range, stability, build quality, and ease of adjustment. These 10 offer the best ergonomics.',
+    intro: 'Based on product documentation, 25 adjustable laptop stands are compared for height range, stability, build quality, and ease of adjustment. These 10 offer the best ergonomics.',
     products: [
       { rank: 1, name: 'Roost V2', brand: 'Roost', price: 90, rating: 4.8, summary: 'Best adjustable portable stand.', pros: ['Lightweight', 'Multiple heights', 'Folds flat', 'Durable'], cons: ['Expensive'] },
       { rank: 2, name: 'Nextstand K2', brand: 'Nextstand', price: 40, rating: 4.7, summary: 'Best budget adjustable stand.', pros: ['8 height levels', 'Folds', 'Lightweight', 'Affordable'], cons: ['Plastic'] },
@@ -1886,7 +1886,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Computer Speakers',
     category: 'Speakers', color: '#a16207',
     description: 'The 10 best computer speakers for 2026, ranked by sound quality, build, and value.',
-    intro: 'We tested 30 computer speakers for sound quality, build, connectivity, and value. These 10 are best for music, movies, and gaming.',
+    intro: 'Based on product documentation, 30 computer speakers are compared for sound quality, build, connectivity, and value. These 10 are best for music, movies, and gaming.',
     products: [
       { rank: 1, name: 'Edifier R1280T', brand: 'Edifier', price: 99, rating: 4.7, summary: 'Best budget bookshelf speakers.', pros: ['Great sound', 'Wooden build', 'Affordable', 'Remote'], cons: ['Wired'] },
       { rank: 2, name: 'Logitech Z623', brand: 'Logitech', price: 149, rating: 4.6, summary: '2.1 speakers with subwoofer.', pros: ['Subwoofer', 'THX certified', 'Loud', 'Bass control'], cons: ['Bulky'] },
@@ -1915,7 +1915,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Bluetooth Speaker',
     category: 'Speakers', color: '#a16207',
     description: 'The 10 best Bluetooth speakers for 2026, ranked by sound quality, battery, and portability.',
-    intro: 'We tested 30 Bluetooth speakers for sound quality, battery life, water resistance, and portability. These 10 are best for music on the go.',
+    intro: 'Based on product documentation, 30 Bluetooth speakers are compared for sound quality, battery life, water resistance, and portability. These 10 are best for music on the go.',
     products: [
       { rank: 1, name: 'JBL Charge 5', brand: 'JBL', price: 149, rating: 4.7, summary: 'Best overall Bluetooth speaker.', pros: ['Great sound', '20h battery', 'Powerbank', 'IP67'], cons: ['Bulky'] },
       { rank: 2, name: 'Ultimate Ears BOOM 3', brand: 'UE', price: 129, rating: 4.6, summary: '360-degree sound speaker.', pros: ['360 sound', 'IP67', 'Durable', 'Stylish'], cons: ['No mic'] },
@@ -1944,7 +1944,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Desktop Speakers',
     category: 'Speakers', color: '#a16207',
     description: 'The 10 best desktop speakers for 2026, ranked by sound quality, footprint, and value.',
-    intro: 'We tested 25 desktop speakers for sound quality, footprint, connectivity, and value. These 10 are best for home office and gaming setups.',
+    intro: 'Based on product documentation, 25 desktop speakers are compared for sound quality, footprint, connectivity, and value. These 10 are best for home office and gaming setups.',
     products: [
       { rank: 1, name: 'Edifier R1280T', brand: 'Edifier', price: 99, rating: 4.7, summary: 'Best desktop bookshelf speakers.', pros: ['Great sound', 'Wooden', 'Remote', 'Affordable'], cons: ['Wired'] },
       { rank: 2, name: 'Logitech Z623', brand: 'Logitech', price: 149, rating: 4.6, summary: '2.1 desktop speakers with sub.', pros: ['Subwoofer', 'THX', 'Loud', 'Bass control'], cons: ['Bulky'] },
@@ -1973,7 +1973,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget Speakers',
     category: 'Speakers', color: '#a16207',
     description: 'The 10 best budget speakers under $50 for 2026, ranked by sound quality and value.',
-    intro: 'We tested 30 budget speakers under $50 for sound quality, build, and value. These 10 punch above their price for music and gaming.',
+    intro: 'Based on product documentation, 30 budget speakers under $50 are compared for sound quality, build, and value. These 10 punch above their price for music and gaming.',
     products: [
       { rank: 1, name: 'Creative Pebble V3', brand: 'Creative', price: 35, rating: 4.5, summary: 'Best budget 2.0 speakers.', pros: ['Affordable', 'Compact', 'USB-C', 'Good sound'], cons: ['No bass'] },
       { rank: 2, name: 'Cyber Acoustics CA-3602', brand: 'Cyber Acoustics', price: 40, rating: 4.2, summary: 'Budget 2.1 speakers with sub.', pros: ['Cheap', 'Subwoofer', 'Loud'], cons: ['Basic sound'] },
@@ -2002,7 +2002,7 @@ export const bestData: BestEntry[] = [
     title: 'Best 2.1 Speakers',
     category: 'Speakers', color: '#a16207',
     description: 'The 10 best 2.1 speakers with subwoofer for 2026, ranked by bass quality and value.',
-    intro: 'We tested 20 2.1 speaker systems for bass quality, subwoofer power, sound clarity, and value. These 10 deliver the best bass impact.',
+    intro: 'Based on product documentation, 20 2.1 speaker systems are compared for bass quality, subwoofer power, sound clarity, and value. These 10 deliver the best bass impact.',
     products: [
       { rank: 1, name: 'Logitech Z623', brand: 'Logitech', price: 149, rating: 4.6, summary: 'Best 2.1 speakers with THX.', pros: ['THX certified', 'Subwoofer', 'Loud', 'Bass control'], cons: ['Bulky'] },
       { rank: 2, name: 'Logitech Z407', brand: 'Logitech', price: 79, rating: 4.4, summary: 'Bluetooth 2.1 with subwoofer.', pros: ['Bluetooth', 'Subwoofer', 'Wireless dial', 'Affordable'], cons: ['Bulky'] },
@@ -2033,7 +2033,7 @@ export const bestData: BestEntry[] = [
     title: 'Best WiFi Router',
     category: 'Networking', color: '#1e40af',
     description: 'The 10 best WiFi routers for 2026, ranked by speed, range, and value.',
-    intro: 'We tested 25 WiFi routers for speed, range, device capacity, and value. These 10 deliver the best WiFi 6 and WiFi 6E performance.',
+    intro: 'Based on product documentation, 25 WiFi routers are compared for speed, range, device capacity, and value. These 10 deliver the best WiFi 6 and WiFi 6E performance.',
     products: [
       { rank: 1, name: 'ASUS RT-AX88U', brand: 'ASUS', price: 199, rating: 4.7, summary: 'Best WiFi 6 router overall.', pros: ['WiFi 6', 'Great range', '8 LAN ports', 'Stable'], cons: ['Expensive'] },
       { rank: 2, name: 'TP-Link Archer AX73', brand: 'TP-Link', price: 129, rating: 4.6, summary: 'Best value WiFi 6 router.', pros: ['Affordable', 'WiFi 6', 'Good range', '6 streams'], cons: ['Basic UI'] },
@@ -2062,7 +2062,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Mesh WiFi',
     category: 'Networking', color: '#1e40af',
     description: 'The 10 best mesh WiFi systems for 2026, ranked by coverage, speed, and value.',
-    intro: 'We tested 20 mesh WiFi systems for coverage, speed, device capacity, and value. These 10 eliminate dead zones in large homes.',
+    intro: 'Based on product documentation, 20 mesh WiFi systems are compared for coverage, speed, device capacity, and value. These 10 eliminate dead zones in large homes.',
     products: [
       { rank: 1, name: 'ASUS ZenWiFi AX', brand: 'ASUS', price: 329, rating: 4.7, summary: 'Best WiFi 6 mesh system.', pros: ['WiFi 6', 'Great coverage', 'Stable', 'Easy setup'], cons: ['Expensive'] },
       { rank: 2, name: 'TP-Link Deco X55', brand: 'TP-Link', price: 149, rating: 4.6, summary: 'Best value WiFi 6 mesh.', pros: ['Affordable', 'WiFi 6', '3-pack', 'Good coverage'], cons: ['Basic features'] },
@@ -2091,7 +2091,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Ethernet Switch',
     category: 'Networking', color: '#1e40af',
     description: 'The 10 best Ethernet switches for 2026, ranked by speed, ports, and value.',
-    intro: 'We tested 20 Ethernet switches for speed, port count, build quality, and value. These 10 expand wired networks for home and office.',
+    intro: 'Based on product documentation, 20 Ethernet switches are compared for speed, port count, build quality, and value. These 10 expand wired networks for home and office.',
     products: [
       { rank: 1, name: 'TP-Link TL-SG108', brand: 'TP-Link', price: 25, rating: 4.7, summary: 'Best 8-port gigabit switch.', pros: ['Affordable', '8 ports', 'Gigabit', 'Metal'], cons: ['Unmanaged'] },
       { rank: 2, name: 'Netgear GS308', brand: 'Netgear', price: 22, rating: 4.6, summary: 'Budget 8-port gigabit switch.', pros: ['Cheap', '8 ports', 'Gigabit', 'Metal'], cons: ['Unmanaged'] },
@@ -2120,7 +2120,7 @@ export const bestData: BestEntry[] = [
     title: 'Best WiFi Extender',
     category: 'Networking', color: '#1e40af',
     description: 'The 10 best WiFi extenders for 2026, ranked by range, speed, and value.',
-    intro: 'We tested 20 WiFi extenders for range, speed, ease of setup, and value. These 10 eliminate dead zones without upgrading your router.',
+    intro: 'Based on product documentation, 20 WiFi extenders are compared for range, speed, ease of setup, and value. These 10 eliminate dead zones without upgrading your router.',
     products: [
       { rank: 1, name: 'TP-Link RE700X', brand: 'TP-Link', price: 99, rating: 4.6, summary: 'Best WiFi 6 extender.', pros: ['WiFi 6', 'Great range', 'Easy setup', 'Stable'], cons: ['Expensive'] },
       { rank: 2, name: 'Netgear Nighthawk X6EX7700', brand: 'Netgear', price: 149, rating: 4.5, summary: 'Tri-band WiFi extender.', pros: ['Tri-band', 'Great range', 'Fast'], cons: ['Expensive'] },
@@ -2149,7 +2149,7 @@ export const bestData: BestEntry[] = [
     title: 'Best VPN Router',
     category: 'Networking', color: '#1e40af',
     description: 'The 10 best VPN routers for 2026, ranked by VPN support, speed, and value.',
-    intro: 'We tested 15 VPN routers for VPN client support, throughput, and ease of setup. These 10 protect your entire home network.',
+    intro: 'Based on product documentation, 15 VPN routers are compared for VPN client support, throughput, and ease of setup. These 10 protect your entire home network.',
     products: [
       { rank: 1, name: 'ASUS RT-AX86U', brand: 'ASUS', price: 249, rating: 4.7, summary: 'Best VPN router with WiFi 6.', pros: ['WiFi 6', 'VPN client', '2.5G port', 'Great range'], cons: ['Expensive'] },
       { rank: 2, name: 'ASUS RT-AX88U', brand: 'ASUS', price: 199, rating: 4.7, summary: 'WiFi 6 VPN router.', pros: ['WiFi 6', 'VPN client', '8 LAN ports', 'Stable'], cons: ['Expensive'] },
@@ -2180,7 +2180,7 @@ export const bestData: BestEntry[] = [
     title: 'Best External SSD',
     category: 'Storage', color: '#9333ea',
     description: 'The 10 best external SSDs for 2026, ranked by speed, capacity, and value.',
-    intro: 'We tested 25 external SSDs for speed, durability, capacity, and value. These 10 are the fastest portable storage for backups and transfers.',
+    intro: 'Based on product documentation, 25 external SSDs are compared for speed, durability, capacity, and value. These 10 are the fastest portable storage for backups and transfers.',
     products: [
       { rank: 1, name: 'Samsung T7 Portable', brand: 'Samsung', price: 129, rating: 4.8, summary: 'Best external SSD overall.', pros: ['Fast 1GB/s', 'USB-C', 'Durable', 'Compact'], cons: ['Expensive'] },
       { rank: 2, name: 'Samsung T7 Shield', brand: 'Samsung', price: 149, rating: 4.7, summary: 'Rugged external SSD.', pros: ['Rugged', 'IP65', 'Fast', 'Durable'], cons: ['Expensive'] },
@@ -2209,7 +2209,7 @@ export const bestData: BestEntry[] = [
     title: 'Best NAS',
     category: 'Storage', color: '#9333ea',
     description: 'The 10 best NAS devices for 2026, ranked by performance, features, and value.',
-    intro: 'We tested 20 NAS devices for performance, features, ease of use, and value. These 10 are the best for home and small office storage.',
+    intro: 'Based on product documentation, 20 NAS devices are compared for performance, features, ease of use, and value. These 10 are the best for home and small office storage.',
     products: [
       { rank: 1, name: 'Synology DS920+', brand: 'Synology', price: 549, rating: 4.8, summary: 'Best NAS for home office.', pros: ['4-bay', 'Fast CPU', '4GB RAM', 'Great software'], cons: ['Expensive'] },
       { rank: 2, name: 'QNAP TS-451+', brand: 'QNAP', price: 399, rating: 4.6, summary: 'Best value 4-bay NAS.', pros: ['4-bay', 'Affordable', 'Good software', 'HDMI'], cons: ['Slower CPU'] },
@@ -2238,7 +2238,7 @@ export const bestData: BestEntry[] = [
     title: 'Best USB Flash Drive',
     category: 'Storage', color: '#9333ea',
     description: 'The 10 best USB flash drives for 2026, ranked by speed, capacity, and value.',
-    intro: 'We tested 25 USB flash drives for speed, capacity, build quality, and value. These 10 are the fastest portable storage for quick transfers.',
+    intro: 'Based on product documentation, 25 USB flash drives are compared for speed, capacity, build quality, and value. These 10 are the fastest portable storage for quick transfers.',
     products: [
       { rank: 1, name: 'Samsung FIT Plus', brand: 'Samsung', price: 19, rating: 4.7, summary: 'Best compact USB flash drive.', pros: ['Compact', 'Fast 300MB/s', 'Durable', 'Affordable'], cons: ['Small size easy to lose'] },
       { rank: 2, name: 'SanDisk Extreme PRO', brand: 'SanDisk', price: 39, rating: 4.7, summary: 'Fastest USB flash drive.', pros: ['Very fast 400MB/s', 'Durable', 'Premium'], cons: ['Expensive'] },
@@ -2267,7 +2267,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Cloud Storage',
     category: 'Storage', color: '#9333ea',
     description: 'The 10 best cloud storage services for 2026, ranked by capacity, sync, and value.',
-    intro: 'We tested 15 cloud storage services for capacity, sync speed, security, and value. These 10 are best for backups and file sharing.',
+    intro: 'Based on product documentation, 15 cloud storage services are compared for capacity, sync speed, security, and value. These 10 are best for backups and file sharing.',
     products: [
       { rank: 1, name: 'Google One', brand: 'Google', price: 2, rating: 4.7, summary: 'Best overall cloud storage.', pros: ['Cheap', 'Google ecosystem', '100GB-2TB', 'Family plan'], cons: ['Google privacy'] },
       { rank: 2, name: 'iCloud+', brand: 'Apple', price: 1, rating: 4.6, summary: 'Best for Apple users.', pros: ['Apple ecosystem', 'Cheap', 'Family plan', 'Privacy'], cons: ['Apple only'] },
@@ -2296,7 +2296,7 @@ export const bestData: BestEntry[] = [
     title: 'Best External HDD',
     category: 'Storage', color: '#9333ea',
     description: 'The 10 best external HDDs for 2026, ranked by capacity, reliability, and value.',
-    intro: 'We tested 20 external HDDs for capacity, reliability, speed, and value. These 10 are best for large backups and archive storage.',
+    intro: 'Based on product documentation, 20 external HDDs are compared for capacity, reliability, speed, and value. These 10 are best for large backups and archive storage.',
     products: [
       { rank: 1, name: 'WD My Passport', brand: 'WD', price: 49, rating: 4.6, summary: 'Best external HDD overall.', pros: ['Affordable', 'Reliable', 'Compact', 'Multiple colors'], cons: ['Slower than SSD'] },
       { rank: 2, name: 'Seagate Backup Plus', brand: 'Seagate', price: 49, rating: 4.5, summary: 'Best value external HDD.', pros: ['Affordable', 'Reliable', 'Software included'], cons: ['Slower than SSD'] },
@@ -2327,7 +2327,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Home Printer',
     category: 'Printers', color: '#b45309',
     description: 'The 10 best home printers for 2026, ranked by print quality, cost per page, and value.',
-    intro: 'We tested 25 home printers for print quality, cost per page, ease of use, and value. These 10 are best for home and student use.',
+    intro: 'Based on product documentation, 25 home printers are compared for print quality, cost per page, ease of use, and value. These 10 are best for home and student use.',
     products: [
       { rank: 1, name: 'HP OfficeJet Pro 9015', brand: 'HP', price: 199, rating: 4.6, summary: 'Best home printer overall.', pros: ['Fast', 'WiFi', 'Duplex', 'Ink subscription'], cons: ['Ink cost'] },
       { rank: 2, name: 'Brother HL-L2350DW', brand: 'Brother', price: 129, rating: 4.7, summary: 'Best budget mono laser printer.', pros: ['Affordable', 'Fast', 'Reliable', 'Low cost per page'], cons: ['Mono only'] },
@@ -2356,7 +2356,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Office Printer',
     category: 'Printers', color: '#b45309',
     description: 'The 10 best office printers for 2026, ranked by speed, cost per page, and features.',
-    intro: 'We tested 20 office printers for speed, cost per page, paper handling, and features. These 10 are best for small and medium offices.',
+    intro: 'Based on product documentation, 20 office printers are compared for speed, cost per page, paper handling, and features. These 10 are best for small and medium offices.',
     products: [
       { rank: 1, name: 'HP OfficeJet Pro 9015', brand: 'HP', price: 199, rating: 4.6, summary: 'Best office printer overall.', pros: ['Fast', 'WiFi', 'Duplex', 'Ink subscription'], cons: ['Ink cost'] },
       { rank: 2, name: 'Brother HL-L8360CDW', brand: 'Brother', price: 299, rating: 4.7, summary: 'Best color laser for office.', pros: ['Color laser', 'Fast', 'Reliable', 'Low cost per page'], cons: ['Expensive'] },
@@ -2385,7 +2385,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Photo Printer',
     category: 'Printers', color: '#b45309',
     description: 'The 10 best photo printers for 2026, ranked by photo quality, color accuracy, and value.',
-    intro: 'We tested 20 photo printers for photo quality, color accuracy, paper handling, and value. These 10 produce gallery-quality prints.',
+    intro: 'Based on product documentation, 20 photo printers are compared for photo quality, color accuracy, paper handling, and value. These 10 produce gallery-quality prints.',
     products: [
       { rank: 1, name: 'Canon PIXMA Pro-200', brand: 'Canon', price: 599, rating: 4.8, summary: 'Best photo printer overall.', pros: ['8-color', 'Wide format', 'Gallery quality', 'Premium'], cons: ['Expensive'] },
       { rank: 2, name: 'Epson SureColor P700', brand: 'Epson', price: 799, rating: 4.8, summary: 'Premium 8-color photo printer.', pros: ['8-color', 'Wide format', 'Premium', 'Gallery quality'], cons: ['Very expensive'] },
@@ -2414,7 +2414,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Budget Printer',
     category: 'Printers', color: '#b45309',
     description: 'The 10 best budget printers under $150 for 2026, ranked by value and print quality.',
-    intro: 'We tested 25 budget printers under $150 for print quality, cost per page, and value. These 10 are best for students and home users.',
+    intro: 'Based on product documentation, 25 budget printers under $150 are compared for print quality, cost per page, and value. These 10 are best for students and home users.',
     products: [
       { rank: 1, name: 'Brother HL-L2350DW', brand: 'Brother', price: 129, rating: 4.7, summary: 'Best budget mono laser.', pros: ['Affordable', 'Fast', 'Reliable', 'Low cost per page'], cons: ['Mono only'] },
       { rank: 2, name: 'HP LaserJet Pro M15w', brand: 'HP', price: 99, rating: 4.4, summary: 'Compact budget laser printer.', pros: ['Compact', 'Fast', 'Affordable'], cons: ['Mono only'] },
@@ -2443,7 +2443,7 @@ export const bestData: BestEntry[] = [
     title: 'Best All-in-One Printer',
     category: 'Printers', color: '#b45309',
     description: 'The 10 best all-in-one printers for 2026, ranked by print, scan, copy, and fax quality.',
-    intro: 'We tested 20 all-in-one printers for print, scan, copy, and fax quality. These 10 are best for home offices needing multiple functions.',
+    intro: 'Based on product documentation, 20 all-in-one printers are compared for print, scan, copy, and fax quality. These 10 are best for home offices needing multiple functions.',
     products: [
       { rank: 1, name: 'HP OfficeJet Pro 9015', brand: 'HP', price: 199, rating: 4.6, summary: 'Best all-in-one printer overall.', pros: ['Fast', 'WiFi', 'Duplex', 'ADF'], cons: ['Ink cost'] },
       { rank: 2, name: 'Brother MFC-L8900CDW', brand: 'Brother', price: 599, rating: 4.6, summary: 'Color laser all-in-one.', pros: ['Color laser', 'Fast', 'Reliable', 'ADF'], cons: ['Expensive'] },
@@ -2471,8 +2471,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-streaming-webcam',
     title: 'Best Streaming Webcam',
     category: 'Webcams', color: '#0891b2',
-    description: 'The 10 best streaming webcams we tested in 2026, ranked by image quality, autofocus, and low-light performance.',
-    intro: 'We spent 60 days testing streaming webcams across Twitch, YouTube Live, and OBS Studio. Each cam was evaluated for 1080p60/4K30 clarity, autofocus speed, color science, and low-light noise floor.',
+    description: 'The 10 best streaming webcams in 2026, ranked by image quality, autofocus, and low-light performance.',
+    intro: 'Based on product documentation, specification analysis, feature evaluation, and workflow assessment, streaming webcams are compared across Twitch, YouTube Live, and OBS Studio. Each cam was evaluated for 1080p60/4K30 clarity, autofocus speed, color science, and low-light noise floor.',
     products: [
       { rank: 1, name: 'Logitech StreamCam', brand: 'Logitech', price: 169, rating: 4.8, summary: '1080p60 USB-C, smart autofocus, vertical mode.', pros: ['1080p60', 'USB-C', 'AI autofocus'], cons: ['Expensive', 'No 4K'] },
       { rank: 2, name: 'Sony ZV-1F', brand: 'Sony', price: 499, rating: 4.7, summary: '1-inch sensor used as webcam via HDMI.', pros: ['Large sensor', 'Bokeh', 'Pro color'], cons: ['Needs capture card', 'Complex setup'] },
@@ -2500,8 +2500,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-budget-webcam',
     title: 'Best Budget Webcam',
     category: 'Webcams', color: '#0891b2',
-    description: 'The 10 best budget webcams under $80 we tested in 2026, ranked by image quality per dollar.',
-    intro: 'We tested 25 budget webcams under $80 for image quality, mic clarity, and software stability. Each was used in Zoom, Teams, and OBS for 60 days.',
+    description: 'The 10 best budget webcams under $80 in 2026, ranked by image quality per dollar.',
+    intro: 'Based on product documentation, 25 budget webcams under $80 are compared for image quality, mic clarity, and software stability. Each was assessed for Zoom, Teams, and OBS use.',
     products: [
       { rank: 1, name: 'Anker PowerConf C200', brand: 'Anker', price: 59, rating: 4.6, summary: '2K, privacy shutter, cheap.', pros: ['2K', 'Privacy shutter', 'Cheap'], cons: ['Soft edges'] },
       { rank: 2, name: 'Logitech C920s Pro', brand: 'Logitech', price: 69, rating: 4.5, summary: '1080p classic with shutter.', pros: ['Proven', 'Clear audio'], cons: ['30fps'] },
@@ -2529,8 +2529,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-docking-station',
     title: 'Best Docking Station',
     category: 'USB-C Docks', color: '#7c3aed',
-    description: 'The 10 best docking stations we tested in 2026, ranked by connectivity, power delivery, and stability.',
-    intro: 'We tested 20 docking stations over 90 days, evaluating dual 4K output, charging wattage, Ethernet speed, and thermal stability under load.',
+    description: 'The 10 best docking stations in 2026, ranked by connectivity, power delivery, and stability.',
+    intro: 'Based on product documentation, 20 docking stations are compared for dual 4K output, charging wattage, Ethernet speed, and thermal stability under load.',
     products: [
       { rank: 1, name: 'CalDigit TS4', brand: 'CalDigit', price: 399, rating: 4.9, summary: 'Thunderbolt 4 with 18 ports.', pros: ['18 ports', '98W charging', 'TB4'], cons: ['Pricey'] },
       { rank: 2, name: 'OWC Thunderbolt Pro Dock', brand: 'OWC', price: 299, rating: 4.7, summary: 'TB4 with dual 4K.', pros: ['TB4', '90W PD', 'Quiet'], cons: ['Fewer ports'] },
@@ -2558,8 +2558,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-thunderbolt-4-dock',
     title: 'Best Thunderbolt 4 Dock',
     category: 'USB-C Docks', color: '#7c3aed',
-    description: 'The 10 best Thunderbolt 4 docks we tested in 2026, ranked by 40Gbps bandwidth and dual 4K support.',
-    intro: 'We tested 15 Thunderbolt 4 docks for 90 days, focusing on dual 4K@60Hz stability, 90W+ charging, and hot-plug reliability across Mac and Windows.',
+    description: 'The 10 best Thunderbolt 4 docks in 2026, ranked by 40Gbps bandwidth and dual 4K support.',
+    intro: 'Based on product documentation, 15 Thunderbolt 4 docks are compared for dual 4K@60Hz stability, 90W+ charging, and hot-plug reliability across Mac and Windows.',
     products: [
       { rank: 1, name: 'CalDigit TS4', brand: 'CalDigit', price: 399, rating: 4.9, summary: 'Best overall TB4 dock.', pros: ['18 ports', '98W PD'], cons: ['Expensive'] },
       { rank: 2, name: 'OWC Thunderbolt Pro Dock', brand: 'OWC', price: 299, rating: 4.7, summary: 'Pro stability.', pros: ['90W PD', 'TB4'], cons: ['Fewer ports'] },
@@ -2587,8 +2587,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-laptop-dock',
     title: 'Best Laptop Dock',
     category: 'USB-C Docks', color: '#7c3aed',
-    description: 'The 10 best laptop docks we tested in 2026, ranked by charging wattage, ports, and dual monitor support.',
-    intro: 'We tested 25 laptop docks over 90 days for charging stability, monitor output, and thermal performance with 13-17 inch laptops.',
+    description: 'The 10 best laptop docks in 2026, ranked by charging wattage, ports, and dual monitor support.',
+    intro: 'Based on product documentation, 25 laptop docks are compared for charging stability, monitor output, and thermal performance with 13-17 inch laptops.',
     products: [
       { rank: 1, name: 'CalDigit TS4', brand: 'CalDigit', price: 399, rating: 4.9, summary: 'Best overall laptop dock.', pros: ['18 ports', '98W PD'], cons: ['Pricey'] },
       { rank: 2, name: 'Anker 777 Apex', brand: 'Anker', price: 299, rating: 4.5, summary: '12-in-1 with 90W PD.', pros: ['90W PD'], cons: ['Bulky'] },
@@ -2616,8 +2616,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-projector',
     title: 'Best Projector',
     category: 'Projectors', color: '#be185d',
-    description: 'The 10 best projectors we tested in 2026, ranked by brightness, contrast, and color accuracy.',
-    intro: 'We tested 20 home theater projectors for 90 days, measuring ANSI lumens, contrast ratio, color gamut, and input lag for gaming.',
+    description: 'The 10 best projectors in 2026, ranked by brightness, contrast, and color accuracy.',
+    intro: 'Based on product documentation, 20 home theater projectors are compared for ANSI lumens, contrast ratio, color gamut, and input lag for gaming.',
     products: [
       { rank: 1, name: 'Epson Home Cinema 5050UB', brand: 'Epson', price: 2499, rating: 4.9, summary: '4K PRO with HDR.', pros: ['4K PRO', 'HDR', 'Wide gamut'], cons: ['Expensive', 'Bulky'] },
       { rank: 2, name: 'Optoma UHD38', brand: 'Optoma', price: 1499, rating: 4.6, summary: '4K60 gaming projector.', pros: ['4K60', '4.2ms input lag'], cons: ['Avg contrast'] },
@@ -2645,8 +2645,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-portable-projector',
     title: 'Best Portable Projector',
     category: 'Projectors', color: '#be185d',
-    description: 'The 10 best portable projectors we tested in 2026, ranked by brightness, battery life, and ease of use.',
-    intro: 'We tested 25 portable projectors for 60 days, measuring lumen output on battery, battery life, cooling noise, and content app availability.',
+    description: 'The 10 best portable projectors in 2026, ranked by brightness, battery life, and ease of use.',
+    intro: 'Based on product documentation, 25 portable projectors are compared for lumen output on battery, battery life, cooling noise, and content app availability.',
     products: [
       { rank: 1, name: 'Anker Nebula Capsule 3', brand: 'Anker', price: 519, rating: 4.6, summary: 'Soda can 1080p Laser.', pros: ['Laser', 'Compact', 'Android TV'], cons: ['300 lumens'] },
       { rank: 2, name: 'XGIMI Halo+', brand: 'XGIMI', price: 649, rating: 4.5, summary: '1080p portable.', pros: ['Android TV', 'Good battery'], cons: ['Avg brightness'] },
@@ -2674,8 +2674,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-smart-display',
     title: 'Best Smart Display',
     category: 'Smart Home', color: '#0d9488',
-    description: 'The 10 best smart displays we tested in 2026, ranked by voice assistant quality, screen, and speaker.',
-    intro: 'We tested 15 smart displays for 60 days, evaluating voice assistant speed, screen brightness, speaker quality, and smart home integration.',
+    description: 'The 10 best smart displays in 2026, ranked by voice assistant quality, screen, and speaker.',
+    intro: 'Based on product documentation, 15 smart displays are compared for voice assistant speed, screen brightness, speaker quality, and smart home integration.',
     products: [
       { rank: 1, name: 'Google Nest Hub Max', brand: 'Google', price: 229, rating: 4.7, summary: '10-inch with camera.', pros: ['Google Assistant', 'Camera', 'Smart home hub'], cons: ['Pricey'] },
       { rank: 2, name: 'Amazon Echo Show 10', brand: 'Amazon', price: 249, rating: 4.6, summary: 'Motion-tracking screen.', pros: ['Motion', 'Alexa', 'Sound'], cons: ['Bulky'] },
@@ -2703,8 +2703,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-drawing-tablet',
     title: 'Best Drawing Tablet',
     category: 'Tablets', color: '#c026d3',
-    description: 'The 10 best drawing tablets we tested in 2026, ranked by pen pressure, tilt, and screen quality.',
-    intro: 'We tested 18 drawing tablets for 90 days across Photoshop, Procreate, and Krita, evaluating pen pressure, tilt sensitivity, parallax, and color accuracy.',
+    description: 'The 10 best drawing tablets in 2026, ranked by pen pressure, tilt, and screen quality.',
+    intro: 'Based on product documentation, 18 drawing tablets are compared across Photoshop, Procreate, and Krita use cases, evaluating pen pressure, tilt sensitivity, parallax, and color accuracy.',
     products: [
       { rank: 1, name: 'Wacom Cintiq Pro 16', brand: 'Wacom', price: 1499, rating: 4.8, summary: '16-inch 4K pen display.', pros: ['4K', 'Pro Pen 3', 'Color accurate'], cons: ['Expensive'] },
       { rank: 2, name: 'Wacom Intuos Pro Large', brand: 'Wacom', price: 499, rating: 4.7, summary: 'Best non-display tablet.', pros: ['Pro Pen 3', 'Large'], cons: ['No display'] },
@@ -2732,8 +2732,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-streaming-deck',
     title: 'Best Streaming Deck',
     category: 'Controllers', color: '#15803d',
-    description: 'The 10 best streaming decks we tested in 2026, ranked by keys, software, and integration.',
-    intro: 'We tested 12 streaming decks for 60 days, evaluating key feel, software stability, OBS integration, and macro customization.',
+    description: 'The 10 best streaming decks in 2026, ranked by keys, software, and integration.',
+    intro: 'Based on product documentation, 12 streaming decks are compared for key feel, software stability, OBS integration, and macro customization.',
     products: [
       { rank: 1, name: 'Elgato Stream Deck MK.2', brand: 'Elgato', price: 149, rating: 4.7, summary: '15-key standard.', pros: ['Software', 'Plugin support'], cons: ['Only 15 keys'] },
       { rank: 2, name: 'Elgato Stream Deck XL', brand: 'Elgato', price: 249, rating: 4.7, summary: '32-key pro deck.', pros: ['32 keys'], cons: ['Pricey'] },
@@ -2761,8 +2761,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-gaming-chair-under-300',
     title: 'Best Gaming Chair Under $300',
     category: 'Office Chairs', color: '#4f46e5',
-    description: 'The 10 best gaming chairs under $300 we tested in 2026, ranked by comfort, build, and style.',
-    intro: 'We tested 20 gaming chairs under $300 for 90 days, evaluating lumbar support, recline, armrest adjustability, and durability.',
+    description: 'The 10 best gaming chairs under $300 in 2026, ranked by comfort, build, and style.',
+    intro: 'Based on product documentation, 20 gaming chairs under $300 are compared for lumbar support, recline, armrest adjustability, and durability.',
     products: [
       { rank: 1, name: 'GTRacing Pro Series', brand: 'GTRacing', price: 159, rating: 4.6, summary: 'Best value gaming chair.', pros: ['Cheap', 'Lumbar pillow', 'Recline 170°'], cons: ['PU leather'] },
       { rank: 2, name: 'Homall Gaming Chair', brand: 'Homall', price: 129, rating: 4.4, summary: 'Budget classic.', pros: ['Cheap'], cons: ['Avg lumbar'] },
@@ -2790,8 +2790,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-standing-mat',
     title: 'Best Standing Mat',
     category: 'Desk Accessories', color: '#ca8a04',
-    description: 'The 10 best standing desk mats we tested in 2026, ranked by cushion support, durability, and ergonomics.',
-    intro: 'We tested 20 standing mats for 90 days, evaluating cushion support, material durability, slip resistance, and ergonomics across multiple standing heights.',
+    description: 'The 10 best standing desk mats in 2026, ranked by cushion support, durability, and ergonomics.',
+    intro: 'Based on product documentation, 20 standing mats are compared for cushion support, material durability, slip resistance, and ergonomics across multiple standing heights.',
     products: [
       { rank: 1, name: 'Ergodriven Topo', brand: 'Ergodriven', price: 99, rating: 4.7, summary: 'Terrain-inspired cushioning.', pros: ['Terrain surface', 'Encourages movement', 'Durable'], cons: ['Pricey'] },
       { rank: 2, name: 'CumulusPRO by mTec', brand: 'CumulusPRO', price: 99, rating: 4.6, summary: 'Medical-grade cushion.', pros: ['Soft support', 'Lifetime warranty'], cons: ['Bulky'] },
@@ -2819,8 +2819,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-anti-fatigue-mat',
     title: 'Best Anti Fatigue Mat',
     category: 'Desk Accessories', color: '#ca8a04',
-    description: 'The 10 best anti-fatigue mats we tested in 2026, ranked by comfort, support, and durability.',
-    intro: 'We tested 22 anti-fatigue mats for 90 days, evaluating long-term comfort, cushion recovery, slip resistance, and edge curling.',
+    description: 'The 10 best anti-fatigue mats in 2026, ranked by comfort, support, and durability.',
+    intro: 'Based on product documentation, 22 anti-fatigue mats are compared for long-term comfort, cushion recovery, slip resistance, and edge curling.',
     products: [
       { rank: 1, name: 'CumulusPRO by mTec', brand: 'CumulusPRO', price: 99, rating: 4.7, summary: 'Medical-grade cushioning.', pros: ['Lifetime warranty', 'Medical grade'], cons: ['Bulky'] },
       { rank: 2, name: 'Ergodriven Topo', brand: 'Ergodriven', price: 99, rating: 4.6, summary: 'Terrain mat.', pros: ['Terrain design'], cons: ['Beveled edges'] },
@@ -2848,8 +2848,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-desk-chair-cushion',
     title: 'Best Desk Chair Cushion',
     category: 'Desk Accessories', color: '#ca8a04',
-    description: 'The 10 best desk chair cushions we tested in 2026, ranked by support, breathability, and durability.',
-    intro: 'We tested 18 desk chair cushions for 60 days, evaluating support, breathability, anti-slip design, and washability.',
+    description: 'The 10 best desk chair cushions in 2026, ranked by support, breathability, and durability.',
+    intro: 'Based on product documentation, 18 desk chair cushions are compared for support, breathability, anti-slip design, and washability.',
     products: [
       { rank: 1, name: 'Everlasting Comfort Seat Cushion', brand: 'Everlasting', price: 39, rating: 4.6, summary: 'Memory foam with U-cut.', pros: ['Memory foam', 'U-cut for tailbone', 'Cheap'], cons: ['Heats up'] },
       { rank: 2, name: 'ComfiLife Gel Enhanced', brand: 'ComfiLife', price: 34, rating: 4.5, summary: 'Gel + foam hybrid.', pros: ['Gel cooling', 'Non-slip'], cons: ['Thinner'] },
@@ -2877,8 +2877,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-wrist-rest',
     title: 'Best Wrist Rest',
     category: 'Desk Accessories', color: '#ca8a04',
-    description: 'The 10 best wrist rests we tested in 2026, ranked by comfort, support, and ergonomics.',
-    intro: 'We tested 20 wrist rests for 60 days, evaluating ergonomics, material recovery, breathability, and slip resistance.',
+    description: 'The 10 best wrist rests in 2026, ranked by comfort, support, and ergonomics.',
+    intro: 'Based on product documentation, 20 wrist rests are compared for ergonomics, material recovery, breathability, and slip resistance.',
     products: [
       { rank: 1, name: 'Gimars Memory Foam Wrist Rest', brand: 'Gimars', price: 14, rating: 4.6, summary: 'Best overall wrist rest.', pros: ['Memory foam', 'Cheap'], cons: ['Membrane heats'] },
       { rank: 2, name: 'MROK Ergonomic Wrist Rest', brand: 'MROK', price: 12, rating: 4.4, summary: 'Ergonomic value.', pros: ['Cheap', 'Memory foam'], cons: ['Smaller'] },
@@ -2906,8 +2906,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-keyboard-wrist-rest',
     title: 'Best Keyboard Wrist Rest',
     category: 'Desk Accessories', color: '#ca8a04',
-    description: 'The 10 best keyboard wrist rests we tested in 2026, ranked by height, material, and ergonomics.',
-    intro: 'We tested 22 keyboard wrist rests for 60 days, evaluating height match, material recovery, breathability, and edge design.',
+    description: 'The 10 best keyboard wrist rests in 2026, ranked by height, material, and ergonomics.',
+    intro: 'Based on product documentation, 22 keyboard wrist rests are compared for height match, material recovery, breathability, and edge design.',
     products: [
       { rank: 1, name: 'Glorious Wooden Wrist Rest', brand: 'Glorious', price: 29, rating: 4.7, summary: 'Premium wooden rest.', pros: ['Wood', 'Padded bottom'], cons: ['Expensive'] },
       { rank: 2, name: 'HyperX Wrist Rest Full', brand: 'HyperX', price: 24, rating: 4.5, summary: 'Cooling gel keyboard rest.', pros: ['Cooling gel'], cons: ['Pricey'] },
@@ -2935,8 +2935,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-monitor-arm',
     title: 'Best Monitor Arm',
     category: 'Desk Accessories', color: '#ca8a04',
-    description: 'The 10 best monitor arms we tested in 2026, ranked by stability, adjustability, and ease of install.',
-    intro: 'We tested 25 monitor arms for 90 days, evaluating VESA compatibility, weight capacity, range of motion, and desk clamp stability.',
+    description: 'The 10 best monitor arms in 2026, ranked by stability, adjustability, and ease of install.',
+    intro: 'Based on product documentation, 25 monitor arms are compared for VESA compatibility, weight capacity, range of motion, and desk clamp stability.',
     products: [
       { rank: 1, name: 'Ergotron LX Desk Mount', brand: 'Ergotron', price: 199, rating: 4.8, summary: 'Best overall monitor arm.', pros: ['Stable', 'Constant force', '20 lb capacity'], cons: ['Pricey'] },
       { rank: 2, name: 'Amazon Basics Single Monitor Stand', brand: 'Amazon Basics', price: 99, rating: 4.4, summary: 'Best budget monitor arm.', pros: ['Cheap', 'Sturdy'], cons: ['Less adjustment'] },
@@ -2964,8 +2964,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-keyboard-for-programming',
     title: 'Best Keyboard for Programming',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'The 10 best keyboards for programming we tested in 2026, ranked by switch feel, ergonomics, and coding workflow.',
-    intro: 'We tested 28 keyboards over 60 days of daily coding, evaluating switch tactility, programmability, layout, wrist comfort, and noise. These 10 held up to 8+ hour typing sessions without fatigue.',
+    description: 'The 10 best keyboards for programming in 2026, ranked by switch feel, ergonomics, and coding workflow.',
+    intro: 'Based on product documentation, 28 keyboards are compared for daily coding use, evaluating switch tactility, programmability, layout, wrist comfort, and noise. These 10 held up to 8+ hour typing sessions without fatigue.',
     products: [
       { rank: 1, name: 'Keychron Q1', brand: 'Keychron', price: 149, rating: 4.8, summary: 'Best overall programming keyboard with hot-swap switches and gasket mount.', pros: ['Hot-swap switches', 'Gasket-mounted plate', 'QMK/VIA programmable'], cons: ['Heavy', 'Pricey for 75%'] },
       { rank: 2, name: 'HHKB Professional HYBRID', brand: 'HHKB', price: 224, rating: 4.8, summary: 'Topre switches loved by developers for typing feel.', pros: ['Topre electrocapacitive', 'Compact layout', 'Best typing feel'], cons: ['Expensive', 'No arrow keys default'] },
@@ -2993,8 +2993,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-trackball-mouse',
     title: 'Best Trackball Mouse',
     category: 'Mice', color: '#3b82f6',
-    description: 'The 10 best trackball mice we tested in 2026, ranked by precision, ergonomics, and wrist relief.',
-    intro: 'We tested 18 trackball mice over 60 days, evaluating ball tracking precision, ergonomics, button layout, and wrist strain relief. These 10 reduced wrist pain and worked well for design and CAD.',
+    description: 'The 10 best trackball mice in 2026, ranked by precision, ergonomics, and wrist relief.',
+    intro: 'Based on product documentation, 18 trackball mice are compared for ball tracking precision, ergonomics, button layout, and wrist strain relief. These 10 reduced wrist pain and worked well for design and CAD.',
     products: [
       { rank: 1, name: 'Logitech MX Ergo', brand: 'Logitech', price: 99, rating: 4.7, summary: 'Best overall trackball with adjustable tilt and precision sensor.', pros: ['Adjustable tilt', 'Precision sensor', 'Multi-device'], cons: ['Expensive', 'Right-handed only'] },
       { rank: 2, name: 'Kensington SlimBlade Pro', brand: 'Kensington', price: 99, rating: 4.5, summary: 'Wireless trackball with scroll ball and dual connectivity.', pros: ['Wireless', 'Scroll ball', 'Dual connect'], cons: ['No tilt', 'Bigger'] },
@@ -3022,8 +3022,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-curved-monitor',
     title: 'Best Curved Monitor',
     category: 'Monitors', color: '#10b981',
-    description: 'The 10 best curved monitors we tested in 2026, ranked by immersion, color accuracy, and value.',
-    intro: 'We tested 24 curved monitors for 60 days, evaluating immersion, color accuracy, refresh rate, curve radius, and eye comfort. These 10 delivered the best wraparound experience for work and gaming.',
+    description: 'The 10 best curved monitors in 2026, ranked by immersion, color accuracy, and value.',
+    intro: 'Based on product documentation, 24 curved monitors are compared for immersion, color accuracy, refresh rate, curve radius, and eye comfort. These 10 delivered the best wraparound experience for work and gaming.',
     products: [
       { rank: 1, name: 'Samsung Odyssey G9', brand: 'Samsung', price: 1299, rating: 4.8, summary: 'Best overall curved monitor with 49-inch 32:9 DQHD and 240Hz.', pros: ['49-inch 32:9', '240Hz', '1000R curve'], cons: ['Very expensive', 'Needs powerful GPU'] },
       { rank: 2, name: 'LG 38WN95C-W', brand: 'LG', price: 999, rating: 4.6, summary: '38-inch curved ultrawide with Thunderbolt and 144Hz.', pros: ['38-inch ultrawide', 'Thunderbolt 3', '144Hz'], cons: ['Expensive', 'Curvature mild'] },
@@ -3051,8 +3051,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-4k-monitor',
     title: 'Best 4K Monitor',
     category: 'Monitors', color: '#10b981',
-    description: 'The 10 best 4K monitors we tested in 2026, ranked by sharpness, color accuracy, and value.',
-    intro: 'We tested 26 4K monitors for 60 days, evaluating pixel density, color accuracy, HDR performance, and connectivity. These 10 delivered the sharpest text and most accurate colors for work and content creation.',
+    description: 'The 10 best 4K monitors in 2026, ranked by sharpness, color accuracy, and value.',
+    intro: 'Based on product documentation, 26 4K monitors are compared for pixel density, color accuracy, HDR performance, and connectivity. These 10 delivered the sharpest text and most accurate colors for work and content creation.',
     products: [
       { rank: 1, name: 'Dell U2723QE', brand: 'Dell', price: 599, rating: 4.8, summary: 'Best overall 4K monitor with USB-C hub and IPS Black panel.', pros: ['IPS Black panel', 'USB-C 90W', 'KVM switch'], cons: ['Expensive', 'HDR basic'] },
       { rank: 2, name: 'LG 27UP850-W', brand: 'LG', price: 449, rating: 4.6, summary: 'Best value 4K monitor with USB-C and great colors.', pros: ['USB-C 96W', 'Great colors', 'Affordable'], cons: ['No KVM', 'HDR basic'] },
@@ -3080,8 +3080,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-usb-c-monitor',
     title: 'Best USB-C Monitor',
     category: 'Monitors', color: '#10b981',
-    description: 'The 10 best USB-C monitors we tested in 2026, ranked by charging power, dock features, and display quality.',
-    intro: 'We tested 22 USB-C monitors for 60 days, evaluating power delivery (60W-90W+), dock features, display quality, and single-cable laptop setups. These 10 offered the cleanest one-cable workflows.',
+    description: 'The 10 best USB-C monitors in 2026, ranked by charging power, dock features, and display quality.',
+    intro: 'Based on product documentation, 22 USB-C monitors are compared for power delivery (60W-90W+), dock features, display quality, and single-cable laptop setups. These 10 offered the cleanest one-cable workflows.',
     products: [
       { rank: 1, name: 'ASUS ZenScreen MB16AC', brand: 'ASUS', price: 249, rating: 4.6, summary: 'Best portable USB-C monitor with slim design.', pros: ['Portable', 'USB-C single cable', 'Slim'], cons: ['15.6-inch only', 'No HDR'] },
       { rank: 2, name: 'LG 27UP850-W', brand: 'LG', price: 449, rating: 4.6, summary: '4K USB-C monitor with 96W charging and great colors.', pros: ['USB-C 96W', '4K', 'Great colors'], cons: ['No KVM', 'HDR basic'] },
@@ -3109,8 +3109,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-noise-canceling-earbuds',
     title: 'Best Noise Canceling Earbuds',
     category: 'Headphones', color: '#e11d48',
-    description: 'The 10 best noise canceling earbuds we tested in 2026, ranked by ANC strength, sound quality, and comfort.',
-    intro: 'We tested 24 ANC earbuds for 60 days, evaluating active noise cancellation strength, sound quality, comfort, battery life, and call clarity. These 10 silenced offices, planes, and commutes best.',
+    description: 'The 10 best noise canceling earbuds in 2026, ranked by ANC strength, sound quality, and comfort.',
+    intro: 'Based on product documentation, 24 ANC earbuds are compared for active noise cancellation strength, sound quality, comfort, battery life, and call clarity. These 10 silenced offices, planes, and commutes best.',
     products: [
       { rank: 1, name: 'Sony WF-1000XM5', brand: 'Sony', price: 298, rating: 4.8, summary: 'Best overall ANC earbuds with class-leading noise canceling.', pros: ['Best ANC', 'LDAC', 'Comfortable fit'], cons: ['Expensive', 'Case smaller only'] },
       { rank: 2, name: 'Bose QuietComfort Earbuds II', brand: 'Bose', price: 279, rating: 4.7, summary: 'Premium ANC with CustomTune calibration.', pros: ['CustomTune ANC', 'Comfortable', 'Great call quality'], cons: ['Large case', 'No aptX'] },
@@ -3138,8 +3138,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-desk-fan',
     title: 'Best Desk Fan',
     category: 'Desk Accessories', color: '#f97316',
-    description: 'The 10 best desk fans we tested in 2026, ranked by airflow, noise level, and footprint.',
-    intro: 'We tested 20 desk fans for 60 days, evaluating airflow, noise at low and high speeds, footprint, adjustability, and power options. These 10 kept workspaces cool without drowning out calls.',
+    description: 'The 10 best desk fans in 2026, ranked by airflow, noise level, and footprint.',
+    intro: 'Based on product documentation, 20 desk fans are compared for airflow, noise at low and high speeds, footprint, adjustability, and power options. These 10 kept workspaces cool without drowning out calls.',
     products: [
       { rank: 1, name: 'Vornado 630', brand: 'Vornado', price: 49, rating: 4.7, summary: 'Best overall desk fan with vortex airflow and durable build.', pros: ['Vortex airflow', 'Durable', 'Whole-room circulation'], cons: ['No remote', 'Loud at high'] },
       { rank: 2, name: 'Honeywell HT-900', brand: 'Honeywell', price: 25, rating: 4.5, summary: 'Best budget desk fan with strong airflow.', pros: ['Cheap', 'Strong airflow', 'Quiet at low'], cons: ['No oscillation', 'Basic build'] },
@@ -3167,8 +3167,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-whiteboard-app',
     title: 'Best Whiteboard App',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best whiteboard apps we tested in 2026, ranked by collaboration, canvas size, and template library.',
-    intro: 'We tested 18 whiteboard apps for 60 days, evaluating real-time collaboration, infinite canvas, sticky notes, templates, and integrations. These 10 ran the smoothest remote workshops and brainstorm sessions.',
+    description: 'The 10 best whiteboard apps in 2026, ranked by collaboration, canvas size, and template library.',
+    intro: 'Based on product documentation, 18 whiteboard apps are compared for real-time collaboration, infinite canvas, sticky notes, templates, and integrations. These 10 ran the smoothest remote workshops and brainstorm sessions.',
     products: [
       { rank: 1, name: 'Miro', brand: 'Miro', price: 8, rating: 4.8, summary: 'Best overall whiteboard app with infinite canvas and templates.', pros: ['Infinite canvas', 'Best templates', 'Real-time collab'], cons: ['Free tier limited', 'Learning curve'] },
       { rank: 2, name: 'Mural', brand: 'Mural', price: 12, rating: 4.6, summary: 'Enterprise whiteboard with facilitator features.', pros: ['Facilitator tools', 'Templates', 'Enterprise SSO'], cons: ['Expensive', 'Free tier limited'] },
@@ -3196,8 +3196,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-keyboard-under-100',
     title: 'Best Keyboard Under $100',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'The 10 best keyboards under $100 we tested in 2026, ranked by typing feel, build quality, and connectivity.',
-    intro: 'We tested 25 keyboards under $100 for 60 days, evaluating typing feel, switch quality, build, wireless reliability, and battery life. These 10 delivered the best typing experience without breaking the budget.',
+    description: 'The 10 best keyboards under $100 in 2026, ranked by typing feel, build quality, and connectivity.',
+    intro: 'Based on product documentation, 25 keyboards under $100 are compared for typing feel, switch quality, build, wireless reliability, and battery life. These 10 delivered the best typing experience without breaking the budget.',
     products: [
       { rank: 1, name: 'Keychron K8', brand: 'Keychron', price: 89, rating: 4.7, summary: 'Best wireless mechanical under $100 with hot-swap switches.', pros: ['Hot-swap PCB', 'Bluetooth + USB-C', 'Tenkeyless layout'], cons: ['ABS keycaps', 'No RGB on non-backlit model'] },
       { rank: 2, name: 'Logitech MX Keys S', brand: 'Logitech', price: 99, rating: 4.6, summary: 'Best productivity keyboard with smart illumination and multi-device.', pros: ['Multi-device pairing', 'Smart backlight', 'Quiet typing'], cons: ['Low profile only', 'Non-mechanical'] },
@@ -3225,8 +3225,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-mechanical-keyboard-under-50',
     title: 'Best Mechanical Keyboard Under $50',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'The 10 best mechanical keyboards under $50 we tested in 2026, ranked by switch quality, build, and value.',
-    intro: 'We tested 20 mechanical keyboards under $50 for 60 days, evaluating switch feel, stabilizers, build quality, and durability. These 10 delivered the most satisfying typing experience on a tight budget.',
+    description: 'The 10 best mechanical keyboards under $50 in 2026, ranked by switch quality, build, and value.',
+    intro: 'Based on product documentation, 20 mechanical keyboards under $50 are compared for switch feel, stabilizers, build quality, and durability. These 10 delivered the most satisfying typing experience on a tight budget.',
     products: [
       { rank: 1, name: 'Redragon K552', brand: 'Redragon', price: 36, rating: 4.4, summary: 'Best budget mechanical with metal frame and Outemu switches.', pros: ['Metal frame', 'Tenkeyless', 'Affordable'], cons: ['Loud switches', 'No hot-swap'] },
       { rank: 2, name: 'Royal Kludge RK61', brand: 'Royal Kludge', price: 50, rating: 4.4, summary: 'Wireless 60% with hot-swap switches and RGB.', pros: ['Wireless', 'Hot-swap', 'Compact'], cons: ['No arrow keys', 'Plastic case'] },
@@ -3254,8 +3254,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-wireless-earbuds',
     title: 'Best Wireless Earbuds',
     category: 'Headphones', color: '#e11d48',
-    description: 'The 10 best wireless earbuds we tested in 2026, ranked by sound, fit, battery, and connectivity.',
-    intro: 'We tested 22 wireless earbuds for 60 days, evaluating sound quality, ANC strength, call clarity, fit, and battery life. These 10 delivered the most reliable wireless listening across music, calls, and workouts.',
+    description: 'The 10 best wireless earbuds in 2026, ranked by sound, fit, battery, and connectivity.',
+    intro: 'Based on product documentation, 22 wireless earbuds are compared for sound quality, ANC strength, call clarity, fit, and battery life. These 10 delivered the most reliable wireless listening across music, calls, and workouts.',
     products: [
       { rank: 1, name: 'WF-1000XM5', brand: 'Sony', price: 279, rating: 4.8, summary: 'Best overall wireless earbuds with class-leading ANC and LDAC.', pros: ['Best-in-class ANC', 'LDAC support', 'Comfortable fit'], cons: ['Expensive', 'Small case'] },
       { rank: 2, name: 'AirPods Pro 2', brand: 'Apple', price: 249, rating: 4.8, summary: 'Best wireless earbuds for iPhone with seamless pairing.', pros: ['Seamless Apple pairing', 'Strong ANC', 'Spatial audio'], cons: ['Apple only', 'Pricey'] },
@@ -3283,8 +3283,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-gaming-monitor',
     title: 'Best Gaming Monitor',
     category: 'Monitors', color: '#10b981',
-    description: 'The 10 best gaming monitors we tested in 2026, ranked by refresh rate, response time, and value.',
-    intro: 'We tested 24 gaming monitors for 60 days, evaluating refresh rate, response time, HDR, color accuracy, and adaptive sync. These 10 delivered the smoothest gameplay across FPS, racing, and AAA titles.',
+    description: 'The 10 best gaming monitors in 2026, ranked by refresh rate, response time, and value.',
+    intro: 'Based on product documentation, 24 gaming monitors are compared for refresh rate, response time, HDR, color accuracy, and adaptive sync. These 10 delivered the smoothest gameplay across FPS, racing, and AAA titles.',
     products: [
       { rank: 1, name: 'Odyssey G9', brand: 'Samsung', price: 1299, rating: 4.8, summary: 'Best ultrawide gaming monitor with 240Hz and 1000R curve.', pros: ['240Hz', '1000R curve', 'HDR1400'], cons: ['Very expensive', 'Huge footprint'] },
       { rank: 2, name: '27GP950-B', brand: 'LG', price: 899, rating: 4.7, summary: 'Best 4K gaming monitor with 144Hz and HDMI 2.1.', pros: ['4K 144Hz', 'HDMI 2.1', 'Nano IPS'], cons: ['Expensive', 'Mid HDR'] },
@@ -3312,8 +3312,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-portable-monitor-for-mac',
     title: 'Best Portable Monitor for Mac',
     category: 'Monitors', color: '#10b981',
-    description: 'The 10 best portable monitors for Mac we tested in 2026, ranked by color accuracy, portability, and USB-C.',
-    intro: 'We tested 18 portable monitors with MacBook Air, Pro, and Mac mini for 60 days, evaluating color accuracy, USB-C single-cable use, portability, and Mac compatibility. These 10 paired best with macOS and Apple Silicon.',
+    description: 'The 10 best portable monitors for Mac in 2026, ranked by color accuracy, portability, and USB-C.',
+    intro: 'Based on product documentation, 18 portable monitors are compared with MacBook Air, Pro, and Mac mini for color accuracy, USB-C single-cable use, portability, and Mac compatibility. These 10 paired best with macOS and Apple Silicon.',
     products: [
       { rank: 1, name: 'ZenScreen MB16AC', brand: 'ASUS', price: 249, rating: 4.6, summary: 'Best portable monitor for Mac with USB-C and slim design.', pros: ['USB-C single cable', 'Slim design', 'Smart case'], cons: ['1080p only', 'Mid brightness'] },
       { rank: 2, name: '27UP850-W', brand: 'LG', price: 449, rating: 4.6, summary: '4K USB-C monitor with 96W charging for MacBook.', pros: ['4K resolution', '96W USB-C PD', 'Color accurate'], cons: ['Not truly portable', 'Heavy'] },
@@ -3341,8 +3341,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-desk-lamp-with-wireless-charging',
     title: 'Best Desk Lamp with Wireless Charging',
     category: 'Monitor Lights', color: '#f59e0b',
-    description: 'The 10 best desk lamps with wireless charging we tested in 2026, ranked by brightness, charging speed, and design.',
-    intro: 'We tested 16 desk lamps with wireless charging pads for 60 days, evaluating brightness levels, Qi charging speed, color temperature, and design. These 10 kept workspaces lit and phones topped off without clutter.',
+    description: 'The 10 best desk lamps with wireless charging in 2026, ranked by brightness, charging speed, and design.',
+    intro: 'Based on product documentation, 16 desk lamps with wireless charging pads are compared for brightness levels, Qi charging speed, color temperature, and design. These 10 kept workspaces lit and phones topped off without clutter.',
     products: [
       { rank: 1, name: 'TT-DL17', brand: 'TaoTronics', price: 35, rating: 4.5, summary: 'Best desk lamp with wireless charging and adjustable brightness.', pros: ['10W Qi charging', '5 brightness levels', 'Affordable'], cons: ['No color temp', 'Plastic build'] },
       { rank: 2, name: 'ScreenBar Halo', brand: 'BenQ', price: 169, rating: 4.8, summary: 'Premium monitor light bar with wireless controller.', pros: ['No screen glare', 'Auto dimming', 'Wireless controller'], cons: ['No Qi pad', 'Expensive'] },
@@ -3370,8 +3370,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-task-management-app',
     title: 'Best Task Management App',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best task management apps we tested in 2026, ranked by features, sync, and ease of use.',
-    intro: 'We tested 20 task management apps for 60 days, evaluating natural language input, recurring tasks, cross-platform sync, collaboration, and integrations. These 10 kept our to-dos organized across desktop, mobile, and web.',
+    description: 'The 10 best task management apps in 2026, ranked by features, sync, and ease of use.',
+    intro: 'Based on product documentation, 20 task management apps are compared for natural language input, recurring tasks, cross-platform sync, collaboration, and integrations. These 10 kept to-dos organized across desktop, mobile, and web.',
     products: [
       { rank: 1, name: 'Todoist', brand: 'Doist', price: 5, rating: 4.8, summary: 'Best overall task app with natural language input and 70+ integrations.', pros: ['Natural language', '70+ integrations', 'Cross-platform'], cons: ['Free tier limited', 'No calendar view'] },
       { rank: 2, name: 'TickTick', brand: 'Appest', price: 3, rating: 4.7, summary: 'Best value task app with built-in calendar and habit tracker.', pros: ['Calendar view', 'Habit tracker', 'Affordable'], cons: ['Smaller ecosystem', 'Web app basic'] },
@@ -3399,8 +3399,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-vpn-service',
     title: 'Best VPN Service',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best VPN services we tested in 2026, ranked by speed, privacy, and value.',
-    intro: 'We tested 18 VPN services for 60 days, evaluating download speeds, server network, no-logs policy, streaming unblock, and price. These 10 delivered the best mix of privacy, speed, and value for daily use.',
+    description: 'The 10 best VPN services in 2026, ranked by speed, privacy, and value.',
+    intro: 'Based on product documentation, 18 VPN services are compared for download speeds, server network, no-logs policy, streaming unblock, and price. These 10 delivered the best mix of privacy, speed, and value for daily use.',
     products: [
       { rank: 1, name: 'ExpressVPN', brand: 'Express VPN International', price: 8, rating: 4.7, summary: 'Best overall VPN with fast speeds and 94 countries.', pros: ['Fast speeds', '94 countries', 'TrustedServer tech'], cons: ['Expensive', '5 connections only'] },
       { rank: 2, name: 'NordVPN', brand: 'Nord Security', price: 4, rating: 4.7, summary: 'Best value VPN with strong privacy and streaming.', pros: ['Best value', 'Strong privacy', '6 connections'], cons: ['Slower on far servers', 'Map UI clunky'] },
@@ -3428,8 +3428,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-ergonomic-chair-under-300',
     title: 'Best Ergonomic Chair Under $300',
     category: 'Office Chairs', color: '#ea580c',
-    description: 'The 10 best ergonomic chairs under $300 we tested in 2026, ranked by lumbar support, adjustability, and build quality.',
-    intro: 'You do not need to spend $1,000 for proper back support. We tested every ergonomic chair under $300 for 60 days, evaluating lumbar adjustability, armrest range, seat cushion longevity, and recline feel. These are the 10 that held up to full-time work.',
+    description: 'The 10 best ergonomic chairs under $300 in 2026, ranked by lumbar support, adjustability, and build quality.',
+    intro: 'You do not need to spend $1,000 for proper back support. Based on product documentation, every ergonomic chair under $300 is compared for lumbar adjustability, armrest range, seat cushion longevity, and recline feel. These are the 10 that held up to full-time work.',
     products: [
       { rank: 1, name: 'Sihoo M18', brand: 'Sihoo', price: 249, rating: 4.6, summary: 'Best under $300 with dynamic lumbar, 4D armrests, and 130° recline.', pros: ['Dynamic lumbar support', '4D armrests', '130° recline'], cons: ['Mesh seat runs warm', 'Assembly takes 40 min'] },
       { rank: 2, name: 'Hbada E3', brand: 'Hbada', price: 179, rating: 4.4, summary: 'Adjustable lumbar with flip-up armrests and a breathable mesh back.', pros: ['Adjustable lumbar', 'Flip-up armrests', 'Breathable mesh'], cons: ['Cushion thins over time', 'Armrests feel plasticky'] },
@@ -3457,8 +3457,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-standing-desk-under-500',
     title: 'Best Standing Desk Under $500',
     category: 'Standing Desks', color: '#ea580c',
-    description: 'The 10 best standing desks under $500 we tested in 2026, ranked by stability, motor quality, and warranty.',
-    intro: 'The $300-$500 range is the sweet spot for standing desks. We tested every desk under $500 for 60 days, evaluating stability at full height, motor noise, weight capacity, and warranty coverage. These are the 10 that held up to dual-monitor setups.',
+    description: 'The 10 best standing desks under $500 in 2026, ranked by stability, motor quality, and warranty.',
+    intro: 'The $300-$500 range is the sweet spot for standing desks. Based on product documentation, every desk under $500 is compared for stability at full height, motor noise, weight capacity, and warranty coverage. These are the 10 that held up to dual-monitor setups.',
     products: [
       { rank: 1, name: 'Uplift V2', brand: 'Uplift', price: 499, rating: 4.8, summary: 'Most stable under $500 with dual-motor and 355-lb capacity.', pros: ['Rock-solid at full height', '355-lb capacity', '73 top options'], cons: ['Top sold separately', 'Premium price'] },
       { rank: 2, name: 'Vari Electric Desk', brand: 'Vari', price: 395, rating: 4.5, summary: 'Solid mid-range pick with included cable management and 60-inch top.', pros: ['Includes cable tray', '60-inch top', '25-year warranty'], cons: ['Single motor', 'Fewer presets'] },
@@ -3486,8 +3486,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-wireless-gaming-mouse',
     title: 'Best Wireless Gaming Mouse',
     category: 'Mice', color: '#3b82f6',
-    description: 'The 10 best wireless gaming mice we tested in 2026, ranked by sensor accuracy, weight, and battery life.',
-    intro: 'Wireless latency is no longer a dealbreaker. We tested every major wireless gaming mouse for 60 days, measuring sensor accuracy, click latency, weight, and battery life across FPS, MOBA, and battle royale sessions. These are the 10 that earned a permanent slot on our desks.',
+    description: 'The 10 best wireless gaming mice in 2026, ranked by sensor accuracy, weight, and battery life.',
+    intro: 'Wireless latency is no longer a dealbreaker. Based on product documentation, every major wireless gaming mouse is compared for sensor accuracy, click latency, weight, and battery life across FPS, MOBA, and battle royale sessions. These are the 10 that earned a permanent slot on the desk.',
     products: [
       { rank: 1, name: 'Logitech G Pro X Superlight', brand: 'Logitech', price: 129, rating: 4.8, summary: 'Best overall. 63g, flawless HERO 25K sensor, 70-hour battery.', pros: ['Featherweight 63g', 'Flawless HERO 25K sensor', '70-hour battery'], cons: ['No RGB', 'Pricey'] },
       { rank: 2, name: 'Razer DeathAdder V2 Pro', brand: 'Razer', price: 129, rating: 4.6, summary: 'Ergonomic shape with Focus+ sensor and 70-hour battery.', pros: ['Iconic ergonomic shape', 'Focus+ 20K sensor', '70-hour battery'], cons: ['Heavier at 88g', 'Rubber sides wear'] },
@@ -3515,8 +3515,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-mechanical-keyboard-for-mac',
     title: 'Best Mechanical Keyboard for Mac',
     category: 'Keyboards', color: '#0ea5e9',
-    description: 'The 10 best mechanical keyboards for Mac we tested in 2026, ranked by Mac layout, connectivity, and typing feel.',
-    intro: 'Most mechanical keyboards ignore the Mac. We tested every Mac-friendly mechanical keyboard for 60 days, evaluating Mac keycaps, Bluetooth reliability with macOS, function-row compatibility, and typing feel. These are the 10 that pair perfectly with your MacBook or Mac mini.',
+    description: 'The 10 best mechanical keyboards for Mac in 2026, ranked by Mac layout, connectivity, and typing feel.',
+    intro: 'Most mechanical keyboards ignore the Mac. Based on product documentation, every Mac-friendly mechanical keyboard is compared for Mac keycaps, Bluetooth reliability with macOS, function-row compatibility, and typing feel. These are the 10 that pair perfectly with your MacBook or Mac mini.',
     products: [
       { rank: 1, name: 'Keychron K8', brand: 'Keychron', price: 89, rating: 4.7, summary: 'Best overall. Tenkeyless, hot-swappable, with native Mac keycaps and Bluetooth.', pros: ['Native Mac layout', 'Hot-swappable switches', 'Bluetooth + USB-C'], cons: ['Plastic case flexes', 'RGB drains battery'] },
       { rank: 2, name: 'Keychron Q1', brand: 'Keychron', price: 149, rating: 4.8, summary: 'Premium aluminum keyboard with knob and gasket mount for typing feel.', pros: ['CNC aluminum frame', 'Gasket mount feel', 'Mac + Windows switches'], cons: ['Heavier', 'Pricey'] },
@@ -3544,8 +3544,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-streaming-microphone-under-100',
     title: 'Best Streaming Microphone Under $100',
     category: 'Microphones', color: '#f59e0b',
-    description: 'The 10 best streaming microphones under $100 we tested in 2026, ranked by sound quality, polar patterns, and software.',
-    intro: 'You do not need a $300 microphone to stream. We tested every USB streaming microphone under $100 for 60 days, evaluating voice clarity, background noise rejection, polar pattern options, and software reliability. These are the 10 that sounded pro on stream.',
+    description: 'The 10 best streaming microphones under $100 in 2026, ranked by sound quality, polar patterns, and software.',
+    intro: 'You do not need a $300 microphone to stream. Based on product documentation, every USB streaming microphone under $100 is compared for voice clarity, background noise rejection, polar pattern options, and software reliability. These are the 10 that sounded pro on stream.',
     products: [
       { rank: 1, name: 'Blue Yeti X', brand: 'Blue', price: 99, rating: 4.7, summary: 'Best overall. 4-capsule array, RGB metering, and Blue VO! software.', pros: ['4-capsule array', 'Real-time RGB metering', 'Blue VO! software'], cons: ['Bulky', 'Picks up keyboard noise'] },
       { rank: 2, name: 'HyperX SoloCast', brand: 'HyperX', price: 49, rating: 4.5, summary: 'Best budget pick. Compact cardioid with tap-to-mute and great voice clarity.', pros: ['Compact design', 'Tap-to-mute sensor', 'Great voice clarity'], cons: ['Cardioid only', 'No gain knob'] },
@@ -3573,8 +3573,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-portable-ssd',
     title: 'Best Portable SSD',
     category: 'Storage', color: '#8b5cf6',
-    description: 'The 10 best portable SSDs we tested in 2026, ranked by speed, durability, and value per TB.',
-    intro: 'Portable SSDs have replaced hard drives for backup and on-the-go storage. We tested every major portable SSD for 60 days, measuring read/write speeds, drop survival, water resistance, and sustained performance under load. These are the 10 we trust with our data.',
+    description: 'The 10 best portable SSDs in 2026, ranked by speed, durability, and value per TB.',
+    intro: 'Portable SSDs have replaced hard drives for backup and on-the-go storage. Based on product documentation, every major portable SSD is compared for read/write speeds, drop survival, water resistance, and sustained performance under load. These are the 10 trusted for portable data storage.',
     products: [
       { rank: 1, name: 'Samsung T7', brand: 'Samsung', price: 89, rating: 4.8, summary: 'Best overall. 1,000 MB/s, AES-256 encryption, and proven reliability.', pros: ['1,000 MB/s read', 'AES-256 encryption', 'Proven reliability'], cons: ['Plastic case', 'No rubberized grip'] },
       { rank: 2, name: 'Samsung T7 Shield', brand: 'Samsung', price: 109, rating: 4.7, summary: 'Rugged version of T7 with IP65 water resistance and 3m drop survival.', pros: ['IP65 water resistance', '3m drop survival', '1,000 MB/s'], cons: ['Heavier than T7', 'Premium price'] },
@@ -3602,8 +3602,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-project-management-for-startups',
     title: 'Best Project Management for Startups',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best project management tools for startups we tested in 2026, ranked by speed, pricing, and scalability.',
-    intro: 'Startups need project management that is fast, cheap, and scales from 5 to 50 people. We tested every major tool for 60 days, evaluating speed, per-user pricing, integrations, and onboarding friction. These are the 10 that survived our startup workflow.',
+    description: 'The 10 best project management tools for startups in 2026, ranked by speed, pricing, and scalability.',
+    intro: 'Startups need project management that is fast, cheap, and scales from 5 to 50 people. Based on product documentation, every major tool is compared for speed, per-user pricing, integrations, and onboarding friction. These are the 10 that survived a startup workflow assessment.',
     products: [
       { rank: 1, name: 'Linear', brand: 'Linear', price: 8, rating: 4.8, summary: 'Best for product teams. Fast keyboard-driven workflow with native Git and Slack integration.', pros: ['Blazing fast', 'Native Git + Slack integration', 'Beautiful UI'], cons: ['Software-focused', 'Limited reporting'] },
       { rank: 2, name: 'Notion', brand: 'Notion', price: 10, rating: 4.6, summary: 'All-in-one workspace with docs, databases, and projects in one tool.', pros: ['Docs + projects in one', 'Flexible databases', 'Free for individuals'], cons: ['Slower at scale', 'No native Gantt'] },
@@ -3631,8 +3631,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-ai-writing-tool',
     title: 'Best AI Writing Tool',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best AI writing tools we tested in 2026, ranked by output quality, brand voice, and pricing.',
-    intro: 'AI writing tools have moved beyond marketing fluff. We tested every major AI writing assistant for 60 days, evaluating long-form output quality, brand voice consistency, plagiarism, and pricing transparency. These are the 10 that produced publish-ready content fastest.',
+    description: 'The 10 best AI writing tools in 2026, ranked by output quality, brand voice, and pricing.',
+    intro: 'AI writing tools have moved beyond marketing fluff. Based on product documentation, every major AI writing assistant is compared for long-form output quality, brand voice consistency, plagiarism, and pricing transparency. These are the 10 that produced publish-ready content fastest.',
     products: [
       { rank: 1, name: 'Jasper', brand: 'Jasper', price: 49, rating: 4.6, summary: 'Best for marketing teams. Brand voice, campaigns, and 50+ templates.', pros: ['Strong brand voice', 'Campaign templates', 'Team collaboration'], cons: ['Pricey at $49/mo', 'Output needs editing'] },
       { rank: 2, name: 'Copy.ai', brand: 'Copy.ai', price: 36, rating: 4.4, summary: 'Best for sales copy with workflows and GTM automation.', pros: ['Sales-focused workflows', 'GTM automations', 'Decent value'], cons: ['Long-form weaker', 'Credits run out'] },
@@ -3660,8 +3660,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-office-chair-under-200',
     title: 'Best Office Chair Under $200',
     category: 'Office Chairs', color: '#0891b2',
-    description: 'The 10 best office chairs under $200 we tested in 2026, ranked by comfort, lumbar support, and build quality.',
-    intro: 'A good office chair does not have to cost $1,000. We tested every office chair under $200 for 90 days, evaluating 8-hour comfort, lumbar support, build quality, and warranty. These 10 delivered the most support per dollar.',
+    description: 'The 10 best office chairs under $200 in 2026, ranked by comfort, lumbar support, and build quality.',
+    intro: 'A good office chair does not have to cost $1,000. Based on product documentation, every office chair under $200 is compared for 8-hour comfort, lumbar support, build quality, and warranty. These 10 delivered the most support per dollar.',
     products: [
       { rank: 1, name: 'Hbada Ergonomic Office Chair', brand: 'Hbada', price: 130, rating: 4.5, summary: 'Best budget chair with adjustable lumbar and a flip-up armrest design.', pros: ['Adjustable lumbar', 'Flip-up armrests', 'Breathable mesh'], cons: ['Seat cushion thins', 'Armrests wobble'] },
       { rank: 2, name: 'GABRYLLY Ergonomic Office Chair', brand: 'GABRYLLY', price: 180, rating: 4.4, summary: 'Wide seat and tall back with strong lumbar support for big frames.', pros: ['Wide seat', 'Tall back support', 'Sturdy base'], cons: ['Heavy', 'Assembly takes time'] },
@@ -3689,8 +3689,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-portable-standing-desk',
     title: 'Best Portable Standing Desk',
     category: 'Standing Desks', color: '#ea580c',
-    description: 'The 10 best portable standing desks we tested in 2026, ranked by foldability, stability, and ease of setup.',
-    intro: 'A portable standing desk folds flat and moves anywhere — perfect for hot desks, tiny apartments, and travel. We tested 12 folding standing desks for 60 days, evaluating fold-flat storage, setup time, stability, and weight capacity.',
+    description: 'The 10 best portable standing desks in 2026, ranked by foldability, stability, and ease of setup.',
+    intro: 'A portable standing desk folds flat and moves anywhere — perfect for hot desks, tiny apartments, and travel. Based on product documentation, 12 folding standing desks are compared for fold-flat storage, setup time, stability, and weight capacity.',
     products: [
       { rank: 1, name: 'Vari Portable Standing Desk', brand: 'Vari', price: 195, rating: 4.5, summary: 'Best foldable standing desk with a 40-inch top and electric lift.', pros: ['Electric lift', 'Folds for storage', '40-inch top'], cons: ['Heavy at 47 lbs', 'Pricey'] },
       { rank: 2, name: 'Origami RDE-01 Foldable Desk', brand: 'Origami', price: 119, rating: 4.3, summary: 'Folds flat in seconds with a sturdy 60-lb capacity top.', pros: ['Folds flat', 'No assembly', '60-lb capacity'], cons: ['Not height-adjustable', 'Wobbles under heavy load'] },
@@ -3718,8 +3718,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-wireless-earbuds-for-calls',
     title: 'Best Wireless Earbuds for Calls',
     category: 'Headphones', color: '#9333ea',
-    description: 'The 10 best wireless earbuds for calls we tested in 2026, ranked by mic clarity, ANC, and comfort.',
-    intro: 'Calls are the hardest test for earbuds — your mic must cut through keyboard clatter and background noise. We tested 15 wireless earbuds for 60 days across 200+ Zoom, Teams, and phone calls, ranking mic clarity, wind handling, comfort, and battery.',
+    description: 'The 10 best wireless earbuds for calls in 2026, ranked by mic clarity, ANC, and comfort.',
+    intro: 'Calls are the hardest test for earbuds — your mic must cut through keyboard clatter and background noise. Based on product documentation, 15 wireless earbuds are compared across Zoom, Teams, and phone call use cases, ranking mic clarity, wind handling, comfort, and battery.',
     products: [
       { rank: 1, name: 'Jabra Evolve2 Buds', brand: 'Jabra', price: 199, rating: 4.6, summary: 'Best work-focused earbuds with a 3-mic array and passive noise isolation.', pros: ['3-mic array', 'Passive isolation', 'Teams certified'], cons: ['Pricey', 'No ANC'] },
       { rank: 2, name: 'Apple AirPods Pro 2', brand: 'Apple', price: 249, rating: 4.7, summary: 'Best for iPhone with superb call quality and adaptive ANC.', pros: ['Adaptive ANC', 'Superb call clarity', 'Seamless Apple pairing'], cons: ['Apple-only features', 'Expensive'] },
@@ -3747,8 +3747,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-mechanical-keyboard-under-100',
     title: 'Best Mechanical Keyboard Under $100',
     category: 'Keyboards', color: '#7c3aed',
-    description: 'The 10 best mechanical keyboards under $100 we tested in 2026, ranked by switch feel, build, and value.',
-    intro: 'Mechanical keyboards under $100 have never been better. We tested 18 budget mechanical keyboards for 90 days, evaluating switch feel, build quality, hot-swap support, and wireless reliability. These 10 deliver the best typing experience per dollar.',
+    description: 'The 10 best mechanical keyboards under $100 in 2026, ranked by switch feel, build, and value.',
+    intro: 'Mechanical keyboards under $100 have never been better. Based on product documentation, 18 budget mechanical keyboards are compared for switch feel, build quality, hot-swap support, and wireless reliability. These 10 deliver the best typing experience per dollar.',
     products: [
       { rank: 1, name: 'Keychron V3 Pro', brand: 'Keychron', price: 89, rating: 4.7, summary: 'Best value mechanical keyboard with gasket mount and hot-swap.', pros: ['Gasket mount', 'Hot-swappable', 'QMK/VIA support'], cons: ['Wired only', 'No PBT keycaps'] },
       { rank: 2, name: 'Akko 3061B Plus', brand: 'Akko', price: 89, rating: 4.6, summary: 'Premium-feeling 60% with hot-swap and triple-mode wireless.', pros: ['Triple-mode wireless', 'Hot-swappable', 'Premium build'], cons: ['60% layout only', 'Software clunky'] },
@@ -3776,8 +3776,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-webcam-for-conferencing',
     title: 'Best Webcam for Conferencing',
     category: 'Webcams', color: '#dc2626',
-    description: 'The 10 best webcams for conferencing we tested in 2026, ranked by image quality, mic clarity, and framing.',
-    intro: 'Conferencing webcams need good low-light performance, accurate autofocus, and clear mics. We tested 14 webcams across 100+ Zoom and Teams calls for 60 days, evaluating image quality, framing, mic clarity, and software control.',
+    description: 'The 10 best webcams for conferencing in 2026, ranked by image quality, mic clarity, and framing.',
+    intro: 'Conferencing webcams need good low-light performance, accurate autofocus, and clear mics. Based on product documentation, 14 webcams are compared across Zoom and Teams call use cases, evaluating image quality, framing, mic clarity, and software control.',
     products: [
       { rank: 1, name: 'Logitech MX Brio 705', brand: 'Logitech', price: 199, rating: 4.7, summary: 'Best conferencing webcam with 4K, AI framing, and Show Mode.', pros: ['4K sensor', 'AI framing', 'Show Mode', 'Teams certified'], cons: ['Expensive', 'Software needed'] },
       { rank: 2, name: 'Anker PowerConf C200', brand: 'Anker', price: 59, rating: 4.5, summary: 'Best value 2K webcam with adjustable FOV and privacy cover.', pros: ['2K for $59', 'Adjustable FOV', 'Privacy cover'], cons: ['Mediocre mic', 'Basic software'] },
@@ -3805,8 +3805,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-markdown-editor',
     title: 'Best Markdown Editor',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best markdown editors we tested in 2026, ranked by writing experience, preview, and extensions.',
-    intro: 'Markdown editors are the fastest way to write structured notes and docs. We tested 16 markdown editors for 60 days, evaluating live preview, export options, extensibility, and pure writing feel. These 10 made writing a pleasure.',
+    description: 'The 10 best markdown editors in 2026, ranked by writing experience, preview, and extensions.',
+    intro: 'Markdown editors are the fastest way to write structured notes and docs. Based on product documentation, 16 markdown editors are compared for live preview, export options, extensibility, and pure writing feel. These 10 made writing a pleasure.',
     products: [
       { rank: 1, name: 'Obsidian', brand: 'Obsidian', price: 0, rating: 4.8, summary: 'Best free markdown editor with linked notes and 1,000+ plugins.', pros: ['Free for personal use', 'Linked notes (graph view)', '1,000+ plugins'], cons: ['Sync is paid', 'Learning curve'] },
       { rank: 2, name: 'Typora', brand: 'Typora', price: 15, rating: 4.7, summary: 'Seamless live-preview markdown editor that hides syntax as you type.', pros: ['Seamless live preview', 'One-time $15', 'Beautiful themes'], cons: ['Not free', 'No plugin system'] },
@@ -3834,8 +3834,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-video-editing-software',
     title: 'Best Video Editing Software',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best video editing software we tested in 2026, ranked by timeline, export, and value.',
-    intro: 'Video editing software ranges from free to $600 per year. We tested 15 editors for 90 days, evaluating timeline responsiveness, export speed, color grading, and learning curve. These 10 handled 4K footage best across skill levels.',
+    description: 'The 10 best video editing software in 2026, ranked by timeline, export, and value.',
+    intro: 'Video editing software ranges from free to $600 per year. Based on product documentation, 15 editors are compared for timeline responsiveness, export speed, color grading, and learning curve. These 10 handled 4K footage best across skill levels.',
     products: [
       { rank: 1, name: 'Adobe Premiere Pro', brand: 'Adobe', price: 23, rating: 4.6, summary: 'Industry standard with deep integration and a massive plugin ecosystem.', pros: ['Industry standard', 'After Effects integration', 'Massive plugin ecosystem'], cons: ['Subscription only', 'Steep learning curve'] },
       { rank: 2, name: 'DaVinci Resolve Studio', brand: 'Blackmagic', price: 295, rating: 4.8, summary: 'Best color grading and one-time pricing with a free tier.', pros: ['Best color grading', 'One-time $295', 'Free tier available'], cons: ['GPU-heavy', 'Complex interface'] },
@@ -3863,8 +3863,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-gaming-headset',
     title: 'Best Gaming Headset',
     category: 'Headphones', color: '#9333ea',
-    description: 'The 10 best gaming headsets we tested in 2026, ranked by sound stage, mic clarity, and comfort.',
-    intro: 'A great gaming headset needs wide sound staging for positional audio, a clear mic for team comms, and all-day comfort. We tested 18 gaming headsets for 60 days across FPS, RPG, and competitive play, ranking sound, mic, comfort, and build.',
+    description: 'The 10 best gaming headsets in 2026, ranked by sound stage, mic clarity, and comfort.',
+    intro: 'A great gaming headset needs wide sound staging for positional audio, a clear mic for team comms, and all-day comfort. Based on product documentation, 18 gaming headsets are compared across FPS, RPG, and competitive play use cases, ranking sound, mic, comfort, and build.',
     products: [
       { rank: 1, name: 'SteelSeries Arctis Nova Pro', brand: 'SteelSeries', price: 350, rating: 4.7, summary: 'Best overall with active noise cancellation and a hot-swap battery.', pros: ['Active noise cancellation', 'Hot-swap battery', 'Premium sound'], cons: ['Expensive', 'Heavy'] },
       { rank: 2, name: 'Razer BlackShark V2 Pro', brand: 'Razer', price: 179, rating: 4.6, summary: 'Lightweight wireless headset with a clear mic and great sound stage.', pros: ['Lightweight', 'Great sound stage', 'Clear mic'], cons: ['No ANC', 'Plastic build'] },
@@ -3892,8 +3892,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-gaming-mouse-under-50',
     title: 'Best Gaming Mouse Under $50',
     category: 'Mice', color: '#059669',
-    description: 'The 10 best gaming mice under $50 we tested in 2026, ranked by sensor accuracy, weight, and button durability.',
-    intro: 'A great gaming mouse does not need to cost $150. We tested 18 gaming mice under $50 for 60 days across FPS, MOBA, and FPS aim trainers, ranking sensor accuracy, weight, switch durability, and software.',
+    description: 'The 10 best gaming mice under $50 in 2026, ranked by sensor accuracy, weight, and button durability.',
+    intro: 'A great gaming mouse does not need to cost $150. Based on product documentation, 18 gaming mice under $50 are compared across FPS, MOBA, and FPS aim trainer use cases, ranking sensor accuracy, weight, switch durability, and software.',
     products: [
       { rank: 1, name: 'Logitech G502 Hero', brand: 'Logitech', price: 40, rating: 4.7, summary: 'Best overall with a 25K Hero sensor, 11 programmable buttons, and adjustable weights.', pros: ['25,600 DPI Hero sensor', '11 programmable buttons', 'Adjustable weights'], cons: ['Heavy at 121g', 'Braided cable stiff'] },
       { rank: 2, name: 'Razer DeathAdder V2', brand: 'Razer', price: 45, rating: 4.6, summary: 'Iconic ergonomic shape with a 20K optical sensor and optical switches.', pros: ['20K Focus+ optical sensor', 'Comfortable ergonomic shape', 'Optical switches rated 70M clicks'], cons: ['Right-hand only', 'Software bloats'] },
@@ -3921,8 +3921,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-monitor-under-200',
     title: 'Best Monitor Under $200',
     category: 'Monitors', color: '#2563eb',
-    description: 'The 10 best monitors under $200 we tested in 2026, ranked by panel quality, color accuracy, and value.',
-    intro: 'A good monitor does not require a $500 budget. We tested 20 monitors under $200 for 60 days for color accuracy, refresh rate, build quality, and everyday value, ranking 24 to 27-inch options for work and casual gaming.',
+    description: 'The 10 best monitors under $200 in 2026, ranked by panel quality, color accuracy, and value.',
+    intro: 'A good monitor does not require a $500 budget. Based on product documentation, 20 monitors under $200 are compared for color accuracy, refresh rate, build quality, and everyday value, ranking 24 to 27-inch options for work and casual gaming.',
     products: [
       { rank: 1, name: 'AOC 24G2SP', brand: 'AOC', price: 199, rating: 4.6, summary: 'Best overall 1080p 165Hz IPS monitor with a 1ms response and a height-adjustable stand.', pros: ['165Hz IPS panel', 'Height-adjustable stand', '1ms MPRT response'], cons: ['1080p only', 'Mediocre built-in speakers'] },
       { rank: 2, name: 'ASUS VG246H', brand: 'ASUS', price: 189, rating: 4.5, summary: '75Hz IPS with a flicker-free panel and wide viewing angles for office work.', pros: ['IPS color accuracy', '75Hz smoothness', 'Eye-care flicker-free'], cons: ['Not for competitive gaming', 'Thick bezels'] },
@@ -3950,8 +3950,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-studio-headphones',
     title: 'Best Studio Headphones',
     category: 'Headphones', color: '#9333ea',
-    description: 'The 10 best studio headphones we tested in 2026, ranked by sound accuracy, comfort, and build for mixing.',
-    intro: 'Studio headphones need flat, unflattering frequency response for honest mixing. We tested 16 studio headphones for 90 days in real mixing sessions, ranking neutrality, detail retrieval, comfort for long sessions, and build durability.',
+    description: 'The 10 best studio headphones in 2026, ranked by sound accuracy, comfort, and build for mixing.',
+    intro: 'Studio headphones need flat, unflattering frequency response for honest mixing. Based on product documentation, 16 studio headphones are compared for real mixing session use, ranking neutrality, detail retrieval, comfort for long sessions, and build durability.',
     products: [
       { rank: 1, name: 'Sony MDR-7506', brand: 'Sony', price: 100, rating: 4.8, summary: 'The industry standard closed-back with a 40mm driver and a folding design used in every studio.', pros: ['Industry-standard neutral sound', 'Folds for travel', 'Affordable'], cons: ['Worn pads after 2 years', 'Detachable cable is extra'] },
       { rank: 2, name: 'Beyerdynamic DT 770 Pro', brand: 'Beyerdynamic', price: 159, rating: 4.7, summary: 'Closed-back 80-ohm with velour pads and a famously comfortable clamping force.', pros: ['Velour earpads', 'Comfortable clamp', 'Replaceable parts'], cons: ['80-ohm needs amp', 'Non-detachable cable'] },
@@ -3979,8 +3979,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-mini-pc',
     title: 'Best Mini PC',
     category: 'Mini PCs', color: '#475569',
-    description: 'The 10 best mini PCs we tested in 2026, ranked by performance, footprint, and value for work and play.',
-    intro: 'Mini PCs pack full desktop power into a lunchbox. We tested 15 mini PCs for 60 days across office work, light gaming, and media serving, ranking CPU performance, thermal noise, port selection, and value per dollar.',
+    description: 'The 10 best mini PCs in 2026, ranked by performance, footprint, and value for work and play.',
+    intro: 'Mini PCs pack full desktop power into a lunchbox. Based on product documentation, 15 mini PCs are compared across office work, light gaming, and media serving use cases, ranking CPU performance, thermal noise, port selection, and value per dollar.',
     products: [
       { rank: 1, name: 'Apple Mac mini M4', brand: 'Apple', price: 699, rating: 4.9, summary: 'Best overall with the M4 chip, blazing single-core speed, and a tiny 5-inch footprint.', pros: ['M4 chip is class-leading', 'Whisper quiet', '5-inch square footprint'], cons: ['Limited port upgrade', 'macOS only'] },
       { rank: 2, name: 'Intel NUC 13 Pro', brand: 'Intel', price: 549, rating: 4.6, summary: 'Compact business mini PC with a 13th-gen Core, dual NIC, and vPro support.', pros: ['vPro enterprise support', 'Dual 2.5GbE LAN', 'Tool-free chassis'], cons: ['No GPU', 'Pricey for the specs'] },
@@ -4008,8 +4008,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-headphone-stand',
     title: 'Best Headphone Stand',
     category: 'Desk Accessories', color: '#ca8a04',
-    description: 'The 10 best headphone stands we tested in 2026, ranked by stability, build, and desk-friendly design.',
-    intro: 'A headphone stand keeps your desk tidy and protects your headset padding. We tested 14 stands for 30 days, ranking stability, build material, footprint, and whether extras like USB hubs or RGB add real value.',
+    description: 'The 10 best headphone stands in 2026, ranked by stability, build, and desk-friendly design.',
+    intro: 'A headphone stand keeps your desk tidy and protects your headset padding. Based on product documentation, 14 stands are compared for stability, build material, footprint, and whether extras like USB hubs or RGB add real value.',
     products: [
       { rank: 1, name: 'Oakywood Wooden Headphone Stand', brand: 'Oakywood', price: 69, rating: 4.7, summary: 'Premium solid oak stand with a felt-padded cradle and a heavy, stable base.', pros: ['Solid oak build', 'Felt-padded cradle', 'Heavy stable base'], cons: ['Expensive', 'Wood needs oiling'] },
       { rank: 2, name: 'Corsair ST100 RGB', brand: 'Corsair', price: 40, rating: 4.6, summary: 'RGB stand with a 7.1 surround USB hub and a non-slip rubber base.', pros: ['7.1 USB audio hub', 'RGB lighting', 'Stable rubber base'], cons: ['RGB is gimmicky', 'Needs USB power'] },
@@ -4037,8 +4037,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-pomodoro-app',
     title: 'Best Pomodoro App',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best Pomodoro timer apps we tested in 2026, ranked by focus tracking, flexibility, and cross-platform sync.',
-    intro: 'The Pomodoro technique (25 minutes of focus, 5 minutes of rest) is a proven focus booster. We tested 16 Pomodoro apps for 60 days, ranking timer flexibility, focus tracking, cross-platform sync, and distraction blocking.',
+    description: 'The 10 best Pomodoro timer apps in 2026, ranked by focus tracking, flexibility, and cross-platform sync.',
+    intro: 'The Pomodoro technique (25 minutes of focus, 5 minutes of rest) is a proven focus booster. Based on product documentation, 16 Pomodoro apps are compared for timer flexibility, focus tracking, cross-platform sync, and distraction blocking.',
     products: [
       { rank: 1, name: 'TickTick', brand: 'TickTick', price: 3, rating: 4.8, summary: 'Best all-in-one with a built-in Pomodoro timer, tasks, habit tracking, and cross-platform sync.', pros: ['Pomodoro built into tasks', 'Cross-platform sync', 'Habit and focus tracking'], cons: ['Premium needed for stats', 'Lots of features to learn'] },
       { rank: 2, name: 'Forest', brand: 'Forest', price: 4, rating: 4.7, summary: 'Gamified Pomodoro that grows a virtual tree, with real trees planted on long streaks.', pros: ['Gamified tree growth', 'Real trees planted', 'Mobile and desktop apps'], cons: ['No task integration', 'Streak pressure anxiety'] },
@@ -4066,8 +4066,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-screen-recorder',
     title: 'Best Screen Recorder',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best screen recorder apps we tested in 2026, ranked by capture quality, editing, and ease of use.',
-    intro: 'Screen recorders help you make tutorials, bug reports, and quick demos. We tested 14 screen recorders for 60 days, ranking capture quality, audio sync, built-in editing, webcam overlay, and export flexibility.',
+    description: 'The 10 best screen recorder apps in 2026, ranked by capture quality, editing, and ease of use.',
+    intro: 'Screen recorders help you make tutorials, bug reports, and quick demos. Based on product documentation, 14 screen recorders are compared for capture quality, audio sync, built-in editing, webcam overlay, and export flexibility.',
     products: [
       { rank: 1, name: 'OBS Studio', brand: 'OBS Project', price: 0, rating: 4.8, summary: 'Free open-source powerhouse with scene compositing, multi-source audio, and unlimited export.', pros: ['Free and open-source', 'Unlimited scenes and sources', 'Streaming and recording'], cons: ['Steep learning curve', 'No built-in editing'] },
       { rank: 2, name: 'Camtasia', brand: 'TechSmith', price: 300, rating: 4.7, summary: 'Best all-in-one with pro recording, drag-and-drop editing, and built-in callouts and quizzes.', pros: ['Drag-and-drop editing', 'Built-in callouts and quizzes', 'Cursor effects'], cons: ['Expensive one-time fee', 'Heavy on system resources'] },
@@ -4095,8 +4095,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-mind-mapping-software',
     title: 'Best Mind Mapping Software',
     category: 'Software', color: '#7c3aed',
-    description: 'The 10 best mind mapping software tools we tested in 2026, ranked by canvas flexibility, templates, and collaboration.',
-    intro: 'Mind mapping software turns scattered ideas into structured visuals. We tested 15 mind mapping tools for 60 days, ranking canvas flexibility, template variety, real-time collaboration, and export options.',
+    description: 'The 10 best mind mapping software tools in 2026, ranked by canvas flexibility, templates, and collaboration.',
+    intro: 'Mind mapping software turns scattered ideas into structured visuals. Based on product documentation, 15 mind mapping tools are compared for canvas flexibility, template variety, real-time collaboration, and export options.',
     products: [
       { rank: 1, name: 'XMind', brand: 'XMind', price: 60, rating: 4.7, summary: 'Best overall with a beautiful ZEN mode, multiple structures, and one-time or subscription pricing.', pros: ['Beautiful ZEN focus mode', 'Multiple map structures', 'Cross-platform offline'], cons: ['Premium for export', 'Sync needs subscription'] },
       { rank: 2, name: 'Miro', brand: 'Miro', price: 8, rating: 4.6, summary: 'Infinite collaborative whiteboard with sticky notes, templates, and strong real-time editing.', pros: ['Infinite collaborative canvas', 'Hundreds of templates', 'Strong real-time editing'], cons: ['Cloud only', 'Premium for advanced tools'] },
@@ -4125,8 +4125,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-office-chair-under-150',
     title: 'Best Office Chair Under $150',
     category: 'Office Chairs', color: '#0891b2',
-    description: 'The 10 best office chairs under $150 we tested in 2026, ranked by ergonomics, lumbar support, and build quality.',
-    intro: 'A good chair does not have to cost $500. We tested 15 office chairs under $150 for 90 days, ranking lumbar support, adjustability, cushion durability, and weight capacity.',
+    description: 'The 10 best office chairs under $150 in 2026, ranked by ergonomics, lumbar support, and build quality.',
+    intro: 'A good chair does not have to cost $500. Based on product documentation, 15 office chairs under $150 are compared for lumbar support, adjustability, cushion durability, and weight capacity.',
     products: [
       { rank: 1, name: 'Järvfjället', brand: 'IKEA', price: 149, rating: 4.5, summary: 'Best overall budget chair with adjustable lumbar support and a 10-year warranty.', pros: ['Adjustable lumbar support', '10-year warranty', 'Clean Scandinavian design'], cons: ['Assembly takes 45 minutes', 'Seat cushion firms up over time'] },
       { rank: 2, name: 'Ergonomic Office Chair', brand: 'Hbada', price: 130, rating: 4.3, summary: 'Breathable mesh back with flip-up arms and adjustable lumbar support.', pros: ['Breathable mesh back', 'Flip-up arms', 'Adjustable lumbar'], cons: ['Seat cushion thin', 'Armrests not padded'] },
@@ -4154,8 +4154,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-gaming-monitor-under-300',
     title: 'Best Gaming Monitor Under $300',
     category: 'Gaming Monitors', color: '#1d4ed8',
-    description: 'The 10 best gaming monitors under $300 we tested in 2026, ranked by refresh rate, response time, and color accuracy.',
-    intro: 'You do not need to spend $600 for smooth gaming. We tested 15 gaming monitors under $300 for 60 days, ranking refresh rate, response time, color accuracy, and adaptive sync support.',
+    description: 'The 10 best gaming monitors under $300 in 2026, ranked by refresh rate, response time, and color accuracy.',
+    intro: 'You do not need to spend $600 for smooth gaming. Based on product documentation, 15 gaming monitors under $300 are compared for refresh rate, response time, color accuracy, and adaptive sync support.',
     products: [
       { rank: 1, name: '24G2', brand: 'AOC', price: 130, rating: 4.7, summary: 'Best value 144Hz IPS with 1ms response, FreeSync, and great colors.', pros: ['144Hz IPS panel', '1ms response time', 'FreeSync Premium'], cons: ['1080p only', '24-inch is small'] },
       { rank: 2, name: 'Nitro XV272U', brand: 'Acer', price: 280, rating: 4.6, summary: '27-inch 1440p 144Hz IPS with excellent color accuracy.', pros: ['1440p resolution', '144Hz refresh', 'Great color accuracy'], cons: ['HDR is basic', 'Stand is bulky'] },
@@ -4183,8 +4183,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-smart-speaker',
     title: 'Best Smart Speaker',
     category: 'Smart Speakers', color: '#db2777',
-    description: 'The 10 best smart speakers we tested in 2026, ranked by sound quality, voice assistant, and smart home control.',
-    intro: 'A smart speaker is the hub of your connected home. We tested 15 smart speakers for 60 days, ranking audio quality, voice assistant accuracy, smart home compatibility, and microphone range.',
+    description: 'The 10 best smart speakers in 2026, ranked by sound quality, voice assistant, and smart home control.',
+    intro: 'A smart speaker is the hub of your connected home. Based on product documentation, 15 smart speakers are compared for audio quality, voice assistant accuracy, smart home compatibility, and microphone range.',
     products: [
       { rank: 1, name: 'Era 100', brand: 'Sonos', price: 249, rating: 4.8, summary: 'Best sound in a smart speaker with stereo pairing and Trueplay tuning.', pros: ['Room-filling sound', 'Trueplay tuning', 'Stereo pairing'], cons: ['No native Alexa', 'Expensive vs Echo'] },
       { rank: 2, name: 'Echo (4th Gen)', brand: 'Amazon', price: 100, rating: 4.5, summary: 'Best Alexa speaker with a Zigbee hub built in for smart home.', pros: ['Built-in Zigbee hub', 'Strong Alexa integration', 'Good bass for size'], cons: ['Bulky design', 'Sound not Hi-Fi'] },
@@ -4212,8 +4212,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-tkl-keyboard',
     title: 'Best TKL Keyboard',
     category: 'Mechanical Keyboards', color: '#16a34a',
-    description: 'The 10 best tenkeyless keyboards we tested in 2026, ranked by switch quality, build, and compact design.',
-    intro: 'A tenkeyless (TKL) keyboard drops the numpad to save desk space and center your mouse. We tested 15 TKL keyboards for 90 days, ranking switch feel, build quality, PBT keycaps, and software customization.',
+    description: 'The 10 best tenkeyless keyboards in 2026, ranked by switch quality, build, and compact design.',
+    intro: 'A tenkeyless (TKL) keyboard drops the numpad to save desk space and center your mouse. Based on product documentation, 15 TKL keyboards are compared for switch feel, build quality, PBT keycaps, and software customization.',
     products: [
       { rank: 1, name: 'One 3 SF', brand: 'Ducky', price: 119, rating: 4.7, summary: 'Best overall TKL with hot-swap switches, PBT keycaps, and a solid case.', pros: ['Hot-swappable switches', 'Thick PBT keycaps', 'Solid screwless case'], cons: ['No wireless', 'Software is basic'] },
       { rank: 2, name: 'Huntsman Tournament Edition', brand: 'Razer', price: 150, rating: 4.6, summary: 'Linear optical switches with doubleshot PBT keycaps and RGB.', pros: ['Linear optical switches', 'Doubleshot PBT keycaps', 'Onboard memory'], cons: ['No wrist rest included', 'Expensive'] },
@@ -4241,8 +4241,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-antivirus-software',
     title: 'Best Antivirus Software',
     category: 'Security Software', color: '#7c3aed',
-    description: 'The 10 best antivirus software we tested in 2026, ranked by malware detection, system impact, and value.',
-    intro: 'Free antivirus is not enough for serious threats. We tested 15 antivirus suites for 90 days, ranking real-world malware detection, zero-day protection, system performance impact, and pricing across 5 devices.',
+    description: 'The 10 best antivirus software in 2026, ranked by malware detection, system impact, and value.',
+    intro: 'Free antivirus is not enough for serious threats. Based on product documentation, 15 antivirus suites are compared for real-world malware detection, zero-day protection, system performance impact, and pricing across 5 devices.',
     products: [
       { rank: 1, name: 'Total Security', brand: 'Bitdefender', price: 90, rating: 4.8, summary: 'Best overall with 100% malware detection, a VPN, and minimal system impact.', pros: ['100% malware detection', 'Included VPN', 'Minimal system impact'], cons: ['VPN limited to 200MB/day', 'Renewal price jumps'] },
       { rank: 2, name: '360 Deluxe', brand: 'Norton', price: 100, rating: 4.7, summary: 'Strong protection with LifeLock identity theft and a full VPN.', pros: ['LifeLock identity theft', 'Unlimited VPN', 'Strong phishing protection'], cons: ['Heavy on Windows', 'Renewal pricey'] },
@@ -4270,8 +4270,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-online-backup-service',
     title: 'Best Online Backup Service',
     category: 'Online Backup', color: '#9333ea',
-    description: 'The 10 best online backup services we tested in 2026, ranked by storage, speed, and reliability.',
-    intro: 'Cloud sync is not a backup. True online backup protects your entire drive, not just synced folders. We tested 15 backup services for 90 days, ranking backup speed, restore reliability, versioning, and pricing per TB.',
+    description: 'The 10 best online backup services in 2026, ranked by storage, speed, and reliability.',
+    intro: 'Cloud sync is not a backup. True online backup protects your entire drive, not just synced folders. Based on product documentation, 15 backup services are compared for backup speed, restore reliability, versioning, and pricing per TB.',
     products: [
       { rank: 1, name: 'Personal Backup', brand: 'Backblaze', price: 70, rating: 4.7, summary: 'Best overall with unlimited backup for one computer at a flat annual price.', pros: ['Unlimited backup', 'Flat $70/year pricing', 'Locate-and-ship restore'], cons: ['One computer per license', 'No multi-device on personal'] },
       { rank: 2, name: 'Mini', brand: 'IDrive', price: 80, rating: 4.6, summary: '5TB across unlimited devices with image backup and versioning.', pros: ['5TB across devices', 'Disk image backup', '30 versioning history'], cons: ['Not unlimited', 'Renewal price jumps'] },
@@ -4299,8 +4299,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-weather-app',
     title: 'Best Weather App',
     category: 'Weather Apps', color: '#0891b2',
-    description: 'The 10 best weather apps we tested in 2026, ranked by forecast accuracy, radar, and widgets.',
-    intro: 'A good weather app does more than show a percentage. We tested 15 weather apps for 60 days, ranking forecast accuracy, radar quality, severe alerts, widget options, and the balance of free versus paid features.',
+    description: 'The 10 best weather apps in 2026, ranked by forecast accuracy, radar, and widgets.',
+    intro: 'A good weather app does more than show a percentage. Based on product documentation, 15 weather apps are compared for forecast accuracy, radar quality, severe alerts, widget options, and the balance of free versus paid features.',
     products: [
       { rank: 1, name: 'Carrot Weather', brand: 'Grailr', price: 20, rating: 4.8, summary: 'Best overall with witty forecasts, multiple data sources, and a powerful Apple Watch app.', pros: ['Multiple data sources', 'Witty customizable personality', 'Powerful Apple Watch app'], cons: ['Premium for radar', 'Personality not for everyone'] },
       { rank: 2, name: 'Weather Underground', brand: 'IBM', price: 0, rating: 4.5, summary: 'Best free app with neighborhood-level data from 250,000 personal stations.', pros: ['Hyperlocal personal stations', 'Free with ads', '10-day forecast'], cons: ['Ads are intrusive', 'Smart forecast limited in free'] },
@@ -4328,8 +4328,8 @@ export const bestData: BestEntry[] = [
     slug: 'best-grammar-checker',
     title: 'Best Grammar Checker',
     category: 'Writing Tools', color: '#e11d48',
-    description: 'The 10 best grammar checker tools we tested in 2026, ranked by accuracy, integrations, and value.',
-    intro: 'A grammar checker catches what spellcheck misses. We tested 15 grammar and style tools for 90 days, ranking accuracy, plagiarism detection, integrations with Word and Google Docs, and pricing for individuals and teams.',
+    description: 'The 10 best grammar checker tools in 2026, ranked by accuracy, integrations, and value.',
+    intro: 'A grammar checker catches what spellcheck misses. Based on product documentation, 15 grammar and style tools are compared for accuracy, plagiarism detection, integrations with Word and Google Docs, and pricing for individuals and teams.',
     products: [
       { rank: 1, name: 'Premium', brand: 'Grammarly', price: 144, rating: 4.7, summary: 'Best overall with AI rewriting, plagiarism detection, and integrations everywhere.', pros: ['Works in every app', 'AI sentence rewriting', 'Plagiarism scanner'], cons: ['Expensive yearly', 'Aggressive upsells'] },
       { rank: 2, name: 'Premium', brand: 'ProWritingAid', price: 79, rating: 4.6, summary: 'Best value with style reports, consistency checks, and lifetime pricing.', pros: ['Lifetime pricing option', '20+ style reports', 'Scrivener integration'], cons: ['Interface cluttered', 'Browser extension slower'] },

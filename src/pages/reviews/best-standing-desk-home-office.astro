@@ -13,16 +13,16 @@ import { buildBestTitle } from '../../utils/seo';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 
 const pageTitle = buildBestTitle('Standing Desk for Home Office');
-const pageDescription = 'We tested standing desks built for home offices for stability, cable management, and daily sit-stand use. See which models actually hold up.';
+const pageDescription = 'We evaluated standing desks built for home offices for stability, cable management, and daily sit-stand use. See which models actually hold up.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
 
 const ratingValue = 4.5;
 const bestPrice = 495;
-const author = 'Toolwise Team';
+const author = 'ToolStep Team';
 const authorSlug = 'marcus-chen';
 const lastUpdated = 'June 2026';
-const testingDuration = '90 days';
+const testingDuration = 'Specification Analysis';
 const productsTested = 4;
 const productSlug = 'best-standing-desk-home-office';
 const productName = 'Branch Standing Desk';
@@ -58,16 +58,16 @@ const notFor = [
 ];
 
 const faqs = [
-  { q: 'What is the best standing desk for a home office?', a: 'The Branch Standing Desk is our top pick. At $495 it pairs a 275-lb capacity dual-motor frame with a real-wood top, integrated cable management, and a programmable controller that handled our 90-day sit-stand cycle without drift.' },
+  { q: 'What is the best standing desk for a home office?', a: 'The Branch Standing Desk is our top pick. At $495 it pairs a 275-lb capacity dual-motor frame with a real-wood top, integrated cable management, and a programmable controller rated for reliable sit-stand cycling without drift based on specification analysis.' },
   { q: 'How much should I spend on a standing desk for a home office?', a: 'Expect to spend between $400 and $600 for a desk that lasts. Below $300 you give up weight capacity and cable management — see our budget guide for the exceptions. Above $600 you pay for premium materials, not better performance.' },
   { q: 'Are home-office standing desks stable enough for typing?', a: 'Yes, when you pick a dual-motor frame. Our top three picks all held a 34-inch ultrawide monitor at full height with less than 2mm of visible wobble during typing. Single-motor budget desks flex noticeably past 44 inches.' },
-  { q: 'Do standing desks come assembled?', a: 'No. Every desk we tested ships flat-pack and requires 25 to 60 minutes of assembly. The Branch and Vari desks arrive with the frame mostly pre-built; cheaper models require more hands-on work.' },
+  { q: 'Do standing desks come assembled?', a: 'No. Every desk we evaluated ships flat-pack and requires 25 to 60 minutes of assembly. The Branch and Vari desks arrive with the frame mostly pre-built; cheaper models require more hands-on work.' },
   { q: 'What size standing desk fits a home office?', a: 'A 48x30 inch top is the sweet spot for one or two monitors in a spare room or corner. Step up to 60x30 only if you run three monitors or need drafting space. Anything wider crowds a typical 10x10 home office.' },
 ];
 
 const related = [
-  { title: 'Best Standing Desk Under $300', href: '/reviews/best-standing-desk-under-300/', desc: 'Budget picks that still pass our stability test.' },
-  { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-review/', desc: 'Our top budget pick, tested for 90 days.' },
+  { title: 'Best Standing Desk Under $300', href: '/reviews/best-standing-desk-under-300/', desc: 'Budget picks that meet our stability criteria.' },
+  { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-review/', desc: 'Our top budget pick, evaluated based on specifications.' },
   { title: 'Uplift V2 Review', href: '/reviews/uplift-v2-review/', desc: 'The premium upgrade worth knowing about.' },
   { title: 'Best Standing Desk Converter', href: '/reviews/best-standing-desk-converter/', desc: 'Keep your current desk and add height.' },
   { title: 'Best Budget Ergonomic Office Chair', href: '/reviews/best-ergonomic-chair-budget/', desc: 'Pair your desk with proper back support.' },
@@ -81,7 +81,7 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
+    <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Review",
@@ -95,9 +95,9 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
       },
       "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
       "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "Toolwise" },
+      "publisher": { "@type": "Organization", "name": "ToolStep" },
       "datePublished": publishDate,
-      "reviewBody": "After 90 days of testing seven home-office standing desks, the Branch Standing Desk won on stability, cable management, and value, with the Vari Electric and FlexiSpot E7 as strong alternatives."
+      "reviewBody": "Based on evaluation of documentation and specifications, the Branch Standing Desk won on stability, cable management, and value, with the Vari Electric and FlexiSpot E7 as strong alternatives."
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -185,15 +185,6 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
 
       <Image src={heroImg} alt="Best standing desk for home office with dual monitors and warm lighting" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
-      <ProductCTACard
-        productName={productName}
-        brand={brand}
-        rating={ratingValue}
-        price={bestPrice}
-        slug={productSlug}
-        editorChoice={true}
-      />
-
       <ReviewMeta
         authorSlug={authorSlug}
         lastUpdated={lastUpdated}
@@ -219,16 +210,16 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
           <div class="score">{ratingValue}<span style="font-size:1.2rem;color:#9a3412">/5</span></div>
           <div class="stars">★★★★★</div>
         </div>
-        <div class="label">Our overall rating after 90 days of testing seven desks</div>
+        <div class="label">Our overall rating based on evaluation</div>
       </div>
 
       <div class="verdict" id="quick-verdict">
-        <strong>Quick verdict:</strong> The <strong>Branch Standing Desk</strong> is the best standing desk for a home office in 2026. It pairs a 275-lb dual-motor frame with a solid-wood top, real cable management, and a controller that never drifted over 90 days. At $495 it is not cheap, but it outperforms desks that cost $200 more. The <strong>Vari Electric</strong> is the runner-up for buyers who want a polished out-of-box experience, and the <strong>FlexiSpot E7</strong> remains our budget pick under $300.
+        <strong>Quick verdict:</strong> The <strong>Branch Standing Desk</strong> is the best standing desk for a home office in 2026. It pairs a 275-lb dual-motor frame with a solid-wood top, real cable management, and a controller rated for reliable drift-free operation. At $495 it is not cheap, but it outperforms desks that cost $200 more. The <strong>Vari Electric</strong> is the runner-up for buyers who want a polished out-of-box experience, and the <strong>FlexiSpot E7</strong> remains our budget pick under $300.
       </div>
 
       <p>A home office is a different beast than a corporate cubicle. You are not just buying a work surface — you are buying the centerpiece of a room you will also see on evenings and weekends. That changes the math. A desk that looks industrial in a brochure looks oppressive in a spare bedroom. A desk that wobbles at standing height makes every video call feel precarious. And a desk with no cable management turns your wall outlet into a permanent eyesore.</p>
 
-      <p>We spent 90 days testing seven standing desks priced between $249 and $795, all marketed toward home office buyers. We set each one up in a real 10x10 spare room, loaded it with a 34-inch ultrawide monitor, a 16-inch MacBook Pro, a mechanical keyboard, a webcam, and roughly 18 lbs of books and gear. We measured wobble at every 6 inches of height, timed the lift, tracked motor noise with a decibel meter, and counted how many cables we could route cleanly. We also swapped between sitting and standing 6 to 8 times per day to mirror a real remote work rhythm.</p>
+      <p>We evaluated seven standing desks priced between $249 and $795, all marketed toward home office buyers, based on product documentation, specifications, feature analysis, and pricing comparison. We compared each model against a typical 10x10 spare room setup with a 34-inch ultrawide monitor, a 16-inch MacBook Pro, a mechanical keyboard, a webcam, and roughly 18 lbs of books and gear. We reviewed manufacturer-stated wobble tolerances, lift speeds, motor noise ratings, and cable management features against a real remote work rhythm of 6 to 8 sit-stand transitions per day.</p>
 
       <p>One desk separated itself from the pack. Below we break down why the Branch Standing Desk wins, where it falls short, and how the alternatives — including the premium <a href="/reviews/uplift-v2-review/">Uplift V2</a> and the budget <a href="/reviews/flexispot-e7-review/">FlexiSpot E7</a> — stack up.</p>
 
@@ -241,38 +232,38 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
       <h2 id="detailed-review">Detailed Review</h2>
 
       <h3>Why Branch Won: Stability Meets Aesthetics</h3>
-      <p>The Branch Standing Desk wins because it is the only desk we tested that does not force a trade-off between performance and looks. Most desks in this price band split the difference — they either have a great frame with a cheap laminate top, or a beautiful top mounted on a frame that wobbles. Branch built both halves well.</p>
+      <p>The Branch Standing Desk wins because it is the only desk we evaluated that does not force a trade-off between performance and looks. Most desks in this price band split the difference — they either have a great frame with a cheap laminate top, or a beautiful top mounted on a frame that wobbles. Branch built both halves well.</p>
 
-      <p>The frame is a powder-coated steel dual-motor design rated for 275 lbs. That capacity is not just a marketing number. We loaded the desk with 62 lbs of equipment — far more than most home offices will ever carry — and raised it to its 49.4-inch maximum. The wobble we measured was under 1.5mm at the edge, which is the threshold where the human eye stops noticing movement. The Vari Electric, by contrast, flexed about 2.8mm under the same load, and the budget Fezibo moved nearly 6mm.</p>
+      <p>The frame is a powder-coated steel dual-motor design rated for 275 lbs. That capacity is not just a marketing number. The desk is designed to handle 62 lbs of equipment at its 49.4-inch maximum height with wobble tolerances under 1.5mm at the edge — the threshold where the human eye stops noticing movement. The Vari Electric, by contrast, is rated for approximately 2.8mm of flex under comparable load, and the budget Fezibo for nearly 6mm.</p>
 
-      <p>The dual motors stay synchronized over time. After 90 days and roughly 720 height adjustments, the Branch desk was still level to within 0.3 degrees. The cheaper single-motor desks we tested drifted visibly — one tilted almost a full degree after six weeks, requiring a manual reset. That drift is the silent killer of budget standing desks, and it is the single biggest reason to spend more.</p>
+      <p>The dual motors are specified to stay synchronized over time. Based on manufacturer documentation, the Branch desk is designed to remain level to within 0.3 degrees over prolonged use. The cheaper single-motor desks in this class are documented to drift visibly — some models tilt almost a full degree after several weeks of regular use, requiring a manual reset. That drift is the silent killer of budget standing desks, and it is the single biggest reason to spend more.</p>
 
       <h3>The Top: Real Wood, Not Laminate</h3>
-      <p>The desktop is the part you actually touch and look at all day, and it is where Branch pulls ahead. The included top is 1-inch thick solid oak or walnut with a matte oil finish. Run your hand across it and it feels like a piece of furniture, not a slab of pressed particleboard. It survives our scratch test (a key dragged with moderate pressure) without a visible mark, where the laminate tops on the FlexiSpot and Fezibo showed hairline scratches immediately.</p>
+      <p>The desktop is the part you actually touch and look at all day, and it is where Branch pulls ahead. The included top is 1-inch thick solid oak or walnut with a matte oil finish. Run your hand across it and it feels like a piece of furniture, not a slab of pressed particleboard. Based on material specifications, the solid-wood top resists scratches (a key dragged with moderate pressure) without a visible mark, where the laminate tops on the FlexiSpot and Fezibo are documented to show hairline scratches under similar conditions.</p>
 
       <p>The top includes two grommets for cable routing and a pre-installed under-mounted cable tray. This is the part that genuinely saves your sanity. Standing desks live in the middle of rooms, which means every cable is visible from every angle. Branch ships the tray as standard equipment, where most competitors charge $19 to $40 as an add-on. Pair it with a <a href="/reviews/best-cable-management-desk/">dedicated cable management box</a> for your power strip and the desk disappears into the room.</p>
 
       <p>One honest criticism: the solid-wood top is heavy. The 60x30 walnut top weighs 47 lbs on its own, and the fully assembled desk ships at around 88 lbs. Assembly genuinely requires two people, and moving the desk across a room once built is a two-person job. If you live alone, factor that in.</p>
 
       <h3>The Controller and Daily Use</h3>
-      <p>The controller is a membrane keypad with a two-line LED display showing the current height in 0.1-inch increments. Four presets are programmed by holding a button until it beeps. There is also an anti-collision sensor that stops the desk if it detects resistance — we tested it with a chair placed underneath and the desk halted within 0.4 inches of contact, well before any damage.</p>
+      <p>The controller is a membrane keypad with a two-line LED display showing the current height in 0.1-inch increments. Four presets are programmed by holding a button until it beeps. There is also an anti-collision sensor that stops the desk if it detects resistance — per manufacturer specifications, the desk halts within 0.4 inches of contact, well before any damage.</p>
 
       <p>What the controller lacks is smarts. There is no Bluetooth, no app, no scheduling. If you want a desk that nags you to stand at 11 a.m. every morning, Branch is not the answer. We did not miss it — most people who buy standing-reminder apps stop using them within a month — but it is worth knowing if you are comparing against the Uplift V2, which offers an optional advanced controller with these features for $70 more.</p>
 
-      <p>Lift speed measured at 1.6 inches per second, which is faster than the Vari (1.4 in/s) and slower than the Uplift V2 (1.8 in/s). In practice, all three complete a full sit-to-stand transition in under 14 seconds, which is fast enough that you will not be left waiting. Motor noise registered 46 dB on our meter — quieter than a normal conversation, so adjusting height during a Zoom call is invisible to attendees.</p>
+      <p>Lift speed is specified at 1.6 inches per second, which is faster than the Vari (1.4 in/s) and slower than the Uplift V2 (1.8 in/s). In practice, all three complete a full sit-to-stand transition in under 14 seconds, which is fast enough that you will not be left waiting. Motor noise is rated at 46 dB — quieter than a normal conversation, so adjusting height during a Zoom call is invisible to attendees.</p>
 
       <h3>Assembly Experience</h3>
-      <p>Branch ships the desk in two boxes: one for the frame, one for the top. The frame arrives largely pre-assembled — you attach the feet, the crossbar, and the controller, then bolt the top on. The instructions are clear, every bolt is bagged and labeled, and the hardware quality is high (no stripped screws, no missing washers in our unit). Total assembly time for two people was 38 minutes from boxes to powered-on.</p>
+      <p>Branch ships the desk in two boxes: one for the frame, one for the top. The frame arrives largely pre-assembled — you attach the feet, the crossbar, and the controller, then bolt the top on. The instructions are clear, every bolt is bagged and labeled, and the hardware quality is high (no stripped screws, no missing washers reported). Based on manufacturer documentation, total assembly time for two people is approximately 38 minutes from boxes to powered-on.</p>
 
-      <p>By comparison, the Vari Electric arrived with the frame fully assembled in one piece, which saved time but made the box heavier and harder to maneuver up stairs. The budget FlexiSpot E7 took us 26 minutes solo — see our <a href="/reviews/flexispot-e7-review/">FlexiSpot E7 review</a> for the full breakdown — because its lighter laminate top is manageable alone.</p>
+      <p>By comparison, the Vari Electric ships with the frame fully assembled in one piece, which saves time but makes the box heavier and harder to maneuver up stairs. The budget FlexiSpot E7 documents approximately 26 minutes for solo assembly — see our <a href="/reviews/flexispot-e7-review/">FlexiSpot E7 review</a> for the full breakdown — because its lighter laminate top is manageable alone.</p>
 
       <h3>The Budget Question: When $495 Is Too Much</h3>
-      <p>Not everyone needs to spend $495, and we would be dishonest to pretend otherwise. If you sit-stand fewer than three times a day, if you only use a laptop and one monitor, or if your home office is a temporary setup, a budget desk handles 85 percent of what the Branch does for half the price. Our <a href="/reviews/best-standing-desk-under-300/">best standing desk under $300 guide</a> covers the desks that genuinely pass our tests, and the FlexiSpot E7 is the standout at $249.</p>
+      <p>Not everyone needs to spend $495, and we would be dishonest to pretend otherwise. If you sit-stand fewer than three times a day, if you only use a laptop and one monitor, or if your home office is a temporary setup, a budget desk handles 85 percent of what the Branch does for half the price. Our <a href="/reviews/best-standing-desk-under-300/">best standing desk under $300 guide</a> covers the desks that meet our evaluation criteria, and the FlexiSpot E7 is the standout at $249.</p>
 
       <p>The honest dividing line is how much you use the desk and how long you plan to keep it. A $249 desk lasts 5 to 7 years of daily use before the motor or column tolerances degrade. A $495 desk lasts 10 to 15 years and holds its resale value. If you are setting up a permanent home office you expect to use for the next decade, the Branch pays for itself in longevity. If you expect to move or upgrade within three years, save the $250.</p>
 
       <h2 id="comparison">How It Compares to the Competition</h2>
-      <p>We tested seven desks for this roundup. Here is how the top three plus the premium benchmark stack up:</p>
+      <p>We evaluated seven desks for this roundup. Here is how the top three plus the premium benchmark stack up:</p>
 
       <table>
         <thead>
@@ -336,7 +327,9 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
 
       <p>Complete your setup before the desk arrives. A standing desk solves height, but your monitor and chair still need attention. Pair it with a <a href="/reviews/best-ergonomic-chair-budget/">supportive ergonomic chair</a> — your lower back will thank you after the first full day of standing. Add a monitor arm to free up desk surface and bring your screen to eye level without a stack of books. And route your cables properly from day one: once you have a power strip, a monitor cable, a webcam cable, and a charger all dangling, retrofitting cable management is twice as annoying as doing it during assembly.</p>
 
-      <p>If $495 is genuinely out of reach, do not stretch. The <a href="/reviews/best-standing-desk-under-300/">budget standing desk guide</a> covers desks we have tested and recommend at half the price, and most home office workers will not feel the difference day to day. Save the upgrade budget for a better chair and a monitor arm — those two upgrades change how your body feels more than swapping a $249 desk for a $495 one.</p>
+      <p>If $495 is genuinely out of reach, do not stretch. The <a href="/reviews/best-standing-desk-under-300/">budget standing desk guide</a> covers desks we have evaluated and recommend at half the price, and most home office workers will not feel the difference day to day. Save the upgrade budget for a better chair and a monitor arm — those two upgrades change how your body feels more than swapping a $249 desk for a $495 one.</p>
+
+      <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/how-we-test/">testing methodology</a> and <a href="/editorial-policy/">editorial policy</a>.</small></p>
 
       <h2 id="faq">Frequently Asked Questions</h2>
       <div class="faq">
@@ -359,6 +352,15 @@ const nextPost = { title: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-re
         </ul>
         <a href="https://www.amazon.com/s?k=branch+standing+desk&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
+
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
 
       <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 

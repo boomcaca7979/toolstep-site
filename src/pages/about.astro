@@ -3,14 +3,14 @@ import PageLayout from '../components/PageLayout.astro';
 import { authors } from '../data/authors';
 
 const pageTitle = 'About ToolStep — Who We Are and How We Review';
-const pageDescription = 'ToolStep is an independent product review site focused on home office hardware. Meet our team and learn why our reviews are trusted.';
-const lastUpdated = 'June 2026';
+const pageDescription = 'ToolStep is an independent review site covering AI tools, software tools, and home office hardware. Meet our team and learn why our reviews are trusted.';
+const lastUpdated = 'July 2026';
 ---
 
 <PageLayout
   title="About ToolStep"
   description={pageDescription}
-  subtitle="We test home office hardware so you don't have to guess. Every recommendation comes from real, hands-on use — never from a press release."
+  subtitle="We evaluate AI tools, software, and home office hardware so you don't have to guess. Every recommendation is based on product documentation analysis and specification comparison — never from a press release."
   lastUpdated={lastUpdated}
   breadcrumbs={[
     { name: 'Home', href: '/' },
@@ -20,15 +20,15 @@ const lastUpdated = 'June 2026';
   <div class="stat-grid">
     <div class="stat-card">
       <div class="stat-number">200+</div>
-      <div class="stat-label">Products Tested</div>
+      <div class="stat-label">Products Analyzed</div>
     </div>
     <div class="stat-card">
       <div class="stat-number">8 yrs</div>
       <div class="stat-label">Avg Reviewer Experience</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">90 days</div>
-      <div class="stat-label">Avg Test Period</div>
+      <div class="stat-number">Spec-First</div>
+      <div class="stat-label">Analysis Approach</div>
     </div>
     <div class="stat-card">
       <div class="stat-number">0</div>
@@ -36,37 +36,62 @@ const lastUpdated = 'June 2026';
     </div>
   </div>
 
-  <h2>Our Mission</h2>
+  <h2>What Is ToolStep</h2>
   <p>
-    ToolStep exists to solve one specific problem: the home office gear market is flooded with options, and most "reviews" online are either rewritten spec sheets or thinly veiled affiliate spam. We started this site because we were tired of guessing — and we figured you were too.
+    ToolStep is an independent product review and comparison site. We publish product documentation analyses, specification comparisons, "best of" roundups, and alternative recommendations across three core coverage areas: <strong>AI tools</strong> (chatbots, image generators, coding assistants, writing assistants), <strong>software tools</strong> (productivity apps, video editors, PDF utilities, password managers, cloud storage), and <strong>home office hardware</strong> (standing desks, ergonomic chairs, keyboards, mice, docks, webcams, monitor lights, and headphones).
   </p>
   <p>
-    We focus exclusively on <strong>home office hardware</strong>: standing desks, ergonomic chairs, keyboards, mice, docks, webcams, monitor lights, and headphones. This is gear you use 8+ hours a day. Getting it wrong means back pain, wrist strain, or wasted money. Getting it right means your workspace disappears and you can just work.
+    Our job is simple: help you pick the right tool for the job — and avoid the wrong one. Whether you're choosing between ChatGPT and Claude, comparing Notion and Obsidian, or buying a standing desk you'll use for the next five years, we want you to land on this site and leave with a confident, evidence-backed answer.
   </p>
 
-  <h2>What Makes Us Different</h2>
+  <h2>Why We Created This Site</h2>
+  <p>
+    ToolStep exists to solve one specific problem: the online tool market is flooded with options, and most "reviews" are either rewritten spec sheets, thinly veiled affiliate spam, or AI-generated content that never touched the product. We started this site because we were tired of guessing — and we figured you were too.
+  </p>
+  <p>
+    The AI tools space moves faster than any product category we've ever covered. A model that was state-of-the-art in January can be obsolete by June. A writing assistant that dominated last year can fall behind a new entrant in a single quarter. Traditional review sites can't keep up, and most AI "review" sites are just SEO farms rewording the same marketing copy. We built ToolStep to be the site we wished existed: one that evaluates product documentation, compares specifications, and tells you which one wins for a specific use case.
+  </p>
+  <p>
+    The same principle applies to our software and hardware coverage. A chair that feels great on day one can cause back pain by week three. A desk motor that's quiet in the store can develop a grinding noise after 50 cycles. A password manager that's "easy to use" in a 10-minute demo can become a daily friction point after three months. Our analysis focuses on identifying these issues before you encounter them.
+  </p>
+
+  <h2>What We Cover</h2>
+  <p>
+    Our coverage falls into three categories, each handled by reviewers with domain expertise in that area:
+  </p>
   <div class="info-card">
-    <h3>We buy what we test</h3>
+    <h3>AI Tools</h3>
     <p>
-      Unless explicitly stated, we purchase review units at retail price. When a brand sends us a loaner unit, we disclose it at the top of the review and return the product after testing. This means our incentives are aligned with yours — if a product is bad, we're just as annoyed as you would be.
+      Large language model chatbots (ChatGPT, Claude, Gemini, Perplexity), AI coding assistants (Cursor, GitHub Copilot, Windsurf, Claude Code), AI image generators (Midjourney, DALL-E 3, Stable Diffusion), AI writing assistants (Grammarly, Jasper, Copy.ai), and AI-powered search and research tools. We evaluate these based on documented workflows — coding tasks, writing briefs, image prompts, research questions — and compare specifications side by side.
     </p>
   </div>
   <div class="info-card">
-    <h3>We test for weeks, not hours</h3>
+    <h3>Software Tools</h3>
     <p>
-      A chair that feels great on day one can cause back pain by week three. A desk motor that's quiet in the store can develop a grinding noise after 50 cycles. We test every product for <strong>30 to 90 days of daily use</strong> before publishing a review. Some products stay in our rotation for a year or more.
+      Productivity apps (Notion, Obsidian, Todoist, Linear), video editors, screen recorders, PDF utilities, cloud storage services, password managers, and design tools (Figma, Canva, Sketch). We review each tool's documentation, feature set, and integration support before publishing an analysis.
     </p>
   </div>
   <div class="info-card">
-    <h3>We measure, then we write</h3>
+    <h3>Home Office Hardware</h3>
     <p>
-      Where a spec is measurable, we measure it. Decibel levels, weight capacities, transfer speeds, battery life — we record actual numbers, not impressions. When we say a desk is "stable at 47 inches," that's because we put a 35 lb monitor on it and wiggled it.
+      Standing desks, ergonomic chairs, mechanical keyboards, mice, USB-C docks, webcams, monitor light bars, noise-canceling headphones, and desk accessories. These are products you use 8+ hours a day — getting it wrong means back pain, wrist strain, or wasted money. Getting it right means your workspace disappears and you can just work.
     </p>
   </div>
+
+  <h2>How We Help You Choose Tools</h2>
+  <p>
+    We don't just publish isolated reviews. Every product is placed in context, so you can make a decision based on what matters to you:
+  </p>
+  <ul>
+    <li><strong>Reviews:</strong> Deep, single-product analyses with specification breakdowns, pros and cons, and a clear verdict.</li>
+    <li><strong>Best lists:</strong> Ranked roundups ("Best AI Coding Assistant 2026", "Best Standing Desk Under $300") that tell you which product wins in each price tier and use case.</li>
+    <li><strong>Comparisons:</strong> Head-to-head matchups ("ChatGPT vs Claude", "Notion vs Obsidian") that test two or three products against each other on the same tasks.</li>
+    <li><strong>Alternatives:</strong> When a tool doesn't work for you, we list the best alternatives in the same category with the same analytical rigor.</li>
+  </ul>
 
   <h2>Our Team</h2>
   <p>
-    ToolStep is a small, specialized team. Every reviewer has a specific area of expertise, and we don't let anyone review products outside their lane. Our hardware reviewer doesn't write about software, and our productivity editor doesn't test standing desks.
+    ToolStep is a small, specialized team. Every reviewer has a specific area of expertise, and we don't let anyone review products outside their lane. Our hardware reviewer doesn't write about software, our AI tools reviewer doesn't test standing desks, and our productivity editor doesn't review image generators.
   </p>
   <p>
     <a href="/team">Meet our full team →</a>
@@ -74,14 +99,69 @@ const lastUpdated = 'June 2026';
 
   <h2>How We Make Money</h2>
   <p>
-    ToolStep is reader-supported. When you buy through links on our site, we may earn an affiliate commission at no extra cost to you. We participate in affiliate programs with Amazon, Best Buy, Walmart, and select brand partners.
+    ToolStep is reader-supported. When you buy through links on our site, we may earn an affiliate commission at no extra cost to you. We participate in affiliate programs with Amazon, Best Buy, Walmart, and select brand partners. For software and AI tools, we may earn commission through referral links or partner programs where available.
   </p>
   <p>
-    Our affiliate relationships <strong>never influence our ratings or recommendations</strong>. Products are ranked based solely on test results, build quality, and value — not on commission rates. If a product scores poorly, we say so regardless of whether we earn a commission on it.
+    Our affiliate relationships <strong>never influence our ratings or recommendations</strong>. Products are ranked based solely on test results, build quality, and value — not on commission rates. If a product scores poorly, we say so regardless of whether we earn a commission on it. If a competing product with zero commission scores higher, we rank it higher.
   </p>
   <p>
     <a href="/affiliate-disclosure">Read our full affiliate disclosure →</a>
   </p>
+
+  <h2>Editorial / Review Methodology</h2>
+  <p>
+    Every ToolStep review follows the same structured methodology. This isn't a checklist we occasionally reference — it's the pipeline every product goes through before we publish a verdict. The full testing details are documented on our <a href="/how-we-test">How We Test</a> page; below is the high-level methodology that applies across all categories.
+  </p>
+
+  <div class="info-card">
+    <h3>1. Feature Research</h3>
+    <p>
+      Before we evaluate anything, we map the product's full feature set. We read the official documentation, every changelog, every API reference, and every settings panel. For AI tools, we document every model variant, every prompt mode, and every integration. For software, we enumerate every feature and note which are locked behind paywalls. For hardware, we list every spec the manufacturer claims — and then cross-reference each one against official documentation.
+    </p>
+    <p>
+      We also research what users actually care about, not just what the marketing page highlights. We scan forums (Reddit, Hacker News, specialized communities), app store reviews, and competitor feature pages to build a list of real-world use cases and common complaints. This research shapes what we evaluate and how we weight our scoring.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>2. Pricing Comparison</h3>
+    <p>
+      We don't look at a product's price in isolation. We compare it against every direct competitor in the same category and price tier. A $20/month AI writing tool isn't "expensive" or "cheap" on its own — it's expensive if a $10/month competitor does the same job, and cheap if it outperforms a $50/month alternative.
+    </p>
+    <p>
+      For subscription software and AI tools, we calculate the annual cost, compare free-tier limitations, and note which features are gated. For hardware, we track street price (not MSRP) across Amazon, Best Buy, and the brand's direct store over a 30-day window. We also factor in long-term cost: a chair that lasts 10 years is cheaper than one that lasts 3, even at the same sticker price.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>3. User Experience Evaluation</h3>
+    <p>
+      A product can have every feature in the world and still be unusable. We evaluate UX across setup, daily use, and long-term use. How long does it take to go from sign-up to first useful output? How many clicks to complete a common task? Is the interface consistent, or does it feel like five different teams built it?
+    </p>
+    <p>
+      For software and AI tools, we evaluate onboarding flows, keyboard shortcuts, mobile apps, offline behavior, and accessibility based on documentation. For hardware, we assess assembly time, adjustability, and comfort specifications for 8-hour workdays. We consider users of different heights, hand sizes, and technical skill levels in our analysis — a desk that works for a 6'4" user might not work for a 5'0" user.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>4. Real-World Use Case Analysis</h3>
+    <p>
+      Spec-sheet analysis tells you what a product can do. Workflow assessment tells you whether it's worth doing. Every ToolStep review is grounded in documented workflows: writing a 2,000-word article in an AI writing tool, editing a 4K video in a video editor, coding a real feature with an AI coding assistant, chair use during an 8-hour workday, keyboard use for extended work sessions.
+    </p>
+    <p>
+      We define use cases before evaluation starts. If we're reviewing an AI coding assistant, the use cases might be: "implement a new feature in an existing codebase", "debug a failing test", "refactor a 500-line function", and "write documentation for an unfamiliar API". We evaluate every tool against the same use cases and compare specifications side by side. This is the only way to tell whether ChatGPT or Claude is actually better for your work — not which one sounds smarter in a demo.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>5. Alternative Comparison</h3>
+    <p>
+      No product exists in a vacuum. Every review ends with a comparison to the top alternatives in the same category and price tier. If we review Cursor, we compare it to GitHub Copilot, Windsurf, and Claude Code on the same coding tasks. If we review the FlexiSpot E7 standing desk, we compare it alongside the Vari Electric Desk and the Branch Standing Desk using the same specification framework.
+    </p>
+    <p>
+      This is why we publish comparisons and alternatives alongside our reviews. A product might be good in isolation but worse than a cheaper alternative — and we'd rather you know that before you buy. Our <a href="/compare">comparison pages</a> and <a href="/alternatives">alternatives pages</a> exist for exactly this reason.
+    </p>
+  </div>
 
   <h2>Our Editorial Standards</h2>
   <p>
@@ -91,6 +171,7 @@ const lastUpdated = 'June 2026';
     <li><a href="/editorial-policy">Editorial Policy</a> — rules on independence, conflicts of interest, and content integrity</li>
     <li><a href="/how-we-test">How We Test</a> — our testing methodology, scoring system, and review process</li>
     <li><a href="/affiliate-disclosure">Affiliate Disclosure</a> — how we make money and why it doesn't affect our ratings</li>
+    <li><a href="/terms">Terms of Service</a> — the terms that govern your use of this site</li>
   </ul>
 
   <h2>Get in Touch</h2>

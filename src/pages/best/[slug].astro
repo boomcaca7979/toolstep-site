@@ -3,12 +3,13 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
-import { bestData } from '../../data/best';
+import AdUnit from '../../components/ads/AdUnit.astro';
+import { getBestEntries, getBestEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildBestTitle } from '../../utils/seo';
 
 export function getStaticPaths() {
-  return bestData.map((entry) => ({
+  return getBestEntries().map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -22,13 +23,14 @@ const publishDate = '2026-06-26';
 const pageUrl = new URL(`/best/${entry.slug}/`, Astro.site).toString();
 
 // Find prev/next for navigation
-const idx = bestData.findIndex(e => e.slug === entry.slug);
-const prevEntry = idx > 0 ? bestData[idx - 1] : null;
-const nextEntry = idx < bestData.length - 1 ? bestData[idx + 1] : null;
+const allBests = getBestEntries();
+const idx = allBests.findIndex(e => e.slug === entry.slug);
+const prevEntry = idx > 0 ? allBests[idx - 1] : null;
+const nextEntry = idx < allBests.length - 1 ? allBests[idx + 1] : null;
 
 // Resolve related bests
 const relatedBestItems = entry.relatedBests
-  .map(slug => bestData.find(b => b.slug === slug))
+  .map(slug => getBestEntryBySlug(slug))
   .filter((b): b is NonNullable<typeof b> => b !== undefined)
   .slice(0, 4);
 
@@ -653,33 +655,38 @@ const articleSchema = {
           <h2 id="top-picks">Top 10 Picks</h2>
           <div class="picks-list">
             {entry.products.map((p, i) => (
-              <div class="pick-card" id={`pick-${i + 1}`}>
-                <div class={`pick-rank ${i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : ''}`}>{p.rank}</div>
-                <div class="pick-info">
-                  <h3>{p.name}</h3>
-                  <div class="pick-brand">{p.brand}</div>
-                  <p class="pick-summary">{p.summary}</p>
-                  <div class="pick-pros-cons">
-                    <div class="pick-pros">
-                      <strong>Pros</strong>
-                      <ul>
-                        {p.pros.map(pro => <li>{pro}</li>)}
-                      </ul>
-                    </div>
-                    <div class="pick-cons">
-                      <strong>Cons</strong>
-                      <ul>
-                        {p.cons.map(con => <li>{con}</li>)}
-                      </ul>
+              <>
+                <div class="pick-card" id={`pick-${i + 1}`}>
+                  <div class={`pick-rank ${i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : ''}`}>{p.rank}</div>
+                  <div class="pick-info">
+                    <h3>{p.name}</h3>
+                    <div class="pick-brand">{p.brand}</div>
+                    <p class="pick-summary">{p.summary}</p>
+                    <div class="pick-pros-cons">
+                      <div class="pick-pros">
+                        <strong>Pros</strong>
+                        <ul>
+                          {p.pros.map(pro => <li>{pro}</li>)}
+                        </ul>
+                      </div>
+                      <div class="pick-cons">
+                        <strong>Cons</strong>
+                        <ul>
+                          {p.cons.map(con => <li>{con}</li>)}
+                        </ul>
+                      </div>
                     </div>
                   </div>
+                  <div class="pick-meta">
+                    <div class="pick-rating">{p.rating}<span class="out">/5</span></div>
+                    <div class="pick-stars">{stars(p.rating)}</div>
+                    <div class="pick-price">${p.price}</div>
+                  </div>
                 </div>
-                <div class="pick-meta">
-                  <div class="pick-rating">{p.rating}<span class="out">/5</span></div>
-                  <div class="pick-stars">{stars(p.rating)}</div>
-                  <div class="pick-price">${p.price}</div>
-                </div>
-              </div>
+                {i === 4 && (
+                  <AdUnit slot="2222222222" format="horizontal" layout="in-article" />
+                )}
+              </>
             ))}
           </div>
 
@@ -729,6 +736,8 @@ const articleSchema = {
           </div>
 
           {/* FAQ */}
+          <AdUnit slot="3333333333" format="auto" layout="responsive" />
+
           <h2 id="faq">FAQ</h2>
           <div class="faq-list">
             {entry.faqs.map(faq => (

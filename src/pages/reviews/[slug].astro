@@ -1,0 +1,24 @@
+---
+// Dynamic review page route.
+// Step 6A: Switched data source from legacy reviewEntries.ts to unified content.
+// Reads from src/data/content/index.ts via getReviewEntryBySlug().
+// Template/SEO structure unchanged — reverse adapter reconstructs ProductReviewEntry shape.
+
+import ProductReviewTemplate from '../../templates/ProductReviewTemplate.astro';
+import { getReviewEntries, getReviewEntryBySlug } from '../../data/content';
+import { authors } from '../../data/authors';
+
+export function getStaticPaths() {
+  return getReviewEntries().map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const author = authors.find(a => a.slug === entry.authorSlug);
+const authorName = author?.name || 'ToolStep Team';
+const affiliateUrl = entry.amazonUrl || undefined;
+---
+
+<ProductReviewTemplate entry={entry} authorName={authorName} affiliateUrl={affiliateUrl} />

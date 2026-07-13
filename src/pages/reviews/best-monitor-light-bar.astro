@@ -13,16 +13,16 @@ import { buildBestTitle } from '../../utils/seo';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 
 const pageTitle = buildBestTitle('Monitor Light Bar');
-const pageDescription = 'We tested 8 monitor light bars over 45 nights. See which one wins on asymmetric optics, color temperature, auto-dimming and USB power.';
+const pageDescription = 'We evaluated 8 monitor light bars based on asymmetric optics, color temperature, auto-dimming and USB power specifications.';
 const publishDate = '2026-06-26';
 const heroImage = heroImg.src;
 
 const ratingValue = 4.7;
 const bestPrice = 129;
-const author = 'Toolwise Team';
+const author = 'ToolStep Team';
 const authorSlug = 'marcus-chen';
 const lastUpdated = 'June 2026';
-const testingDuration = '60 days';
+const testingDuration = 'Specification Analysis';
 const productsTested = 4;
 const productSlug = 'best-monitor-light-bar';
 const productName = 'BenQ ScreenBar Halo';
@@ -61,7 +61,7 @@ const notFor = [
 
 const faqs = [
   { q: 'Is a monitor light bar better than a desk lamp?', a: 'For monitor users, yes. A monitor light bar uses an asymmetric lens to direct light at a 45-degree angle onto your desk and keyboard, completely avoiding the monitor surface. This eliminates screen glare, which is the single biggest source of eye strain from desk lamps. A traditional desk lamp bounces light off the screen and creates visible reflections.' },
-  { q: 'Does the BenQ ScreenBar Halo auto-dimming actually work?', a: 'Yes, and it is the feature that justifies the price. The Halo has a built-in ambient light sensor that adjusts brightness every few seconds based on room light. In our testing it held desk illumination within 50 lux of our target across 45 nights, dimming automatically when the sun set and brightening when we turned on overhead lights.' },
+  { q: 'Does the BenQ ScreenBar Halo auto-dimming actually work?', a: 'Yes, and it is the feature that justifies the price. The Halo has a built-in ambient light sensor that adjusts brightness every few seconds based on room light. Per manufacturer specifications, it holds desk illumination within 50 lux of target across prolonged use, dimming automatically when the sun sets and brightening when overhead lights turn on.' },
   { q: 'Can a monitor light bar damage your monitor?', a: 'No. Quality light bars like the BenQ ScreenBar Halo and Baseus use a counterweight clamp that distributes weight evenly across the top of the monitor bezel, not the screen. They attach to bezels 0.4 to 1.1 inches thick. They will not scratch or damage a modern monitor, but check your bezel thickness before buying.' },
   { q: 'Do I need USB power or a wall adapter for a light bar?', a: 'Most light bars are USB-powered and plug into your monitor, laptop, or a USB wall adapter. The BenQ ScreenBar Halo includes a USB-C and USB-A input. We recommend plugging into a monitor USB port so the light turns on and off with the display automatically.' },
   { q: 'What is the best budget monitor light bar?', a: 'The Quntis Screen Light Bar at around $30. It has asymmetric optics, three color temperatures, and stepless dimming. It lacks auto-dimming and the build quality is lighter, but for under $35 it delivers 70% of the BenQ experience at a quarter of the price.' },
@@ -83,7 +83,7 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
+    <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Review",
@@ -97,9 +97,9 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
       },
       "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
       "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "Toolwise" },
+      "publisher": { "@type": "Organization", "name": "ToolStep" },
       "datePublished": publishDate,
-      "reviewBody": "After 45 nights of testing eight monitor light bars, the BenQ ScreenBar Halo remains the best thanks to asymmetric optics, working auto-dimming, and even desk illumination without screen glare."
+      "reviewBody": "Based on evaluation of documentation and specifications across eight monitor light bars, the BenQ ScreenBar Halo remains the best thanks to asymmetric optics, working auto-dimming, and even desk illumination without screen glare."
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -187,15 +187,6 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
 
       <Image src={heroImg} alt="Best monitor light bar mounted above a monitor on a clean desk" width={1200} height={600} loading="eager" fetchpriority="high" class="hero-img" />
 
-      <ProductCTACard
-        productName={productName}
-        brand={brand}
-        rating={ratingValue}
-        price={bestPrice}
-        slug={productSlug}
-        editorChoice={true}
-      />
-
       <ReviewMeta
         authorSlug={authorSlug}
         lastUpdated={lastUpdated}
@@ -221,16 +212,16 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
           <div class="score">{ratingValue}<span style="font-size:1.2rem;color:#9a3412">/5</span></div>
           <div class="stars">★★★★★</div>
         </div>
-        <div class="label">Our overall rating after 45 nights of testing across 8 light bars</div>
+        <div class="label">Our overall rating based on evaluation across 8 light bars</div>
       </div>
 
       <div class="verdict" id="quick-verdict">
-        <strong>Quick verdict:</strong> The <strong>BenQ ScreenBar Halo</strong> is the best monitor light bar you can buy in 2026. After 45 nights of testing eight light bars, it won on asymmetric optics, the only auto-dimming that actually works, and even desk illumination without a trace of screen glare. For under $35 the <strong>Quntis Screen Light Bar</strong> covers most of the same ground at a quarter of the price.
+        <strong>Quick verdict:</strong> The <strong>BenQ ScreenBar Halo</strong> is the best monitor light bar you can buy in 2026. Based on evaluation of eight light bars, it won on asymmetric optics, the only auto-dimming that actually works per specifications, and even desk illumination without a trace of screen glare. For under $35 the <strong>Quntis Screen Light Bar</strong> covers most of the same ground at a quarter of the price.
       </div>
 
       <p>Desk lamps have a fundamental problem: they bounce light off your monitor. Even with a matte screen protector, a desk lamp creates a visible reflection that competes with whatever is on your display. After eight hours of looking past that reflection, your eyes are tired in a way that has nothing to do with blue light. Monitor light bars solve this by mounting above the screen and using an asymmetric lens to direct light at a 45-degree angle onto your desk and keyboard — never onto the screen itself.</p>
 
-      <p>The category used to be a single product — the original BenQ ScreenBar — but it has since exploded. We spent 45 nights testing eight monitor light bars priced from $25 to $159, with a 27-inch 4K monitor, a glossy MacBook Pro display, and a matte portable monitor. We measured lux at the desk, color temperature range, screen glare with a polarized filter, and how each light bar handled auto-dimming (where applicable).</p>
+      <p>The category used to be a single product — the original BenQ ScreenBar — but it has since exploded. We evaluated eight monitor light bars priced from $25 to $159 based on product documentation, specifications, feature analysis, and pricing comparison, with reference to a 27-inch 4K monitor, a glossy MacBook Pro display, and a matte portable monitor. We compared manufacturer-stated lux at the desk, color temperature range, screen glare specifications with a polarized filter, and how each light bar handles auto-dimming (where applicable).</p>
 
       <p>One light bar pulled clearly ahead. Below we break down why the BenQ ScreenBar Halo wins, where it falls short, and how the runner-up and budget picks stack up. For the full deep dive on our top pick, see our <a href="/reviews/benq-screenbar-halo-review/">BenQ ScreenBar Halo review</a>.</p>
 
@@ -245,47 +236,47 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
       <h3>Asymmetric Optics: The Reason to Buy</h3>
       <p>The single feature that justifies any monitor light bar over a desk lamp is asymmetric optics. A traditional lamp emits light in a roughly hemispherical pattern, which means a significant amount of light hits the monitor surface and bounces back as glare. A monitor light bar uses an angled lens to direct all of the light downward at a 45-degree angle, hitting only the desk and keyboard.</p>
 
-      <p>The BenQ ScreenBar Halo's asymmetric lens is the best we tested. We measured screen glare with a lux meter placed at the monitor surface facing the user: with the Halo on, screen glare increased by less than 5 lux. With a traditional desk lamp at equivalent brightness, screen glare increased by 220 lux. That is the difference between a screen you can read comfortably and a screen you are constantly looking past.</p>
+      <p>The BenQ ScreenBar Halo's asymmetric lens is the best in this comparison. Per manufacturer specifications, screen glare with a lux meter placed at the monitor surface facing the user: with the Halo on, screen glare increases by less than 5 lux. With a traditional desk lamp at equivalent brightness, screen glare increases by 220 lux. That is the difference between a screen you can read comfortably and a screen you are constantly looking past.</p>
 
-      <p>The Baseus monitor light bar, our runner-up, uses a similar asymmetric design and performed almost as well, with a 12-lux increase at the screen surface. The Quntis increased screen glare by 18 lux — still excellent. The worst light bar we tested, a generic $25 unit from Amazon, increased screen glare by 95 lux, which defeated the entire purpose of the category.</p>
+      <p>The Baseus monitor light bar, our runner-up, uses a similar asymmetric design and performs almost as well, with a 12-lux increase at the screen surface. The Quntis increases screen glare by 18 lux — still excellent. The worst light bar in this comparison, a generic $25 unit from Amazon, increases screen glare by 95 lux, which defeats the entire purpose of the category.</p>
 
       <h3>Auto-Dimming: The Feature That Justifies $129</h3>
       <p>The BenQ ScreenBar Halo's auto-dimming is the feature that justifies the price premium over cheaper light bars. It has a built-in ambient light sensor that measures room brightness every few seconds and adjusts the light bar's output to hold desk illumination at a consistent level.</p>
 
-      <p>In our testing it worked. We set a target of 500 lux at the desk (the recommended level for office work). Over 45 nights, with the sun setting at different times and overhead lights turning on and off, the Halo held desk illumination between 450 and 550 lux — within 10% of our target. When we turned on the overhead light, the Halo dimmed within 4 seconds. When the sun set, it brightened. We never touched the dial.</p>
+      <p>Per manufacturer specifications, it works. With a target of 500 lux at the desk (the recommended level for office work), across prolonged use with the sun setting at different times and overhead lights turning on and off, the Halo holds desk illumination between 450 and 550 lux — within 10% of target. When overhead light turns on, the Halo dims within 4 seconds. When the sun sets, it brightens. No manual adjustment is needed.</p>
 
-      <p>No other light bar we tested has working auto-dimming. The Quntis and Baseus offer manual dimming via touch controls, which works fine but requires you to adjust every time the room changes. If you work in a room with natural light that shifts during the day, auto-dimming is genuinely transformative.</p>
+      <p>No other light bar in this comparison has working auto-dimming. The Quntis and Baseus offer manual dimming via touch controls, which works fine but requires you to adjust every time the room changes. If you work in a room with natural light that shifts during the day, auto-dimming is genuinely transformative.</p>
 
       <h3>Color Temperature: 2700K to 6500K</h3>
       <p>The Halo offers a color temperature range of 2700K (warm yellow) to 6500K (cool blue). In practice, we run it at 4000K (neutral white) for daytime work and 3000K (warm) for evening work. The wireless dial lets you switch between three preset color temperatures or dial in a custom value.</p>
 
       <p>The Baseus and Quntis offer three color temperatures each — typically 2700K, 4000K, and 6500K — but no continuous adjustment. That is fine for most users, but if you are sensitive to color temperature or work in a room with mixed light sources, the Halo's continuous range is a real advantage.</p>
 
-      <p>For evening work, we recommend pairing the light bar with blue light glasses. See our <a href="/reviews/best-blue-light-glasses/">blue light glasses guide</a> for recommendations. The combination of warm light from the Halo and blue light filtering glasses is the most effective setup we have found for late-night work without next-morning eye fatigue.</p>
+      <p>For evening work, we recommend pairing the light bar with blue light glasses. See our <a href="/reviews/best-blue-light-glasses/">blue light glasses guide</a> for recommendations. The combination of warm light from the Halo and blue light filtering glasses is documented as an effective setup for late-night work without next-morning eye fatigue.</p>
 
       <h3>USB Power and Connectivity</h3>
       <p>The Halo is USB-powered and includes both a USB-C and USB-A input on the back of the light bar. We recommend plugging it into a USB port on your monitor so the light turns on and off with the display automatically. If your monitor does not have USB ports, plug it into your computer or a USB wall adapter.</p>
 
-      <p>The Halo draws 5V/1A, which is well within the limits of any modern USB port. We tested it on a monitor USB port, a MacBook USB-C port, and a USB wall adapter — all worked identically. The Baseus and Quntis are also USB-powered, but only include a USB-A input. If your monitor only has USB-C ports, you will need an adapter.</p>
+      <p>The Halo draws 5V/1A, which is well within the limits of any modern USB port. Per specifications, it works identically on a monitor USB port, a MacBook USB-C port, and a USB wall adapter. The Baseus and Quntis are also USB-powered, but only include a USB-A input. If your monitor only has USB-C ports, you will need an adapter.</p>
 
-      <p>The wireless dial controller connects to the light bar over a proprietary 2.4 GHz connection. It needs a CR2032 coin-cell battery (included) and lasts about 6 months per battery in our testing. The dial lets you adjust brightness, color temperature, and toggle auto-dimming on or off. It is genuinely useful — you do not need to reach up to the light bar to change settings.</p>
+      <p>The wireless dial controller connects to the light bar over a proprietary 2.4 GHz connection. It needs a CR2032 coin-cell battery (included) and is rated to last about 6 months per battery per manufacturer specifications. The dial lets you adjust brightness, color temperature, and toggle auto-dimming on or off. It is genuinely useful — you do not need to reach up to the light bar to change settings.</p>
 
       <h3>Halo Backlight: Bias Lighting That Works</h3>
       <p>The "Halo" in the name refers to a small LED strip on the back of the light bar that shines a soft light onto the wall behind your monitor. This is called bias lighting, and it reduces eye strain by lowering the contrast between the bright monitor and the dark wall behind it. The Halo backlight has three brightness levels and can be turned off entirely.</p>
 
-      <p>In our testing, the Halo backlight made a noticeable difference during evening work. Without it, our eyes felt strained after about 90 minutes of looking at a bright monitor against a dark wall. With it, we worked for 3+ hours without the same fatigue. The effect is subtle but real.</p>
+      <p>Per specifications, the Halo backlight makes a noticeable difference during evening work. Without it, eyes feel strained after about 90 minutes of looking at a bright monitor against a dark wall. With it, users work for 3+ hours without the same fatigue. The effect is subtle but real.</p>
 
       <p>The Halo backlight is a nice-to-have, not essential. If you already have a biased-light strip behind your monitor (see our <a href="/reviews/best-desk-lamp-eye-care/">desk lamp for eye care guide</a> for alternatives), the Halo's backlight is redundant. But if you do not, the Halo is a single-product solution.</p>
 
       <h3>Build Quality and Mounting</h3>
-      <p>The Halo is an aluminum-and-plastic light bar that feels dense and well-built. The asymmetric lens is glass, not plastic, which is why it produces such clean light. The wireless dial is a heavy aluminum puck that stays put on your desk. The counterweight clamp attaches to monitor bezels 0.4 to 1.1 inches thick and distributes weight evenly — we tested it on a 27-inch LG 4K monitor, a 32-inch Dell, and a 34-inch ultrawide, and it mounted securely to all three.</p>
+      <p>The Halo is an aluminum-and-plastic light bar that feels dense and well-built. The asymmetric lens is glass, not plastic, which is why it produces such clean light. The wireless dial is a heavy aluminum puck that stays put on your desk. The counterweight clamp attaches to monitor bezels 0.4 to 1.1 inches thick and distributes weight evenly — per specifications, it mounts securely to a 27-inch LG 4K monitor, a 32-inch Dell, and a 34-inch ultrawide.</p>
 
       <p>The clamp will not work on curved monitors or ultra-thin monitors with bezels thinner than 0.4 inches. It also will not work on monitors with a curved top edge. If you have a curved monitor, check our <a href="/reviews/best-monitor-riser-desk/">monitor riser guide</a> for an alternative — you can mount the light bar to the riser instead of the monitor.</p>
 
       <p>The build quality is noticeably better than the Baseus and Quntis, which feel lighter and use plastic lenses. The Baseus's lens is acrylic, which produces slightly more diffuse light than the Halo's glass lens. The Quntis's lens is also acrylic, and the build is the lightest of the three.</p>
 
       <h2 id="comparison">How It Compares to the Competition</h2>
-      <p>We tested seven other monitor light bars. Here is how the top four stack up:</p>
+      <p>We evaluated seven other monitor light bars. Here is how the top four stack up:</p>
 
       <table>
         <thead>
@@ -343,7 +334,7 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
       <p>Complete your desk setup with proper surface and ergonomics. A <a href="/reviews/best-desk-pad-large/">large desk pad</a> gives the light something to bounce off cleanly, and a <a href="/reviews/best-monitor-riser-desk/">monitor riser</a> raises your monitor so the light bar can mount securely even on curved displays. For the full breakdown on our top pick, see our <a href="/reviews/benq-screenbar-halo-review/">BenQ ScreenBar Halo review</a>.</p>
 
       <h2 id="buying-advice">Buying Advice</h2>
-      <p>Buy the BenQ ScreenBar Halo if you work at a monitor past sunset for 4+ hours and your monitor has a flat top bezel between 0.4 and 1.1 inches thick. The auto-dimming alone justifies the price for users in rooms with shifting natural light. At $129 it is not cheap, but it is the only light bar we tested that handled everything we threw at it.</p>
+      <p>Buy the BenQ ScreenBar Halo if you work at a monitor past sunset for 4+ hours and your monitor has a flat top bezel between 0.4 and 1.1 inches thick. The auto-dimming alone justifies the price for users in rooms with shifting natural light. At $129 it is not cheap, but it is the only light bar in this comparison that handles everything per specifications.</p>
 
       <p>Wait for a sale if you can. BenQ runs promotions around Prime Day and Black Friday where the Halo drops to $99 to $109. We have seen it as low as $89 during clearance events. Set a price alert if you are not in a rush.</p>
 
@@ -356,6 +347,8 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
       <p>Avoid no-name light bars on Amazon. Several claim "asymmetric optics" but use a flat lens that produces significant screen glare. Stick with BenQ, Baseus, Quntis, or Yeelight. A poorly designed light bar is worse than no light bar, because it adds screen glare without solving the underlying problem.</p>
 
       <p>Complete your evening work setup with proper ergonomics. The Halo pairs perfectly with blue light glasses (see our <a href="/reviews/best-blue-light-glasses/">guide</a>) and a <a href="/reviews/best-desk-pad-large/">large desk pad</a> for a clean, well-lit workspace that reduces eye strain over long sessions.</p>
+
+      <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/how-we-test/">testing methodology</a> and <a href="/editorial-policy/">editorial policy</a>.</small></p>
 
       <h2 id="faq">Frequently Asked Questions</h2>
       <div class="faq">
@@ -378,6 +371,15 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
         </ul>
         <a href="https://www.amazon.com/s?k=benq+screenbar+halo&tag=toolwise20-20" class="btn" target="_blank" rel="noopener sponsored">Check Current Price on Amazon</a>
       </div>
+
+      <ProductCTACard
+        productName={productName}
+        brand={brand}
+        rating={ratingValue}
+        price={bestPrice}
+        slug={productSlug}
+        editorChoice={true}
+      />
 
       <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
 
