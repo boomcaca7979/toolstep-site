@@ -38,11 +38,13 @@ export const categories: Category[] = [
 
   // Software — AI Tools
   { slug: 'ai-assistants', name: 'AI Assistant', pluralName: 'AI Assistants', color: '#9333ea', icon: 'ai', description: 'AI chatbots and assistants tested for writing, coding, reasoning, and multimodal capabilities.' },
+  { slug: 'ai-writing', name: 'AI Writing Tool', pluralName: 'AI Writing Tools', color: '#7c3aed', icon: 'edit', description: 'AI writing and grammar tools tested for content quality, tone, and workflow.' },
   { slug: 'ai-coding', name: 'AI Coding Tool', pluralName: 'AI Coding Tools', color: '#059669', icon: 'code', description: 'AI coding assistants tested for code completion, refactoring, and agent capabilities.' },
   { slug: 'ai-image', name: 'AI Image Generator', pluralName: 'AI Image Generators', color: '#db2777', icon: 'image', description: 'AI image generators tested for quality, control, and pricing.' },
   { slug: 'ai-video', name: 'AI Video Tool', pluralName: 'AI Video Tools', color: '#dc2626', icon: 'video', description: 'AI video generation and editing tools tested for output quality and workflow.' },
 
   // Software — Productivity
+  { slug: 'productivity', name: 'Productivity Tool', pluralName: 'Productivity Tools', color: '#6366f1', icon: 'bolt', description: 'Productivity apps and workspace tools tested for workflow, collaboration, and team use.' },
   { slug: 'note-taking', name: 'Note App', pluralName: 'Note Apps', color: '#6366f1', icon: 'note', description: 'Note-taking apps tested for organization, sync, and knowledge management.' },
   { slug: 'task-management', name: 'Task Manager', pluralName: 'Task Managers', color: '#2563eb', icon: 'task', description: 'Task management apps tested for GTD workflows, collaboration, and automation.' },
   { slug: 'project-management', name: 'Project Management Tool', pluralName: 'Project Management Tools', color: '#7c3aed', icon: 'project', description: 'Project management tools tested for team workflows, reporting, and integrations.' },

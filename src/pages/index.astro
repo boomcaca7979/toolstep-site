@@ -25,14 +25,14 @@ const popularTools = [
   { name: 'Midjourney', desc: 'AI image generator', href: '/reviews/midjourney-vs-dalle3/' },
 ];
 
-// Category cards — search-intent oriented, linking to existing pages
+// Category cards — search-intent oriented, linking to category landing pages
 const categoryCards = [
-  { name: 'AI Assistants', desc: 'ChatGPT, Claude, Gemini & more', href: '/reviews/claude-vs-chatgpt/', icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' },
-  { name: 'AI Writing', desc: 'Grammarly, Notion AI, Jasper', href: '/best/best-ai-writing-tool/', icon: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z' },
-  { name: 'AI Image', desc: 'Midjourney, DALL-E, Leonardo', href: '/reviews/midjourney-vs-dalle3/', icon: 'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM21 15l-5-5L5 21' },
-  { name: 'Developer Tools', desc: 'Cursor, Copilot, Claude Code', href: '/reviews/best-ai-coding-assistant-2026/', icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6' },
-  { name: 'Productivity', desc: 'Notion, Todoist, Linear', href: '/best/best-note-taking-app/', icon: 'M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11' },
-  { name: 'Video Tools', desc: 'OBS, CapCut, Runway', href: '/best/best-video-editing-software/', icon: 'M23 7l-7 5 7 5V7zM14 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z' },
+  { name: 'AI Assistants', desc: 'ChatGPT, Claude, Gemini & more', href: '/category/ai-assistants/', icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' },
+  { name: 'AI Writing', desc: 'Grammarly, Notion AI, Jasper', href: '/category/ai-writing/', icon: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z' },
+  { name: 'AI Image', desc: 'Midjourney, DALL-E, Leonardo', href: '/category/ai-image/', icon: 'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM21 15l-5-5L5 21' },
+  { name: 'AI Coding', desc: 'Cursor, Copilot, Claude Code', href: '/category/ai-coding/', icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6' },
+  { name: 'Productivity', desc: 'Notion, Todoist, Linear', href: '/category/productivity/', icon: 'M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11' },
+  { name: 'Video Tools', desc: 'OBS, CapCut, Runway', href: '/category/video-tools/', icon: 'M23 7l-7 5 7 5V7zM14 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z' },
 ];
 
 // Featured comparisons — high-intent matchups
@@ -388,6 +388,7 @@ const latestReviews = (reviews.filter((r) => r.tag === 'NEW').length >= 6
 			<p>ToolStep is your AI tools and software review platform — in-depth comparisons, hands-on reviews, and curated best-of guides to help you pick the right tool.</p>
 			<div class="hero-cta">
 				<a class="btn-primary" href="/reviews/">Browse Reviews →</a>
+				<a class="btn-secondary" href="/tools/">All Tools</a>
 				<a class="btn-secondary" href="/compare/">Compare Tools</a>
 			</div>
 			<div class="hero-stats">

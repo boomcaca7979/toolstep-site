@@ -1,0 +1,194 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { reviews } from '../data/reviews';
+
+const pageTitle = 'Page Not Found (404) - ToolStep';
+const pageDescription = 'The page you were looking for could not be found. Browse our popular categories, latest reviews, or search all tools.';
+
+// Popular categories — link to category landing pages
+const popularCategories = [
+  { name: 'AI Assistants', href: '/category/ai-assistants/' },
+  { name: 'AI Writing', href: '/category/ai-writing/' },
+  { name: 'AI Coding', href: '/category/ai-coding/' },
+  { name: 'AI Image', href: '/category/ai-image/' },
+  { name: 'Productivity', href: '/category/productivity/' },
+  { name: 'Video Tools', href: '/category/video-tools/' },
+];
+
+// Popular reviews — first 6 NEW-tagged
+const popularReviews = reviews.filter((r) => r.tag === 'NEW').slice(0, 6);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+		<link rel="canonical" href="https://www.toolstep.top/404" />
+		<style>
+			.notfound-hero {
+				max-width: 720px;
+				margin: 0 auto;
+				padding: 80px 24px 32px;
+				text-align: center;
+			}
+			.notfound-hero .code {
+				font-size: 96px;
+				font-weight: 800;
+				color: var(--accent);
+				line-height: 1;
+				letter-spacing: -0.03em;
+			}
+			.notfound-hero h1 {
+				font-size: 28px;
+				font-weight: 700;
+				color: rgb(var(--gray-dark));
+				margin: 16px 0 12px 0;
+			}
+			.notfound-hero p {
+				font-size: 16px;
+				color: rgb(var(--gray));
+				margin: 0 0 24px 0;
+				line-height: 1.6;
+			}
+			.notfound-hero .home-btn {
+				display: inline-block;
+				padding: 12px 24px;
+				background: var(--accent);
+				color: white;
+				border-radius: 10px;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 15px;
+				transition: background 0.2s ease;
+			}
+			.notfound-hero .home-btn:hover {
+				background: var(--accent-dark);
+			}
+
+			.section-block {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 24px 24px 40px;
+			}
+			.section-block h2 {
+				font-size: 20px;
+				font-weight: 700;
+				color: rgb(var(--gray-dark));
+				margin: 0 0 16px 0;
+			}
+
+			.cat-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+			.cat-list a {
+				padding: 10px 18px;
+				border-radius: 10px;
+				border: 1px solid var(--card-border);
+				background: var(--card-bg);
+				color: rgb(var(--gray-dark));
+				font-size: 14px;
+				font-weight: 600;
+				text-decoration: none;
+				transition: border-color 0.2s ease;
+			}
+			.cat-list a:hover {
+				border-color: var(--accent);
+				color: var(--accent);
+			}
+
+			.review-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 14px;
+			}
+			.review-card {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				padding: 16px;
+				border-radius: 12px;
+				border: 1px solid var(--card-border);
+				background: var(--card-bg);
+				text-decoration: none;
+				transition: all 0.2s ease;
+				box-shadow: var(--card-shadow);
+			}
+			.review-card:hover {
+				border-color: var(--accent);
+				transform: translateY(-2px);
+			}
+			.review-card .tag {
+				align-self: flex-start;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				padding: 3px 8px;
+				border-radius: 6px;
+				color: white;
+			}
+			.review-card .title {
+				font-size: 15px;
+				font-weight: 700;
+				color: rgb(var(--gray-dark));
+				margin: 0;
+			}
+			.review-card .desc {
+				font-size: 13px;
+				color: rgb(var(--gray));
+				line-height: 1.5;
+				margin: 0;
+			}
+
+			@media (max-width: 768px) {
+				.notfound-hero {
+					padding: 48px 16px 24px;
+				}
+				.notfound-hero .code {
+					font-size: 64px;
+				}
+				.review-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+
+		<section class="notfound-hero">
+			<div class="code">404</div>
+			<h1>This page could not be found</h1>
+			<p>The page you're looking for may have been moved, renamed, or never existed. Try one of the popular destinations below, or head back to the homepage.</p>
+			<a class="home-btn" href="/">Go to Homepage →</a>
+		</section>
+
+		<section class="section-block">
+			<h2>Popular Categories</h2>
+			<div class="cat-list">
+				{popularCategories.map((cat) => (
+					<a href={cat.href}>{cat.name}</a>
+				))}
+			</div>
+		</section>
+
+		<section class="section-block">
+			<h2>Popular Reviews</h2>
+			<div class="review-grid">
+				{popularReviews.map((r) => (
+					<a class="review-card" href={r.href}>
+						<span class="tag" style={`background: ${r.color}`}>{r.category}</span>
+						<h3 class="title">{r.title}</h3>
+						<p class="desc">{r.desc}</p>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<Footer />
+	</body>
+</html>
