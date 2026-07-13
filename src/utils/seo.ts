@@ -72,7 +72,7 @@ export function buildReviewLinkCluster(opts: {
     ? {
         title: `Best ${categoryTitle}`,
         href: `/best/${categorySlug}/`,
-        desc: `See where ${productName} ranks among the top ${categoryTitle.toLowerCase()} we tested.`,
+        desc: `See where ${productName} ranks among the top ${categoryTitle.toLowerCase()} we analyzed.`,
       }
     : null;
 

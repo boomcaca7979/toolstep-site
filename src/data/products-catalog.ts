@@ -12478,7 +12478,7 @@ export const catalogProducts: CatalogProduct[] = [
     category: 'Standing Desks',
     price: 599,
     rating: 4.8,
-    description: 'The most stable desk we tested. Dual-motor, 355-lb capacity, 73 top options.',
+    description: 'The most stable desk in this category based on published specifications and design features. Dual-motor, 355-lb capacity, 73 top options.',
     pros: ['Rock-solid at full height', '73 top finishes and sizes', 'Best-in-class warranty'],
     cons: ['Expensive', 'Top sold separately'],
     source: 'best',

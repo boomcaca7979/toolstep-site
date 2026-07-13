@@ -2966,7 +2966,7 @@ export const compareData: CompareEntry[] = [
     ],
     faqs: [
       { question: 'Should I upgrade from MX Master 3 to 3S?', answer: 'Only if click noise bothers you or your coworkers. The shell, ergonomics, and scroll wheel are identical. If your MX Master 3 still works, keep it.' },
-      { question: 'How much quieter are the 3S clicks?', answer: 'Logitech measures a 90% reduction in click noise. In our tests the 3S clicks are barely audible from across a desk, while the original 3 is clearly noticeable.' },
+      { question: 'How much quieter are the 3S clicks?', answer: 'Logitech measures a 90% reduction in click noise. According to published specifications and product information, the 3S clicks are designed to be significantly quieter than the original 3.' },
       { question: 'Is the 8K DPI sensor a real upgrade?', answer: 'For most users, no. The 4K sensor on the original MX Master 3 is already plenty for productivity. The 8K sensor helps on ultra-high-resolution 5K and 8K displays.' },
     ],
     relatedReviews: ['/reviews/logitech-mx-master-3s-review/', '/reviews/logitech-mx-master-3s-vs-razer-basilisk-v3-pro/', '/reviews/best-wireless-mouse-programmers/'],
@@ -3601,7 +3601,7 @@ export const compareData: CompareEntry[] = [
     },
     productB: {
       name: 'Samsung S95B (QN65S95B)', brand: 'Samsung', price: 2199, rating: 4.6,
-      pros: ['QD-OLED panel hits 1000+ nits peak in highlights', 'Best color volume we have measured on a TV', 'One Connect box hides cables cleanly', 'Tizen OS is responsive with a deep app library'],
+      pros: ['QD-OLED panel hits 1000+ nits peak in highlights', 'Among the strongest published color performance specifications', 'One Connect box hides cables cleanly', 'Tizen OS is responsive with a deep app library'],
       cons: ['$600 more than the LG C2', 'Only two full HDMI 2.1 ports', 'No Dolby Vision support (HDR10+ only)', 'Color accuracy drifts in bright SDR mode'],
     },
     quickWinner: 'A',
@@ -3705,7 +3705,7 @@ export const compareData: CompareEntry[] = [
       { scenario: 'Budget under $240', winner: 'A' },
     ],
     faqs: [
-      { question: 'Is the Logitech G915 TKL wireless reliable for gaming?', answer: 'Yes. Lightspeed wireless has measured sub-1ms latency in our tests, indistinguishable from wired. It is used in professional FPS tournaments.' },
+      { question: 'Is the Logitech G915 TKL wireless reliable for gaming?', answer: 'Yes. Manufacturer specifications report sub-1ms latency for Lightspeed wireless, indistinguishable from wired. It is used in professional FPS tournaments.' },
       { question: 'What is special about Razer Analog optical switches?', answer: 'They detect how far you press, allowing adjustable actuation from 0.1mm to 4mm. This helps FPS players trigger movement faster, but the benefit is marginal for most users.' },
       { question: 'Which keyboard is better for office typing?', answer: 'The Logitech G915 TKL. Its low-profile GL tactile switches are quieter and feel closer to a laptop keyboard, making it easier to switch between devices. The Razer Huntsman is louder and clicky.' },
     ],

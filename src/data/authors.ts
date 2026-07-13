@@ -112,9 +112,10 @@ export const authors: Author[] = [
     avatar: 'https://i.pravatar.cc/300?u=toolstep-team',
     bio: 'The ToolStep editorial team produces collaborative reviews based on product documentation, specification analysis, feature evaluation, and workflow assessment. These reviews are edited by our senior staff and represent the consensus of our editorial panel. We use this byline for roundups and comparison pieces where no single reviewer is the primary writer.',
     equipment: [
-      'Full testing lab with 6 desks and 12 chairs in rotation',
-      'Multiple tester setups across different body types and heights',
-      'Standardized testing protocol applied to every product',
+      'Product documentation analysis',
+      'Specification comparison frameworks',
+      'Feature evaluation across competing products',
+      'Pricing and value analysis',
     ],
     experience: 'Collective 20+ years across the editorial team. Reviews edited and fact-checked by senior staff before publication.',
     expertise: [
