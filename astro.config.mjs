@@ -7,7 +7,39 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.toolstep.top',
-	integrations: [mdx(), sitemap()],
+	integrations: [
+		mdx(),
+		sitemap({
+			serialize(item) {
+				// Priority hierarchy: homepage > category hub > category pages > content pages
+				if (item.url === 'https://www.toolstep.top/') {
+					item.priority = 1.0;
+				} else if (item.url === 'https://www.toolstep.top/category/') {
+					item.priority = 0.9;
+				} else if (item.url.startsWith('https://www.toolstep.top/category/')) {
+					item.priority = 0.8;
+				} else if (
+					item.url === 'https://www.toolstep.top/reviews/' ||
+					item.url === 'https://www.toolstep.top/compare/' ||
+					item.url === 'https://www.toolstep.top/best/' ||
+					item.url === 'https://www.toolstep.top/tools/'
+				) {
+					item.priority = 0.8;
+				} else if (
+					item.url.startsWith('https://www.toolstep.top/reviews/') ||
+					item.url.startsWith('https://www.toolstep.top/compare/') ||
+					item.url.startsWith('https://www.toolstep.top/best/')
+				) {
+					item.priority = 0.7;
+				} else if (item.url.startsWith('https://www.toolstep.top/tools/')) {
+					item.priority = 0.6;
+				} else {
+					item.priority = 0.5;
+				}
+				return item;
+			},
+		}),
+	],
 	image: {
 		remotePatterns: [
 			{ protocol: 'https', hostname: 'trae-api-cn.mchost.guru' },

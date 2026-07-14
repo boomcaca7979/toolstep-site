@@ -485,7 +485,21 @@ const siblingCategories = categories.filter((c) => c.slug !== slug).slice(0, 10)
 				))}
 			</div>
 			<div class="all-categories-link" style="margin-top: 14px;">
-				<a href="/#categories" style="font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none;">View all categories →</a>
+				<a href="/category/" style="font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none;">View all categories →</a>
+			</div>
+		</section>
+
+		{/* ===== Quick Browse ===== */}
+		<section class="section-block" style="padding-top: 0;">
+			<div style="background: rgba(var(--accent-rgb), 0.03); border: 1px solid rgba(var(--accent-rgb), 0.12); border-radius: 12px; padding: 20px 24px; text-align: center;">
+				<h3 style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700; color: rgb(var(--gray-dark));">Browse More on ToolStep</h3>
+				<p style="margin: 0 0 12px 0; font-size: 13px; color: rgb(var(--gray));">Explore our complete directory of reviews, comparisons, and best-of guides.</p>
+				<div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+					<a href="/reviews/" style="font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none;">All Reviews →</a>
+					<a href="/compare/" style="font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none;">All Comparisons →</a>
+					<a href="/best/" style="font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none;">All Best Guides →</a>
+					<a href="/tools/" style="font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none;">Tools Directory →</a>
+				</div>
 			</div>
 		</section>
 

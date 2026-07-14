@@ -130,7 +130,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={entry.description} />
     <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
