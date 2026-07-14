@@ -476,13 +476,16 @@ const siblingCategories = categories.filter((c) => c.slug !== slug).slice(0, 10)
 			</section>
 		)}
 
-		{/* ===== Sibling Categories ===== */}
+		{/* ===== Related Categories ===== */}
 		<section class="sibling-cats">
-			<h3>Other Categories</h3>
+			<h3>Related Categories</h3>
 			<div class="sibling-list">
 				{siblingCategories.map((c) => (
-					<a href={`/category/${c.slug}/`}>{c.pluralName}</a>
+					<a href={`/category/${c.slug}/`} title={`Browse ${c.pluralName.toLowerCase()} guides, reviews, and comparisons`}>{c.pluralName}</a>
 				))}
+			</div>
+			<div class="all-categories-link" style="margin-top: 14px;">
+				<a href="/#categories" style="font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none;">View all categories →</a>
 			</div>
 		</section>
 

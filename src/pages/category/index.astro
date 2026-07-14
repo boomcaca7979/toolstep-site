@@ -1,0 +1,210 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { categories } from '../../data/categories';
+import { reviews } from '../../data/reviews';
+import { compareData } from '../../data/compare';
+import { bestData } from '../../data/best';
+import { categoryMatches } from '../../data/category-map';
+
+const pageTitle = 'All Categories — ToolStep';
+const pageDescription = 'Browse all ToolStep product categories. Find in-depth reviews, head-to-head comparisons, and best-of guides for AI tools, software, and hardware.';
+const canonicalURL = new URL('/category/', Astro.site);
+
+// Count items per category
+const categoryStats = categories.map((cat) => {
+  const reviewCount = reviews.filter((r) => categoryMatches(r.category, cat.slug, r.title)).length;
+  const compareCount = compareData.filter((c) => categoryMatches(c.category, cat.slug, c.title)).length;
+  const bestCount = bestData.filter((b) => categoryMatches(b.category, cat.slug, b.title)).length;
+  return {
+    ...cat,
+    reviewCount,
+    compareCount,
+    bestCount,
+    total: reviewCount + compareCount + bestCount,
+  };
+});
+
+// Sort: categories with content first, then by total descending
+const sortedCategories = [...categoryStats].sort((a, b) => b.total - a.total);
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.toolstep.top/' },
+    { '@type': 'ListItem', position: 2, name: 'Categories', item: canonicalURL.toString() },
+  ],
+};
+
+const collectionPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'All Categories',
+  description: pageDescription,
+  url: canonicalURL.toString(),
+  isPartOf: { '@type': 'WebSite', name: 'ToolStep', url: 'https://www.toolstep.top' },
+  numberOfItems: categories.length,
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+		<link rel="canonical" href={canonicalURL} />
+		<script type="application/ld+json" set:html={JSON.stringify(collectionPageSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+		<style>
+			.page-hero {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 48px 24px 24px;
+			}
+			.breadcrumb {
+				font-size: 13px;
+				color: rgb(var(--gray));
+				margin-bottom: 12px;
+			}
+			.breadcrumb a {
+				color: rgb(var(--gray));
+				text-decoration: none;
+			}
+			.breadcrumb a:hover {
+				color: var(--accent);
+			}
+			.page-hero h1 {
+				font-size: 36px;
+				font-weight: 800;
+				margin: 0 0 12px 0;
+				color: rgb(var(--gray-dark));
+				letter-spacing: -0.02em;
+			}
+			.page-hero p {
+				font-size: 17px;
+				color: rgb(var(--gray));
+				margin: 0;
+				line-height: 1.6;
+				max-width: 720px;
+			}
+
+			.categories-grid {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 28px 24px 64px;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+				gap: 16px;
+			}
+			.cat-card {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				padding: 22px;
+				border-radius: 12px;
+				border: 1px solid var(--card-border);
+				background: var(--card-bg);
+				text-decoration: none;
+				transition: all 0.2s ease;
+				box-shadow: var(--card-shadow);
+			}
+			.cat-card:hover {
+				border-color: var(--accent);
+				transform: translateY(-2px);
+				box-shadow: var(--card-shadow-hover);
+			}
+			.cat-card .cat-header {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			.cat-card .cat-icon {
+				width: 36px;
+				height: 36px;
+				border-radius: 8px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 18px;
+			}
+			.cat-card .cat-name {
+				font-size: 18px;
+				font-weight: 700;
+				color: rgb(var(--gray-dark));
+			}
+			.cat-card .cat-desc {
+				font-size: 14px;
+				color: rgb(var(--gray));
+				line-height: 1.5;
+				margin: 0;
+			}
+			.cat-card .cat-stats {
+				display: flex;
+				gap: 14px;
+				font-size: 12px;
+				color: rgb(var(--gray));
+				margin-top: 4px;
+			}
+			.cat-card .cat-stats span {
+				display: inline-flex;
+				align-items: center;
+				gap: 4px;
+			}
+			.cat-card .cat-stats strong {
+				color: rgb(var(--gray-dark));
+				font-weight: 700;
+			}
+			.cat-card .cat-arrow {
+				margin-top: 6px;
+				font-size: 13px;
+				color: var(--accent);
+				font-weight: 600;
+			}
+
+			@media (max-width: 768px) {
+				.page-hero {
+					padding: 32px 16px 20px;
+				}
+				.page-hero h1 {
+					font-size: 28px;
+				}
+				.categories-grid {
+					grid-template-columns: 1fr;
+					padding: 20px 16px 48px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+
+		<section class="page-hero">
+			<nav class="breadcrumb" aria-label="Breadcrumb">
+				<a href="/">Home</a> › Categories
+			</nav>
+			<h1>All Categories</h1>
+			<p>Browse every ToolStep product category — {categories.length} categories covering AI tools, productivity software, and workspace hardware. Each category page aggregates our reviews, comparisons, and best-of guides.</p>
+		</section>
+
+		<div class="categories-grid">
+			{sortedCategories.map((cat) => (
+				<a class="cat-card" href={`/category/${cat.slug}/`} title={`Browse ${cat.pluralName.toLowerCase()} guides, reviews, and comparisons`}>
+					<div class="cat-header">
+						<div class="cat-icon" style={`background: ${cat.color}20; color: ${cat.color}`}>●</div>
+						<div class="cat-name">{cat.pluralName}</div>
+					</div>
+					<p class="cat-desc">{cat.description}</p>
+					<div class="cat-stats">
+						<span><strong>{cat.bestCount}</strong> guides</span>
+						<span><strong>{cat.compareCount}</strong> comparisons</span>
+						<span><strong>{cat.reviewCount}</strong> reviews</span>
+					</div>
+					<div class="cat-arrow">Explore {cat.pluralName.toLowerCase()} →</div>
+				</a>
+			))}
+		</div>
+
+		<Footer />
+	</body>
+</html>

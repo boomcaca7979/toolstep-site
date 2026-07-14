@@ -7,6 +7,8 @@ import AdUnit from '../../components/ads/AdUnit.astro';
 import { getBestEntries, getBestEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildBestTitle } from '../../utils/seo';
+import { mapCategoryToSlug } from '../../data/category-map';
+import { getCategoryBySlug } from '../../data/categories';
 
 export function getStaticPaths() {
   return getBestEntries().map((entry) => ({
@@ -33,6 +35,12 @@ const relatedBestItems = entry.relatedBests
   .map(slug => getBestEntryBySlug(slug))
   .filter((b): b is NonNullable<typeof b> => b !== undefined)
   .slice(0, 4);
+
+// Resolve canonical category for internal linking
+const canonicalCatSlug = mapCategoryToSlug(entry.category, entry.title);
+const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
+const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
+const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
 
 // Stars helper
 function stars(rating: number): string {
@@ -622,7 +630,11 @@ const articleSchema = {
         <div class="main-col">
           {/* Hero */}
           <div class="hero">
-            <span class="category-tag" style={`background: ${entry.color}`}>{entry.category}</span>
+            {categoryLink ? (
+              <a href={categoryLink} class="category-tag" style={`background: ${entry.color}`} title={`Browse all ${categoryLabel.toLowerCase()} content`}>{entry.category}</a>
+            ) : (
+              <span class="category-tag" style={`background: ${entry.color}`}>{entry.category}</span>
+            )}
             <h1>{entry.title}</h1>
             <p class="desc">{entry.description}</p>
             <div class="hero-stats">
@@ -761,6 +773,15 @@ const articleSchema = {
                 ))}
               </div>
             </>
+          )}
+
+          {/* Explore Category */}
+          {categoryLink && (
+            <div style="background: rgba(var(--accent-rgb), 0.03); border: 1px solid rgba(var(--accent-rgb), 0.15); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 2rem 0;">
+              <h2 style="margin-top: 0; font-size: 1.2rem;">Explore More {categoryLabel}</h2>
+              <p style="margin: 0.5rem 0 0.75rem; color: rgb(var(--gray)); font-size: 0.92rem;">Browse all {categoryLabel.toLowerCase()} reviews, comparisons, and best-of guides on our {categoryLabel} category page.</p>
+              <a href={categoryLink} style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.95rem;">View all {categoryLabel.toLowerCase()} →</a>
+            </div>
           )}
 
           {/* Previous / Next */}

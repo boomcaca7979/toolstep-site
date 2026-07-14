@@ -14,6 +14,8 @@ import AdUnit from '../components/ads/AdUnit.astro';
 import { buildProductReviewMeta } from '../lib/seo';
 import { getRelatedForReview } from '../lib/related';
 import { getAuthor } from '../data/authors';
+import { mapCategoryToSlug } from '../data/category-map';
+import { getCategoryBySlug } from '../data/categories';
 import type { ProductReviewEntry } from '../data/products';
 
 interface Props {
@@ -27,6 +29,12 @@ const { entry, authorName, affiliateUrl, heroImage } = Astro.props;
 const author = getAuthor(entry.authorSlug);
 const meta = buildProductReviewMeta(entry, authorName, author.role);
 const related = getRelatedForReview(entry.productName, entry.slug, entry.category, entry.brand, entry.compareSlugs);
+
+// Resolve canonical category for internal linking
+const canonicalCatSlug = mapCategoryToSlug(entry.category, entry.productName);
+const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
+const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
+const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
 
 const tocSections = [
   { id: 'quick-verdict', label: 'Quick Verdict' },
@@ -274,6 +282,15 @@ const tocSections = [
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {/* Explore Category */}
+      {categoryLink && (
+        <div class="related-section" style="text-align: center;">
+          <h2>Explore More {categoryLabel}</h2>
+          <p style="margin-bottom: 0.75rem;">Browse all {categoryLabel.toLowerCase()} reviews, comparisons, and best-of guides on our {categoryLabel} category page.</p>
+          <a href={categoryLink} style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;">View all {categoryLabel.toLowerCase()} →</a>
         </div>
       )}
 
