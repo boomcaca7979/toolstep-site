@@ -27,6 +27,10 @@ const RAW_TO_SLUG: Record<string, string> = {
   'Productivity Software': 'productivity',
   'Collaboration Software': 'productivity',
   'Software': 'productivity',
+  'Tablets': 'productivity',
+  'Mini PCs': 'productivity',
+  'Smart Home': 'productivity',
+  'Weather Apps': 'productivity',
 
   // Design
   'Design Tools': 'design-tools',
@@ -39,13 +43,19 @@ const RAW_TO_SLUG: Record<string, string> = {
   'Video Software': 'video-tools',
   'Video & Audio': 'video-tools',
   'Streaming': 'video-tools',
+  'Music Software': 'video-tools',
 
   // Security
   'Security': 'security',
   'VPN Software': 'security',
+  'Security Software': 'security',
 
   // Cloud
   'Cloud Storage': 'cloud-storage',
+  'Online Backup': 'cloud-storage',
+
+  // AI writing — Writing Tools also maps here
+  'Writing Tools': 'ai-writing',
 
   // Hardware — direct matches
   'Standing Desks': 'standing-desks',
@@ -67,10 +77,18 @@ const RAW_TO_SLUG: Record<string, string> = {
   'Microphones': 'desk-accessories',
   'Laptop Stands': 'desk-accessories',
   'Speakers': 'desk-accessories',
+  'Smart Speakers': 'desk-accessories',
+  'Networking': 'desk-accessories',
+  'Printers': 'desk-accessories',
+  'Controllers': 'desk-accessories',
 
   // Display-adjacent
   'TVs': 'monitors',
   'Projectors': 'monitors',
+  'Gaming Monitors': 'monitors',
+
+  // Keyboard variants
+  'Mechanical Keyboards': 'keyboards',
 
   // Utilities
   'PDF Tools': 'productivity',
@@ -83,17 +101,19 @@ const RAW_TO_SLUG: Record<string, string> = {
  * per-page hardcoding.
  */
 const HARDWARE_TITLE_RULES: { keywords: string[]; slug: string }[] = [
-  { keywords: ['standing desk', 'desk converter'], slug: 'standing-desks' },
+  // Most-specific multi-word matches first to avoid keyword collisions
+  { keywords: ['standing desk', 'desk converter', 'flexispot', 'uplift v2'], slug: 'standing-desks' },
   { keywords: ['ergonomic chair', 'office chair', 'aeron', 'steelcase', 'leap', 'gesture', 'branch ergonomic', 'sihoo', 'hbada'], slug: 'ergonomic-chairs' },
   { keywords: ['mechanical keyboard', 'keyboard', 'keychron', 'logitech mx keys'], slug: 'keyboards' },
   { keywords: ['mouse', 'logitech mx master', 'logitech mx anywhere'], slug: 'mice' },
-  { keywords: ['monitor light', 'desk lamp', 'screenbar', 'light bar'], slug: 'desk-accessories' },
+  // Desk accessories — check before storage/monitor to avoid "with Storage" collision
+  { keywords: ['monitor light', 'desk lamp', 'screenbar', 'light bar', 'desk pad', 'cable management', 'phone stand', 'air purifier', 'foot rest', 'blue light', 'wireless charging', 'monitor riser', 'usb-c hub', 'laptop stand'], slug: 'desk-accessories' },
   { keywords: ['webcam', 'brio', 'insta360'], slug: 'webcams' },
   { keywords: ['headphones', 'noise cancel', 'anc', 'sony wh', 'soundcore', 'airpods'], slug: 'headphones' },
   { keywords: ['dock', 'thunderbolt', 'usb-c dock', 'caldigit', 'satechi'], slug: 'docks' },
-  { keywords: ['ssd', 'external ssd', 'samsung t7', 'storage'], slug: 'storage' },
+  // Storage — use specific terms only to avoid matching "with Storage" in titles
+  { keywords: ['external ssd', 'samsung t7', 'ssd for backup'], slug: 'storage' },
   { keywords: ['monitor', 'portable monitor', 'oled', 'dell u'], slug: 'monitors' },
-  { keywords: ['desk pad', 'cable management', 'phone stand', 'air purifier', 'foot rest', 'blue light', 'wireless charging', 'monitor riser', 'usb-c hub', 'laptop stand'], slug: 'desk-accessories' },
 ];
 
 /**

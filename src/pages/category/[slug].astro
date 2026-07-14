@@ -22,7 +22,7 @@ interface Props {
 const { category } = Astro.props;
 const { slug, name, pluralName, description, color } = category;
 
-const pageTitle = `Best ${pluralName} 2026`;
+const pageTitle = `Best ${pluralName} 2026 — ToolStep`;
 const pageDescription = `${description} Compare the best ${pluralName.toLowerCase()} with our in-depth reviews, head-to-head comparisons, and ranked guides.`;
 const canonicalURL = new URL(`/category/${slug}/`, Astro.site);
 
@@ -41,8 +41,22 @@ const featuredBests = bestData
   .slice(0, 6);
 
 const totalItems = relatedReviews.length + topCompares.length + featuredBests.length;
+const isEmptyCategory = totalItems === 0;
 
-// Build FAQ from category description + best guides if available
+// For empty categories, pull related content from sibling categories
+// so the page still offers value instead of showing only empty states.
+const fallbackReviews = isEmptyCategory
+  ? reviews.slice(0, 4)
+  : [];
+const fallbackCompares = isEmptyCategory
+  ? compareData.slice(0, 3)
+  : [];
+const fallbackBests = isEmptyCategory
+  ? bestData.slice(0, 3)
+  : [];
+
+// Build FAQ — always at least 2 questions for SEO.
+// For empty categories, add generic helpful questions.
 const faqs = [
   {
     question: `What are the best ${pluralName.toLowerCase()} in 2026?`,
@@ -52,6 +66,16 @@ const faqs = [
     question: f.question,
     answer: f.answer,
   })) || []),
+  ...(isEmptyCategory ? [
+    {
+      question: `How do I choose the right ${name.toLowerCase()}?`,
+      answer: `When choosing a ${name.toLowerCase()}, consider your budget, intended use case, and must-have features. Our team researches and compares the top options to help you make an informed decision — check back soon for dedicated ${pluralName.toLowerCase()} guides.`,
+    },
+    {
+      question: `Does ToolStep review ${pluralName.toLowerCase()}?`,
+      answer: `Yes. ToolStep is actively expanding its ${pluralName.toLowerCase()} coverage. In the meantime, browse our other categories or check the latest reviews for related product recommendations.`,
+    },
+  ] : []),
 ];
 
 // Schemas
@@ -63,29 +87,31 @@ const collectionPageSchema = {
   url: canonicalURL.toString(),
   isPartOf: { '@type': 'WebSite', name: 'ToolStep', url: 'https://www.toolstep.top' },
   numberOfItems: totalItems,
-  mainEntity: {
-    '@type': 'ItemList',
-    itemListElement: [
-      ...featuredBests.slice(0, 6).map((b, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        name: b.title,
-        url: new URL(`/best/${b.slug}/`, Astro.site).toString(),
-      })),
-      ...topCompares.slice(0, 6).map((c, i) => ({
-        '@type': 'ListItem',
-        position: i + 1 + featuredBests.length,
-        name: c.title,
-        url: new URL(`/compare/${c.slug}/`, Astro.site).toString(),
-      })),
-      ...relatedReviews.slice(0, 8).map((r, i) => ({
-        '@type': 'ListItem',
-        position: i + 1 + featuredBests.length + topCompares.length,
-        name: r.title,
-        url: new URL(r.href, Astro.site).toString(),
-      })),
-    ],
-  },
+  ...(totalItems > 0 ? {
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: [
+        ...featuredBests.slice(0, 6).map((b, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: b.title,
+          url: new URL(`/best/${b.slug}/`, Astro.site).toString(),
+        })),
+        ...topCompares.slice(0, 6).map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1 + featuredBests.length,
+          name: c.title,
+          url: new URL(`/compare/${c.slug}/`, Astro.site).toString(),
+        })),
+        ...relatedReviews.slice(0, 8).map((r, i) => ({
+          '@type': 'ListItem',
+          position: i + 1 + featuredBests.length + topCompares.length,
+          name: r.title,
+          url: new URL(r.href, Astro.site).toString(),
+        })),
+      ],
+    },
+  } : {}),
 };
 
 const breadcrumbSchema = {
@@ -337,6 +363,11 @@ const siblingCategories = categories.filter((c) => c.slug !== slug).slice(0, 10)
 			<h1>Best {pluralName} 2026</h1>
 			<p>{description}</p>
 			<span class="count-badge">{totalItems} resources · {featuredBests.length} guides · {topCompares.length} comparisons · {relatedReviews.length} reviews</span>
+			{isEmptyCategory && (
+				<p style="margin-top: 12px; font-size: 14px; color: rgb(var(--gray));">
+					We're building out {pluralName.toLowerCase()} coverage. In the meantime, here are popular picks from other categories.
+				</p>
+			)}
 		</section>
 
 		{/* ===== Featured Best Guides ===== */}
@@ -348,6 +379,16 @@ const siblingCategories = categories.filter((c) => c.slug !== slug).slice(0, 10)
 			{featuredBests.length > 0 ? (
 				<div class="cards-grid">
 					{featuredBests.map((b) => (
+						<a class="content-card" href={`/best/${b.slug}/`}>
+							<span class="card-tag" style={`background: ${b.color}`}>{b.category}</span>
+							<h3 class="card-title">{b.title}</h3>
+							<p class="card-desc">{b.description}</p>
+						</a>
+					))}
+				</div>
+			) : isEmptyCategory && fallbackBests.length > 0 ? (
+				<div class="cards-grid">
+					{fallbackBests.map((b) => (
 						<a class="content-card" href={`/best/${b.slug}/`}>
 							<span class="card-tag" style={`background: ${b.color}`}>{b.category}</span>
 							<h3 class="card-title">{b.title}</h3>
@@ -376,6 +417,16 @@ const siblingCategories = categories.filter((c) => c.slug !== slug).slice(0, 10)
 						</a>
 					))}
 				</div>
+			) : isEmptyCategory && fallbackCompares.length > 0 ? (
+				<div class="cards-grid">
+					{fallbackCompares.map((c) => (
+						<a class="content-card" href={`/compare/${c.slug}/`}>
+							<span class="card-tag" style={`background: ${c.color}`}>{c.category}</span>
+							<h3 class="card-title">{c.title}</h3>
+							<p class="card-desc">{c.description}</p>
+						</a>
+					))}
+				</div>
 			) : (
 				<div class="empty-section">No comparisons for this category yet. <a href="/compare/">Browse all comparisons →</a></div>
 			)}
@@ -390,6 +441,16 @@ const siblingCategories = categories.filter((c) => c.slug !== slug).slice(0, 10)
 			{relatedReviews.length > 0 ? (
 				<div class="cards-grid">
 					{relatedReviews.map((r) => (
+						<a class="content-card" href={r.href}>
+							<span class="card-tag" style={`background: ${r.color}`}>{r.category}</span>
+							<h3 class="card-title">{r.title}</h3>
+							<p class="card-desc">{r.desc}</p>
+						</a>
+					))}
+				</div>
+			) : isEmptyCategory && fallbackReviews.length > 0 ? (
+				<div class="cards-grid">
+					{fallbackReviews.map((r) => (
 						<a class="content-card" href={r.href}>
 							<span class="card-tag" style={`background: ${r.color}`}>{r.category}</span>
 							<h3 class="card-title">{r.title}</h3>
