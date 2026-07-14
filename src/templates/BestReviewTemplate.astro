@@ -11,6 +11,8 @@ import AdSlot from '../components/AdSlot.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import { buildBestPageMeta } from '../lib/seo';
 import { getRelatedForBest } from '../lib/related';
+import { mapCategoryToSlug } from '../data/category-map';
+import { getCategoryBySlug } from '../data/categories';
 import type { BestEntry } from '../data/best';
 
 interface Props {
@@ -23,6 +25,12 @@ const { entry, authorName, publishDate = '2026-06-26' } = Astro.props;
 const meta = buildBestPageMeta(entry, authorName, publishDate);
 const related = getRelatedForBest(entry.slug, entry.products.map(p => p.name), entry.category);
 const pageUrl = new URL(`/best/${entry.slug}/`, Astro.site).toString();
+
+// Resolve canonical category for internal linking
+const canonicalCatSlug = mapCategoryToSlug(entry.category, entry.title);
+const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
+const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
+const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
 
 function stars(rating: number): string {
   return '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
@@ -141,6 +149,12 @@ const tocSections = [
         <span class="sep">/</span>
         <a href="/best/">Best</a>
         <span class="sep">/</span>
+        {categoryLink ? (
+          <>
+            <a href={categoryLink}>{categoryLabel}</a>
+            <span class="sep">/</span>
+          </>
+        ) : null}
         <span class="current">{entry.title}</span>
       </nav>
 

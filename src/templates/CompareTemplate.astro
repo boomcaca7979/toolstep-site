@@ -11,6 +11,8 @@ import AdSlot from '../components/AdSlot.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import { buildComparePageMeta } from '../lib/seo';
 import { getRelatedForCompare } from '../lib/related';
+import { mapCategoryToSlug } from '../data/category-map';
+import { getCategoryBySlug } from '../data/categories';
 import type { CompareEntry } from '../data/compare';
 
 interface Props {
@@ -23,6 +25,12 @@ const { entry, authorName, publishDate = '2026-06-26' } = Astro.props;
 const { productA, productB } = entry;
 const meta = buildComparePageMeta(entry, authorName, publishDate);
 const related = getRelatedForCompare(productA.name, productB.name, entry.category, entry.slug);
+
+// Resolve canonical category for internal linking
+const canonicalCatSlug = mapCategoryToSlug(entry.category, entry.title);
+const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
+const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
+const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
 
 function stars(rating: number): string {
   return '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
@@ -144,6 +152,12 @@ const tocSections = [
         <span class="sep">/</span>
         <a href="/compare/">Compare</a>
         <span class="sep">/</span>
+        {categoryLink ? (
+          <>
+            <a href={categoryLink}>{categoryLabel}</a>
+            <span class="sep">/</span>
+          </>
+        ) : null}
         <span class="current">{entry.title}</span>
       </nav>
 
@@ -325,6 +339,21 @@ const tocSections = [
           <h2 id="related-bests">Best In Category</h2>
           <ul class="related-list">
             {related.relatedBests.map(r => (
+              <li>
+                <a href={r.href}>{r.title}</a>
+                <div class="desc">{r.desc}</div>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {/* Related Comparisons */}
+      {related.relatedComparisons.length > 0 && (
+        <>
+          <h2 id="related-comparisons">Related Comparisons</h2>
+          <ul class="related-list">
+            {related.relatedComparisons.map(r => (
               <li>
                 <a href={r.href}>{r.title}</a>
                 <div class="desc">{r.desc}</div>

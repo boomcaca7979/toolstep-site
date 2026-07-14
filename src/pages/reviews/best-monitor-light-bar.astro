@@ -11,6 +11,9 @@ import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
 import { buildBestTitle } from '../../utils/seo';
 import RelatedLinks from '../../components/RelatedLinks.astro';
+import { mapCategoryToSlug, rawCategoriesForSlug } from '../../data/category-map';
+import { getCategoryBySlug } from '../../data/categories';
+import { getBestEntries } from '../../data/content';
 
 const pageTitle = buildBestTitle('Monitor Light Bar');
 const pageDescription = 'We evaluated 8 monitor light bars based on asymmetric optics, color temperature, auto-dimming and USB power specifications.';
@@ -27,6 +30,21 @@ const productsTested = 4;
 const productSlug = 'best-monitor-light-bar';
 const productName = 'BenQ ScreenBar Halo';
 const brand = 'BenQ';
+
+// Resolve canonical category for internal linking
+const canonicalCatSlug = mapCategoryToSlug('Hardware', productName);
+const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
+const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
+const categoryLabel = categoryPage ? categoryPage.pluralName : 'Hardware';
+
+// Find related best guides by matching category
+const matchingRawCategories = canonicalCatSlug ? rawCategoriesForSlug(canonicalCatSlug) : [];
+const relatedBests = matchingRawCategories.length > 0
+  ? getBestEntries()
+      .filter(b => matchingRawCategories.includes(b.category))
+      .slice(0, 3)
+      .map(b => ({ title: b.title, href: `/best/${b.slug}/`, desc: b.description }))
+  : [];
 const pros = [
   'Asymmetric optics eliminate screen glare completely — even on glossy displays',
   'Auto-dimming actually works, holding desk illumination within 50 lux of target',
@@ -382,6 +400,28 @@ const nextPost = { title: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-scr
       />
 
       <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
+
+      {relatedBests.length > 0 && (
+        <div class="related">
+          <h2>Best In Category</h2>
+          <ul>
+            {relatedBests.map(r => (
+              <li>
+                <a href={r.href}>{r.title}</a>
+                <div class="desc">{r.desc}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {categoryLink && (
+        <div class="related" style="text-align: center;">
+          <h2>Explore More {categoryLabel}</h2>
+          <p style="margin-bottom: 0.75rem;">Browse all {categoryLabel.toLowerCase()} reviews, comparisons, and best-of guides on our {categoryLabel} category page.</p>
+          <a href={categoryLink} style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;">View all {categoryLabel.toLowerCase()} →</a>
+        </div>
+      )}
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>

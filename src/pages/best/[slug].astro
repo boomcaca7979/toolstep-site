@@ -9,6 +9,7 @@ import { authors } from '../../data/authors';
 import { buildBestTitle } from '../../utils/seo';
 import { mapCategoryToSlug } from '../../data/category-map';
 import { getCategoryBySlug } from '../../data/categories';
+import { getRelatedForBest } from '../../lib/related';
 
 export function getStaticPaths() {
   return getBestEntries().map((entry) => ({
@@ -41,6 +42,9 @@ const canonicalCatSlug = mapCategoryToSlug(entry.category, entry.title);
 const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
 const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
 const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
+
+// Related content graph (reviews, comparisons) via shared matching logic
+const relatedGraph = getRelatedForBest(entry.slug, entry.products.map(p => p.name), entry.category);
 
 // Stars helper
 function stars(rating: number): string {
@@ -623,6 +627,12 @@ const articleSchema = {
         <span class="sep">/</span>
         <a href="/best/">Best</a>
         <span class="sep">/</span>
+        {categoryLink ? (
+          <>
+            <a href={categoryLink}>{categoryLabel}</a>
+            <span class="sep">/</span>
+          </>
+        ) : null}
         <span class="current">{entry.title}</span>
       </nav>
 
@@ -760,6 +770,21 @@ const articleSchema = {
             ))}
           </div>
 
+          {/* Related Reviews */}
+          {relatedGraph.relatedReviews.length > 0 && (
+            <>
+              <h2 id="related-reviews">Related Reviews</h2>
+              <div class="related-grid">
+                {relatedGraph.relatedReviews.map(r => (
+                  <a href={r.href} class="related-card">
+                    <div class="cat">Review</div>
+                    {r.title}
+                  </a>
+                ))}
+              </div>
+            </>
+          )}
+
           {/* Related Bests */}
           {relatedBestItems.length > 0 && (
             <>
@@ -769,6 +794,21 @@ const articleSchema = {
                   <a href={`/best/${b.slug}/`} class="related-card">
                     <div class="cat">{b.category}</div>
                     {b.title}
+                  </a>
+                ))}
+              </div>
+            </>
+          )}
+
+          {/* Related Comparisons */}
+          {relatedGraph.relatedComparisons.length > 0 && (
+            <>
+              <h2 id="related-comparisons">Related Comparisons</h2>
+              <div class="related-grid">
+                {relatedGraph.relatedComparisons.map(r => (
+                  <a href={r.href} class="related-card">
+                    <div class="cat">Compare</div>
+                    {r.title}
                   </a>
                 ))}
               </div>

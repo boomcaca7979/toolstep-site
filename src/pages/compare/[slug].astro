@@ -10,6 +10,7 @@ import { reviews } from '../../data/reviews';
 import { buildCompareTitle } from '../../utils/seo';
 import { mapCategoryToSlug } from '../../data/category-map';
 import { getCategoryBySlug } from '../../data/categories';
+import { getRelatedForCompare } from '../../lib/related';
 
 export function getStaticPaths() {
   return getCompareEntries().map((entry) => ({
@@ -46,6 +47,9 @@ const canonicalCatSlug = mapCategoryToSlug(entry.category, entry.title);
 const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
 const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
 const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
+
+// Related content graph (bests, comparisons) via shared matching logic
+const relatedGraph = getRelatedForCompare(productA.name, productB.name, entry.category, entry.slug);
 
 // Stars helper
 function stars(rating: number): string {
@@ -519,6 +523,12 @@ const articleSchema = {
         <span class="sep">/</span>
         <a href="/compare/">Compare</a>
         <span class="sep">/</span>
+        {categoryLink ? (
+          <>
+            <a href={categoryLink}>{categoryLabel}</a>
+            <span class="sep">/</span>
+          </>
+        ) : null}
         <span class="current">{entry.title}</span>
       </nav>
 
@@ -673,6 +683,36 @@ const articleSchema = {
           <p style="margin: 0.5rem 0 0.75rem; color: rgb(var(--gray)); font-size: 0.92rem;">Browse all {categoryLabel.toLowerCase()} reviews, comparisons, and best-of guides on our {categoryLabel} category page.</p>
           <a href={categoryLink} style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.95rem;">View all {categoryLabel.toLowerCase()} →</a>
         </div>
+      )}
+
+      {/* Related Best Guides */}
+      {relatedGraph.relatedBests.length > 0 && (
+        <>
+          <h2 id="related-bests">Best In Category</h2>
+          <ul class="related-list">
+            {relatedGraph.relatedBests.map(r => (
+              <li>
+                <a href={r.href}>{r.title}</a>
+                <div class="desc">{r.desc}</div>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {/* Related Comparisons */}
+      {relatedGraph.relatedComparisons.length > 0 && (
+        <>
+          <h2 id="related-comparisons">Related Comparisons</h2>
+          <ul class="related-list">
+            {relatedGraph.relatedComparisons.map(r => (
+              <li>
+                <a href={r.href}>{r.title}</a>
+                <div class="desc">{r.desc}</div>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
 
       {/* Previous / Next */}

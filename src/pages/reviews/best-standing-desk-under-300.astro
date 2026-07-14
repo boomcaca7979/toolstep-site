@@ -11,6 +11,9 @@ import ReviewMeta from '../../components/ReviewMeta.astro';
 import heroImg from '../../assets/blog-placeholder-1.jpg';
 import { buildBestTitle } from '../../utils/seo';
 import RelatedLinks from '../../components/RelatedLinks.astro';
+import { mapCategoryToSlug, rawCategoriesForSlug } from '../../data/category-map';
+import { getCategoryBySlug } from '../../data/categories';
+import { getBestEntries } from '../../data/content';
 
 const pageTitle = buildBestTitle('Standing Desk Under $300');
 const pageDescription = 'We evaluated standing desks under $300 based on stability, height range, and noise specifications. See which budget desk actually holds up to daily use.';
@@ -27,6 +30,21 @@ const productsTested = 5;
 const productSlug = 'best-standing-desk-under-300';
 const productName = 'FlexiSpot E7 Standing Desk';
 const brand = 'FlexiSpot';
+
+// Resolve canonical category for internal linking
+const canonicalCatSlug = mapCategoryToSlug('Hardware', productName);
+const categoryPage = canonicalCatSlug ? getCategoryBySlug(canonicalCatSlug) : null;
+const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
+const categoryLabel = categoryPage ? categoryPage.pluralName : 'Hardware';
+
+// Find related best guides by matching category
+const matchingRawCategories = canonicalCatSlug ? rawCategoriesForSlug(canonicalCatSlug) : [];
+const relatedBests = matchingRawCategories.length > 0
+  ? getBestEntries()
+      .filter(b => matchingRawCategories.includes(b.category))
+      .slice(0, 3)
+      .map(b => ({ title: b.title, href: `/best/${b.slug}/`, desc: b.description }))
+  : [];
 const pros = [
   'Rock-solid stability up to 47 inches, even with a heavy ultrawide monitor',
   'Dual-motor lift is quiet at 48 dB and moves 1.5 inches per second',
@@ -758,6 +776,28 @@ const nextPost = { title: 'Best Standing Desk for Home Office', href: '/reviews/
       />
 
       <RelatedLinks productName={productName} productSlug={productSlug} related={related} />
+
+      {relatedBests.length > 0 && (
+        <div class="related">
+          <h2>Best In Category</h2>
+          <ul>
+            {relatedBests.map(r => (
+              <li>
+                <a href={r.href}>{r.title}</a>
+                <div class="desc">{r.desc}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {categoryLink && (
+        <div class="related" style="text-align: center;">
+          <h2>Explore More {categoryLabel}</h2>
+          <p style="margin-bottom: 0.75rem;">Browse all {categoryLabel.toLowerCase()} reviews, comparisons, and best-of guides on our {categoryLabel} category page.</p>
+          <a href={categoryLink} style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;">View all {categoryLabel.toLowerCase()} →</a>
+        </div>
+      )}
 
       <nav class="nav-links" aria-label="Post navigation">
         <a href={prevPost.href}>
