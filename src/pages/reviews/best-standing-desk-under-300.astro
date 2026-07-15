@@ -117,20 +117,13 @@ const nextPost = { title: 'Best Standing Desk for Home Office', href: '/reviews/
     <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "FlexiSpot E7 Standing Desk",
-        "image": heroImage,
-        "brand": { "@type": "Brand", "name": "FlexiSpot" },
-        "category": "Standing Desk",
-        "offers": { "@type": "Offer", "price": bestPrice, "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
-      },
-      "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
-      "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "ToolStep" },
-      "datePublished": publishDate,
-      "reviewBody": "Based on evaluation of documentation and specifications, the FlexiSpot E7 remains the most stable and best-built standing desk you can buy under $300."
+      "@type": "ItemList",
+      "name": pageTitle,
+      "description": pageDescription,
+      "numberOfItems": 1,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": productName, "url": new URL(`/reviews/${productSlug}/`, Astro.site).toString() }
+      ]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

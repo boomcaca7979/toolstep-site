@@ -102,20 +102,13 @@ const nextPost = { title: 'Best Desk Lamp for Eye Care', href: '/reviews/best-de
     <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "Sony WH-1000XM5 Headphones",
-        "image": heroImage,
-        "brand": { "@type": "Brand", "name": "Sony" },
-        "category": "Noise Cancelling Headphones",
-        "offers": { "@type": "Offer", "price": bestPrice, "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
-      },
-      "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
-      "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "ToolStep" },
-      "datePublished": publishDate,
-      "reviewBody": "Based on evaluation of documentation and specifications, the Sony WH-1000XM5 is the best noise cancelling headphones for remote work — class-leading ANC, excellent call quality, and 30-hour battery."
+      "@type": "ItemList",
+      "name": pageTitle,
+      "description": pageDescription,
+      "numberOfItems": 1,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": productName, "url": new URL(`/reviews/${productSlug}/`, Astro.site).toString() }
+      ]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

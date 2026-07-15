@@ -102,20 +102,13 @@ const nextPost = { title: 'Logitech MX Master 3S Review', href: '/reviews/logite
     <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "Logitech MX Master 3S Wireless Mouse",
-        "image": heroImage,
-        "brand": { "@type": "Brand", "name": "Logitech" },
-        "category": "Wireless Mouse",
-        "offers": { "@type": "Offer", "price": bestPrice, "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
-      },
-      "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
-      "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "ToolStep" },
-      "datePublished": publishDate,
-      "reviewBody": "Based on evaluation of documentation and specifications across three devices, the Logitech MX Master 3S remains the best wireless mouse for productivity thanks to its MagSpeed scroll, 8000 DPI sensor, and Flow cross-computer control."
+      "@type": "ItemList",
+      "name": pageTitle,
+      "description": pageDescription,
+      "numberOfItems": 1,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": productName, "url": new URL(`/reviews/${productSlug}/`, Astro.site).toString() }
+      ]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

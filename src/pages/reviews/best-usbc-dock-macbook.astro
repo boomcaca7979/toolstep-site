@@ -104,20 +104,13 @@ const nextPost = { title: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-re
     <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "CalDigit TS4 Thunderbolt 4 Dock",
-        "image": heroImage,
-        "brand": { "@type": "Brand", "name": "CalDigit" },
-        "category": "Thunderbolt Dock",
-        "offers": { "@type": "Offer", "price": bestPrice, "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
-      },
-      "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
-      "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "ToolStep" },
-      "datePublished": publishDate,
-      "reviewBody": "Based on evaluation of documentation and specifications across seven docks with a MacBook Pro, the CalDigit TS4 remains the best USB-C dock thanks to 18 ports, 98W charging, and stable dual 4K support."
+      "@type": "ItemList",
+      "name": pageTitle,
+      "description": pageDescription,
+      "numberOfItems": 1,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": productName, "url": new URL(`/reviews/${productSlug}/`, Astro.site).toString() }
+      ]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

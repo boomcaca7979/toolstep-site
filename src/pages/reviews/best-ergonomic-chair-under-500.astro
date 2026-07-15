@@ -104,20 +104,13 @@ const nextPost = { title: 'Herman Miller Aeron Review', href: '/reviews/herman-m
     <BaseHead title={pageTitle} description={pageDescription} ogType="article" articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, authorName: author}} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Product",
-        "name": "Branch Ergonomic Chair",
-        "image": heroImage,
-        "brand": { "@type": "Brand", "name": "Branch" },
-        "category": "Ergonomic Chair",
-        "offers": { "@type": "Offer", "price": bestPrice, "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
-      },
-      "reviewRating": { "@type": "Rating", "ratingValue": ratingValue, "bestRating": 5, "worstRating": 1 },
-      "author": { "@type": "Person", "name": author },
-      "publisher": { "@type": "Organization", "name": "ToolStep" },
-      "datePublished": publishDate,
-      "reviewBody": "Based on evaluation of seven ergonomic chairs under $500, the Branch Ergonomic Chair won on lumbar support, breathability, and warranty, with the SIHIO M18 and Hbada as strong alternatives."
+      "@type": "ItemList",
+      "name": pageTitle,
+      "description": pageDescription,
+      "numberOfItems": 1,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": productName, "url": new URL(`/reviews/${productSlug}/`, Astro.site).toString() }
+      ]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
