@@ -18,6 +18,15 @@ import { mapCategoryToSlug } from '../data/category-map';
 import { getCategoryBySlug } from '../data/categories';
 import type { ProductReviewEntry } from '../data/products';
 
+// Explicit best-list page slugs that must NOT emit Product/Review schema.
+// These are multi-product roundup pages, not single-product reviews.
+const BEST_PAGE_SLUGS = new Set([
+  'best-ai-assistants-2026',
+  'best-standing-desks-2026',
+  'best-ergonomic-chairs-2026',
+  'best-mechanical-keyboards-2026',
+]);
+
 interface Props {
   entry: ProductReviewEntry;
   authorName: string;
@@ -29,6 +38,10 @@ const { entry, authorName, affiliateUrl, heroImage } = Astro.props;
 const author = getAuthor(entry.authorSlug);
 const meta = buildProductReviewMeta(entry, authorName, author.role);
 const related = getRelatedForReview(entry.productName, entry.slug, entry.category, entry.brand, entry.compareSlugs);
+
+// Best-list pages (multi-product roundups) must not emit Product/Review schema.
+// Determined by data field (brand === "Multiple") or explicit best-page slug.
+const isBestListPage = entry.brand === 'Multiple' || BEST_PAGE_SLUGS.has(entry.slug);
 
 // Resolve canonical category for internal linking
 const canonicalCatSlug = mapCategoryToSlug(entry.category, entry.productName);
@@ -61,7 +74,9 @@ const tocSections = [
       ogType="article"
     />
     <script type="application/ld+json" set:html={JSON.stringify(meta.articleSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(meta.reviewSchema)} />
+    {!isBestListPage && (
+      <script type="application/ld+json" set:html={JSON.stringify(meta.reviewSchema)} />
+    )}
     <script type="application/ld+json" set:html={JSON.stringify(meta.faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(meta.breadcrumbSchema)} />
     <link rel="canonical" href={meta.canonical} />
