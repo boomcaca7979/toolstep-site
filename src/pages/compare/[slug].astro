@@ -64,37 +64,6 @@ function winnerLabel(winner: 'A' | 'B' | 'tie'): string {
 
 // === Schemas ===
 
-const topRating = Math.max(productA.rating, productB.rating);
-const bestPrice = Math.min(productA.price, productB.price);
-
-const reviewSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Review',
-  itemReviewed: {
-    '@type': 'Product',
-    name: entry.title,
-    description: entry.description,
-    category: entry.category,
-    brand: { '@type': 'Brand', name: productA.brand },
-    offers: {
-      '@type': 'Offer',
-      price: bestPrice,
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
-  },
-  reviewRating: {
-    '@type': 'Rating',
-    ratingValue: topRating,
-    bestRating: 5,
-    worstRating: 1,
-  },
-  author: { '@type': 'Person', name: authorName },
-  publisher: { '@type': 'Organization', name: 'ToolStep' },
-  datePublished: publishDate,
-  reviewBody: entry.quickWinnerReason,
-};
-
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -135,7 +104,6 @@ const articleSchema = {
 <html lang="en">
   <head>
     <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={entry.description} />
-    <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
