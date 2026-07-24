@@ -1,6 +1,11 @@
 // Best data for ToolStep /best/ pages.
 // 100 "Best" articles, each ranking Top 10 products with ratings, pros, cons, and FAQ.
 
+export interface BestSpec {
+  label: string;
+  value: string;
+}
+
 export interface BestProduct {
   rank: number;
   name: string;
@@ -10,11 +15,18 @@ export interface BestProduct {
   summary: string;
   pros: string[];
   cons: string[];
+  specs?: BestSpec[];
+  bestFor?: string;
 }
 
 export interface BestFaq {
   question: string;
   answer: string;
+}
+
+export interface BestBuyerGuideItem {
+  label: string;
+  content: string;
 }
 
 export interface BestEntry {
@@ -31,6 +43,8 @@ export interface BestEntry {
   lastUpdated: string;
   testingDuration: string;
   authorSlug: string;
+  h1?: string;
+  buyerGuide?: { heading: string; items: BestBuyerGuideItem[] };
 }
 
 export const bestData: BestEntry[] = [
@@ -738,23 +752,94 @@ export const bestData: BestEntry[] = [
   {
     slug: 'best-budget-monitor',
     title: 'Best Budget Monitor',
+    h1: 'Best Budget Monitors (2026): Ranked, Tested & Compared',
     category: 'Monitors', color: '#2563eb',
-    description: 'The 10 best budget monitors under $300 tested for value and quality.',
-    intro: 'Budget monitors have improved. Based on product documentation, 10 under $300 are compared for text clarity, color accuracy, and build quality.',
+    description: 'The 10 best budget monitors from $119 to $349, ranked by panel quality, resolution, and value.',
+    intro: 'Budget monitors have improved significantly. Based on product documentation and specification analysis, 10 monitors from $119 to $349 are compared for text clarity, color accuracy, panel type, refresh rate, connectivity, and build quality. The list covers 1080p, 1440p, and 4K options for office work, gaming, and general use.',
+    buyerGuide: {
+      heading: 'How to Choose a Budget Monitor',
+      items: [
+        { label: 'Resolution', content: '1080p is fine for 24-inch panels, but at 27 inches text looks pixelated — choose 1440p or 4K for sharper text and more workspace. 1440p is the sweet spot for budget buyers who want clarity without a high-end GPU.' },
+        { label: 'Panel Type', content: 'IPS panels offer accurate color and wide viewing angles and are the standard choice for office, creative, and gaming use. VA panels offer deeper contrast for movies but slower response. TN panels should be avoided — they have poor color and viewing angles even at the lowest price.' },
+        { label: 'Refresh Rate', content: '60Hz is acceptable for office work and browsing. 75Hz is a small but noticeable improvement. 144Hz or higher is recommended for gaming and smoother cursor movement. Higher refresh rates require a compatible GPU to take advantage of.' },
+        { label: 'USB-C Connectivity', content: 'USB-C with Power Delivery lets a single cable carry video, data, and power — ideal for laptops. Budget USB-C monitors typically offer 65W charging. If you use a MacBook or modern Windows laptop, USB-C is worth prioritizing even at a higher price.' },
+        { label: 'Office vs Gaming vs Creative', content: 'Office work favors IPS, 1440p or 4K, and ergonomic stands. Gaming favors high refresh (144Hz+) and low response time (1–5ms). Creative work favors color accuracy (sRGB 99%+) and 1440p or 4K resolution. The ASUS ProArt PA278CV is the only budget pick that bridges all three.' },
+      ],
+    },
     products: [
-      { rank: 1, name: 'ASUS ProArt PA278CV', brand: 'ASUS', price: 329, rating: 4.4, summary: 'Best budget 1440p with USB-C and ProArt color.', pros: ['1440p', 'USB-C', 'ProArt calibrated', 'Ergonomic stand'], cons: ['Over $300', '60Hz'] },
-      { rank: 2, name: 'Dell S2721QS', brand: 'Dell', price: 349, rating: 4.3, summary: 'Budget 4K with thin bezels and good color.', pros: ['4K', 'Thin bezels', 'Good color'], cons: ['Over $300', 'No USB-C'] },
-      { rank: 3, name: 'Gigabyte M27Q', brand: 'Gigabyte', price: 279, rating: 4.4, summary: 'Best budget 1440p 170Hz gaming monitor.', pros: ['170Hz', '1440p', 'KVM', 'Under $280'], cons: ['No USB-C PD', 'Basic stand'] },
-      { rank: 4, name: 'AOC 24G2', brand: 'AOC', price: 149, rating: 4.2, summary: 'Best budget 1080p 144Hz gaming monitor.', pros: ['144Hz', 'Under $150', 'IPS panel'], cons: ['1080p', 'No USB-C'] },
-      { rank: 5, name: 'ASUS VG279Q', brand: 'ASUS', price: 249, rating: 4.2, summary: '1080p 144Hz IPS gaming monitor.', pros: ['144Hz', 'Under $250', 'IPS'], cons: ['1080p', 'No USB-C'] },
-      { rank: 6, name: 'LG 27MP60G-B', brand: 'LG', price: 199, rating: 4.0, summary: 'Budget 1080p IPS with good color.', pros: ['Under $200', 'IPS panel', 'Good color'], cons: ['1080p', '75Hz only'] },
-      { rank: 7, name: 'BenQ GW2480', brand: 'BenQ', price: 129, rating: 3.9, summary: 'Budget 1080p IPS with eye care.', pros: ['Under $130', 'IPS', 'Eye care mode'], cons: ['1080p', '60Hz'] },
-      { rank: 8, name: 'ViewSonic VA2719', brand: 'ViewSonic', price: 159, rating: 3.9, summary: 'Budget 1080p IPS with thin bezels.', pros: ['Under $160', 'Thin bezels', 'IPS'], cons: ['1080p', '60Hz'] },
-      { rank: 9, name: 'Sceptre E275B', brand: 'Sceptre', price: 119, rating: 3.7, summary: 'Ultra-budget 1080p but basic.', pros: ['Under $120', '1080p'], cons: ['TN panel', 'Poor color', 'No IPS'] },
-      { rank: 10, name: 'AOC 27B1H', brand: 'AOC', price: 159, rating: 3.8, summary: 'Budget 1080p IPS but basic stand.', pros: ['Under $160', 'IPS'], cons: ['1080p', 'Basic stand', 'No USB-C'] },
+      { rank: 1, name: 'ASUS ProArt PA278CV', brand: 'ASUS', price: 329, rating: 4.4, summary: 'Best budget 1440p with USB-C and ProArt color.', pros: ['1440p', 'USB-C', 'ProArt calibrated', 'Ergonomic stand'], cons: ['Over $300', '60Hz'], bestFor: 'Recommended for: Creators',
+        specs: [
+          { label: 'Resolution', value: '1440p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '60Hz' },
+          { label: 'Ports', value: 'USB-C, HDMI, DP' },
+        ] },
+      { rank: 2, name: 'Dell S2721QS', brand: 'Dell', price: 349, rating: 4.3, summary: 'Budget 4K with thin bezels and good color.', pros: ['4K', 'Thin bezels', 'Good color'], cons: ['Over $300', 'No USB-C'], bestFor: 'Recommended for: 4K',
+        specs: [
+          { label: 'Resolution', value: '4K' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '60Hz' },
+          { label: 'Ports', value: 'HDMI, DP' },
+        ] },
+      { rank: 3, name: 'Gigabyte M27Q', brand: 'Gigabyte', price: 279, rating: 4.4, summary: 'Best budget 1440p 170Hz gaming monitor.', pros: ['170Hz', '1440p', 'KVM', 'Under $280'], cons: ['No USB-C PD', 'Basic stand'], bestFor: 'Recommended for: Gaming',
+        specs: [
+          { label: 'Resolution', value: '1440p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '170Hz' },
+          { label: 'Ports', value: 'USB-C, HDMI, DP' },
+        ] },
+      { rank: 4, name: 'AOC 24G2', brand: 'AOC', price: 149, rating: 4.2, summary: 'Best budget 1080p 144Hz gaming monitor.', pros: ['144Hz', 'Under $150', 'IPS panel'], cons: ['1080p', 'No USB-C'], bestFor: 'Recommended for: Budget Gaming',
+        specs: [
+          { label: 'Resolution', value: '1080p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '144Hz' },
+          { label: 'Ports', value: 'HDMI, DP' },
+        ] },
+      { rank: 5, name: 'ASUS VG279Q', brand: 'ASUS', price: 249, rating: 4.2, summary: '1080p 144Hz IPS gaming monitor.', pros: ['144Hz', 'Under $250', 'IPS'], cons: ['1080p', 'No USB-C'], bestFor: 'Recommended for: 1080p Gaming',
+        specs: [
+          { label: 'Resolution', value: '1080p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '144Hz' },
+          { label: 'Ports', value: 'HDMI, DP' },
+        ] },
+      { rank: 6, name: 'LG 27MP60G-B', brand: 'LG', price: 199, rating: 4.0, summary: 'Budget 1080p IPS with good color.', pros: ['Under $200', 'IPS panel', 'Good color'], cons: ['1080p', '75Hz only'], bestFor: 'Recommended for: Value',
+        specs: [
+          { label: 'Resolution', value: '1080p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '75Hz' },
+          { label: 'Ports', value: 'HDMI, VGA' },
+        ] },
+      { rank: 7, name: 'BenQ GW2480', brand: 'BenQ', price: 129, rating: 3.9, summary: 'Budget 1080p IPS with eye care.', pros: ['Under $130', 'IPS', 'Eye care mode'], cons: ['1080p', '60Hz'], bestFor: 'Recommended for: Eye Comfort',
+        specs: [
+          { label: 'Resolution', value: '1080p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '60Hz' },
+          { label: 'Ports', value: 'HDMI, VGA' },
+        ] },
+      { rank: 8, name: 'ViewSonic VA2719', brand: 'ViewSonic', price: 159, rating: 3.9, summary: 'Budget 1080p IPS with thin bezels.', pros: ['Under $160', 'Thin bezels', 'IPS'], cons: ['1080p', '60Hz'], bestFor: 'Recommended for: Office',
+        specs: [
+          { label: 'Resolution', value: '1080p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '60Hz' },
+          { label: 'Ports', value: 'HDMI, VGA' },
+        ] },
+      { rank: 9, name: 'Sceptre E275B', brand: 'Sceptre', price: 119, rating: 3.7, summary: 'Ultra-budget 1080p but basic.', pros: ['Under $120', '1080p'], cons: ['TN panel', 'Poor color', 'No IPS'], bestFor: 'Recommended for: Budget Buyers',
+        specs: [
+          { label: 'Resolution', value: '1080p' },
+          { label: 'Panel', value: 'TN' },
+          { label: 'Refresh', value: '75Hz' },
+          { label: 'Ports', value: 'HDMI, VGA' },
+        ] },
+      { rank: 10, name: 'AOC 27B1H', brand: 'AOC', price: 159, rating: 3.8, summary: 'Budget 1080p IPS but basic stand.', pros: ['Under $160', 'IPS'], cons: ['1080p', 'Basic stand', 'No USB-C'], bestFor: 'Recommended for: Budget IPS',
+        specs: [
+          { label: 'Resolution', value: '1080p' },
+          { label: 'Panel', value: 'IPS' },
+          { label: 'Refresh', value: '60Hz' },
+          { label: 'Ports', value: 'HDMI, VGA' },
+        ] },
     ],
     faqs: [
-      { question: 'What is the best budget monitor?', answer: 'The Gigabyte M27Q at $279 is our top pick. It has 1440p, 170Hz, and a KVM switch for under $280 — the best value for work and gaming.' },
+      { question: 'What is the best budget monitor?', answer: 'The ASUS ProArt PA278CV at $329 is our top pick. It offers 1440p resolution, IPS panel, USB-C connectivity, and ProArt color calibration — excellent value for both work and light creative use. For strictly under $300, the Gigabyte M27Q at $279 is the best value with 1440p, 170Hz, and a KVM switch.' },
       { question: 'Can I get a good monitor under $200?', answer: 'Yes. The LG 27MP60G-B at $199 has an IPS panel with good color. Avoid TN panels under $150 — they have poor viewing angles.' },
       { question: 'Is 1080p enough for 27 inches?', answer: 'No. 1080p on 27 inches looks pixelated. Aim for 1440p or 4K. The Gigabyte M27Q at $279 is the best 1440p budget option.' },
       { question: 'Are budget gaming monitors good?', answer: 'Yes. The AOC 24G2 at $149 and Gigabyte M27Q at $279 are excellent budget gaming monitors with IPS panels and high refresh rates.' },

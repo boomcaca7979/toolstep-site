@@ -313,6 +313,8 @@ export const bestEntryToContent: BestListAdapter = (entry: BestEntry): BestListC
     summary: p.summary,
     pros: p.pros,
     cons: p.cons,
+    specs: p.specs?.map((s) => ({ label: s.label, value: s.value })),
+    bestFor: p.bestFor,
   }));
 
   // Merge relatedReviews and relatedBests into relatedContent
@@ -392,6 +394,8 @@ export const bestEntryToContent: BestListAdapter = (entry: BestEntry): BestListC
     // List-specific
     introduction: entry.intro,
     methodology,
+    h1: entry.h1,
+    buyerGuide: entry.buyerGuide,
 
     // Presentation
     color: entry.color,
@@ -806,6 +810,8 @@ export function bestListContentToEntry(content: BestListContent): BestEntry {
       summary: p.summary ?? '',
       pros: p.pros ?? [],
       cons: p.cons ?? [],
+      specs: p.specs?.map((s) => ({ label: s.label, value: s.value })),
+      bestFor: p.bestFor,
     })),
     faqs: content.faqs.map((f) => ({ question: f.question, answer: f.answer })),
     relatedReviews,
@@ -813,6 +819,8 @@ export function bestListContentToEntry(content: BestListContent): BestEntry {
     lastUpdated: content.lastUpdated,
     testingDuration: content.testingDuration,
     authorSlug: content.authorSlug,
+    h1: content.h1,
+    buyerGuide: content.buyerGuide,
   };
 }
 

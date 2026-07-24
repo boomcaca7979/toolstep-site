@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import AdUnit from '../../components/ads/AdUnit.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import { getBestEntries, getBestEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildBestTitle } from '../../utils/seo';
@@ -51,6 +52,12 @@ function stars(rating: number): string {
   return '★★★★★'.slice(0, Math.round(rating)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(rating));
 }
 
+// Spec lookup helper — returns '—' if spec not present
+function getSpec(specs: { label: string; value: string }[] | undefined, label: string): string {
+  const spec = specs?.find(s => s.label.toLowerCase() === label.toLowerCase());
+  return spec?.value ?? '—';
+}
+
 // Average rating
 const avgRating = (entry.products.reduce((sum, p) => sum + p.rating, 0) / entry.products.length).toFixed(1);
 
@@ -60,6 +67,7 @@ const tocSections = [
   { id: 'comparison', label: 'Comparison Table' },
   ...entry.products.slice(0, 3).map((p, i) => ({ id: `pick-${i + 1}`, label: `${i + 1}. ${p.name}` })),
   { id: 'pros-cons', label: 'Pros & Cons' },
+  ...(entry.buyerGuide ? [{ id: 'buyer-guide', label: entry.buyerGuide.heading }] : []),
   { id: 'faq', label: 'FAQ' },
 ];
 
@@ -109,10 +117,20 @@ const articleSchema = {
   description: entry.description,
   datePublished: publishDate,
   dateModified: publishDate,
-  author: { '@type': 'Person', name: authorName },
+  image: new URL('/favicon.svg', Astro.site).toString(),
+  author: {
+    '@type': 'Person',
+    name: authorName,
+    url: new URL(`/authors/${entry.authorSlug}/`, Astro.site).toString(),
+  },
   publisher: {
     '@type': 'Organization',
     name: 'ToolStep',
+    url: new URL('/', Astro.site).toString(),
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/favicon.svg', Astro.site).toString(),
+    },
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
 };
@@ -121,7 +139,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={buildBestTitle(entry.title)} description={entry.description} />
+    <BaseHead title={buildBestTitle(entry.title)} description={entry.description} ogType="article" />
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -290,6 +308,23 @@ const articleSchema = {
         color: rgb(var(--gray-dark));
         margin: 1.5rem 0 2rem;
       }
+      .eeat-box {
+        background: #f8f9fa;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 0.85rem 1.1rem;
+        font-size: 0.85rem;
+        line-height: 1.65;
+        color: #555;
+        margin: 0 0 1.5rem;
+      }
+      .eeat-box strong {
+        color: #232f3e;
+      }
+      .eeat-box a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
 
       h2 {
         font-size: 1.6rem;
@@ -337,6 +372,16 @@ const articleSchema = {
         text-transform: uppercase;
         letter-spacing: 0.04em;
         margin-bottom: 0.5rem;
+      }
+      .pick-best-for {
+        display: inline-block;
+        background: rgba(var(--accent-rgb), 0.08);
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 4px;
+        margin: 0 0 0.5rem;
       }
       .pick-info .pick-summary {
         font-size: 0.9rem;
@@ -419,7 +464,7 @@ const articleSchema = {
         width: 100%;
         border-collapse: collapse;
         font-size: 0.85rem;
-        min-width: 600px;
+        min-width: 900px;
       }
       .compare-table th,
       .compare-table td {
@@ -488,6 +533,30 @@ const articleSchema = {
       .pc-card .cons-line { color: #dc2626; }
 
       /* FAQ */
+      .buyer-guide {
+        margin: 1rem 0;
+      }
+      .buyer-guide .bg-item {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+      .buyer-guide .bg-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.4rem;
+      }
+      .buyer-guide .bg-content {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: rgb(var(--gray-dark));
+        margin: 0;
+      }
       .faq-list {
         margin: 1rem 0;
       }
@@ -645,7 +714,7 @@ const articleSchema = {
             ) : (
               <span class="category-tag" style={`background: ${entry.color}`}>{entry.category}</span>
             )}
-            <h1>{entry.title}</h1>
+            <h1>{entry.h1 ?? entry.title}</h1>
             <p class="desc">{entry.description}</p>
             <div class="hero-stats">
               <div class="hero-stat">
@@ -671,6 +740,12 @@ const articleSchema = {
           {/* Intro */}
           <div class="intro">{entry.intro}</div>
 
+          {/* E-E-A-T: How We Evaluate */}
+          <div class="eeat-box">
+            <strong>How We Evaluate:</strong>
+            <span> Rankings are based on product documentation analysis, specification comparison, and feature assessment — not sponsored placements. See our <a href="/how-we-test/">testing methodology</a> and <a href="/editorial-policy/">editorial policy</a> for details.</span>
+          </div>
+
           <AdSlot position="hero-below" />
 
           {/* Top 10 Picks */}
@@ -683,6 +758,7 @@ const articleSchema = {
                   <div class="pick-info">
                     <h3>{p.name}</h3>
                     <div class="pick-brand">{p.brand}</div>
+                    {p.bestFor && <span class="pick-best-for">{p.bestFor}</span>}
                     <p class="pick-summary">{p.summary}</p>
                     <div class="pick-pros-cons">
                       <div class="pick-pros">
@@ -721,6 +797,10 @@ const articleSchema = {
                   <th class="rank-col">#</th>
                   <th>Name</th>
                   <th>Brand</th>
+                  <th>Resolution</th>
+                  <th>Panel</th>
+                  <th>Refresh</th>
+                  <th>Ports</th>
                   <th>Rating</th>
                   <th>Price</th>
                 </tr>
@@ -731,6 +811,10 @@ const articleSchema = {
                     <td class="rank">{p.rank}</td>
                     <td class="name">{p.name}</td>
                     <td>{p.brand}</td>
+                    <td>{getSpec(p.specs, 'Resolution')}</td>
+                    <td>{getSpec(p.specs, 'Panel')}</td>
+                    <td>{getSpec(p.specs, 'Refresh')}</td>
+                    <td>{getSpec(p.specs, 'Ports')}</td>
                     <td class="rating">
                       {p.rating}/5
                       <div style="font-size:0.75rem; color:#f59e0b;">{stars(p.rating)}</div>
@@ -756,6 +840,21 @@ const articleSchema = {
               </div>
             ))}
           </div>
+
+          {/* Buyer Guide */}
+          {entry.buyerGuide && (
+            <>
+              <h2 id="buyer-guide">{entry.buyerGuide.heading}</h2>
+              <div class="buyer-guide">
+                {entry.buyerGuide.items.map((item) => (
+                  <div class="bg-item">
+                    <div class="bg-label">{item.label}</div>
+                    <p class="bg-content">{item.content}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
 
           {/* FAQ */}
           <AdUnit slot="3333333333" format="auto" layout="responsive" />
@@ -826,6 +925,9 @@ const articleSchema = {
 
           {/* Previous / Next */}
           <AdSlot position="content-end" />
+
+          {/* E-E-A-T: Full Affiliate Disclosure */}
+          <AffiliateDisclosure />
 
           <div class="nav-links">
             {prevEntry ? (

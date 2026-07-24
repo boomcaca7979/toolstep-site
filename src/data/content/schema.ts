@@ -106,6 +106,8 @@ export interface ToolStepContent {
   introduction?: string;
   methodology?: string;
   anchorProduct?: ProductRef;
+  h1?: string;
+  buyerGuide?: { heading: string; items: { label: string; content: string }[] };
 
   // For guide
   recommendedProducts?: RecommendedProduct[];

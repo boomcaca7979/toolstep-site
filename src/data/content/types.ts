@@ -52,6 +52,7 @@ export interface ProductRef {
   specs?: Spec[];
   reviewSlug?: string;
   pricing?: string; // Legacy AlternativeProduct.pricing — preserved for reverse adapter
+  bestFor?: string;
 }
 
 // ============================================================
