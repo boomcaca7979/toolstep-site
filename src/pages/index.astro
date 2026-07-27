@@ -2,11 +2,14 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION } from '../consts';
 import { tools } from '../data/tools';
 import { reviews } from '../data/reviews';
 import { compareData } from '../data/compare';
 import { bestData } from '../data/best';
+
+// Homepage-only SEO title (50–60 chars). SITE_TITLE remains 'ToolStep' for og:site_name / RSS.
+const HOME_TITLE = 'ToolStep | AI Tool Reviews, Comparisons & Software Guides';
 
 // Real stats from data sources
 const reviewsCount = reviews.length;
@@ -71,7 +74,7 @@ const latestReviews = (reviews.filter((r) => r.tag === 'NEW').length >= 6
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={HOME_TITLE} description={SITE_DESCRIPTION} />
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "ItemList",
