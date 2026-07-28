@@ -43,6 +43,10 @@ export interface ToolStepContent {
   keywordCluster: string;
   searchIntent: SearchIntent;
   canonicalUrl: string;
+  /** Optional per-entry SEO title override. Falls back to title-derived value. */
+  seoTitle?: string;
+  /** Optional per-entry SEO meta description override. Falls back to metaDescription. */
+  seoDescription?: string;
 
   // ========================================
   // COMMERCIAL / MONETIZATION

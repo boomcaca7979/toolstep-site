@@ -350,6 +350,8 @@ export const bestEntryToContent: BestListAdapter = (entry: BestEntry): BestListC
     // SEO
     title: entry.title,
     metaDescription: truncateForMeta(entry.description),
+    seoTitle: entry.seoTitle,
+    seoDescription: entry.seoDescription,
     primaryKeyword: slugToKeyword(entry.slug),
     secondaryKeywords: deriveSecondaryKeywords(entry.slug, entry.category),
     keywordCluster: mapCategoryToCluster(entry.category, categorySlug),
@@ -800,6 +802,8 @@ export function bestListContentToEntry(content: BestListContent): BestEntry {
     category: content.category,
     color: content.color ?? '#2563eb',
     description: content.metaDescription,
+    seoTitle: content.seoTitle,
+    seoDescription: content.seoDescription,
     intro: content.introduction ?? '',
     products: content.products.map((p) => ({
       rank: p.rank ?? 0,

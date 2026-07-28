@@ -26,6 +26,11 @@ const authorName = author?.name || 'ToolStep Team';
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/best/${entry.slug}/`, Astro.site).toString();
 
+// Per-entry SEO overrides: fall back to the auto-generated title and the
+// default description when the optional fields are not present.
+const pageTitle = entry.seoTitle ?? buildBestTitle(entry.title);
+const pageDescription = entry.seoDescription ?? entry.description;
+
 // Find prev/next for navigation
 const allBests = getBestEntries();
 const idx = allBests.findIndex(e => e.slug === entry.slug);
@@ -139,7 +144,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={buildBestTitle(entry.title)} description={entry.description} ogType="article" />
+    <BaseHead title={pageTitle} description={pageDescription} ogType="article" />
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

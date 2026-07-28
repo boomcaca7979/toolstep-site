@@ -45,6 +45,10 @@ export interface BestEntry {
   authorSlug: string;
   h1?: string;
   buyerGuide?: { heading: string; items: BestBuyerGuideItem[] };
+  // Optional per-entry SEO overrides. When present, take precedence over the
+  // auto-generated title (buildBestTitle) and the default description.
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export const bestData: BestEntry[] = [
@@ -755,6 +759,8 @@ export const bestData: BestEntry[] = [
     h1: 'Best Budget Monitors (2026): Ranked, Tested & Compared',
     category: 'Monitors', color: '#2563eb',
     description: 'The 10 best budget monitors from $119 to $349, ranked by panel quality, resolution, and value.',
+    seoTitle: '10 Best Budget Monitors (2026): Tested Picks From $119',
+    seoDescription: 'Discover the best budget monitors of 2026. We compare 10 affordable picks from $119 to $349 for gaming, work, and everyday use.',
     intro: 'Budget monitors have improved significantly. Based on product documentation and specification analysis, 10 monitors from $119 to $349 are compared for text clarity, color accuracy, panel type, refresh rate, connectivity, and build quality. The list covers 1080p, 1440p, and 4K options for office work, gaming, and general use.',
     buyerGuide: {
       heading: 'How to Choose a Budget Monitor',
