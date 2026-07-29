@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    { "source": "/reviews/:slug", "destination": "/reviews/:slug/", "permanent": true },
+    { "source": "/about", "destination": "/about/", "permanent": true },
+    { "source": "/guides", "destination": "/guides/", "permanent": true },
+    { "source": "/privacy", "destination": "/privacy/", "permanent": true },
+    { "source": "/tools/:slug", "destination": "/tools/:slug/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
