@@ -1,0 +1,107 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import { reviews } from '../../data/reviews.ts';
+
+const title = 'AI Tools Reviews & Comparisons 2026 | ToolStep';
+const description = 'In-depth AI tools reviews and comparisons: AI assistants, AI coding tools, AI writing, AI image, AI video, AI search, and translation. Find the best AI tool for your workflow.';
+
+const aiCategories = [
+  { name: 'AI Chatbot', color: '#2563eb', desc: 'AI assistants compared for writing, coding, and research.' },
+  { name: 'AI Coding', color: '#7c3aed', desc: 'AI coding tools compared for completions, context, and agentic workflows.' },
+  { name: 'AI Writing', color: '#9333ea', desc: 'AI writing assistants compared for content quality, accuracy, and pricing.' },
+  { name: 'AI Image', color: '#db2777', desc: 'AI image generators compared for quality, speed, and creative control.' },
+  { name: 'AI Video', color: '#dc2626', desc: 'AI video tools compared for quality, workflow, and use cases.' },
+  { name: 'AI Search', color: '#2563eb', desc: 'AI search tools compared for research accuracy and citations.' },
+  { name: 'Translation', color: '#0d9488', desc: 'AI translation tools compared for accuracy, languages, and pricing.' },
+];
+
+const aiPages = aiCategories.map((cat) => ({
+  ...cat,
+  pages: reviews.filter((r) => r.category === cat.name),
+}));
+
+const aiToolsMoneyPages = [
+  {
+    title: 'Best AI Writing Tools 2026: Ranked for Content, Grammar & Copy',
+    desc: 'Claude, ChatGPT, Grammarly, Notion AI, ProWritingAid, Jasper, and Copy.ai ranked. Compare for long-form content, grammar, SEO, and marketing copy.',
+    href: '/reviews/best-ai-writing-tools-2026/',
+  },
+  {
+    title: 'Best ChatGPT Alternatives 2026: Ranked for AI Chat, Coding & Writing',
+    desc: 'Claude, Gemini, Copilot, Perplexity, and Grok ranked for chat quality, coding, writing, research, and value as ChatGPT alternatives.',
+    href: '/reviews/chatgpt-alternatives-2026/',
+  },
+  {
+    title: 'Best Canva Alternatives 2026: Ranked for Design & Creativity',
+    desc: 'Adobe Express, Figma, Visme, VistaCreate, and Piktochart ranked as Canva alternatives for design, presentations, and branding.',
+    href: '/reviews/canva-alternatives-2026/',
+  },
+];
+
+const itemListElements = aiPages.flatMap((cat) =>
+  cat.pages.map((p) => ({
+    '@type': 'ListItem',
+    name: p.title,
+    url: new URL(p.href, Astro.site).toString(),
+  }))
+);
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'AI Tools Reviews & Comparisons',
+  description: 'Comprehensive AI tools reviews and comparisons on ToolStep.',
+  itemListElement: itemListElements,
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Reviews', href: '/reviews/' },
+    { name: 'AI Tools' },
+  ]}
+  lastUpdated="2026-07-30"
+  subtitle="In-depth reviews and comparisons of AI assistants, coding tools, writing assistants, image generators, video platforms, search engines, and translation tools."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <p>ToolStep's AI Tools hub covers the full spectrum of artificial intelligence software for productivity, creativity, and development. Whether you need an AI assistant for daily writing, a coding copilot for your IDE, or an image generator for marketing assets, our head-to-head comparisons help you pick the right tool based on features, pricing, accuracy, and real-world performance.</p>
+
+  <section style="margin: 2.5rem 0;">
+    <h2 style="border-left: 4px solid #9333ea; padding-left: 0.75rem;">Top AI Tools Money Pages</h2>
+    <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">Ranked best-of lists to help you pick the right AI tool fast.</p>
+    <div style="display: grid; gap: 16px;">
+      {aiToolsMoneyPages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {aiPages.map((cat) => cat.pages.length > 0 && (
+    <section style="margin: 2.5rem 0;">
+      <h2 style="border-left: 4px solid {cat.color}; padding-left: 0.75rem;">{cat.name}</h2>
+      <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">{cat.desc}</p>
+      <div style="display: grid; gap: 16px;">
+        {cat.pages.map((p) => (
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+            <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section style="margin: 2.5rem 0;">
+    <h2>How We Compare AI Tools</h2>
+    <p>Every AI tool comparison on ToolStep follows the same methodology. We test each tool for output quality, speed, context handling, pricing transparency, and integration depth. We evaluate real-world workflows — not benchmark scores — because what matters is how a tool performs in your daily work, not in a lab. Each comparison includes a quick comparison table, feature-by-feature analysis, pricing breakdown, pros and cons, use case recommendations, and a final verdict with a clear winner.</p>
+  </section>
+
+  <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+</PageLayout>

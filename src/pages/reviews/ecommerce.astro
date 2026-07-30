@@ -1,0 +1,113 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import { reviews } from '../../data/reviews.ts';
+
+const title = 'Ecommerce Platform Reviews & Comparisons 2026 | ToolStep';
+const description = 'In-depth ecommerce platform reviews and comparisons: Shopify, BigCommerce, WooCommerce, and Squarespace. Find the best ecommerce platform for your online store.';
+
+const ecommerceSlugs = [
+  'shopify-vs-woocommerce',
+  'shopify-vs-bigcommerce',
+  'shopify-vs-squarespace',
+  'woocommerce-vs-bigcommerce',
+];
+
+const ecommerceMoneyPages = [
+  {
+    title: 'Best Ecommerce Platforms 2026: Ranked & Compared',
+    desc: 'Ranked list of the best ecommerce platforms in 2026: Shopify, WooCommerce, BigCommerce, and Squarespace compared on pricing, fees, SEO, and scalability.',
+    href: '/reviews/best-ecommerce-platforms-2026/',
+  },
+  {
+    title: 'Best Shopify Alternatives in 2026 (Platforms for Different Business Needs)',
+    desc: 'Shopify alternatives compared for lower fees, open-source ownership, content-first stores, and enterprise headless commerce: WooCommerce, BigCommerce, Squarespace.',
+    href: '/reviews/shopify-alternatives-2026/',
+  },
+  {
+    title: 'Best Ecommerce Platform for Small Business 2026: Ranked & Compared',
+    desc: 'Best ecommerce platform for small business: Shopify, WooCommerce, BigCommerce, Squarespace, and Wix ranked for pricing, ease of use, SEO, and growth headroom.',
+    href: '/reviews/best-ecommerce-platform-small-business-2026/',
+  },
+];
+
+const extraEcommercePages = [
+  {
+    title: 'WooCommerce vs BigCommerce',
+    desc: 'Open-source flexibility vs native scalability — pricing, hosting, B2B features, and growth headroom compared.',
+    href: '/reviews/woocommerce-vs-bigcommerce/',
+  },
+];
+
+const ecommercePages = reviews.filter((r) =>
+  ecommerceSlugs.some((slug) => r.href.includes(slug))
+);
+
+const itemListElements = ecommercePages.map((p) => ({
+  '@type': 'ListItem',
+  name: p.title,
+  url: new URL(p.href, Astro.site).toString(),
+}));
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Ecommerce Platform Reviews & Comparisons',
+  description: 'Comprehensive ecommerce platform reviews and comparisons on ToolStep.',
+  itemListElement: itemListElements,
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Reviews', href: '/reviews/' },
+    { name: 'Ecommerce' },
+  ]}
+  lastUpdated="2026-07-30"
+  subtitle="In-depth reviews and comparisons of ecommerce platforms including Shopify, BigCommerce, WooCommerce, and Squarespace to help you choose the right foundation for your online store."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <p>ToolStep's Ecommerce hub helps online sellers and DTC brands choose the right platform for their store. We compare Shopify, BigCommerce, WooCommerce, and Squarespace on pricing, transaction fees, theme flexibility, app ecosystems, payment gateways, and scalability. Whether you are launching your first product or migrating a multi-million-dollar catalog, our head-to-head comparisons give you a clear verdict based on real-world testing, not marketing copy.</p>
+
+  <section style="margin: 2.5rem 0;">
+    <h2 style="border-left: 4px solid #d97706; padding-left: 0.75rem;">Top Ecommerce Money Pages</h2>
+    <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">Ranked best-of lists and alternatives to help you pick the right ecommerce stack quickly.</p>
+    <div style="display: grid; gap: 16px;">
+      {ecommerceMoneyPages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin: 2.5rem 0;">
+    <h2 style="border-left: 4px solid #d97706; padding-left: 0.75rem;">Ecommerce Platform Comparisons</h2>
+    <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">Head-to-head comparisons of the leading ecommerce platforms, covering pricing, features, and best-fit use cases.</p>
+    <div style="display: grid; gap: 16px;">
+      {ecommercePages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+      {extraEcommercePages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin: 2.5rem 0;">
+    <h2>How We Compare Ecommerce Platforms</h2>
+    <p>Every ecommerce comparison on ToolStep follows the same methodology. We test each platform on pricing transparency, transaction fees, theme customization, app marketplace depth, payment gateway support, SEO capabilities, and scalability for high-volume stores. We evaluate real merchant workflows — from first product listing to multi-channel selling — because what matters is how the platform performs in your daily operations, not in a feature checklist. Each comparison includes a quick comparison table, feature-by-feature analysis, pricing breakdown, pros and cons, use case recommendations, and a final verdict with a clear winner.</p>
+  </section>
+
+  <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+</PageLayout>

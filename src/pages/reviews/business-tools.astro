@@ -1,0 +1,128 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import { reviews } from '../../data/reviews.ts';
+
+const title = 'Business Tools Reviews & Comparisons 2026 | ToolStep';
+const description = 'In-depth business tools reviews and comparisons: CRM software, email marketing platforms, and document workflow tools. Find the best business software for your team.';
+
+const businessCategories = [
+  { name: 'CRM', color: '#7c3aed', desc: 'CRM platforms compared for sales pipelines, automation, and pricing.' },
+  { name: 'Email Marketing', color: '#db2777', desc: 'Email marketing tools compared for automation, deliverability, and segmentation.' },
+  { name: 'Document Workflow', color: '#0891b2', desc: 'Document workflow tools compared for e-signature, compliance, and integrations.' },
+];
+
+const businessPages = businessCategories.map((cat) => ({
+  ...cat,
+  pages: reviews.filter((r) => r.category === cat.name),
+}));
+
+const businessMoneyPages = [
+  {
+    title: 'Best CRM Software 2026: Ranked for Small Business & Enterprise',
+    desc: 'Best CRM software 2026: HubSpot, Salesforce, and alternatives ranked for small business, mid-market, and enterprise. Compare pricing, automation, ease of use, and scalability.',
+    href: '/reviews/best-crm-software-2026/',
+  },
+  {
+    title: 'Best Email Marketing Software & Platforms 2026: Ranked',
+    desc: 'Mailchimp, Klaviyo, ActiveCampaign, HubSpot, and Brevo ranked and compared for deliverability, automations, segmentation, and pricing.',
+    href: '/reviews/best-email-marketing-software-2026/',
+  },
+  {
+    title: 'Best Salesforce Alternatives for 2026 (For Teams of Every Size)',
+    desc: 'Salesforce alternatives for SMBs, sales teams, startups, and enterprise: HubSpot CRM, Zoho CRM, Pipedrive, Freshsales, and Monday Sales CRM ranked.',
+    href: '/reviews/salesforce-alternatives-2026/',
+  },
+  {
+    title: 'Best CRM for Small Business 2026: Ranked for Sales & Growth',
+    desc: 'Best CRM for small business: HubSpot, Pipedrive, Zoho CRM, Freshsales, and Monday Sales CRM ranked for pricing, ease of use, automation, and scalability.',
+    href: '/reviews/best-crm-small-business-2026/',
+  },
+  {
+    title: 'Best Password Managers 2026: Ranked for Security & Value',
+    desc: '1Password, Bitwarden, Dashlane, NordPass, and Keeper ranked for security, pricing, ease of use, and cross-platform support.',
+    href: '/reviews/best-password-managers-2026/',
+  },
+  {
+    title: 'Best Accounting Software 2026: Ranked for Small Business & Freelancers',
+    desc: 'QuickBooks, Xero, FreshBooks, Zoho Books, and Wave ranked for pricing, invoicing, expense tracking, and tax preparation.',
+    href: '/reviews/best-accounting-software-2026/',
+  },
+  {
+    title: 'Best Notion Alternatives 2026: Ranked for Note-Taking & Knowledge Management',
+    desc: 'ClickUp, Obsidian, Coda, Evernote, and Microsoft OneNote ranked as Notion alternatives for notes, databases, and team wikis.',
+    href: '/reviews/notion-alternatives-2026/',
+  },
+  {
+    title: 'Best Zapier Alternatives 2026: Ranked for Automation & Integrations',
+    desc: 'Make, n8n, Pipedream, Integrately, and Microsoft Power Automate ranked as Zapier alternatives for workflows, pricing, and API depth.',
+    href: '/reviews/zapier-alternatives-2026/',
+  },
+];
+
+const itemListElements = businessPages.flatMap((cat) =>
+  cat.pages.map((p) => ({
+    '@type': 'ListItem',
+    name: p.title,
+    url: new URL(p.href, Astro.site).toString(),
+  }))
+);
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Business Tools Reviews & Comparisons',
+  description: 'Comprehensive business tools reviews and comparisons on ToolStep.',
+  itemListElement: itemListElements,
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Reviews', href: '/reviews/' },
+    { name: 'Business Tools' },
+  ]}
+  lastUpdated="2026-07-30"
+  subtitle="In-depth reviews and comparisons of CRM software, email marketing platforms, and document workflow tools to help your team choose the right business software."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <p>ToolStep's Business Tools hub helps teams and founders choose the right software for sales, marketing, and document operations. We compare CRM platforms, email marketing tools, and e-signature solutions on pricing, automation depth, integration ecosystem, and real-world usability. Whether you are building a sales pipeline, scaling an email program, or digitizing contract workflows, our head-to-head comparisons give you a clear verdict based on actual usage, not feature lists.</p>
+
+  <section style="margin: 2.5rem 0;">
+    <h2 style="border-left: 4px solid #7c3aed; padding-left: 0.75rem;">Top Business Tools Money Pages</h2>
+    <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">Ranked best-of lists and alternatives to help you pick the right business software fast.</p>
+    <div style="display: grid; gap: 16px;">
+      {businessMoneyPages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {businessPages.map((cat) => cat.pages.length > 0 && (
+    <section style="margin: 2.5rem 0;">
+      <h2 style="border-left: 4px solid {cat.color}; padding-left: 0.75rem;">{cat.name}</h2>
+      <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">{cat.desc}</p>
+      <div style="display: grid; gap: 16px;">
+        {cat.pages.map((p) => (
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+            <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section style="margin: 2.5rem 0;">
+    <h2>How We Compare Business Tools</h2>
+    <p>Every business software comparison on ToolStep follows the same methodology. We test each tool on pricing transparency, automation depth, integration ecosystem, reporting capabilities, and onboarding complexity. We evaluate real team workflows — from sales pipeline management to email campaign automation to contract signing — because what matters is how a tool performs in your daily operations, not in a demo environment. Each comparison includes a quick comparison table, feature-by-feature analysis, pricing breakdown, pros and cons, use case recommendations, and a final verdict with a clear winner.</p>
+  </section>
+
+  <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+</PageLayout>

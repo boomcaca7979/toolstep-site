@@ -1,0 +1,108 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import { reviews } from '../../data/reviews.ts';
+
+const title = 'Website Builder Reviews & Comparisons 2026 | ToolStep';
+const description = 'In-depth website builder reviews and comparisons: Webflow, Framer, WordPress, Squarespace, and Wix. Find the best website builder for your project.';
+
+const websiteBuilderSlugs = [
+  'framer-vs-webflow',
+  'wordpress-vs-webflow',
+  'squarespace-vs-wix',
+  'wix-vs-wordpress',
+];
+
+const websiteBuilderMoneyPages = [
+  {
+    title: 'Best Website Builders 2026: Ranked for Design, Business & Developers',
+    desc: 'Webflow, Framer, WordPress, Squarespace, and Wix ranked. Compare design flexibility, SEO, pricing, CMS, and use cases.',
+    href: '/reviews/best-website-builders-2026/',
+  },
+  {
+    title: 'Best WordPress Alternatives 2026: Ranked for Every Website Type',
+    desc: 'Webflow, Squarespace, Wix, Framer, and Shopify ranked as WordPress alternatives for design, SEO, ecommerce, and ease of use.',
+    href: '/reviews/wordpress-alternatives-2026/',
+  },
+];
+
+const extraWebsiteBuilderPages = [
+  {
+    title: 'Wix vs WordPress 2026: SaaS Website Builder vs Open-Source CMS',
+    desc: 'SaaS drag-and-drop builder vs WordPress CMS — ease of use, hosting, plugins, SEO, cost, and ownership compared.',
+    href: '/reviews/wix-vs-wordpress/',
+  },
+];
+
+const websiteBuilderPages = reviews.filter((r) =>
+  websiteBuilderSlugs.some((slug) => r.href.includes(slug))
+);
+
+const itemListElements = websiteBuilderPages.map((p) => ({
+  '@type': 'ListItem',
+  name: p.title,
+  url: new URL(p.href, Astro.site).toString(),
+}));
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Website Builder Reviews & Comparisons',
+  description: 'Comprehensive website builder reviews and comparisons on ToolStep.',
+  itemListElement: itemListElements,
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Reviews', href: '/reviews/' },
+    { name: 'Website Builder' },
+  ]}
+  lastUpdated="2026-07-30"
+  subtitle="In-depth reviews and comparisons of website builders including Webflow, Framer, WordPress, Squarespace, and Wix to help you choose the right platform for your site."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <p>ToolStep's Website Builder hub helps creators, freelancers, and businesses choose the right platform for their site. We compare Webflow, Framer, WordPress, Squarespace, and Wix on design flexibility, learning curve, pricing, SEO capabilities, and hosting. Whether you are building a portfolio, a marketing site, or a full custom web application, our head-to-head comparisons give you a clear verdict based on real-world usage, not feature checklists.</p>
+
+  <section style="margin: 2.5rem 0;">
+    <h2 style="border-left: 4px solid #2563eb; padding-left: 0.75rem;">Top Website Builder Money Pages</h2>
+    <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">Ranked best-of lists to help you pick the right website builder quickly.</p>
+    <div style="display: grid; gap: 16px;">
+      {websiteBuilderMoneyPages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin: 2.5rem 0;">
+    <h2 style="border-left: 4px solid #2563eb; padding-left: 0.75rem;">Website Builder Comparisons</h2>
+    <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">Head-to-head comparisons of the leading website builders, covering design control, pricing, and best-fit use cases.</p>
+    <div style="display: grid; gap: 16px;">
+      {websiteBuilderPages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+      {extraWebsiteBuilderPages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin: 2.5rem 0;">
+    <h2>How We Compare Website Builders</h2>
+    <p>Every website builder comparison on ToolStep follows the same methodology. We test each platform on design flexibility, learning curve, pricing transparency, SEO capabilities, hosting performance, and third-party integrations. We evaluate real build workflows — from first wireframe to published site — because what matters is how a platform performs in your daily work, not in a marketing demo. Each comparison includes a quick comparison table, feature-by-feature analysis, pricing breakdown, pros and cons, use case recommendations, and a final verdict with a clear winner.</p>
+  </section>
+
+  <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+</PageLayout>

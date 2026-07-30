@@ -1,0 +1,67 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import { reviews } from '../../data/reviews.ts';
+
+const title = 'Security Tools Reviews & Comparisons 2026 | ToolStep';
+const description = 'In-depth security tools reviews and comparisons: VPN services and password managers. Find the best security software for your privacy and account protection.';
+
+const securitySlugs = [
+  'expressvpn-vs-nordvpn',
+  'nordvpn-vs-surfshark',
+  'best-password-managers-2026',
+];
+
+const securityPages = reviews.filter((r) =>
+  securitySlugs.some((slug) => r.href.includes(slug))
+);
+
+const itemListElements = securityPages.map((p) => ({
+  '@type': 'ListItem',
+  name: p.title,
+  url: new URL(p.href, Astro.site).toString(),
+}));
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Security Tools Reviews & Comparisons',
+  description: 'Comprehensive security tools reviews and comparisons on ToolStep.',
+  itemListElement: itemListElements,
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Reviews', href: '/reviews/' },
+    { name: 'Security' },
+  ]}
+  lastUpdated="2026-07-30"
+  subtitle="In-depth reviews and comparisons of VPN services and password managers to help you protect your privacy and secure your accounts."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <p>ToolStep's Security hub helps individuals and teams choose the right tools for privacy and account protection. We compare VPN services and password managers on encryption strength, server coverage, pricing, cross-platform support, and real-world performance. Whether you need a VPN for streaming and privacy or a password manager to secure your business credentials, our head-to-head comparisons give you a clear verdict based on hands-on testing, not marketing claims.</p>
+
+  <section style="margin: 2.5rem 0;">
+    <h2 style="border-left: 4px solid #059669; padding-left: 0.75rem;">Security Tools</h2>
+    <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">Head-to-head comparisons of the leading VPN services and password managers, covering privacy, performance, and pricing.</p>
+    <div style="display: grid; gap: 16px;">
+      {securityPages.map((p) => (
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+          <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin: 2.5rem 0;">
+    <h2>How We Compare Security Tools</h2>
+    <p>Every security tool comparison on ToolStep follows the same methodology. We test each tool on encryption standards, privacy policy transparency, performance impact, cross-platform support, and pricing. We evaluate real-world usage — from streaming and torrenting on VPNs to cross-device sync on password managers — because what matters is how a tool performs in your daily life, not in a spec sheet. Each comparison includes a quick comparison table, feature-by-feature analysis, pricing breakdown, pros and cons, use case recommendations, and a final verdict with a clear winner.</p>
+  </section>
+
+  <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+</PageLayout>

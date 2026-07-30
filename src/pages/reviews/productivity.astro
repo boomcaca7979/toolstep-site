@@ -1,0 +1,123 @@
+---
+import PageLayout from '../../components/PageLayout.astro';
+import { reviews } from '../../data/reviews.ts';
+
+const title = 'Productivity & Collaboration Reviews 2026 | ToolStep';
+const description = 'In-depth productivity tool reviews and comparisons: personal productivity, project management, collaboration, knowledge management, cloud storage, video tools, and PDF tools. Find the best productivity tool for your workflow.';
+
+// Define 7 strategic sub-categories with slug lists (excludes wordpress-vs-webflow, squarespace-vs-wix, zapier-vs-make)
+const productivityGroups = [
+  {
+    name: 'Personal Productivity',
+    color: '#2563eb',
+    desc: 'Task managers, note apps, and daily workflow tools compared for individuals and small teams.',
+    slugs: ['things-3-review', 'todoist-vs-ticktick', 'bear-notes-review', 'trello-review'],
+  },
+  {
+    name: 'Project Management',
+    color: '#7c3aed',
+    desc: 'Project management platforms compared for workflows, reporting, and team collaboration.',
+    slugs: ['linear-review', 'monday-vs-asana', 'linear-vs-jira', 'clickup-vs-monday'],
+  },
+  {
+    name: 'Collaboration Tools',
+    color: '#0891b2',
+    desc: 'Team communication and video conferencing tools compared for remote and hybrid teams.',
+    slugs: ['slack-vs-teams', 'zoom-vs-google-meet'],
+  },
+  {
+    name: 'Knowledge Management',
+    color: '#6366f1',
+    desc: 'Note-taking and knowledge management tools compared for structure, sync, and collaboration.',
+    slugs: ['obsidian-review', 'notion-vs-obsidian', 'notion-vs-evernote', 'notion-vs-confluence'],
+  },
+  {
+    name: 'Cloud Storage',
+    color: '#059669',
+    desc: 'Cloud storage services compared for space, sync, pricing, and team collaboration.',
+    slugs: ['best-cloud-storage-2026', 'google-drive-vs-dropbox-vs-onedrive'],
+  },
+  {
+    name: 'Video Tools',
+    color: '#dc2626',
+    desc: 'Screen recorders and video editors compared for creators and professionals.',
+    slugs: ['best-screen-recorders-mac', 'best-video-editors-beginners'],
+  },
+  {
+    name: 'PDF Tools',
+    color: '#9333ea',
+    desc: 'PDF editors compared for features, pricing, and ease of use.',
+    slugs: ['smallpdf-vs-ilovepdf'],
+  },
+];
+
+// Helper: find a review by slug (matches href with or without trailing slash)
+function findBySlug(slug: string) {
+  return reviews.find(
+    (r) => r.href === `/reviews/${slug}` || r.href === `/reviews/${slug}/`
+  );
+}
+
+// Map groups to actual review data
+const groupsWithPages = productivityGroups.map((group) => ({
+  ...group,
+  pages: group.slugs
+    .map((slug) => findBySlug(slug))
+    .filter((p): p is NonNullable<typeof p> => p !== undefined),
+}));
+
+// Build ItemList with only displayed pages
+const itemListElements = groupsWithPages.flatMap((group) =>
+  group.pages.map((p) => ({
+    '@type': 'ListItem',
+    name: p.title,
+    url: new URL(p.href, Astro.site).toString(),
+  }))
+);
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Productivity & Collaboration Reviews',
+  description: 'Comprehensive productivity and collaboration tool reviews on ToolStep.',
+  itemListElement: itemListElements,
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Reviews', href: '/reviews/' },
+    { name: 'Productivity' },
+  ]}
+  lastUpdated="2026-07-30"
+  subtitle="In-depth reviews and comparisons of personal productivity apps, project management tools, collaboration platforms, knowledge management tools, cloud storage, video tools, and PDF editors."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <p>ToolStep's Productivity hub covers the software that keeps your work organized, your team aligned, and your files accessible. From personal task managers to enterprise project management platforms, from team communication to knowledge wikis, our head-to-head comparisons help you pick the right tool based on features, pricing, integrations, and real-world performance.</p>
+
+  {groupsWithPages.map((group) => group.pages.length > 0 && (
+    <section style="margin: 2.5rem 0;">
+      <h2 style="border-left: 4px solid {group.color}; padding-left: 0.75rem;">{group.name}</h2>
+      <p style="color: rgb(var(--gray)); margin-bottom: 1rem;">{group.desc}</p>
+      <div style="display: grid; gap: 16px;">
+        {group.pages.map((p) => (
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.25rem; box-shadow: var(--card-shadow);">
+            <a href={p.href} style="text-decoration: none; font-weight: 700; font-size: 1.1rem; color: rgb(var(--black));">{p.title}</a>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: rgb(var(--gray));">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section style="margin: 2.5rem 0;">
+    <h2>How We Compare Productivity Tools</h2>
+    <p>Every productivity tool comparison on ToolStep follows the same methodology. We test each tool for core features, pricing transparency, team collaboration, integration depth, and ease of use. We evaluate real-world workflows — from solo note-taking to enterprise project management — because what matters is how a tool fits into your daily routine. Each comparison includes a quick comparison table, feature-by-feature analysis, pricing breakdown, pros and cons, use case recommendations, and a final verdict with a clear winner.</p>
+  </section>
+
+  <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+</PageLayout>
