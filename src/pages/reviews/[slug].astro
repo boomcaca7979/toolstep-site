@@ -19,6 +19,19 @@ const { entry } = Astro.props;
 const author = authors.find(a => a.slug === entry.authorSlug);
 const authorName = author?.name || 'ToolStep Team';
 const affiliateUrl = entry.amazonUrl || undefined;
+
+// Template-layer fix: adapter round-trip converts /alternatives/* hrefs to /reviews/*
+// because the unified schema's ContentType has no 'alternative' variant.
+// Restore correct href for alternatives pages before rendering.
+const fixedEntry = {
+  ...entry,
+  alternatives: entry.alternatives.map(alt => {
+    if (alt.href.startsWith('/reviews/') && alt.href.endsWith('-alternatives/')) {
+      return { ...alt, href: alt.href.replace('/reviews/', '/alternatives/') };
+    }
+    return alt;
+  }),
+};
 ---
 
-<ProductReviewTemplate entry={entry} authorName={authorName} affiliateUrl={affiliateUrl} />
+<ProductReviewTemplate entry={fixedEntry} authorName={authorName} affiliateUrl={affiliateUrl} />

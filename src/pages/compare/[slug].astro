@@ -4,9 +4,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import AdUnit from '../../components/ads/AdUnit.astro';
-import { getCompareEntries, getReviewEntryBySlug } from '../../data/content';
+import { getCompareEntries, getReviewEntries } from '../../data/content';
 import { authors } from '../../data/authors';
-import { reviews } from '../../data/reviews';
 import { buildCompareTitle } from '../../utils/seo';
 import { mapCategoryToSlug } from '../../data/category-map';
 import { getCategoryBySlug } from '../../data/categories';
@@ -33,12 +32,13 @@ const idx = allCompares.findIndex(e => e.slug === entry.slug);
 const prevEntry = idx > 0 ? allCompares[idx - 1] : null;
 const nextEntry = idx < allCompares.length - 1 ? allCompares[idx + 1] : null;
 
-// Related reviews (resolve titles from reviews data)
+// Related reviews (resolve titles from unified review content)
+// Note: adapter round-trip may corrupt hrefs, so match by slug substring
+const allReviewEntries = getReviewEntries();
 const relatedReviewItems = entry.relatedReviews
   .map(href => {
-    const slug = href.replace('/reviews/', '').replace(/\/$/, '');
-    const r = reviews.find(rv => rv.href.includes(slug));
-    return r ? { title: r.title, href, desc: r.desc } : null;
+    const r = allReviewEntries.find(rv => href.includes(rv.slug));
+    return r ? { title: `${r.productName} Review`, href: `/reviews/${r.slug}/`, desc: r.quickVerdict } : null;
   })
   .filter((r): r is NonNullable<typeof r> => r !== null);
 
