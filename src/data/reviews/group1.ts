@@ -58,6 +58,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { name: 'Best Office Mechanical Keyboard', href: '/reviews/best-office-mechanical-keyboard/', desc: 'Our full roundup including the K8.' },
       { name: 'Logitech MX Keys S Review', href: '/reviews/logitech-mx-keys-s-review/', desc: 'The low-profile alternative worth knowing about.' },
       { name: 'Keychron Q1 Review', href: '/reviews/keychron-q1-review/', desc: 'The premium aluminum alternative in the Keychron lineup.' },
+      { name: 'Keychron K8 Alternatives', href: '/alternatives/keychron-k8-alternatives/', desc: '10 best Keychron K8 alternatives ranked by wireless, switch type, and value.' },
     ],
     faqs: [
       { question: 'Is the Keychron K8 good for typing?', answer: 'Yes. The Gateron Brown switches offer a tactile bump at 2 mm of travel that gives clear feedback without the loud click of blue switches. Feature analysis suggests typing accuracy improves over membrane keyboards thanks to the tactile feedback and consistent actuation.' },
@@ -69,7 +70,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { question: 'How does the Keychron K8 compare to the Royal Kludge RK61?', answer: 'The RK61 is cheaper (around $50) but its build quality, switch selection, and Bluetooth stability are noticeably worse. The K8 has a more rigid frame, better keycaps, and a more reliable Bluetooth 5.1 chipset. If you can stretch the budget by $30, the K8 is the better long-term value.' },
       { question: 'Can I replace the keycaps on the Keychron K8?', answer: 'Yes. The K8 uses a standard Cherry profile with OEM height keycaps, so any compatible keycap set will fit. We recommend upgrading to PBT keycaps ($25 to $40) once the stock ABS keycaps develop a shine, typically after 6 months of heavy use.' },
     ],
-    compareSlugs: [],
+    compareSlugs: ['keychron-q1-vs-keychron-k8'],
   },
   {
     slug: 'herman-miller-aeron-review',
@@ -127,6 +128,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { name: 'Branch Ergonomic Chair Review', href: '/reviews/branch-ergonomic-chair-review/', desc: 'The best $400 alternative in this category.' },
       { name: 'Best Ergonomic Chair Under $500', href: '/reviews/best-ergonomic-chair-under-500/', desc: 'Strong mid-tier options that close the gap.' },
       { name: 'Steelcase Leap V2 Review', href: '/reviews/steelcase-leap-v2-review/', desc: 'The Aeron\'s closest rival at $400 less.' },
+      { name: 'Herman Miller Aeron Alternatives', href: '/alternatives/herman-miller-aeron-alternatives/', desc: '10 best Herman Miller Aeron alternatives ranked by ergonomics and value.' },
     ],
     faqs: [
       { question: 'Is the Herman Miller Aeron worth $1,495?', answer: 'For most people who sit 6 or more hours a day, yes. The Aeron outlasts cheaper chairs by a decade, the 12-year warranty is fully comprehensive, and according to manufacturer specifications the PostureFit SL support is designed to reduce lower-back fatigue. If you sit less than 4 hours daily, a $400 chair like the Branch Ergonomic is the smarter use of money.' },
@@ -135,7 +137,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { question: 'How long does the Herman Miller Aeron last?', answer: 'Herman Miller rates the Aeron for 12 years of commercial use, and the warranty covers all parts and labor for that period. According to owner reports, 8-year-old Aerons remain in daily rotation with no functional issues, only minor cosmetic wear on the armrest pads.' },
       { question: 'Can I get the Aeron without PostureFit SL?', answer: 'Yes. Herman Miller offers the Aeron with standard lumbar support instead of PostureFit SL, which saves roughly $170. Based on feature analysis, PostureFit SL is recommended for anyone with prior back pain — it adapts to movement where the standard lumbar pad stays static.' },
     ],
-    compareSlugs: [],
+    compareSlugs: ['herman-miller-aeron-vs-steelcase-leap-v2'],
   },
   {
     slug: 'steelcase-leap-v2-review',
@@ -194,6 +196,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { name: 'Herman Miller Aeron Review', href: '/reviews/herman-miller-aeron-review/', desc: 'The premium benchmark and the Leap V2\'s main rival.' },
       { name: 'Steelcase Gesture Review', href: '/reviews/steelcase-gesture-review/', desc: 'Steelcase\'s newer flagship for multi-device workflows.' },
       { name: 'Branch Ergonomic Chair Review', href: '/reviews/branch-ergonomic-chair-review/', desc: 'The best $400 alternative in this category.' },
+      { name: 'Steelcase Leap V2 Alternatives', href: '/alternatives/steelcase-leap-v2-alternatives/', desc: '10 best Steelcase Leap V2 alternatives ranked by adjustability and value.' },
     ],
     faqs: [
       { question: 'Is the Steelcase Leap V2 better than the Herman Miller Aeron?', answer: 'It depends on your priorities. The Leap V2 has 4D armrests, a softer seat, and costs $466 less. The Aeron runs cooler over long sessions, has a more durable mesh seat, and a longer documented track record. Based on feature analysis, the Aeron is preferred for hot climates and 8+ hour days, the Leap V2 for everyone else. For the side-by-side breakdown see our Herman Miller Aeron vs Steelcase Leap V2 comparison.' },
@@ -205,7 +208,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { question: 'Is a refurbished Leap V2 worth buying?', answer: 'Usually yes. Crandall and a few other refurbishers replace the foam, upholstery, and armrest pads with new components, then re-cover the frame. The result is functionally a new chair for around half the price, often with a longer written warranty than Steelcase offers new. The only downside is lead time (3 to 6 weeks) and limited upholstery color choice.' },
       { question: 'Can the Leap V2 support a 300-pound user?', answer: 'Yes. Steelcase rates the Leap V2 to 400 lbs. The base is die-cast aluminum and the gas cylinder is the same heavy-duty unit used in the Aeron. Heavier users should skip the headrest option, which loses rigidity above 250 lbs of downward pressure.' },
     ],
-    compareSlugs: [],
+    compareSlugs: ['herman-miller-aeron-vs-steelcase-leap-v2'],
   },
   {
     slug: 'logitech-brio-4k-review',
@@ -399,6 +402,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { name: 'Best Wireless Mouse for Productivity', href: '/reviews/best-wireless-mouse-productivity/', desc: 'How the 3S stacks up against 8 other mice.' },
       { name: 'Logitech MX Keys S Review', href: '/reviews/logitech-mx-keys-s-review/', desc: 'The keyboard built to pair with it.' },
       { name: 'Keychron K8 Review', href: '/reviews/keychron-k8-review/', desc: 'A wireless mechanical keyboard alternative.' },
+      { name: 'Logitech MX Master 3S Alternatives', href: '/alternatives/logitech-mx-master-3s-alternatives/', desc: '10 best MX Master 3S alternatives ranked by ergonomics and value.' },
     ],
     faqs: [
       { question: 'Is the MX Master 3S worth it over the MX Master 3?', answer: 'Yes, if you value quiet clicks or work on glass. The 3S adds 90% quieter clicks and a sensor that tracks on glass. If you already own the MX Master 3 and use a desk pad, the upgrade is hard to justify — the shape, battery, and scroll wheel are essentially identical.' },
@@ -407,7 +411,7 @@ export const group1Reviews: ProductReviewEntry[] = [
       { question: 'Can you replace the battery in the MX Master 3S?', answer: 'No, the battery is sealed inside the mouse. Logitech rates it for 70 days per charge, and according to manufacturer specifications the battery holds up reliably over time. The battery is rated for several years of charge cycles under normal use.' },
       { question: 'Does the MX Master 3S work with iPad and iPhone?', answer: 'Yes, over Bluetooth. It pairs with iPads and iPhones that support mouse input (iPadOS 13.4 and later, iOS 13 and later). Flow is not supported on iOS, but the mouse works as a standard pointing device. The side buttons and thumb wheel map differently on iOS.' },
     ],
-    compareSlugs: [],
+    compareSlugs: ['logitech-mx-master-3s-vs-anywhere-3s'],
   },
   {
     slug: 'branch-ergonomic-chair-review',

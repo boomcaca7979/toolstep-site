@@ -59,6 +59,7 @@ export const group4Reviews: ProductReviewEntry[] = [
       { name: 'Keychron K8 Review', href: '/reviews/keychron-k8-review/', desc: 'The $84 plastic sibling — a great entry point before the Q1.' },
       { name: 'Best Office Mechanical Keyboard', href: '/reviews/best-office-mechanical-keyboard/', desc: 'Our full roundup including the Q1 and K8.' },
       { name: 'Logitech MX Keys S Review', href: '/reviews/logitech-mx-keys-s-review/', desc: 'The low-profile wireless alternative for multi-device users.' },
+      { name: 'Keychron Q1 Alternatives', href: '/alternatives/keychron-q1-alternatives/', desc: '10 best Keychron Q1 alternatives ranked by build and customization.' },
     ],
     faqs: [
       { question: 'Is the Keychron Q1 worth the money?', answer: 'Yes, if you want a true custom keyboard feel without building one from a kit. The gasket mount, CNC aluminum body, and QMK/VIA support give you a typing experience that rivals $300+ customs for $149. If you only need a basic mechanical keyboard, the Keychron K8 at $84 is the better value — but the Q1 is the right pick if you care about sound, feel, and customization.' },
@@ -67,7 +68,7 @@ export const group4Reviews: ProductReviewEntry[] = [
       { question: 'Can I use the Keychron Q1 with a Mac?', answer: 'Yes. The Q1 includes Mac and Windows keycaps and a toggle for either layout. All function keys work correctly on macOS, and QMK/VIA lets you remap to match any Mac shortcut. According to manufacturer specifications, the Q1 is compatible with macOS, Windows, and Linux via USB-C. Note that the Q1 is wired USB-C only, so there is no Bluetooth pairing — it occupies one USB port.' },
       { question: 'How heavy is the Keychron Q1?', answer: 'The Q1 weighs about 1.6 kg (3.5 lb) with the aluminum case. That is roughly four times heavier than a plastic keyboard like the Keychron K8. The weight is a feature, not a defect: the solid aluminum body dampens vibration, keeps the keyboard planted during heavy typing, and contributes to the deep, thocky sound profile. If you want a portable keyboard, look elsewhere — the Q1 is meant to stay on one desk.' },
     ],
-    compareSlugs: [],
+    compareSlugs: ['keychron-q1-vs-keychron-k8'],
   },
   {
     slug: 'plugable-usb-c-triple-review',
@@ -398,6 +399,7 @@ export const group4Reviews: ProductReviewEntry[] = [
       { name: 'Best USB-C Dock for MacBook', href: '/reviews/best-usbc-dock-macbook/', desc: 'How the U2723QE compares to a separate Thunderbolt dock.' },
       { name: 'Best Monitor Light Bar', href: '/reviews/best-monitor-light-bar/', desc: 'Pair the U2723QE with a screenbar for eye comfort.' },
       { name: 'BenQ ScreenBar Halo Review', href: '/reviews/benq-screenbar-halo-review/', desc: 'A premium light bar that fits the U2723QE bezel.' },
+      { name: 'Dell U2723QE Alternatives', href: '/alternatives/dell-u2723qe-alternatives/', desc: '10 best Dell U2723QE alternatives ranked by 4K, USB-C, and color accuracy.' },
     ],
     faqs: [
       { question: 'Is the Dell U2723QE worth it over the cheaper U2724D?', answer: 'Yes, if you need the IPS Black panel, 90W USB-C charging, and a built-in KVM with ethernet. The U2723QE is the original IPS Black 4K monitor and has the most complete port selection of the series. The newer U2724D is brighter and supports a 120Hz mode at lower resolutions, but it drops to 90W charging in some configurations and lacks the full KVM-plus-ethernet combination. If you want a single-cable dock inside a monitor, the U2723QE remains the better pick.' },
@@ -406,7 +408,7 @@ export const group4Reviews: ProductReviewEntry[] = [
       { question: 'Can you daisy-chain two U2723QE monitors?', answer: 'Yes. The U2723QE has DisplayPort 1.4 MST out, so you can connect a second monitor over a single DisplayPort cable from the first. According to manufacturer specifications, two U2723QEs can be daisy-chained from a single USB-C cable and run both at 4K 60Hz. Note that daisy-chaining reduces the bandwidth available per display, so a third 4K panel in the chain would need to drop to 30Hz.' },
       { question: 'Is the IPS Black panel really better than standard IPS?', answer: 'Yes, visibly. The IPS Black panel on the U2723QE doubles the contrast ratio from a typical IPS 1000:1 to 2000:1, which means deeper blacks and less gray wash in dark scenes. Based on manufacturer specifications, the difference in dark-mode UI, photo shadow detail, and letterboxed video is engineered to be visibly superior to standard IPS panels. The viewing angles are also wider, with less color shift at off-angles. It is not OLED-level contrast, but for a work monitor it is a meaningful upgrade.' },
     ],
-    compareSlugs: [],
+    compareSlugs: ['dell-u2723qe-vs-lg-c2-oled'],
   },
   {
     slug: 'logitech-mx-anywhere-3s-review',
