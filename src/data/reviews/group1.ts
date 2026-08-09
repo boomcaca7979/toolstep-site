@@ -266,7 +266,7 @@ export const group1Reviews: ProductReviewEntry[] = [
     specs: [],
     alternatives: [
       { name: 'Best Webcam for Remote Work', href: '/reviews/best-webcam-remote-work/', desc: 'See how the Brio ranks against every webcam in this category.' },
-      { name: 'Best Webcam for Work from Home', href: '/reviews/best-webcam-work-from-home/', desc: 'Picks tuned for at-home lighting conditions.' },
+      { name: 'Best Webcam for Remote Work', href: '/reviews/best-webcam-remote-work/', desc: 'Picks for video calls, including at-home lighting conditions.' },
       { name: 'Best Monitor Riser for Desk', href: '/reviews/best-monitor-riser-desk/', desc: 'Lift the Brio to your eye line.' },
     ],
     faqs: [

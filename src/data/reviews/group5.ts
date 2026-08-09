@@ -466,7 +466,7 @@ export const group5Reviews: ProductReviewEntry[] = [
     alternatives: [
       { name: 'Best Noise Cancelling Headphones for Work', href: '/reviews/best-noise-cancelling-headphones-work/', desc: 'How the XM5 stacks up against Bose, Apple, and Sennheiser.' },
       { name: 'Sennheiser Momentum 4 Review', href: '/reviews/sennheiser-momentum-4-review/', desc: '60-hour battery and a warmer sound signature.' },
-      { name: 'Best Webcam for Work From Home', href: '/reviews/best-webcam-work-from-home/', desc: 'Pair clear calls with a sharp camera.' },
+      { name: 'Best Webcam for Remote Work', href: '/reviews/best-webcam-remote-work/', desc: 'Pair clear calls with a sharp camera.' },
     ],
     faqs: [
       { question: 'Is the Sony WH-1000XM5 worth it over the XM4?', answer: 'Yes, if you value better call quality, improved comfort, and the strongest ANC on the market. The XM5 has eight microphones and a new V1 processor that edges out the XM4 in noise cancellation and voice pickup. If you already own the XM4 and do not take many calls, the upgrade is marginal — the XM4 still folds and has nearly identical battery life.' },

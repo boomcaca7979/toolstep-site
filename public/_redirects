@@ -1,6 +1,8 @@
+/reviews/best-webcam-work-from-home      /reviews/best-webcam-remote-work/      301
+/reviews/best-webcam-work-from-home/     /reviews/best-webcam-remote-work/      301
+/reviews/best-noise-canceling-headphones-work      /reviews/best-noise-cancelling-headphones-work/      301
+/reviews/best-noise-canceling-headphones-work/     /reviews/best-noise-cancelling-headphones-work/      301
 /about      /about/      301
 /guides     /guides/     301
 /reviews    /reviews/    301
-/reviews/*  /reviews/:splat/  301
 /privacy    /privacy/    301
-/tools/*    /tools/:splat/  301

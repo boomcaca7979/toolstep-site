@@ -1,5 +1,9 @@
 {
   "redirects": [
+    { "source": "/reviews/best-webcam-work-from-home", "destination": "/reviews/best-webcam-remote-work/", "permanent": true },
+    { "source": "/reviews/best-webcam-work-from-home/", "destination": "/reviews/best-webcam-remote-work/", "permanent": true },
+    { "source": "/reviews/best-noise-canceling-headphones-work", "destination": "/reviews/best-noise-cancelling-headphones-work/", "permanent": true },
+    { "source": "/reviews/best-noise-canceling-headphones-work/", "destination": "/reviews/best-noise-cancelling-headphones-work/", "permanent": true },
     { "source": "/reviews/:slug", "destination": "/reviews/:slug/", "permanent": true },
     { "source": "/about", "destination": "/about/", "permanent": true },
     { "source": "/guides", "destination": "/guides/", "permanent": true },
