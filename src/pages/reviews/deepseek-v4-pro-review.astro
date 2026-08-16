@@ -1,0 +1,262 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "DeepSeek V4 Pro Review: What's New in the Official August 2026 Release? | ToolStep";
+const description = "DeepSeek V4 Pro went official on August 13, 2026 (V4-Pro-0813) with big agent gains, a 1M context, MIT weights — and a peak/off-peak API pricing change.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "DeepSeek V4 Pro Review: What's New in the Official August 2026 Release?", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "DeepSeek V4 Pro Review: What's New in the Official August 2026 Release?", "item": new URL('/reviews/deepseek-v4-pro-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DeepSeek V4 Pro",
+      "applicationCategory": "AI Model",
+      "operatingSystem": "Web, App, API, Open Weights",
+      "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When was DeepSeek V4 Pro officially released?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DeepSeek released the official, generally available version of DeepSeek V4 Pro on August 13, 2026, under the version name DeepSeek-V4-Pro-0813. This is separate from the DeepSeek V4 Preview that launched on April 24, 2026 — the April release was a preview family, while the August 13 release is the official GA version with substantially stronger agentic capabilities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is DeepSeek-V4-Pro-0813?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DeepSeek-V4-Pro-0813 is the official August 13, 2026 release of DeepSeek V4 Pro. The API model name stays deepseek-v4-pro — only the underlying version changed. According to DeepSeek's release notes, it adds major agent upgrades, flexible reasoning effort (low/high/max), and native OpenAI Responses API support optimized for Codex."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does DeepSeek V4 Pro cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Current pricing is $0.435 per million input tokens (cache miss), $0.87 per million output tokens, and $0.003625 per million cached input. DeepSeek also announced a new pricing schedule that takes effect at 16:00 UTC on August 16, 2026, introducing peak and off-peak rates: V4 Pro output rises to $3.96 peak / $1.98 off-peak per million tokens, with off-peak rates 50% lower than peak."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is DeepSeek V4 Pro open source?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. DeepSeek V4 Pro is released under the MIT license, and the official DeepSeek-V4-Pro-0813 weights are published on Hugging Face under the deepseek-ai organization, alongside a technical report."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is DeepSeek V4 Pro better than GPT-5.6?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to DeepSeek's published evaluations, V4-Pro-0813 approaches or matches frontier models on agentic benchmarks — including a Terminal Bench 2.1 score of 87.9 versus GPT-5.6 Sol's 88.8 — while undercutting them on price. GPT-5.6 Sol still leads on some harder suites such as Terminal Bench 3.0. These are vendor-reported results; independent verification is still accumulating."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Models</span>
+      <h1>DeepSeek V4 Pro Review: What's New in the Official August 2026 Release?</h1>
+      <p class="meta">Reviewed August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      DeepSeek moved V4 Pro from preview to official on August 13, 2026 — version-named DeepSeek-V4-Pro-0813 — with major agent upgrades, native Responses API support, MIT-licensed weights, and a pricing shake-up that introduces peak/off-peak rates. This review separates the official GA release from the April preview, breaks down what changed, and explains the pricing timeline you need to know before the new schedule kicks in.
+    </p>
+
+    <h2>Quick Verdict</h2>
+    <p>DeepSeek V4 Pro's official release is one of the strongest value propositions of August 2026: a 1.6T-parameter MoE model with a 1M-token context, MIT-licensed open weights on Hugging Face, and — according to DeepSeek's published evaluations — agentic performance that approaches or matches frontier closed models at a fraction of their price. The catch is timing: DeepSeek announced a new peak/off-peak pricing schedule that takes effect at 16:00 UTC on August 16, 2026, raising V4 Pro output prices substantially at peak hours. If you're evaluating V4 Pro for high-volume agent workloads, read the pricing section carefully — the window of preview-era rates is closing.</p>
+
+    <h2>What Is DeepSeek V4 Pro?</h2>
+    <p>DeepSeek V4 Pro is the flagship model in DeepSeek's V4 family — a 1.6-trillion-parameter mixture-of-experts model with 49 billion parameters activated per token, built for agentic coding, long-context reasoning, and knowledge work. The V4 family was first announced as an open preview on April 24, 2026, alongside the smaller V4 Flash (284B total / 13B active). On August 13, 2026, DeepSeek shipped the official, generally available version: <strong>DeepSeek-V4-Pro-0813</strong>, available on the app and web (via Expert Mode) and through the API under the unchanged model name <code>deepseek-v4-pro</code>.</p>
+
+    <h2>What's New in the August 13 Official Release?</h2>
+    <p>According to DeepSeek's official release notes, the GA version focuses on agent capability and integration rather than a new architecture:</p>
+    <ul>
+      <li><strong>Major agent upgrades</strong> with strong production gains across DeepSeek's published benchmark suite.</li>
+      <li><strong>Flexible reasoning effort</strong> for V4 Pro and V4 Flash: <code>low</code> for simple tasks, <code>high</code> for daily agent workflows, <code>max</code> for complex tasks.</li>
+      <li><strong>Native OpenAI Responses API support</strong>, optimized for Codex with one-click setup.</li>
+      <li><strong>App and web availability</strong> via Expert Mode, alongside the API.</li>
+      <li><strong>A new peak/off-peak pricing schedule</strong> announced the same day, effective 16:00 UTC on August 16, 2026.</li>
+    </ul>
+
+    <h2>DeepSeek V4 Pro vs the April Preview</h2>
+    <p>Don't confuse the two releases. The <strong>April 24 preview</strong> was an open-weights research preview that established the architecture. The <strong>August 13 GA</strong> is a post-training overhaul on the same base — and the gains are concentrated exactly where the preview was weakest: long-horizon agentic work. According to DeepSeek's published evaluations, DeepSWE jumped from 12.8 to 62.7, Terminal Bench 2.1 from 72.1 to 87.9, and CyberGym from 52.7 to 83.3. Chinese tech media hands-on (GeekPark) also report the GA version adds native image input for the first time — the preview was text-only.</p>
+
+    <h2>Model Architecture</h2>
+    <p>The architecture is unchanged from the preview, per the official model card and technical report: a 1.6T-total / 49B-active MoE using a hybrid of compressed sparse attention (CSA) and DeepSeek Sparse Attention (DSA), plus manifold-constrained hyper-connections (mHC) for residual signal propagation. DeepSeek reports that at 1M context, V4 Pro uses roughly 27% of the single-token inference FLOPs and 10% of the KV-cache memory of V3.2 — publisher measurements under DeepSeek's own setup.</p>
+
+    <h2>1M Context Window</h2>
+    <p>The 1M-token context window carries over from the preview and is now the default across official DeepSeek services, with a maximum output length of 384K tokens. That combination — million-token input, very large output budget — is aimed squarely at long-horizon agent workflows where the model must read an entire codebase and produce substantial code in one run.</p>
+
+    <h2>Coding and Agent Capabilities</h2>
+    <p>Agentic coding is the whole story of this release. According to DeepSeek's published evaluations, the GA version posts the largest gains on benchmarks that measure multi-step, tool-using work: DeepSWE 62.7 (up ~5x from preview), Toolathlon-Verified 74.1, and AutomationBench Public 31.8 (up from 12.8). For public code-agent tasks, DeepSeek evaluated the model using the minimal mode of its own <a href="/reviews/deepseek-harness-review/">DeepSeek Harness</a> at max reasoning effort.</p>
+
+    <h2>Native Image Reasoning</h2>
+    <p>Per GeekPark's hands-on with the GA build, V4 Pro now supports native image reasoning — analyzing screenshots and mixed text-image documents inside the same thinking flow — a capability the text-only preview lacked. Treat this as launch coverage rather than a headline claim in DeepSeek's English release notes, and verify on your own workloads.</p>
+
+    <h2>Responses API</h2>
+    <p>The GA release adds native support for the OpenAI Responses API surface, so tool loops can run against a Responses-compatible endpoint instead of relying only on Chat Completions. DeepSeek also maintains Anthropic API compatibility, which is how V4 models plug into Claude Code-style harnesses.</p>
+
+    <h2>Codex Integration</h2>
+    <p>DeepSeek's release notes highlight a one-click setup for Codex, covering the Codex CLI, desktop app, and IDE extension through a shared configuration using the <code>deepseek-v4-pro</code> and <code>deepseek-v4-flash</code> model IDs — a signal that DeepSeek is courting the OpenAI-tooling ecosystem directly.</p>
+
+    <h2>Reasoning Effort</h2>
+    <p>V4 Pro and V4 Flash now expose three reasoning-effort levels: <code>low</code> for simple tasks, <code>high</code> for everyday agent workflows, and <code>max</code> for complex problems, alongside the existing thinking / non-thinking dual modes. DeepSeek recommends allowing up to 384K output tokens for high and max effort on agentic workloads.</p>
+
+    <h2>Benchmarks</h2>
+    <p>According to DeepSeek's published evaluations (official model card), the GA release improves on both the Pro preview and V4 Flash across the board:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>V4 Pro 0813</th><th>V4 Pro Preview</th><th>Kimi K3</th><th>Opus 4.8</th></tr>
+        <tr><td>Terminal Bench 2.1</td><td><strong>87.9</strong></td><td>72.1</td><td>88.3</td><td>85.0</td></tr>
+        <tr><td>DeepSWE</td><td><strong>62.7</strong></td><td>12.8</td><td>67.5</td><td>58.0</td></tr>
+        <tr><td>CyberGym</td><td><strong>83.3</strong></td><td>52.7</td><td>80.0</td><td>78.3</td></tr>
+        <tr><td>DSBench-Hard (internal)</td><td><strong>67.2</strong></td><td>31.1</td><td>63.0</td><td>71.7</td></tr>
+        <tr><td>HLE (without / with tools)</td><td>42.7 / 60.0</td><td>37.7 / 48.2</td><td>43.5 / 56.0</td><td>49.8 / 57.9</td></tr>
+        <tr><td>Toolathlon-Verified</td><td><strong>74.1</strong></td><td>55.9</td><td>76.5</td><td>76.2</td></tr>
+        <tr><td>AutomationBench Public</td><td><strong>31.8</strong></td><td>12.8</td><td>30.8</td><td>27.2</td></tr>
+      </table>
+    </div>
+    <p>DSBench-FullStack and DSBench-Hard are internal DeepSeek test sets; all figures are vendor-reported and reproduced as published. Third-party platforms (for example LM Studio Cloud) list their own reduced context limits and different pricing — those are platform choices, not DeepSeek official specifications.</p>
+
+    <h2>Pricing</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>V4 Pro (per 1M tokens)</th><th>Current</th><th>New: Peak</th><th>New: Off-peak</th></tr>
+        <tr><td>Input (cache miss)</td><td>$0.435</td><td>$1.32</td><td>$0.66</td></tr>
+        <tr><td>Input (cache hit)</td><td>$0.003625</td><td>$0.044</td><td>$0.022</td></tr>
+        <tr><td>Output</td><td>$0.87</td><td>$3.96</td><td>$1.98</td></tr>
+      </table>
+    </div>
+    <p>At preview-era pricing, V4 Pro output cost $0.87 per million tokens — roughly 1/57th of Claude Fable 5's list output price, the comparison market observers kept making. Even after the increase, off-peak V4 Pro remains among the cheapest frontier-class outputs per token.</p>
+
+    <h2>The August 16 / August 17 Pricing Change</h2>
+    <div class="update-box">
+      <h2>Pricing schedule update</h2>
+      <p>DeepSeek announced a new pricing schedule that takes effect at <strong>16:00 UTC on August 16, 2026</strong> (midnight August 17 Beijing time). It introduces peak and off-peak rates across the V4 lineup, with off-peak rates 50% lower than peak. For V4 Pro, output rises from $0.87 to $3.96 per million tokens at peak and $1.98 off-peak; V4 Flash output moves to $1.32 peak / $0.66 off-peak. The change had not yet taken effect at the time of this review's publication — check DeepSeek's pricing page for the live schedule, and note that published peak windows fall largely during Asian working hours.</p>
+    </div>
+
+    <h2>Open Source and MIT License</h2>
+    <p>V4 Pro is open-weight under the standard MIT license — no usage caps, no revenue thresholds. The official <code>DeepSeek-V4-Pro-0813</code> weights and technical report are published on Hugging Face under the deepseek-ai organization, continuing the approach from the April preview. MIT licensing plus a 1.6T MoE with 49B active parameters is the reason V4 Pro keeps dominating open-weights deployment discussions.</p>
+
+    <h2>Who Should Use DeepSeek V4 Pro?</h2>
+    <ul>
+      <li>Teams running high-volume agentic coding where cost per completed task matters</li>
+      <li>Developers who want a 1M-context model they can also self-host under MIT</li>
+      <li>Codex users looking for a cheap, one-click alternative backend</li>
+      <li>Anyone building on the DeepSeek stack — pair it with <a href="/reviews/deepseek-harness-review/">DeepSeek Harness</a> for a fully open agent pipeline</li>
+    </ul>
+    <p>Less ideal for: latency-sensitive chat products (V4 Flash is the fast tier), or buyers who need fully independent benchmark validation before committing — much of the GA story is vendor-reported so far.</p>
+
+    <h2>DeepSeek V4 Pro vs GPT-5.6</h2>
+    <p>On DeepSeek's published table, V4-Pro-0813 lands just behind GPT-5.6 Sol on Terminal Bench 2.1 (87.9 vs 88.8) and effectively ties Sol on CyberGym (83.3 vs 83.6). OpenAI's counterpunch is ecosystem: Sol anchors ChatGPT's paid reasoning tier, while OpenAI's budget Luna tier ($0.20/$1.20 after the July 30 cut) undercuts everyone on price — see our <a href="/reviews/gpt-5-6-luna-review/">GPT-5.6 Luna review</a>. V4 Pro's edge is openness: MIT weights, 1M context, and self-hosting rights that no GPT-5.6 tier offers. For a broader OpenAI-vs-Anthropic frame, see <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a>.</p>
+
+    <h2>DeepSeek V4 Pro vs Claude</h2>
+    <p>Against Claude Opus 4.8, V4-Pro-0813 leads on DeepSeek's table for Terminal Bench 2.1 (87.9 vs 85.0), DeepSWE (62.7 vs 58.0), and CyberGym (83.3 vs 78.3), while trailing on HLE-without-tools and DSBench-Hard. Anthropic's strongest cards remain writing quality, careful reasoning, and the Claude Code ecosystem. On price there is no contest: even V4 Pro's new peak output rate ($3.96) undercuts Opus-class list pricing, and off-peak ($1.98) halves it again.</p>
+
+    <h2>Pros and Cons</h2>
+
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>Official GA with massive agentic gains over preview (DeepSWE 12.8 → 62.7)</li>
+        <li>MIT-licensed open weights on Hugging Face — self-hostable</li>
+        <li>1M-token context with 384K max output</li>
+        <li>Native Responses API + one-click Codex setup + Anthropic API compatibility</li>
+        <li>Flexible reasoning effort (low/high/max) on both V4 tiers</li>
+        <li>Still dramatically cheaper than closed frontier models, especially off-peak</li>
+      </ul>
+    </div>
+
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>August 16 pricing change raises output cost ~4.5x at peak versus current rates</li>
+        <li>Peak windows align with Asian working hours — bad news for regional daytime workloads</li>
+        <li>GA benchmarks are vendor-reported; independent verification still accumulating</li>
+        <li>1.6T total parameters make self-hosting a serious infrastructure project</li>
+        <li>Image-input capability not headline-confirmed in English release notes</li>
+      </ul>
+    </div>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>DeepSeek V4 Pro's official release is the moment the V4 line becomes a production recommendation rather than a research curiosity: frontier-adjacent agentic performance, MIT weights, a million-token window, and Codex-grade tooling integration. The pricing change on August 16 dims — but does not kill — the value story; off-peak rates keep it among the cheapest capable agent models sold. If your workload can shift to off-peak hours or self-host, V4 Pro 0813 is arguably the best open-weight agent platform of 2026.</p>
+      <p>Context for the month: compare with <a href="/reviews/grok-4-6-review/">Grok 4.6</a> and <a href="/reviews/gemini-3-7-flash-review/">Gemini 3.7 Flash</a>, or see how the newest models change tool choices in our <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a> guide.</p>
+    </div>
+
+    <h2>FAQ</h2>
+
+    <h3>When was DeepSeek V4 Pro officially released?</h3>
+    <p>August 13, 2026, as DeepSeek-V4-Pro-0813 — distinct from the April 24, 2026 V4 Preview. The GA version is live on app, web (Expert Mode), and API.</p>
+
+    <h3>What is DeepSeek-V4-Pro-0813?</h3>
+    <p>The official August 13 release of V4 Pro. The API model name remains deepseek-v4-pro; the 0813 suffix identifies the GA version with agent upgrades, flexible reasoning effort, and native Responses API support.</p>
+
+    <h3>How much does DeepSeek V4 Pro cost?</h3>
+    <p>Currently $0.435 input / $0.87 output / $0.003625 cached input per million tokens. A new schedule announced for 16:00 UTC August 16 introduces peak/off-peak rates: output at $3.96 peak / $1.98 off-peak.</p>
+
+    <h3>Is DeepSeek V4 Pro open source?</h3>
+    <p>Yes — MIT license, official weights on Hugging Face (deepseek-ai/DeepSeek-V4-Pro-0813), with a published technical report.</p>
+
+    <h3>Is DeepSeek V4 Pro better than GPT-5.6?</h3>
+    <p>Per DeepSeek's published evaluations it is competitive with GPT-5.6 Sol on agentic benchmarks while being cheaper and open-weight; Sol retains edges on the hardest suites. All cross-vendor figures are vendor-reported.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>. Facts and benchmarks are from DeepSeek's official release notes, model card, and technical report as cited; ToolStep claims no laboratory test results.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

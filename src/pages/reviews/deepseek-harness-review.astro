@@ -1,0 +1,254 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "DeepSeek Harness Review: How to Use DeepSeek V4 Pro for AI Coding | ToolStep";
+const description = "DeepSeek Harness (DSH) is DeepSeek's official open-source coding agent runtime: install with npx @deepseek-ai/dsh, plug in V4 Pro or any provider. Full review.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "DeepSeek Harness Review: How to Use DeepSeek V4 Pro for AI Coding", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "DeepSeek Harness Review: How to Use DeepSeek V4 Pro for AI Coding", "item": new URL('/reviews/deepseek-harness-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DeepSeek Harness",
+      "applicationCategory": "Developer Tool",
+      "operatingSystem": "macOS, Linux, Windows (Node.js)",
+      "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is DeepSeek Harness?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DeepSeek Harness (DSH) is DeepSeek's official open-source coding agent runtime, released as a v0.1 developer preview on August 13, 2026 under the MIT license. Its formula is Agent = Model + Harness: the model reasons, and the harness provides file editing, a shell, search, skills, planning, subagents, and session logging. Every capability is a plugin that can be swapped or recomposed without changing the source code."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is DeepSeek Harness an official DeepSeek product?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The only official repository is github.com/deepseek-ai/deepseek-harness, published under DeepSeek's deepseek-ai GitHub organization, with the official product page at deepseek.com/harness and documentation at deepseek-harness.github.io. The npm package is @deepseek-ai/dsh. Third-party projects with similar names — such as community VS Code extensions — are not official."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I install DeepSeek Harness?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The official quick start is: install Node.js, then run 'npx @deepseek-ai/dsh web' and open http://127.0.0.1:3080 in your browser. Add an API key, pick a runtime preset, and start a session. Alternatively, clone the official repository from github.com/deepseek-ai/deepseek-harness and install from source."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is DeepSeek Harness only for DeepSeek V4 Pro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. DeepSeek Harness is a general-purpose, model-agnostic coding agent runtime. Model adapters are plugins, and community documentation reports support for 20+ providers and protocols, including the DeepSeek API, OpenAI-compatible endpoints, and Anthropic-compatible endpoints. V4 Flash and V4 Pro are the most common pairings, but Claude, GPT, and other families work through adapters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does DeepSeek Harness compare to Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code is a polished, closed-source product tied to Anthropic's models. DeepSeek Harness is an MIT-licensed runtime where the model adapters, tool registry, session log, and even the agent loop itself are swappable plugins. Per community documentation, DSH even registers Claude Code and Codex as optional subagent providers. DSH is a v0.1 developer preview — less polished, more configurable."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre { background: #111827; color: #f9fafb; padding: 16px 20px; border-radius: 12px; overflow-x: auto; margin: 16px 0 24px; font-size: 0.9rem; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Coding Tools</span>
+      <h1>DeepSeek Harness Review: How to Use DeepSeek V4 Pro for AI Coding</h1>
+      <p class="meta">Reviewed August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      On August 13, 2026 — the same night DeepSeek shipped V4 Pro's official release — the company open-sourced DeepSeek Harness (DSH), an MIT-licensed agent runtime whose pitch is one sentence: everything is a plugin. This review covers what DSH is, how to install it, what its four runtime modes do, how it pairs with DeepSeek V4 Pro, and how it stacks up against Claude Code and Codex.
+    </p>
+
+    <h2>Quick Verdict</h2>
+    <p>DeepSeek Harness is the most architecturally interesting coding agent release of 2026 — a runtime where the model, tools, skills, session log, sandbox, scheduler, and even the UI are swappable plugins, so you compose an agent in configuration instead of forking code. It is a <strong>v0.1 developer preview</strong>: expect breaking changes and rough edges, and don't treat it as a production dependency yet. For agent developers and teams wanting a fully open, model-agnostic alternative to Claude Code or Codex, it is already worth a serious look — especially paired with <a href="/reviews/deepseek-v4-pro-review/">DeepSeek V4 Pro</a>.</p>
+
+    <h2>What Is DeepSeek Harness?</h2>
+    <p>DeepSeek Harness is a general-purpose coding agent runtime from DeepSeek — not a model. Official product page: <strong>deepseek.com/harness</strong>. Official repository: <strong>github.com/deepseek-ai/deepseek-harness</strong> (the only official repo — see the warning below). Official docs: <strong>deepseek-harness.github.io/deepseek-harness</strong>. It was released as a <strong>v0.1 developer preview on August 13, 2026</strong>, open-sourced under the <strong>MIT license</strong>, with the npm package <code>@deepseek-ai/dsh</code>.</p>
+    <p>Important: DeepSeek Harness is <strong>model-agnostic</strong>. It is not an agent built specifically for V4 Pro — it is a harness that can work with multiple model providers through swappable model-adapter plugins. The pairing everyone actually runs is DSH plus a DeepSeek V4 model, but that is convention, not constraint.</p>
+
+    <div class="update-box">
+      <h2>Official vs third-party projects</h2>
+      <p>GitHub hosts several third-party projects with "deepseek-harness" in the name — including a community VS Code extension (<code>skymecode/deepseek-harness-for-vscode</code>, self-described as community-maintained). None of these are official. The only official project is <strong>github.com/deepseek-ai/deepseek-harness</strong> under DeepSeek's <code>deepseek-ai</code> organization, with the npm package <code>@deepseek-ai/dsh</code>. This review covers the official project only.</p>
+    </div>
+
+    <h2>Why DeepSeek Calls It a Harness</h2>
+    <p>DeepSeek's product page states the formula plainly: <strong>Agent = Model + Harness</strong>. The model is the soul — it reasons. The harness is everything else that lets an agent work in a real environment: reading files, running commands, calling tools, keeping state, scheduling subagents, and deciding when a task is done. Claude Code, Codex, and Gemini CLI are all harnesses in this definition. What distinguishes DSH is how far it pushes decomposability: every one of those capabilities is a plugin that can be loaded, unloaded, replaced, or recomposed without touching DSH's source code.</p>
+
+    <h2>How DeepSeek Harness Works</h2>
+    <p>DSH is built on the <strong>Cordis</strong> plugin kernel (open-sourced separately at github.com/cordiverse/cordis), which manages plugin mounting, unmounting, and dependencies. Agent capabilities live in the plugins; Cordis services and events let them cooperate. You select, swap, or extend any capability — including the agent loop itself — in configuration. The official page's other headline promise: <strong>every run is traceable</strong>. Everything the model sees is recorded in an append-only session log — system prompts, reasoning, tool calls and results, subagent scheduling, and context injections — and the Trajectory view lets you inspect, resume, fork, search, and replay runs against that same event stream.</p>
+
+    <h2>Installation</h2>
+    <p>The official quick start:</p>
+    <pre><code>npx @deepseek-ai/dsh web</code></pre>
+    <p>Then open <code>http://127.0.0.1:3080</code> in a browser, add an API key, pick a preset, and start a session. To install from source instead:</p>
+    <pre><code>git clone https://github.com/deepseek-ai/deepseek-harness</code></pre>
+    <p>DSH runs locally on your machine — nobody hosts it for you; you pay only for the tokens your chosen model consumes.</p>
+
+    <h2>The Four Runtime Modes</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Mode</th><th>What it is</th><th>Best for</th></tr>
+        <tr><td><strong>Standard</strong></td><td>Full coding agent: file editing, shell, file and web search, skills, planning, goals, subagents, workflows</td><td>Everyday coding work</td></tr>
+        <tr><td><strong>Code</strong></td><td>All Standard capabilities, with tools exposed via a Code Mode SDK so the model combines multi-step operations into one TypeScript program</td><td>Complex orchestrated tasks</td></tr>
+        <tr><td><strong>Minimal</strong></td><td>Two-tool agent: persistent bash + str_replace_editor</td><td>Benchmarking models in a minimal environment</td></tr>
+        <tr><td><strong>Creator</strong></td><td>Standard capabilities plus runtime inspection and in-memory plugin testing for composing new presets</td><td>Building custom agent configurations</td></tr>
+      </table>
+    </div>
+
+    <h2>Coding Agent Capabilities</h2>
+    <h3>Terminal</h3>
+    <p>Standard mode ships a full shell tool for running commands, with persistent sessions where relevant. The repository's package list also includes a dedicated terminal package for background jobs.</p>
+    <h3>File Editing</h3>
+    <p>File editing is a first-class tool — the Minimal mode pairs persistent bash with a <code>str_replace_editor</code>, the same editor pattern popularized by other agent harnesses.</p>
+    <h3>MCP</h3>
+    <p>MCP (Model Context Protocol) support is included in the package list, so external tool servers plug into the runtime like any other capability.</p>
+    <h3>Skills</h3>
+    <p>Skills are plugins in DSH — loadable, swappable units of procedure knowledge, consistent with the everything-is-a-plugin design.</p>
+    <h3>Subagents</h3>
+    <p>Subagent delegation and scheduling are supported as plugins. Per community documentation of the default bundle, Codex and Claude Code are even registered as optional (dormant) subagent providers — the tool positioned as a replacement ships with its replacements as callees.</p>
+    <h3>Planning</h3>
+    <p>Standard mode includes planning and goals: the agent can maintain a plan, track progress, and work toward defined goals across long sessions.</p>
+    <h3>Web and File Search</h3>
+    <p>Both file search and web search are listed among Standard mode's toolset.</p>
+    <h3>Workflows</h3>
+    <p>Multi-step workflows are part of the Standard toolset, letting the agent chain operations across tools and subagents.</p>
+    <h3>Sandboxing / Landlock</h3>
+    <p>Per launch coverage of the repository, code execution sandboxes are pluggable, with a built-in Linux Landlock-based sandbox runner among the defaults.</p>
+    <h3>Session Logs and Trajectory Replay</h3>
+    <p>The append-only session log plus Trajectory view is DSH's observability headline: inspect exactly what the model saw and did, then resume, fork, search, or replay any run.</p>
+
+    <h2>Model Providers</h2>
+    <p>Model adapters are plugins, which is what makes DSH model-agnostic. Community documentation reports adapters for 20+ providers and protocols:</p>
+    <ul>
+      <li><strong>DeepSeek API</strong> — V4 Flash for cheap everyday work, <a href="/reviews/deepseek-v4-pro-review/">V4 Pro</a> for hard tasks (the most common pairing)</li>
+      <li><strong>OpenAI-compatible endpoints</strong> — GPT-family and any compatible gateway</li>
+      <li><strong>Anthropic-compatible endpoints</strong> — Claude-family models</li>
+      <li><strong>Others</strong> — community-maintained adapters continue to expand the list</li>
+    </ul>
+
+    <h2>DeepSeek Harness vs Claude Code</h2>
+    <p>Claude Code is a polished product: tight Anthropic integration, refined UX, dependable behavior — and closed source, with the harness itself fixed. DSH is the opposite bet: MIT-licensed, with the model adapter, tool registry, session log, and agent loop all swappable. If you want an agent that works today with zero assembly, Claude Code (or Codex) is still the pragmatic choice — see our <a href="/reviews/claude-code-vs-cursor/">Claude Code vs Cursor</a> comparison for the product landscape. If you want to own and re-compose the runtime itself — research, bespoke pipelines, cost routing across providers — DSH is the more interesting foundation, with the caveat that it is a v0.1 preview. For a current model-layer frame, see our <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a> breakdown.</p>
+
+    <h2>DeepSeek Harness vs Codex</h2>
+    <p>OpenAI's Codex is a product with a fixed harness and first-party model. DSH exposes the same class of capabilities — file editing, shell, planning, subagents — as recomposable parts, and notably speaks the Responses API natively, which is exactly the surface Codex uses (DeepSeek's V4 release notes even advertise one-click Codex setup for V4 models). Community docs note DSH can invoke Codex itself as a subagent provider. In short: Codex is a ready product; DSH is a runtime for building your own — or several of your own.</p>
+
+    <h2>Who Should Use It?</h2>
+    <ul>
+      <li>Agent and harness developers who want full runtime-level control</li>
+      <li>Teams standardizing on open-source tooling over closed products</li>
+      <li>Anyone pairing <a href="/reviews/deepseek-v4-pro-review/">DeepSeek V4 Pro</a> with a first-party, purpose-built harness</li>
+      <li>Researchers benchmarking models in controlled minimal environments</li>
+    </ul>
+    <p>Wait for a later version if you need: a stable API surface, polished onboarding for non-developers, or vendor support. It is a developer preview — treat compatibility as breakable. For where DSH-style tooling fits broader workflows, see <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a>, and for the model side of the market this month, our <a href="/reviews/grok-4-6-vs-claude-vs-gpt-5-6-coding/">Grok 4.6 vs Claude vs GPT-5.6 coding comparison</a>.</p>
+
+    <h2>Pros and Cons</h2>
+
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>Official DeepSeek project, MIT-licensed, source included</li>
+        <li>Everything-is-a-plugin architecture — even the agent loop and UI are swappable</li>
+        <li>Model-agnostic: DeepSeek, OpenAI-compatible, and Anthropic-compatible providers</li>
+        <li>Append-only session logs with Trajectory replay, resume, fork, and search</li>
+        <li>Four runtime modes including a benchmarking-grade Minimal mode</li>
+        <li>Enormous launch momentum (GitHub stars reported around launch: tens of thousands within hours)</li>
+      </ul>
+    </div>
+
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>v0.1 developer preview — breaking changes explicitly expected</li>
+        <li>Requires developer skills; no polished end-user product experience yet</li>
+        <li>You supply and pay for the model — no bundled intelligence</li>
+        <li>Young ecosystem; plugin quality varies</li>
+        <li>Confusing third-party same-name projects require careful sourcing</li>
+      </ul>
+    </div>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>DeepSeek Harness is not trying to be a better Claude Code — it is trying to change what a coding agent is: from a fixed product to a composable runtime. For a v0.1 preview the design is unusually coherent, the official-source backing is unambiguous, and the pairing with V4 Pro gives DeepSeek a full-stack open agent story no rival currently matches. Adopt it now if you build agents for a living; watch it closely otherwise.</p>
+    </div>
+
+    <h2>FAQ</h2>
+
+    <h3>What is DeepSeek Harness?</h3>
+    <p>DeepSeek's official open-source coding agent runtime (DSH), released August 13, 2026 as a v0.1 developer preview under MIT. Formula: Agent = Model + Harness; every capability is a plugin.</p>
+
+    <h3>Is DeepSeek Harness official?</h3>
+    <p>Yes — github.com/deepseek-ai/deepseek-harness, deepseek.com/harness, and the @deepseek-ai/dsh npm package. Same-name third-party projects (e.g., community VS Code extensions) are not official.</p>
+
+    <h3>How do I install it?</h3>
+    <p>Run <code>npx @deepseek-ai/dsh web</code> with Node.js installed, then open http://127.0.0.1:3080. Or clone the official repo and install from source.</p>
+
+    <h3>Does it only work with DeepSeek V4 Pro?</h3>
+    <p>No. DSH is model-agnostic — model adapters are plugins covering DeepSeek, OpenAI-compatible, and Anthropic-compatible endpoints, with community docs reporting 20+ providers.</p>
+
+    <h3>Is DeepSeek Harness better than Claude Code?</h3>
+    <p>Different bets: Claude Code is a polished closed product; DSH is an MIT-licensed composable runtime in early preview. For production polish choose Claude Code; for runtime control and openness choose DSH.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>. Facts are from DeepSeek's official Harness product page, the deepseek-ai/deepseek-harness repository, and dated launch coverage as cited; ToolStep claims no laboratory test results.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

@@ -1,0 +1,268 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "GLM-5.3 Review: Z.ai's Coding & Cybersecurity Flagship Explained | ToolStep";
+const description = "GLM-5.3 shipped August 14, 2026: Z.ai's coding flagship with emergent cyber capability, CyberGym 84.5%, and open weights due about two weeks after launch.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "GLM-5.3 Review: Z.ai's Coding & Cybersecurity Flagship Explained", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "GLM-5.3 Review: Z.ai's Coding & Cybersecurity Flagship Explained", "item": new URL('/reviews/glm-5-3/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GLM-5.3",
+      "applicationCategory": "AI Model",
+      "operatingSystem": "ZCode, GLM Coding Plan, API",
+      "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is GLM-5.3 released?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Z.ai officially released GLM-5.3 on August 14, 2026, and rolled it out to all GLM Coding Plan subscribers. The open weights, however, are not yet public: Z.ai said it plans to release them after completing its security evaluation and hardening, approximately two weeks after the announcement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes GLM-5.3 different from GLM-5.2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GLM-5.3 uses the same base model as GLM-5.2 — every gain comes from scaled post-training on more diverse long-horizon task environments. According to Z.ai's published evaluations, Terminal-Bench 3.0 rose from 4.6 to 28.3, DeepSWE v1.1 from 46.2 to 66.9, and the in-house Z.ai Code Bench improved 50% over GLM-5.2."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How good is GLM-5.3 at cybersecurity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to Z.ai's published evaluations, GLM-5.3 scores 84.5% on CyberGym vulnerability discovery — ahead of Claude Mythos 5 (83.8%) and GPT-5.6 Sol (83.6%) — and more than doubles GLM-5.2 on ExploitBench (54.4% vs 24.4%). Z.ai itself flags the cyber capability as emerging faster than expected during training, which is why the weights are held back for safety evaluation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will GLM-5.3 weights be released?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet announced as a precise date. Z.ai's official announcement says weights will be released approximately two weeks after launch, once safety evaluation and hardening are complete — which points to late August 2026, but Z.ai has not committed to an exact day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does GLM-5.3 cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standalone API pricing has not been announced. The GLM Coding Plan now uses a points-based quota system with 50% point consumption outside peak hours (peak is 14:00–18:00 UTC+8 on weekdays), and ZCode offers a 1.5x limited-time quota boost through August 31, 2026."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Models</span>
+      <h1>GLM-5.3 Review: Z.ai's Coding &amp; Cybersecurity Flagship Explained</h1>
+      <p class="meta">Reviewed August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Z.ai released GLM-5.3 on August 14, 2026 — a same-base, post-training-scaled upgrade that posts the largest long-horizon coding jumps in the GLM line's history and an emergent cybersecurity capability that surprised even its own developers. The twist: the weights are not public yet. This review covers what shipped, what Z.ai's numbers actually show, availability, and the safety story behind the delayed open-weight release.
+    </p>
+
+    <div class="update-box">
+      <h2>Live update notice</h2>
+      <p><strong>Last updated: August 16, 2026.</strong> This page tracks a fast-moving release. We will update it — rather than publish a second article — when the open weights land, when API pricing is announced, and as independent benchmark verification accumulates.</p>
+    </div>
+
+    <h2>Quick Verdict</h2>
+    <p>GLM-5.3 is the most capable open-weights-track model Z.ai has shipped and, according to Z.ai's published evaluations, state of the art on CyberGym vulnerability discovery at 84.5% — ahead of both Claude Mythos 5 and GPT-5.6 Sol. The long-horizon coding jumps are real and large (Terminal-Bench 3.0: 4.6 → 28.3). Two honest caveats: every number is vendor-reported pending independent verification, and the release is deliberately incomplete — no public weights, no standalone API pricing — while security evaluation and hardening finish. For Coding Plan subscribers it is a day-one upgrade; for everyone else it is a model to watch closely for the next two weeks.</p>
+
+    <h2>What Is GLM-5.3?</h2>
+    <p>GLM-5.3 is the newest flagship from Z.ai (formerly Zhipu AI), released August 14, 2026. Technically it is an unusual release: it uses <strong>the same base model as GLM-5.2</strong> — every capability gain comes from scaled post-training (more environments, more diverse long-horizon tasks, more compute) rather than a new architecture or pretraining run. Z.ai's announcement describes it as the strongest open-weights model for coding it has measured, with a cyber capability that emerged faster than the team anticipated. Media reports put the shared GLM-5.2-era base at roughly 744B total parameters (MoE, ~40B active); the GLM-5.3 announcement itself does not restate parameter counts.</p>
+
+    <h2>What's New in GLM-5.3?</h2>
+    <ul>
+      <li><strong>Same base, all post-training gains</strong> — environment scaling on the GLM-5.2 stack (IndexShare, SAO, slime)</li>
+      <li><strong>Open-weights coding leadership claims</strong> — 50% improvement on the in-house Z.ai Code Bench; open-source SOTA claims on Terminal-Bench 3.0 and Agents' Last Exam</li>
+      <li><strong>Emergent exploitation-chain reasoning</strong> — the release's most discussed finding</li>
+      <li><strong>A public vulnerability disclosure ledger</strong> (cvd.z.ai) tracking real-world findings</li>
+      <li><strong>New API surface</strong> — thinking always on; <code>reasoning_effort</code> low / high / max; disabling thinking no longer supported</li>
+      <li><strong>Delayed open-weight release</strong> — approximately two weeks after launch, pending safety hardening</li>
+    </ul>
+
+    <h2>Coding Improvements</h2>
+    <p>According to Z.ai's published evaluations, the coding gains concentrate on long-horizon, agentic work: Terminal-Bench 3.0 improved from 4.6 to 28.3, DeepSWE v1.1 from 46.2 to 66.9, and Agents' Last Exam (ALE-CLI) from 23.8 to 28.5. On the private Z.ai Code Bench, GLM-5.3 reaches 31.4% completion at roughly 50K output tokens per task at High effort — surpassing Claude Opus 4.8's 29.5% at 120K tokens — while Claude Fable 5 still leads at 39.5% at Max effort. Z.ai argues the private bench reduces public-set contamination risk.</p>
+
+    <h2>Agent Capabilities</h2>
+    <p>The post-training environments were built to resemble units of professional work — some representing days of engineer time — with models given working environments (compute clusters, internal docs, codebases, experiment results) and judged on end-to-end outcomes. The agentic results: Toolathlon-Verified 73.0 (from 59.9), AutomationBench 48.2 (from 26.2), and HLE with tools 62.5. GDPval-AA v2 — professional knowledge work across 44 occupations — lands at 1,769, about 4% behind Claude Opus 5 Max's 1,849.</p>
+
+    <h2>Cybersecurity Capabilities</h2>
+    <p>This is the headline Z.ai itself flags as unexpected. Vulnerability-discovery data and environments were added to post-training expecting a better bug-finder; instead, capability kept compounding until the model reasoned across multiple stages of exploitation, forming coherent plans for complete exploitation chains. Media coverage also reports Z.ai described layered safeguards and a "trusted access" route for the model's most sensitive cyber functions, and framed the public defensive value with an "open shield" argument — an open world with open attack surfaces needs openly inspectable defense.</p>
+
+    <h3>CyberGym</h3>
+    <p>White-box vulnerability discovery and validation: GLM-5.3 scores <strong>84.5%</strong>, up from GLM-5.2's 77.2% — per Z.ai's table, ahead of Claude Mythos 5 (83.8%), GPT-5.6 Sol (83.6%), and DeepSeek-V4-Pro-0813 (83.3%).</p>
+
+    <h3>ExploitBench</h3>
+    <p>Deeper reasoning about real vulnerabilities and their exploitation: GLM-5.3 reaches <strong>54.4%</strong>, more than doubling GLM-5.2's 24.4% — but still well behind Mythos 5 (78.0%) and GPT-5.6 Sol (76.5%). The pattern Z.ai itself notes: the further up the exploitation chain, the bigger the GLM gain and the wider the remaining gap to the closed frontier.</p>
+
+    <h3>Terminal-Bench</h3>
+    <p>GLM-5.3 scores 88.2 on Terminal Bench 2.1 (GLM-5.2: 81.0; GPT-5.6 Sol: 88.8) and 28.3 on the much harder Terminal Bench 3.0 (GLM-5.2: 4.6; Sol: 34.6; Fable 5: 33.7) — open-source SOTA claims on 3.0, per Z.ai's published evaluations.</p>
+
+    <h3>DeepSWE</h3>
+    <p>Long-horizon software engineering: 66.9 on DeepSWE v1.1, up from 46.2 — behind Kimi K3 (67.5), GPT-5.6 Sol (72.7), and Claude Fable 5 (69.7), ahead of Claude Opus 4.8 (58.0) and DeepSeek-V4-Pro-0813 (62.7) on the same vendor-published table.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>GLM-5.3</th><th>GLM-5.2</th><th>DeepSeek V4 Pro 0813</th><th>GPT-5.6 Sol</th></tr>
+        <tr><td>Terminal Bench 2.1</td><td>88.2</td><td>81.0</td><td>87.9</td><td>88.8</td></tr>
+        <tr><td>Terminal Bench 3.0</td><td>28.3</td><td>4.6</td><td>—</td><td>34.6</td></tr>
+        <tr><td>DeepSWE v1.1</td><td>66.9</td><td>46.2</td><td>62.7</td><td>72.7</td></tr>
+        <tr><td>CyberGym</td><td><strong>84.5</strong></td><td>77.2</td><td>83.3</td><td>83.6</td></tr>
+        <tr><td>ExploitBench</td><td>54.4</td><td>24.4</td><td>—</td><td>76.5</td></tr>
+        <tr><td>HLE w/ Tools</td><td>62.5</td><td>54.7</td><td>60.0</td><td>64.5</td></tr>
+      </table>
+    </div>
+    <p>All figures are from Z.ai's published evaluations and reproduced as reported; Z.ai's footnotes document harness, context, and sampling settings per benchmark.</p>
+
+    <h2>Model Architecture</h2>
+    <p>Unchanged from GLM-5.2 by design — Z.ai's entire thesis for this release is that post-training scaling on the existing base still had substantial headroom. The GLM-5.2-era stack carried over: IndexShare for long-context processing, SAO (with compaction) for RL on long-horizon tasks, and the open-source slime framework for large-scale asynchronous RL, with Megatron on training and SGLang on rollout. Z.ai reports system-level optimizations improved long-horizon RL training throughput by more than 2.3x. Precise parameter counts were not restated in the GLM-5.3 announcement; media reports cite the shared ~744B MoE base.</p>
+
+    <h2>Context Window</h2>
+    <p>Z.ai's evaluation footnotes reference runs under 1M-token contexts (NL2Repo) and up to 300K with context management (HLE), and media coverage describes a million-token context window carried over from the GLM-5.2 lineage. A single official context-window specification for GLM-5.3 was not restated in the announcement.</p>
+
+    <h2>Availability</h2>
+
+    <h3>GLM Coding Plan</h3>
+    <p>Per the official announcement, GLM-5.3 has been rolled out to <strong>all GLM Coding Plan subscribers</strong> on day one. The plan now uses a points-based quota system — input, cached input, and output tokens are metered separately, and calls outside peak hours (14:00–18:00 UTC+8, weekdays) consume 50% of the standard points.</p>
+
+    <h3>ZCode</h3>
+    <p>Z.ai's ZCode coding tool runs GLM-5.3 with several launch incentives: a 98%+ cache hit rate (repeated context billed at the cached rate), a 1.5x limited-time quota boost stackable with cache savings through August 31, Goal mode for plan-code-test-verify loops, and Remote Control for steering long-running tasks from a phone via WeChat or Feishu.</p>
+
+    <h3>API Availability</h3>
+    <p>The official announcement documents GLM-5.3 API changes — model ID <code>glm-5.3</code>, thinking always enabled, and a new <code>reasoning_effort</code> parameter (low / high / max, default max) — alongside a migration note for existing <code>thinking.type: "disabled"</code> users, and states the model can be used in coding agents via the Coding Plan. The announcement does not separately itemize general API pricing tiers, so treat broad API availability details as: documented parameters exist, standalone pricing not yet announced.</p>
+
+    <h3>Open Weights</h3>
+    <p><strong>Not yet publicly released.</strong> Z.ai said it plans to release the weights after completing its security evaluation and hardening, approximately two weeks after the announcement — which points to late August 2026, but Z.ai has not committed to an exact date. This is a notable break from GLM-5.2, whose MIT-licensed weights shipped within days.</p>
+
+    <h2>Pricing</h2>
+    <p>Standalone GLM-5.3 pricing: <strong>Not yet announced.</strong> What is official: the GLM Coding Plan's points-based quota with 50% off-peak point consumption, and ZCode's 1.5x quota boost through August 31, 2026. We will update this section when per-token pricing is published.</p>
+
+    <h2>License</h2>
+    <p><strong>Not yet announced.</strong> GLM-5.2 shipped under MIT; Z.ai has not stated the license GLM-5.3 weights will carry when released. Given the safety-driven delay and the "trusted access" framing for sensitive cyber functions reported in media coverage, the final terms deserve close reading when they land.</p>
+
+    <h2>GLM-5.3 vs DeepSeek V4 Pro</h2>
+    <p>The two Chinese flagships shipped a day apart. On Z.ai's published table, GLM-5.3 leads DeepSeek-V4-Pro-0813 on DeepSWE v1.1 (66.9 vs 62.7), CyberGym (84.5 vs 83.3), and Terminal Bench 2.1 (88.2 vs 87.9 — effectively even); DeepSeek's own table shows V4 Pro ahead on Toolathlon-Verified (74.1 vs 73.0). The practical difference today is availability: V4 Pro's MIT weights are downloadable now (see our <a href="/reviews/deepseek-v4-pro-review/">DeepSeek V4 Pro review</a>), while GLM-5.3's weights are pending safety hardening. If you want open weights this week, DeepSeek wins by default.</p>
+
+    <h2>GLM-5.3 vs GPT-5.6</h2>
+    <p>Per Z.ai's published evaluations, GLM-5.3 trails GPT-5.6 Sol on the hardest coding suites — Terminal Bench 3.0 (28.3 vs 34.6), DeepSWE (66.9 vs 72.7), ExploitBench (54.4 vs 76.5) — while edging Sol on CyberGym (84.5 vs 83.6) and trailing slightly on HLE with tools (62.5 vs 64.5). The fair summary from the vendor's own table: near-frontier on vulnerability discovery and long-horizon agentic work, clearly behind on full exploitation and peak coding. For OpenAI's side of the market, see our <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a> comparison and <a href="/reviews/gpt-5-6-luna-review/">GPT-5.6 Luna review</a>.</p>
+
+    <h2>Who Should Watch GLM-5.3?</h2>
+    <ul>
+      <li><strong>GLM Coding Plan subscribers</strong> — it is already live for you; try it at max reasoning effort for coding</li>
+      <li>Security teams — both for the defensive capability and the disclosure ledger (cvd.z.ai)</li>
+      <li>Open-weights watchers — the delayed release is itself a signal worth tracking</li>
+      <li>Anyone benchmarking the August 2026 flagship cohort — alongside <a href="/reviews/deepseek-v4-pro-review/">DeepSeek V4 Pro</a>, <a href="/reviews/grok-4-6-review/">Grok 4.6</a>, and <a href="/reviews/gemini-3-7-flash-review/">Gemini 3.7 Flash</a></li>
+    </ul>
+    <p>For tooling context, see <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a> and our <a href="/reviews/deepseek-harness-review/">DeepSeek Harness review</a> — GLM models are also popular harness pairings.</p>
+
+    <h2>Pros and Cons</h2>
+
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>Massive long-horizon coding gains (Terminal-Bench 3.0 4.6 → 28.3) per Z.ai's evaluations</li>
+        <li>State-of-the-art CyberGym vulnerability discovery (84.5%) on the vendor's table</li>
+        <li>Same-base efficiency story: gains without a new pretrained frontier run</li>
+        <li>Public vulnerability disclosure ledger — 2,436 findings across 269 projects</li>
+        <li>Day-one rollout to all GLM Coding Plan subscribers</li>
+        <li>Transparent benchmark footnotes (harness, context, sampling settings)</li>
+      </ul>
+    </div>
+
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>Open weights not yet public — release pending safety hardening (~2 weeks post-launch)</li>
+        <li>Standalone API pricing and license: not yet announced</li>
+        <li>All benchmarks vendor-reported; independent verification pending</li>
+        <li>Trails Sol/Fable 5 on the hardest coding and exploitation suites</li>
+        <li>Disabling thinking no longer supported — a breaking change for some pipelines</li>
+      </ul>
+    </div>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>GLM-5.3 is a genuinely interesting release on two axes: technically, as proof that post-training scaling on an existing base can produce step-function long-horizon gains; and institutionally, as the first major open-weights-track model held back specifically because an emergent cyber capability outgrew its makers' expectations. If the weights land on schedule and third-party verification holds up Z.ai's numbers, GLM-5.3 becomes the open-weights coding model to beat in September. Until then: subscribe and test, or wait two weeks — both are defensible.</p>
+      <p>Track the rest of the August cohort in our <a href="/reviews/deepseek-v4-pro-review/">DeepSeek V4 Pro</a>, <a href="/reviews/grok-4-6-review/">Grok 4.6</a>, and <a href="/reviews/gemini-3-7-flash-review/">Gemini 3.7 Flash</a> reviews.</p>
+    </div>
+
+    <h2>FAQ</h2>
+
+    <h3>Is GLM-5.3 released?</h3>
+    <p>Yes — August 14, 2026, live for all GLM Coding Plan subscribers. Open weights are not yet public; expected approximately two weeks after launch pending safety evaluation.</p>
+
+    <h3>How good is GLM-5.3 at coding?</h3>
+    <p>Per Z.ai's published evaluations: Terminal-Bench 3.0 28.3 (from 4.6), DeepSWE v1.1 66.9 (from 46.2), and +50% on the in-house Z.ai Code Bench — the strongest open-weights-track coding model Z.ai has measured.</p>
+
+    <h3>What is GLM-5.3's CyberGym score?</h3>
+    <p>84.5% — the best on Z.ai's published table, ahead of Claude Mythos 5 (83.8%), GPT-5.6 Sol (83.6%), and DeepSeek-V4-Pro-0813 (83.3%).</p>
+
+    <h3>When do GLM-5.3 weights drop?</h3>
+    <p>Approximately two weeks after the August 14 announcement, after safety evaluation and hardening — no exact date announced. Watch this page for updates.</p>
+
+    <h3>How much does GLM-5.3 cost?</h3>
+    <p>Not yet announced for the API. GLM Coding Plan uses a points-based quota with 50% off-peak consumption; ZCode adds a 1.5x quota boost through August 31.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>. Facts and benchmarks are from Z.ai's official GLM-5.3 announcement and dated media coverage as cited; ToolStep claims no laboratory test results.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>
