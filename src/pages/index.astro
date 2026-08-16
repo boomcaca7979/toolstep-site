@@ -69,6 +69,14 @@ const latestReviews = (reviews.filter((r) => r.tag === 'NEW').length >= 6
   ? reviews.filter((r) => r.tag === 'NEW')
   : reviews
 ).slice(0, 6);
+
+// Latest AI model & product updates — August 2026 releases
+const latestUpdates = [
+  { name: 'GPT-5.6 Luna Review', desc: "OpenAI's budget model for Work, Codex & API", href: '/reviews/gpt-5-6-luna-review/', date: 'Jul 30' },
+  { name: 'Gemini 3.7 Flash Review', desc: "Google's new AI model for coding and agents", href: '/reviews/gemini-3-7-flash-review/', date: 'Aug 13' },
+  { name: 'Grok 4.6 Review', desc: "xAI's latest model with a 500K context", href: '/reviews/grok-4-6-review/', date: 'Aug 12' },
+  { name: 'Grok Bot Review', desc: "xAI's always-on AI agents, explained", href: '/reviews/grok-bot-review/', date: 'Aug 11' },
+];
 ---
 
 <!doctype html>
@@ -407,6 +415,26 @@ const latestReviews = (reviews.filter((r) => r.tag === 'NEW').length >= 6
 					<div class="num">{guidesCount}+</div>
 					<div class="label">Guides</div>
 				</div>
+			</div>
+		</section>
+
+		{/* ===== Latest AI Tool Updates ===== */}
+		<section class="section-block">
+			<div class="section-head">
+				<div>
+					<h2>Latest AI Tool Updates</h2>
+					<div class="section-sub">What changed in AI this month — reviewed the week it shipped.</div>
+				</div>
+				<a class="view-all-link" href="/reviews/">All reviews →</a>
+			</div>
+			<div class="popular-grid">
+				{latestUpdates.map((u) => (
+					<a class="tool-tile" href={u.href}>
+						<span class="name">{u.name}</span>
+						<span class="desc">{u.desc}</span>
+						<span class="arrow">{u.date} · Read review →</span>
+					</a>
+				))}
 			</div>
 		</section>
 

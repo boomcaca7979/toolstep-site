@@ -1,0 +1,230 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Gemini 3.7 Flash Review: Google's New AI Model for Coding and Agents | ToolStep";
+const description = "Gemini 3.7 Flash launched August 13, 2026 with big coding and agent gains, a 1M-token context, and half-price introductory API pricing. Full review inside.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Gemini 3.7 Flash Review: Google's New AI Model for Coding and Agents", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Gemini 3.7 Flash Review: Google's New AI Model for Coding and Agents", "item": new URL('/reviews/gemini-3-7-flash-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Gemini 3.7 Flash",
+      "applicationCategory": "AI Assistant",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": { "@type": "Offer", "price": "19.99", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Gemini 3.7 Flash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gemini 3.7 Flash is Google DeepMind's fast-tier model released on August 13, 2026. It builds on Gemini 3.6 Flash with algorithmic improvements to its core reasoning foundation, supports a 1 million token context window with 64K output, accepts text, image, audio, and video input, and offers customizable thinking configurations to balance quality, cost, and latency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Gemini 3.7 Flash cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google is offering introductory API pricing of $0.75 per million input tokens and $3.75 per million output tokens through the end of 2026 — half the launch price of Gemini 3.6 Flash. Starting in 2027, standard pricing is $1.50 per million input and $7.50 per million output tokens. In the Gemini app, 3.7 Flash powers Spark, which requires a Google AI Pro or Ultra subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Gemini 3.7 Flash good for coding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. According to Google's published evaluations, Gemini 3.7 Flash improved from 49.0% to 65.3% on DeepSWE v1.1 and from 34.4% to 43.6% on FrontierCode 1.1 Main versus Gemini 3.6 Flash, and its WebDev Arena Elo rose from 1538 to 1588. Google describes it as its most intelligent workhorse model yet for coding and agents."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Gemini 3.7 Flash available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per Google's model card, Gemini 3.7 Flash is distributed through the Gemini app (Spark, requiring AI Pro or Ultra), Gemini Enterprise apps and Agent Platform, Google AI Studio, the Gemini API, Google Antigravity, and Android Studio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Gemini 3.7 Flash compare with GPT-5.6?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google's own evaluation table positions 3.7 Flash against GPT-5.6 Terra rather than the flagship Sol. On price, 3.7 Flash at $0.75/$3.75 per million tokens sits between GPT-5.6 Luna ($0.20/$1.20) and Terra-tier pricing, while offering native audio and video input that Luna lacks. See ToolStep's Gemini 3.7 Flash vs GPT-5.6 comparison for the full breakdown."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Assistants</span>
+      <h1>Gemini 3.7 Flash Review: Google's New AI Model for Coding and Agents</h1>
+      <p class="meta">Reviewed August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Google shipped Gemini 3.7 Flash on August 13, 2026 — just three weeks after Gemini 3.6 Flash — calling it its "most intelligent workhorse model yet for coding and agents." The release pairs measurable benchmark jumps in software engineering and knowledge work with a halved introductory API price. This review covers what shipped, how it performs according to Google's published evaluations, what it costs, and who should use it.
+    </p>
+
+    <h2>Quick Verdict</h2>
+    <p>Gemini 3.7 Flash is a fast-tier model that now behaves like a mid-flagship. According to Google's own evaluation tables, it posts a 16.3-point gain on the DeepSWE v1.1 real-world coding benchmark over its predecessor, a 50-point WebDev Arena Elo jump, and double the score on complex-document processing — at an introductory price of $0.75/$3.75 per million tokens, half of what 3.6 Flash launched at. If you build coding agents, web apps, or knowledge-work automations on the Google stack, this is currently the best price-to-capability ratio in Gemini's lineup. The catches: flagship-tier ceilings still belong to bigger models (Gemini's own Pro line and competitors' flagships), and consumer access runs through the Spark agent on paid AI Pro/Ultra plans.</p>
+
+    <div class="update-box">
+      <h2>What's New in August 2026</h2>
+      <ul>
+        <li><strong>August 13 — Gemini 3.7 Flash launched</strong>, based on Gemini 3.6 Flash with what Google describes as algorithmic improvements to the core reasoning foundation.</li>
+        <li><strong>Coding gains:</strong> per Google, DeepSWE v1.1 rose from 49.0% to 65.3%, and FrontierCode 1.1 Main from 34.4% to 43.6% versus 3.6 Flash.</li>
+        <li><strong>Web development:</strong> WebDev Arena Elo improved from 1538 to 1588, with Google citing "more functional layouts and feature-complete apps in fewer prompts" and strong UI generation from screenshots or design systems.</li>
+        <li><strong>Knowledge work:</strong> GDP.pdf complex-document processing went from 22.0% to 34.0%, and AutomationBench business-workflow completion from 17.0% to 30.4%.</li>
+        <li><strong>Agentic behavior:</strong> Google says the model better adapts to roadblocks, clarifies intent, and follows instructions with greater fidelity, with more diligent multi-step planning and tool calls.</li>
+        <li><strong>Halved pricing:</strong> introductory rate of $0.75 input / $3.75 output per million tokens through the end of 2026; standard pricing of $1.50/$7.50 applies from 2027.</li>
+        <li><strong>Spark upgrade:</strong> Google's personal-agent experience in the Gemini app is now powered by 3.7 Flash, with improved Workspace tool use.</li>
+        <li><strong>Safety:</strong> updated safeguards against CBRN and cyber-offense misuse.</li>
+      </ul>
+    </div>
+
+    <h2>What Is Gemini 3.7 Flash?</h2>
+    <p>Gemini 3.7 Flash is the newest iteration of Google's Flash tier — the speed-and-cost-optimized branch of the Gemini 3 family. According to the DeepMind model card published August 13, it supports text, image, audio, and video input with a 1 million token context window and 64K token output, and it offers customizable thinking configurations that let developers tune the mix of quality, cost, and latency per request. It is distributed through the Gemini app (powering Spark), Gemini Enterprise apps and the Enterprise Agent Platform, Google AI Studio, the Gemini API, Google Antigravity, and Android Studio.</p>
+
+    <h2>Key Features</h2>
+
+    <h3>Coding</h3>
+    <p>Coding is the headline. Google's evaluation methodology document reports the DeepSWE v1.1 jump from 49.0% to 65.3% — closing most of the gap to frontier flagships — alongside the FrontierCode 1.1 gain from 34.4% to 43.6%. For web development specifically, Google highlights one-shot generation of functional layouts and interactive apps, and high design adherence when building from a screenshot, image, or full design system. Demonstrations published at launch included a text-prompt-to-playable-3D-game built in Google Antigravity using 3.7 Flash with the Nano Banana image model.</p>
+
+    <h3>AI Agents</h3>
+    <p>Google positions 3.7 Flash as "best for tackling complex agentic tasks at scale." The launch page showcases sub-agent orchestration (one demo coordinates a three-agent graph loop for robotics training), and third-party feedback gathered by Google points to real agent economics: Browser Use reports the 3.7 Flash agent was 35% cheaper than 3.6 Flash with an 8% higher prompt-cache hit rate and fewer tool errors, and Box reports higher accuracy and speed on enterprise knowledge work. In the consumer Gemini app, 3.7 Flash now powers Spark — see our <a href="/reviews/grok-bot-review/">Grok Bot review</a> for how Google's agent compares with xAI's always-on bots.</p>
+
+    <h3>Reasoning, Knowledge Work, and Multimodal</h3>
+    <p>Beyond code, Google's evaluations show strong knowledge-dense-domain gains — the GDP.pdf benchmark for complex document processing improved from 22.0% to 34.0%, and AutomationBench real-world business workflows from 17.0% to 30.4%. Multimodal understanding spans text, audio, images, code, and video, which matters for tasks like motion understanding (Cartwheel's team cited promising results on following actions across time). Long-context handling carries over the 1M-token window from the Flash lineage.</p>
+
+    <h3>Performance and Reliability</h3>
+    <p>Flash remains the latency-and-scale tier of the Gemini family: the pitch is advanced reasoning at Flash-level speed and cost, not absolute flagship ceilings. Google's own benchmark table (which compares against Claude Sonnet 5, GPT-5.6 Terra, and Muse Spark 1.2 — notably mid-tier competitors, not flagships) frames 3.7 Flash as a workhorse. For maximum single-shot intelligence, Gemini's Pro-class and rivals' flagships still lead; for cost per completed agent task, 3.7 Flash is now among the best available.</p>
+
+    <h2>Pricing</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Dimension</th><th>Gemini 3.7 Flash</th><th>Context</th></tr>
+        <tr><td>API input (intro, thru end of 2026)</td><td>$0.75 / 1M tokens</td><td>Half of 3.6 Flash launch price</td></tr>
+        <tr><td>API output (intro)</td><td>$3.75 / 1M tokens</td><td>Same introductory window</td></tr>
+        <tr><td>API price (from 2027, standard)</td><td>$1.50 / $7.50 per 1M</td><td>After the introductory window</td></tr>
+        <tr><td>Context window</td><td>1M tokens</td><td>Per DeepMind model card</td></tr>
+        <tr><td>Max output</td><td>64K tokens</td><td>Per DeepMind model card</td></tr>
+        <tr><td>Input modalities</td><td>Text, image, audio, video</td><td>Output is text</td></tr>
+        <tr><td>Consumer access</td><td>Gemini app Spark</td><td>Requires Google AI Pro or Ultra</td></tr>
+        <tr><td>Developer access</td><td>AI Studio, Gemini API, Antigravity, Android Studio, Enterprise</td><td>Per model card distribution list</td></tr>
+      </table>
+    </div>
+    <p>Against the field: OpenAI's GPT-5.6 Luna undercuts it on raw price ($0.20/$1.20) but accepts only text and image input, while xAI's <a href="/reviews/grok-4-6-review/">Grok 4.6</a> charges $2/$6 for a 500K context. Our <a href="/reviews/gemini-3-7-flash-vs-gpt-5-6/">Gemini 3.7 Flash vs GPT-5.6 comparison</a> works through the trade-offs in detail.</p>
+
+    <h2>Who Is Gemini 3.7 Flash Best For?</h2>
+    <ul>
+      <li>Developers building coding agents and web-app generators on the Google stack (Antigravity, AI Studio, Vertex)</li>
+      <li>Teams automating knowledge-dense workflows — finance, legal, document processing — where the AutomationBench and GDP.pdf gains apply</li>
+      <li>Anyone who needs native audio/video understanding at a mid-tier price</li>
+      <li>Google Workspace-centric teams already on AI Pro/Ultra who get the upgraded Spark agent</li>
+    </ul>
+    <p>It is less ideal if you need the absolute highest single-model intelligence (Gemini Pro-class or Claude Opus 5 territory) or if your entire stack already standardizes on OpenAI or Anthropic APIs.</p>
+
+    <h2>Pros and Cons</h2>
+
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>Major, documented coding gains over 3.6 Flash (DeepSWE +16.3 points)</li>
+        <li>Introductory price of $0.75/$3.75 per 1M tokens — half the predecessor's launch price ($1.50/$7.50 standard from 2027)</li>
+        <li>1M-token context with native text, image, audio, and video input</li>
+        <li>Customizable thinking levels for quality/cost/latency tuning</li>
+        <li>Strong agentic reliability — fewer tool errors, better cache hit rates per third parties</li>
+        <li>Available across the full Google surface: Spark, Antigravity, AI Studio, Android Studio, Enterprise</li>
+      </ul>
+    </div>
+
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>Not a flagship — Pro-class and competitor flagships still lead raw intelligence</li>
+        <li>Consumer access requires paid AI Pro/Ultra (Spark)</li>
+        <li>64K output cap is smaller than some rivals (GPT-5.6 Luna: 128K)</li>
+        <li>Introductory pricing is time-boxed to the end of 2026</li>
+        <li>Benchmark gains are vendor-reported; independent verification is still accumulating</li>
+      </ul>
+    </div>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>Gemini 3.7 Flash is the best value in Google's lineup right now and one of the strongest mid-tier releases of 2026. The documented coding and agent gains are large by any standard, the multimodal input support is more complete than similarly priced rivals, and the halved introductory price makes experimentation cheap. Three-week release cadence or not, this is a considered upgrade rather than an incremental one.</p>
+      <p>If your work is agentic coding, web development, or knowledge-work automation — especially on Google infrastructure — adopt it now. If you need maximum raw intelligence, wait for the flagship tier. To see how it stacks directly against OpenAI's August refresh, read our <a href="/reviews/gemini-3-7-flash-vs-gpt-5-6/">Gemini 3.7 Flash vs GPT-5.6</a> comparison, or the broader <a href="/reviews/chatgpt-vs-gemini/">ChatGPT vs Gemini</a> and <a href="/reviews/claude-vs-gemini/">Claude vs Gemini</a> guides.</p>
+    </div>
+
+    <h2>FAQ</h2>
+
+    <h3>What is Gemini 3.7 Flash?</h3>
+    <p>Google DeepMind's fast-tier model released August 13, 2026, built on Gemini 3.6 Flash with improved core reasoning. It offers a 1M-token context, multimodal input (text, image, audio, video), and customizable thinking configurations.</p>
+
+    <h3>How much does Gemini 3.7 Flash cost?</h3>
+    <p>Introductory API pricing is $0.75 per million input tokens and $3.75 per million output tokens through the end of 2026, rising to standard $1.50/$7.50 from 2027. Consumer access via Spark requires a Google AI Pro or Ultra subscription.</p>
+
+    <h3>Is Gemini 3.7 Flash good for coding?</h3>
+    <p>Yes — per Google's evaluations, DeepSWE v1.1 rose from 49.0% to 65.3% and FrontierCode 1.1 from 34.4% to 43.6% versus the previous Flash, with WebDev Arena Elo up 50 points. It is positioned as Google's most intelligent workhorse model for coding and agents.</p>
+
+    <h3>Where can I use Gemini 3.7 Flash?</h3>
+    <p>The Gemini app (Spark), Google AI Studio, the Gemini API, Google Antigravity, Android Studio, Gemini Enterprise apps, and the Gemini Enterprise Agent Platform.</p>
+
+    <h3>Is Gemini 3.7 Flash better than GPT-5.6?</h3>
+    <p>It depends on the tier compared. Google itself benchmarks 3.7 Flash against GPT-5.6 Terra. On price, 3.7 Flash sits between Luna and Terra with richer multimodal input; on peak coding performance, GPT-5.6 Sol retains the edge in provider-reported DeepSWE numbers. See our full <a href="/reviews/gemini-3-7-flash-vs-gpt-5-6/">head-to-head</a>.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>. All benchmark figures are from Google's published model card and evaluation methodology; no ToolStep laboratory benchmarks are claimed.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

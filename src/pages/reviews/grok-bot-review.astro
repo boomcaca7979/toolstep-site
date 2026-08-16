@@ -1,0 +1,263 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Grok Bot Review: xAI's Always-On AI Agents Explained | ToolStep";
+const description = "Grok Bot (xAI, August 2026) gives each AI agent its own cloud computer that works 24/7. Review of features, security, pricing, and vs ChatGPT Agent & Claude.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Grok Bot Review: xAI's Always-On AI Agents Explained", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Grok Bot Review: xAI's Always-On AI Agents Explained", "item": new URL('/reviews/grok-bot-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Grok Bot",
+      "applicationCategory": "AI Agent",
+      "operatingSystem": "macOS, Windows, iOS, Linux (terminal)",
+      "offers": { "@type": "Offer", "price": "200.00", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Grok Bot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grok Bot is xAI's always-on AI agent product, launched in beta on August 11, 2026. Each named Bot runs on a persistent cloud computer with its own browser, filesystem, and terminal, signs into the tools you already use, and completes multi-step work end to end while you are away. It is separate from the Grok chatbot and is included with SuperGrok Heavy, Cursor Ultra, and Cursor Teams Premium subscriptions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Grok Bot cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grok Bot is not sold as a standalone plan. Beta access is bundled into SuperGrok Heavy at $300 per month, Cursor Ultra at $200 per month, and Cursor Teams Premium at $120 per user per month. Enterprise customers can join a waitlist. Elon Musk has said a wider rollout will follow, tied to the Grok 4.6 release."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Grok Bot the same as the Grok chatbot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. According to xAI's documentation, Grok Bot is a separate product from the Grok chatbot apps. The Grok chatbot answers prompts in a chat session. Grok Bot is a persistent, named agent with its own cloud computer that takes actions inside your apps and keeps working after you close the session."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which platforms does Grok Bot support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At launch, Grok Bot has dedicated apps for macOS and Windows, an iOS app requiring iOS 18 or later, and Linux access via the terminal. Android and iPad are listed as coming soon, and enterprise access is waitlisted."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Grok Bots work together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can run several Bots in parallel, start group chats with multiple Bots, and @-mention a new Bot mid-conversation. One Bot can act as a chief of staff that manages specialist Bots for different jobs, with Bots messaging each other directly and escalating decisions to you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Grok Bot safe to give my logins?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grok Bot uses a handoff pattern for credentials: a Bot navigates to a login screen itself, hands control back to you to authenticate, then resumes on its own browser instance. xAI has not published full details of how authentication is stored. Because an agent holding real account access acts autonomously, organizations should treat beta deployment on sensitive accounts with caution."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Agents</span>
+      <h1>Grok Bot Review: xAI's Always-On AI Agents Explained</h1>
+      <p class="meta">Reviewed August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      On August 11, 2026, xAI launched Grok Bot, a beta product that turns AI from a chat session into a standing piece of infrastructure: each "Bot" gets its own persistent cloud computer with a browser, filesystem, and terminal, signs into the tools you already use, and keeps working after you close your laptop. It is the first major joint product of the SpaceX–Cursor integration, and xAI's entry into the "digital labor" category alongside OpenAI's ChatGPT Agent, Anthropic's Claude Cowork, and Google's Gemini Spark. This explainer covers what actually shipped, how the always-on architecture works, what it costs, and the trust questions you should ask before handing over your logins.
+    </p>
+
+    <div class="update-box">
+      <h2>Quick Answer</h2>
+      <p>Grok Bot is xAI's beta launch of always-on AI agents. Every Bot gets a persistent cloud computer, signs into your existing tools with a secure login handoff, and runs multi-step jobs end to end — only surfacing when something needs your approval. It ships today with SuperGrok Heavy ($300/month), Cursor Ultra ($200/month), and Cursor Teams Premium ($120/seat/month) on desktop and iOS, with a wider rollout promised alongside Grok 4.6. It is the most ambitious "AI teammate" product shipped by a major lab so far, but it is an early beta with no independent benchmarks, no published security audit, and pricing that assumes your time is worth $200+ per month.</p>
+    </div>
+
+    <h2>What Is Grok Bot?</h2>
+    <p>Grok Bot is xAI's always-on AI agent product, launched in beta on August 11, 2026. According to xAI's launch post "Introducing Grok Bot," it is framed as "AI teammates you can give real work to" — a deliberate contrast with the Grok chatbot most people know from X.</p>
+    <p>The distinction matters. According to xAI's developer documentation, a single Grok Bot is "a persistent, named agent, one AI teammate" — separate from the shared chat interface of the Grok app. Where a chatbot session ends the moment you close the tab, a named Bot keeps its state: files it has created, browser tabs and login sessions it has open, and preferences it has learned from watching how you work. In short: <strong>Grok talks, Grok Bot does.</strong></p>
+    <p>xAI says the feature began as an internal prototype that "took off across the company," with internal teams building Bots for sales outreach, marketing campaigns, office operations, CRM cleanup, invoice processing, email drafts, and bug reproduction before it became a public product. That origin story positions Grok Bot as a proven internal tool being opened up rather than a speculative launch.</p>
+    <p>Grok Bot is also the first big product to come out of the SpaceX–Cursor tie-up. SpaceX, which folded xAI into itself earlier in 2026, agreed in June to acquire Cursor's maker Anysphere for a reported $60 billion, and Grok Bot is bundled with both Grok and Cursor subscriptions while the deal heads toward closing.</p>
+
+    <h2>How Grok Bot Works</h2>
+    <p>The workflow is designed to feel like delegating to a colleague rather than prompting a model:</p>
+    <ol>
+      <li><strong>You hand off a task.</strong> You message a Bot from desktop or phone, describing what you want done in plain language — no workflow builder to configure first. The Bot asks clarifying questions, drafts a plan, and starts working.</li>
+      <li><strong>The Bot works on its own computer.</strong> Each Bot runs on a dedicated cloud computer with a real browser, filesystem, and terminal — not on your device. It operates the tools and websites the job touches the way a person would.</li>
+      <li><strong>It runs end to end, 24/7.</strong> Because the work happens in the cloud, jobs keep running when your MacBook lid is closed. The Bot chains together the steps needed to finish and reports back when done.</li>
+      <li><strong>It returns only for approval.</strong> When human judgment is required — a purchase, a send button, a decision with consequences — the Bot pauses and asks you.</li>
+    </ol>
+    <p>One design choice worth flagging: Grok Bot does not let you pick which underlying model runs a given task. It selects automatically based on the job. For most users that is a convenience; for technical teams evaluating it for production workflows, the lack of a model-selection mode is a real limitation.</p>
+
+    <h2>What Can Grok Bot Do?</h2>
+    <p>According to xAI's announcement and first-look walkthroughs from launch week, Grok Bot's capabilities center on multi-app, multi-step knowledge work:</p>
+    <ul>
+      <li><strong>Sign into your existing apps and websites</strong> — including ones without an API — using a credential handoff pattern (more on that under Privacy and Security).</li>
+      <li><strong>Run multiple Bots in parallel</strong>, with group chats where Bots coordinate, split tasks, and escalate decisions to you. A "chief of staff" Bot can manage specialist Bots — one for inbox triage, one for expenses, one for recruiting, one for bug fixes.</li>
+      <li><strong>Learn by watching.</strong> Bots observe how you work, save those procedures as routines, and repeat them on their own next time.</li>
+      <li><strong>Keep working across sessions.</strong> Bots maintain stable preferences and role context between conversations, so a Bot you set up in August is still configured the way you left it in September.</li>
+      <li><strong>Use a plugin library</strong> for connecting common tools beyond the manual login handoff.</li>
+    </ul>
+    <p>xAI's own internal use cases — CRM cleanup, sales research, invoice processing, email drafts, bug reproduction — give a realistic picture of the sweet spot: repetitive, multi-step, cross-app office work where the cost of an error is low and the value of automation compounds.</p>
+
+    <h2>Persistent Computer / Agent Capabilities</h2>
+    <p>The technical core of Grok Bot is what xAI calls a persistent cloud VM: a virtual machine with a browser, a filesystem, and a terminal that stays running independently of whether your own device is on. This is the single biggest architectural difference between Grok Bot and most AI agents shipped before it.</p>
+    <p>Most agent tools today — including well-known coding and research agents — run inside a chat window on your device or in a sandboxed session that evaporates when the task ends. Grok Bot runs jobs on a dedicated cloud instance that persists. According to xAI's developer documentation, all of a user's Bots share one persistent cloud computer isolated to the account rather than to an individual Bot, which is what lets different Bots hand off files, browser sessions, and app logins to each other without repeating setup work.</p>
+    <p>Why persistence matters more than it sounds:</p>
+    <ul>
+      <li><strong>Continuity.</strong> A Bot that was researching flights when you closed your laptop is still researching when you open it again.</li>
+      <li><strong>Accumulated context.</strong> Login sessions, saved files, and learned preferences survive across tasks, so the agent gets more useful the longer it works with you — the same way a new employee is more useful in month two than on day one.</li>
+      <li><strong>Mobile parity.</strong> You can fire off a task from the iPhone app and check the finished result later; the phone is a remote control, not the runtime.</li>
+    </ul>
+
+    <h2>Grok Bot vs ChatGPT Agents</h2>
+    <p>OpenAI's ChatGPT Agent already drives a virtual computer to complete multi-step tasks, and it remains the most direct comparison. Both products let an AI operate a browser and tools autonomously; the differences are in architecture and positioning.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th></th><th>Grok Bot</th><th>ChatGPT Agent</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Architecture</td><td>Fleet of named Bots on a persistent shared cloud computer</td><td>Agent mode driving a virtual computer per task</td></tr>
+          <tr><td>Persistence</td><td>Always-on; state survives sessions and device shutdown</td><td>Task-oriented; session ends when the job is done</td></tr>
+          <tr><td>Multi-agent</td><td>Yes — group chats, chief-of-staff orchestration</td><td>Single agent per session</td></tr>
+          <tr><td>Credential handling</td><td>Signs into your real apps via login handoff, including API-less sites</td><td>Operates in its own sandboxed environment</td></tr>
+          <tr><td>Model choice</td><td>Automatic — no user model selection</td><td>Tied to selected ChatGPT models</td></tr>
+          <tr><td>Entry price</td><td>From $120/seat/month (Cursor Teams Premium)</td><td>Included with ChatGPT Plus at $20/month</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The honest summary: ChatGPT Agent is cheaper and more proven for individual task automation, while Grok Bot bets on standing teams of agents with real account access. For a deeper look at how OpenAI's latest model family stacks up against Anthropic's, see our <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude comparison</a>.</p>
+
+    <h2>Grok Bot vs Claude</h2>
+    <p>Anthropic's counterpart is Claude Cowork, and Claude models (Opus 5, Sonnet 5) remain the reasoning backbone inside many competing agent harnesses. According to launch-week coverage, Grok Bot's differentiation is again architectural — the persistent shared computer and the fleet model — rather than raw model quality. Independent efficiency data from Artificial Analysis on the underlying Grok 4.6 model (released the day after Grok Bot) shows it completing tasks in roughly half the reasoning turns of Claude Opus 5, which matters for long-running agent workloads, while Claude retains a lead on some coding benchmarks — see our <a href="/reviews/grok-4-6-vs-claude-vs-gpt-5-6-coding/">Grok 4.6 vs Claude vs GPT-5.6 for coding</a> breakdown and our <a href="/reviews/claude-vs-chatgpt/">Claude vs ChatGPT</a> comparison for the model-level picture.</p>
+    <p>One Claude-specific consideration for August 2026: new Claude models launched on or after August 2 generate text with an invisible watermark under the EU AI Act rollout, while xAI has made no comparable announcement for Grok outputs. If output provenance matters for your workflow, that difference is worth factoring in — see our <a href="/guides/claude-ai-watermark/">Claude AI watermark explainer</a>.</p>
+
+    <h2>Privacy and Security</h2>
+    <p>An agent that holds your credentials and acts autonomously inside your accounts is powerful — and that is exactly why it deserves scrutiny before you deploy it on anything sensitive. The main considerations:</p>
+    <ul>
+      <li><strong>Credential access.</strong> A Bot signs into your real tools and inboxes. Grok Bot uses a handoff pattern for logins: the Bot navigates to the login screen itself, hands control back to you with a "sign in, then hand it back" prompt, you authenticate, and the Bot resumes on its own browser instance. The same trust model is used for connecting Notion, Gmail, and Google Drive. xAI has not published full details of how authentication state is stored on the cloud computer.</li>
+      <li><strong>Account-level isolation.</strong> Per xAI's documentation, all Bots share one cloud computer isolated to your account — convenient for handoffs, but it also means one compromised Bot has access to the shared environment.</li>
+      <li><strong>Closed source, no independent audit.</strong> This is a beta with no published third-party security review. There is no independent benchmark of Grok Bot's reliability or failure modes yet.</li>
+      <li><strong>Memory is not authoritative.</strong> The docs themselves warn that a Bot's remembered preferences should not be treated as a source of truth — for anything that matters, ask the Bot to check current data.</li>
+    </ul>
+    <p>Practical guidance: start Bots on low-stakes, reversible work (research, drafting, data cleanup) before granting access to anything that sends messages, spends money, or touches production systems.</p>
+
+    <h2>Pricing / Availability</h2>
+    <p>Grok Bot is not sold as a standalone plan. Beta access is bundled into three existing paid tiers:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Plan</th><th>Price</th><th>Grok Bot Access</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SuperGrok Heavy</td><td>$300/month</td><td>Yes (beta)</td></tr>
+          <tr><td>Cursor Ultra</td><td>$200/month</td><td>Yes (beta)</td></tr>
+          <tr><td>Cursor Teams Premium</td><td>$120/user/month</td><td>Yes (beta)</td></tr>
+          <tr><td>Enterprise</td><td>Waitlist</td><td>Not yet available</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>At launch, Grok Bot ships as dedicated apps for macOS and Windows, an iOS app (iOS 18+), and terminal access on Linux. Android is listed as "coming soon." Elon Musk posted that xAI will widen the beta once early issues are fixed, alongside the release of Grok 4.6 — which shipped on August 12, one day after Grok Bot's launch (see our <a href="/reviews/grok-4-6-review/">Grok 4.6 review</a>).</p>
+
+    <h2>Who Should Use Grok Bot?</h2>
+    <div class="pros-box">
+      <h3>Good fit</h3>
+      <ul>
+        <li>Teams already paying for Cursor Ultra or SuperGrok Heavy — Grok Bot is included, so the marginal cost is zero</li>
+        <li>Founders and operators with repetitive multi-app workflows: CRM cleanup, sales research, invoice processing, email triage</li>
+        <li>Developers who want a standing agent for bug reproduction and issue triage across tools</li>
+        <li>Anyone who specifically needs work to continue overnight or across time zones</li>
+      </ul>
+    </div>
+    <div class="cons-box">
+      <h3>Poor fit</h3>
+      <ul>
+        <li>Anyone not already on a $120+/month xAI or Cursor plan — there is no affordable entry point today</li>
+        <li>Workflows that require a specific model choice or fine-grained control over agent behavior</li>
+        <li>Regulated or sensitive environments that cannot tolerate unaudited credential access</li>
+        <li>Users who need Android or iPad support today</li>
+      </ul>
+    </div>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <h2>Grok Bot: 3.5/5 (beta)</h2>
+      <p>Grok Bot is the most complete vision of "AI as infrastructure" shipped by a major lab: persistent cloud computers, fleet orchestration, real account access, and a messenger-style interface regular people can actually operate. The launch demos look like real delegation rather than autocomplete, and the internal-origin story lends credibility. But it is an early beta with no independent benchmarks, no published security audit, no model selection, and pricing that gates it behind $120–$300 monthly plans. If you already have access through Cursor or SuperGrok Heavy, it is worth putting a Bot on low-stakes recurring work this week. Everyone else should wait for the wider rollout — the category is moving fast enough that six months will sort the winners from the demos.</p>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>What is the difference between Grok and Grok Bot?</h3>
+    <p>Grok is the chatbot: you ask, it answers, the session ends when you close the tab. Grok Bot is a separate product — persistent, named agents that run on their own cloud computers, sign into your tools, and keep working between sessions. Per xAI's documentation, they are distinct products with separate apps.</p>
+    <h3>Does Grok Bot work when my computer is off?</h3>
+    <p>Yes. Because each Bot runs on a cloud computer rather than your device, jobs keep running when your laptop is closed or your phone is in your pocket. You can start a task from the iOS app and check results later.</p>
+    <h3>Can I try Grok Bot for free?</h3>
+    <p>No. There is no free tier or trial. Beta access requires SuperGrok Heavy ($300/month), Cursor Ultra ($200/month), or Cursor Teams Premium ($120/user/month).</p>
+    <h3>Do Grok Bots remember things?</h3>
+    <p>Yes. Bots keep stable preferences and role context between conversations and learn routines by watching how you work. However, xAI's documentation explicitly warns against treating Bot memory as an authoritative source — for anything that matters, ask the Bot to verify against current data.</p>
+    <h3>How is Grok Bot related to Grok 4.6?</h3>
+    <p>Grok 4.6 is the underlying frontier model released August 12, 2026, one day after Grok Bot's launch. Elon Musk tied Grok Bot's wider beta rollout to the Grok 4.6 release. See our <a href="/reviews/grok-4-6-review/">Grok 4.6 review</a> for the model details.</p>
+    <h3>Who are Grok Bot's main competitors?</h3>
+    <p>OpenAI's ChatGPT Agent, Anthropic's Claude Cowork, and Google's Gemini Spark occupy the same "digital labor" category, alongside earlier independent entrants like Hermes Agent and OpenClaw. For how the underlying models compare, see our <a href="/reviews/grok-4-6-vs-claude-vs-gpt-5-6-coding/">coding model comparison</a> and <a href="/reviews/gemini-3-7-flash-review/">Gemini 3.7 Flash review</a>.</p>
+
+    <p class="meta">Reviewed August 16, 2026 &middot; Updated August 16, 2026 &middot; ToolStep Editorial Team</p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

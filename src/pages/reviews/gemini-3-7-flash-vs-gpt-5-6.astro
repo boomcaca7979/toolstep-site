@@ -1,0 +1,189 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Gemini 3.7 Flash vs GPT-5.6: Which AI Is Better in August 2026? | ToolStep";
+const description = "Gemini 3.7 Flash vs GPT-5.6 compared on coding, agents, multimodal input, context, speed, and pricing after both August 2026 releases — with a clear pick per workload.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Gemini 3.7 Flash vs GPT-5.6: Which AI Is Better in August 2026?", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Gemini 3.7 Flash vs GPT-5.6: Which AI Is Better in August 2026?", "item": new URL('/reviews/gemini-3-7-flash-vs-gpt-5-6/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Gemini 3.7 Flash better than GPT-5.6?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Neither is universally better. Gemini 3.7 Flash offers native audio and video input, a 1M-token context, and strong agentic reliability at $0.75/$3.75 per million tokens. GPT-5.6 counters with a cheaper budget tier (Luna at $0.20/$1.20), higher peak coding performance from Sol, and a larger consumer ecosystem. For multimodal and Google-stack work choose Gemini; for cost and ecosystem choose GPT-5.6."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is cheaper, Gemini 3.7 Flash or GPT-5.6?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPT-5.6 is cheaper at the bottom: Luna costs $0.20 per million input and $1.20 per million output tokens. Gemini 3.7 Flash's introductory pricing is $0.75/$3.75 per million tokens, which is comparable to GPT-5.6's Terra positioning but above Luna. Both undercut Claude and Grok pricing tiers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is better for coding in August 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For peak coding performance, GPT-5.6 Sol holds the lead in provider-reported DeepSWE v1.1 numbers (roughly 73% versus Gemini 3.7 Flash's 65.3%). For cost-efficient agentic coding and web-app generation, Gemini 3.7 Flash is extremely competitive — its DeepSWE score rose 16.3 points over its predecessor and third parties report 35% cheaper agent runs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which model has better multimodal support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gemini 3.7 Flash. It accepts text, image, audio, and video input natively with a 1M-token context. GPT-5.6 Luna accepts text and image only (no audio or video input), per OpenAI's model documentation, though the broader ChatGPT product handles voice through GPT-Live."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which should I choose for AI agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For developer-built agents, GPT-5.6's toolchain (computer use, hosted shell, MCP, $0.02 cached input on Luna) is very strong. For consumer agent experiences, Gemini 3.7 Flash powers Spark with Workspace tool integration, while OpenAI's agent stack runs through ChatGPT and Codex. Teams building on Google Cloud should lean Gemini; OpenAI-stack teams should lean GPT-5.6."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .winner-tag { display: inline-block; background: #ecfdf5; color: #047857; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; margin-left: 8px; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Assistants</span>
+      <h1>Gemini 3.7 Flash vs GPT-5.6: Which AI Is Better in August 2026?</h1>
+      <p class="meta">Updated August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Two of summer 2026's biggest model stories set up this matchup: OpenAI's GPT-5.6 family reached general availability on July 9 (with Luna and Terra API price cuts on July 30), and Google launched Gemini 3.7 Flash on August 13. This comparison uses both vendors' official documentation and published evaluations to break the matchup into coding, writing, research, reasoning, agents, speed, and pricing — so you can pick per workload instead of per brand.
+    </p>
+
+    <h2>Quick Comparison</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Dimension</th><th>Gemini 3.7 Flash</th><th>GPT-5.6 (Luna / Sol)</th></tr>
+        <tr><td>Released</td><td>August 13, 2026</td><td>Sol previewed June 26; family GA July 9, 2026</td></tr>
+        <tr><td>Context window</td><td>1M tokens</td><td>Luna: 1.05M tokens</td></tr>
+        <tr><td>Max output</td><td>64K tokens</td><td>Luna: 128K tokens</td></tr>
+        <tr><td>Input modalities</td><td>Text, image, audio, video</td><td>Luna: text, image only</td></tr>
+        <tr><td>API pricing</td><td>$0.75 / $3.75 per 1M (intro)</td><td>Luna $0.20 / $1.20; Sol reported $5 / $30</td></tr>
+        <tr><td>Consumer access</td><td>Gemini app Spark (AI Pro/Ultra)</td><td>ChatGPT (GPT-5.5 Instant default); Luna via API/Work/Codex</td></tr>
+        <tr><td>DeepSWE v1.1 (provider-reported)</td><td>65.3%</td><td>Sol: ~73%</td></tr>
+        <tr><td>Agent platform</td><td>Spark, Antigravity, Enterprise Agent Platform</td><td>Codex, ChatGPT Work, computer use</td></tr>
+        <tr><td>Thinking controls</td><td>Customizable thinking configs</td><td>Effort levels none&rarr;max</td></tr>
+      </table>
+    </div>
+
+    <h2>Fair Framing First: Which Tiers Are We Comparing?</h2>
+    <p>Gemini 3.7 Flash is a fast-tier model, while GPT-5.6 spans three tiers (Sol, Terra, Luna). Google's own evaluation table benchmarks 3.7 Flash against <strong>GPT-5.6 Terra</strong> — OpenAI's balanced middle tier — not the flagship Sol. So the honest framing is: 3.7 Flash vs the GPT-5.6 family, where Flash decisively beats nothing and loses to nothing across the board; each side wins specific dimensions. We've done the broader ecosystem comparison in <a href="/reviews/chatgpt-vs-gemini/">ChatGPT vs Gemini</a>; this page focuses on the new August models.</p>
+
+    <h2>Coding <span class="winner-tag">GPT-5.6 Sol for peak, Flash for value</span></h2>
+    <p>On provider-reported numbers, GPT-5.6 Sol retains the single-model coding lead at roughly 73% on DeepSWE v1.1, with Anthropic-reported figures also placing Sol at 72.7%. Gemini 3.7 Flash's 65.3% is a huge jump from its predecessor's 49.0% — and remarkably, it now matches or beats several rivals' higher tiers on agentic coding economics. For web development specifically, Google's WebDev Arena Elo of 1588 (up from 1538) with one-shot functional app generation makes Flash arguably the better web-app generator per dollar. If you need maximum correctness on the hardest tasks, Sol; if you need high-volume agentic coding at the lowest sensible cost, Flash. For a third option that undercuts both on price, see our <a href="/reviews/grok-4-6-review/">Grok 4.6 review</a>.</p>
+
+    <h2>Writing <span class="winner-tag">Close — GPT-5.6 by ecosystem, Flash by docs</span></h2>
+    <p>Both families are strong writers at this tier. GPT-5.6's general-availability release materials emphasized more reliable facts and more focused answers, which shows up in everyday drafting quality. Gemini 3.7 Flash's knowledge-work gains (GDP.pdf document processing up from 22.0% to 34.0%) make it notably better at writing <em>from</em> large document sets, and its 1M-token window ingests far more source material per request. For long-document synthesis and research-backed writing, Flash edges ahead; for general prose with the richest editing ecosystem (custom GPTs, integrations), GPT-5.6 holds serve.</p>
+
+    <h2>Research and Reasoning <span class="winner-tag">Depends on depth</span></h2>
+    <p>Reasoning effort is controllable on both sides: Gemini via customizable thinking configurations, GPT-5.6 via effort levels (none through max). Google's evaluations show Flash posting strong gains on knowledge-dense domains — AutomationBench business workflows doubled to 30.4% — while OpenAI's materials emphasize GPT-5.6's BrowseComp record of 92.2% in 16-agent ultra mode for deep research tasks. The pattern repeats: Flash is exceptional at reasoning through structured work, GPT-5.6 at orchestrating research breadth. On raw single-model index scores, the flagship Sol (61 on Artificial Analysis's independent composite) sits above Flash-tier models — Claude Opus 5 leads at 63, covered in our <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude comparison</a>.</p>
+
+    <h2>AI Agents <span class="winner-tag">GPT-5.6</span></h2>
+    <p>Both vendors now treat agents as the primary interface. Google upgraded Spark (its personal agent) to 3.7 Flash on day one, with improved Workspace tool use, and offers the Enterprise Agent Platform for custom builds. OpenAI's stack is broader today: computer use and MCP support in the API, the hosted shell, Codex for coding agents, and ChatGPT Work for always-on jobs — plus Luna's $0.02 per million cached input tokens, which is aggressively priced for long-running agents. Third-party data Google collected (Browser Use: 35% cheaper agent runs, +8% cache hits) shows Flash closing the economics gap fast, but the GPT-5.6 toolchain remains more mature for developers assembling their own agents.</p>
+
+    <h2>Multimodal <span class="winner-tag">Gemini 3.7 Flash</span></h2>
+    <p>This is the clearest win on the page. Per the DeepMind model card, 3.7 Flash natively accepts text, image, audio, and video input. Per OpenAI's model documentation, Luna accepts text and image only. ChatGPT the product handles voice via its GPT-Live experience, but API builders comparing models directly get far richer input types from Flash — a decisive factor for video analysis, audio pipelines, and screen-recording agents.</p>
+
+    <h2>Speed <span class="winner-tag">Both fast; Flash tuned for scale</span></h2>
+    <p>Flash is explicitly engineered for Flash-level latency and scale, and OpenAI classifies Luna as fast with medium default reasoning. In practice both feel snappy for everyday tasks; deeper thinking modes trade latency for quality on either side. Neither has a meaningful speed scandal in August 2026 — unlike Grok 4.6, which independent reviews flag for slow response starts.</p>
+
+    <h2>Pricing <span class="winner-tag">GPT-5.6 Luna for floor, Flash for mid-tier value</span></h2>
+    <ul>
+      <li><strong>GPT-5.6 Luna:</strong> $0.20 input / $1.20 output per 1M tokens; cached input $0.02 — the cheapest frontier-family model on the market.</li>
+      <li><strong>Gemini 3.7 Flash:</strong> $0.75 / $3.75 per 1M tokens (introductory through end of 2026) — half its predecessor's launch price, with richer input modalities.</li>
+      <li><strong>GPT-5.6 Sol:</strong> reported $5 / $30 per 1M — flagship pricing comparable to Claude Opus 5's $5/$25.</li>
+      <li><strong>Subscriptions:</strong> ChatGPT Plus $20/month; Google AI Pro/Ultra for Spark access — both ecosystems gate their best agent experiences behind paid plans.</li>
+    </ul>
+
+    <h2>Which One Should You Choose?</h2>
+    <ul>
+      <li><strong>Choose Gemini 3.7 Flash if:</strong> your work is multimodal (audio/video), document-heavy, or built on Google Cloud, Antigravity, or Workspace — or you want the best mid-tier agentic coding value.</li>
+      <li><strong>Choose GPT-5.6 if:</strong> you want the lowest possible API cost (Luna), the highest peak coding performance (Sol), the most mature agent toolchain, or you already live in the ChatGPT ecosystem.</li>
+      <li><strong>Run both if:</strong> you operate a multi-model routing stack — a common August 2026 pattern is Luna for volume, Flash for multimodal, Sol or Claude for the hardest tasks.</li>
+    </ul>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>August 2026's Gemini 3.7 Flash vs GPT-5.6 matchup is genuinely close — and genuinely good for buyers. Flash's leap in agentic coding, document work, and multimodal input at half its predecessor's price makes it the strongest mid-tier value release of the year. GPT-5.6's family structure (cheap Luna, flagship Sol) plus its ecosystem breadth keeps OpenAI the default for most developers.</p>
+      <p>Our call: <strong>multimodal and Google-stack workloads go to Gemini 3.7 Flash; cost-sensitive and ecosystem-heavy workloads go to GPT-5.6.</strong> Before committing, also read our <a href="/reviews/gemini-3-7-flash-review/">full Gemini 3.7 Flash review</a>, the <a href="/reviews/gpt-5-6-luna-review/">GPT-5.6 Luna review</a>, and — if coding is your core use case — the <a href="/reviews/grok-4-6-vs-claude-vs-gpt-5-6-coding/">Grok 4.6 vs Claude vs GPT-5.6 coding comparison</a>.</p>
+    </div>
+
+    <h2>FAQ</h2>
+
+    <h3>Is Gemini 3.7 Flash better than GPT-5.6?</h3>
+    <p>Not universally. Flash wins on multimodal input (native audio/video), document-heavy work, and mid-tier agent economics. GPT-5.6 wins on bottom-tier price (Luna), peak coding (Sol), and ecosystem maturity. Pick per workload.</p>
+
+    <h3>Which is cheaper, Gemini 3.7 Flash or GPT-5.6?</h3>
+    <p>GPT-5.6 Luna at $0.20/$1.20 per million tokens is cheaper than 3.7 Flash's introductory $0.75/$3.75. But Luna accepts only text and image input, while Flash adds audio and video.</p>
+
+    <h3>Which is better for coding?</h3>
+    <p>Peak performance: GPT-5.6 Sol (~73% DeepSWE v1.1, provider-reported). Value agentic coding: Gemini 3.7 Flash (65.3% DeepSWE, 35% cheaper agent runs per third-party data) or Grok 4.6 ($2/$6 with a 500K context).</p>
+
+    <h3>Which handles audio and video better?</h3>
+    <p>Gemini 3.7 Flash — it accepts audio and video input natively. GPT-5.6 Luna accepts text and image only at the model level; ChatGPT handles voice through its GPT-Live product layer.</p>
+
+    <h3>Which is better for AI agents?</h3>
+    <p>For developer-built agents, GPT-5.6's toolchain (MCP, computer use, hosted shell, $0.02 cached input) is more mature. For managed agent experiences, Gemini's Spark with Workspace integration is compelling. See also our <a href="/reviews/grok-bot-review/">Grok Bot review</a> for the always-on agent category.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>. Benchmarks cited are vendor-reported (Google evaluation methodology; OpenAI materials) or independently computed by Artificial Analysis; ToolStep claims no laboratory test results.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

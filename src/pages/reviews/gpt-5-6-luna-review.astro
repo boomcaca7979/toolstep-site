@@ -1,0 +1,237 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "GPT-5.6 Luna Review: OpenAI's Budget Model for Codex, Work & API | ToolStep";
+const description = "GPT-5.6 Luna is OpenAI's cost-effective model for ChatGPT Work, Codex, and the API — $0.20/$1.20 per million tokens after the July 30, 2026 price cut. Full review.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "GPT-5.6 Luna Review: OpenAI's Budget Model for Codex, Work & API", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "GPT-5.6 Luna Review: OpenAI's Budget Model for Codex, Work & API", "item": new URL('/reviews/gpt-5-6-luna-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GPT-5.6 Luna",
+      "applicationCategory": "AI Model",
+      "operatingSystem": "Cloud (OpenAI API, ChatGPT Work, Codex)"
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is GPT-5.6 Luna?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPT-5.6 Luna is the cost-effective tier of OpenAI's GPT-5.6 model family, which also includes the flagship Sol and the balanced Terra. The family reached general availability on July 9, 2026, after Sol was previewed on June 26. According to OpenAI's model documentation, Luna is optimized for cost-sensitive, high-volume workloads and roughly corresponds to the nano tier of earlier GPT-5 releases. It is available through ChatGPT Work, Codex, and the OpenAI API."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GPT-5.6 Luna available in ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not in standard ChatGPT conversations. Per OpenAI's current documentation, GPT-5.5 Instant remains ChatGPT's default fast model, and GPT-5.6 Sol is available as a reasoning option for eligible paid ChatGPT plans. Free and Go users cannot select GPT-5.6 Sol, and GPT-5.6 Luna is not a selectable model in standard ChatGPT conversations. Luna is primarily available in ChatGPT Work, Codex, and the OpenAI API."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When was GPT-5.6 released?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI previewed GPT-5.6 Sol on June 26, 2026, and the full GPT-5.6 family (Sol, Terra, Luna) reached general availability on July 9, 2026. On July 30, 2026, OpenAI reduced API prices for GPT-5.6 Luna and Terra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does GPT-5.6 Luna cost via the API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to OpenAI's current model documentation, GPT-5.6 Luna is priced at $0.20 per million input tokens, $0.02 per million cached input tokens, and $1.20 per million output tokens, following the July 30, 2026 price reduction. It supports a 1,050,000-token context window with up to 128,000 output tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GPT-5.6 Luna good for coding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Luna is positioned as a cost-efficient model rather than a coding flagship. According to OpenAI, it supports reasoning effort levels from none to max, web search, code interpreter, and computer use, so it can handle coding tasks, and Codex — where Luna is available — uses GPT-5.6 builds for coding work. For heavy production coding, OpenAI's own materials place the stronger GPT-5.6 Sol at the top of the family."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Models</span>
+      <h1>GPT-5.6 Luna Review: OpenAI's Budget Model for Codex, Work &amp; API</h1>
+      <p class="meta">Updated August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      GPT-5.6 Luna is the cost-effective tier of OpenAI's GPT-5.6 family — roughly the successor to the "nano" tier of earlier GPT-5 releases. Unlike the flagship Sol, Luna is not a model you pick in a standard ChatGPT conversation: per OpenAI's current documentation, it is primarily available through <strong>ChatGPT Work, Codex, and the OpenAI API</strong>, while GPT-5.5 Instant remains ChatGPT's default fast model. This review, current as of August 2026, covers the family's release timeline, Luna's specifications, pricing (including the July 30 price cut), and who should use it. All product details below are sourced from OpenAI's official model documentation and release materials.
+    </p>
+
+    <h2>Quick Verdict</h2>
+    <p>GPT-5.6 Luna is one of the cheapest frontier-family models available right now. According to OpenAI's model documentation, it pairs a 1,050,000-token context window with API pricing of $0.20 per million input tokens and $1.20 per million output tokens — rates that were reduced on July 30, 2026. For high-volume chat, drafting, summarization, classification, and light coding through the API, Codex, or ChatGPT Work, it is a genuinely strong value. Power users who need maximum reasoning or heavy production coding should still look at GPT-5.6 Sol, the family flagship.</p>
+
+    <div class="update-box">
+      <h2>The GPT-5.6 Timeline</h2>
+      <ul>
+        <li><strong>June 26, 2026</strong> — OpenAI previewed <strong>GPT-5.6 Sol</strong>, the family's flagship tier.</li>
+        <li><strong>July 9, 2026</strong> — The <strong>GPT-5.6 family reached general availability</strong>: Sol (flagship), Terra (balanced), and Luna (cost-effective).</li>
+        <li><strong>July 30, 2026</strong> — OpenAI <strong>reduced API prices for GPT-5.6 Luna and Terra</strong>, deepening Luna's cost advantage.</li>
+        <li><strong>August 2026 (current state)</strong> — Luna is available in <strong>ChatGPT Work, Codex, and the OpenAI API</strong>. In standard ChatGPT conversations, GPT-5.5 Instant remains the default fast model, and GPT-5.6 Sol is offered as a reasoning option for eligible paid plans; Free and Go users cannot select Sol, and Luna is not a selectable model there.</li>
+      </ul>
+    </div>
+
+    <h2>Where You Can (and Can't) Use Luna</h2>
+    <p>Availability is the most commonly confused part of this model, so it is worth spelling out. According to OpenAI's current documentation:</p>
+    <ul>
+      <li><strong>Standard ChatGPT (Free, Go, Plus, Pro):</strong> Luna is <em>not</em> a selectable model. GPT-5.5 Instant remains the default fast model, and GPT-5.6 Sol is available as a reasoning option for eligible paid plans — Free and Go users cannot select Sol.</li>
+      <li><strong>ChatGPT Work:</strong> Luna is available as part of OpenAI's work-oriented product.</li>
+      <li><strong>Codex:</strong> OpenAI's coding product runs GPT-5.6 builds, including Luna.</li>
+      <li><strong>OpenAI API:</strong> Luna is available to all API developers at $0.20/$1.20 per million tokens.</li>
+    </ul>
+
+    <h2>What Is GPT-5.6 Luna?</h2>
+    <p>GPT-5.6 is OpenAI's current flagship model family: <strong>Sol</strong> (flagship), <strong>Terra</strong> (balanced), and <strong>Luna</strong> (cost-effective). Luna sits at the accessible end of that stack. OpenAI's developer documentation describes it as "optimized for cost-sensitive, high-volume workloads" and notes it roughly corresponds to the nano tier used in earlier GPT-5 families.</p>
+    <p>That positioning matters for expectations. Luna is not designed to beat Sol on the hardest reasoning benchmarks — it is designed to deliver GPT-5.6-family behavior at a fraction of the price, at scale, which is why it shines in API and Codex workloads rather than as a consumer-facing default.</p>
+
+    <h2>Key Features</h2>
+
+    <h3>Coding</h3>
+    <p>According to OpenAI's model documentation, Luna supports the full modern toolchain over the Responses API: web search, file search, code interpreter, a hosted shell, apply-patch, computer use, and MCP. Reasoning effort can be set from none up to max. In practice, this means Luna can write and iterate on scripts, run Python in a sandbox, and handle everyday debugging. It is also the budget engine inside Codex workflows. For production-scale refactoring, the stronger GPT-5.6 Sol remains the better fit — OpenAI positioned Sol as the coding flagship when the family launched.</p>
+
+    <h3>AI Agents</h3>
+    <p>Luna supports function calling, structured outputs, and computer use, so developers can build agentic workflows on it at very low cost — cached input tokens cost $0.02 per million, which rewards long-running agents that reuse context. At the family's launch, media reporting on OpenAI's materials noted an "ultra" coordination mode for GPT-5.6 that runs up to 16 agents in parallel, a capability associated with the family's higher tiers rather than Luna specifically. For a deeper look at where always-on agents are heading across vendors, see our <a href="/reviews/grok-bot-review/">Grok Bot review</a>.</p>
+
+    <h3>Reasoning and Research</h3>
+    <p>Luna accepts text and image input and supports the same reasoning-effort scale as the rest of the family (none, low, medium — the default — high, xhigh, max). According to OpenAI's documentation, Luna's knowledge cutoff is February 16, 2026, so current-events work relies on the web search tool.</p>
+
+    <h3>Performance and Context</h3>
+    <p>Two specifications stand out at this price point. First, the context window: 1,050,000 tokens, with up to 128,000 output tokens. Second, speed: OpenAI's model page classifies Luna as fast, which aligns with its role serving high-volume workloads. Note one API pricing caveat from OpenAI's documentation: prompts longer than 272K input tokens are billed at 2x input and 1.5x output rates for the entire request.</p>
+
+    <h2>GPT-5.6 Family Specifications</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Spec</th><th>GPT-5.6 Luna</th><th>Notes</th></tr>
+        <tr><td>Role in family</td><td>Cost-effective tier (~nano class)</td><td>Available in ChatGPT Work, Codex, and API</td></tr>
+        <tr><td>Family GA date</td><td>July 9, 2026</td><td>Sol previewed June 26; Luna/Terra price cut July 30</td></tr>
+        <tr><td>Context window</td><td>1,050,000 tokens</td><td>Per OpenAI model docs</td></tr>
+        <tr><td>Max output</td><td>128,000 tokens</td><td>Per OpenAI model docs</td></tr>
+        <tr><td>Knowledge cutoff</td><td>Feb 16, 2026</td><td>Web search for newer information</td></tr>
+        <tr><td>API price (input)</td><td>$0.20 / 1M tokens</td><td>Cached input $0.02 / 1M; reduced July 30</td></tr>
+        <tr><td>API price (output)</td><td>$1.20 / 1M tokens</td><td>&gt;272K prompts billed at 2x/1.5x</td></tr>
+        <tr><td>Reasoning effort</td><td>none &rarr; max</td><td>Medium is the default</td></tr>
+        <tr><td>Input modalities</td><td>Text, image</td><td>Audio/video not supported on Luna</td></tr>
+      </table>
+    </div>
+
+    <h2>Pricing</h2>
+    <p>Via the API, Luna is priced at $0.20/$1.20 per million input/output tokens, with cached input at $0.02 — rates OpenAI reduced on July 30, 2026. In OpenAI's products, Luna is included in ChatGPT Work and available through Codex, rather than as a selectable model in standard ChatGPT. For comparison, Grok 4.6 currently charges $2/$6 and Claude Sonnet 5 $2/$10 per million tokens, which makes Luna the price leader among major-model families — see our <a href="/reviews/grok-4-6-review/">Grok 4.6 review</a> and <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude comparison</a> for the full breakdown.</p>
+
+    <h2>Who Is GPT-5.6 Luna Best For?</h2>
+    <ul>
+      <li>Developers building high-volume features (classification, summarization, drafting) where per-token cost dominates</li>
+      <li>Teams using ChatGPT Work or Codex, where Luna is natively available</li>
+      <li>Long-context work — specs, transcripts, or documents that fit in the 1.05M-token window</li>
+      <li>Agentic prototypes that lean on cached input pricing</li>
+    </ul>
+    <p>It is less ideal for maximum-depth reasoning, heavy production coding, or multimodal audio/video work — Sol, Claude, or Gemini serve those needs better. Our <a href="/reviews/gemini-3-7-flash-vs-gpt-5-6/">Gemini 3.7 Flash vs GPT-5.6 comparison</a> covers the multimodal trade-offs in detail.</p>
+
+    <h2>Pros and Cons</h2>
+
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>Extremely low API pricing ($0.20/$1.20 per 1M tokens, $0.02 cached) — cut further on July 30</li>
+        <li>1.05M-token context window, unusually large for a budget tier</li>
+        <li>Full toolchain support: search, code interpreter, computer use, MCP</li>
+        <li>Available in ChatGPT Work and Codex in addition to the API</li>
+        <li>Adjustable reasoning effort from none to max</li>
+      </ul>
+    </div>
+
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>Not available as a selectable model in standard ChatGPT conversations</li>
+        <li>Not the strongest tier of the family — Sol leads on hard reasoning and coding</li>
+        <li>Text and image input only; no native audio or video input</li>
+        <li>February 2026 knowledge cutoff requires web search for current events</li>
+        <li>Behavior and availability differ across OpenAI surfaces (ChatGPT vs Work vs Codex vs API)</li>
+      </ul>
+    </div>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>GPT-5.6 Luna is the budget workhorse of OpenAI's current family: a million-token-class context window and full toolchain support at $0.20/$1.20 per million tokens, made even cheaper by the July 30 price cut. Just understand where it lives — ChatGPT Work, Codex, and the API — because standard ChatGPT still runs GPT-5.5 Instant as its default fast model, with GPT-5.6 Sol as the reasoning option for eligible paid plans.</p>
+      <p>If you need more capability, Sol is the upgrade path within the same family. If you are comparing ecosystems, read our <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a> and <a href="/reviews/chatgpt-vs-gemini/">ChatGPT vs Gemini</a> comparisons first.</p>
+    </div>
+
+    <h2>FAQ</h2>
+
+    <h3>What is GPT-5.6 Luna?</h3>
+    <p>GPT-5.6 Luna is the cost-effective tier of OpenAI's GPT-5.6 family (Sol, Terra, Luna), roughly corresponding to the nano tier of earlier releases. The family reached general availability on July 9, 2026.</p>
+
+    <h3>Is GPT-5.6 Luna available in ChatGPT?</h3>
+    <p>Not in standard conversations. Per OpenAI's documentation, GPT-5.5 Instant remains ChatGPT's default fast model, GPT-5.6 Sol is a reasoning option for eligible paid plans (not selectable on Free or Go), and Luna is not a selectable model in standard ChatGPT. Luna is available in ChatGPT Work, Codex, and the OpenAI API.</p>
+
+    <h3>When was GPT-5.6 released?</h3>
+    <p>GPT-5.6 Sol was previewed on June 26, 2026, the family reached general availability on July 9, 2026, and OpenAI cut API prices for Luna and Terra on July 30, 2026.</p>
+
+    <h3>How much does GPT-5.6 Luna cost via the API?</h3>
+    <p>According to OpenAI's model documentation: $0.20 per million input tokens, $0.02 per million cached input tokens, and $1.20 per million output tokens. Prompts over 272K tokens are billed at higher long-context rates.</p>
+
+    <h3>Is GPT-5.6 Luna good for coding?</h3>
+    <p>It handles everyday scripting, debugging, and code explanation well, and supports code interpreter and computer use. For heavy production coding, GPT-5.6 Sol is the stronger choice within the same family.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>. This article is based on OpenAI's official model documentation and release materials; no ToolStep laboratory benchmarks are claimed.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

@@ -1,0 +1,225 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Grok 4.6 Review: What's New in xAI's Latest AI Model? | ToolStep";
+const description = "Grok 4.6 shipped August 12, 2026 with a 500K context, big agentic coding gains, and $2/$6 pricing. Review of benchmarks, features, pricing, and caveats.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Grok 4.6 Review: What's New in xAI's Latest AI Model?", description: description, datePublished: '2026-08-16', dateModified: '2026-08-16', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Grok 4.6 Review: What's New in xAI's Latest AI Model?", "item": new URL('/reviews/grok-4-6-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Grok 4.6",
+      "applicationCategory": "AI Model",
+      "operatingSystem": "API, Cursor, Grok Build, Partner platforms",
+      "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Grok 4.6?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grok 4.6 is the latest frontier model from xAI (now part of SpaceXAI), released on August 12, 2026. It is a post-training upgrade over Grok 4.5 focused on long-running agents, deeper coding, knowledge work, and interactive or visual projects, with a 500,000-token context window and pricing from $2 per million input and $6 per million output tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How good is Grok 4.6 at coding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per xAI's published evaluations and third-party leaderboards, Grok 4.6 scores 65.9% on DeepSWE v1.1 (up from roughly 54% for Grok 4.5), 69.9% on CursorBench 3.2, and improved Terminal-Bench 3.0 from 15.7% to 26%. GPT-5.6 Sol still leads DeepSWE at about 73%, but Grok 4.6's APEX-Agents score of 57.5% slightly exceeds GPT-5.6 Sol Max's 56.7%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Grok 4.6 cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "API pricing starts at $2 per million input tokens and $6 per million output tokens for prompts under 200K tokens, with cached input at $0.50. Prompts of 200K tokens or more are billed at $4/$12 for the entire request. A fast variant is priced at 2x. A 2x usage boost was offered in Grok Build and Cursor for the first week."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Grok 4.6 available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to xAI's announcement, Grok 4.6 is available in Cursor and Grok Build, plus the API and partner platforms including OpenRouter, Vercel, and Cloudflare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Grok 4.6 better than GPT-5.6?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On Artificial Analysis's independently computed Intelligence Index, Grok 4.6 scores 61, tying GPT-5.6 Sol. Grok 4.6 is significantly cheaper ($2/$6 versus Sol's reported $5/$30) and completes tasks in roughly half the reasoning turns of Claude Opus 5 per Artificial Analysis efficiency data, but it trails on some coding benchmarks and independent reviews flag a higher confident-fabrication rate."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Models</span>
+      <h1>Grok 4.6 Review: What's New in xAI's Latest AI Model?</h1>
+      <p class="meta">Reviewed August 16, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      xAI shipped Grok 4.6 on August 12, 2026, roughly five weeks after Grok 4.5 — and this time the story is efficiency rather than raw scale. According to xAI's announcement and independent testing from Artificial Analysis, Grok 4.6 ties GPT-5.6 Sol on overall intelligence while costing a fraction of the price, jumps 11.9 points on real-world coding benchmarks, and doubles its context window to 500K tokens. This review covers what shipped, what the numbers actually say, what it costs, and the caveats independent reviewers are flagging.
+    </p>
+
+    <h2>Quick Verdict</h2>
+    <p>Grok 4.6 is the best value proposition in xAI's history and one of the smartest buys in August 2026's crowded field. On Artificial Analysis's independently computed Intelligence Index it scores 61 — exactly tying OpenAI's GPT-5.6 Sol — while listing at $2/$6 per million tokens, roughly 60% below Sol or Claude Opus 5 at list pricing. Per Artificial Analysis's efficiency data, it completes tasks in about half the reasoning turns and a quarter of the input tokens Claude Opus 5 needs for comparable results. The trade-offs: it still trails GPT-5.6 Sol on some coding benchmarks, independent reviews flag a higher confident-fabrication rate than its scores suggest, and a 200K-token pricing cliff can more than double long-context costs.</p>
+
+    <div class="update-box">
+      <h2>What's New in August 2026</h2>
+      <ul>
+        <li><strong>August 12 — Grok 4.6 released</strong> as a post-training upgrade over Grok 4.5: a longer supplemental training run, regenerated fine-tuning trajectories, and reinforcement learning in agentic environments (coding, web development, kernel optimization, CAD).</li>
+        <li><strong>Context window doubled</strong> from 200K to 500K tokens.</li>
+        <li><strong>New xhigh reasoning tier</strong> — effort levels now run low, medium, high (default), and xhigh.</li>
+        <li><strong>Coding jump:</strong> DeepSWE v1.1 rose from roughly 54% to 65.9%; Terminal-Bench 3.0 went from 15.7% to 26%.</li>
+        <li><strong>Agent gains:</strong> APEX-Agents improved from 47.1% to 57.5% — slightly above GPT-5.6 Sol Max's 56.7% per xAI's published comparisons.</li>
+        <li><strong>Day-one availability in Cursor and Grok Build</strong>, with 2x included usage for the first week, plus the API and partners like OpenRouter, Vercel, and Cloudflare.</li>
+        <li><strong>Company context:</strong> xAI merged into SpaceX in February 2026 and the combined company rebranded as SpaceXAI in July; the Grok product name is unchanged.</li>
+      </ul>
+    </div>
+
+    <h2>What Is Grok 4.6?</h2>
+    <p>Grok 4.6 is xAI's frontier model for long-running agents, deeper coding, and knowledge work. Unlike a new base architecture, xAI frames it as a post-training upgrade: the same foundation as Grok 4.5, with a longer supplemental training run, SFT trajectories regenerated by Grok 4.5 itself, and reinforcement learning across agentic environments spanning STEM, software engineering, web development, kernel optimization, and computer-aided design. xAI says the model now shows more self-testing and verification behavior on longer trajectories — checking its own work before moving on — and produces stronger first passes on visual and interactive projects.</p>
+
+    <h2>Key Features</h2>
+
+    <h3>Coding</h3>
+    <p>Coding is the headline again, and this time the jump is large. Per xAI's evaluations and public leaderboards: DeepSWE v1.1 (real-world software engineering) went from roughly 54% to <strong>65.9%</strong>; CursorBench 3.2 stands at <strong>69.9%</strong>; Terminal-Bench 3.0 improved from 15.7% to 26%; and FrontierCode 1.1 improved alongside. For context, GPT-5.6 Sol still leads DeepSWE at about 73% and Claude Opus 5 sits near 68.8% — but at $2/$6, Grok 4.6 delivers most of that capability at a quarter of Sol's blended price. The full three-way breakdown is in our <a href="/reviews/grok-4-6-vs-claude-vs-gpt-5-6-coding/">Grok 4.6 vs Claude vs GPT-5.6 coding comparison</a>.</p>
+
+    <h3>AI Agents</h3>
+    <p>Long-running agents are the release's stated focus: "it stays with complex tasks across many steps, whether researching a topic, analyzing information, working across a codebase, or turning an idea into a polished application." The APEX-Agents benchmark jumped 10.4 points to 57.5%, edging GPT-5.6 Sol Max. A day after launch, a developer demonstration circulated of Grok 4.6 working autonomously for 22 straight minutes from a single prompt, producing a working interactive project without further input. Grok 4.6 is also the engine behind xAI's new <a href="/reviews/grok-bot-review/">Grok Bot</a> always-on agent product.</p>
+
+    <h3>Reasoning and Knowledge Work</h3>
+    <p>On the Artificial Analysis Intelligence Index — a nine-benchmark composite computed independently of vendors — Grok 4.6 scores 61, a five-point jump over Grok 4.5, tying GPT-5.6 Sol and landing just behind Claude Fable 5 (62) and Claude Opus 5 (63). The new xhigh effort tier gives developers a dial for the hardest tasks. Per Artificial Analysis's AA-Briefcase workload data cited by xAI, Grok 4.6's interaction and token efficiency carry a clear advantage over Claude Opus 5 Max.</p>
+
+    <h3>Performance</h3>
+    <p>The efficiency story is the differentiator: roughly half the reasoning turns and a quarter of the input tokens of Claude Opus 5 for comparable task completion, per Artificial Analysis. Two caveats from independent reviews: response start latency is noticeably slow (the model "thinks" before streaming), and confident-fabrication rates run higher than its benchmark parity would suggest — verify outputs on factual tasks.</p>
+
+    <h2>Pricing</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tier</th><th>Input / 1M</th><th>Output / 1M</th><th>Notes</th></tr>
+        <tr><td>Standard (under 200K prompt)</td><td>$2.00</td><td>$6.00</td><td>Cached input $0.50</td></tr>
+        <tr><td>Long-context (200K+ prompt)</td><td>$4.00</td><td>$12.00</td><td>Reprices the entire request</td></tr>
+        <tr><td>Fast variant</td><td>2x</td><td>2x</td><td>Priority speed</td></tr>
+      </table>
+    </div>
+    <p>The critical fine print: crossing 200K tokens doesn't surcharge the extra tokens — it reprices the whole request, so a 250K-token prompt more than doubles real cost. Budget accordingly for large-codebase agent runs. For comparison, GPT-5.6 Sol lists at a reported $5/$30 and Claude Opus 5 at $5/$25; only GPT-5.6's Luna tier ($0.20/$1.20) beats Grok 4.6 on price, with a smaller capability class.</p>
+
+    <h2>Who Is Grok 4.6 Best For?</h2>
+    <ul>
+      <li>Cost-sensitive engineering teams running high-volume agentic coding workloads</li>
+      <li>Cursor users — day-one availability plus a first-week 2x usage boost</li>
+      <li>Long-session agent builders who need the 500K window without Claude/flagship pricing</li>
+      <li>Anyone already on the Grok/SpaceXAI stack (Grok Build, SuperGrok)</li>
+    </ul>
+    <p>Less ideal for: tasks demanding the lowest possible fabrication rates (Claude's alignment emphasis helps there), audio/video multimodal input (Gemini 3.7 Flash is stronger — see our <a href="/reviews/gemini-3-7-flash-review/">review</a>), or sub-200K-cost long-context work.</p>
+
+    <h2>Pros and Cons</h2>
+
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>Ties GPT-5.6 Sol on the independent AA Intelligence Index (61) at ~60% lower list price</li>
+        <li>Massive real-world coding gain (DeepSWE +11.9 points to 65.9%)</li>
+        <li>500K-token context window, up from 200K</li>
+        <li>Exceptional token efficiency — about half the turns of Opus 5 per task, per Artificial Analysis</li>
+        <li>Day-one Cursor integration and first-week 2x usage boost</li>
+        <li>New xhigh reasoning tier for the hardest problems</li>
+      </ul>
+    </div>
+
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>Still trails GPT-5.6 Sol on key coding benchmarks (~66% vs ~73% DeepSWE)</li>
+        <li>200K-token pricing cliff reprices entire long-context requests</li>
+        <li>Higher confident-fabrication rate than benchmark parity suggests, per independent reviews</li>
+        <li>Slow response start latency</li>
+        <li>No native audio/video input at the model level</li>
+        <li>Closed-source; fewer deployment surfaces than OpenAI or Google</li>
+      </ul>
+    </div>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>Grok 4.6 is the first xAI release that competes on unit economics rather than personality — and it lands. Frontier-tied intelligence, a real coding jump, a doubled context window, and aggressive pricing make it the default "value agentic coding" recommendation for August 2026. Treat it as a powerful specialist: pair it with a verification-friendly model for factual work, and watch the 200K pricing cliff on long-context jobs.</p>
+      <p>Compare before committing: <a href="/reviews/grok-4-6-vs-claude-vs-gpt-5-6-coding/">Grok 4.6 vs Claude vs GPT-5.6 for coding</a>, our <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a> breakdown, or <a href="/reviews/gemini-3-7-flash-vs-gpt-5-6/">Gemini 3.7 Flash vs GPT-5.6</a> for the mid-tier angle.</p>
+    </div>
+
+    <h2>FAQ</h2>
+
+    <h3>What is Grok 4.6?</h3>
+    <p>xAI's frontier model released August 12, 2026 — a post-training upgrade over Grok 4.5 focused on long-running agents, coding, and knowledge work, with a 500K context and $2/$6 per-million pricing.</p>
+
+    <h3>How good is Grok 4.6 at coding?</h3>
+    <p>Strong: 65.9% DeepSWE v1.1, 69.9% CursorBench 3.2, and 57.5% APEX-Agents per xAI's published evaluations. GPT-5.6 Sol still leads DeepSWE at ~73%, but Grok 4.6 wins on price per completed task.</p>
+
+    <h3>How much does Grok 4.6 cost?</h3>
+    <p>$2/$6 per million input/output tokens under 200K prompts; $4/$12 for 200K+ prompts (whole request repriced); cached input $0.50; fast variant 2x.</p>
+
+    <h3>Is Grok 4.6 better than GPT-5.6 Sol?</h3>
+    <p>They tie at 61 on the independent Artificial Analysis Intelligence Index. Sol leads peak coding benchmarks; Grok 4.6 leads price and token efficiency. Many teams now run both.</p>
+
+    <h3>Where can I use Grok 4.6?</h3>
+    <p>Cursor, Grok Build, the xAI/SpaceXAI API, and partners including OpenRouter, Vercel, and Cloudflare. It is not tied to a consumer Grok chat rollout as of mid-August 2026. xAI's separate <a href="/reviews/grok-bot-review/">Grok Bot</a> agent product picks its underlying models automatically.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>. Benchmarks are from xAI's published materials, public leaderboards, and Artificial Analysis's independent evaluations as cited; ToolStep claims no laboratory test results.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>
