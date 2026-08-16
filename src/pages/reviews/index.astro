@@ -40,6 +40,14 @@ const pageDescription = 'Independent analysis of the best online tools and hardw
       <p class="subtitle">Independent analysis of the best online tools and hardware. Every product is evaluated based on specifications, features, and pricing before we recommend it.</p>
       <div class="count">📦 {reviews.length} reviews published</div>
 
+      <nav aria-label="Review categories" style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a href="/reviews/ai-tools/" style="background: #f3f4f6; color: #111; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">AI Tools</a>
+        <a href="/reviews/business-tools/" style="background: #f3f4f6; color: #111; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Business Tools</a>
+        <a href="/reviews/productivity/" style="background: #f3f4f6; color: #111; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Productivity</a>
+        <a href="/reviews/ecommerce/" style="background: #f3f4f6; color: #111; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Ecommerce</a>
+        <a href="/reviews/security/" style="background: #f3f4f6; color: #111; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Security</a>
+      </nav>
+
       <div class="grid">
         {reviews.map((r) => (
           <div class="card">

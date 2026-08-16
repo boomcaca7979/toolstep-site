@@ -22,6 +22,21 @@ const authorName = author?.name || 'ToolStep Team';
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/alternatives/${entry.slug}/`, Astro.site).toString();
 
+// Extend short descriptions with real page data (top alternatives) so SERP
+// snippets carry the alternatives intent. Never exceeds ~158 chars.
+function buildAlternativesMetaDescription(e: typeof entry): string {
+  const base = e.description;
+  if (base.length >= 115) return base;
+  for (const count of [3, 2, 1]) {
+    const picks = e.alternatives.slice(0, count).map(a => a.name).join(', ');
+    let desc = `${base} Includes ${picks}.`;
+    if (desc.length < 115) desc += ' Compare pricing, pros and cons for each.';
+    if (desc.length <= 158) return desc;
+  }
+  return base;
+}
+const pageDescription = buildAlternativesMetaDescription(entry);
+
 // Find prev/next for navigation
 const allAlts = getAlternativeEntries();
 const idx = allAlts.findIndex(e => e.slug === entry.slug);
@@ -126,7 +141,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={buildAlternativesTitle(entry.toolName)} description={entry.description} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <BaseHead title={buildAlternativesTitle(entry.toolName)} description={pageDescription} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

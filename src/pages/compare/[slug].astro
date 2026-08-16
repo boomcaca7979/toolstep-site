@@ -26,6 +26,18 @@ const authorName = author?.name || 'ToolStep Team';
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/compare/${entry.slug}/`, Astro.site).toString();
 
+// Extend short descriptions with real page sections (verdict, spec table,
+// scenarios) so SERP snippets carry the comparison intent.
+function buildCompareMetaDescription(e: typeof entry): string {
+  const base = e.description;
+  if (base.length >= 110) return base;
+  const long = `${base} See our verdict, the spec-by-spec table, and which product wins each scenario.`;
+  if (long.length <= 158) return long;
+  const short = `${base} Includes the verdict and full spec table.`;
+  return short.length <= 158 ? short : base;
+}
+const pageDescription = buildCompareMetaDescription(entry);
+
 // Find prev/next for navigation
 const allCompares = getCompareEntries();
 const idx = allCompares.findIndex(e => e.slug === entry.slug);
@@ -103,7 +115,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={entry.description} />
+    <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={pageDescription} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />

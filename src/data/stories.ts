@@ -1031,7 +1031,7 @@ export const storiesData: StoryEntry[] = [
     'Notion AI vs Grammarly',
     'AI Writing',
     '#7c3aed',
-    'Based on product documentation, both AI writing tools compared. See which is better for you.',
+    'Based on product documentation, Notion AI and Grammarly compared for drafts, editing, and pricing. See which fits your workflow.',
     'Notion AI vs Grammarly AI writing tool, vertical',
     [
       { headline: 'Notion AI', subtext: 'Best for notes integration', image: img('Notion AI interface, vertical', 'portrait_16_9') },

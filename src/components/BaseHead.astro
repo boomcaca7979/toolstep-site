@@ -13,6 +13,7 @@ interface Props {
 	description: string;
 	image?: ImageMetadata;
 	ogType?: string;
+	noindex?: boolean;
 	articleSchema?: {
 		headline: string;
 		description: string;
@@ -41,6 +42,7 @@ const {
 	description,
 	image = FallbackImage,
 	ogType = 'website',
+	noindex = false,
 	articleSchema,
 	softwareSchema,
 } = Astro.props;
@@ -81,6 +83,7 @@ const currentURL = new URL(Astro.url.pathname, Astro.site);
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
+{noindex && <meta name="robots" content="noindex, nofollow" />}
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />

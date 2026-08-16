@@ -22,7 +22,7 @@ interface Props {
 const { category } = Astro.props;
 const { slug, name, pluralName, description, color } = category;
 
-const pageTitle = `Best ${pluralName} 2026 — ToolStep`;
+const pageTitle = `Best ${category.pluralName} 2026: Tested & Ranked — ToolStep`;
 const pageDescription = `${description} Compare the best ${pluralName.toLowerCase()} with our in-depth reviews, head-to-head comparisons, and ranked guides.`;
 const canonicalURL = new URL(`/category/${slug}/`, Astro.site);
 

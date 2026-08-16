@@ -8,12 +8,12 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, noindex } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} articleSchema={{
+		<BaseHead title={title} description={description} noindex={noindex} articleSchema={{
   headline: title,
   description: description,
   datePublished: typeof pubDate === 'string' ? pubDate : pubDate.toISOString().split('T')[0],

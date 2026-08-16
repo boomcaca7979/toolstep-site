@@ -11,6 +11,8 @@ export default defineConfig({
 	integrations: [
 		mdx(),
 		sitemap({
+			// Exclude demo/placeholder blog posts from the sitemap (also noindex via frontmatter)
+			filter: (page) => !/^\/blog\/(first-post|second-post|third-post|using-mdx|markdown-style-guide)\/?$/.test(new URL(page).pathname),
 			serialize(item) {
 				// Priority hierarchy: homepage > category hub > category pages > content pages
 				if (item.url === 'https://www.toolstep.top/') {

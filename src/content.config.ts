@@ -14,6 +14,8 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			// Exclude placeholder/demo posts from search indexes and the sitemap
+			noindex: z.boolean().optional(),
 		}),
 });
 

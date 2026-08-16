@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_TITLE } from '../consts';
 
 const pageTitle = `Tool Guides & Tutorials — ${SITE_TITLE}`;
 ---
@@ -10,7 +10,7 @@ const pageTitle = `Tool Guides & Tutorials — ${SITE_TITLE}`;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+		<BaseHead title={pageTitle} description="Practical guides and tutorials for choosing and using online tools, from AI assistants to productivity software." />
 		<style>
 			.guides-wrap {
 				max-width: 600px;
