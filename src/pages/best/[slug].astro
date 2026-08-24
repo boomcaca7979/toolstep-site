@@ -69,7 +69,7 @@ const categoryLink = categoryPage ? `/category/${categoryPage.slug}/` : null;
 const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
 
 // Related content graph (reviews, comparisons) via shared matching logic
-const relatedGraph = getRelatedForBest(entry.slug, entry.products.map(p => p.name), entry.category);
+const relatedGraph = getRelatedForBest(entry.slug, entry.products.map(p => p.name), entry.category, entry.relatedReviews);
 
 // Stars helper
 function stars(rating: number): string {

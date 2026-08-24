@@ -36,7 +36,8 @@ export function buildAlternativesTitle(toolName: string): string {
 // === Description Builders ===
 
 export function buildReviewDescription(productName: string, _testingDuration: string, verdict: string): string {
-  const cleanVerdict = verdict.slice(0, 120);
+  // Collapse whitespace/newlines so the meta description attribute stays single-line
+  const cleanVerdict = verdict.replace(/\s+/g, ' ').trim().slice(0, 120);
   return `${productName} review covering features, specifications, pricing, pros, cons, and practical use cases based on product documentation and detailed analysis. ${cleanVerdict}`;
 }
 

@@ -83,6 +83,30 @@ function categoryMatchesBest(reviewCategory: string, bestCategory: string): bool
 
 // === Graph generators ===
 
+// Build-time existence check for explicit review URLs: a URL is valid if the
+// slug exists in product review data or as a standalone src/pages/reviews file.
+// Guards against rendering curated links to pages that were never built.
+import { existsSync } from 'node:fs';
+import { isAbsolute, join } from 'node:path';
+
+const reviewSlugCache = new Set<string>(
+  getReviewEntries().map(r => r.slug)
+);
+
+export function reviewUrlExists(url: string): boolean {
+  const slug = url.replace(/\/reviews\/|\/$/g, '');
+  if (reviewSlugCache.has(slug)) return true;
+  try {
+    // Astro builds run with cwd at the project root; import.meta.url is NOT
+    // reliable here because Vite rebases bundled module URLs.
+    const root = process.env.ASTRO_PROJECT_ROOT ?? process.cwd();
+    const reviewsDir = isAbsolute(root) ? join(root, 'src/pages/reviews') : join(process.cwd(), root, 'src/pages/reviews');
+    return existsSync(join(reviewsDir, slug + '.astro'));
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Generate related-content graph for a product review page.
  * Priority: explicit relatedReviews in data > category match > brand match > exact name in compare/best.
@@ -191,10 +215,27 @@ export function getRelatedForReview(
 
 /**
  * Generate related-content graph for a Best page.
- * Priority: explicit relatedReviews > category match for compares/bests.
+ * Priority: explicit relatedReviews > product name match > category match.
  */
-export function getRelatedForBest(bestSlug: string, productNames: string[], category: string): RelatedGraph {
+export function getRelatedForBest(bestSlug: string, productNames: string[], category: string, explicitReviewUrls?: string[]): RelatedGraph {
   const relatedReviews: RelatedLink[] = [];
+
+  // Priority 0: Explicit review URLs curated in best.ts (curated cluster links).
+  // Only render URLs whose target page actually exists — legacy data references
+  // ~100 review pages that were never created.
+  if (explicitReviewUrls) {
+    for (const url of explicitReviewUrls) {
+      if (relatedReviews.length >= 5) break;
+      if (relatedReviews.some(rr => rr.href === url)) continue;
+      if (!reviewUrlExists(url)) continue;
+      const slug = url.replace(/\/reviews\/|\/$/g, '');
+      const title = slug
+        .split('-')
+        .map(w => w === 'vs' ? 'vs' : w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+      relatedReviews.push({ title, href: url, desc: '' });
+    }
+  }
 
   // Priority 1: Reviews whose product name exactly matches a product in this best list
   for (const r of productReviews) {

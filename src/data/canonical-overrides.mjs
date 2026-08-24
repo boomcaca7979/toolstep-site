@@ -35,12 +35,15 @@ export const CANONICAL_OVERRIDES = {
   '/compare/sony-wh-1000xm5-vs-sennheiser-momentum-4/': '/reviews/sony-wh-1000xm5-vs-sennheiser-momentum-4/',
   '/compare/todoist-vs-ticktick/': '/reviews/todoist-vs-ticktick/',
 
-  // ===== B. /best/ vs /reviews/ — 5 duplicates =====
+  // ===== B. /best/ vs /reviews/ — 7 duplicates =====
   '/best/best-ergonomic-chair-under-500/': '/reviews/best-ergonomic-chair-under-500/',
   '/best/best-office-mechanical-keyboard/': '/reviews/best-office-mechanical-keyboard/',
   '/best/best-standing-desk-converter/': '/reviews/best-standing-desk-converter/',
   '/best/best-standing-desk-under-300/': '/reviews/best-standing-desk-under-300/',
   '/best/best-standing-desk-for-home-office/': '/reviews/best-standing-desk-home-office/',
+  // Phase 5 additions — exact-duplicate intent pairs found by Jaccard H1/title audit:
+  '/best/best-usb-c-hub-for-macbook/': '/reviews/best-usb-c-hub-macbook/',
+  '/best/best-project-management/': '/reviews/best-project-management-software-2026/',
 
   // ===== C. /alternatives/ vs /reviews/ — 4 semantic duplicates =====
   '/alternatives/notion-alternatives/': '/reviews/notion-alternatives-2026/',

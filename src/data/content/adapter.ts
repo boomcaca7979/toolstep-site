@@ -789,9 +789,11 @@ export function reviewContentToEntry(content: ReviewContent): ProductReviewEntry
  */
 export function bestListContentToEntry(content: BestListContent): BestEntry {
   // Split relatedContent back into relatedReviews (hrefs) and relatedBests (slugs)
+  // Legacy best.ts stores full hrefs in relatedReviews, which the forward adapter
+  // copies verbatim into relatedContent.slug — so only wrap bare slugs.
   const relatedReviews = content.relatedContent
     .filter((rc) => rc.type === 'review')
-    .map((rc) => `/reviews/${rc.slug}/`);
+    .map((rc) => (rc.slug.startsWith('/') ? rc.slug : `/reviews/${rc.slug}/`));
   const relatedBests = content.relatedContent
     .filter((rc) => rc.type === 'list')
     .map((rc) => rc.slug);
@@ -836,9 +838,10 @@ export function comparisonContentToEntry(content: ComparisonContent): CompareEnt
   const comparison = content.comparison;
 
   // Reconstruct relatedReviews from relatedContent (as hrefs)
+  // compare.ts also stores full hrefs — only wrap bare slugs (see bestListContentToEntry).
   const relatedReviews = content.relatedContent
     .filter((rc) => rc.type === 'review')
-    .map((rc) => `/reviews/${rc.slug}/`);
+    .map((rc) => (rc.slug.startsWith('/') ? rc.slug : `/reviews/${rc.slug}/`));
 
   return {
     slug: content.slug,
