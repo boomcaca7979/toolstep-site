@@ -13,7 +13,11 @@ const SITE_URL = 'https://www.toolstep.top';
 // === Title Builders ===
 
 export function buildReviewTitle(productName: string): string {
-  return `${productName} Review (${CURRENT_YEAR}): Features, Pros, Cons & Verdict`;
+  // Strip a trailing year from data-driven product names (e.g. best-list
+  // entries like "Best AI Assistants 2026") to avoid double-year titles
+  // like "Best AI Assistants 2026 Review (2026)".
+  const cleanName = productName.replace(/\s*2026$/, '');
+  return `${cleanName} Review (${CURRENT_YEAR}): Features, Pros, Cons & Verdict`;
 }
 
 export function buildBestTitle(category: string): string {

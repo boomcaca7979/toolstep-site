@@ -7,6 +7,7 @@ import AdUnit from '../../components/ads/AdUnit.astro';
 import { getAlternativeEntries, getAlternativeEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildAlternativesTitle } from '../../utils/seo';
+import { getCanonicalOverride } from '../../data/canonical-overrides.mjs';
 
 export function getStaticPaths() {
   return getAlternativeEntries().map((entry) => ({
@@ -21,6 +22,9 @@ const authorName = author?.name || 'ToolStep Team';
 
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/alternatives/${entry.slug}/`, Astro.site).toString();
+
+// Cannibalization whitelist: exact-path lookup; undefined → self-canonical
+const canonicalOverride = getCanonicalOverride(`/alternatives/${entry.slug}/`);
 
 // Extend short descriptions with real page data (top alternatives) so SERP
 // snippets carry the alternatives intent. Never exceeds ~158 chars.
@@ -141,7 +145,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={buildAlternativesTitle(entry.toolName)} description={pageDescription} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
+    <BaseHead title={buildAlternativesTitle(entry.toolName)} description={pageDescription} canonical={canonicalOverride} articleSchema={{headline: entry.title, description: entry.description, datePublished: publishDate, authorName}} />
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

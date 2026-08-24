@@ -11,6 +11,7 @@ import { buildBestTitle } from '../../utils/seo';
 import { mapCategoryToSlug } from '../../data/category-map';
 import { getCategoryBySlug } from '../../data/categories';
 import { getRelatedForBest } from '../../lib/related';
+import { getCanonicalOverride } from '../../data/canonical-overrides.mjs';
 
 export function getStaticPaths() {
   return getBestEntries().map((entry) => ({
@@ -25,6 +26,9 @@ const authorName = author?.name || 'ToolStep Team';
 
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/best/${entry.slug}/`, Astro.site).toString();
+
+// Cannibalization whitelist: exact-path lookup; undefined → self-canonical
+const canonicalOverride = getCanonicalOverride(`/best/${entry.slug}/`);
 
 // Per-entry SEO overrides: fall back to the auto-generated title and the
 // default description when the optional fields are not present.
@@ -159,7 +163,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} ogType="article" />
+    <BaseHead title={pageTitle} description={pageDescription} ogType="article" canonical={canonicalOverride} />
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

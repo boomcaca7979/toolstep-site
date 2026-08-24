@@ -14,6 +14,8 @@ interface Props {
 	image?: ImageMetadata;
 	ogType?: string;
 	noindex?: boolean;
+	/** Optional canonical override (pathname with trailing slash). Default: self-canonical. */
+	canonical?: string;
 	articleSchema?: {
 		headline: string;
 		description: string;
@@ -43,9 +45,14 @@ const {
 	image = FallbackImage,
 	ogType = 'website',
 	noindex = false,
+	canonical,
 	articleSchema,
 	softwareSchema,
 } = Astro.props;
+
+// Canonical override (cannibalization whitelist): only when a template
+// explicitly passes a pathname. All other pages stay self-canonical.
+const resolvedCanonicalURL = canonical ? new URL(canonical, Astro.site) : canonicalURL;
 
 const siteOrigin = new URL(Astro.site).origin;
 const currentURL = new URL(Astro.url.pathname, Astro.site);
@@ -80,7 +87,7 @@ const currentURL = new URL(Astro.url.pathname, Astro.site);
 )}
 
 <!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+<link rel="canonical" href={resolvedCanonicalURL} />
 
 <!-- Primary Meta Tags -->
 {noindex && <meta name="robots" content="noindex, nofollow" />}

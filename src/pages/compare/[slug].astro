@@ -10,6 +10,7 @@ import { buildCompareTitle } from '../../utils/seo';
 import { mapCategoryToSlug } from '../../data/category-map';
 import { getCategoryBySlug } from '../../data/categories';
 import { getRelatedForCompare } from '../../lib/related';
+import { getCanonicalOverride } from '../../data/canonical-overrides.mjs';
 
 export function getStaticPaths() {
   return getCompareEntries().map((entry) => ({
@@ -25,6 +26,9 @@ const authorName = author?.name || 'ToolStep Team';
 
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/compare/${entry.slug}/`, Astro.site).toString();
+
+// Cannibalization whitelist: exact-path lookup; undefined → self-canonical
+const canonicalOverride = getCanonicalOverride(`/compare/${entry.slug}/`);
 
 // Extend short descriptions with real page sections (verdict, spec table,
 // scenarios) so SERP snippets carry the comparison intent.
@@ -115,7 +119,7 @@ const articleSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={pageDescription} />
+    <BaseHead title={buildCompareTitle(productA.name, productB.name)} description={pageDescription} canonical={canonicalOverride} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />

@@ -3,6 +3,7 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
+import { CANONICAL_OVERRIDES } from './src/data/canonical-overrides.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +13,14 @@ export default defineConfig({
 		mdx(),
 		sitemap({
 			// Exclude demo/placeholder blog posts from the sitemap (also noindex via frontmatter)
-			filter: (page) => !/^\/blog\/(first-post|second-post|third-post|using-mdx|markdown-style-guide)\/?$/.test(new URL(page).pathname),
+			// Exclude canonical-override source URLs (cannibalization whitelist):
+			// those pages canonicalize to their /reviews/ target and must not be listed.
+			filter: (page) => {
+				const pathname = new URL(page).pathname;
+				if (/^\/blog\/(first-post|second-post|third-post|using-mdx|markdown-style-guide)\/?$/.test(pathname)) return false;
+				if (CANONICAL_OVERRIDES[pathname] !== undefined) return false;
+				return true;
+			},
 			serialize(item) {
 				// Priority hierarchy: homepage > category hub > category pages > content pages
 				if (item.url === 'https://www.toolstep.top/') {
