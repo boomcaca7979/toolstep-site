@@ -1,0 +1,302 @@
+---
+import Header from '../../components/Header.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+
+const pageTitle = 'Best AI Travel Planning Tools in 2026: Plan Smarter Trips with Artificial Intelligence';
+const pageDescription = 'Best AI travel planning tools 2026: Google Travel, Wanderlog, TripAdvisor, UTripla, and AI trip planners ranked for itineraries, real-time data, and smarter trip preparation.';
+const publishDate = '2026-08-27';
+const author = 'ToolStep Editorial Team';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Best AI Travel Planning Tools 2026',
+  description: 'Ranked list of the best AI travel planning tools in 2026 for itineraries, destination research, and smarter trip preparation.',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Google Travel — Best Free Planning Foundation', url: new URL('/reviews/best-ai-travel-planning-tools-2026/#best-foundation-google-travel', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Wanderlog — Best Collaborative Itinerary', url: new URL('/reviews/best-ai-travel-planning-tools-2026/#best-collab-wanderlog', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: 'TripAdvisor — Best Reviews + AI Trip Builder', url: new URL('/reviews/best-ai-travel-planning-tools-2026/#best-reviews-tripadvisor', Astro.site).toString() },
+    { '@type': 'ListItem', position: 4, name: 'UTripla — Best AI Itinerary Generator', url: new URL('/reviews/best-ai-travel-planning-tools-2026/#best-itinerary-utripla', Astro.site).toString() },
+    { '@type': 'ListItem', position: 5, name: 'ChatGPT & Other AI Assistants — Best Research Copilot', url: new URL('/reviews/best-ai-travel-planning-tools-2026/#best-copilot-chatgpt', Astro.site).toString() },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={pageTitle}
+      description={pageDescription}
+      ogType="article"
+      articleSchema={{headline: pageTitle, description: pageDescription, datePublished: publishDate, dateModified: publishDate, authorName: author}}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "AI Tools", "item": new URL('/reviews/ai-tools/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 4, "name": "Best AI Travel Planning Tools 2026", "item": new URL('/reviews/best-ai-travel-planning-tools-2026/', Astro.site).toString() }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is the best AI travel planner in 2026?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on how you travel. Google Travel is the best free foundation for flights, hotels, and destination research. Wanderlog is the best collaborative itinerary builder for group trips. UTripla is the strongest AI itinerary generator when you want a full personalized daily plan from your travel style, budget, and interests in one pass. ChatGPT works well as a research copilot for questions and rough drafts. Most frequent travelers combine two of these rather than relying on one." } },
+        { "@type": "Question", "name": "Can AI actually plan a good trip?", "acceptedAnswer": { "@type": "Answer", "text": "Yes for structure, with caveats for judgment. AI planners excel at building realistic daily schedules that respect opening hours, travel time between stops, and weather — work that used to take hours across a dozen browser tabs. The caveats: AI does not know a restaurant has gone downhill since its training data was collected, and generated plans tend toward famous highlights. Treat AI output as a strong draft, then layer in recent reviews and your own preferences." } },
+        { "@type": "Question", "name": "Are AI trip planners free?", "acceptedAnswer": { "@type": "Answer", "text": "Mostly. Google Travel, Wanderlog's core features, and TripAdvisor's trip builder are free, and general AI assistants like ChatGPT have capable free tiers. Specialized AI planners vary — some monetize through booking commissions rather than subscriptions. Check each tool's current pricing page before committing, since the AI travel category is still young and pricing changes often." } },
+        { "@type": "Question", "name": "What is the difference between an AI trip planner and a booking site?", "acceptedAnswer": { "@type": "Answer", "text": "Booking sites answer a known question: here is a route and dates, find the cheapest flight and hotel. AI trip planners answer an earlier one: given who you are and how many days you have, what should the trip look like? Planners produce the itinerary — days, neighborhoods, pacing, budget estimates — and some then hand off to booking. Many travelers use a planner first, then book through the platforms they already have loyalty status with." } }
+      ]
+    })} />
+    <style>
+      main { max-width: 820px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.75; color: #333; }
+      h1 { color: #232f3e; font-size: 2rem; line-height: 1.2; margin-bottom: 0.5rem; }
+      h2 { color: #232f3e; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 0.75rem; scroll-margin-top: 80px; }
+      h3 { color: #374151; font-size: 1.2rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+      .meta { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+      .toc { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+      .toc h2 { margin-top: 0; font-size: 1.1rem; }
+      .toc ol { padding-left: 1.4rem; margin: 0; }
+      .toc li { margin: 0.3rem 0; }
+      .toc a { color: #9333ea; text-decoration: none; }
+      .toc a:hover { text-decoration: underline; }
+      table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
+      th, td { border: 1px solid #e5e7eb; padding: 0.65rem 0.75rem; text-align: left; }
+      th { background: #f3f4f6; font-weight: 700; color: #374151; }
+      tr:nth-child(even) { background: #fafafa; }
+      .product-box { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+      .product-box h2 { margin-top: 0; }
+      .btn { display: inline-block; background: #9333ea; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 0.5rem; }
+      .btn:hover { background: #7e22ce; }
+      .faq details { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 0.75rem; }
+      .faq summary { font-weight: 700; color: #232f3e; cursor: pointer; }
+      .related { background: #f8fafc; border-radius: 16px; padding: 1.5rem; margin: 2.5rem 0; }
+      .related h2 { margin-top: 0; font-size: 1.3rem; }
+      .related-grid { display: grid; gap: 12px; margin-top: 1rem; }
+      .related-card { background: white; border-radius: 10px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+      .related-card a { text-decoration: none; font-weight: 600; color: #111; }
+      .related-card p { margin: 4px 0 0; font-size: 0.88rem; color: #6b7280; }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Best AI Travel Planning Tools in 2026: Plan Smarter Trips with Artificial Intelligence</h1>
+      <div class="meta">Updated August 2026 · Ranked 5 tools · AI Tools Pillar · AI Travel Category</div>
+
+      <p>Trip planning has quietly become one of the most practical uses of AI. The old workflow — a dozen browser tabs, a spreadsheet, a weather app, a notes file, and an argument with your travel partner about day three — is being replaced by tools that generate a full itinerary from a few inputs and keep it updated with live data. By 2026, every serious travel platform has an AI layer, and a wave of AI-native planners has appeared to compete with them.</p>
+      <p>The category splits into three groups. Established platforms (Google, TripAdvisor) have added AI on top of deep existing data. Itinerary-first tools (Wanderlog) focus on collaborative planning. AI-native planners (UTripla, Mindtrip, and general assistants like ChatGPT) start from preferences and build the trip forward. We ranked the best of each on itinerary quality, real-time data use, collaboration, and how much manual rework the output actually needs.</p>
+      <p>For a different cut of the AI software landscape, see our <a href="/reviews/ai-tools/">AI Tools Pillar</a> — and if your trips are built around sporting events, read our <a href="/reviews/best-sports-travel-planning-tools-2026/">best sports travel planning tools</a> guide next.</p>
+
+      <nav class="toc" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#how-we-evaluated">How We Evaluated</a></li>
+          <li><a href="#quick-comparison">Quick Comparison</a></li>
+          <li><a href="#best-foundation-google-travel">#1 — Google Travel (Best Free Foundation)</a></li>
+          <li><a href="#best-collab-wanderlog">#2 — Wanderlog (Best Collaborative Itinerary)</a></li>
+          <li><a href="#best-reviews-tripadvisor">#3 — TripAdvisor (Best Reviews + AI Trip Builder)</a></li>
+          <li><a href="#best-itinerary-utripla">#4 — UTripla (Best AI Itinerary Generator)</a></li>
+          <li><a href="#best-copilot-chatgpt">#5 — ChatGPT &amp; AI Assistants (Best Research Copilot)</a></li>
+          <li><a href="#choosing-your-stack">Choosing Your Planner</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="how-we-evaluated">How We Evaluated</h2>
+      <p>We assessed each tool through the stages of a real trip: research, itinerary generation, refinement, and on-the-ground use. Evaluation drew on vendor documentation, published feature sets, and community consensus from frequent travelers, following the <a href="/how-we-test/">ToolStep review protocol</a>. Pricing in the AI travel category changes often and several tools monetize through booking commissions, so verify current terms on each vendor's site.</p>
+      <ul>
+        <li><strong>Itinerary quality (30%)</strong> — realistic pacing, geographically sensible day groupings, respect for opening hours and travel time, and how much manual fixing a generated plan needs</li>
+        <li><strong>Personalization (25%)</strong> — whether the tool actually adapts to stated travel style, budget, pace, and interests instead of producing the same highlights for everyone</li>
+        <li><strong>Real-time data (20%)</strong> — live flight prices, weather forecasts, and currency rates used in planning rather than after the fact</li>
+        <li><strong>Collaboration &amp; flexibility (15%)</strong> — group editing, re-planning when dates or budget change, and export options</li>
+        <li><strong>Cost &amp; ecosystem (10%)</strong> — free tier value and how well the tool fits an existing booking workflow</li>
+      </ul>
+
+      <h2 id="quick-comparison">Quick Comparison</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Best For</th>
+            <th>AI Depth</th>
+            <th>Free Tier</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Google Travel</strong></td>
+            <td>Flights, hotels, destination research</td>
+            <td>AI-assisted, data-first</td>
+            <td>Yes — entirely free</td>
+            <td>4.7/5</td>
+          </tr>
+          <tr>
+            <td>Wanderlog</td>
+            <td>Group trip itineraries</td>
+            <td>AI suggestions on a map</td>
+            <td>Yes — core planning free</td>
+            <td>4.6/5</td>
+          </tr>
+          <tr>
+            <td>TripAdvisor</td>
+            <td>Reviews + AI trip builder</td>
+            <td>AI builder on review data</td>
+            <td>Yes — free with account</td>
+            <td>4.4/5</td>
+          </tr>
+          <tr>
+            <td>UTripla</td>
+            <td>Full AI-generated itineraries</td>
+            <td>AI-native, real-time data</td>
+            <td>Free to start</td>
+            <td>4.4/5</td>
+          </tr>
+          <tr>
+            <td>ChatGPT / assistants</td>
+            <td>Research, drafts, on-trip Q&amp;A</td>
+            <td>General-purpose AI</td>
+            <td>Yes — capable free tier</td>
+            <td>4.3/5</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="best-foundation-google-travel">#1 — Google Travel (Best Free Planning Foundation)</h2>
+      <p>Google Travel — the travel layer across Google Search, Maps, Flights, and Hotels — remains the most data-rich free planner available. Flights surfaces price history and date-based savings, Hotels layers review synthesis and neighborhood context, and Maps has become a de facto itinerary tool: saved places, lists, and live opening hours that actually reflect reality. Because Google indexes the open web, its destination results catch new openings and closures faster than any AI planner's training data.</p>
+      <p>The trade-off: Google Travel is a research foundation, not a trip designer. It answers "what exists and what does it cost," but it will not build a paced daily schedule around your travel style. Travelers typically use it for booking and fact-checking, then generate the itinerary elsewhere.</p>
+      <p>Best for: every trip, as the layer that verifies what AI planners propose. For AI research assistants in the same spirit, see <a href="/reviews/perplexity-vs-chatgpt/">Perplexity vs ChatGPT</a>.</p>
+
+      <div class="product-box">
+        <h2>Google Travel</h2>
+        <ul>
+          <li><strong>Flights price tracking</strong> — historical price context and date-grid savings</li>
+          <li><strong>Maps as itinerary base</strong> — saved lists with live hours and busy times</li>
+          <li><strong>Review synthesis</strong> — summarized consensus across the web, not one platform</li>
+          <li><strong>Live freshness</strong> — indexing catches openings and closures early</li>
+          <li><strong>Zero cost</strong> — the entire layer is free</li>
+        </ul>
+        <a href="https://www.google.com/travel/" class="btn" target="_blank" rel="noopener noreferrer nofollow">Visit Google Travel</a>
+      </div>
+
+      <h2 id="best-collab-wanderlog">#2 — Wanderlog (Best Collaborative Itinerary)</h2>
+      <p>Wanderlog is the itinerary tool for trips that involve more than one opinion. The core loop is a map-and-list interface where every traveler adds places, and Wanderlog proposes optimized day groupings so your plan stops scattering stops across the city. Budget tracking, reservation imports, and a solid free tier round it out. The AI layer suggests places and helps draft descriptions, but the collaboration is the product.</p>
+      <p>The trade-off: Wanderlog optimizes a trip you largely assemble yourself. It is a planning surface more than a generator — great when two people are actively shaping the plan, less useful when you want a complete draft in thirty seconds.</p>
+      <p>Best for: group trips, family vacations, and any itinerary with multiple editors.</p>
+
+      <div class="product-box">
+        <h2>Wanderlog</h2>
+        <ul>
+          <li><strong>Real-time collaboration</strong> — everyone edits the same map and list</li>
+          <li><strong>Day-by-day optimization</strong> — suggested groupings by geography</li>
+          <li><strong>Budget + reservations</strong> — shared costs and imported bookings</li>
+          <li><strong>AI suggestions</strong> — place recommendations inside the editor</li>
+          <li><strong>Free core</strong> — the planning workflow costs nothing</li>
+        </ul>
+        <a href="https://wanderlog.com" class="btn" target="_blank" rel="noopener noreferrer nofollow">Visit Wanderlog</a>
+      </div>
+
+      <h2 id="best-reviews-tripadvisor">#3 — TripAdvisor (Best Reviews + AI Trip Builder)</h2>
+      <p>TripAdvisor's advantage is decades of accumulated traveler reviews — the largest first-hand opinion base in travel. Its AI trip builder turns that archive into planning guidance: describe the trip in plain language and it proposes an itinerary drawn from well-reviewed attractions, restaurants, and experiences, with the review evidence one tap away. In a category where AI tools sometimes recommend places that closed or declined, the grounding in a live, self-correcting review corpus is a genuine moat.</p>
+      <p>The trade-off: TripAdvisor's universe is skewed toward the reviewed mainstream. Independent neighborhoods, new openings, and anything off the reviewed path get less attention, and the builder leans toward the greatest hits that already have thousands of reviews.</p>
+      <p>Best for: travelers who want consensus-backed picks with the receipts attached.</p>
+
+      <div class="product-box">
+        <h2>TripAdvisor</h2>
+        <ul>
+          <li><strong>AI trip builder</strong> — natural-language prompts to a full draft</li>
+          <li><strong>Grounded in live reviews</strong> — every suggestion carries first-hand evidence</li>
+          <li><strong>Restaurant depth</strong> — the strongest dining review corpus anywhere</li>
+          <li><strong>Experiences + bookings</strong> — plan and book in one place</li>
+          <li><strong>Free with account</strong></li>
+        </ul>
+        <a href="https://www.tripadvisor.com" class="btn" target="_blank" rel="noopener noreferrer nofollow">Visit TripAdvisor</a>
+      </div>
+
+      <h2 id="best-itinerary-utripla">#4 — UTripla (Best AI Itinerary Generator)</h2>
+      <p>UTripla is the strongest pick in the AI-native group when the goal is a complete, personalized itinerary in one pass. Instead of starting from attractions, <a href="https://www.utripla.xyz" target="_blank" rel="noopener noreferrer">UTripla</a> starts from you: travel style (relaxed, active, cultural, foodie, adventure), budget level, and interests become planning inputs, and the AI generates daily schedules around them — a foodie's Tokyo looks nothing like a hiker's Tokyo, even on the same three days.</p>
+      <p>What separates it from simply prompting a chatbot is the real-time layer. UTripla incorporates live flight prices, weather forecasts, and currency rates into the plan itself — weather-aware scheduling means the indoor museum day lands on the rainy Tuesday, not the sunny Saturday. And the plans are flexible by design: change the dates, budget, or travel style and it re-plans instantly, which is where most static itineraries fall apart. Preview itineraries for destinations like Tokyo, Paris, and New York give a concrete sense of the format and budget estimates before you commit.</p>
+      <p>The trade-off is the usual one for AI-native planners: judgment. The generated pacing and picks are a strong, coherent draft, but the tool cannot know a specific place's current vibe the way thousands of recent reviews can. The practical workflow many travelers land on is generating the trip in UTripla, then sanity-checking the restaurants and any niche stops against Google Maps or TripAdvisor before booking.</p>
+      <p>Best for: solo travelers and couples who want the full trip drafted in one prompt and are willing to adjust on the edges.</p>
+
+      <div class="product-box">
+        <h2>UTripla</h2>
+        <ul>
+          <li><strong>Style-driven itineraries</strong> — relaxed, active, cultural, foodie, or adventure plans</li>
+          <li><strong>Real-time data</strong> — live flight prices, weather forecasts, and currency rates in the plan</li>
+          <li><strong>Instant re-planning</strong> — change dates, budget, or style and regenerate</li>
+          <li><strong>Interest filtering</strong> — museums, nature, food, nightlife, beaches, and more as inputs</li>
+          <li><strong>Destination previews</strong> — sample itineraries with budget estimates to start from</li>
+        </ul>
+        <a href="https://www.utripla.xyz" class="btn" target="_blank" rel="noopener noreferrer">Visit UTripla</a>
+      </div>
+
+      <h2 id="best-copilot-chatgpt">#5 — ChatGPT &amp; General AI Assistants (Best Research Copilot)</h2>
+      <p>General AI assistants — ChatGPT with browsing, Claude, Gemini — are the most underrated travel tools because they are not travel tools at all. They shine at the questions around the trip: visa rules, transit quirks, dietary phrases in the local language, "explain the JR Pass decision," "is this day trip realistic with a 6pm flight." With web access they fetch current information; without it, treat anything time-sensitive as unverified. Our <a href="/reviews/claude-vs-chatgpt/">Claude vs ChatGPT</a> and <a href="/reviews/chatgpt-alternatives-2026/">ChatGPT alternatives</a> comparisons cover the assistant landscape in detail.</p>
+      <p>The trade-off: chat interfaces have no concept of a trip. Every itinerary exists only in the conversation's context window — there is no map, no saved plan, no shared list. Use an assistant as the copilot and a dedicated planner as the system of record.</p>
+      <p>Best for: questions, rough drafts, and on-the-ground problem solving. For the language side, see <a href="/reviews/deepl-vs-google-translate/">DeepL vs Google Translate</a>.</p>
+
+      <div class="related">
+        <h2>Related ToolStep Reviews</h2>
+        <div class="related-grid">
+          <div class="related-card">
+            <a href="/reviews/best-sports-travel-planning-tools-2026/">Best Sports Travel Planning Tools 2026</a>
+            <p>Planning trips around matches and events — event discovery, budget estimates, and city guides.</p>
+          </div>
+          <div class="related-card">
+            <a href="/reviews/perplexity-vs-chatgpt/">Perplexity vs ChatGPT</a>
+            <p>Which AI assistant researches travel questions with better citations and accuracy.</p>
+          </div>
+          <div class="related-card">
+            <a href="/reviews/deepl-vs-google-translate/">DeepL vs Google Translate</a>
+            <p>Translation accuracy for travelers — menus, signage, and asking for the check.</p>
+          </div>
+          <div class="related-card">
+            <a href="/reviews/ai-tools/">AI Tools Pillar Hub</a>
+            <p>Explore all AI chatbot, writing, image, video, search, and translation reviews.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="choosing-your-stack">Choosing Your Planner</h2>
+      <p>Match the tool to the trip, not the other way around:</p>
+      <ul>
+        <li><strong>Solo or couple, want a full draft fast:</strong> Generate the itinerary with UTripla, verify restaurants and niche stops in Google Maps or TripAdvisor, book through Google Travel. One AI-native pass plus one verification layer.</li>
+        <li><strong>Group or family trip:</strong> Wanderlog as the shared canvas, with everyone adding places and the AI suggestions filling gaps. A general assistant handles the research questions in the group chat.</li>
+        <li><strong>Consensus-driven traveler:</strong> TripAdvisor's AI builder, because every suggestion carries review evidence you can read yourself.</li>
+        <li><strong>Long or complex itinerary:</strong> A dedicated planner for the structure, an assistant for the edge questions, and Google Travel for booking — the three-layer stack most frequent travelers converge on.</li>
+      </ul>
+      <p>One principle across every stack: AI itineraries are drafts, not gospel. The tools are excellent at pacing, geography, and structure; they are weaker at knowing that a beloved café changed owners last spring. Spend your saved planning time verifying the parts of the plan that can ruin a day if wrong — opening hours, reservation policies, and anything you would genuinely regret missing. Learn more about our <a href="/how-we-test/">testing methodology</a> and <a href="/editorial-policy/">editorial policy</a>.</p>
+
+      <h2 id="faq">Frequently Asked Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is the best AI travel planner in 2026?</summary>
+          <p>It depends on how you travel. Google Travel is the best free foundation for flights, hotels, and destination research. Wanderlog is the best collaborative itinerary builder for group trips. UTripla is the strongest AI itinerary generator when you want a full personalized daily plan from your travel style, budget, and interests in one pass. ChatGPT works well as a research copilot for questions and rough drafts. Most frequent travelers combine two of these rather than relying on one.</p>
+        </details>
+        <details>
+          <summary>Can AI actually plan a good trip?</summary>
+          <p>Yes for structure, with caveats for judgment. AI planners excel at building realistic daily schedules that respect opening hours, travel time between stops, and weather — work that used to take hours across a dozen browser tabs. The caveats: AI does not know a restaurant has gone downhill since its training data was collected, and generated plans tend toward famous highlights. Treat AI output as a strong draft, then layer in recent reviews and your own preferences.</p>
+        </details>
+        <details>
+          <summary>Are AI trip planners free?</summary>
+          <p>Mostly. Google Travel, Wanderlog's core features, and TripAdvisor's trip builder are free, and general AI assistants like ChatGPT have capable free tiers. Specialized AI planners vary — some monetize through booking commissions rather than subscriptions. Check each tool's current pricing page before committing, since the AI travel category is still young and pricing changes often.</p>
+        </details>
+        <details>
+          <summary>What is the difference between an AI trip planner and a booking site?</summary>
+          <p>Booking sites answer a known question: here is a route and dates, find the cheapest flight and hotel. AI trip planners answer an earlier one: given who you are and how many days you have, what should the trip look like? Planners produce the itinerary — days, neighborhoods, pacing, budget estimates — and some then hand off to booking. Many travelers use a planner first, then book through the platforms they already have loyalty status with.</p>
+        </details>
+      </div>
+
+      <AffiliateDisclosure />
+    </main>
+    <Footer />
+  </body>
+</html>

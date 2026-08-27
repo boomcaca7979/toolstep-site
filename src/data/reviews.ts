@@ -1,4 +1,7 @@
 export const reviews = [
+  { category: 'AI SEO', color: '#0d9488', title: 'Best AI SEO Tools 2026', desc: 'Ahrefs, Semrush, Screaming Frog, SeeO, Surfer SEO, and Google Search Console ranked for audits, keywords, and rankings.', href: '/reviews/best-ai-seo-tools-2026/', tag: 'NEW' },
+  { category: 'AI Travel', color: '#0891b2', title: 'Best AI Travel Planning Tools 2026', desc: 'Google Travel, Wanderlog, TripAdvisor, UTripla, and AI trip planners ranked for smarter trip preparation.', href: '/reviews/best-ai-travel-planning-tools-2026/', tag: 'NEW' },
+  { category: 'Travel Tools', color: '#ea580c', title: 'Best Sports Travel Planning Tools 2026', desc: 'MatchTrip, Google Travel, TripAdvisor, and booking platforms ranked for event trips, football travel, and venue planning.', href: '/reviews/best-sports-travel-planning-tools-2026/', tag: 'NEW' },
   { category: 'AI Writing', color: '#9333ea', title: 'Claude vs ChatGPT', desc: 'Which AI assistant is better in 2026? Honest comparison for writing, coding, and pricing.', href: '/reviews/claude-vs-chatgpt', tag: 'NEW' },
   { category: 'AI Image', color: '#db2777', title: 'Midjourney vs DALL-E 3', desc: 'Which AI image generator wins in 2026? Tested for quality, speed, and creative control.', href: '/reviews/midjourney-vs-dalle3', tag: 'NEW' },
   { category: 'AI Chatbot', color: '#16a34a', title: 'ChatGPT vs Gemini', desc: 'Which AI assistant wins in 2026? Tested for writing, coding, research, and Google integration.', href: '/reviews/chatgpt-vs-gemini', tag: 'NEW' },
