@@ -1,0 +1,676 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+
+const title = 'Modelflare Review: AI API Gateway for GPT, Claude, Grok & More | ToolStep';
+const description =
+  'Modelflare review: one OpenAI-compatible API gateway for GPT, Claude, Grok, Gemini and DeepSeek, with routing groups, ordered fallback, and per-request cost tracking. Setup for Codex and Claude Code, pricing tables, and honest limits.';
+const PARTNER_URL = 'https://modelflare.dev/sign-up?partner=VC2RHJPWPYBF';
+const CODE_TOML = `# ~/.codex/config.toml
+model_provider = "modelflare"
+model = "gpt-5.6-sol"
+model_routing_group = "openai-stable"`;
+const CODE_JSON = `// Claude Code settings.json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://modelflare.dev",
+    "ANTHROPIC_API_KEY": "YOUR_MODELFLARE_API_KEY"
+  }
+}`;
+const CODE_BASH = `curl https://modelflare.dev/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_MODELFLARE_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "gpt-5.6-sol",
+    "messages": [{ "role": "user", "content": "Hello" }]
+  }'`;
+---
+
+<html lang="en">
+<head>
+  <BaseHead
+    title={title}
+    description={description}
+    ogType="article"
+    articleSchema={{
+      headline: 'Modelflare Review: AI API Gateway for GPT, Claude, Grok & More',
+      description: description,
+      datePublished: '2026-08-28',
+      dateModified: '2026-08-28',
+      authorName: 'ToolStep Editorial Team',
+    }}
+  />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+        { '@type': 'ListItem', position: 2, name: 'Reviews', item: new URL('/reviews/', Astro.site).toString() },
+        { '@type': 'ListItem', position: 3, name: 'Modelflare Review: AI API Gateway for GPT, Claude, Grok & More', item: new URL('/reviews/modelflare-review/', Astro.site).toString() },
+      ],
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Modelflare',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Web (API)',
+      description: 'Multi-provider AI API gateway with an OpenAI-compatible API, model groups with ordered fallback, and per-request usage and cost tracking.',
+      url: 'https://modelflare.dev',
+      offers: { '@type': 'Offer', price: '0.00', priceCurrency: 'USD' },
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What is Modelflare?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Modelflare is a hosted AI API gateway operated by Havenbyte LLC. It gives you a single API key and endpoint for models from OpenAI, Anthropic, xAI, Google, DeepSeek, Moonshot, Alibaba, and other providers, using OpenAI-compatible Chat Completions and Responses APIs plus native Anthropic Messages and Gemini protocols. It also provides routing groups at different price and stability tiers, ordered fallback between model groups, and per-request usage and cost logs.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is Modelflare compatible with OpenAI APIs?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Modelflare exposes OpenAI-compatible Chat Completions and Responses API endpoints at the base URL https://modelflare.dev/v1. In an existing OpenAI SDK or client, you swap the API key and base URL and use a Modelflare model ID; request and response formats follow the OpenAI conventions. Modelflare also supports the native Anthropic Messages and Gemini protocols through the base URL https://modelflare.dev.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How much does Modelflare cost?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Modelflare charges per token based on the routing group you select. For gpt-5.6-sol (official list price $5 input / $30 output per million tokens), the openai-award group costs $0.15/$0.90, openai-stable $0.40/$2.40, and openai-premium $0.65/$3.90 per million tokens, as of August 28, 2026. Prepaid subscription plans from US$99.99 add 10-20% bonus credits. Prices change over time, so check the official pricing page before committing.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What models does Modelflare support?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'As of August 28, 2026, the catalog lists 25 enabled models, including OpenAI gpt-5.6-sol, gpt-5.6-terra, gpt-5.5, and gpt-5.4; Anthropic claude-opus-5, claude-sonnet-5, claude-opus-4-8, claude-haiku-4-5, and claude-fable-5; xAI grok-4.6 and grok-4.5; Google Gemini 3.7/3.6/3.5 Flash and Gemini 3.1 Pro Preview; DeepSeek V4 Pro and Flash; Kimi K3; and Qwen3.8-Max, plus image generation (gpt-image-2) and video (Seedance 2.5) endpoints.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I use Modelflare with Codex?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Modelflare publishes a Codex quick start with a one-line installer and a manual setup. In ~/.codex/config.toml you set model_provider to modelflare, choose a model such as gpt-5.6-sol, and optionally set a model_routing_group such as openai-stable. You then store your Modelflare API key and launch Codex with codex --model gpt-5.6-sol.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I use Modelflare with Claude Code?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Modelflare provides an installer or a manual configuration for Claude Code. In the Claude Code settings.json you set ANTHROPIC_BASE_URL to https://modelflare.dev and ANTHROPIC_API_KEY to your Modelflare API key. The documented supported models at the time of writing are claude-opus-4-8 and claude-sonnet-5.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How does Modelflare fallback work?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'In the Modelflare dashboard you add fallback model groups in priority order. When the primary group is unavailable, requests switch automatically to the next group in the list instead of failing. This is group-level availability routing: it is not a semantic quality router, and it does not guarantee a specific model will always serve the request, since fallback groups may route to different models or providers.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is Modelflare cheaper than official APIs?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'For the models and routing groups we checked on August 28, 2026, list prices are below the official per-token rates: gpt-5.6-sol via the openai-stable group is billed at $0.40/$2.40 per million tokens versus the official $5/$30. However, pricing is route-dependent, discount routes trade reliability (the lowest-cost award route is described by Modelflare as suited to retryable workloads), subscription credits apply only to GPT, Claude, and Gemini models, and unused credits do not roll over. Verify current rates on the official pricing page before committing.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What are the alternatives to Modelflare?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The closest alternatives are OpenRouter (a hosted model marketplace with a unified OpenAI-compatible API and a much larger catalog), LiteLLM (an open-source gateway you can self-host with support for 100+ providers), and Portkey (a gateway focused on observability, guardrails, and caching, available hosted or self-hosted). The right choice depends on whether you want a hosted discount gateway, self-hosted control, or deeper observability.',
+          },
+        },
+      ],
+    })} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; scroll-margin-top: 80px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .note-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 20px 24px; margin: 28px 0; font-size: 0.95rem; }
+    .note-box strong { color: #1e40af; }
+    .toc { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 22px; margin: 24px 0; font-size: 0.92rem; }
+    .toc h2 { margin: 0 0 8px; font-size: 1.05rem; color: #111; }
+    .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; }
+    .toc li { margin: 3px 0; }
+    .toc a { color: #2563eb; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .rating-box { display: flex; align-items: center; gap: 18px; background: linear-gradient(135deg, #fff7ed, #ffedd5); border: 1px solid #fed7aa; border-radius: 12px; padding: 18px 24px; margin: 24px 0; }
+    .rating-box .score { font-size: 2.4rem; font-weight: 800; color: #ea580c; }
+    .rating-box .stars { color: #f59e0b; letter-spacing: 2px; }
+    .rating-box .label { color: #9a3412; font-weight: 600; font-size: 0.95rem; }
+    .cta-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 28px 0; text-align: center; }
+    .cta-box h3 { margin-top: 0; color: #166534; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 10px; font-size: 0.95rem; background: #111; color: #fff; transition: all 0.2s; }
+    .btn:hover { background: #374151; transform: translateY(-1px); }
+    .cta-note { font-size: 0.8rem; color: #6b7280; margin-top: 10px; margin-bottom: 0; }
+    .figure { margin: 28px 0; padding: 20px; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 14px; }
+    .figure svg { width: 100%; height: auto; display: block; }
+    .figure figcaption { text-align: center; font-size: 0.85rem; color: #6b7280; margin-top: 12px; line-height: 1.5; }
+    pre { background: #0f172a; color: #e2e8f0; border-radius: 12px; padding: 18px 20px; overflow-x: auto; font-size: 0.83rem; line-height: 1.6; margin: 16px 0 20px; }
+    pre code { font-family: 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; }
+    .code-label { font-size: 0.8rem; color: #6b7280; margin-bottom: -8px; font-weight: 600; }
+    .use-case { background: #f8fafc; border-left: 4px solid #6366f1; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; }
+    .use-case h3 { margin-top: 0; }
+    .faq details { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+    .faq summary { font-weight: 700; color: #111; cursor: pointer; font-size: 1rem; }
+    .faq details[open] summary { margin-bottom: 8px; }
+    .related-articles { margin: 48px 0; padding: 28px; background: #f8fafc; border-radius: 16px; }
+    .related-articles h2 { margin-top: 0; font-size: 1.3rem; }
+    .related-grid { display: grid; gap: 14px; margin-top: 14px; }
+    .related-card { background: #fff; border-radius: 10px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .related-card a { text-decoration: none; font-weight: 600; color: #111; }
+    .related-card p { margin: 4px 0 0; font-size: 0.9rem; color: #6b7280; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.75rem; }
+      table { font-size: 0.78rem; }
+      th, td { padding: 8px 8px; }
+      .toc ol { columns: 1; }
+      .rating-box { flex-direction: row; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Developer Tools</span>
+      <h1>Modelflare Review: AI API Gateway for GPT, Claude, Grok &amp; More</h1>
+      <p class="meta">Reviewed August 28, 2026 &middot; ToolStep Editorial Team &middot; 9 min read</p>
+    </header>
+
+    <p class="lead">
+      Modelflare is a hosted AI API gateway: one API key and one OpenAI-compatible endpoint that routes to GPT, Claude, Grok, Gemini, DeepSeek, and other model families, with price-tiered routing groups, ordered fallback, and per-request cost tracking. In this review we break down what it actually does, how to wire it into existing apps and coding agents like Codex and Claude Code, what it really costs, where it beats OpenRouter/LiteLLM/Portkey, and where it falls short.
+    </p>
+
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#quick-verdict">Quick Verdict</a></li>
+        <li><a href="#what-is">What Is Modelflare?</a></li>
+        <li><a href="#problem">What Problem It Solves</a></li>
+        <li><a href="#features">Key Features</a></li>
+        <li><a href="#openai-compatible">OpenAI-Compatible API</a></li>
+        <li><a href="#connect">Connecting an Existing App</a></li>
+        <li><a href="#dev-tools">Codex, Claude Code &amp; Other Tools</a></li>
+        <li><a href="#groups-fallback">Model Groups &amp; Fallback</a></li>
+        <li><a href="#usage-cost">Usage &amp; Cost Tracking</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#alternatives">Modelflare vs Alternatives</a></li>
+        <li><a href="#pros-cons">Pros &amp; Cons</a></li>
+        <li><a href="#who-should">Who Should Use It</a></li>
+        <li><a href="#who-should-not">Who May Not Need It</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#final-verdict">Final Verdict</a></li>
+      </ol>
+    </nav>
+
+    <div class="rating-box" role="img" aria-label="ToolStep editorial rating: 4 out of 5">
+      <div class="score">4.0</div>
+      <div>
+        <div class="stars">★★★★☆</div>
+        <div class="label">ToolStep editorial rating — documentation-based review, August 2026</div>
+      </div>
+    </div>
+
+    <h2 id="quick-verdict">Quick Verdict</h2>
+    <p>Modelflare is a hosted multi-provider gateway best suited to developers who are already juggling several AI vendor accounts and want one key, one bill, and one log stream instead of five. Its strongest points are the OpenAI-compatible API (plus native Anthropic and Gemini protocols), transparent price-tiered routing groups that list per-token prices against official rates, ordered fallback between model groups, and first-class setup docs for Codex, Claude Code, Gemini CLI, and OpenCode.</p>
+    <p>The honest limits: the catalog is small (25 models at the time of writing) compared with OpenRouter; the operator, Havenbyte LLC, is a young company with no SOC 2 or ISO certifications claimed; the cheapest routing tier is explicitly positioned for retryable workloads rather than production traffic; subscription credits only apply to GPT, Claude, and Gemini and do not roll over; and there is no self-hosted option. If you need a large model marketplace, compliance certifications, or full infrastructure control, look elsewhere. If you want a simple, low-friction gateway with visible per-request costs, Modelflare is worth a look.</p>
+
+    <div class="cta-box">
+      <h3>Try Modelflare yourself</h3>
+      <p style="margin-bottom: 14px;">Create an account, generate an API key, and point an existing OpenAI-compatible client at it — the whole setup takes minutes.</p>
+      <a href={PARTNER_URL} class="btn" target="_blank" rel="noopener sponsored nofollow">Create your Modelflare account</a>
+      <p class="cta-note">Partner link — ToolStep may earn a commission if you sign up, at no extra cost to you.</p>
+    </div>
+
+    <h2 id="what-is">What Is Modelflare?</h2>
+    <p>Modelflare, operated by Havenbyte LLC, sits between your application and the AI providers. Instead of managing an OpenAI key, an Anthropic key, an xAI key, and a Google key separately, your app talks to Modelflare using one key, and Modelflare forwards each request to the selected model or model group. It speaks the protocols your tools already use: OpenAI Chat Completions and the Responses API at <code>https://modelflare.dev/v1</code>, and the native Anthropic Messages and Gemini protocols at <code>https://modelflare.dev</code>.</p>
+
+    <figure class="figure" role="img" aria-label="Diagram: an application sends requests to the Modelflare gateway, which routes them through model groups to AI providers such as OpenAI, Anthropic, xAI, Google, DeepSeek and others">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How an AI API gateway works">
+        <rect x="240" y="14" width="280" height="52" rx="10" fill="#fff" stroke="#111827" stroke-width="1.5"/>
+        <text x="380" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#111827">Your Application</text>
+        <text x="380" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6b7280">one API key · one endpoint</text>
+        <line x1="380" y1="66" x2="380" y2="102" stroke="#2563eb" stroke-width="2"/>
+        <polygon points="374,100 386,100 380,112" fill="#2563eb"/>
+        <rect x="210" y="114" width="340" height="56" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="380" y="139" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#1e40af">Modelflare Gateway</text>
+        <text x="380" y="158" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#3b82f6">routing · fallback · usage logs · cost tracking</text>
+        <line x1="380" y1="170" x2="380" y2="206" stroke="#2563eb" stroke-width="2"/>
+        <polygon points="374,204 386,204 380,216" fill="#2563eb"/>
+        <rect x="230" y="218" width="300" height="34" rx="8" fill="#f3f4f6" stroke="#9ca3af"/>
+        <text x="380" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#374151">Model / Model Group selection</text>
+        <g font-family="system-ui, sans-serif" font-size="11" fill="#374151">
+          <rect x="16" y="268" width="104" height="28" rx="14" fill="#fff" stroke="#e5e7eb"/><text x="68" y="286" text-anchor="middle">OpenAI GPT</text>
+          <rect x="132" y="268" width="100" height="28" rx="14" fill="#fff" stroke="#e5e7eb"/><text x="182" y="286" text-anchor="middle">Claude</text>
+          <rect x="244" y="268" width="84" height="28" rx="14" fill="#fff" stroke="#e5e7eb"/><text x="286" y="286" text-anchor="middle">Grok</text>
+          <rect x="340" y="268" width="92" height="28" rx="14" fill="#fff" stroke="#e5e7eb"/><text x="386" y="286" text-anchor="middle">Gemini</text>
+          <rect x="444" y="268" width="100" height="28" rx="14" fill="#fff" stroke="#e5e7eb"/><text x="494" y="286" text-anchor="middle">DeepSeek</text>
+          <rect x="556" y="268" width="80" height="28" rx="14" fill="#fff" stroke="#e5e7eb"/><text x="596" y="286" text-anchor="middle">Kimi</text>
+          <rect x="648" y="268" width="94" height="28" rx="14" fill="#fff" stroke="#e5e7eb"/><text x="695" y="286" text-anchor="middle">Qwen, more</text>
+        </g>
+        <line x1="380" y1="252" x2="380" y2="262" stroke="#9ca3af" stroke-width="1.5"/>
+      </svg>
+      <figcaption>Figure 1: How an AI API gateway works — your app talks to Modelflare, which routes each request through model groups to the underlying providers.</figcaption>
+    </figure>
+
+    <p>That last mile matters for developer tools. Because Modelflare implements the OpenAI, Anthropic, and Gemini wire protocols, tools that let you override a base URL — Codex, Claude Code, Gemini CLI, OpenCode, CC-Switch, Grok Build — can be pointed at Modelflare without code changes. We cover those setups <a href="#dev-tools">below</a>.</p>
+
+    <h2 id="problem">What Problem Does Modelflare Solve?</h2>
+    <p>If you build with more than one model provider, the pain is familiar:</p>
+    <ul>
+      <li><strong>Key sprawl.</strong> Separate API keys, billing dashboards, and rate limits for OpenAI, Anthropic, xAI, and Google. Modelflare collapses them into one key and one balance.</li>
+      <li><strong>Vendor lock-in in the small.</strong> Hard-coding provider SDKs makes switching models a refactor. A gateway turns "switch model" into "change a model string."</li>
+      <li><strong>Provider outages.</strong> When a single provider has a bad hour, your product has a bad hour. Ordered fallback between model groups lets requests reroute automatically.</li>
+      <li><strong>Cost blindness.</strong> Official consoles show spend per vendor, not per feature, per API key, or per agent. Modelflare logs model, tokens, status, latency, and cost for every request in one place.</li>
+      <li><strong>Agent wiring overhead.</strong> Every CLI agent has its own config format. Modelflare ships per-tool setup guides and installers so each tool gets its own key against a shared balance.</li>
+    </ul>
+    <p>These are the same problems the broader "AI gateway" category addresses — see our reviews of the tools that sit on top of this layer, like <a href="/reviews/claude-code-vs-cursor/">Claude Code vs Cursor</a>, for where gateways fit in a modern AI dev stack.</p>
+
+    <h2 id="features">Key Modelflare Features</h2>
+    <p>Based on Modelflare's official site, docs, and trust pages as of August 28, 2026:</p>
+    <ul>
+      <li><strong>Multi-model access.</strong> 25 enabled models across OpenAI, Anthropic, xAI, Google, DeepSeek, Moonshot (Kimi), and Alibaba (Qwen) — plus image generation (GPT Image 2) and video (Seedance 2.5) endpoints.</li>
+      <li><strong>OpenAI-compatible API.</strong> Chat Completions and Responses API at <code>https://modelflare.dev/v1</code>; native Anthropic Messages and Gemini protocols at <code>https://modelflare.dev</code>.</li>
+      <li><strong>Model groups.</strong> Named routing groups per model at different price/stability tiers (e.g. <code>openai-award</code>, <code>openai-stable</code>, <code>openai-premium</code>), selected per API key or per tool config.</li>
+      <li><strong>Ordered fallback.</strong> Priority-ordered fallback groups in the dashboard; requests switch automatically when the primary group is unavailable.</li>
+      <li><strong>Per-key access control.</strong> Create separate API keys per app, tool, or agent, each with its own group assignment.</li>
+      <li><strong>Request logs.</strong> Status, latency, token usage, and cost per request, in real time.</li>
+      <li><strong>Cache Hit Guarantee.</strong> Eligible requests get daily cache hit-rate protection, with shortfalls compensated — verifiable in the usage dashboard.</li>
+      <li><strong>Broad regional availability.</strong> Commercial API access across 150+ listed countries and regions (effective August 1, 2026).</li>
+      <li><strong>Documented data handling.</strong> Request/response content is not stored as a standard long-term record; diagnostics expire after 72 hours; the optional Request Archive is off by default with a 168-hour expiry.</li>
+    </ul>
+
+    <h2 id="openai-compatible">OpenAI-Compatible API: Three Values and You're Done</h2>
+    <p>The core integration contract is deliberately boring, which is a compliment. Any client that already speaks the OpenAI API only needs three values changed:</p>
+
+    <figure class="figure" role="img" aria-label="Diagram: three setup values — an sk-mf API key, the base URL https://modelflare.dev/v1, and a model ID — combine into an API request">
+      <svg viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OpenAI-compatible API setup values">
+        <g font-family="system-ui, sans-serif">
+          <rect x="20" y="24" width="228" height="86" rx="12" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+          <text x="134" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">1 · API Key</text>
+          <text x="134" y="72" text-anchor="middle" font-size="12" fill="#374151" font-family="Menlo, monospace">sk-mf-••••••••</text>
+          <text x="134" y="94" text-anchor="middle" font-size="10.5" fill="#6b7280">one key per app or agent</text>
+
+          <rect x="266" y="24" width="228" height="86" rx="12" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+          <text x="380" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">2 · Base URL</text>
+          <text x="380" y="72" text-anchor="middle" font-size="11" fill="#374151" font-family="Menlo, monospace">https://modelflare.dev/v1</text>
+          <text x="380" y="94" text-anchor="middle" font-size="10.5" fill="#6b7280">OpenAI-compatible endpoint</text>
+
+          <rect x="512" y="24" width="228" height="86" rx="12" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+          <text x="626" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">3 · Model</text>
+          <text x="626" y="72" text-anchor="middle" font-size="12" fill="#374151" font-family="Menlo, monospace">gpt-5.6-sol</text>
+          <text x="626" y="94" text-anchor="middle" font-size="10.5" fill="#6b7280">from the model catalog</text>
+
+          <line x1="380" y1="112" x2="380" y2="140" stroke="#2563eb" stroke-width="2"/>
+          <polygon points="374,138 386,138 380,150" fill="#2563eb"/>
+          <rect x="180" y="152" width="400" height="48" rx="10" fill="#0f172a"/>
+          <text x="380" y="174" text-anchor="middle" font-size="12" fill="#e2e8f0" font-family="Menlo, monospace">POST /v1/chat/completions</text>
+          <text x="380" y="192" text-anchor="middle" font-size="10.5" fill="#94a3b8" font-family="Menlo, monospace">Authorization: Bearer sk-mf-…</text>
+        </g>
+      </svg>
+      <figcaption>Figure 2: OpenAI-compatible setup — swap the key, base URL, and model ID; the request/response format stays the OpenAI one your code already uses.</figcaption>
+    </figure>
+
+    <p>That's the entire migration story for OpenAI-SDK-based apps. Because Anthropic Messages and Gemini native protocols are also supported at the root base URL, tools that speak those protocols natively (like Claude Code and Gemini CLI) work without an OpenAI shim. Model IDs are Modelflare-specific — you pick them from the live catalog, and per-model support differs: some models are available via Chat Completions only, others also via the Responses API, Anthropic Messages, or Gemini native calls.</p>
+
+    <h2 id="connect">How to Connect an Existing Application</h2>
+    <p>The docs describe a three-step path: create an API key, set the base URL, send the first request. In practice, for an app already using the OpenAI SDK:</p>
+    <ol>
+      <li><strong>Create an API key</strong> in the Modelflare dashboard — one key per app, tool, or agent, each mapped to a routing group.</li>
+      <li><strong>Set the base URL</strong> to <code>https://modelflare.dev/v1</code> and the key in your client's auth header.</li>
+      <li><strong>Set the model</strong> to a catalog ID such as <code>gpt-5.6-sol</code> (optionally pin a routing group like <code>openai-stable</code> where the tool supports it).</li>
+      <li><strong>Send a request</strong> and verify the response, then <strong>check usage</strong> — tokens, status, latency, and cost appear in the dashboard.</li>
+    </ol>
+    <p>A minimal Chat Completions request looks like this:</p>
+    <p class="code-label">cURL</p>
+    <pre><code set:html={CODE_BASH} /></pre>
+    <p class="note-box"><strong>Note:</strong> exact model IDs, supported protocols, and routing-group availability vary per model and change over time — always cross-check the live catalog and docs before hard-coding values. We verified the examples above against Modelflare's published quick-start documentation on August 28, 2026.</p>
+
+    <h2 id="dev-tools">Using Modelflare With Developer Tools</h2>
+    <p>This is where Modelflare's integration work pays off. It publishes dedicated quick starts for Codex, Claude Code, Gemini CLI, OpenCode, CC-Switch, and Grok Build. The three most search-relevant setups:</p>
+
+    <figure class="figure" role="img" aria-label="Diagram: Codex, Claude Code, Gemini CLI and OpenCode all connect to Modelflare, which serves them GPT, Claude, Grok, Gemini and other models from one balance">
+      <svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Developer tools workflow through Modelflare">
+        <g font-family="system-ui, sans-serif" font-size="12" fill="#374151">
+          <rect x="18" y="20" width="160" height="44" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="98" y="47" text-anchor="middle" font-weight="600">Codex</text>
+          <rect x="200" y="20" width="160" height="44" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="280" y="47" text-anchor="middle" font-weight="600">Claude Code</text>
+          <rect x="382" y="20" width="160" height="44" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="462" y="47" text-anchor="middle" font-weight="600">Gemini CLI</text>
+          <rect x="564" y="20" width="160" height="44" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="644" y="47" text-anchor="middle" font-weight="600">OpenCode</text>
+
+          <line x1="98" y1="64" x2="330" y2="110" stroke="#2563eb" stroke-width="1.6"/>
+          <line x1="280" y1="64" x2="360" y2="110" stroke="#2563eb" stroke-width="1.6"/>
+          <line x1="462" y1="64" x2="410" y2="110" stroke="#2563eb" stroke-width="1.6"/>
+          <line x1="644" y1="64" x2="440" y2="110" stroke="#2563eb" stroke-width="1.6"/>
+
+          <rect x="210" y="112" width="340" height="52" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+          <text x="380" y="135" text-anchor="middle" font-size="15" font-weight="700" fill="#1e40af">Modelflare</text>
+          <text x="380" y="153" text-anchor="middle" font-size="10.5" fill="#3b82f6">separate key per tool · shared balance and logs</text>
+
+          <line x1="380" y1="164" x2="380" y2="186" stroke="#2563eb" stroke-width="1.6"/>
+          <polygon points="374,184 386,184 380,196" fill="#2563eb"/>
+
+          <rect x="30" y="198" width="140" height="34" rx="17" fill="#f3f4f6" stroke="#9ca3af"/><text x="100" y="220" text-anchor="middle" font-size="11">GPT · Claude</text>
+          <rect x="186" y="198" width="140" height="34" rx="17" fill="#f3f4f6" stroke="#9ca3af"/><text x="256" y="220" text-anchor="middle" font-size="11">Grok · Gemini</text>
+          <rect x="342" y="198" width="140" height="34" rx="17" fill="#f3f4f6" stroke="#9ca3af"/><text x="412" y="220" text-anchor="middle" font-size="11">DeepSeek · Kimi</text>
+          <rect x="498" y="198" width="140" height="34" rx="17" fill="#f3f4f6" stroke="#9ca3af"/><text x="568" y="220" text-anchor="middle" font-size="11">Qwen · more</text>
+        </g>
+      </svg>
+      <figcaption>Figure 3: Developer workflow — each coding agent gets its own Modelflare API key; all of them draw from one balance and report into one usage log.</figcaption>
+    </figure>
+
+    <h3>Modelflare with Codex</h3>
+    <p>Codex talks to OpenAI-compatible providers, so Modelflare provides a one-line installer (<code>curl -fsSL https://modelflare.dev/install/codex.sh | sh</code>, with PowerShell and root/container variants) that writes a Modelflare provider into <code>~/.codex/config.toml</code>. Manual setup is equally short:</p>
+    <p class="code-label">~/.codex/config.toml</p>
+    <pre><code set:html={CODE_TOML} /></pre>
+    <p>Launch with <code>codex --model gpt-5.6-sol</code>. Two things worth knowing: the routing group is set in the config (e.g. <code>openai-stable</code>), and the docs' troubleshooting table flags that a <code>model_not_found</code> error usually means the API key's group can't access that model — a reminder that key, group, and model must line up. For background on the tool itself, see our <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a> guide.</p>
+
+    <h3>Modelflare with Claude Code</h3>
+    <p>Claude Code speaks the Anthropic Messages protocol natively, so the integration is an environment override rather than a provider plugin. Modelflare again offers an installer, or the manual route — set the base URL and key in Claude Code's settings:</p>
+    <p class="code-label">settings.json</p>
+    <pre><code set:html={CODE_JSON} /></pre>
+    <p>At the time of writing, the documented supported models are <code>claude-opus-4-8</code> and <code>claude-sonnet-5</code> — a narrower Claude selection than the full catalog, so check the quick start before assuming a specific Claude model works. Context on the tool: our <a href="/reviews/claude-code-vs-cursor/">Claude Code vs Cursor</a> and <a href="/reviews/claude-code-vs-github-copilot/">Claude Code vs GitHub Copilot</a> comparisons cover where it fits.</p>
+
+    <h3>Modelflare with Gemini CLI and OpenCode</h3>
+    <p>Gemini CLI uses two environment variables: <code>GEMINI_API_KEY</code> (your Modelflare key) and <code>GOOGLE_GEMINI_BASE_URL=https://modelflare.dev</code>, since it speaks the Gemini native protocol. OpenCode uses the OpenAI-compatible <code>https://modelflare.dev/v1</code> endpoint with models like <code>gpt-5.6-sol</code>. Modelflare also documents CC-Switch (a provider switcher for Claude Code-style tools) and Grok Build setups, though we'd only add those if they match your stack.</p>
+
+    <div class="cta-box">
+      <h3>Point your coding agents at one gateway</h3>
+      <p style="margin-bottom: 14px;">Give Codex, Claude Code, and Gemini CLI each their own Modelflare key — one balance, one cost log.</p>
+      <a href={PARTNER_URL} class="btn" target="_blank" rel="noopener sponsored nofollow">Get started with Modelflare</a>
+      <p class="cta-note">Partner link — ToolStep may earn a commission if you sign up, at no extra cost to you.</p>
+    </div>
+
+    <h2 id="groups-fallback">Model Groups &amp; Ordered Fallback</h2>
+    <p>Two mechanisms do the heavy lifting in Modelflare's routing story.</p>
+    <p><strong>Model groups</strong> are named routes per model at different price and stability tiers. For gpt-5.6-sol, the catalog lists <code>openai-award</code> (price-priority, for retryable workloads), <code>openai-stable</code> (the go-to for everyday development), and <code>openai-premium</code> (billed higher, prioritizing continuity and request success). You select a group per API key or per tool config — which means, for example, your CI test suite can use the cheap retryable route while your production key uses the stable one.</p>
+    <p><strong>Ordered fallback</strong> is configured in the dashboard: you add fallback groups in priority order, and when the primary group is unavailable, requests switch automatically to the next one. Be precise about what this is: it is availability-based rerouting between groups, not a semantic quality router. Modelflare's own copy says requests switch "when the primary group is unavailable" — the mechanism does not evaluate which model would answer best, and a fallback group may route to a different model or provider entirely, which can change output characteristics mid-outage.</p>
+
+    <figure class="figure" role="img" aria-label="Diagram: a primary model group routes requests, and when unavailable, requests fall through to fallback group one, then fallback group two">
+      <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Model group ordered fallback">
+        <g font-family="system-ui, sans-serif">
+          <rect x="205" y="16" width="350" height="58" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+          <text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">Primary group — e.g. openai-stable</text>
+          <text x="380" y="60" text-anchor="middle" font-size="11" fill="#3b82f6">everyday traffic · 0.08× of official list price</text>
+
+          <line x1="380" y1="74" x2="380" y2="102" stroke="#dc2626" stroke-width="2"/>
+          <polygon points="374,100 386,100 380,112" fill="#dc2626"/>
+          <rect x="400" y="76" width="220" height="22" rx="11" fill="#fef2f2" stroke="#fecaca"/>
+          <text x="510" y="91" text-anchor="middle" font-size="10.5" fill="#b91c1c">primary group unavailable</text>
+
+          <rect x="205" y="114" width="350" height="58" rx="12" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/>
+          <text x="380" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">Fallback 1 — e.g. openai-premium</text>
+          <text x="380" y="158" text-anchor="middle" font-size="11" fill="#6b7280">higher continuity tier · higher rate</text>
+
+          <line x1="380" y1="172" x2="380" y2="200" stroke="#dc2626" stroke-width="2"/>
+          <polygon points="374,198 386,198 380,210" fill="#dc2626"/>
+          <rect x="400" y="174" width="220" height="22" rx="11" fill="#fef2f2" stroke="#fecaca"/>
+          <text x="510" y="189" text-anchor="middle" font-size="10.5" fill="#b91c1c">fallback 1 unavailable</text>
+
+          <rect x="205" y="212" width="350" height="40" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+          <text x="380" y="237" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Fallback 2 — next group in priority order</text>
+        </g>
+      </svg>
+      <figcaption>Figure 4: Ordered fallback — when a group is unavailable, the request moves to the next group in the priority list instead of failing. It reroutes on availability; it does not pick models by answer quality.</figcaption>
+    </figure>
+
+    <h2 id="usage-cost">Usage, Tokens &amp; Cost Tracking</h2>
+    <p>Every request that passes through Modelflare is logged with its model, routing, status, latency, token counts, cache usage, and cost. Because each API key is a separate entity — one per app, tool, or agent — the dashboard effectively becomes a per-key cost breakdown without any instrumentation code on your side.</p>
+    <p>That is the quiet killer feature for anyone running AI features in production. "What did the onboarding assistant cost last week?" or "which agent burned the tokens?" becomes a dashboard filter instead of a logging pipeline you have to build and maintain. The trust documentation also states what is not retained: request/response content is not stored as a standard long-term record, short-term diagnostics expire after 72 hours, and the optional Request Archive is off by default with a 168-hour expiry.</p>
+
+    <figure class="figure" role="img" aria-label="Diagram: each request flows through model, token count, status and cost, aggregated in a usage dashboard">
+      <svg viewBox="0 0 760 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Usage and cost tracking per request">
+        <g font-family="system-ui, sans-serif" font-size="12" fill="#374151">
+          <rect x="16" y="30" width="120" height="52" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="76" y="52" text-anchor="middle" font-weight="600">Request</text><text x="76" y="70" text-anchor="middle" font-size="10.5" fill="#6b7280">per API key</text>
+          <line x1="136" y1="56" x2="156" y2="56" stroke="#2563eb" stroke-width="2"/><polygon points="154,51 154,61 164,56" fill="#2563eb"/>
+          <rect x="166" y="30" width="120" height="52" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="226" y="52" text-anchor="middle" font-weight="600">Model</text><text x="226" y="70" text-anchor="middle" font-size="10.5" fill="#6b7280">and routing group</text>
+          <line x1="286" y1="56" x2="306" y2="56" stroke="#2563eb" stroke-width="2"/><polygon points="304,51 304,61 314,56" fill="#2563eb"/>
+          <rect x="316" y="30" width="120" height="52" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="376" y="52" text-anchor="middle" font-weight="600">Tokens</text><text x="376" y="70" text-anchor="middle" font-size="10.5" fill="#6b7280">and cache usage</text>
+          <line x1="436" y1="56" x2="456" y2="56" stroke="#2563eb" stroke-width="2"/><polygon points="454,51 454,61 464,56" fill="#2563eb"/>
+          <rect x="466" y="30" width="110" height="52" rx="10" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><text x="521" y="52" text-anchor="middle" font-weight="600">Status</text><text x="521" y="70" text-anchor="middle" font-size="10.5" fill="#6b7280">and latency</text>
+          <line x1="576" y1="56" x2="596" y2="56" stroke="#2563eb" stroke-width="2"/><polygon points="594,51 594,61 604,56" fill="#2563eb"/>
+          <rect x="606" y="30" width="138" height="52" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/><text x="675" y="52" text-anchor="middle" font-weight="700" fill="#c2410c">Cost</text><text x="675" y="70" text-anchor="middle" font-size="10.5" fill="#9a3412">per request</text>
+
+          <rect x="16" y="116" width="728" height="54" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+          <text x="380" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">Usage dashboard</text>
+          <text x="380" y="158" text-anchor="middle" font-size="11" fill="#3b82f6">filter by API key · real-time · cache hit-rate protection visible</text>
+          <line x1="380" y1="82" x2="380" y2="112" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 3"/>
+        </g>
+      </svg>
+      <figcaption>Figure 5: Usage and cost tracking — each request is logged end-to-end and aggregated per key, so cost attribution comes free with the gateway.</figcaption>
+    </figure>
+
+    <h2 id="pricing">Pricing</h2>
+    <p><em>Checked against Modelflare's live pricing page on August 28, 2026. The catalog showed 25 enabled models. Prices change — treat this section as a snapshot, not a quote.</em></p>
+    <p>Modelflare prices per model and per routing group, in multipliers of the official API list price. The clearest documented example is <strong>gpt-5.6-sol</strong> (official list: $5 input / $30 output per million tokens):</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Routing group</th><th>Multiplier</th><th>Input / 1M</th><th>Output / 1M</th><th>Positioning</th></tr>
+        <tr><td><code>openai-first-topup</code></td><td>0.015×</td><td>$0.075</td><td>$0.45</td><td>Limited-time rate, unlocked by a single US$20 top-up</td></tr>
+        <tr><td><code>openai-award</code></td><td>0.03×</td><td>$0.15</td><td>$0.90</td><td>Price-priority, for retryable dev/test workloads</td></tr>
+        <tr><td><code>openai-stable</code></td><td>0.08×</td><td>$0.40</td><td>$2.40</td><td>Everyday development, stability-priority</td></tr>
+        <tr><td><code>openai-premium</code></td><td>0.13×</td><td>$0.65</td><td>$3.90</td><td>Continuity and request-success priority</td></tr>
+        <tr><td>Official API (reference)</td><td>1.0×</td><td>$5.00</td><td>$30.00</td><td>OpenAI list price</td></tr>
+      </table>
+    </div>
+    <p>Other models follow the same group structure (Claude and several GPT models listed with 3-4 routing groups; Grok, Gemini, DeepSeek, Kimi, and Qwen models with one group each at the time of checking). Beyond pay-per-token, Modelflare sells prepaid subscription plans that add bonus credits:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Plan price</th><th>Credits</th><th>Bonus</th><th>Distribution</th></tr>
+        <tr><td>US$99.99</td><td>$110.00</td><td>+10%</td><td>4 installments, every 7 days</td></tr>
+        <tr><td>US$299.99</td><td>$340.00</td><td>+13%</td><td>4 installments, every 7 days</td></tr>
+        <tr><td>US$499.99</td><td>$580.00</td><td>+16%</td><td>4 installments, every 7 days</td></tr>
+        <tr><td>US$999.99</td><td>$1,180.00</td><td>+18%</td><td>4 installments, every 7 days</td></tr>
+        <tr><td>US$1,499.99</td><td>$1,800.00</td><td>+20%</td><td>4 installments, every 7 days</td></tr>
+      </table>
+    </div>
+    <p>Read the fine print on subscriptions: credits apply only to OpenAI GPT, Claude, and Gemini models (other models draw on remaining credit); unused credits do not roll over; and the bonus percentages are tied to the plan tier. Whether the effective rate is "cheaper" depends entirely on your routing-group mix — the premium tier bills at 13% of list for gpt-5.6-sol, while the retryable award tier bills at 3%. We're deliberately not claiming across-the-board savings: rates, group availability, and offers (like the limited-time first-top-up multiplier) can change at any time.</p>
+    <p>For context on the models you'd be routing to, see our <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a> comparison, the <a href="/reviews/grok-4-6-review/">Grok 4.6 review</a>, and the <a href="/reviews/gemini-3-7-flash-review/">Gemini 3.7 Flash review</a>.</p>
+
+    <h2 id="alternatives">Modelflare vs Alternatives</h2>
+    <p>Three alternatives cover most of the same ground. Which one fits depends on whether you want a hosted discount gateway, self-hosted control, or observability depth.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th></th><th>Modelflare</th><th>OpenRouter</th><th>LiteLLM</th><th>Portkey</th></tr>
+        <tr><td><strong>Type</strong></td><td>Hosted gateway</td><td>Hosted marketplace</td><td>Open-source proxy (+ cloud)</td><td>Gateway + observability</td></tr>
+        <tr><td><strong>Unified API</strong></td><td>OpenAI-compatible + native Anthropic/Gemini</td><td>OpenAI-compatible</td><td>OpenAI-compatible (100+ providers)</td><td>OpenAI-compatible</td></tr>
+        <tr><td><strong>Catalog size</strong></td><td>25 models (Aug 2026)</td><td>Hundreds of models</td><td>Depends on your provider keys</td><td>Depends on your provider keys</td></tr>
+        <tr><td><strong>Fallback / routing</strong></td><td>Ordered group fallback, price-tiered groups</td><td>Provider routing + fallback</td><td>Routing, fallback, budgets</td><td>Routing, fallback, guardrails</td></tr>
+        <tr><td><strong>Cost tracking</strong></td><td>Per-request logs incl. cost, cache guarantee</td><td>Per-request usage + spend</td><td>Per-key/team budgets</td><td>Deep observability suite</td></tr>
+        <tr><td><strong>Self-hosted</strong></td><td>No</td><td>No</td><td>Yes (open source)</td><td>Partially (open-source gateway)</td></tr>
+        <tr><td><strong>Pricing model</strong></td><td>Per token by group; prepaid plans with bonus</td><td>Per token + fee on credit purchases</td><td>Free self-host; paid cloud</td><td>Usage-based tiers</td></tr>
+        <tr><td><strong>Best for</strong></td><td>Devs wanting one cheap key for top models + agent tooling</td><td>Maximum model choice in one account</td><td>Teams that must own the infra</td><td>Production teams needing observability</td></tr>
+      </table>
+    </div>
+    <ul>
+      <li><strong>Modelflare vs OpenRouter:</strong> OpenRouter's catalog is far larger and it is the safer "default" choice for model variety. Modelflare's edge is price-tiered routing with published multipliers, native Anthropic/Gemini protocol support (so Claude Code and Gemini CLI connect natively), and per-tool integration guides. If you need obscure or niche models, OpenRouter wins; if you want cheaper access to the current flagship cohort with fallback, Modelflare is more focused.</li>
+      <li><strong>Modelflare vs LiteLLM:</strong> LiteLLM is the choice when self-hosting is non-negotiable — you keep your provider keys, data never leaves your infra, and the proxy is free. You pay for that with setup and maintenance burden, and usage dashboards you assemble yourself. Modelflare trades that control for a managed service; whether that trade is acceptable is a trust decision, not a technical one.</li>
+      <li><strong>Modelflare vs Portkey:</strong> Portkey leans into production observability — tracing, guardrails, caching, evaluations — with a hosted platform and an open-source gateway. Modelflare's logging is simpler: per-request status, latency, tokens, and cost. If you need deep tracing across complex agent pipelines, Portkey is the stronger observability layer; if you mainly need cost visibility and cheaper tokens, Modelflare covers it with less surface area.</li>
+    </ul>
+
+    <h2 id="pros-cons">Pros &amp; Cons</h2>
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>One API key and balance across GPT, Claude, Grok, Gemini, DeepSeek, Kimi, and Qwen models</li>
+        <li>OpenAI-compatible Chat Completions/Responses plus native Anthropic Messages and Gemini protocols — most tools connect without code changes</li>
+        <li>Transparent price-tiered routing groups with per-token prices published against official rates</li>
+        <li>Ordered fallback between model groups for availability rerouting</li>
+        <li>Per-request usage, token, status, latency, and cost logs; separate keys per app or agent</li>
+        <li>Cache Hit Guarantee with shortfall compensation, verifiable in the dashboard</li>
+        <li>First-class quick starts for Codex, Claude Code, Gemini CLI, OpenCode, CC-Switch, and Grok Build</li>
+        <li>Documented data-handling policy: no long-term storage of request content, 72-hour diagnostics expiry, Request Archive off by default</li>
+      </ul>
+    </div>
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>Small catalog — 25 models versus hundreds on OpenRouter</li>
+        <li>Operated by a young company (Havenbyte LLC); no SOC 2 or ISO certifications claimed at the time of writing</li>
+        <li>Cheapest routing tier (award) is positioned for retryable workloads, not production traffic — the price/reliability trade-off is real</li>
+        <li>Subscription credits apply only to GPT, Claude, and Gemini, and unused credits do not roll over</li>
+        <li>No self-hosted option — all traffic and prompts pass through a third party</li>
+        <li>Fallback is availability-based rerouting, not semantic model selection; behavior can differ across fallback groups</li>
+        <li>Pricing, group availability, and promotional rates can change; the published multipliers are a snapshot, not a contract</li>
+      </ul>
+    </div>
+
+    <h2 id="who-should">Who Should Use Modelflare?</h2>
+    <div class="use-case">
+      <h3>Multi-model app and agent developers</h3>
+      <p>If your product calls more than one provider — or you want the option to — one key, one bill, and per-key cost attribution remove real operational friction. The OpenAI-compatible surface means an existing OpenAI SDK app migrates in minutes.</p>
+    </div>
+    <div class="use-case">
+      <h3>Codex, Claude Code, and Gemini CLI power users</h3>
+      <p>Running several subscription-based coding agents gets expensive and fragmented. Routing them through one gateway with per-tool keys and a shared usage log is a genuinely better billing and monitoring setup — and the per-tool installers make it low-effort.</p>
+    </div>
+    <div class="use-case">
+      <h3>Indie builders and small AI SaaS teams</h3>
+      <p>For teams without platform engineers, the hosted fallback, cost dashboards, and cache hit-rate guarantee replace infrastructure you would otherwise build — provided you're comfortable with the third-party-routing trust trade.</p>
+    </div>
+    <div class="use-case">
+      <h3>Cost-sensitive development and CI workloads</h3>
+      <p>The award group's positioning — cheap, retryable, for dev/test traffic — is exactly the profile of automated pipelines where a retried request costs less than a premium route.</p>
+    </div>
+
+    <h2 id="who-should-not">Who May Not Need Modelflare?</h2>
+    <ul>
+      <li><strong>Single-provider projects.</strong> If your app only calls one official API and you're happy with its console, a gateway adds a hop, a third party, and a billing layer without solving a problem you have.</li>
+      <li><strong>Compliance-constrained teams.</strong> No SOC 2 or ISO claims at the time of writing, and prompts transit a third party — regulated workloads may require certifications Modelflare doesn't yet advertise.</li>
+      <li><strong>Self-hosted requirements.</strong> If policy or paranoia says keys and traffic must stay on your infra, LiteLLM is the honest answer; Modelflare has no self-hosted option.</li>
+      <li><strong>Provider-specific feature depth.</strong> If you depend on provider-native features beyond the supported protocol surface (specific fine-tunes, org-level endpoints, or the newest model on day one), a gateway — any gateway — will lag the official API.</li>
+      <li><strong>Long-tail model hunters.</strong> 25 models covers the flagship cohort but not the long tail; OpenRouter's catalog is much larger.</li>
+    </ul>
+
+    <h2 id="faq">FAQ</h2>
+    <div class="faq">
+      <details>
+        <summary>What is Modelflare?</summary>
+        <p>Modelflare is a hosted AI API gateway operated by Havenbyte LLC. It gives you a single API key and endpoint for models from OpenAI, Anthropic, xAI, Google, DeepSeek, Moonshot, Alibaba, and other providers, using OpenAI-compatible Chat Completions and Responses APIs plus native Anthropic Messages and Gemini protocols. It also provides routing groups at different price and stability tiers, ordered fallback between model groups, and per-request usage and cost logs.</p>
+      </details>
+      <details>
+        <summary>Is Modelflare compatible with OpenAI APIs?</summary>
+        <p>Yes. Modelflare exposes OpenAI-compatible Chat Completions and Responses API endpoints at the base URL https://modelflare.dev/v1. In an existing OpenAI SDK or client, you swap the API key and base URL and use a Modelflare model ID; request and response formats follow the OpenAI conventions. Modelflare also supports the native Anthropic Messages and Gemini protocols through the base URL https://modelflare.dev.</p>
+      </details>
+      <details>
+        <summary>How much does Modelflare cost?</summary>
+        <p>Modelflare charges per token based on the routing group you select. For gpt-5.6-sol (official list price $5 input / $30 output per million tokens), the openai-award group costs $0.15/$0.90, openai-stable $0.40/$2.40, and openai-premium $0.65/$3.90 per million tokens, as of August 28, 2026. Prepaid subscription plans from US$99.99 add 10-20% bonus credits. Prices change over time, so check the official pricing page before committing.</p>
+      </details>
+      <details>
+        <summary>What models does Modelflare support?</summary>
+        <p>As of August 28, 2026, the catalog lists 25 enabled models, including OpenAI gpt-5.6-sol, gpt-5.6-terra, gpt-5.5, and gpt-5.4; Anthropic claude-opus-5, claude-sonnet-5, claude-opus-4-8, claude-haiku-4-5, and claude-fable-5; xAI grok-4.6 and grok-4.5; Google Gemini 3.7/3.6/3.5 Flash and Gemini 3.1 Pro Preview; DeepSeek V4 Pro and Flash; Kimi K3; and Qwen3.8-Max, plus image generation (gpt-image-2) and video (Seedance 2.5) endpoints.</p>
+      </details>
+      <details>
+        <summary>Can I use Modelflare with Codex?</summary>
+        <p>Yes. Modelflare publishes a Codex quick start with a one-line installer and a manual setup. In ~/.codex/config.toml you set model_provider to modelflare, choose a model such as gpt-5.6-sol, and optionally set a model_routing_group such as openai-stable. You then store your Modelflare API key and launch Codex with codex --model gpt-5.6-sol.</p>
+      </details>
+      <details>
+        <summary>Can I use Modelflare with Claude Code?</summary>
+        <p>Yes. Modelflare provides an installer or a manual configuration for Claude Code. In the Claude Code settings.json you set ANTHROPIC_BASE_URL to https://modelflare.dev and ANTHROPIC_API_KEY to your Modelflare API key. The documented supported models at the time of writing are claude-opus-4-8 and claude-sonnet-5.</p>
+      </details>
+      <details>
+        <summary>How does Modelflare fallback work?</summary>
+        <p>In the Modelflare dashboard you add fallback model groups in priority order. When the primary group is unavailable, requests switch automatically to the next group in the list instead of failing. This is group-level availability routing: it is not a semantic quality router, and it does not guarantee a specific model will always serve the request, since fallback groups may route to different models or providers.</p>
+      </details>
+      <details>
+        <summary>Is Modelflare cheaper than official APIs?</summary>
+        <p>For the models and routing groups we checked on August 28, 2026, list prices are below the official per-token rates: gpt-5.6-sol via the openai-stable group is billed at $0.40/$2.40 per million tokens versus the official $5/$30. However, pricing is route-dependent, discount routes trade reliability, subscription credits apply only to GPT, Claude, and Gemini models, and unused credits do not roll over. Verify current rates on the official pricing page before committing.</p>
+      </details>
+      <details>
+        <summary>What are the alternatives to Modelflare?</summary>
+        <p>The closest alternatives are OpenRouter (a hosted model marketplace with a unified OpenAI-compatible API and a much larger catalog), LiteLLM (an open-source gateway you can self-host with support for 100+ providers), and Portkey (a gateway focused on observability, guardrails, and caching, available hosted or self-hosted). The right choice depends on whether you want a hosted discount gateway, self-hosted control, or deeper observability.</p>
+      </details>
+    </div>
+
+    <h2 id="final-verdict">Final Verdict</h2>
+    <div class="verdict">
+      <p><strong>Modelflare is worth using if you're a multi-model developer or coding-agent power user who wants one key, one bill, and per-request cost visibility at below-official list rates — and you're comfortable routing through a young third-party operator.</strong> The OpenAI/Anthropic/Gemini protocol coverage is genuinely useful, the per-tool setup guides for Codex and Claude Code are better than most gateways bother with, and the price-tiered routing model is unusually transparent about what you're buying: cheap-and-retryable versus stable-versus-premium.</p>
+      <p>It is not worth using if you need a large model catalog (OpenRouter), certifications or self-hosting (LiteLLM or an official API), or deep production observability (Portkey). The 25-model catalog, absent compliance claims, and no-rollover subscription credits are real constraints, not nitpicks.</p>
+      <p>Our suggestion for the right developer: start with one low-stakes workload — point your dev-tier Codex key or a side project at the stable group, watch the usage dashboard for a week, and check whether the cost and log visibility actually change how you work. If they do, move more keys over. If reliability or support disappoints, you've risked very little finding out.</p>
+    </div>
+
+    <div class="cta-box">
+      <h3>Ready to try Modelflare?</h3>
+      <p style="margin-bottom: 14px;">Create your account, explore the model catalog and routing groups, and connect your first tool in minutes.</p>
+      <a href={PARTNER_URL} class="btn" target="_blank" rel="noopener sponsored nofollow">Create your Modelflare account</a>
+      <p class="cta-note">Partner link — ToolStep may earn a commission if you sign up, at no extra cost to you.</p>
+    </div>
+
+    <div class="note-box">
+      <strong>How we reviewed this:</strong> this evaluation is based on Modelflare's official website, documentation, pricing catalog, and trust pages as of August 28, 2026. We did not run funded API traffic at publication time, so we report no latency, uptime, or success-rate measurements — only what the vendor publishes and what can be verified from the public docs. See our <a href="/how-we-test/">how we test</a> page and <a href="/editorial-policy/">editorial policy</a> for methodology. Pricing and model availability change frequently; verify on modelflare.dev before making purchase decisions. This page contains partner links: if you sign up through them, ToolStep may earn a commission at no extra cost to you, and that relationship does not affect our ratings or conclusions.
+    </div>
+
+    <div class="related-articles">
+      <h2>Related Reading</h2>
+      <div class="related-grid">
+        <div class="related-card">
+          <a href="/reviews/claude-code-vs-cursor/">Claude Code vs Cursor</a>
+          <p>Which AI coding tool fits your workflow — and how a gateway changes the model-choice calculus.</p>
+        </div>
+        <div class="related-card">
+          <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a>
+          <p>Our ranked guide to coding agents, including the tools Modelflare integrates with.</p>
+        </div>
+        <div class="related-card">
+          <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a>
+          <p>The two model families you'd most likely route through a gateway, compared head-to-head.</p>
+        </div>
+        <div class="related-card">
+          <a href="/reviews/grok-4-6-review/">Grok 4.6 Review</a>
+          <p>xAI's flagship with a 500K context — one of the models available through Modelflare.</p>
+        </div>
+        <div class="related-card">
+          <a href="/reviews/gemini-3-7-flash-review/">Gemini 3.7 Flash Review</a>
+          <p>Google's value-tier model, routable via Modelflare's native Gemini protocol support.</p>
+        </div>
+        <div class="related-card">
+          <a href="/reviews/deepseek-v4-pro-review/">DeepSeek V4 Pro Review</a>
+          <p>The open-weight alternative that makes multi-model routing worth setting up.</p>
+        </div>
+      </div>
+    </div>
+
+    <AffiliateDisclosure />
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>
