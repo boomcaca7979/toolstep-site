@@ -1,0 +1,199 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Qwen3.8-Flash-Next vs GLM-5.3-Flash: Price, Speed & Coding Compared | ToolStep";
+const description = "Developer-focused comparison of Qwen3.8-Flash-Next and GLM-5.3-Flash: real API cost math, what is and isn't known about speed, published coding evidence, and which to pick per project type.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Qwen3.8-Flash-Next vs GLM-5.3-Flash: Price, Speed & Coding Compared", description: description, datePublished: '2026-08-30', dateModified: '2026-08-30', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Qwen3.8-Flash-Next vs GLM-5.3-Flash: Price, Speed & Coding Compared", "item": new URL('/reviews/qwen3-8-flash-next-vs-glm-5-3-flash/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which is cheaper: Qwen3.8-Flash or GLM-5.3-Flash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At list prices Qwen3.8-Flash is cheaper (¥0.8/¥2.7 per million in/out, about $0.11/$0.38) than GLM-5.3-Flash ($0.15/$0.50). But GLM-5.3-Flash's 50% launch discount ($0.075/$0.25, until September 9, 2026 24:00 UTC+8) makes GLM cheaper for any workload started before the deadline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which model is faster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unverified on both sides. Alibaba publishes a hosted throughput figure of 5M tokens per minute for Qwen3.8-Flash; Zhipu published no official throughput number for GLM-5.3-Flash as of August 30, 2026. Qwen3.8-Flash-Next's ~6B active parameters suggest cheaper serving than GLM's ~18B, but no independent latency comparison exists yet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is better for coding: Qwen3.8-Flash-Next or GLM-5.3-Flash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By published evidence, GLM-5.3-Flash leads the coding suites both vendors publish: Zhipu reports Terminal-Bench 2.1 84.3, DeepSWE 63.4, and NL2Repo-Bench 56.3; Alibaba's official card reports DeepSWE 58.7, SWE-bench Pro 62.5, SWE-bench Multilingual 81.0, NL2Repo 48.1, and LiveCodeBench v6 91.9 (all vendor-reported). Qwen publishes extra coding scores with no GLM equivalent, so the head-to-head is incomplete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I wait for the GLM-5.3-Flash discount to end before choosing Qwen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if Qwen's coding capability is verified by then. The rational sequence: use GLM-5.3-Flash at launch pricing until September 9 while you benchmark both on your own tasks, then let the evidence decide. If you need Qwen's video/computer-use strengths now, Qwen's list price is still the cheaper baseline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I self-host both models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. GLM-5.3-Flash: MIT weights (~328GB FP8) with SGLang, vLLM, TokenSpeed, or KTransformers. Qwen3.8-Flash-Next: public weights with the model card listing the Qwen Community License v1.0 (Qwen's repo states Apache-2.0 for the 27B and 2.4T-A95B releases), deployable via transformers or vLLM (4-way TP guidance, --max-model-len 262144). Flash-Next's real memory footprint is larger than its 6B active parameters suggest."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h2 .winner-tag { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; vertical-align: middle; margin-left: 8px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Models · Developer Decision</span>
+      <h1>Qwen3.8-Flash-Next vs GLM-5.3-Flash: Price, Speed &amp; Coding Compared</h1>
+      <p class="meta">Updated August 30, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Both released August 26, 2026, both open-weights, both 1M-class context — but for a developer picking between <strong>Qwen3.8-Flash-Next</strong> and <strong>GLM-5.3-Flash</strong>, the decision reduces to three questions: what will it cost at your real token volumes, how fast will it actually run, and which one wins the published coding evidence. This page answers those three with the numbers that exist and flags the numbers that don't. For the full eight-dimension comparison (multimodal, reasoning, deployment trade-offs), see our <a href="/reviews/glm-5-3-flash-vs-qwen3-8-flash-next/">GLM-5.3-Flash vs Qwen3.8-Flash-Next</a> page.
+    </p>
+
+    <div class="update-box">
+      <h2>Decision snapshot</h2>
+      <p><strong>Captured: August 30, 2026.</strong> Cheapest API this week: <strong>GLM-5.3-Flash</strong> (50% launch discount until September 9, 2026 24:00 UTC+8). Cheapest at list: <strong>Qwen3.8-Flash</strong>. Coding evidence: <strong>both published — GLM leads every shared suite</strong>. Published throughput number: <strong>Qwen only</strong> (5M TPM). Neither vendor's benchmarks are independently verified.</p>
+    </div>
+
+    <h2>Price: The Calendar Problem <span class="winner-tag">GLM until Sept 9, Qwen after</span></h2>
+    <p>Per million tokens, as published (accessed August 30, 2026; Qwen CNY converted at ~7.1 CNY/USD, estimates marked):</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Rate</th><th>GLM-5.3-Flash list</th><th>GLM-5.3-Flash launch (until Sept 9, 24:00 UTC+8)</th><th>Qwen3.8-Flash</th></tr>
+        <tr><td>Input</td><td>$0.15</td><td>$0.075</td><td>¥0.8 ≈ $0.11</td></tr>
+        <tr><td>Output</td><td>$0.50</td><td>$0.25</td><td>¥2.7 ≈ $0.38</td></tr>
+        <tr><td>Cached input</td><td>$0.03</td><td>$0.015</td><td>¥0.1 ≈ $0.014</td></tr>
+        <tr><td>Cache storage</td><td colspan="2">Temporarily free</td><td>—</td></tr>
+      </table>
+    </div>
+    <p>Monthly cost at three realistic developer profiles (API only):</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Profile (in / out per month)</th><th>GLM at launch</th><th>GLM at list</th><th>Qwen (converted)</th></tr>
+        <tr><td>Side project: 10M / 2M</td><td>$1.25</td><td>$2.50</td><td>≈$1.86</td></tr>
+        <tr><td>SaaS feature: 50M / 15M</td><td>$7.50</td><td>$15.00</td><td>≈$11.20</td></tr>
+        <tr><td>Heavy agent service: 300M / 100M</td><td>$47.50</td><td>$95.00</td><td>≈$71.00</td></tr>
+      </table>
+    </div>
+    <p>The pattern: <strong>GLM wins every row before September 9; Qwen wins every row after.</strong> Because output tokens cost 3.3–3.4x input on both models, agentic workloads (code, tool calls, long generations) are decided by output price — where the GLM discount is deepest. If you can commit usage before the deadline, GLM is the value pick; if your project launches in October, Qwen's list price is the baseline. Detailed cost scenarios on our <a href="/reviews/glm-5-3-flash-pricing/">GLM-5.3-Flash pricing page</a>.</p>
+
+    <h2>Speed: What's Published and What Isn't <span class="winner-tag">Unverified on both sides</span></h2>
+    <ul>
+      <li><strong>Qwen3.8-Flash (hosted):</strong> 5M tokens per minute (TPM) published on the official platform page. No per-request latency figures.</li>
+      <li><strong>GLM-5.3-Flash (hosted):</strong> no official TPM/TPS figure published as of August 30, 2026. Zhipu's published efficiency metrics are architectural (3.01x lower attention compute, 4.44x smaller KV cache vs GLM-5.3) — relevant to long-context throughput, not a latency number.</li>
+      <li><strong>Self-hosted inference:</strong> Flash-Next's ~6B active parameters point to cheaper per-token serving than GLM's ~18B, but Alibaba's own guidance warns the 51B N-gram table plus vision components inflate real VRAM — measure per engine. No independent throughput comparison exists for either model yet.</li>
+    </ul>
+    <p>Reasoning modes affect perceived speed: GLM-5.3-Flash's thinking is always on (<code>reasoning_effort</code> low/high/max) — low effort is the fast path, but you cannot disable thinking entirely. Qwen3.8-Flash's thinking mode is optional with up to 262K CoT. If latency-sensitive routing is your architecture, plan for always-on thinking on GLM and compare with your own load tests.</p>
+
+    <h2>Coding: Shared Suites vs. Extra Breadth <span class="winner-tag">GLM-5.3-Flash on shared suites</span></h2>
+    <p>Both vendors published coding data in their official materials; the comparison on the suites they share is not close, but Qwen adds suites GLM doesn't cover:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Published coding results (vendor-reported)</th><th>GLM-5.3-Flash</th><th>Qwen3.8-Flash-Next</th></tr>
+        <tr><td>Terminal-Bench 2.1</td><td>84.3</td><td>Not published</td></tr>
+        <tr><td>DeepSWE v1.1</td><td><strong>63.4</strong></td><td>58.7</td></tr>
+        <tr><td>NL2Repo-Bench</td><td><strong>56.3</strong></td><td>48.1</td></tr>
+        <tr><td>SWE-bench Pro</td><td>Not published</td><td>62.5</td></tr>
+        <tr><td>SWE-bench Multilingual</td><td>Not published</td><td>81.0</td></tr>
+        <tr><td>LiveCodeBench v6</td><td>Not published</td><td>91.9</td></tr>
+        <tr><td>Internal Code Bench</td><td>"Comparable to Claude Opus 4.8" (Z.ai)</td><td>Not published</td></tr>
+      </table>
+    </div>
+    <p>All numbers are vendor-reported and unverified. On the suites both publish, <strong>GLM-5.3-Flash leads (DeepSWE 63.4 vs 58.7; NL2Repo 56.3 vs 48.1)</strong>; Qwen publishes additional coding scores (SWE-bench Pro, SWE-bench Multilingual, LiveCodeBench v6) with no GLM equivalent, so the head-to-head is incomplete — and Flash-Next's 6B-active design could still deliver surprising efficiency per token on real workloads. For coding-agent harness context, see <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a> and the <a href="/reviews/deepseek-harness-review/">DeepSeek Harness review</a>.</p>
+
+    <h2>Context &amp; Memory Budget <span class="winner-tag">Tie on API</span></h2>
+    <p>Both hosted APIs serve 1M context (GLM native with 128K output; Qwen default with 991K max input / 131K output). Self-hosted, GLM's 1M is native while Flash-Next's native window is 262K (extendable to 1M). For repository-scale prompts and agent memory, either works on the API; for self-hosted whole-repo work, GLM's native 1M avoids extension complexity. See <a href="/reviews/best-ai-models-long-context-2026/">Best AI Models for Long-Context Work 2026</a> for the wider field.</p>
+
+    <h2>Developer Decision Matrix</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Your situation</th><th>Pick</th><th>Why</th></tr>
+        <tr><td>Indie dev, API, starting now</td><td><strong>GLM-5.3-Flash</strong></td><td>Cheapest until Sept 9 + leads every shared coding suite</td></tr>
+        <tr><td>Production launch after mid-September</td><td><strong>Qwen3.8-Flash</strong></td><td>Cheaper at list; GLM leads shared coding suites — re-benchmark before launch</td></tr>
+        <tr><td>Self-hosting on existing GPUs</td><td><strong>Qwen3.8-Flash-Next</strong></td><td>6B active; check Qwen Community License terms; measure VRAM first</td></tr>
+        <tr><td>Coding agent / IDE workload</td><td><strong>GLM-5.3-Flash</strong></td><td>Published coding results; Coding Plan has 3x quota vs GLM-5.3</td></tr>
+        <tr><td>Video / computer-use app</td><td><strong>Qwen3.8-Flash</strong></td><td>Published video/OSWorld results; built-in tools</td></tr>
+        <tr><td>Long-context RAG (1M prompts)</td><td><strong>Either API</strong></td><td>Both 1M; decide on cache rate (Qwen ≈$0.014 vs GLM $0.03 list)</td></tr>
+      </table>
+    </div>
+
+    <h2>Bottom Line</h2>
+    <div class="verdict">
+      <p>For a developer deciding this week: <strong>GLM-5.3-Flash wins the price/coding combination — cheaper during its launch window and ahead of Qwen on every coding suite both vendors publish (DeepSWE 63.4 vs 58.7; NL2Repo 56.3 vs 48.1, vendor-reported). Qwen3.8-Flash-Next wins the efficiency/self-host angle and the post-discount price, and publishes extra coding scores (SWE-bench Pro, LiveCodeBench v6) with no GLM equivalent yet.</strong> The speed question is genuinely open — Qwen publishes a throughput number, GLM publishes architectural efficiency, and no independent latency test of either exists yet. Budget for list prices and benchmark both on your own tasks before September 9; when GLM publishes equivalents to Qwen's extra benchmarks, the head-to-head will be complete.</p>
+      <p>Related: <a href="/reviews/qwen3-8-flash-next-review/">Qwen3.8-Flash-Next review</a> · <a href="/reviews/glm-5-3-flash-review/">GLM-5.3-Flash review</a> · <a href="/reviews/glm-5-3-flash-vs-qwen3-8-flash-next/">Full GLM vs Qwen comparison</a> · <a href="/reviews/best-open-weight-ai-models-coding-2026/">Best Open-Weight Coding Models 2026</a></p>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>Which is cheaper: Qwen3.8-Flash or GLM-5.3-Flash?</h3>
+    <p>Qwen at list (≈$0.11/$0.38 vs $0.15/$0.50 per million in/out); GLM during its 50% launch discount ($0.075/$0.25 until September 9, 2026 24:00 UTC+8).</p>
+    <h3>Which model is faster?</h3>
+    <p>Unverified. Qwen publishes 5M TPM for the hosted Flash API; Zhipu published no throughput figure for GLM-5.3-Flash. No independent latency comparison exists as of August 30, 2026.</p>
+    <h3>Which is better for coding?</h3>
+    <p>By published evidence, GLM-5.3-Flash leads every suite both vendors publish (DeepSWE 63.4 vs 58.7, NL2Repo 56.3 vs 48.1, vendor-reported); Qwen adds SWE-bench Pro 62.5 and LiveCodeBench v6 91.9 with no GLM equivalent. Independent verification pending.</p>
+    <h3>Should I wait for the GLM discount to end before choosing Qwen?</h3>
+    <p>Only if independent verification or GLM's missing equivalents to Qwen's extra benchmarks change the picture. Use the GLM discount window to benchmark both on your own tasks.</p>
+    <h3>Can I self-host both?</h3>
+    <p>Yes — GLM under MIT (SGLang/vLLM/TokenSpeed/KTransformers, ~328GB FP8); Qwen3.8-Flash-Next with public weights (Qwen Community License v1.0 per its card; the Qwen3.8 repo states Apache-2.0 for the 27B/2.4T releases — verify per model).</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Sources (accessed August 30, 2026): Zhipu official docs (GLM-5.3-Flash page), z.ai/subscribe, Alibaba Qwen official model card for Qwen3.8-Flash-Next (ModelScope), Qwen platform (qianwenai.com), QwenLM/Qwen3.8 GitHub, OpenRouter listings (platform pricing). All benchmarks vendor-reported; CNY→USD conversions approximate at ~7.1 CNY/USD. ToolStep claims no laboratory test results. See our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

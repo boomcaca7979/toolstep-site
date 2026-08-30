@@ -1,0 +1,211 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Best Open-Weight AI Models for Coding in 2026 (Ranked & Compared) | ToolStep";
+const description = "The best open-weight AI models for coding in 2026, ranked: DeepSeek V4 Pro, GLM-5.3-Flash, Tencent Hy4 preview, and Qwen3.8-Flash-Next compared on benchmarks, context, cost, and licenses.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Best Open-Weight AI Models for Coding in 2026 (Ranked & Compared)", description: description, datePublished: '2026-08-30', dateModified: '2026-08-30', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Best Open-Weight AI Models for Coding 2026", "item": new URL('/reviews/best-open-weight-ai-models-coding-2026/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Best Open-Weight AI Models for Coding in 2026",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "DeepSeek V4 Pro", "url": "https://www.toolstep.top/reviews/deepseek-v4-pro-review/" },
+        { "@type": "ListItem", "position": 2, "name": "GLM-5.3-Flash", "url": "https://www.toolstep.top/reviews/glm-5-3-flash-review/" },
+        { "@type": "ListItem", "position": 3, "name": "Tencent Hy4 preview", "url": "https://www.toolstep.top/reviews/tencent-hy4-preview-review/" },
+        { "@type": "ListItem", "position": 4, "name": "Qwen3.8-Flash-Next", "url": "https://www.toolstep.top/reviews/qwen3-8-flash-next-review/" },
+        { "@type": "ListItem", "position": 5, "name": "Qwen3.8-2.4T-A95B", "url": "https://www.toolstep.top/reviews/qwen3-8-flash-next-review/" }
+      ]
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best open-weight model for coding in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By published evidence as of August 30, 2026, DeepSeek V4 Pro leads open coding performance (Terminal-Bench 2.1 87.9, DeepSWE 62.7, MIT weights, 1M context — vendor-reported), while GLM-5.3-Flash offers the best capability-per-dollar (Terminal-Bench 2.1 84.3, DeepSWE 63.4 at $0.15/$0.50 per million tokens, MIT)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which open-weight model is best for self-hosting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Qwen3.8-Flash-Next is the most efficient to serve (~6B active parameters; its model card lists the Qwen Community License v1.0) and its published coding scores trail GLM-5.3-Flash on the suites both publish (DeepSWE 58.7 vs 63.4). DeepSeek V4 Pro is the best-documented high-performance self-host option (MIT, official SGLang/vLLM support). Measure your VRAM first: GLM-5.3-Flash needs ~328GB FP8, and Hy4 preview is an 770B-class model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GLM-5.3 open weight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet as of August 30, 2026. Z.ai's timeline pointed to approximately two weeks after its August 14 launch, pending security hardening, and the license was unannounced. Its Flash sibling GLM-5.3-Flash is open under MIT today."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest open-weight coding model API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GLM-5.3-Flash at $0.15/$0.50 per million tokens (input/output), $0.075/$0.25 during its launch discount until September 9, 2026 24:00 UTC+8 — the cheapest 1M-context coding-capable API among open-weight models. Qwen3.8-Flash (≈$0.11/$0.38) is cheaper at list prices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which open-weight model has the best license?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All leaders are permissively licensed: DeepSeek V4 Pro and GLM-5.3-Flash under MIT; Tencent Hy4 preview under Apache-2.0. Qwen3.8-Flash-Next's model card lists the Qwen Community License v1.0 (the Qwen3.8 repo states Apache-2.0 for the 27B and 2.4T-A95B releases). MIT is the most permissive (no patent clause); Apache-2.0 adds an explicit patent grant and attribution requirements."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h2 .rank-badge { display: inline-block; background: #111; color: #fff; font-size: 0.8rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; vertical-align: middle; margin-right: 8px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Coding · Rankings</span>
+      <h1>Best Open-Weight AI Models for Coding in 2026</h1>
+      <p class="meta">Last ranked August 30, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      The open-weight coding model market exploded in August 2026: DeepSeek V4 Pro went official, Zhipu shipped GLM-5.3 and its Flash sibling, Alibaba released the Qwen3.8 open family, and Tencent open-sourced Hy4 preview — all within four weeks. This page ranks the best open-weight AI models for coding in 2026 by the evidence that actually exists: published coding benchmarks, context windows, per-token cost, deployment practicality, and license terms. It is designed to be updated as new weights and benchmarks land — the <em>best</em> answer here changes monthly.
+    </p>
+
+    <div class="update-box">
+      <h2>Ranking snapshot — August 30, 2026</h2>
+      <p><strong>1. DeepSeek V4 Pro</strong> (top published coding performance, MIT) · <strong>2. GLM-5.3-Flash</strong> (best capability-per-dollar, MIT) · <strong>3. Tencent Hy4 preview</strong> (most capable spec, thinnest evidence, Apache-2.0) · <strong>4. Qwen3.8-Flash-Next</strong> (most efficient to serve; trails GLM on shared coding suites) · <strong>5. Qwen3.8-2.4T-A95B</strong> (max-scale open option). All benchmarks vendor-reported unless noted.</p>
+    </div>
+
+    <h2>How We Rank</h2>
+    <ul>
+      <li><strong>Coding evidence:</strong> published coding benchmarks (Terminal-Bench, DeepSWE, NL2Repo, vendor Code Benches) weigh most — but only vendor-reported data exists, so we weight <em>whether</em> a vendor published numbers at all</li>
+      <li><strong>Context window:</strong> 1M-class windows matter for whole-repo work; native (not extended) specs score higher</li>
+      <li><strong>Cost:</strong> API list prices and self-hosting footprint (active parameters, FP8 size)</li>
+      <li><strong>Deployment:</strong> official engine support (SGLang, vLLM), quantization tooling, finetuning paths</li>
+      <li><strong>License:</strong> MIT and Apache-2.0 both qualify as open-weight; MIT is the more permissive of the two. Qwen3.8-Flash-Next's card lists the Qwen Community License v1.0, so check per-model terms.</li>
+    </ul>
+
+    <h2>The Ranking at a Glance</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>#</th><th>Model</th><th>Params (total/active)</th><th>Context</th><th>Published coding evidence</th><th>License</th><th>Best for</th></tr>
+        <tr><td>1</td><td>DeepSeek V4 Pro</td><td>1.6T / —</td><td>1M</td><td>TB2.1 87.9 · DeepSWE 62.7</td><td>MIT</td><td>Top open coding performance, self-host</td></tr>
+        <tr><td>2</td><td>GLM-5.3-Flash</td><td>320B / 18B</td><td>1M (128K out)</td><td>TB2.1 84.3 · DeepSWE 63.4 · NL2Repo 56.3</td><td>MIT</td><td>Capability per dollar, API + self-host</td></tr>
+        <tr><td>3</td><td>Hy4 preview</td><td>770B / 49B</td><td>1M+</td><td>Blind expert eval 2.99/4 (no numeric scores)</td><td>Apache-2.0</td><td>Most capable-spec Apache-2.0 model</td></tr>
+        <tr><td>4</td><td>Qwen3.8-Flash-Next</td><td>125B / 6B</td><td>262K → 1M</td><td>DeepSWE 58.7 · SWE-bench Pro 62.5 · LiveCodeBench v6 91.9</td><td>Qwen Community v1.0 (card)</td><td>Cheapest self-host footprint</td></tr>
+        <tr><td>5</td><td>Qwen3.8-2.4T-A95B</td><td>2.4T / 95B</td><td>—</td><td>Not detailed in repo</td><td>Apache-2.0</td><td>Max-scale open experimentation</td></tr>
+      </table>
+    </div>
+
+    <h2><span class="rank-badge">#1</span>DeepSeek V4 Pro — Best Published Coding Performance</h2>
+    <p>DeepSeek's official release (August 13, 2026, V4-Pro-0813) is the only open model this month with frontier-adjacent published numbers across the hardest suites: Terminal-Bench 2.1 87.9, DeepSWE v1.1 62.7, CyberGym 83.3 — per DeepSeek's published evaluations (vendor-reported; GPT-5.6 Sol still leads some suites per the same table). It pairs a 1M-token context with MIT weights and official SGLang/vLLM deployment. The catch is pricing: the August 16 schedule raised output to $3.96/M peak / $1.98/M off-peak (from $0.87), so it is no longer the value pick it was. <a href="/reviews/deepseek-v4-pro-review/">Full DeepSeek V4 Pro review →</a></p>
+    <p><strong>Best for:</strong> teams that want the best-documented open coding performance and can self-host or shift to off-peak API hours.</p>
+
+    <h2><span class="rank-badge">#2</span>GLM-5.3-Flash — Best Capability-Per-Dollar</h2>
+    <p>Zhipu's Flash-tier release (August 26) delivers near-flagship agentic coding at a tenth of flagship pricing: Terminal-Bench 2.1 84.3, DeepSWE 63.4, NL2Repo-Bench 56.3 (vendor-reported), a native 1M context, MIT weights (~328GB FP8), and API pricing of $0.15/$0.50 per million tokens — $0.075/$0.25 during the launch discount until September 9. It leads Zhipu's own tool-use leaderboards (Toolathlon-Verified 78.4) and runs on four official engines (SGLang, vLLM, TokenSpeed, KTransformers). <a href="/reviews/glm-5-3-flash-review/">Full GLM-5.3-Flash review →</a> · <a href="/reviews/glm-5-3-flash-pricing/">Pricing analysis →</a></p>
+    <p><strong>Best for:</strong> developers who want published coding numbers, a real 1M context, and the cheapest capable API — or MIT weights to self-host.</p>
+
+    <h2><span class="rank-badge">#3</span>Tencent Hy4 Preview — Most Capable Spec, Thinnest Evidence</h2>
+    <p>Tencent's first open flagship (August 28) is the scale play: 770B total / 49B active, 1M+ context, Apache-2.0 weights released at launch with official vLLM/SGLang images. Its evidence is a blind expert evaluation — 163 experts scored it 2.99/4 vs GLM-5.3's 2.92 on engineering tasks (vendor-run) — with no public numeric benchmark tables. Tencent's own repo flags an over-reasoning tendency. If you want the most capable-spec permissively-licensed model you can download today, this is it; if you want benchmark tables, they haven't been published. <a href="/reviews/tencent-hy4-preview-review/">Full Hy4 preview review →</a> · <a href="/reviews/tencent-hy4-vs-glm-5-3/">Hy4 vs GLM-5.3 →</a></p>
+    <p><strong>Best for:</strong> self-hosting teams prioritizing scale and permissive licensing over published benchmark evidence.</p>
+
+    <h2><span class="rank-badge">#4</span>Qwen3.8-Flash-Next — Most Efficient to Serve</h2>
+    <p>Alibaba's Qwen4 experimental release (August 26) runs just ~6B active parameters with a 262K native context (extendable to 1M) and public weights (Qwen Community License v1.0 per the model card) — the cheapest open model of the group to serve, with a training-cost claim of ~1/9 of Qwen3.7-Plus that appears in third-party coverage of the release. Its official card publishes coding scores (DeepSWE 1.1 58.7, SWE-bench Pro 62.5, LiveCodeBench v6 91.9) that trail GLM-5.3-Flash on the suites both report (DeepSWE 63.4, NL2Repo 56.3 — vendor-reported), and the 51B N-gram embedding layer plus vision components inflate real memory. The hosted sibling Qwen3.8-Flash API is the production delivery form. <a href="/reviews/qwen3-8-flash-next-review/">Full Qwen3.8-Flash-Next review →</a></p>
+    <p><strong>Best for:</strong> GPU-constrained self-hosters and researchers who value efficiency over published coding evidence.</p>
+
+    <h2><span class="rank-badge">#5</span>Qwen3.8-2.4T-A95B — Max-Scale Open Option</h2>
+    <p>Alibaba's open Qwen3.8 family (August 12) brought a Qwen-Max-class model to open release for the first time: Qwen3.8-2.4T-A95B (2.4T total / 95B active, Apache-2.0) plus Qwen3.8-27B (August 14). The repo defers detailed results to the model cards and serving examples use 262K contexts. At 2.4T parameters it is a serious infrastructure commitment — the choice for teams that specifically want maximum open scale. (Covered in our <a href="/reviews/qwen3-8-flash-next-review/">Qwen3.8 series review</a>.)</p>
+    <p><strong>Best for:</strong> labs and enterprises with multi-node GPU fleets exploring max-scale open models.</p>
+
+    <h2>Also Tracking</h2>
+    <ul>
+      <li><strong>GLM-5.3</strong> — the flagship (744B-class, per media) with the year's biggest published long-horizon coding jumps (TB3.0 4.6 → 28.3), but weights not yet confirmed released at the time of this audit (Z.ai's ~2-week timeline from the Aug 14 launch); it re-enters this ranking the day they drop. <a href="/reviews/glm-5-3/">Review →</a></li>
+      <li><strong>Qwen3.8-27B</strong> — the small dense entry in the open family (Apache-2.0); promising for edge deployments once benchmarks publish</li>
+      <li><strong>Kimi K3</strong> — posts strong DeepSWE numbers (67.5) on Zhipu's published table, but its open-weight status was not verified at capture time, so it is not ranked here</li>
+      <li><strong>GLM-5.2</strong> — previous generation, MIT, still a solid budget self-host choice</li>
+    </ul>
+
+    <h2>Decision Guide</h2>
+    <ul>
+      <li><strong>Top published coding performance →</strong> DeepSeek V4 Pro (or closed frontier: <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a>)</li>
+      <li><strong>Best value API with benchmarks →</strong> GLM-5.3-Flash, especially before September 9</li>
+      <li><strong>Apache-2.0 scale today →</strong> Hy4 preview</li>
+      <li><strong>Tiny serving footprint →</strong> Qwen3.8-Flash-Next (test your tasks first — its card trails GLM on shared coding suites)</li>
+      <li><strong>IDE/agent tooling, not raw models →</strong> see <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a> (Claude Code, Cursor, Copilot, Windsurf) — this page covers models, that one covers tools</li>
+      <li><strong>Harness/runtime for open models →</strong> <a href="/reviews/deepseek-harness-review/">DeepSeek Harness review</a></li>
+    </ul>
+
+    <h2>How This Page Updates</h2>
+    <p>This is a living ranking. It changes when: (1) GLM-5.3 weights release, (2) Hy4 publishes numeric benchmarks, (3) Qwen publishes coding scores for Flash-Next, (4) any leader changes pricing, or (5) independent verification (e.g., Artificial Analysis-style testing) lands for this cohort. We will revise the ranking — not just append news — on each of those events.</p>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>In August 2026, open-weight coding finally became a real alternative to closed models: <strong>DeepSeek V4 Pro holds the best published numbers, GLM-5.3-Flash holds the best price-performance, Hy4 preview holds the best spec, and Qwen3.8-Flash-Next holds the best efficiency — with MIT, Apache-2.0, and Qwen Community licenses across the board.</strong> The rational pick is workload-dependent, and every benchmark is still vendor-reported, so the strongest move is the cheapest one: benchmark GLM-5.3-Flash and Hy4 preview on your own tasks now, while the free windows and discounts last, and let real evidence — not vendor tables — pick your winner.</p>
+      <p>Related: <a href="/reviews/glm-5-3-flash-vs-qwen3-8-flash-next/">GLM-5.3-Flash vs Qwen3.8-Flash-Next</a> · <a href="/reviews/tencent-hy4-vs-glm-5-3/">Hy4 vs GLM-5.3</a> · <a href="/reviews/best-ai-models-long-context-2026/">Best Long-Context Models 2026</a> · <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a></p>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>What is the best open-weight model for coding in 2026?</h3>
+    <p>By published evidence (August 30, 2026): DeepSeek V4 Pro for top scores (TB2.1 87.9, vendor-reported); GLM-5.3-Flash for price-performance (TB2.1 84.3 at $0.15/$0.50).</p>
+    <h3>Which open-weight model is best for self-hosting?</h3>
+    <p>Qwen3.8-Flash-Next for footprint (~6B active); DeepSeek V4 Pro for documented performance; GLM-5.3-Flash for capability + MIT. Measure VRAM before choosing.</p>
+    <h3>Is GLM-5.3 open weight?</h3>
+    <p>Not yet (as of August 30, 2026) — weights pending safety hardening. GLM-5.3-Flash is open under MIT today.</p>
+    <h3>What is the cheapest open-weight coding API?</h3>
+    <p>GLM-5.3-Flash ($0.075/$0.25 during launch discount; $0.15/$0.50 list). Qwen3.8-Flash (≈$0.11/$0.38) is cheaper at list.</p>
+    <h3>Which open-weight model has the best license?</h3>
+    <p>MIT (DeepSeek V4 Pro, GLM-5.3-Flash) is the most permissive; Apache-2.0 (Hy4 preview; Qwen3.8-27B and 2.4T-A95B per the repo) adds an explicit patent grant and attribution requirements; Qwen3.8-Flash-Next's card lists the Qwen Community License v1.0 — verify per model.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Sources (accessed August 30, 2026): vendor official documentation and announcements — DeepSeek V4 Pro (DeepSeek published evaluations), Zhipu GLM-5.3-Flash (docs.bigmodel.cn, ModelScope), Tencent Hy4 preview (official newsroom, GitHub repo), Alibaba Qwen3.8 (model card, QwenLM/Qwen3.8 repo). All benchmarks vendor-reported and reproduced as published; ToolStep claims no laboratory test results. See our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

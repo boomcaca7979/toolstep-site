@@ -1,0 +1,196 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Tencent Hy4 vs GLM-5.3: Which Chinese AI Model Is Better for Coding? | ToolStep";
+const description = "Tencent Hy4 preview vs Zhipu GLM-5.3 compared for coding: published benchmark evidence, blind expert eval, 1M contexts, cost, openness, and developer usability — with no invented test scores.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Tencent Hy4 vs GLM-5.3: Which Chinese AI Model Is Better for Coding?", description: description, datePublished: '2026-08-30', dateModified: '2026-08-30', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Tencent Hy4 vs GLM-5.3 for Coding", "item": new URL('/reviews/tencent-hy4-vs-glm-5-3/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which is better for coding: Hy4 preview or GLM-5.3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the evidence you trust. GLM-5.3 has published benchmark tables (Terminal-Bench 2.1 88.2, DeepSWE 66.9, Z.ai Code Bench 31.4%, all vendor-reported). Hy4 preview has no public numeric benchmarks, but Tencent's blind expert eval scored it 2.99/4 vs GLM-5.3's 2.92 on 203 engineering tasks (vendor-run). There is no independent head-to-head test yet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Hy4 preview beat GLM-5.3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On Tencent's own blind evaluation, Hy4 preview (2.99/4) edged GLM-5.3 (2.92/4) with 46.8% wins across 203 engineering tasks. On Zhipu's published benchmark tables, GLM-5.3 posts the only public coding numbers. Neither vendor's result is independently verified."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which model has a bigger context window?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both are 1M-token class. Tencent's newsroom states Hy4 preview's context as 'over 1M'. GLM-5.3's context is 1M per Zhipu's evaluation footnotes and media coverage of the GLM-5.2 lineage. Neither exact spec is published as a clean number for GLM-5.3."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is more open: Hy4 preview or GLM-5.3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hy4 preview is more open today: Apache-2.0 weights were released August 28, 2026 on Hugging Face, ModelScope, GitCode, and CNB. GLM-5.3's weights were not yet confirmed released at the time of this audit — Z.ai's original timeline pointed to approximately two weeks after its August 14 launch, pending security hardening, and its license was not announced; verify current status on z.ai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is cheaper: Hy4 preview or GLM-5.3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hy4 preview has published API pricing: ¥6 per million input tokens and ¥18 per million output tokens. GLM-5.3 has no published standalone API price as of August 30, 2026 — it is available through the GLM Coding Plan's points-based quota, so a direct per-token comparison is not possible yet."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h2 .winner-tag { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; vertical-align: middle; margin-left: 8px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Coding · Comparison</span>
+      <h1>Tencent Hy4 vs GLM-5.3: Which Chinese AI Model Is Better for Coding?</h1>
+      <p class="meta">Updated August 30, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Two weeks apart, China's two big flagships landed: Zhipu's <strong>GLM-5.3</strong> (August 14) with the year's biggest published long-horizon coding jumps, and Tencent's <strong>Hy4 preview</strong> (August 28) with the largest open-weights spec yet — and the two vendors point at opposite kinds of evidence. GLM-5.3 publishes full benchmark tables; Hy4 preview publishes a blind expert evaluation and no public numeric scores. This comparison works through what each side actually shows for coding, long-context, reasoning, speed, cost, openness, and developer usability — without inventing test scores neither vendor released.
+    </p>
+
+    <div class="update-box">
+      <h2>Evidence note</h2>
+      <p><strong>Last updated: August 30, 2026.</strong> GLM-5.3 figures below are from Zhipu's published evaluations (as documented in our <a href="/reviews/glm-5-3/">GLM-5.3 review</a>). Hy4 preview figures are from Tencent's newsroom and the official repository. No independent benchmark comparing the two exists as of this writing; treat all numbers as vendor-reported.</p>
+    </div>
+
+    <h2>Quick Comparison</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Dimension</th><th>GLM-5.3 (Zhipu)</th><th>Hy4 preview (Tencent)</th></tr>
+        <tr><td>Release date</td><td>August 14, 2026</td><td>August 28, 2026</td></tr>
+        <tr><td>Total / active params</td><td>~744B / ~40B (media-reported, shared GLM-5.2 base)</td><td>770B / 49B (official)</td></tr>
+        <tr><td>Context window</td><td>1M (evaluation footnotes; not restated as spec)</td><td>1M+ (official newsroom)</td></tr>
+        <tr><td>Public coding benchmarks</td><td>Yes — TB2.1 88.2, TB3.0 28.3, DeepSWE 66.9, Code Bench 31.4%</td><td>No public numeric scores; blind expert eval 2.99/4</td></tr>
+        <tr><td>Open weights</td><td>Not yet confirmed released (Z.ai timeline: ~2 weeks after Aug 14)</td><td>Available now — Apache-2.0</td></tr>
+        <tr><td>API pricing</td><td>Not announced (Coding Plan points only)</td><td>¥6 in / ¥18 out / from ¥0.3 cached</td></tr>
+        <tr><td>Known behavior quirks</td><td>Thinking always on; reasoning_effort low/high/max</td><td>Over-reasons; over-verifies its own work (per repo)</td></tr>
+        <tr><td>First-party tooling</td><td>ZCode harness, GLM Coding Plan (points)</td><td>WorkBuddy/CodeBuddy, Yuanbao, ima</td></tr>
+      </table>
+    </div>
+
+    <h2>Contenders at a Glance</h2>
+    <p><strong>GLM-5.3</strong> is Zhipu's coding &amp; cybersecurity flagship — an unusual release built on the same base as GLM-5.2 with all gains from scaled post-training, posting the largest long-horizon coding jumps in the GLM line's history (Terminal-Bench 3.0: 4.6 → 28.3) plus an emergent cyber capability. Its open weights are held back for safety evaluation. Full details in our <a href="/reviews/glm-5-3/">GLM-5.3 review</a>.</p>
+    <p><strong>Hy4 preview</strong> is Tencent's new-generation MoE flagship: 770B total / 49B active, a 1M+ context, Apache-2.0 weights released at launch, and — per Tencent's announcement — the first model where the company described a "recursive self-improvement loop" (the model participated in auto-optimizing its own training data strategy and evaluation). It arrived as a preview — Tencent promises more Hy4 models. Full details in our <a href="/reviews/tencent-hy4-preview-review/">Hy4 preview review</a>.</p>
+
+    <h2>Coding: Benchmarks vs. Blind Eval <span class="winner-tag">GLM by published data, Hy4 by expert preference</span></h2>
+    <p>This is the crux of the comparison, and the two sides cannot be directly reconciled:</p>
+    <ul>
+      <li><strong>Zhipu published tables (vendor-reported):</strong> Terminal-Bench 2.1 88.2, Terminal-Bench 3.0 28.3, DeepSWE v1.1 66.9, Agents' Last Exam 28.5, and 31.4% completion on the internal Z.ai Code Bench at ~50K output tokens (vs Claude Opus 4.8's 29.5% at 120K and Claude Fable 5's 39.5% at Max).</li>
+      <li><strong>Tencent published an expert evaluation (vendor-run):</strong> 163 experts, 203 engineering tasks, blind scoring — Hy4 preview 2.99/4 vs GLM-5.3's 2.92/4 (46.8% wins, 12.8% ties, 40.4% losses) and vs Kimi K3's 2.94/4 (51.2% wins).</li>
+    </ul>
+    <p>The honest synthesis: <strong>if you want numbers, GLM-5.3 is the only one with them; if you want engineering-expert preference, Tencent's own blind test puts Hy4 ahead of GLM-5.3 by a small margin.</strong> Both are vendor-generated, neither is independently verified, and the two evidence types measure different things (task completion rates vs. expert preference). Notably, Hy4 preview's expert edge over GLM-5.3 on engineering tasks, if it holds up in independent testing, would make Tencent's preview the more interesting coding pick despite the missing tables.</p>
+
+    <h2>Long-Context <span class="winner-tag">Tie (1M-class both)</span></h2>
+    <p>Both models are 1M-token class: GLM-5.3's evaluation footnotes reference 1M-token runs (NL2Repo) and its GLM-5.2 lineage carried a million-token window; Tencent's newsroom states Hy4 preview's context as "over 1M." GLM-5.3's post-training specifically targeted long-horizon coding agents with days-scale engineering work units, while Hy4's compressed Gated DSA attention (IndexCache) is designed to make 1M context tractable at 770B scale. Neither vendor publishes clean per-request latency at 1M, so treat long-context reliability as unverified on both sides. For the wider long-context field, see <a href="/reviews/best-ai-models-long-context-2026/">Best AI Models for Long-Context Work 2026</a>.</p>
+
+    <h2>Reasoning <span class="winner-tag">Unverified both</span></h2>
+    <p>GLM-5.3's published reasoning-adjacent results: HLE with tools 62.5, GDPval-AA v2 1,769 (~4% behind Claude Opus 5 Max per Zhipu's table). Hy4 preview's reasoning evidence is the blind expert eval plus Tencent's positioning (recursive self-improvement pipeline, strong RL). No public numeric reasoning benchmark exists for Hy4 preview as of August 30, 2026, so a direct reasoning comparison is not possible — we won't invent one.</p>
+
+    <h2>Speed <span class="winner-tag">Unverified both</span></h2>
+    <p>Neither vendor published standard inference latency for these models. What exists: Zhipu reports system-level optimizations that improved long-horizon RL <em>training</em> throughput by 2.3x+ (training, not inference), and Tencent reports a 31.8% end-to-end <em>inference</em> throughput gain from auto-optimized kernels and operator fusion versus its own baseline — plus native MTP speculative decoding in Hy4. Meanwhile Tencent's repo warns Hy4 preview can spend longer than necessary reasoning and over-verify its own work, which directly raises latency and token cost on simple coding tasks. GLM-5.3's always-on thinking has a similar effect (no disabled-thinking path). For speed-sensitive coding agents, both need load testing; neither ships published latency data.</p>
+
+    <h2>Cost <span class="winner-tag">Hy4 published, GLM unknown</span></h2>
+    <p>Hy4 preview has real published pricing: <strong>¥6 per million input tokens, ¥18 per million output tokens, cache hits from ¥0.3</strong> (≈$0.85 / $2.54 / $0.04 at ~7.1 CNY/USD — our conversion, marked as estimate). GLM-5.3 has <strong>no published standalone API price</strong>; it runs through the GLM Coding Plan's points-based quota (50% off-peak consumption) and ZCode with a 1.5x quota boost through August 31. A direct per-token comparison is impossible today — if you need line-item pricing, Hy4's is public; GLM's is a subscription calculus. For context, Zhipu's Flash-tier sibling <a href="/reviews/glm-5-3-flash-pricing/">GLM-5.3-Flash costs $0.15/$0.50</a> — an order of magnitude below Hy4's published rates.</p>
+
+    <h2>Openness &amp; Deployment <span class="winner-tag">Hy4 preview — weights available today</span></h2>
+    <p>This dimension has a clear winner <em>today</em>: Hy4 preview's Apache-2.0 weights were released at launch on Hugging Face, ModelScope, GitCode, and CNB, with official vLLM and SGLang images, a finetuning pipeline, and AngelSlim quantization tooling — fully self-hostable right now. GLM-5.3's weights were not yet confirmed released at the time of this audit: Z.ai's original timeline pointed to approximately two weeks after the August 14 launch, pending security hardening (license unannounced) — verify current status on z.ai. If open weights are your requirement today, Hy4 preview is the one you can run now — the same conclusion our <a href="/reviews/best-open-weight-ai-models-coding-2026/">Best Open-Weight AI Models for Coding 2026</a> draws.</p>
+
+    <h2>Developer Usability <span class="winner-tag">Depends on your stack</span></h2>
+    <ul>
+      <li><strong>GLM-5.3:</strong> day-one rollout to all GLM Coding Plan subscribers; first-party ZCode harness; API model ID <code>glm-5.3</code> with always-on thinking and <code>reasoning_effort</code> low/high/max; documented breaking change for pipelines that disabled thinking.</li>
+      <li><strong>Hy4 preview:</strong> first release across WorkBuddy/CodeBuddy (domestic + international), Yuanbao, and ima; APIs on Tencent Cloud Tokenhub and OpenRouter; OpenAI-compatible endpoint after self-hosting; recommended sampling temperature 0.9 / top_p 1.0 with <code>reasoning_effort: "no_think"</code> for direct replies.</li>
+    </ul>
+    <p>If you live in coding agents today, GLM-5.3 is the more turnkey path (Coding Plan + ZCode). If you self-host or use OpenRouter-style routing, Hy4 preview's open weights and OpenAI-compatible serving are the practical choice. For agent harness context, see <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a>.</p>
+
+    <h2>Which One Should You Choose?</h2>
+    <ul>
+      <li><strong>Choose GLM-5.3 if:</strong> you want published benchmark numbers, you're on the GLM Coding Plan, or you're tracking the open-weights release for when it lands.</li>
+      <li><strong>Choose Hy4 preview if:</strong> open Apache-2.0 weights today matter more than benchmark tables, you trust expert-preference evidence, or you're in Tencent's product ecosystem (WorkBuddy/CodeBuddy free trial).</li>
+      <li><strong>Choose neither for peak coding if:</strong> closed frontier models are on the table — per Zhipu's own table, GPT-5.6 Sol and Claude Fable 5 lead the hardest suites (see <a href="/reviews/gpt-5-6-vs-claude/">GPT-5.6 vs Claude</a>).</li>
+      <li><strong>Wait and re-test if:</strong> Hy4's benchmark tables land (the full Hy4 line is promised) or GLM-5.3's weights drop — both events will change this comparison materially.</li>
+    </ul>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>Between the two Chinese coding flagships, the evidence is asymmetric and the conclusion is conditional: <strong>GLM-5.3 is the better-documented coding model — full benchmark tables, massive published long-horizon gains — but you cannot download it; Hy4 preview is the better-packageable one — Apache-2.0 weights today, a 1M+ context, and a vendor-run blind eval that edges GLM-5.3 on engineering tasks — but its benchmark story is not yet written.</strong> Our independent assessment: if you must ship with open weights this week, Hy4 preview is the only option and a defensible one; if you can wait, GLM-5.3's weight release and Hy4's full-line launch will settle this properly. Meanwhile, the value play in this family is the Flash tier: <a href="/reviews/glm-5-3-flash-review/">GLM-5.3-Flash</a> delivers most of GLM-5.3's coding capability at a tenth of the price — and it is open today.</p>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>Which is better for coding: Hy4 preview or GLM-5.3?</h3>
+    <p>GLM-5.3 has the only published coding benchmarks (TB2.1 88.2, DeepSWE 66.9, vendor-reported); Hy4 preview has a vendor-run blind eval edging GLM-5.3 (2.99 vs 2.92) but no public numeric scores. No independent comparison exists.</p>
+    <h3>Does Hy4 preview beat GLM-5.3?</h3>
+    <p>On Tencent's blind expert eval, yes (2.99 vs 2.92). On published benchmarks, GLM-5.3 is the only one with any. Neither is independently verified.</p>
+    <h3>Which has a bigger context window?</h3>
+    <p>Both 1M-class: Hy4 preview "over 1M" per Tencent's newsroom; GLM-5.3 1M per evaluation footnotes. No clean spec number published for GLM-5.3.</p>
+    <h3>Which is more open?</h3>
+    <p>Hy4 preview — Apache-2.0 weights released at launch. GLM-5.3's weights were not yet confirmed released at the time of this audit (Z.ai timeline: ~2 weeks after the Aug 14 launch) — verify current status on z.ai.</p>
+    <h3>Which is cheaper?</h3>
+    <p>Hy4 preview has published pricing (¥6/¥18 per million); GLM-5.3 has no standalone API price — only the Coding Plan points system. Not directly comparable.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Sources (accessed August 30, 2026): Zhipu official GLM-5.3 announcement and published evaluations (as documented in our GLM-5.3 review), Tencent official newsroom release, Tencent-Hunyuan/Hy4-preview GitHub repository. All benchmarks vendor-reported and reproduced as published; CNY→USD conversions approximate at ~7.1 CNY/USD. ToolStep claims no laboratory test results. See our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

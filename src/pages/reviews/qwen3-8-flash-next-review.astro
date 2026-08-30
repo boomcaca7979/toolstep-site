@@ -1,0 +1,262 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Qwen3.8-Flash-Next Review: Features, Context Window, Pricing & Coding | ToolStep";
+const description = "Qwen3.8-Flash-Next shipped August 26, 2026 as Alibaba's open-weights architecture preview of the Qwen4 lineage: 125B total / 6B active, native 262K context extendable to 1M, with the Qwen3.8-Flash API at ¥0.8/M input.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "Qwen3.8-Flash-Next Review: Features, Context Window, Pricing & Coding", description: description, datePublished: '2026-08-30', dateModified: '2026-08-30', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "Qwen3.8-Flash-Next Review", "item": new URL('/reviews/qwen3-8-flash-next-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Qwen3.8-Flash-Next",
+      "applicationCategory": "AI Model",
+      "operatingSystem": "API (Qwen3.8-Flash), self-hosted (transformers/vLLM)",
+      "offers": { "@type": "Offer", "price": "0.11", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Qwen3.8-Flash-Next?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Qwen3.8-Flash-Next is Alibaba Qwen's open-weights experimental release in the Qwen4 lineage (tagged qwen4_exp on the official ModelScope card), publicly released August 26, 2026. It is a 125B-total / ~6B-active MoE with a hybrid GDN + QSA attention design and a 262,144-token native context extendable to 1M tokens. Note: the model card lists the Qwen Community License v1.0, not Apache-2.0."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Qwen3.8-Flash-Next and Qwen3.8-Flash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per the official model card, Qwen3.8-Flash is the production API model built on Qwen3.8-Flash-Next, adding a default 1M context, built-in tools (code interpreter, web search, image search), and hosted multimodal input. Flash-Next is the open-weights experimental release (qwen4_exp) for research and self-hosting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Qwen3.8-Flash-Next context window?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Native context is 262,144 tokens, extendable to 1,000,000 tokens. The production Qwen3.8-Flash API serves a default 1M context with max input 991K and max output 131K tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Qwen3.8-Flash cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per Alibaba's published pricing: ¥0.8 per million input tokens, ¥2.7 per million output tokens, ¥0.1 per million cached input tokens (about $0.11 / $0.38 / $0.014 at ~7.1 CNY/USD). Explicit cache creation costs ¥1.25 per million tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Qwen3.8-Flash-Next open source?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — weights are public on ModelScope and Hugging Face. The Flash-Next model card lists the Qwen Community License v1.0 (qwen-community-1.0); Qwen's GitHub repo states Apache-2.0 for the Qwen3.8 series (Qwen3.8-27B and Qwen3.8-2.4T-A95B), so verify per model. Official serving guidance uses a 4-way tensor-parallel vLLM setup with --max-model-len 262144."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Qwen3.8-Flash-Next good at coding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per the official model card's published benchmarks (vendor-reported): DeepSWE 1.1 58.7, SWE-bench Pro 62.5, SWE-bench Multilingual 81.0, NL2Repo-Bench 48.1, and LiveCodeBench v6 91.9. For comparison, GLM-5.3-Flash's card reports DeepSWE 63.4 and NL2Repo-Bench 56.3 — GLM leads the suites both publish. Independent verification is still pending."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Models</span>
+      <h1>Qwen3.8-Flash-Next Review: Alibaba's 125B Open Architecture Preview</h1>
+      <p class="meta">Reviewed August 30, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Qwen3.8-Flash-Next is the open-weights "architecture preview" of Alibaba's Qwen4 lineage, publicly released August 26, 2026 — the same day Zhipu shipped GLM-5.3-Flash. It pairs a 125B-total / ~6B-active MoE with a hybrid GDN + QSA attention design, a 262K-token native context extendable to 1M, and an efficiency story (training cost claimed at ~1/9 of Qwen3.7-Plus) that makes it one of the cheapest capable models to self-host. The production API version, Qwen3.8-Flash, adds a default 1M context and built-in tools at ¥0.8 per million input tokens.
+    </p>
+
+    <div class="update-box">
+      <h2>Live update notice</h2>
+      <p><strong>Last updated: August 30, 2026.</strong> Qwen3.8-Flash-Next is four days old. Specs below are from Alibaba's official model card and platform pages (accessed August 30, 2026). Coding-specific public benchmarks had not been published at capture time; we say so rather than guess.</p>
+    </div>
+
+    <h2>Quick Verdict</h2>
+    <p>Qwen3.8-Flash-Next is the most efficient open model in the August 2026 cohort to run — 6B active parameters, a 262K native context, and a training-cost claim of roughly 1/9 of Qwen3.7-Plus. It is not, however, a finished product: the official ModelScope card tags it as a Qwen4 experimental release (<code>qwen4_exp</code>), Alibaba itself warns its scores can't be read as overall leadership because protocols differ, and on the coding suites both vendors publish, it trails GLM-5.3-Flash (DeepSWE 58.7 vs 63.4; NL2Repo-Bench 48.1 vs 56.3, all vendor-reported). For researchers and self-hosters who want the cheapest possible look at where Qwen is heading, it's a compelling download; for production API use, the sibling Qwen3.8-Flash is the delivery form Alibaba actually recommends.</p>
+
+    <h2>What Is Qwen3.8-Flash-Next?</h2>
+    <p>Qwen3.8-Flash-Next is Alibaba Qwen's open-weights experimental release in the Qwen4 lineage (the official ModelScope card tags it <code>qwen4_exp</code>), publicly released August 26, 2026 alongside the production Qwen3.8-Flash API model. Per the official model card, <strong>Qwen3.8-Flash is based on Flash-Next</strong> — the production model adds a default 1M context and official built-in tools on top of the same base — but they are "not identical delivery forms," and Flash-Next should not be equated with the full Qwen4 product line. The model extends the Qwen3.8 open series released earlier in August (Qwen3.8-27B on August 14 and Qwen3.8-2.4T-A95B on August 12, Apache-2.0 per the Qwen3.8 repo) and is positioned as part of the first Qwen-Max-class open release program.</p>
+
+    <h2>Model Specs &amp; Architecture</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Spec</th><th>Qwen3.8-Flash-Next</th><th>Qwen3.8-Flash (API)</th></tr>
+        <tr><td>Release date</td><td>August 26, 2026</td><td>August 26, 2026</td></tr>
+        <tr><td>Total parameters</td><td>125B (MoE) + 51B N-gram Embedding</td><td>Same base (hosted)</td></tr>
+        <tr><td>Active parameters / token</td><td>~6B</td><td>Same base (hosted)</td></tr>
+        <tr><td>Native context</td><td>262,144 tokens (extendable to 1M)</td><td>1M default (max input 991K)</td></tr>
+        <tr><td>Max output</td><td>Not published</td><td>131K tokens</td></tr>
+        <tr><td>Input modalities</td><td>Text + vision components (self-hosted)</td><td>Image, text, video → text</td></tr>
+        <tr><td>Attention</td><td>Hybrid GDN + QSA, Gated Residual (4 branches)</td><td>Same architecture (hosted)</td></tr>
+        <tr><td>Training</td><td>Muon + AdamW recipe; cost claimed ~1/9 of Qwen3.7-Plus</td><td>—</td></tr>
+        <tr><td>Open weights</td><td>Yes — public; card lists Qwen Community License v1.0</td><td>No (hosted API)</td></tr>
+        <tr><td>API price (in / out per 1M)</td><td>— (self-host)</td><td>¥0.8 / ¥2.7 (cache hit ¥0.1)</td></tr>
+      </table>
+    </div>
+    <p>Architecture highlights from the model card: a <strong>GDN + QSA hybrid attention</strong> design (the Qwen4-lineage successor to the hybrid attention of earlier Qwen3.x models), a <strong>Gated Residual</strong> block with four branches, and an <strong>N-gram Embedding</strong> layer adding 51B parameters that improves token prediction efficiency. Training uses a Muon + AdamW recipe — notable because Muon-style optimizers are one of the current efficiency-research favorites. Alibaba's headline efficiency claim: training cost roughly 1/9 of Qwen3.7-Plus (vendor-reported, reproduced as published).</p>
+
+    <h2>Benchmarks: What the Official Model Card Shows</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Coding benchmarks</th><th>Qwen3.8-Flash-Next</th><th>GLM-5.3-Flash (for reference)</th></tr>
+        <tr><td>DeepSWE 1.1</td><td>58.7</td><td>63.4</td></tr>
+        <tr><td>SWE-bench Pro</td><td>62.5</td><td>Not published</td></tr>
+        <tr><td>SWE-bench Multilingual</td><td>81.0</td><td>Not published</td></tr>
+        <tr><td>NL2Repo-Bench</td><td>48.1</td><td>56.3</td></tr>
+        <tr><td>LiveCodeBench v6</td><td>91.9</td><td>Not published</td></tr>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Vision-language / agentic</th><th>Qwen3.8-Flash-Next</th><th>Note</th></tr>
+        <tr><td>RealWorldQA</td><td>88.5</td><td>Real-world visual Q&amp;A</td></tr>
+        <tr><td>LVBench</td><td>76.6</td><td>Long-video understanding</td></tr>
+        <tr><td>OSWorld 2.0 (binary / partial)</td><td>19.4 / 52.3</td><td>Agentic computer use</td></tr>
+        <tr><td>Vision2Web</td><td>64.0</td><td>Vision → web interaction</td></tr>
+        <tr><td>ERQA</td><td>72.3</td><td>Emotion recognition QA</td></tr>
+      </table>
+    </div>
+    <p>All figures are from Alibaba's official Qwen3.8-Flash-Next model card on ModelScope (accessed August 30, 2026), reproduced as reported — vendor-reported, like every benchmark in this cohort. The card itself warns these should not be read as "overall leadership" because protocols differ across models (e.g., binary vs partial scoring on OSWorld). On the coding suites both vendors publish, GLM-5.3-Flash leads (DeepSWE 63.4 vs 58.7; NL2Repo-Bench 56.3 vs 48.1), while Flash-Next publishes additional coding scores (SWE-bench Pro 62.5, SWE-bench Multilingual 81.0, LiveCodeBench v6 91.9) that have no published GLM equivalent — so the head-to-head is real but incomplete. No math or general-knowledge scores were surfaced in our audit of the card.</p>
+
+    <h2>Context Window &amp; Long-Context Work</h2>
+    <p>The native context is <strong>262,144 tokens</strong>, extendable to <strong>1,000,000 tokens</strong> per the model card — the same 262K floor used in official serving examples (<code>--max-model-len 262144</code>). The production Qwen3.8-Flash API serves 1M context natively: max input 991K, max output 131K, max chain-of-thought 262K, at 5M tokens per minute throughput. That makes the Flash pair one of the more practical 1M-context options for whole-repository and long-document work; see our <a href="/reviews/best-ai-models-long-context-2026/">best long-context models of 2026</a> for how it stacks up against GLM-5.3-Flash, Hy4 preview, and DeepSeek V4 Pro.</p>
+
+    <h2>Pricing &amp; API (Qwen3.8-Flash)</h2>
+    <p>Alibaba publishes Qwen3.8-Flash API pricing in CNY (per million tokens, as listed on the official platform, accessed August 30, 2026):</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Token type</th><th>Price per 1M tokens</th><th>Approx. USD (at ~7.1 CNY/USD)</th></tr>
+        <tr><td>Input</td><td>¥0.8</td><td>≈$0.11</td></tr>
+        <tr><td>Output</td><td>¥2.7</td><td>≈$0.38</td></tr>
+        <tr><td>Cached input (hit)</td><td>¥0.1</td><td>≈$0.014</td></tr>
+        <tr><td>Explicit cache creation</td><td>¥1.25</td><td>≈$0.18</td></tr>
+      </table>
+    </div>
+    <p>USD figures are our conversions and marked as estimates; Alibaba bills in CNY. Versus GLM-5.3-Flash's $0.15 / $0.50, Qwen3.8-Flash undercuts on input (≈$0.11) and output (≈$0.38) at list — though GLM-5.3-Flash's 50% launch discount flips the comparison until September 9. We work through the cost math in our <a href="/reviews/qwen3-8-flash-next-vs-glm-5-3-flash/">Qwen3.8-Flash-Next vs GLM-5.3-Flash price &amp; speed comparison</a>.</p>
+
+    <h2>Deployment &amp; Open-Weight Information</h2>
+    <p>Flash-Next is self-hostable with standard open tooling: the model card shows <code>transformers serve Qwen/Qwen3.8-Flash-Next</code> for quick starts and a vLLM setup with 4-way tensor parallelism, <code>--max-model-len 262144</code>, the Qwen3 reasoning parser, and automatic tool choice. <strong>License note:</strong> the Flash-Next model card lists the <strong>Qwen Community License v1.0</strong> (qwen-community-1.0); Qwen's GitHub repo states Apache-2.0 for the Qwen3.8 series (Qwen3.8-27B and Qwen3.8-2.4T-A95B), so verify the per-model license before commercial use. One honest warning from the official guidance: 125B total doesn't mean a small footprint — weights, the N-gram table, KV cache, and vision components together demand substantial VRAM, so measure peak memory per engine before committing to a hardware plan. Weights are distributed on Hugging Face and ModelScope.</p>
+
+    <h2>Who Should Use Qwen3.8-Flash-Next?</h2>
+    <ul>
+      <li><strong>Researchers and model-savvy teams</strong> — this is an architecture preview; if you want to study or experiment with the Qwen4-lineage attention and embedding design, this is the cheapest way in</li>
+      <li><strong>Self-hosting teams with existing GPU fleets</strong> — ~6B active parameters keeps per-token serving cost low; check the Qwen Community License v1.0 terms (per the model card) before commercial use</li>
+      <li><strong>Long-context pilots</strong> — 262K native / 1M extended context is usable with vLLM today</li>
+      <li><strong>API users who want the production sibling</strong> — Qwen3.8-Flash gives you the same base with 1M default context and built-in tools at ¥0.8/M input</li>
+    </ul>
+
+    <h2>Who Should Skip It</h2>
+    <ul>
+      <li><strong>Teams needing verified coding performance</strong> — Flash-Next's official coding scores (DeepSWE 58.7, NL2Repo 48.1, vendor-reported) trail GLM-5.3-Flash's on the suites both publish; see the <a href="/reviews/glm-5-3-flash-review/">GLM-5.3-Flash review</a> and <a href="/reviews/tencent-hy4-preview-review/">Hy4 preview review</a></li>
+      <li><strong>Production API builders who don't want preview-grade models</strong> — Alibaba's own guidance is to use Qwen3.8-Flash for integration, not Flash-Next</li>
+      <li><strong>Small GPU fleets</strong> — the 51B N-gram table and vision components make the real memory footprint larger than the "6B active" headline suggests</li>
+    </ul>
+
+    <h2>Pros and Cons</h2>
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>Only ~6B active parameters — among the cheapest capable models to serve</li>
+        <li>Native 262K context, extendable to 1M; production API serves 1M by default</li>
+        <li>Open weights with standard vLLM/transformers deployment (card lists Qwen Community License v1.0)</li>
+        <li>Architecture preview of Qwen4 lineage — unique visibility into Alibaba's direction</li>
+        <li>Training cost claimed at ~1/9 of Qwen3.7-Plus (vendor-reported)</li>
+      </ul>
+    </div>
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>Explicitly a Qwen4 experimental release (<code>qwen4_exp</code>), not the full Qwen4 product line</li>
+        <li>Coding scores trail GLM-5.3-Flash on shared suites (DeepSWE 58.7 vs 63.4, NL2Repo 48.1 vs 56.3 — all vendor-reported)</li>
+        <li>Published benchmark set is protocol-mixed; vendor itself cautions against "overall leadership" readings</li>
+        <li>Real memory footprint is much larger than the active-parameter headline (N-gram table + vision components)</li>
+        <li>Production features (1M default context, built-in tools) only in the hosted Qwen3.8-Flash</li>
+      </ul>
+    </div>
+
+    <h2>Qwen3.8-Flash-Next vs. This Week's Releases</h2>
+    <p>Both open models that shipped August 26 offer ~1M contexts and tiny active parameter counts; the differences are in maturity and evidence. GLM-5.3-Flash publishes a broader benchmark table (coding, agentic, vision) and MIT weights, while Flash-Next publishes coding, agentic, and vision scores from its experimental card and carries the Qwen Community License. On shared coding suites the vendor-reported numbers favor GLM-5.3-Flash (DeepSWE 63.4 vs 58.7; NL2Repo 56.3 vs 48.1). Tencent's <a href="/reviews/tencent-hy4-preview-review/">Hy4 preview</a> (August 28) is a different weight class: 770B total / 49B active with Apache-2.0. For the direct head-to-head, see <a href="/reviews/glm-5-3-flash-vs-qwen3-8-flash-next/">GLM-5.3-Flash vs Qwen3.8-Flash-Next</a>, and for the wider open-model field, our <a href="/reviews/best-open-weight-ai-models-coding-2026/">Best Open-Weight AI Models for Coding 2026</a> ranking.</p>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>Qwen3.8-Flash-Next is the most interesting research artifact of the August 2026 open-model wave and the least finished product in it: a 6B-active MoE with a 262K native context, public weights (Qwen Community License v1.0 per the card), and a genuinely novel architecture worth studying — with published coding scores that trail GLM-5.3-Flash on the suites both vendors report, and an explicit experimental label. Our independent assessment: adopt it if you want the cheapest possible window into the Qwen4 lineage or need an extremely efficient long-context self-hosted base; choose the <a href="/reviews/glm-5-3-flash-review/">GLM-5.3-Flash</a> route or the hosted Qwen3.8-Flash API if you want production coding with the stronger published numbers today.</p>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>What is Qwen3.8-Flash-Next?</h3>
+    <p>Alibaba Qwen's open-weights architecture preview of the Qwen4 lineage, released August 26, 2026: 125B total / ~6B active MoE, hybrid GDN + QSA attention, 262K native context extendable to 1M.</p>
+    <h3>What is the difference between Flash-Next and Qwen3.8-Flash?</h3>
+    <p>Flash-Next is the open-weights preview for research/self-hosting; Qwen3.8-Flash is the production API model on the same base with a default 1M context and built-in tools.</p>
+    <h3>What is the Qwen3.8-Flash-Next context window?</h3>
+    <p>262,144 tokens native, extendable to 1,000,000. The hosted Flash API serves 1M default (991K max input, 131K max output).</p>
+    <h3>How much does Qwen3.8-Flash cost?</h3>
+    <p>¥0.8/M input, ¥2.7/M output, ¥0.1/M cached input (≈$0.11 / $0.38 / $0.014 at ~7.1 CNY/USD), plus ¥1.25/M for explicit cache creation.</p>
+    <h3>Is Qwen3.8-Flash-Next open source?</h3>
+    <p>Weights are public on Hugging Face and ModelScope. The model card lists the Qwen Community License v1.0; Qwen's GitHub repo states Apache-2.0 for the Qwen3.8 series (Qwen3.8-27B, Qwen3.8-2.4T-A95B) — verify per model.</p>
+    <h3>Is Qwen3.8-Flash-Next good at coding?</h3>
+    <p>Per the official card (vendor-reported): DeepSWE 1.1 58.7, SWE-bench Pro 62.5, SWE-bench Multilingual 81.0, NL2Repo-Bench 48.1, LiveCodeBench v6 91.9. GLM-5.3-Flash leads the suites both publish (DeepSWE 63.4, NL2Repo 56.3). Independent verification pending.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Sources (accessed August 30, 2026): Alibaba Qwen official model card for Qwen3.8-Flash-Next on ModelScope (parameters, context, license qwen-community-1.0, benchmark tables), Qwen official platform page for Qwen3.8-Flash (qianwenai.com, API pricing), QwenLM/Qwen3.8 GitHub repository, and OpenRouter model listing for Qwen3.8 Flash (platform pricing). Vendor-reported figures are reproduced as published; ToolStep claims no laboratory test results. Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

@@ -1,0 +1,273 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "GLM-5.3-Flash Review: 320B MoE, 1M Context, Pricing & Multimodal Coding | ToolStep";
+const description = "GLM-5.3-Flash shipped August 26, 2026: Zhipu's first natively multimodal GLM-5 model with 320B total / 18B active MoE, 1M context, MIT open weights, and $0.15/M input API pricing. Full review with official benchmarks.";
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "GLM-5.3-Flash Review: 320B MoE, 1M Context, Pricing & Multimodal Coding", description: description, datePublished: '2026-08-30', dateModified: '2026-08-30', authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "GLM-5.3-Flash Review", "item": new URL('/reviews/glm-5-3-flash-review/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GLM-5.3-Flash",
+      "applicationCategory": "AI Model",
+      "operatingSystem": "API, GLM Coding Plan, self-hosted (SGLang/vLLM)",
+      "offers": { "@type": "Offer", "price": "0.15", "priceCurrency": "USD" }
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is GLM-5.3-Flash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GLM-5.3-Flash is Zhipu AI / Z.ai's first natively multimodal model in the GLM-5 series, released August 26, 2026. It uses a sparse MoE with 320B total parameters (about 18B active per token), a 1M-token context window, and MIT-licensed open weights, with API pricing at roughly one-tenth of the GLM-5.3 flagship."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does GLM-5.3-Flash cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per Zhipu's published API pricing (as of August 30, 2026): $0.15 per million input tokens, $0.03 per million cached input tokens, and $0.50 per million output tokens, with cache storage temporarily free. A launch discount of 50% ($0.075 / $0.015 / $0.25) runs until September 9, 2026 24:00 (UTC+8)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does GLM-5.3-Flash have a 1M context window?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Zhipu's official documentation lists a 1M-token context window with a maximum output of 128K tokens, carried through the hybrid sparse + linear attention architecture (mHC + IndexPool) that cuts attention compute about 3x and KV cache about 4.4x versus GLM-5.3."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GLM-5.3-Flash open source?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The weights are released on Hugging Face and ModelScope under the MIT license (confirmed on the official ModelScope card; about 328GB in FP8 across 62 shards per third-party fact sheets). Official local inference paths include SGLang, vLLM, TokenSpeed, and KTransformers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can GLM-5.3-Flash handle images and video?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zhipu describes GLM-5.3-Flash as the first natively multimodal GLM-5 model: the official docs list video, image, text, and file input with text output. The current Chat Completion API confirms text and image input (via image_url blocks); video input via the documented API surface should be verified on the live endpoint before you build on it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GLM-5.3-Flash good at coding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per Zhipu's published evaluations (tool-enabled, max reasoning): Terminal-Bench 2.1 84.30, DeepSWE 63.40, NL2Repo-Bench 56.30, and a Z.ai Code Bench evaluation described as comparable to Claude Opus 4.8. These are vendor-reported numbers; independent verification was still pending as of August 30, 2026."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    .pros-box, .cons-box { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .pros-box h3 { color: #059669; margin-top: 0; }
+    .cons-box h3 { color: #dc2626; margin-top: 0; }
+    .verdict { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .verdict h2 { margin-top: 0; color: #166534; }
+    .update-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .update-box h2 { margin-top: 0; color: #1e40af; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <span class="tag">AI Models</span>
+      <h1>GLM-5.3-Flash Review: Zhipu's 320B Open Multimodal Model</h1>
+      <p class="meta">Reviewed August 30, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      GLM-5.3-Flash is Zhipu AI / Z.ai's first natively multimodal model in the GLM-5 series — released August 26, 2026 after quietly testing under the alias "ox-alpha" — and the most aggressive price-performance play the company has shipped: 320B total parameters with only ~18B active, a 1M-token context window, MIT-licensed weights, and API pricing set at one-tenth of the flagship GLM-5.3. This review covers what the model is, what Zhipu's published numbers actually show, pricing, availability, and who should use it.
+    </p>
+
+    <div class="update-box">
+      <h2>Live update notice</h2>
+      <p><strong>Last updated: August 30, 2026.</strong> GLM-5.3-Flash is four days old at the time of writing. Prices, benchmarks, and API behavior in this review reflect vendor-published sources accessed August 30, 2026; we will update this page as independent benchmarks and real-world usage data accumulate.</p>
+    </div>
+
+    <h2>Quick Verdict</h2>
+    <p>GLM-5.3-Flash is the strongest "cheap frontier" value proposition released in the August 2026 cohort: on Zhipu's own published tables it matches or beats the flagship GLM-5.3 on several agentic tool-use benchmarks (Toolathlon-Verified 78.4 vs 73.0; AutomationBench 48.8 vs 48.2), with a 1M context, native vision, open MIT weights, and API pricing a tenth of GLM-5.3 — half that during the launch discount. The honest caveats: every benchmark here is vendor-reported, coding parity claims ("comparable to Claude Opus 4.8") come from Zhipu's own Code Bench, and the model trails on pure-reasoning (HLE 55.3 vs GLM-5.3's 62.5) and on some vision suites (BabyVision 53.4). For developers who want near-flagship coding at a fraction of the cost — API or self-hosted — it is the best-priced open model of the week.</p>
+
+    <h2>What Is GLM-5.3-Flash?</h2>
+    <p>GLM-5.3-Flash is the Flash-tier member of Zhipu's GLM-5.3 family, released August 26, 2026. It is <strong>not a distilled or pruned version of GLM-5.3</strong> — per Zhipu's model documentation it is a separately retrained base model (publicly reported pretraining scale of about 30T tokens of multimodal data; Zhipu's docs page does not restate the pretraining scale) built around a new hybrid architecture, positioned under the slogan "Frontier Intelligence, Flash Cost." Before launch it circulated anonymously as "ox-alpha" on OpenCode and OpenRouter, which is how many developers first met it. Zhipu's docs describe it as the first GLM-5-series model with native multimodal input, aimed at coding assistants, document processing, financial analysis, legal review, and agent applications.</p>
+
+    <h2>Model Specs &amp; Architecture</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Spec</th><th>GLM-5.3-Flash</th><th>GLM-5.3 (flagship)</th></tr>
+        <tr><td>Release date</td><td>August 26, 2026</td><td>August 14, 2026</td></tr>
+        <tr><td>Total parameters</td><td>320B (MoE)</td><td>~744B (MoE, shared GLM-5.2 base)</td></tr>
+        <tr><td>Active parameters / token</td><td>~18B</td><td>~40B (media-reported)</td></tr>
+        <tr><td>Context window</td><td>1M tokens</td><td>1M tokens (carried over)</td></tr>
+        <tr><td>Max output</td><td>128K tokens</td><td>Not restated</td></tr>
+        <tr><td>Input modalities</td><td>Video, image, text, file (docs); API confirms text + image</td><td>Text (+ tool use)</td></tr>
+        <tr><td>Attention</td><td>Hybrid sparse + linear (mHC, IndexPool)</td><td>IndexShare (long-context)</td></tr>
+        <tr><td>Open weights</td><td>Yes — MIT license, ~328GB FP8</td><td>Pending safety hardening</td></tr>
+        <tr><td>API price (input / output per 1M)</td><td>$0.15 / $0.50</td><td>Not yet announced</td></tr>
+      </table>
+    </div>
+    <p>The architecture story is the headline engineering detail: GLM-5.3-Flash is the first open frontier model Zhipu describes as combining <strong>sparse attention with linear attention</strong> (a mixture of Multi-head Latent Attention-style compression, manifold-constrained hyper-connections / mHC, and an IndexPool for long-context routing). Versus GLM-5.3, Zhipu reports attention computation reduced by 3.01x and KV cache size reduced by 4.44x — which is how a 1M context becomes practical at this price point.</p>
+
+    <h2>Benchmarks: What Zhipu's Numbers Show</h2>
+    <p>Attribution note: Zhipu's official docs page states the AA index of 57 and the Code Bench parity claim in text; the full numeric benchmark table is presented as an image in the official model card, and the figures below are as transcribed and reproduced by third-party fact sheets of Zhipu's published evaluation materials (tool-enabled, max reasoning effort unless noted). We have not reproduced these tests independently; treat them as vendor claims until third-party verification lands.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Benchmark</th><th>GLM-5.3-Flash</th><th>Rank on leaderboard</th><th>GLM-5.3 (for reference)</th></tr>
+        <tr><td>HLE (humanity's last exam)</td><td>55.30</td><td>16/185</td><td>62.5 (w/ tools)</td></tr>
+        <tr><td>Terminal-Bench 2.1</td><td>84.30</td><td>12/47</td><td>88.2</td></tr>
+        <tr><td>Toolathlon-Verified</td><td><strong>78.40</strong></td><td>1/8</td><td>73.0</td></tr>
+        <tr><td>AutomationBench</td><td><strong>48.80</strong></td><td>1/10</td><td>48.2</td></tr>
+        <tr><td>DeepSWE v1.1</td><td>63.40</td><td>12/31</td><td>66.9</td></tr>
+        <tr><td>NL2Repo-Bench</td><td>56.30</td><td>5/11</td><td>—</td></tr>
+        <tr><td>Agents' Last Exam (ALE)</td><td>26.30</td><td>8/14</td><td>28.5</td></tr>
+        <tr><td>GDPval-AA v2</td><td>1,773</td><td>2/16</td><td>1,769</td></tr>
+        <tr><td>Office QA Pro</td><td>62.40</td><td>3/3</td><td>—</td></tr>
+        <tr><td>CharXiv RQ</td><td>89.40</td><td>4/18</td><td>—</td></tr>
+        <tr><td>MMVU</td><td>80.50</td><td>2/2</td><td>—</td></tr>
+        <tr><td>Chartography</td><td>78.00</td><td>1/2</td><td>—</td></tr>
+        <tr><td>BabyVision</td><td>53.40</td><td>5/5</td><td>—</td></tr>
+      </table>
+    </div>
+    <p>Three patterns stand out. First, <strong>agentic tool-use is where the Flash punches at or above flagship weight</strong> — it leads the vendor's own leaderboards on Toolathlon-Verified and AutomationBench. Second, <strong>pure reasoning shows the efficiency trade-off</strong>: HLE drops ~7 points below GLM-5.3, and Zhipu itself notes engineering gaps to the flagship stay within roughly 4 points on shared coding benchmarks while HLE diverges more. Third, <strong>vision results are mixed</strong>: strong on chart/UI understanding (CharXiv RQ 89.4, Chartography 78, MMVU 80.5) but last on BabyVision (53.4) — a pediatric vision suite where even the vendor's own table shows room to improve.</p>
+
+    <h2>Coding &amp; Agent Performance</h2>
+    <p>For coding, Zhipu's docs describe "programming performance comparable to Claude Opus 4.8" on the internal Z.ai Code Bench evaluation, and the company's AA (general intelligence) index scores the model at 57 — above GLM-5.2 and level with Opus 4.8. On public suites the picture is: Terminal-Bench 2.1 at 84.3 (behind GLM-5.3's 88.2), DeepSWE at 63.4 (behind 66.9), NL2Repo at 56.3 — solidly the best open model at its price tier, slightly behind the flagship on the hardest long-horizon tasks. The model also ships with native <code>reasoning_effort</code> (low / high / max, max recommended) and always-on thinking: <code>thinking.type</code> only supports <code>enabled</code>, so pipelines that disabled thinking on older GLM models must be updated (the same breaking change GLM-5.3 introduced).</p>
+
+    <h2>Multimodal Capabilities</h2>
+    <p>GLM-5.3-Flash accepts video, image, text, and file input with text output per Zhipu's docs, making it the first GLM-5 model with native vision. The current Chat Completion API documents image input via <code>image_url</code> blocks (URL or Base64), including multi-image; the docs page also lists video and file input, but since the formal API reference only confirms text + image on the endpoint, verify video/file behavior on the live API before committing to it. Use cases Zhipu highlights: visual coding (screenshots → code), office document delivery, finance/law workflows, computer use, and 3D/game/CAD scenes. Recommended sampling from the docs: <code>temperature: 1</code>, <code>top_p: 0.95</code>, <code>reasoning_effort: max</code>, streaming with <code>tool_stream: true</code>.</p>
+
+    <h2>Pricing &amp; API</h2>
+    <p>API pricing (per million tokens, USD, checked 2026-08-30 — launch tier confirmed by the OpenRouter listing; list tier per third-party fact sheets of Zhipu's published schedule):</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Token type</th><th>List price</th><th>Launch discount (50%, until Sept 9, 2026 24:00 UTC+8)</th></tr>
+        <tr><td>Input</td><td>$0.15</td><td>$0.075</td></tr>
+        <tr><td>Cached input</td><td>$0.03</td><td>$0.015</td></tr>
+        <tr><td>Output</td><td>$0.50</td><td>$0.25</td></tr>
+        <tr><td>Cache storage</td><td colspan="2">Temporarily free</td></tr>
+      </table>
+    </div>
+    <p>Zhipu positions this as 1/10 of GLM-5.3's price (1/20 during the discount) and 1/40 of Claude Opus 4.8's. Inside the <a href="/reviews/glm-5-3/">GLM Coding Plan</a>, GLM-5.3-Flash carries 3x the quota of GLM-5.3, and off-peak calls (weekdays outside 14:00–18:00 UTC+8, plus all weekend) consume 50% of standard points. See our dedicated <a href="/reviews/glm-5-3-flash-pricing/">GLM-5.3-Flash pricing analysis</a> for real-world cost math and comparisons against Qwen and Hunyuan.</p>
+
+    <h2>Open Weights &amp; Self-Hosting</h2>
+    <p>Unlike the flagship GLM-5.3 (whose weights were not yet confirmed released at the time of this audit — Z.ai's timeline pointed to approximately two weeks after its August 14 launch, pending safety hardening), GLM-5.3-Flash weights are <strong>publicly released under the MIT license</strong> (confirmed on the official ModelScope card) on Hugging Face and ModelScope — roughly 328.3GB in FP8 across 62 safetensors shards, per third-party fact sheets of the release. Official local inference paths are SGLang, vLLM, TokenSpeed, and KTransformers, so it runs on the standard open toolchain. This makes it the most practical open-weight entry point in Zhipu's current lineup — and a natural comparison target for <a href="/reviews/qwen3-8-flash-next-review/">Qwen3.8-Flash-Next</a> and <a href="/reviews/tencent-hy4-preview-review/">Tencent Hy4 preview</a>, both of which also shipped open in the same week.</p>
+
+    <h2>Who Should Use GLM-5.3-Flash?</h2>
+    <ul>
+      <li><strong>API developers on a budget</strong> — $0.15/$0.50 per million tokens is the cheapest 1M-context coding-capable endpoint in the current cohort; the 50% launch discount compounds it</li>
+      <li><strong>Agent builders</strong> — the model tops Zhipu's own tables on tool-use benchmarks (Toolathlon-Verified, AutomationBench)</li>
+      <li><strong>Self-hosting teams</strong> — MIT weights + SGLang/vLLM images mean no per-token dependency on Zhipu</li>
+      <li><strong>Vision + document workflows</strong> — native image input with strong chart/UI understanding at Flash pricing</li>
+      <li><strong>GLM Coding Plan subscribers</strong> — 3x quota vs GLM-5.3 makes it the default workhorse model</li>
+    </ul>
+
+    <h2>Who Should Skip It</h2>
+    <ul>
+      <li><strong>Peak-reasoning workloads</strong> — if HLE-grade reasoning or the hardest Terminal-Bench tasks are the requirement, the flagship <a href="/reviews/glm-5-3/">GLM-5.3</a> or closed frontier models still lead</li>
+      <li><strong>Thinking must be off</strong> — always-on reasoning is a hard requirement of this model; <code>thinking.type: disabled</code> is gone</li>
+      <li><strong>Teams that need vendor-independent verification</strong> — all benchmark claims here are vendor-reported as of this writing</li>
+    </ul>
+
+    <h2>Limitations / Things to Know</h2>
+    <ul>
+      <li><strong>Vendor-reported benchmarks only.</strong> Every score above comes from Zhipu's published documentation. The "comparable to Claude Opus 4.8" coding claim is from Zhipu's internal Code Bench, not a public neutral benchmark.</li>
+      <li><strong>Reasoning gap to flagship.</strong> HLE 55.3 vs 62.5 on GLM-5.3 — the efficiency trade-off is real and largest on deep reasoning.</li>
+      <li><strong>Vision weak spots.</strong> BabyVision 53.4 sits last on the vendor's own 5-model table; MMVU and Office QA Pro fields show only 2–3 entrants, so leaderboard positions are shallow.</li>
+      <li><strong>Video input ambiguity.</strong> Docs list video/file input, but the current API reference documents image blocks; confirm the live endpoint supports your input type before production.</li>
+      <li><strong>Thinking cannot be disabled</strong>, and the launch discount expires September 9, 2026 24:00 UTC+8 — budget accordingly.</li>
+    </ul>
+
+    <h2>Pros and Cons</h2>
+    <div class="pros-box">
+      <h3>Pros</h3>
+      <ul>
+        <li>1M context + 128K output at $0.15/$0.50 per million tokens (50% off at launch)</li>
+        <li>MIT-licensed open weights — rare for a model this capable, in the same week as Hy4 preview's Apache-2.0 release</li>
+        <li>Leads the vendor's own tool-use leaderboards (Toolathlon-Verified 78.4, AutomationBench 48.8)</li>
+        <li>First natively multimodal GLM-5 model, with strong chart/UI vision results</li>
+        <li>3x Coding Plan quota vs GLM-5.3 + 50% off-peak consumption</li>
+      </ul>
+    </div>
+    <div class="cons-box">
+      <h3>Cons</h3>
+      <ul>
+        <li>All benchmarks vendor-reported; no independent verification yet</li>
+        <li>Clear reasoning gap vs GLM-5.3 on HLE (55.3 vs 62.5)</li>
+        <li>Last place on BabyVision in the vendor's own table</li>
+        <li>Always-on thinking breaks pipelines that disabled reasoning on GLM-5.2</li>
+        <li>Launch discount ends September 9 — price-sensitive buyers should commit before then</li>
+      </ul>
+    </div>
+
+    <h2>GLM-5.3-Flash vs. the Week's Other Releases</h2>
+    <p>August 26–28, 2026 produced the densest open-model release window of the year: GLM-5.3-Flash and <a href="/reviews/qwen3-8-flash-next-review/">Qwen3.8-Flash-Next</a> both shipped August 26, followed by <a href="/reviews/tencent-hy4-preview-review/">Tencent Hy4 preview</a> on August 28. For the head-to-head against Qwen, see our <a href="/reviews/glm-5-3-flash-vs-qwen3-8-flash-next/">GLM-5.3-Flash vs Qwen3.8-Flash-Next comparison</a>; for the wider field, our <a href="/reviews/best-open-weight-ai-models-coding-2026/">Best Open-Weight AI Models for Coding 2026</a> ranks this cohort, and <a href="/reviews/best-ai-models-long-context-2026/">Best AI Models for Long-Context Work 2026</a> covers the 1M-context class. For tooling context around coding agents, see <a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a>.</p>
+
+    <h2>Final Verdict</h2>
+    <div class="verdict">
+      <p>GLM-5.3-Flash is the value pick of the August 2026 open-model cohort: near-flagship agentic coding, a real 1M context, native vision, MIT weights, and pricing an order of magnitude below the flagship — that combination is genuinely new. It is not a free lunch: deep reasoning lags GLM-5.3, vision results are uneven, and every capability claim is still vendor-reported. Our independent assessment: if you are building agentic or document-heavy applications and want the best capability-per-dollar in an open model today, GLM-5.3-Flash is the model to start with — but benchmark it against <a href="/reviews/qwen3-8-flash-next-review/">Qwen3.8-Flash-Next</a> on your own tasks before locking in, and lock pricing before September 9.</p>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>What is GLM-5.3-Flash?</h3>
+    <p>Zhipu AI / Z.ai's first natively multimodal GLM-5 model, released August 26, 2026: 320B total / ~18B active MoE with hybrid sparse+linear attention, 1M context, MIT open weights, and API pricing at ~1/10 of GLM-5.3. It was tested pre-launch under the alias "ox-alpha."</p>
+    <h3>How much does GLM-5.3-Flash cost?</h3>
+    <p>$0.15 per million input tokens, $0.03 cached input, $0.50 output (list, as of August 30, 2026); a 50% launch discount runs until September 9, 2026 24:00 UTC+8. Cache storage is temporarily free.</p>
+    <h3>Does GLM-5.3-Flash have a 1M context window?</h3>
+    <p>Yes — 1M-token context with 128K max output, per Zhipu's official documentation.</p>
+    <h3>Is GLM-5.3-Flash open source?</h3>
+    <p>Yes — weights on Hugging Face and ModelScope under MIT (~328GB FP8), with SGLang, vLLM, TokenSpeed, and KTransformers as official inference paths.</p>
+    <h3>Can GLM-5.3-Flash handle images and video?</h3>
+    <p>Docs list video/image/text/file input; the Chat Completion API confirms text and image input today. Verify video/file support on the live endpoint before building on it.</p>
+    <h3>Is GLM-5.3-Flash good at coding?</h3>
+    <p>Per vendor-reported results: Terminal-Bench 2.1 84.3, DeepSWE 63.4, and "comparable to Claude Opus 4.8" on Zhipu's internal Code Bench. Independent verification pending.</p>
+
+    <p style="text-align:center;margin:2rem 0;"><small>Sources (accessed August 30, 2026): Zhipu official docs (docs.bigmodel.cn — GLM-5.3-Flash model page), z.ai/subscribe (GLM Coding Plan), ModelScope model card (ZhipuAI/GLM-5.3-Flash — MIT license, params), OpenRouter listing (z-ai/glm-5.3-flash — discount-tier pricing), and third-party fact sheets reproducing Zhipu's published evaluation and pricing materials. Facts are reproduced as published by the vendor or as transcribed from vendor materials; ToolStep claims no laboratory test results. Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>
