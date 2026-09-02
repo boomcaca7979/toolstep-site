@@ -107,11 +107,11 @@ const currentURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:image" content={new URL(image.src, siteOrigin)} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, siteOrigin)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image.src, siteOrigin)} />
 <meta name="google-site-verification" content="MaWD-eevKzbPGbi-dPNYwWafiv2nlfvgSJuKBkX8pm8" />
 
 <!-- Schema.org Structured Data: Organization + WebSite -->
@@ -129,15 +129,7 @@ const currentURL = new URL(Astro.url.pathname, Astro.site);
 			"@type": "WebSite",
 			"name": "ToolStep",
 			"url": siteOrigin,
-			"description": "Curated directory of online tools for productivity, design, AI, and creativity.",
-			"potentialAction": {
-				"@type": "SearchAction",
-				"target": {
-					"@type": "EntryPoint",
-					"urlTemplate": siteOrigin + "/?q={search_term_string}"
-				},
-				"query-input": "required name=search_term_string"
-			}
+			"description": "Curated directory of online tools for productivity, design, AI, and creativity."
 		}
 	]
 })} />

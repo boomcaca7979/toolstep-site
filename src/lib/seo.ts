@@ -226,7 +226,7 @@ export function buildItemListSchema(opts: { name: string; description: string; i
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      url: item.url,
+      item: item.url,
     })),
   };
 }

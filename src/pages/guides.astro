@@ -5,80 +5,110 @@ import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
 
 const pageTitle = `Tool Guides & Tutorials — ${SITE_TITLE}`;
+const pageDescription = 'In-depth, evidence-based guides from the ToolStep editorial team — how AI tools, models, and software actually work under the hood.';
+
+// Real, published guides. Each entry mirrors the target page's own metadata.
+const guides = [
+	{
+		title: 'Claude AI Watermark Explained: Does Claude Watermark AI Text?',
+		href: '/guides/claude-ai-watermark/',
+		summary:
+			'Yes — new Claude models launched on or after August 2, 2026 carry an invisible text watermark wherever Claude is offered. How it works, which models are affected, the transition period, and how it compares to ChatGPT.',
+		date: 'August 2026',
+	},
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={pageTitle} description="Practical guides and tutorials for choosing and using online tools, from AI assistants to productivity software." />
+		<BaseHead title={pageTitle} description={pageDescription} />
 		<style>
 			.guides-wrap {
-				max-width: 600px;
+				max-width: 760px;
 				margin: 0 auto;
-				padding: 80px 24px;
-				text-align: center;
+				padding: 48px 24px 64px;
 				min-height: calc(100vh - 200px);
 			}
-			.guides-wrap h1 {
-				font-size: 2.2em;
-				margin-bottom: 16px;
+			.guides-hero h1 {
+				font-size: 2.2rem;
+				margin: 0 0 0.5rem;
+				line-height: 1.2;
 			}
-			.coming-soon-icon {
-				width: 64px;
-				height: 64px;
-				margin: 0 auto 24px auto;
-				color: rgb(var(--gray));
-				opacity: 0.5;
-			}
-			.guides-wrap p {
-				font-size: 18px;
+			.guides-hero p {
+				font-size: 1.05rem;
 				color: rgb(var(--gray));
 				line-height: 1.7;
-				margin-bottom: 32px;
+				margin: 0 0 2rem;
 			}
-			.back-btn {
-				display: inline-flex;
-				align-items: center;
-				gap: 6px;
-				padding: 12px 24px;
-				background: var(--accent);
-				color: white;
-				font-size: 15px;
-				font-weight: 600;
-				border-radius: 10px;
+			.guide-list {
+				display: flex;
+				flex-direction: column;
+				gap: 1.25rem;
+			}
+			.guide-card {
+				display: block;
+				padding: 1.5rem;
+				background: var(--card-bg);
+				border: 1px solid var(--card-border);
+				border-radius: 12px;
+				box-shadow: var(--card-shadow);
 				text-decoration: none;
-				transition: all 0.2s ease;
+				transition: transform 0.15s ease, box-shadow 0.15s ease;
 			}
-			.back-btn:hover {
-				background: var(--accent-dark);
-				transform: translateY(-1px);
+			.guide-card:hover {
+				transform: translateY(-2px);
+			}
+			.guide-card h2 {
+				font-size: 1.25rem;
+				margin: 0 0 0.5rem;
+				color: rgb(var(--gray-dark));
+				line-height: 1.35;
+			}
+			.guide-card p {
+				font-size: 0.95rem;
+				line-height: 1.65;
+				color: rgb(var(--gray));
+				margin: 0 0 0.75rem;
+			}
+			.guide-card .guide-date {
+				font-size: 0.8rem;
+				color: rgb(var(--gray));
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				font-weight: 600;
 			}
 			@media (max-width: 720px) {
 				.guides-wrap {
-					padding: 60px 16px;
+					padding: 32px 16px 48px;
 				}
-				.guides-wrap h1 {
-					font-size: 1.8em;
+				.guides-hero h1 {
+					font-size: 1.8rem;
 				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
-		<div class="guides-wrap">
-			<svg class="coming-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path>
-			</svg>
-			<h1>Tool Guides & Tutorials</h1>
-			<p>Coming soon — we're working on detailed step-by-step guides for every tool in our directory. Check back soon for tutorials on PDF editing, image compression, AI writing, video recording, and more.</p>
-			<a href="/" class="back-btn">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-					<path d="M19 12H5"></path>
-					<polyline points="12 19 5 12 12 5"></polyline>
-				</svg>
-				Back to Home
-			</a>
-		</div>
+		<main class="guides-wrap">
+			<div class="guides-hero">
+				<h1>Tool Guides &amp; Tutorials</h1>
+				<p>
+					Step-by-step, evidence-based explainers from the ToolStep editorial team. Each guide
+					documents how a tool, model, or standard actually works — based on official
+					documentation and published specifications, not marketing copy.
+				</p>
+			</div>
+			<div class="guide-list">
+				{guides.map((guide) => (
+					<a class="guide-card" href={guide.href}>
+						<h2>{guide.title}</h2>
+						<p>{guide.summary}</p>
+						<span class="guide-date">{guide.date}</span>
+					</a>
+				))}
+			</div>
+		</main>
 		<Footer />
 	</body>
 </html>

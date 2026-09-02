@@ -97,7 +97,7 @@ const latestUpdates = [
 				"@type": "ListItem",
 				"position": i + 1,
 				"name": tool.name,
-				"url": new URL(`/tools/${tool.id}/`, Astro.site).toString(),
+				"item": new URL(`/tools/${tool.id}/`, Astro.site).toString(),
 			})),
 		})} />
 		<style>

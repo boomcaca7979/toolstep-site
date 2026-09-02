@@ -21,21 +21,22 @@ const description = "ChatGPT vs Gemini 2026 comparison: reasoning, coding, multi
     })} />
   <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "ChatGPT",
-      "applicationCategory": "AI Assistant",
-      "operatingSystem": "Web, iOS, Android, macOS, Windows",
-      "offers": { "@type": "Offer", "price": "20.00", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "ratingCount": "4500" }
-    })} />
-  <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Gemini",
-      "applicationCategory": "AI Assistant",
-      "operatingSystem": "Web, iOS, Android",
-      "offers": { "@type": "Offer", "price": "19.99", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.4", "ratingCount": "2100" }
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ChatGPT",
+          "applicationCategory": "AI Assistant",
+          "operatingSystem": "Web, iOS, Android, macOS, Windows",
+          "offers": { "@type": "Offer", "price": "20.00", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Gemini",
+          "applicationCategory": "AI Assistant",
+          "operatingSystem": "Web, iOS, Android",
+          "offers": { "@type": "Offer", "price": "19.99", "priceCurrency": "USD" }
+        }
+      ]
     })} />
   <script type="application/ld+json">{
   "@context": "https://schema.org",
