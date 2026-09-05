@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import AdUnit from '../../components/ads/AdUnit.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import { getBestEntries, getBestEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
@@ -14,13 +15,26 @@ import { getRelatedForBest } from '../../lib/related';
 import { getCanonicalOverride } from '../../data/canonical-overrides.mjs';
 
 export function getStaticPaths() {
+  // Adsterra Phase 1 experiment group: deterministic selection — pages with a
+  // full Top-10 ranking AND a buyer guide, sorted by slug, first 8. Never
+  // random; the group is stable across builds unless the data changes.
+  // (Computed inside getStaticPaths: Astro hoists it out of frontmatter scope.)
+  const ADSTERRA_EXPERIMENT_SIZE = 8;
+  const adsterraExperimentSlugs = new Set(
+    getBestEntries()
+      .filter((e) => e.products.length >= 5 && e.buyerGuide)
+      .map((e) => e.slug)
+      .sort()
+      .slice(0, ADSTERRA_EXPERIMENT_SIZE),
+  );
+
   return getBestEntries().map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: { entry, showAdsterra: adsterraExperimentSlugs.has(entry.slug) },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, showAdsterra = false } = Astro.props;
 const author = authors.find(a => a.slug === entry.authorSlug);
 const authorName = author?.name || 'ToolStep Team';
 
@@ -851,6 +865,9 @@ const articleSchema = {
           </div>
 
           <AdSlot position="content-mid" />
+
+          {/* Adsterra Phase 1 experiment — Native Banner, experiment pages only. */}
+          {showAdsterra && <AdsterraBanner />}
 
           {/* Pros & Cons Summary */}
           <h2 id="pros-cons">Pros & Cons Summary</h2>

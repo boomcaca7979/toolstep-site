@@ -1,0 +1,112 @@
+---
+// AdsterraBanner.astro — Phase 1 experiment: single Native Banner slot.
+//
+// Independent of the AdSense stack (BaseHead / AdSlot / AdUnit are untouched).
+// Renders nothing unless ADSTERRA_CONFIG.enabled is true — with the switch
+// off, no Adsterra script, container, or network request is ever emitted.
+//
+// Behavior when enabled:
+// - The wrapper reserves a fixed min-height so the creative can never cause
+//   layout shift (CLS = 0) and can never push the page around.
+// - The official invoke.js is injected lazily via IntersectionObserver, only
+//   when the wrapper nears the viewport — it never affects first paint / LCP.
+// - Injected at most once per page (dedup guard on the script element).
+// - No fixed positioning, no popups, no body style changes.
+
+import { ADSTERRA_CONFIG } from '../../config/adsterra';
+
+interface Props {
+  /** Extra class names for the outer wrapper. */
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+const { enabled, scriptSrc, containerId, reservedMinHeight } = ADSTERRA_CONFIG;
+---
+
+{
+  enabled ? (
+    <div
+      class={`adsterra-banner ${className}`.trim()}
+      role="complementary"
+      aria-label="Sponsored"
+      data-adsterra-slot="native-banner"
+      data-script-src={scriptSrc}
+    >
+      <div class="adsterra-frame" style={`min-height:${reservedMinHeight}px;`}>
+        <div id={containerId}></div>
+      </div>
+    </div>
+  ) : (
+    /* Master switch off — experiment marker only, no script/container output. */
+    <!-- adsterra:experiment-slot (disabled) -->
+  )
+}
+
+<script>
+  // Lazy loader — only runs on pages where the enabled variant above rendered.
+  (() => {
+    const banners = document.querySelectorAll<HTMLElement>('.adsterra-banner[data-adsterra-slot]');
+    if (banners.length === 0) return;
+
+    const activated = new WeakSet<Element>();
+
+    function inject(banner: HTMLElement) {
+      if (activated.has(banner)) return;
+      activated.add(banner);
+
+      // Dedup: never inject the invoke.js twice on the same page.
+      if (document.querySelector('script[data-adsterra-invoke="1"]')) return;
+
+      const s = document.createElement('script');
+      s.async = true;
+      s.dataset.cfasync = 'false';
+      s.dataset.adsterraInvoke = '1';
+      s.src = banner.dataset.scriptSrc ?? '';
+      banner.appendChild(s);
+    }
+
+    banners.forEach((banner) => {
+      if (typeof IntersectionObserver !== 'undefined') {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                inject(entry.target as HTMLElement);
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '400px 0px', threshold: 0 },
+        );
+        io.observe(banner);
+      } else {
+        inject(banner);
+      }
+    });
+  })();
+</script>
+
+<style>
+  /* Scoped to this component only — no global CSS is touched. */
+  .adsterra-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    clear: both;
+  }
+  /* Fixed reserved space — the creative can only fill this box, never grow it. */
+  .adsterra-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+</style>
