@@ -381,6 +381,15 @@ const breadcrumbSchema = {
       <h1>{story.title}</h1>
       <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">{story.description}</p>
 
+      {/* Independent article body — accessible text below the AMP story */}
+      {story.content && (
+        <div class="story-article">
+          {story.content.split('\n\n').map(para => (
+            <p style="color: #333; font-size: 0.95rem; line-height: 1.7; margin: 0 0 1rem;">{para}</p>
+          ))}
+        </div>
+      )}
+
       {/* Share buttons */}
       <div class="share-section">
         <h3>Share this story</h3>

@@ -9,7 +9,8 @@
     { "source": "/about", "destination": "/about/", "permanent": true },
     { "source": "/guides", "destination": "/guides/", "permanent": true },
     { "source": "/privacy", "destination": "/privacy/", "permanent": true },
-    { "source": "/tools/:slug", "destination": "/tools/:slug/", "permanent": true }
+    { "source": "/tools/:slug", "destination": "/tools/:slug/", "permanent": true },
+    { "source": "/how-we-test", "destination": "/how-we-test/", "permanent": true }
   ],
   "headers": [
     {
