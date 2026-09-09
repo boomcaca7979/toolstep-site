@@ -18,6 +18,18 @@ import type {
   RelatedLink,
   RecommendedProduct,
 } from './types';
+import type {
+  CompareEditorial,
+} from '../compare';
+import type {
+  AlternativeEditorial,
+} from '../alternatives';
+import type {
+  BestEditorial,
+} from '../best';
+import type {
+  ReviewEditorial,
+} from '../products';
 
 // ============================================================
 // ToolStepContent — Unified Content Interface
@@ -135,11 +147,15 @@ export type ReviewContent = ToolStepContent & {
   testingSummary: string;
   bestFor: string[];
   notFor: string[];
+  /** Optional evidence metadata (Phase 3). */
+  editorial?: ReviewEditorial;
 };
 
 export type ComparisonContent = ToolStepContent & {
   contentType: 'comparison';
   comparison: ComparisonData;
+  /** Optional editorial decision content (Phase 2 enhancement). */
+  editorial?: CompareEditorial;
 };
 
 export type BestListContent = ToolStepContent & {
@@ -147,6 +163,8 @@ export type BestListContent = ToolStepContent & {
   listSubtype: 'best';
   introduction: string;
   methodology: string;
+  /** Optional editorial decision content (Phase 2 enhancement). */
+  editorial?: BestEditorial;
 };
 
 export type AlternativeContent = ToolStepContent & {
@@ -154,6 +172,8 @@ export type AlternativeContent = ToolStepContent & {
   listSubtype: 'alternative';
   introduction: string;
   anchorProduct: ProductRef;
+  /** Optional editorial decision content (Phase 2 enhancement). */
+  editorial?: AlternativeEditorial;
 };
 
 export type GuideContent = ToolStepContent & {

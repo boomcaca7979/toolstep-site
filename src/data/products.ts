@@ -45,6 +45,24 @@ export interface ProductReviewEntry {
   relatedProducts?: string[];
   /** ISO 8601 update date (e.g. '2026-07-13'). Used for schema.org dateModified. Falls back to publishDate when absent. */
   updatedDate?: string;
+  /** Evidence metadata (Phase 3). Drives honest testing-claim display: only
+   * HANDS_ON entries may show "Tested over N days". */
+  editorial?: ReviewEditorial;
+}
+
+export type ReviewEvidenceType =
+  | 'HANDS_ON'
+  | 'DOCUMENTATION'
+  | 'SPECIFICATION'
+  | 'PUBLIC_INFO'
+  | 'MIXED';
+
+export interface ReviewEditorial {
+  evidenceType?: ReviewEvidenceType;
+  /** Optional per-entry note shown in the evidence disclosure. */
+  evidenceNote?: string;
+  /** Optional single-product decision statement. */
+  decisionNote?: string;
 }
 
 export const productReviews: ProductReviewEntry[] = [

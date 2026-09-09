@@ -24,6 +24,19 @@ const { productA, productB } = entry;
 const author = authors.find(a => a.slug === entry.authorSlug);
 const authorName = author?.name || 'ToolStep Team';
 
+// Phase 2 editorial content. Optional — legacy entries render unchanged.
+const editorial = entry.editorial;
+const verdictOf = (winner: 'A' | 'B' | 'tie') =>
+  winner === 'A' ? productA.name : winner === 'B' ? productB.name : 'Tie';
+// Method line shown in the hero meta. For documentation-analysis entries this
+// replaces the old "Tested over N days" wording with an honest statement that
+// matches /how-we-test/. Hands-on-testing entries keep their duration.
+const methodLine =
+  editorial?.evidenceLabel === 'hands-on-testing'
+    ? `Tested over ${entry.testingDuration}`
+    : (editorial?.evidenceNote ??
+      `Based on product documentation and specification analysis`);
+
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/compare/${entry.slug}/`, Astro.site).toString();
 
@@ -486,10 +499,71 @@ const articleSchema = {
         text-align: right;
       }
 
+      /* Phase 2 editorial blocks */
+      .decision-factor {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.1rem 1.25rem;
+        margin: 1rem 0;
+      }
+      .decision-factor h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+        color: rgb(var(--black));
+      }
+      .decision-factor p {
+        margin: 0.3rem 0;
+        font-size: 0.94rem;
+        line-height: 1.6;
+        color: rgb(var(--gray-dark));
+      }
+      .decision-factor .when-matters {
+        color: rgb(var(--gray));
+        font-size: 0.88rem;
+        margin-top: 0.6rem;
+        padding-top: 0.6rem;
+        border-top: 1px solid var(--card-border);
+      }
+      .audience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1rem 0 1.5rem;
+      }
+      .audience-box {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+      }
+      .audience-box h3 {
+        margin: 0 0 0.4rem;
+        font-size: 0.95rem;
+        color: #059669;
+      }
+      .audience-box p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        color: rgb(var(--gray-dark));
+      }
+      .who-wins-list .scenario-who {
+        color: rgb(var(--gray));
+        font-style: italic;
+      }
+      .who-wins-list .scenario-reason {
+        display: block;
+        font-size: 0.85rem;
+        color: rgb(var(--gray-dark));
+        margin-top: 0.3rem;
+      }
+
       @media (max-width: 640px) {
         .score-cards,
         .pros-cons-grid,
-        .nav-links {
+        .nav-links,
+        .audience-grid {
           grid-template-columns: 1fr;
         }
         .hero h1 {
@@ -530,7 +604,7 @@ const articleSchema = {
           <span class="dot"></span>
           <span>Updated {entry.lastUpdated}</span>
           <span class="dot"></span>
-          <span>Tested over {entry.testingDuration}</span>
+          <span>{methodLine}</span>
         </div>
       </div>
 
@@ -542,6 +616,29 @@ const articleSchema = {
         </div>
         <p class="reason">{entry.quickWinnerReason}</p>
       </div>
+
+      {editorial && (
+        <>
+          {/* Decision Summary */}
+          <h2 id="decision-summary">Decision Summary</h2>
+          <p>{editorial.decisionSummary}</p>
+
+          {/* Key Decision Factors */}
+          {editorial.decisionFactors.length > 0 && (
+            <>
+              <h2 id="decision-factors">Key Decision Factors</h2>
+              {editorial.decisionFactors.map((f) => (
+                <div class="decision-factor">
+                  <h3>{f.factor}</h3>
+                  <p><strong>{productA.name}:</strong> {f.contextA}</p>
+                  <p><strong>{productB.name}:</strong> {f.contextB}</p>
+                  <p class="when-matters"><strong>When this matters:</strong> {f.whenItMatters}</p>
+                </div>
+              ))}
+            </>
+          )}
+        </>
+      )}
 
       <AdSlot position="hero-below" />
 
@@ -623,16 +720,69 @@ const articleSchema = {
 
       {/* Who Wins */}
       <h2 id="who-wins">Who Wins?</h2>
-      <ul class="who-wins-list">
-        {entry.whoWins.map(w => (
-          <li>
-            <span class="scenario">{w.scenario}</span>
-            <span class={`badge win-${w.winner}`}>{winnerLabel(w.winner)}</span>
-          </li>
-        ))}
-      </ul>
+      {editorial && editorial.scenarios.length > 0 ? (
+        <ul class="who-wins-list">
+          {editorial.scenarios.map(w => (
+            <li>
+              <span class="scenario">
+                <strong>{w.scenario}</strong>
+                {w.who ? <span class="scenario-who"> — {w.who}</span> : null}
+                <span class="scenario-reason">{w.reason}</span>
+              </span>
+              <span class={`badge win-${w.verdict}`}>{verdictOf(w.verdict)}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul class="who-wins-list">
+          {entry.whoWins.map(w => (
+            <li>
+              <span class="scenario">{w.scenario}</span>
+              <span class={`badge win-${w.winner}`}>{winnerLabel(w.winner)}</span>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <AdSlot position="content-mid" />
+
+      {editorial && (
+        <>
+          {/* Best For / Not For */}
+          <h2 id="best-for">Best For</h2>
+          <div class="audience-grid">
+            <div class="audience-box buy">
+              <h3>{productA.name} — Best For</h3>
+              <p>{editorial.bestForA}</p>
+              <h3 style="margin-top: 1rem; color: #dc2626;">Not For</h3>
+              <p>{editorial.notForA}</p>
+            </div>
+            <div class="audience-box buy">
+              <h3>{productB.name} — Best For</h3>
+              <p>{editorial.bestForB}</p>
+              <h3 style="margin-top: 1rem; color: #dc2626;">Not For</h3>
+              <p>{editorial.notForB}</p>
+            </div>
+          </div>
+
+          {/* Evidence */}
+          <h2 id="evidence">How This Comparison Was Made</h2>
+          {editorial.evidenceLabel === 'hands-on-testing' ? (
+            <p>
+              This comparison reflects hands-on testing carried out over {entry.testingDuration}, following the ToolStep testing protocol.
+            </p>
+          ) : (
+            <>
+              <p>
+                This comparison was built from a structured review of official product documentation, published specifications, current pricing, and feature documentation — the same methodology ToolStep describes on the /how-we-test/ page. Because we did not run these products hands-on, we do not claim testing that did not happen.
+              </p>
+              {editorial.evidenceNote && <p>{editorial.evidenceNote}</p>}
+            </>
+          )}
+        </>
+      )}
+
+      <AdSlot position="content-end" />
 
       {/* FAQ */}
       <h2 id="faq">FAQ</h2>

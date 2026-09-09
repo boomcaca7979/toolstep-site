@@ -99,6 +99,28 @@ const toolDetails: Record<string, { detailDescription: string; pros: string[]; c
 	},
 };
 
+
+// Phase 3: decision content per tool — role, limits, and honest recommendation.
+const toolEditorial: Record<string, {
+  useCases: string[];
+  freeLimits: string;
+  notFor: string;
+  competitorNote: string;
+  verdict: string;
+  evidenceNote: string;
+}> = {
+  smallpdf: { useCases: ['Compressing PDFs for email attachments', 'Merging scanned documents into one file', 'Converting PDFs to Word or Excel for editing'], freeLimits: 'The free tier limits you to a small number of tasks per day and locks batch processing, OCR, and desktop apps behind Pro.', notFor: 'Heavy daily PDF workflows — the daily free-task cap makes Pro mandatory, at which point desktop alternatives may cost less.', competitorNote: 'Compared to iLovePDF, Smallpdf has a cleaner interface but a tighter free tier.', verdict: 'Worth using if you process a few PDFs a week and value the clean interface; go Pro only if you exceed the free daily cap regularly.', evidenceNote: 'Based on Smallpdf official plan documentation and published pricing as of June 2026.' },
+  tinypng: { useCases: ['Compressing PNG/JPEG web assets before upload', 'Batch-optimizing blog images for page speed', 'Converting WebP for modern browsers'], freeLimits: 'The web tool allows roughly 20 images per batch; the API is metered separately with a free monthly quota.', notFor: 'Anyone needing lossless compression or RAW photo workflows — TinyPNG is lossy by design.', competitorNote: 'Compared to Squoosh, TinyPNG is faster for batches but offers less control over compression settings.', verdict: 'The default choice for web image compression — the free tier covers most sites, the API for automation.', evidenceNote: 'Based on TinyPNG official documentation and published API pricing as of June 2026.' },
+  'notion-ai': { useCases: ['Drafting and summarizing docs inside your existing Notion workspace', 'Extracting action items from meeting notes', 'Translating and rewriting content in place'], freeLimits: 'Notion AI is a paid add-on — it is not included in the Notion free plan, and usage is metered per member.', notFor: 'Users outside the Notion ecosystem — standalone AI assistants do the same jobs without the platform lock-in.', competitorNote: 'Compared to standalone AI assistants, Notion AI advantage is workspace context; its weakness is that it only works inside Notion.', verdict: 'Worth adding if your team already lives in Notion; skip it if you only dabble in the free plan.', evidenceNote: 'Based on Notion official AI plan documentation and published pricing as of June 2026.' },
+  deepl: { useCases: ['Translating business documents with formatting preserved', 'Translating web app content via the API', 'Quickly checking translations against alternatives'], freeLimits: 'The free web translator has character limits per translation and locks document translation behind Pro.', notFor: 'Language pairs outside its strength set — coverage is narrower than Google Translate.', competitorNote: 'Compared to Google Translate, DeepL produces more natural translations in European language pairs but supports fewer languages.', verdict: 'The best translation quality for European language pairs — worth Pro for professional document work.', evidenceNote: 'Based on DeepL official documentation and published pricing as of June 2026.' },
+  grammarly: { useCases: ['Polishing emails and messages in the browser', 'Checking tone before sending client communication', 'Real-time correction across web apps'], freeLimits: 'The free plan covers grammar and spelling only — clarity, tone, and rewrite suggestions require Premium.', notFor: 'Book-length manuscripts — structural style reports like ProWritingAid are deeper for long documents.', competitorNote: 'Compared to ProWritingAid, Grammarly is better in real time everywhere; ProWritingAid is deeper for long-form analysis.', verdict: 'The best real-time writing assistant for everyday professional writing — Premium earns it if you write daily.', evidenceNote: 'Based on Grammarly official plan documentation as of June 2026.' },
+  'obs-studio': { useCases: ['Recording tutorials and gameplay for free', 'Streaming to Twitch or YouTube with scenes', 'Capturing multi-source video with audio mixing'], freeLimits: 'OBS is free and open source — the limitation is learning curve and setup time, not paywalls.', notFor: 'Users who want recorded-and-edited output in one app — OBS records, it does not edit.', competitorNote: 'Compared to paid recorders, OBS wins on cost and streaming; paid tools win on the record-to-finished workflow.', verdict: 'The strongest free recording and streaming option — invest the setup time and it replaces paid tools.', evidenceNote: 'Based on OBS official documentation and community-reported behavior as of June 2026.' },
+  capcut: { useCases: ['Editing short-form video for social media', 'Auto-captioning talking-head videos', 'Quick mobile edits that export without watermark'], freeLimits: 'Core editing is free; some effects, transitions, and cloud features sit behind CapCut Pro.', notFor: 'Long-form or professional color-critical projects — desktop NLEs like DaVinci Resolve are deeper.', competitorNote: 'Compared to Premiere-class editors, CapCut trades depth for speed — it is built for short-form output.', verdict: 'The best free short-form video editor for social content — upgrade only for specific premium effects.', evidenceNote: 'Based on CapCut official documentation as of June 2026.' },
+  canva: { useCases: ['Producing social media graphics from templates', 'Building quick presentations with brand kits', 'Creating marketing collateral without design training'], freeLimits: 'The free plan locks brand kits, premium templates, background remover, and resize tools behind Pro.', notFor: 'UI/UX design or print-production vector work — Canva is template-first by design.', competitorNote: 'Compared to Figma, Canva is faster for non-designers but cannot do real component-based UI design.', verdict: 'The fastest path from idea to finished graphic for non-designers — Pro pays for itself with brand kits.', evidenceNote: 'Based on Canva official plan documentation as of June 2026.' },
+  figma: { useCases: ['Designing app and web interfaces with live collaboration', 'Prototyping user flows before development', 'Maintaining shared design systems across teams'], freeLimits: 'The free tier covers 3 project files and limited version history — team features require paid seats.', notFor: 'Solo offline work on huge files — Figma is browser-first and needs a connection for full features.', competitorNote: 'Compared to Sketch, Figma is cross-platform and collaborative; compared to Penpot, it is more polished but paid.', verdict: 'The industry-standard UI design tool — the free tier is genuinely usable for individuals.', evidenceNote: 'Based on Figma official plan documentation as of June 2026.' },
+  xmind: { useCases: ['Mapping project structures before kickoff', 'Brainstorming feature ideas visually', 'Building presentation-ready mind maps'], freeLimits: 'The free tier limits exports (watermarked images) and locks advanced features like pitch mode behind Pro.', notFor: 'Team real-time collaboration — XMind is a single-player thinking tool.', competitorNote: 'Compared to Miro, XMind is better for structured solo mind maps; Miro is better for team canvases.', verdict: 'The best-structured mind-mapping app for individual thinking — Pro is worth it if you export often.', evidenceNote: 'Based on XMind official plan documentation as of June 2026.' },
+};
+
 const detail = toolDetails[tool.id] || {
 	detailDescription: `${tool.name} is a popular tool in its category. It offers a range of features designed to help users accomplish their tasks efficiently and effectively.`,
 	pros: ['Easy to use', 'Reliable performance', 'Regular updates'],
@@ -219,6 +241,28 @@ const pageTitle = `${tool.name} Review (2026): Pros, Cons & Pricing — ${SITE_T
 				background: var(--accent-dark);
 				transform: translateY(-1px);
 			}
+			.tool-editorial {
+				margin-bottom: 32px;
+			}
+			.tool-editorial h2 {
+				font-size: 20px;
+				margin: 24px 0 10px;
+			}
+			.tool-editorial ul {
+				padding-left: 20px;
+				font-size: 15px;
+				line-height: 1.7;
+				color: rgb(var(--gray-dark));
+			}
+			.tool-editorial p {
+				font-size: 15px;
+				line-height: 1.7;
+				color: rgb(var(--gray-dark));
+			}
+			.tool-evidence {
+				font-size: 13px;
+				color: rgb(var(--gray));
+			}
 			.related-section {
 				margin-top: 40px;
 				padding-top: 40px;
@@ -275,6 +319,23 @@ const pageTitle = `${tool.name} Review (2026): Pros, Cons & Pricing — ${SITE_T
 			</div>
 
 			<p class="detail-desc">{detail.detailDescription}</p>
+			{toolEditorial[tool.id] && (
+				<div class="tool-editorial">
+					<h2>What It Does Best</h2>
+					<ul>
+						{toolEditorial[tool.id].useCases.map((u) => <li>{u}</li>)}
+					</ul>
+					<h2>Free Plan Limitations</h2>
+					<p>{toolEditorial[tool.id].freeLimits}</p>
+					<h2>Who Should Skip It</h2>
+					<p>{toolEditorial[tool.id].notFor}</p>
+					<h2>How It Compares</h2>
+					<p>{toolEditorial[tool.id].competitorNote}</p>
+					<h2>ToolStep's Recommendation</h2>
+					<p>{toolEditorial[tool.id].verdict}</p>
+					<p class="tool-evidence"><em>{toolEditorial[tool.id].evidenceNote}</em></p>
+				</div>
+			)}
 
 			<div class="pros-cons">
 				<div class="pros">

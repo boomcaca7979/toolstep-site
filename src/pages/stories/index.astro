@@ -3,7 +3,7 @@ import PageLayout from '../../components/PageLayout.astro';
 import { storiesData } from '../../data/stories';
 
 const pageTitle = 'Web Stories — ToolStep Visual Stories';
-const pageDescription = '50 visual web stories covering hardware reviews, software comparisons, and productivity tips. Swipe through our top picks in 60 seconds.';
+const pageDescription = `${storiesData.length} visual web stories covering hardware reviews, software comparisons, and productivity tips. Swipe through our top picks in 60 seconds.`;
 const lastUpdated = 'June 2026';
 
 // Group by category preserving order
@@ -21,7 +21,7 @@ for (const story of storiesData) {
 <PageLayout
   title="ToolStep Web Stories: Software & AI Tool Guides — ToolStep"
   description={pageDescription}
-  subtitle="50 visual stories — swipe through our top picks, comparisons, and buying guides in 60 seconds."
+  subtitle={`${storiesData.length} visual stories — swipe through our top picks, comparisons, and buying guides in 60 seconds.`}
   lastUpdated={lastUpdated}
   breadcrumbs={[
     { name: 'Home', href: '/' },

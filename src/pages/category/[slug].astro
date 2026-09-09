@@ -57,10 +57,233 @@ const fallbackBests = isEmptyCategory
 
 // Build FAQ — always at least 2 questions for SEO.
 // For empty categories, add generic helpful questions.
+// Phase 3: per-category editorial guidance (definition + selection criteria).
+const categoryEditorial: Record<string, { definition: string; criteria: string[] }> = {
+  "standing-desks": {
+    definition: "Standing desks that raise your workstation electrically or manually. This category covers full desks — for desktop converters that sit on an existing desk, see the standing-desk converter guide.",
+    criteria: [
+      "Stability at full height (the most common failure)",
+      "Dual-motor lift quality and noise",
+      "Weight capacity for your monitor load",
+      "Warranty length — a signal of frame confidence",
+    ],
+  },
+  "office-chairs": {
+    definition: "Office and ergonomic chairs for daily desk work. This category covers task and ergonomic seating; gaming-style racing chairs have their own guide.",
+    criteria: [
+      "Adjustable lumbar that fits your spine curve",
+      "Seat depth and armrest adjustability",
+      "Breathability for long sessions",
+      "Warranty — premium chairs run 12 years",
+    ],
+  },
+  "ergonomic-chairs": {
+    definition: "Ergonomic chairs with the deeper adjustability tier: adjustable lumbar, armrests, and seat depth. A subset of office chairs filtered for real fit flexibility.",
+    criteria: [
+      "Granular lumbar positioning",
+      "3D/4D armrests",
+      "Seat depth range for your height",
+      "Materials (mesh vs foam) for your climate",
+    ],
+  },
+  "keyboards": {
+    definition: "Keyboards for work and play — mechanical and membrane, wired and wireless. Choose by switch feel first: it decides every typing hour after.",
+    criteria: [
+      "Switch type and typing feel",
+      "Hot-swappability for future changes",
+      "Wireless reliability and multi-device",
+      "Layout (TKL/75%/full) for your desk",
+    ],
+  },
+  "mice": {
+    definition: "Mice for productivity and gaming. Ergonomic shaping decides daily comfort; sensor quality decides precision.",
+    criteria: [
+      "Ergonomic shape for your grip",
+      "Sensor accuracy for your work",
+      "Multi-device support",
+      "Battery life for wireless models",
+    ],
+  },
+  "monitors": {
+    definition: "Desktop monitors for work, creation, and gaming. Text clarity and panel quality matter for work; refresh rate matters for games — pick your priority.",
+    criteria: [
+      "Panel quality and text clarity",
+      "Resolution for your viewing distance",
+      "USB-C docking for laptops",
+      "Ergonomic stand adjustability",
+    ],
+  },
+  "webcams": {
+    definition: "Webcams for calls, streaming, and recording. A webcam earns its money in low light and framing — resolution alone is not quality.",
+    criteria: [
+      "Low-light performance",
+      "Autofocus and framing",
+      "True sensor resolution vs upscaled",
+      "Mic quality if you use it for calls",
+    ],
+  },
+  "headphones": {
+    definition: "Headphones for music, calls, and travel. ANC depth, sound tuning, and comfort are separate axes — flagships rarely lead all three.",
+    criteria: [
+      "ANC depth for your environment",
+      "Sound signature (balanced vs warm)",
+      "Comfort for long sessions",
+      "Battery and codec support",
+    ],
+  },
+  "docks": {
+    definition: "USB-C and Thunderbolt docks that turn one cable into a full desk. Choose by port count and charging power — certified Thunderbolt 4 guarantees dual 4K60.",
+    criteria: [
+      "Port count vs your peripherals",
+      "Charging wattage (96W+ for pro laptops)",
+      "Display support (dual 4K60 baseline)",
+      "Thermals and warranty",
+    ],
+  },
+  "storage": {
+    definition: "External SSDs and hard drives. SSDs win speed and durability; HDDs win price per terabyte — backup archives vs daily transfers.",
+    criteria: [
+      "Sustained speed (not peak marketing)",
+      "Durability ratings for travel",
+      "Price per terabyte",
+      "Interface (USB 3.2 vs Thunderbolt)",
+    ],
+  },
+  "desk-accessories": {
+    definition: "The supporting cast of a desk: lamps, stands, pads, and cable management. Individually small, collectively they decide desk comfort.",
+    criteria: [
+      "Material quality for daily handling",
+      "Actual footprint on your desk",
+      "Solve a real problem (glare, clutter, posture)",
+      "Price vs build longevity",
+    ],
+  },
+  "ai-assistants": {
+    definition: "General-purpose AI chatbots and assistants. Capabilities change monthly — pick on ecosystem fit and data policy as much as raw model quality.",
+    criteria: [
+      "Reasoning and writing quality for your tasks",
+      "Context window for your documents",
+      "Ecosystem integrations",
+      "Data and privacy policy",
+    ],
+  },
+  "ai-writing": {
+    definition: "AI writing and grammar tools for professional text. Real-time assistance and long-form analysis are different strengths.",
+    criteria: [
+      "Correction accuracy (fewer false positives)",
+      "Integration coverage (browser, Office, Docs)",
+      "Style feedback depth",
+      "Cost per month at your volume",
+    ],
+  },
+  "ai-coding": {
+    definition: "AI coding assistants for completion, refactoring, and agent workflows. Editor compatibility is often the binding constraint.",
+    criteria: [
+      "IDE compatibility",
+      "Multi-file/agentic capability",
+      "Codebase awareness",
+      "Price per seat at team scale",
+    ],
+  },
+  "ai-image": {
+    definition: "AI image generators for creative and commercial output. Aesthetic ceiling and prompt control are separate strengths.",
+    criteria: [
+      "Output quality for your style",
+      "Prompt control and editing",
+      "Commercial use rights",
+      "API/automation access",
+    ],
+  },
+  "ai-video": {
+    definition: "AI video generation and editing tools — an early, fast-moving category. Match output length and quality to your actual use.",
+    criteria: [
+      "Output quality and length limits",
+      "Workflow integration",
+      "Commercial use terms",
+      "Cost per generated video",
+    ],
+  },
+  "productivity": {
+    definition: "Apps that organize your work: tasks, notes, and workspaces. Adoption is the real test — a tool you abandon helps nothing.",
+    criteria: [
+      "Capture speed",
+      "Cross-platform sync reliability",
+      "Consolidation vs specialization fit",
+      "Long-term subscription cost",
+    ],
+  },
+  "note-taking": {
+    definition: "Note apps for capture and knowledge management. The core split: local-first files you own versus cloud workspaces with collaboration.",
+    criteria: [
+      "Organization and search model",
+      "Sync reliability",
+      "File format portability",
+      "Price for your vault size",
+    ],
+  },
+  "task-management": {
+    definition: "Task managers for personal and shared to-dos. Capture speed and dependable reminders decide whether the system survives.",
+    criteria: [
+      "Capture speed (natural language)",
+      "Recurring tasks and reminders",
+      "Cross-platform sync",
+      "Integrations with your stack",
+    ],
+  },
+  "project-management": {
+    definition: "Project management platforms for teams. Views, reporting, and adoption decide success — power without adoption fails.",
+    criteria: [
+      "Views (list/board/timeline) fit",
+      "Reporting depth",
+      "Adoption friction for your team",
+      "Per-seat cost at scale",
+    ],
+  },
+  "design-tools": {
+    definition: "Design tools for UI/UX, prototyping, and collaboration. Match the tool to the deliverable: product UI vs marketing graphics are different jobs.",
+    criteria: [
+      "Collaboration model",
+      "Prototyping depth",
+      "Component/design-system support",
+      "Handoff to developers",
+    ],
+  },
+  "security": {
+    definition: "VPNs, password managers, and privacy tools. Trust is the product: audits, no-logs policies, and breach history outweigh features.",
+    criteria: [
+      "Independent audits and no-logs policy",
+      "Jurisdiction and data policy",
+      "Cross-platform coverage",
+      "Multi-year total cost",
+    ],
+  },
+  "cloud-storage": {
+    definition: "Cloud storage for sync, sharing, and backup-adjacent use. Ecosystem fit and privacy posture are as important as free capacity.",
+    criteria: [
+      "Free capacity and per-TB price",
+      "Sync reliability",
+      "Ecosystem integration",
+      "Privacy and encryption posture",
+    ],
+  },
+  "video-tools": {
+    definition: "Screen recorders and video editors for content creation. Recording and editing are separate jobs — some tools do one well.",
+    criteria: [
+      "Capture quality (resolution/fps)",
+      "Editing workflow depth",
+      "Export formats and quality",
+      "Cost model (free/subscription/buy-once)",
+    ],
+  },
+};
+
+const catGuide = categoryEditorial[slug];
 const faqs = [
   {
     question: `What are the best ${pluralName.toLowerCase()} in 2026?`,
-    answer: description,
+    answer: catGuide
+      ? `${catGuide.definition} The main selection criteria: ${catGuide.criteria.map((c, i) => `(${i + 1}) ${c.charAt(0).toLowerCase()}${c.slice(1)}`).join('; ')}.`
+      : description,
   },
   ...(featuredBests[0]?.faqs.slice(0, 2).map((f) => ({
     question: f.question,
@@ -368,6 +591,16 @@ const siblingCategories = categories.filter((c) => c.slug !== slug).slice(0, 10)
 				</p>
 			)}
 		</section>
+
+		{catGuide && (
+			<section class="page-hero" style="padding-top: 0;">
+				<h2 style="font-size: 24px; font-weight: 800; margin: 0 0 10px;">How to Choose {pluralName}</h2>
+				<p style="max-width: 760px; color: rgb(var(--gray-dark)); line-height: 1.7;">{catGuide.definition}</p>
+				<ul style="max-width: 760px; margin: 12px 0 0; padding-left: 20px; color: rgb(var(--gray-dark)); line-height: 1.8;">
+					{catGuide.criteria.map((c) => <li>{c}</li>)}
+				</ul>
+			</section>
+		)}
 
 		{/* ===== Featured Best Guides ===== */}
 		<section class="section-block">

@@ -115,7 +115,7 @@ export const storiesData: StoryEntry[] = [
     'Best Standing Desks 2026',
     'Hardware',
     '#ea580c',
-    'Our top 5 standing desks tested for 90 days — see which one wins in 60 seconds.',
+    'Our top 5 standing desks evaluated for 90 days — see which one wins in 60 seconds.',
     'Modern standing desk in a bright home office, cinematic product photo, vertical',
     [
       { headline: 'FlexiSpot E7', subtext: 'Best overall — $399', image: img('FlexiSpot E7 standing desk in home office, product photo, vertical', 'portrait_16_9') },
@@ -175,7 +175,7 @@ export const storiesData: StoryEntry[] = [
     'Best Wireless Mice 2026',
     'Hardware',
     '#ea580c',
-    '5 wireless mice tested for productivity — which is the most comfortable for 8-hour days?',
+    '5 wireless mice evaluated for productivity — which is the most comfortable for 8-hour days?',
     'Logitech MX Master 3S mouse on desk, cinematic product photo, vertical',
     [
       { headline: 'Logitech MX Master 3S', subtext: 'Best overall — $99', image: img('Logitech MX Master 3S mouse close-up, vertical', 'portrait_16_9') },
@@ -235,7 +235,7 @@ export const storiesData: StoryEntry[] = [
     'Best Monitors 2026',
     'Hardware',
     '#ea580c',
-    '5 monitors tested for productivity — which 4K display is best for your desk?',
+    '5 monitors evaluated for productivity — which 4K display is best for your desk?',
     '4K monitor on standing desk in modern office, cinematic, vertical',
     [
       { headline: 'Dell UltraSharp U2723QE', subtext: 'Best overall — $699', image: img('Dell UltraSharp 4K monitor, vertical', 'portrait_16_9') },
@@ -275,7 +275,7 @@ export const storiesData: StoryEntry[] = [
     'Best Desk Lamps 2026',
     'Hardware',
     '#ea580c',
-    '5 desk lamps tested for eye care — which LED lamp reduces eye strain best?',
+    '5 desk lamps evaluated for eye care — which LED lamp reduces eye strain best?',
     'LED architect desk lamp on wooden desk, cinematic, vertical',
     [
       { headline: 'Glocusent LED Desk Lamp', subtext: 'Best overall — $49', image: img('Glocusent LED desk lamp, vertical', 'portrait_16_9') },
@@ -315,7 +315,7 @@ export const storiesData: StoryEntry[] = [
     'Best Laptop Stands 2026',
     'Hardware',
     '#ea580c',
-    '5 laptop stands tested for ergonomics — which raises your screen to eye level?',
+    '5 laptop stands evaluated for ergonomics — which raises your screen to eye level?',
     'Aluminum laptop stand on desk with MacBook, cinematic, vertical',
     [
       { headline: 'Roost Laptop Stand', subtext: 'Best portable — $89', image: img('Roost laptop stand, vertical', 'portrait_16_9') },

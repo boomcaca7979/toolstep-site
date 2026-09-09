@@ -99,6 +99,11 @@ function getSpec(specs: { label: string; value: string }[] | undefined, label: s
 // Average rating
 const avgRating = (entry.products.reduce((sum, p) => sum + p.rating, 0) / entry.products.length).toFixed(1);
 
+// Phase 2 editorial content. Optional — legacy entries render unchanged.
+const editorial = entry.editorial;
+const analysisLabel =
+  editorial?.evidenceLabel === 'hands-on-testing' ? entry.testingDuration : 'Docs Analysis';
+
 // TOC sections
 const tocSections = [
   { id: 'top-picks', label: 'Top 10 Picks' },
@@ -723,6 +728,48 @@ const articleSchema = {
           font-size: 1.6rem;
         }
       }
+      /* Phase 2 editorial blocks */
+      .decision-factor {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.1rem 1.25rem;
+        margin: 1rem 0;
+      }
+      .decision-factor h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.02rem;
+        color: rgb(var(--black));
+      }
+      .decision-factor p {
+        margin: 0.3rem 0;
+        font-size: 0.94rem;
+        line-height: 1.6;
+        color: rgb(var(--gray-dark));
+      }
+      .who-wins-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+      .who-wins-list li {
+        padding: 0.75rem 1rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+      .who-wins-list .scenario-who {
+        color: rgb(var(--gray));
+        font-style: italic;
+      }
+      .who-wins-list .scenario-reason {
+        display: block;
+        font-size: 0.85rem;
+        color: rgb(var(--gray-dark));
+        margin-top: 0.3rem;
+      }
     </style>
   </head>
   <body>
@@ -764,8 +811,8 @@ const articleSchema = {
                 <div class="label">Avg Rating</div>
               </div>
               <div class="hero-stat">
-                <div class="num">{entry.testingDuration}</div>
-                <div class="label">Testing Time</div>
+                <div class="num">{analysisLabel}</div>
+                <div class="label">{editorial?.evidenceLabel === 'hands-on-testing' ? 'Testing Time' : 'Analysis Method'}</div>
               </div>
             </div>
             <div class="hero-meta">
@@ -783,6 +830,73 @@ const articleSchema = {
             <strong>How We Evaluate:</strong>
             <span> Rankings are based on product documentation analysis, specification comparison, and feature assessment — not sponsored placements. See our <a href="/how-we-test/">testing methodology</a> and <a href="/editorial-policy/">editorial policy</a> for details.</span>
           </div>
+
+          {editorial && (
+            <>
+              {/* Selection Method */}
+              <h2 id="selection-method">How This List Was Built</h2>
+              <p>{editorial.selectionMethod}</p>
+
+              {/* Ranking Criteria */}
+              {editorial.rankingCriteria.length > 0 && (
+                <>
+                  <h2 id="ranking-criteria">What Drives the Ranking</h2>
+                  {editorial.rankingCriteria.map((c) => (
+                    <div class="decision-factor">
+                      <h3>{c.factor}</h3>
+                      <p>{c.whyItMatters}</p>
+                    </div>
+                  ))}
+                </>
+              )}
+
+              {/* Winner reason */}
+              <h2 id="winner-reason">Why #{entry.products[0]?.name ?? '1'} Took the Top Spot</h2>
+              <p>{editorial.winnerReason}</p>
+              {editorial.rankingReversal && (
+                <p><strong>When the ranking flips:</strong> {editorial.rankingReversal}</p>
+              )}
+
+              {/* Scenario recommendations */}
+              {editorial.scenarioRecommendations.length > 0 && (
+                <>
+                  <h2 id="scenario-recommendations">When the Ranking Changes</h2>
+                  <ul class="who-wins-list">
+                    {editorial.scenarioRecommendations.map((s) => (
+                      <li>
+                        <span class="scenario">
+                          <strong>{s.scenario}</strong>
+                          <span class="scenario-who"> — pick {s.pick}</span>
+                          <span class="scenario-reason">{s.reason}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {/* Exclusions */}
+              {editorial.exclusionReasons.length > 0 && (
+                <>
+                  <h2 id="exclusions">What We Left Out</h2>
+                  <ul>
+                    {editorial.exclusionReasons.map((e) => <li>{e}</li>)}
+                  </ul>
+                </>
+              )}
+
+              {/* Evidence */}
+              <h2 id="evidence">How This Was Researched</h2>
+              {editorial.evidenceLabel === 'hands-on-testing' ? (
+                <p>This ranking reflects hands-on testing carried out over {entry.testingDuration}, following the ToolStep testing protocol.</p>
+              ) : (
+                <>
+                  <p>This ranking is based on a structured review of official product documentation, published specifications, current pricing, and feature analysis — the same methodology ToolStep describes on the /how-we-test/ page. We do not claim hands-on testing that did not happen.</p>
+                  {editorial.evidenceNote && <p>{editorial.evidenceNote}</p>}
+                </>
+              )}
+            </>
+          )}
 
           <AdSlot position="hero-below" />
 

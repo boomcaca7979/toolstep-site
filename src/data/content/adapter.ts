@@ -279,6 +279,9 @@ export const reviewEntryToContent: ReviewAdapter = (entry: ProductReviewEntry): 
     bestFor: entry.bestFor,
     notFor: entry.notFor,
 
+    // Evidence metadata (Phase 3)
+    editorial: entry.editorial,
+
     // Presentation
     heroImage: entry.heroImage,
   };
@@ -399,6 +402,9 @@ export const bestEntryToContent: BestListAdapter = (entry: BestEntry): BestListC
     h1: entry.h1,
     buyerGuide: entry.buyerGuide,
 
+    // Editorial decision content (Phase 2 enhancement)
+    editorial: entry.editorial,
+
     // Presentation
     color: entry.color,
   };
@@ -518,6 +524,10 @@ export const compareEntryToContent: ComparisonAdapter = (entry: CompareEntry): C
       })),
     },
 
+    // Editorial decision content (Phase 2 enhancement) — optional, preserved
+    // through the unified round-trip so /compare/ pages can render it.
+    editorial: entry.editorial,
+
     // Presentation
     color: entry.color,
   };
@@ -622,6 +632,9 @@ export const alternativeEntryToContent: AlternativeAdapter = (entry: Alternative
     // Alternative-specific
     introduction: entry.intro,
     anchorProduct,
+
+    // Editorial decision content (Phase 2 enhancement)
+    editorial: entry.editorial,
 
     // Presentation
     color: entry.color,
@@ -781,6 +794,7 @@ export function reviewContentToEntry(content: ReviewContent): ProductReviewEntry
     faqs: content.faqs.map((f) => ({ question: f.question, answer: f.answer })),
     compareSlugs: content.compareWith,
     relatedProducts,
+    editorial: content.editorial,
   };
 }
 
@@ -827,6 +841,7 @@ export function bestListContentToEntry(content: BestListContent): BestEntry {
     authorSlug: content.authorSlug,
     h1: content.h1,
     buyerGuide: content.buyerGuide,
+    editorial: content.editorial,
   };
 }
 
@@ -882,6 +897,7 @@ export function comparisonContentToEntry(content: ComparisonContent): CompareEnt
     lastUpdated: content.lastUpdated,
     testingDuration: content.testingDuration,
     authorSlug: content.authorSlug,
+    editorial: content.editorial,
   };
 }
 
@@ -919,5 +935,6 @@ export function alternativeContentToEntry(content: AlternativeContent): Alternat
     internalLinks,
     testingDuration: content.testingDuration,
     authorSlug: content.authorSlug,
+    editorial: content.editorial,
   };
 }

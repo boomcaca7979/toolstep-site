@@ -7,12 +7,17 @@ import { tools } from '../data/tools';
 import { reviews } from '../data/reviews';
 import { compareData } from '../data/compare';
 import { bestData } from '../data/best';
+import { productReviews } from '../data/products';
 
 // Homepage-only SEO title (50–60 chars). SITE_TITLE remains 'ToolStep' for og:site_name / RSS.
 const HOME_TITLE = 'ToolStep | AI Tool Reviews, Comparisons & Software Guides';
 
-// Real stats from data sources
-const reviewsCount = reviews.length;
+// Real stats from data sources. Review total = hand-authored review pages
+// (excluding the [slug] route and the reviews index) + data-driven reviews.
+const staticReviewPages = Object.keys(
+  import.meta.glob('./reviews/*.astro')
+).filter((k) => !k.includes('[slug]') && !k.endsWith('/index.astro')).length;
+const reviewsCount = staticReviewPages + productReviews.length;
 const comparesCount = compareData.length;
 const guidesCount = bestData.length;
 
@@ -401,7 +406,7 @@ const latestUpdates = [
 		{/* ===== Hero ===== */}
 		<section class="hero">
 			<h1>Find the Best AI Tools &amp; Software</h1>
-			<p>ToolStep is your AI tools and software review platform — in-depth comparisons, hands-on reviews, and curated best-of guides to help you pick the right tool.</p>
+			<p>ToolStep is your AI tools and software review platform — in-depth comparisons, evidence-based reviews, and curated best-of guides to help you pick the right tool.</p>
 			<div class="hero-cta">
 				<a class="btn-primary" href="/reviews/">Browse Reviews →</a>
 				<a class="btn-secondary" href="/tools/">All Tools</a>

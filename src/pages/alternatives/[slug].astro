@@ -23,6 +23,14 @@ const authorName = author?.name || 'ToolStep Team';
 const publishDate = '2026-06-26';
 const pageUrl = new URL(`/alternatives/${entry.slug}/`, Astro.site).toString();
 
+// Phase 2 editorial content. Optional — legacy entries render unchanged.
+const editorial = entry.editorial;
+const methodLine =
+  editorial?.evidenceLabel === 'hands-on-testing'
+    ? `Tested over ${entry.testingDuration}`
+    : (editorial?.evidenceNote ??
+      'Based on product documentation and specification analysis');
+
 // Cannibalization whitelist: exact-path lookup; undefined → self-canonical
 const canonicalOverride = getCanonicalOverride(`/alternatives/${entry.slug}/`);
 
@@ -668,6 +676,71 @@ const articleSchema = {
           grid-template-columns: 1fr;
         }
       }
+
+      /* Phase 2 editorial blocks */
+      .decision-factor {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.1rem 1.25rem;
+        margin: 1rem 0;
+      }
+      .decision-factor h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.02rem;
+        color: rgb(var(--black));
+      }
+      .decision-factor p {
+        margin: 0.3rem 0;
+        font-size: 0.94rem;
+        line-height: 1.6;
+        color: rgb(var(--gray-dark));
+      }
+      .decision-factor .when-matters {
+        color: rgb(var(--gray));
+        font-size: 0.88rem;
+        margin-top: 0.6rem;
+        padding-top: 0.6rem;
+        border-top: 1px solid var(--card-border);
+      }
+      .audience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1rem 0 1.5rem;
+      }
+      .audience-box {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+      }
+      .audience-box h3 {
+        margin: 0 0 0.4rem;
+        font-size: 0.95rem;
+        color: #059669;
+      }
+      .audience-box p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        color: rgb(var(--gray-dark));
+      }
+      .who-wins-list .scenario-who {
+        color: rgb(var(--gray));
+        font-style: italic;
+      }
+      .who-wins-list .scenario-reason {
+        display: block;
+        font-size: 0.85rem;
+        color: rgb(var(--gray-dark));
+        margin-top: 0.3rem;
+      }
+      @media (max-width: 640px) {
+        .audience-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
@@ -692,7 +765,7 @@ const articleSchema = {
               <span class="dot"></span>
               <span>Updated {entry.lastUpdated}</span>
               <span class="dot"></span>
-              <span>Tested over {entry.testingDuration}</span>
+              <span>{methodLine}</span>
             </div>
             <div class="hero-stats">
               <div class="hero-stat">
@@ -700,8 +773,8 @@ const articleSchema = {
                 <div class="label">Alternatives</div>
               </div>
               <div class="hero-stat">
-                <div class="num">{entry.testingDuration}</div>
-                <div class="label">Tested</div>
+                <div class="num">{editorial?.evidenceLabel === 'hands-on-testing' ? entry.testingDuration : 'Docs'}</div>
+                <div class="label">{editorial?.evidenceLabel === 'hands-on-testing' ? 'Tested' : 'Analysis'}</div>
               </div>
               <div class="hero-stat">
                 <div class="num">{entry.faqs.length}</div>
@@ -713,6 +786,78 @@ const articleSchema = {
           <AdSlot position="hero-below" />
 
           <div class="intro">{entry.intro}</div>
+
+          {editorial && (
+            <>
+              <h2 id="decision-summary">Decision Summary</h2>
+              <p>{editorial.decisionSummary}</p>
+
+              {editorial.originalToolLimits.length > 0 && (
+                <>
+                  <h2 id="why-switch">Why Switch Away From {entry.toolName}</h2>
+                  <ul>
+                    {editorial.originalToolLimits.map((l) => <li>{l}</li>)}
+                  </ul>
+                </>
+              )}
+
+              {editorial.decisionFactors.length > 0 && (
+                <>
+                  <h2 id="decision-factors">How Each Alternative Changes the Trade-off</h2>
+                  {editorial.decisionFactors.map((f) => (
+                    <div class="decision-factor">
+                      <h3>{f.factor}</h3>
+                      <p><strong>{entry.toolName}:</strong> {f.contextA}</p>
+                      <p><strong>Alternative:</strong> {f.contextB}</p>
+                      <p class="when-matters"><strong>When this matters:</strong> {f.whenItMatters}</p>
+                    </div>
+                  ))}
+                </>
+              )}
+
+              <h2 id="best-fit">Best For / Not For</h2>
+              <div class="audience-grid">
+                <div class="audience-box buy">
+                  <h3>Switch If</h3>
+                  <p>{editorial.bestFor}</p>
+                </div>
+                <div class="audience-box">
+                  <h3 style="color: #dc2626;">Stay With {entry.toolName} If</h3>
+                  <p>{editorial.notFor}</p>
+                </div>
+              </div>
+
+              <h2 id="migration-cost">What Switching Costs</h2>
+              <p>{editorial.migrationCost}</p>
+
+              {editorial.scenarios.length > 0 && (
+                <>
+                  <h2 id="scenarios">Real-World Switching Scenarios</h2>
+                  <ul class="who-wins-list">
+                    {editorial.scenarios.map((s) => (
+                      <li>
+                        <span class="scenario">
+                          <strong>{s.scenario}</strong>
+                          <span class="scenario-who"> — {s.who}</span>
+                          <span class="scenario-reason">{s.reason}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              <h2 id="evidence">How This Was Researched</h2>
+              {editorial.evidenceLabel === 'hands-on-testing' ? (
+                <p>This guide reflects hands-on testing carried out over {entry.testingDuration}, following the ToolStep testing protocol.</p>
+              ) : (
+                <>
+                  <p>This guide is based on a structured review of official product documentation, published feature lists, current pricing, and community-reported limitations — the same methodology ToolStep describes on the /how-we-test/ page. We do not claim hands-on testing that did not happen.</p>
+                  {editorial.evidenceNote && <p>{editorial.evidenceNote}</p>}
+                </>
+              )}
+            </>
+          )}
 
           <AdUnit slot="1111111111" format="horizontal" layout="in-article" />
 

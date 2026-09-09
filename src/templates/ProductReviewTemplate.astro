@@ -37,6 +37,15 @@ interface Props {
 const { entry, authorName, affiliateUrl, heroImage } = Astro.props;
 const author = getAuthor(entry.authorSlug);
 const meta = buildProductReviewMeta(entry, authorName, author.role);
+
+// Phase 3: evidence-driven testing display. Only HANDS_ON entries may show
+// "Tested over N days" — documentation-based reviews show an honest label.
+const editorial = entry.editorial;
+const methodLine =
+  editorial?.evidenceType === 'HANDS_ON'
+    ? `Tested over ${entry.testingDuration}`
+    : (editorial?.evidenceNote ??
+      'Based on product documentation and specification analysis');
 const related = getRelatedForReview(entry.productName, entry.slug, entry.category, entry.brand, entry.compareSlugs);
 
 // Best-list pages (multi-product roundups) must not emit Product/Review schema.
@@ -136,7 +145,7 @@ const tocSections = [
     <Header />
     <main>
       <h1>{entry.productName} Review</h1>
-      <div class="meta">Updated {entry.lastUpdated} · {entry.testingDuration} testing</div>
+      <div class="meta">Updated {entry.lastUpdated} · {methodLine}</div>
 
       <ReviewMeta
         authorSlug={entry.authorSlug}
@@ -168,7 +177,18 @@ const tocSections = [
 
       <h2 id="testing-summary">Testing Summary</h2>
       <p>{entry.testingSummary}</p>
-      <p>We follow the <a href="/how-we-test/">ToolStep testing protocol</a> for all reviews, measuring performance, build quality, ease of use, and value across real-world scenarios.</p>
+
+      {editorial && editorial.evidenceType === 'HANDS_ON' ? (
+        <p>This review reflects hands-on testing carried out over {entry.testingDuration}, following the ToolStep <a href="/how-we-test/">testing protocol</a>.</p>
+      ) : (
+        <p>
+          This review was built from a structured analysis of official product documentation, published specifications, and publicly available information — following the ToolStep <a href="/how-we-test/">testing protocol</a>. We did not receive a review unit, and we do not claim hands-on testing that did not happen. {editorial?.evidenceNote}
+        </p>
+      )}
+
+      {editorial?.decisionNote && (
+        <p><strong>ToolStep's take:</strong> {editorial.decisionNote}</p>
+      )}
 
       <AdUnit slot="1111111111" format="horizontal" layout="in-article" />
 
