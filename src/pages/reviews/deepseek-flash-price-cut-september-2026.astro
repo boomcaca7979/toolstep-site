@@ -1,0 +1,164 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdUnit from '../../components/ads/AdUnit.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const title = "DeepSeek Flash Price Cut: New Lower API Pricing Starts September 10, 2026 | ToolStep";
+const description = "DeepSeek cuts Flash series API pricing effective September 10, 2026, 12:00 Beijing time: cache-hit input drops 60% to ¥0.02/M tokens, cache-miss input to ¥1/M, output to ¥4/M. Peak hours cost 2x. Full old-vs-new comparison and what it means for developers.";
+const publishDate = '2026-09-09';
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{headline: "DeepSeek Flash Price Cut: New Lower API Pricing Starts September 10, 2026", description: description, datePublished: publishDate, dateModified: publishDate, authorName: 'ToolStep Editorial Team'}} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 2, "name": "Reviews", "item": new URL('/reviews/', Astro.site).toString() },
+        { "@type": "ListItem", "position": 3, "name": "DeepSeek Flash Price Cut", "item": new URL('/reviews/deepseek-flash-price-cut-september-2026/', Astro.site).toString() }
+      ]
+    })} />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When does the new DeepSeek Flash pricing take effect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The new pricing takes effect September 10, 2026 at 12:00 Beijing time (UTC+8). Before that moment, the Flash series is billed at the old rates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the DeepSeek price cut apply to all DeepSeek models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The adjustment covers the Flash series — including deepseek-v4-flash and deepseek-v4-flash-vision-exp. It is a Flash-series price adjustment, not a site-wide DeepSeek price cut. Check the official pricing page for other models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does DeepSeek peak pricing mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "During peak hours the listed new prices are doubled. For example, cache-hit input is ¥0.02 per million tokens off-peak and ¥0.04 per million tokens during peak hours. Plan batch and background workloads for off-peak windows to keep costs down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which price cut matters most for DeepSeek API users?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The cache-hit input price cut from ¥0.05 to ¥0.02 per million tokens (a 60% reduction). Workloads with repeated context — agents, multi-turn chat, RAG pipelines, code assistants — hit cache frequently, so effective savings can be large."
+      }
+    }
+  ]
+}</script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .tag { display: inline-block; background: #f3f4f6; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; margin-bottom: 24px; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #111; margin-top: 24px; margin-bottom: 10px; }
+    p { margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+    th { background: #f9fafb; padding: 10px; text-align: left; font-weight: 600; border-bottom: 2px solid #e5e7eb; }
+    td { padding: 10px; border-bottom: 1px solid #e5e7eb; }
+    .cut { color: #059669; font-weight: 700; }
+    .callout { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; margin: 24px 0; }
+    .sources { background: #f9fafb; border-radius: 12px; padding: 20px; margin: 32px 0 0; font-size: 0.92rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <span class="tag">AI Pricing</span>
+    <h1>DeepSeek Flash Price Cut: New Lower API Pricing Starts September 10, 2026</h1>
+    <p class="meta">Published September 9, 2026 · ToolStep Editorial Team · Based on DeepSeek's official pricing announcement</p>
+
+    <p>DeepSeek is cutting Flash-series API prices effective <strong>September 10, 2026 at 12:00 Beijing time (UTC+8)</strong>. The adjustment applies to the Flash series — including <code>deepseek-v4-flash</code> and <code>deepseek-v4-flash-vision-exp</code> — and it is a meaningful one: cache-hit input drops 60%, cache-miss input drops roughly a third, and output gets cheaper too. This is not a site-wide DeepSeek price cut; it is specific to the Flash tier.</p>
+
+    <div class="callout">
+      <strong>What changed, in one line:</strong> from September 10, 2026, running the Flash models off-peak costs ¥1 per million cache-miss input tokens and ¥4 per million output tokens — with cache hits at just ¥0.02 per million tokens.
+    </div>
+
+    <h2>The Exact New Pricing (Off-Peak)</h2>
+    <p>Per the official announcement, the new off-peak prices per one million tokens are:</p>
+    <table>
+      <thead>
+        <tr><th>Token type</th><th>Old price</th><th>New price (from Sep 10)</th><th>Change</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Cache hit input</td><td>¥0.05</td><td>¥0.02</td><td class="cut">−60%</td></tr>
+        <tr><td>Cache miss input</td><td>¥1.5</td><td>¥1</td><td class="cut">−33.3%</td></tr>
+        <tr><td>Output</td><td>¥4.5</td><td>¥4</td><td class="cut">−11.1%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Peak Hours: The 2x Multiplier</h3>
+    <p>During peak hours, all three new prices are <strong>doubled</strong>. That means cache-hit input at ¥0.04, cache-miss input at ¥2, and output at ¥8 per million tokens during peak windows. This peak/off-peak split is the most important caveat in the announcement: the headline prices are the floor, not the ceiling. Batch jobs, scheduled evaluations, and background processing should target off-peak windows to actually realize the savings.</p>
+
+    <AdUnit slot="2222222222" format="rectangle" layout="responsive" />
+
+    <h2>Why the Cache-Hit Price Cut Matters Most</h2>
+    <p>The 60% cut on cache-hit input is the standout change, and it is aimed directly at how modern AI applications actually consume tokens. Any workload that re-sends similar context — multi-turn chat, agent loops that carry system prompts and tool results forward, RAG pipelines with stable knowledge bases, coding assistants working inside one repository — hits the prompt cache constantly. On those workloads, cache-hit tokens can make up the majority of billed input, so a 60% reduction on that line changes the effective cost per request far more than the headline percentages suggest.</p>
+    <p>Concretely: an agent loop that sends a 50,000-token system-plus-history context and gets an 80% cache-hit rate now bills 40,000 tokens at the ¥0.02 rate instead of ¥0.05. At volume, that is the difference between a marginal agent prototype and one that fits a budget.</p>
+
+    <h2>What This Means for API Users and Developers</h2>
+    <p>Three practical implications from the announced pricing:</p>
+    <p><strong>1. Flash-tier workloads get cheaper without code changes.</strong> If your application already calls <code>deepseek-v4-flash</code> or <code>deepseek-v4-flash-vision-exp</code>, the new prices apply automatically from September 10 — no migration, no API version bump.</p>
+    <p><strong>2. Cache-friendly architecture is now worth more.</strong> Structuring prompts so that stable content (system prompts, documents, tool definitions) sits early in the context maximizes cache hits, which are now 2.5x cheaper than cache misses. This rewards RAG designs and long-running agent sessions over stateless one-shot calls.</p>
+    <p><strong>3. Off-peak scheduling becomes a real lever.</strong> With peak pricing at 2x, moving nightly batch runs, evaluation suites, and non-urgent generation to off-peak windows roughly halves the bill compared with running the same jobs at peak.</p>
+
+    <h2>Who Benefits Most</h2>
+    <p><strong>Agent and assistant builders</strong> benefit most, because their workloads are cache-heavy and run continuously. <strong>RAG pipelines</strong> with stable document sets come next. <strong>High-volume summarization and classification</strong> jobs also gain directly from the cheaper input side. Buyers who should look elsewhere: workloads that need the strongest reasoning quality regardless of price — the Flash tier is a speed-and-cost play, and this adjustment does not change that positioning.</p>
+
+    <AdsterraBanner pageType="reviews" />
+
+    <h2>Should You Change Model or Usage Strategy?</h2>
+    <p>If you are already on the Flash series: stay, and tune for cache hits and off-peak scheduling to capture the full savings. If you are on a pricier tier for cost reasons alone: the new Flash pricing makes a downgrade worth testing on your real traffic. If you need frontier reasoning quality for hard problems: this announcement does not change that calculus — price cuts on a flash-tier model do not make it a frontier model. And if you were waiting on pricing before building on DeepSeek's flash tier: September 10, 2026 is the date the economics improve.</p>
+
+    <h2>Caveats to Keep in Mind</h2>
+    <ul>
+      <li>The adjustment covers the <strong>Flash series only</strong> — it is not a DeepSeek-wide price cut, and other models' pricing is unchanged by this announcement.</li>
+      <li><strong>Peak hours double the listed prices</strong>, and the announcement defines peak windows — confirm the current definition on the official pricing page before scheduling workloads.</li>
+      <li>Prices are denominated in <strong>CNY (¥)</strong>; USD billing and regional pricing may differ, so verify on the official pricing page for your account.</li>
+      <li>API pricing changes like this happen often in the current market — re-check before committing long-term architecture to any single number in this article.</li>
+    </ul>
+
+    <h2>ToolStep Editorial Takeaway</h2>
+    <p>This is a competitive, usage-focused price cut aimed at the workloads that are actually growing: agentic and context-heavy applications. The cache-hit reduction is the strategically interesting part — it prices in the reality that repeated context is the dominant cost driver for agents — and the off-peak discount gives operators a genuine cost lever. For developers on the DeepSeek Flash tier, the practical move is simple: keep building, structure prompts for cache hits, and schedule what you can off-peak.</p>
+
+    <h2>Sources</h2>
+    <div class="sources">
+      <p><strong>Sources:</strong></p>
+      <ul>
+        <li>DeepSeek official pricing documentation: <a href="https://api-docs.deepseek.com/quick_start/pricing" rel="nofollow noopener" target="_blank">api-docs.deepseek.com/quick_start/pricing</a></li>
+        <li>DeepSeek official announcement of the September 10, 2026 Flash series price adjustment (September 2026)</li>
+      </ul>
+      <p><em>This article is based on DeepSeek's official announcement and published pricing documentation. ToolStep did not receive compensation for this coverage, and no hands-on benchmarking was performed — this is a pricing and strategy analysis, not a model performance test.</em></p>
+    </div>
+
+    <h2>Related on ToolStep</h2>
+    <ul>
+      <li><a href="/reviews/deepseek-v4-pro-review/">DeepSeek V4 Pro Review</a> — the flagship tier, for readers weighing Flash against frontier capability</li>
+      <li><a href="/reviews/deepseek-harness-review/">DeepSeek Harness Review</a> — DeepSeek's agentic tooling</li>
+      <li><a href="/reviews/glm-5-3-flash-pricing/">GLM-5.3-Flash Pricing</a> — how a competing flash-tier model prices the same workload</li>
+      <li><a href="/reviews/best-ai-coding-assistant-2026/">Best AI Coding Assistant 2026</a> — where flash-tier models fit in coding workflows</li>
+      <li><a href="/category/ai-assistants/">AI Assistants category</a> — all assistant comparisons and reviews</li>
+    </ul>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>
