@@ -7,17 +7,21 @@ import { tools } from '../data/tools';
 import { reviews } from '../data/reviews';
 import { compareData } from '../data/compare';
 import { bestData } from '../data/best';
-import { productReviews } from '../data/products';
+import { reviewEntries } from '../data/reviewEntries';
 
 // Homepage-only SEO title (50–60 chars). SITE_TITLE remains 'ToolStep' for og:site_name / RSS.
 const HOME_TITLE = 'ToolStep | AI Tool Reviews, Comparisons & Software Guides';
 
 // Real stats from data sources. Review total = hand-authored review pages
 // (excluding the [slug] route and the reviews index) + data-driven reviews.
-const staticReviewPages = Object.keys(
-  import.meta.glob('./reviews/*.astro')
-).filter((k) => !k.includes('[slug]') && !k.endsWith('/index.astro')).length;
-const reviewsCount = staticReviewPages + productReviews.length;
+// Counted from disk at build time — import.meta.glob excludes some route
+// modules, so fs is the deterministic source here (SSG runs from the project root).
+import fs from 'node:fs';
+const staticReviewPages = fs
+  .readdirSync('src/pages/reviews')
+  .filter((f) => f.endsWith('.astro') && !f.startsWith('[') && f !== 'index.astro')
+  .length;
+const reviewsCount = staticReviewPages + reviewEntries.length;
 const comparesCount = compareData.length;
 const guidesCount = bestData.length;
 
