@@ -11,6 +11,7 @@ import ProductCTACard from '../components/ProductCTACard.astro';
 import ReviewMeta from '../components/ReviewMeta.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import AdUnit from '../components/ads/AdUnit.astro';
+import AdsterraBanner from '../components/ads/AdsterraBanner.astro';
 import { buildProductReviewMeta } from '../lib/seo';
 import { getRelatedForReview } from '../lib/related';
 import { getAuthor } from '../data/authors';
@@ -221,6 +222,7 @@ const tocSections = [
       </div>
 
       <AdUnit slot="2222222222" format="rectangle" layout="responsive" />
+      <AdsterraBanner pageType="reviews" />
 
       <h2 id="specs">Specs</h2>
       <table>

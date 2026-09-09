@@ -20,14 +20,33 @@ export interface AdsterraConfig {
   containerId: string;
   /** Reserved container min-height in px — keeps CLS at 0 before/if the creative renders. */
   reservedMinHeight: number;
+  /** Native Banner: max 1 per page. */
+  maxPerPage: 1;
+  /** Adult ads are disabled for toolstep.top. */
+  adultAds: false;
+  /** Page types where the Native Banner is eligible. */
+  eligibleTypes: string[];
 }
 
 export const ADSTERRA_CONFIG: AdsterraConfig = {
-  // Experiment ENABLED (Phase 1): 8 /best/ pages, single Native Banner at content-mid.
-  // Rollback = flip back to false.
+  // Master switch. Rollback = flip to false (site-wide Adsterra off, no code
+  // deletion needed). The former 8-page /best/ experiment is now part of this
+  // unified rollout.
   enabled: true,
   scriptSrc:
     'https://pl31180616.profitableratecpmnetwork.com/115f0347827dcc42197dfe9f0a88d287/invoke.js',
   containerId: 'container-115f0347827dcc42197dfe9f0a88d287',
   reservedMinHeight: 250,
+  // Native Banner: max 1 per page, adult ads disabled for this property.
+  maxPerPage: 1 as const,
+  adultAds: false as const,
+  // Rollout: page types where the Native Banner is eligible (Tier A commercial
+  // content). Static /reviews/*.astro pages are Tier B — deferred to a later
+  // stage because they are individually hand-authored files.
+  eligibleTypes: ['best', 'compare', 'alternatives', 'reviews'],
 };
+
+/** Whether the Native Banner may render for a given page type. */
+export function isAdsterraEnabledForPage(pageType: string): boolean {
+  return ADSTERRA_CONFIG.enabled && ADSTERRA_CONFIG.eligibleTypes.includes(pageType);
+}

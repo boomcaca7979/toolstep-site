@@ -13,19 +13,24 @@
 // - Injected at most once per page (dedup guard on the script element).
 // - No fixed positioning, no popups, no body style changes.
 
-import { ADSTERRA_CONFIG } from '../../config/adsterra';
+import { ADSTERRA_CONFIG, isAdsterraEnabledForPage } from '../../config/adsterra';
 
 interface Props {
   /** Extra class names for the outer wrapper. */
   class?: string;
+  /** Page type used for rollout eligibility (best/compare/alternatives/reviews). */
+  pageType: string;
 }
 
-const { class: className = '' } = Astro.props;
-const { enabled, scriptSrc, containerId, reservedMinHeight } = ADSTERRA_CONFIG;
+const { class: className = '', pageType } = Astro.props;
+const { enabled, scriptSrc, containerId, reservedMinHeight, maxPerPage } = ADSTERRA_CONFIG;
+// One Native Banner per page max: the component must be rendered at most once
+// per template, and only on eligible page types.
+const show = enabled && maxPerPage >= 1 && isAdsterraEnabledForPage(pageType);
 ---
 
 {
-  enabled ? (
+  show ? (
     <div
       class={`adsterra-banner ${className}`.trim()}
       role="complementary"
@@ -39,7 +44,7 @@ const { enabled, scriptSrc, containerId, reservedMinHeight } = ADSTERRA_CONFIG;
     </div>
   ) : (
     /* Master switch off — experiment marker only, no script/container output. */
-    <!-- adsterra:experiment-slot (disabled) -->
+    <!-- adsterra: not eligible on this page type or disabled -->
   )
 }
 

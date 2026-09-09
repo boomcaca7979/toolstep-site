@@ -15,26 +15,15 @@ import { getRelatedForBest } from '../../lib/related';
 import { getCanonicalOverride } from '../../data/canonical-overrides.mjs';
 
 export function getStaticPaths() {
-  // Adsterra Phase 1 experiment group: deterministic selection — pages with a
-  // full Top-10 ranking AND a buyer guide, sorted by slug, first 8. Never
-  // random; the group is stable across builds unless the data changes.
-  // (Computed inside getStaticPaths: Astro hoists it out of frontmatter scope.)
-  const ADSTERRA_EXPERIMENT_SIZE = 8;
-  const adsterraExperimentSlugs = new Set(
-    getBestEntries()
-      .filter((e) => e.products.length >= 5 && e.buyerGuide)
-      .map((e) => e.slug)
-      .sort()
-      .slice(0, ADSTERRA_EXPERIMENT_SIZE),
-  );
-
+  // Adsterra Native Banner is now config-driven via ADSTERRA_CONFIG
+  // (eligibleTypes includes 'best') — no per-slug experiment group needed.
   return getBestEntries().map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry, showAdsterra: adsterraExperimentSlugs.has(entry.slug) },
+    props: { entry },
   }));
 }
 
-const { entry, showAdsterra = false } = Astro.props;
+const { entry } = Astro.props;
 const author = authors.find(a => a.slug === entry.authorSlug);
 const authorName = author?.name || 'ToolStep Team';
 
@@ -981,7 +970,7 @@ const articleSchema = {
           <AdSlot position="content-mid" />
 
           {/* Adsterra Phase 1 experiment — Native Banner, experiment pages only. */}
-          {showAdsterra && <AdsterraBanner />}
+          <AdsterraBanner pageType="best" />
 
           {/* Pros & Cons Summary */}
           <h2 id="pros-cons">Pros & Cons Summary</h2>
