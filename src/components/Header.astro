@@ -1,113 +1,359 @@
 ---
 import { SITE_TITLE } from '../consts';
-import HeaderLink from './HeaderLink.astro';
+import { tools } from '../data/tools';
+
+// Primary editorial navigation — every href is an existing production URL.
+const primaryNav = [
+	{ label: 'Reviews', href: '/reviews/' },
+	{ label: 'Best Tools', href: '/best/' },
+	{ label: 'Compare', href: '/compare/' },
+	{ label: 'Alternatives', href: '/alternatives/' },
+	{ label: 'Categories', href: '/category/' },
+	{ label: 'Stories', href: '/stories/' },
+];
+
+// Secondary destinations, shown in the mobile menu panel.
+const secondaryNav = [
+	{ label: 'All Tools', href: '/tools/' },
+	{ label: 'Guides', href: '/guides/' },
+	{ label: 'How We Test', href: '/how-we-test/' },
+	{ label: 'About', href: '/about/' },
+	{ label: 'Contact', href: '/contact/' },
+];
+
+// Popular editorial pages — high-intent reviews and comparisons.
+const popularPages = [
+	{ t: 'Claude vs ChatGPT', s: 'Comparison', u: '/compare/claude-vs-chatgpt/' },
+	{ t: 'ChatGPT vs Gemini', s: 'Comparison', u: '/compare/chatgpt-vs-gemini/' },
+	{ t: 'Claude vs Gemini', s: 'Comparison', u: '/compare/claude-vs-gemini/' },
+	{ t: 'Cursor vs Windsurf', s: 'Comparison', u: '/compare/cursor-vs-windsurf/' },
+	{ t: 'Notion vs Obsidian', s: 'Comparison', u: '/compare/notion-vs-obsidian/' },
+	{ t: 'Canva vs Figma', s: 'Comparison', u: '/compare/canva-vs-figma/' },
+	{ t: 'DeepSeek Flash Price Cut', s: 'AI Pricing update', u: '/reviews/deepseek-flash-price-cut-september-2026/' },
+	{ t: 'Xiaomi MiMo Desktop', s: 'AI Agent beta review', u: '/reviews/mimo-desktop-ai-agent-september-2026/' },
+	{ t: 'Best AI SEO Tools 2026', s: 'Review', u: '/reviews/best-ai-seo-tools-2026/' },
+];
+
+// Lightweight client-side search index: tools + popular pages + landing pages.
+const searchIndex = [
+	...tools.map((t) => ({ t: t.name, s: t.description, u: `/tools/${t.id}/` })),
+	...popularPages,
+	{ t: 'All Reviews', s: 'Every review on ToolStep', u: '/reviews/' },
+	{ t: 'Best Tools & Buying Guides', s: 'Curated top picks by category', u: '/best/' },
+	{ t: 'Comparisons', s: 'Head-to-head tool matchups', u: '/compare/' },
+	{ t: 'Alternatives', s: 'Best alternatives to popular tools', u: '/alternatives/' },
+	{ t: 'Categories', s: 'Browse tools by what you do', u: '/category/' },
+	{ t: 'Stories', s: 'Visual web stories', u: '/stories/' },
+	{ t: 'AI Assistants', s: 'Category: ChatGPT, Claude, Gemini', u: '/category/ai-assistants/' },
+	{ t: 'AI Writing Tools', s: 'Category', u: '/category/ai-writing/' },
+	{ t: 'AI Coding Tools', s: 'Category', u: '/category/ai-coding/' },
+	{ t: 'AI Image Generators', s: 'Category', u: '/category/ai-image/' },
+	{ t: 'AI Video Tools', s: 'Category', u: '/category/ai-video/' },
+	{ t: 'Productivity Tools', s: 'Category', u: '/category/productivity/' },
+	{ t: 'How We Test', s: 'Our testing methodology', u: '/how-we-test/' },
+];
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links" id="nav-menu">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/reviews/">Reviews</HeaderLink>
-			<HeaderLink href="/best/">Best</HeaderLink>
-			<HeaderLink href="/compare/">Compare</HeaderLink>
-			<HeaderLink href="/alternatives/">Alternatives</HeaderLink>
-			<HeaderLink href="/stories/">Stories</HeaderLink>
-			<HeaderLink href="/guides/">Guides</HeaderLink>
-			<HeaderLink href="/how-we-test/">How We Test</HeaderLink>
-			<HeaderLink href="/about/">About</HeaderLink>
-			<HeaderLink href="/contact/">Contact</HeaderLink>
-		</div>
-		<div class="right-actions">
-			<button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+<header class="site-header">
+	<div class="header-inner">
+		<a class="brand" href="/" aria-label={`${SITE_TITLE} home`}>
+			<span class="brand-mark" aria-hidden="true">
+				<svg viewBox="0 0 32 32" fill="none">
+					<rect width="32" height="32" rx="7" fill="var(--accent)"></rect>
+					<path d="M8 10h16M16 10v13" stroke="#fff" stroke-width="3.2" stroke-linecap="round"></path>
+				</svg>
+			</span>
+			<span class="brand-text">
+				<span class="brand-name">{SITE_TITLE}</span>
+				<span class="brand-tag">AI tools, tested &amp; compared</span>
+			</span>
+		</a>
+
+		<nav class="primary-nav" aria-label="Primary">
+			{primaryNav.map((item) => (
+				<a href={item.href} class:list={[{ 'is-active': Astro.url.pathname === item.href }]}>
+					{item.label}
+				</a>
+			))}
+		</nav>
+
+		<div class="header-actions">
+			<button class="search-trigger" id="search-trigger" aria-label="Search ToolStep" aria-expanded="false" aria-controls="search-overlay">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+					<circle cx="11" cy="11" r="8"></circle>
+					<path d="m21 21-4.3-4.3"></path>
+				</svg>
+				<span class="search-label">Search</span>
+			</button>
+			<a class="header-cta" href="/tools/">Explore Tools</a>
+			<button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
 				<span class="menu-bar"></span>
 				<span class="menu-bar"></span>
 				<span class="menu-bar"></span>
 			</button>
 		</div>
-	</nav>
+	</div>
+
+	<div class="mobile-menu" id="mobile-menu">
+		<nav class="mobile-primary" aria-label="Primary mobile">
+			{primaryNav.map((item) => (
+				<a href={item.href} class:list={[{ 'is-active': Astro.url.pathname === item.href }]}>{item.label}</a>
+			))}
+		</nav>
+		<nav class="mobile-secondary" aria-label="Secondary mobile">
+			{secondaryNav.map((item) => (
+				<a href={item.href}>{item.label}</a>
+			))}
+		</nav>
+	</div>
 </header>
-<script>
-	const toggle = document.getElementById('menu-toggle');
-	const menu = document.getElementById('nav-menu');
-	if (toggle && menu) {
-		toggle.addEventListener('click', () => {
-			const isOpen = menu.classList.toggle('open');
-			toggle.classList.toggle('active', isOpen);
-			toggle.setAttribute('aria-expanded', String(isOpen));
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search ToolStep" hidden>
+	<div class="search-panel">
+		<div class="search-row">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+				<circle cx="11" cy="11" r="8"></circle>
+				<path d="m21 21-4.3-4.3"></path>
+			</svg>
+			<input type="text" id="header-search-input" placeholder="Search tools, categories, guides…" autocomplete="off" aria-label="Search ToolStep" />
+			<button class="search-close" id="search-close" aria-label="Close search">Esc</button>
+		</div>
+		<ul class="search-results" id="search-results"></ul>
+	</div>
+</div>
+
+<script define:vars={{ searchIndex }}>
+	(function () {
+		var trigger = document.getElementById('search-trigger');
+		var overlay = document.getElementById('search-overlay');
+		var closeBtn = document.getElementById('search-close');
+		var input = document.getElementById('header-search-input');
+		var results = document.getElementById('search-results');
+		var toggle = document.getElementById('menu-toggle');
+		var menu = document.getElementById('mobile-menu');
+		if (!trigger || !overlay || !input || !results) return;
+
+		function openSearch() {
+			overlay.hidden = false;
+			trigger.setAttribute('aria-expanded', 'true');
+			document.body.style.overflow = 'hidden';
+			input.value = '';
+			renderResults('');
+			input.focus();
+		}
+		function closeSearch() {
+			overlay.hidden = true;
+			trigger.setAttribute('aria-expanded', 'false');
+			document.body.style.overflow = '';
+		}
+		function renderResults(query) {
+			var q = query.trim().toLowerCase();
+			var matches = q
+				? searchIndex.filter(function (item) {
+						return (item.t + ' ' + item.s).toLowerCase().indexOf(q) !== -1;
+					}).slice(0, 8)
+				: searchIndex.slice(0, 6);
+			results.innerHTML = matches.length
+				? matches.map(function (m) {
+						return '<li><a href="' + m.u + '"><span class="r-title">' + m.t + '</span><span class="r-sub">' + m.s + '</span></a></li>';
+					}).join('')
+				: '<li class="search-empty">No matches — try "AI", "desk", or "notes".</li>';
+		}
+		trigger.addEventListener('click', openSearch);
+		closeBtn && closeBtn.addEventListener('click', closeSearch);
+		overlay.addEventListener('click', function (e) {
+			if (e.target === overlay) closeSearch();
 		});
-		// Close menu when a link is clicked
-		menu.querySelectorAll('a').forEach((link) => {
-			link.addEventListener('click', () => {
-				menu.classList.remove('open');
-				toggle.classList.remove('active');
-				toggle.setAttribute('aria-expanded', 'false');
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && !overlay.hidden) closeSearch();
+		});
+		input.addEventListener('input', function () {
+			renderResults(input.value);
+		});
+		input.addEventListener('keydown', function (e) {
+			if (e.key === 'Enter') {
+				var first = results.querySelector('a');
+				if (first) window.location.href = first.getAttribute('href');
+			}
+		});
+		// Close the search overlay when a result link is clicked
+		results.addEventListener('click', function (e) {
+			if (e.target && e.target.closest && e.target.closest('a')) closeSearch();
+		});
+
+		if (toggle && menu) {
+			toggle.addEventListener('click', function () {
+				var isOpen = menu.classList.toggle('open');
+				toggle.classList.toggle('active', isOpen);
+				toggle.setAttribute('aria-expanded', String(isOpen));
 			});
-		});
-	}
+			menu.querySelectorAll('a').forEach(function (link) {
+				link.addEventListener('click', function () {
+					menu.classList.remove('open');
+					toggle.classList.remove('active');
+					toggle.setAttribute('aria-expanded', 'false');
+				});
+			});
+		}
+	})();
 </script>
+
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: var(--header-bg);
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	.site-header {
 		position: sticky;
 		top: 0;
-		z-index: 100;
+		z-index: 200;
+		background: var(--header-ink);
+		border-bottom: 3px solid var(--accent);
 	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
+	.header-inner {
+		max-width: 1240px;
+		margin: 0 auto;
+		padding: 0 24px;
+		height: var(--header-height);
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		max-width: 1200px;
+		gap: 32px;
+	}
+
+	/* ===== Brand ===== */
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		text-decoration: none;
+		flex-shrink: 0;
+	}
+	.brand-mark {
+		display: inline-flex;
+		width: 30px;
+		height: 30px;
+	}
+	.brand-mark svg {
+		width: 100%;
+		height: 100%;
+	}
+	.brand-text {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.05;
+	}
+	.brand-name {
+		color: #ffffff;
+		font-size: 19px;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+	.brand-tag {
+		display: none;
+		color: var(--ink-text-muted);
+		font-size: 9px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		margin-top: 2px;
+	}
+
+	/* ===== Primary nav ===== */
+	.primary-nav {
+		display: flex;
+		align-items: center;
+		gap: 4px;
 		margin: 0 auto;
 	}
-	nav a {
-		padding: 1em 0.5em;
-		color: rgb(var(--black));
-		border-bottom: 4px solid transparent;
+	.primary-nav a {
+		display: inline-block;
+		padding: 6px 12px;
+		color: #aab1bc;
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: var(--track-label);
 		text-decoration: none;
+		border-radius: 6px;
+		transition: color 0.15s ease;
+		white-space: nowrap;
 	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
+	.primary-nav a:hover {
+		color: #ffffff;
 	}
-	.right-actions {
+	.primary-nav a.is-active {
+		color: #ffffff;
+		box-shadow: inset 0 -2px 0 var(--accent);
+		border-radius: 6px 6px 0 0;
+	}
+
+	/* ===== Actions ===== */
+	.header-actions {
 		display: flex;
 		align-items: center;
-		gap: 12px;
+		gap: 10px;
+		flex-shrink: 0;
 	}
-	/* Hamburger menu button — hidden on desktop, visible on mobile */
+	.search-trigger {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		height: 36px;
+		padding: 0 12px;
+		background: rgba(255, 255, 255, 0.07);
+		border: 1px solid var(--ink-line);
+		border-radius: 8px;
+		color: #aab1bc;
+		font-family: inherit;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		cursor: pointer;
+		transition: color 0.15s ease, border-color 0.15s ease;
+	}
+	.search-trigger:hover {
+		color: #ffffff;
+		border-color: rgba(255, 255, 255, 0.35);
+	}
+	.search-trigger svg {
+		width: 15px;
+		height: 15px;
+	}
+	.header-cta {
+		display: inline-flex;
+		align-items: center;
+		height: 36px;
+		padding: 0 16px;
+		background: var(--accent);
+		color: #ffffff;
+		font-size: 13px;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		text-decoration: none;
+		border-radius: 8px;
+		transition: background 0.15s ease;
+		white-space: nowrap;
+	}
+	.header-cta:hover {
+		background: #1b2ed6;
+		color: #ffffff;
+	}
+
+	/* ===== Mobile menu ===== */
 	.menu-toggle {
 		display: none;
 		flex-direction: column;
 		justify-content: center;
 		gap: 4px;
-		width: 36px;
-		height: 36px;
-		padding: 6px;
-		border: none;
-		background: transparent;
+		width: 38px;
+		height: 38px;
+		padding: 8px;
+		border: 1px solid var(--ink-line);
+		background: rgba(255, 255, 255, 0.07);
 		cursor: pointer;
-		border-radius: 6px;
-	}
-	.menu-toggle:hover {
-		background: rgba(var(--gray-light), 50%);
+		border-radius: 8px;
 	}
 	.menu-bar {
 		display: block;
 		height: 2px;
 		width: 100%;
-		background: rgb(var(--black));
+		background: #ffffff;
 		border-radius: 2px;
 		transition: transform 0.2s ease, opacity 0.2s ease;
 	}
@@ -120,31 +366,182 @@ import HeaderLink from './HeaderLink.astro';
 	.menu-toggle.active .menu-bar:nth-child(3) {
 		transform: translateY(-6px) rotate(-45deg);
 	}
-	@media (max-width: 720px) {
+	.mobile-menu {
+		display: none;
+	}
+
+	/* ===== Search overlay ===== */
+	.search-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 300;
+		background: rgba(15, 17, 22, 0.6);
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		padding: 96px 20px 40px;
+	}
+	.search-overlay[hidden] {
+		display: none;
+	}
+	.search-panel {
+		width: 100%;
+		max-width: 560px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 24px 64px rgba(15, 17, 22, 0.35);
+	}
+	.search-row {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 6px 16px;
+		border-bottom: 1px solid var(--line);
+	}
+	.search-row svg {
+		width: 18px;
+		height: 18px;
+		color: rgb(var(--gray));
+		flex-shrink: 0;
+	}
+	.search-row input {
+		flex: 1;
+		border: none;
+		outline: none;
+		padding: 12px 0;
+		font-size: 16px;
+		font-family: inherit;
+		color: rgb(var(--gray-dark));
+		background: transparent;
+	}
+	.search-close {
+		font-family: inherit;
+		font-size: 11px;
+		font-weight: 600;
+		color: rgb(var(--gray));
+		background: rgb(var(--gray-light));
+		border: none;
+		border-radius: 5px;
+		padding: 4px 8px;
+		cursor: pointer;
+	}
+	.search-results {
+		list-style: none;
+		margin: 0;
+		padding: 6px;
+		max-height: 320px;
+		overflow-y: auto;
+	}
+	.search-results :global(li a) {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		padding: 9px 12px;
+		border-radius: 8px;
+		text-decoration: none;
+	}
+	.search-results :global(li a:hover) {
+		background: var(--paper);
+	}
+	.search-results :global(.r-title) {
+		display: block;
+		font-size: 14.5px;
+		font-weight: 600;
+		color: rgb(var(--gray-dark));
+	}
+	.search-results :global(.r-sub) {
+		display: block;
+		font-size: 12.5px;
+		color: rgb(var(--gray));
+	}
+	.search-results :global(.search-empty) {
+		display: block;
+		padding: 14px 12px;
+		font-size: 13.5px;
+		color: rgb(var(--gray));
+	}
+
+	/* ===== Responsive ===== */
+	@media (max-width: 1100px) {
+		.primary-nav a {
+			padding: 6px 8px;
+		}
+	}
+	@media (max-width: 960px) {
+		.primary-nav {
+			display: none;
+		}
+		.header-inner {
+			justify-content: space-between;
+			gap: 12px;
+		}
 		.menu-toggle {
 			display: flex;
 		}
-		.internal-links {
+		.search-trigger .search-label {
+			display: none;
+		}
+		.search-trigger {
+			width: 38px;
+			justify-content: center;
+			padding: 0;
+		}
+		.header-cta {
+			display: none;
+		}
+		.mobile-menu {
 			display: none;
 			position: absolute;
 			top: 100%;
 			left: 0;
 			right: 0;
-			flex-direction: column;
-			background: var(--header-bg);
-			box-shadow: 0 4px 12px rgba(var(--black), 10%);
-			padding: 0.5em 1em;
-			border-top: 1px solid var(--card-border);
+			background: var(--header-ink);
+			border-bottom: 1px solid var(--ink-line);
+			padding: 8px 24px 24px;
+			max-height: calc(100vh - var(--header-height));
+			overflow-y: auto;
 		}
-		.internal-links.open {
+		.mobile-menu.open {
+			display: block;
+		}
+		.mobile-primary {
 			display: flex;
+			flex-direction: column;
+			padding: 8px 0;
 		}
-		.internal-links a {
-			padding: 0.75em 0.5em;
-			border-bottom: 1px solid var(--card-border);
+		.mobile-primary a {
+			padding: 13px 0;
+			color: #e8eaee;
+			font-size: 17px;
+			font-weight: 600;
+			text-decoration: none;
+			border-bottom: 1px solid var(--ink-line);
 		}
-		.internal-links a:last-child {
-			border-bottom: none;
+		.mobile-primary a.is-active {
+			color: #ffffff;
+			box-shadow: inset 3px 0 0 var(--accent);
+			padding-left: 12px;
+		}
+		.mobile-secondary {
+			display: flex;
+			flex-direction: column;
+			padding-top: 14px;
+		}
+		.mobile-secondary a {
+			padding: 9px 0;
+			color: #aab1bc;
+			font-size: 14px;
+			text-decoration: none;
+		}
+		.mobile-secondary a:hover {
+			color: #ffffff;
+		}
+	}
+	@media (min-width: 961px) {
+		.brand-tag {
+			display: block;
 		}
 	}
 </style>

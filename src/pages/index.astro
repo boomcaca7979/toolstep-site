@@ -25,7 +25,79 @@ const reviewsCount = staticReviewPages + reviewEntries.length;
 const comparesCount = compareData.length;
 const guidesCount = bestData.length;
 
-// Popular AI tools — curated list linking to existing review pages
+// Hero discovery index — powers the homepage search suggestions.
+const discoveryIndex = [
+  ...tools.map((t) => ({ t: t.name, s: t.description, u: `/tools/${t.id}/` })),
+  { t: 'AI Assistants', s: 'Category', u: '/category/ai-assistants/' },
+  { t: 'AI Writing Tools', s: 'Category', u: '/category/ai-writing/' },
+  { t: 'AI Coding Tools', s: 'Category', u: '/category/ai-coding/' },
+  { t: 'AI Image Generators', s: 'Category', u: '/category/ai-image/' },
+  { t: 'AI Video Tools', s: 'Category', u: '/category/ai-video/' },
+  { t: 'Productivity Tools', s: 'Category', u: '/category/productivity/' },
+  { t: 'All Reviews', s: `${reviewsCount} reviews and counting`, u: '/reviews/' },
+  { t: 'Comparisons', s: `${comparesCount} head-to-head matchups`, u: '/compare/' },
+  { t: 'Buying Guides', s: `${guidesCount} curated best-of lists`, u: '/best/' },
+];
+
+// Hero quick entries — existing category landing pages.
+const quickCategories = [
+  { label: 'AI Assistants', href: '/category/ai-assistants/' },
+  { label: 'AI Writing', href: '/category/ai-writing/' },
+  { label: 'AI Coding', href: '/category/ai-coding/' },
+  { label: 'AI Image', href: '/category/ai-image/' },
+  { label: 'AI Video', href: '/category/ai-video/' },
+  { label: 'Productivity', href: '/category/productivity/' },
+];
+
+// Latest AI updates — the freshest editorial coverage. Featured = newest release.
+const newReviews = reviews.filter((r) => r.tag === 'NEW');
+const featuredUpdate = {
+  title: 'DeepSeek Flash Price Cut',
+  kicker: 'AI Pricing',
+  summary:
+    'Cache-hit input drops 60% to ¥0.02/M tokens from September 10, 2026. Full old-vs-new Flash pricing comparison and what it means for API users.',
+  href: '/reviews/deepseek-flash-price-cut-september-2026/',
+  date: 'September 10, 2026',
+};
+const updateRows = [
+  {
+    title: 'Xiaomi MiMo Desktop: AI Agent Beta',
+    kicker: 'AI Agents',
+    summary: 'Invitation-only beta opened September 8, 2026 — how the desktop agent decomposes goals, controls the browser, and delivers editable work.',
+    href: '/reviews/mimo-desktop-ai-agent-september-2026/',
+    date: 'September 8, 2026',
+  },
+  {
+    title: 'Best AI SEO Tools 2026',
+    kicker: 'AI SEO',
+    summary: 'Ahrefs, Semrush, Screaming Frog, SeeO, Surfer SEO, and Google Search Console ranked for audits, keywords, and rankings.',
+    href: '/reviews/best-ai-seo-tools-2026/',
+    date: 'September 2026',
+  },
+  {
+    title: 'Best AI Travel Planning Tools 2026',
+    kicker: 'AI Travel',
+    summary: 'Google Travel, Wanderlog, TripAdvisor, UTripla, and AI trip planners ranked for smarter trip preparation.',
+    href: '/reviews/best-ai-travel-planning-tools-2026/',
+    date: 'September 2026',
+  },
+  {
+    title: 'Best Sports Travel Planning Tools 2026',
+    kicker: 'Travel Tools',
+    summary: 'MatchTrip, Google Travel, TripAdvisor, and booking platforms ranked for event trips, football travel, and venue planning.',
+    href: '/reviews/best-sports-travel-planning-tools-2026/',
+    date: 'September 2026',
+  },
+  {
+    title: 'GLM-5.3-Flash Review',
+    kicker: 'AI Models',
+    summary: "Zhipu's 320B open multimodal model with 1M context, tested for real work.",
+    href: '/reviews/glm-5-3-flash-review/',
+    date: 'August 26, 2026',
+  },
+];
+
+// Popular AI tools — curated list linking to existing review pages.
 const popularTools = [
   { name: 'ChatGPT', desc: "OpenAI's flagship AI assistant", href: '/reviews/chatgpt-vs-gemini/' },
   { name: 'Claude', desc: "Anthropic's reasoning-focused AI", href: '/reviews/claude-vs-chatgpt/' },
@@ -37,8 +109,8 @@ const popularTools = [
   { name: 'Midjourney', desc: 'AI image generator', href: '/reviews/midjourney-vs-dalle3/' },
 ];
 
-// Category cards — search-intent oriented, linking to category landing pages
-const categoryCards = [
+// Category tiles — search-intent oriented, linking to category landing pages.
+const categoryTiles = [
   { name: 'AI Assistants', desc: 'ChatGPT, Claude, Gemini & more', href: '/category/ai-assistants/', icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' },
   { name: 'AI Writing', desc: 'Grammarly, Notion AI, Jasper', href: '/category/ai-writing/', icon: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z' },
   { name: 'AI Image', desc: 'Midjourney, DALL-E, Leonardo', href: '/category/ai-image/', icon: 'M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM21 15l-5-5L5 21' },
@@ -47,20 +119,21 @@ const categoryCards = [
   { name: 'Video Tools', desc: 'OBS, CapCut, Runway', href: '/category/video-tools/', icon: 'M23 7l-7 5 7 5V7zM14 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z' },
 ];
 
-// Featured comparisons — high-intent matchups
-const featuredCompareSlugs = [
-  'claude-vs-chatgpt',
-  'chatgpt-vs-gemini',
-  'claude-vs-gemini',
-  'canva-vs-figma',
-  'notion-vs-obsidian',
-  'cursor-vs-windsurf',
-];
+// Featured comparisons — high-intent matchups, rendered as editorial VS rows.
+const featuredCompareSlugs = ['claude-vs-chatgpt', 'chatgpt-vs-gemini', 'cursor-vs-windsurf'];
 const featuredCompares = featuredCompareSlugs
   .map((slug) => compareData.find((c) => c.slug === slug))
-  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+  .filter((c): c is NonNullable<typeof c> => Boolean(c))
+  .map((c) => {
+    const vsMatch = c.title.match(/^(.+?)\s+vs\.?\s+(.+?)(?::|$)/i);
+    return {
+      ...c,
+      sideA: vsMatch ? vsMatch[1].trim() : c.title,
+      sideB: vsMatch ? vsMatch[2].trim() : '',
+    };
+  });
 
-// Best software guides — from bestData, software-related
+// Best software guides — magazine-style numbered list.
 const bestGuideSlugs = [
   'best-ai-writing-tool',
   'best-note-taking-app',
@@ -73,24 +146,12 @@ const bestGuides = bestGuideSlugs
   .map((slug) => bestData.find((b) => b.slug === slug))
   .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
-// Latest 6 reviews — prefer tagged NEW
-const latestReviews = (reviews.filter((r) => r.tag === 'NEW').length >= 6
-  ? reviews.filter((r) => r.tag === 'NEW')
-  : reviews
-).slice(0, 6);
-
-// Latest AI model & product updates — August 2026 releases
-const latestUpdates = [
-  { name: 'GLM-5.3-Flash Review', desc: 'Zhipu\u2019s 320B open multimodal model with 1M context', href: '/reviews/glm-5-3-flash-review/', date: 'Aug 26' },
-  { name: 'Qwen3.8-Flash-Next Review', desc: "Alibaba's open preview of the Qwen4 lineage", href: '/reviews/qwen3-8-flash-next-review/', date: 'Aug 26' },
-  { name: 'Hy4 Preview Review', desc: 'Tencent\u2019s 770B open flagship with 1M+ context', href: '/reviews/tencent-hy4-preview-review/', date: 'Aug 28' },
-  { name: 'Ling-3.0-Flash-Fin Review', desc: 'Ant Group\u2019s AI model for financial analysis', href: '/reviews/ling-3-0-flash-fin-review/', date: 'Aug 28' },
-  { name: 'Modelflare Review', desc: 'AI API gateway for GPT, Claude, Grok & more', href: '/reviews/modelflare-review/', date: 'Aug 28' },
-  { name: 'GPT-5.6 Luna Review', desc: "OpenAI's budget model for Work, Codex & API", href: '/reviews/gpt-5-6-luna-review/', date: 'Jul 30' },
-  { name: 'Gemini 3.7 Flash Review', desc: "Google's new AI model for coding and agents", href: '/reviews/gemini-3-7-flash-review/', date: 'Aug 13' },
-  { name: 'Grok 4.6 Review', desc: "xAI's latest model with a 500K context", href: '/reviews/grok-4-6-review/', date: 'Aug 12' },
-  { name: 'DeepSeek V4 Pro Review', desc: "DeepSeek's official open-weight coding model", href: '/reviews/deepseek-v4-pro-review/', date: 'Aug 13' },
-];
+// Latest reviews — compact two-column list. Skips entries already shown in
+// the Latest AI Updates band above to avoid duplication.
+const updateHrefs = new Set([featuredUpdate.href, ...updateRows.map((u) => u.href)]);
+const latestReviews = reviews
+  .filter((r) => !updateHrefs.has(r.href))
+  .slice(0, 6);
 ---
 
 <!doctype html>
@@ -110,296 +171,729 @@ const latestUpdates = [
 			})),
 		})} />
 		<style>
-			/* ===== Hero ===== */
-			.hero {
+			/* ================= Hero ================= */
+			.band {
+				border-bottom: 1px solid var(--line);
+			}
+			.band--ink {
+				background: var(--ink);
+				border-bottom: none;
+			}
+			.band--surface {
+				background: var(--surface);
+			}
+			.shell {
 				max-width: 1200px;
 				margin: 0 auto;
-				padding: 64px 24px 40px;
-				text-align: center;
-			}
-			.hero h1 {
-				font-size: 44px;
-				font-weight: 800;
-				line-height: 1.15;
-				margin: 0 0 16px 0;
-				color: rgb(var(--gray-dark));
-				letter-spacing: -0.02em;
-			}
-			.hero p {
-				font-size: 18px;
-				color: rgb(var(--gray));
-				margin: 0 auto 28px auto;
-				max-width: 620px;
-				line-height: 1.6;
-			}
-			.hero-stats {
-				display: flex;
-				justify-content: center;
-				gap: 48px;
-				flex-wrap: wrap;
-				margin-top: 32px;
-			}
-			.hero-stat {
-				text-align: center;
-			}
-			.hero-stat .num {
-				font-size: 32px;
-				font-weight: 800;
-				color: var(--accent);
-				line-height: 1;
-			}
-			.hero-stat .label {
-				font-size: 13px;
-				color: rgb(var(--gray));
-				text-transform: uppercase;
-				letter-spacing: 0.06em;
-				margin-top: 6px;
-				font-weight: 600;
-			}
-			.hero-cta {
-				display: inline-flex;
-				gap: 12px;
-				margin-top: 28px;
-				flex-wrap: wrap;
-				justify-content: center;
-			}
-			.hero-cta .btn-primary {
-				display: inline-flex;
-				align-items: center;
-				gap: 6px;
-				padding: 14px 28px;
-				background: var(--accent);
-				color: white;
-				border-radius: 10px;
-				text-decoration: none;
-				font-weight: 600;
-				font-size: 16px;
-				transition: background 0.2s ease;
-			}
-			.hero-cta .btn-primary:hover {
-				background: var(--accent-dark);
-			}
-			.hero-cta .btn-secondary {
-				display: inline-flex;
-				align-items: center;
-				gap: 6px;
-				padding: 14px 28px;
-				background: transparent;
-				color: rgb(var(--gray-dark));
-				border: 1px solid var(--card-border);
-				border-radius: 10px;
-				text-decoration: none;
-				font-weight: 600;
-				font-size: 16px;
-				transition: border-color 0.2s ease;
-			}
-			.hero-cta .btn-secondary:hover {
-				border-color: var(--accent);
+				padding: 0 24px;
 			}
 
-			/* ===== Section blocks ===== */
-			.section-block {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 32px 24px;
+			.hero {
+				padding: 72px 0 56px;
+				display: grid;
+				grid-template-columns: 11fr 9fr;
+				gap: 56px;
+				align-items: center;
+			}
+			.hero-copy {
+				min-width: 0;
+			}
+			.hero-kicker {
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: var(--accent);
+				margin: 0 0 18px;
+			}
+			.hero h1 {
+				font-size: 56px;
+				font-weight: 700;
+				line-height: 1.04;
+				letter-spacing: var(--track-display);
+				color: rgb(var(--black));
+				margin: 0 0 18px;
+			}
+			.hero-sub {
+				font-size: 19px;
+				line-height: 1.55;
+				color: rgb(var(--gray));
+				margin: 0 0 28px;
+				max-width: 480px;
+			}
+
+			/* Discovery block */
+			.discovery {
+				background: var(--surface);
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				padding: 22px;
+			}
+			.discovery-label {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.12em;
+				color: rgb(var(--gray));
+				margin: 0 0 12px;
+			}
+			.discovery-row {
+				display: flex;
+				gap: 10px;
+			}
+			.discovery-input-wrap {
+				position: relative;
+				flex: 1;
+			}
+			.discovery-input-wrap svg {
+				position: absolute;
+				left: 14px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 18px;
+				height: 18px;
+				color: rgb(var(--gray));
+				pointer-events: none;
+			}
+			#discovery-input {
+				width: 100%;
+				box-sizing: border-box;
+				height: 52px;
+				padding: 0 14px 0 42px;
+				font-size: 16px;
+				font-family: inherit;
+				color: rgb(var(--gray-dark));
+				background: var(--paper);
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				outline: none;
+				transition: border-color 0.15s ease;
+			}
+			#discovery-input:focus {
+				border-color: var(--accent);
+			}
+			.discovery-go {
+				height: 52px;
+				padding: 0 22px;
+				background: var(--accent);
+				color: #fff;
+				border: none;
+				border-radius: 10px;
+				font-family: inherit;
+				font-size: 15px;
+				font-weight: 700;
+				cursor: pointer;
+				transition: background 0.15s ease;
+			}
+			.discovery-go:hover {
+				background: #1b2ed6;
+			}
+			.discovery-hint {
+				list-style: none;
+				margin: 8px 0 0;
+				padding: 0;
+				display: none;
+				flex-direction: column;
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				overflow: hidden;
+			}
+			.discovery-hint.open {
+				display: flex;
+			}
+			.discovery-hint :global(li a) {
+				display: flex;
+				flex-direction: column;
+				padding: 9px 14px;
+				text-decoration: none;
+			}
+			.discovery-hint :global(li a:hover) {
+				background: var(--paper);
+			}
+			.discovery-hint :global(.h-title) {
+				display: block;
+				font-size: 14.5px;
+				font-weight: 600;
+				color: rgb(var(--gray-dark));
+			}
+			.discovery-hint :global(.h-sub) {
+				display: block;
+				font-size: 12.5px;
+				color: rgb(var(--gray));
+			}
+			.quick-row {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 8px 10px;
+				margin-top: 16px;
+			}
+			.quick-label {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.12em;
+				color: rgb(var(--gray));
+				margin-right: 2px;
+			}
+			.quick-link {
+				display: inline-block;
+				padding: 7px 14px;
+				border: 1px solid var(--line);
+				border-radius: 8px;
+				background: var(--surface);
+				color: rgb(var(--gray-dark));
+				font-size: 13.5px;
+				font-weight: 600;
+				text-decoration: none;
+				transition: border-color 0.15s ease, color 0.15s ease;
+			}
+			.quick-link:hover {
+				border-color: rgb(var(--black));
+				color: rgb(var(--black));
+			}
+			.hero-meta {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 8px 10px;
+				margin: 28px 0 0;
+				font-size: 13.5px;
+				color: rgb(var(--gray));
+			}
+			.hero-meta strong {
+				color: rgb(var(--black));
+				font-weight: 700;
+			}
+			.hero-meta .dot {
+				color: rgb(var(--gray-light));
+			}
+
+			/* ================= Section scaffolding ================= */
+			.section {
+				padding: 64px 0;
 			}
 			.section-head {
 				display: flex;
-				align-items: baseline;
+				align-items: flex-end;
 				justify-content: space-between;
-				margin-bottom: 20px;
-				gap: 12px;
-				flex-wrap: wrap;
+				gap: 16px;
+				margin-bottom: 32px;
+			}
+			.section-eyebrow {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				margin: 0 0 8px;
 			}
 			.section-head h2 {
-				margin: 0;
-				font-size: 26px;
+				font-size: 32px;
 				font-weight: 700;
-				color: rgb(var(--gray-dark));
+				letter-spacing: var(--track-display);
+				line-height: 1.1;
+				margin: 0;
 			}
-			.section-head .section-sub {
-				font-size: 14px;
+			.section-sub {
+				font-size: 15px;
 				color: rgb(var(--gray));
-				margin-top: 4px;
+				margin: 8px 0 0;
 			}
-			.view-all-link {
+			.section-link {
 				font-size: 14px;
-				font-weight: 600;
-				color: var(--accent);
+				font-weight: 700;
 				text-decoration: none;
 				white-space: nowrap;
+				padding-bottom: 4px;
 			}
-			.view-all-link:hover {
+			.section-link:hover {
 				text-decoration: underline;
 			}
+			.band--ink .section-eyebrow {
+				color: #6f86ff;
+			}
+			.band--ink .section-head h2 {
+				color: var(--ink-text);
+			}
+			.band--ink .section-sub {
+				color: var(--ink-text-muted);
+			}
+			.band--ink .section-link {
+				color: #8fa0ff;
+			}
 
-			/* ===== Popular tools grid ===== */
-			.popular-grid {
+			/* ================= Latest updates (dark) ================= */
+			.update-feature {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-				gap: 16px;
+				grid-template-columns: 5fr 7fr;
+				gap: 32px;
+				align-items: stretch;
+				margin-bottom: 8px;
+			}
+			.update-visual {
+				display: flex;
+				flex-direction: column;
+				background: var(--ink-soft);
+				border: 1px solid var(--ink-line);
+				border-radius: 14px;
+				overflow: hidden;
+				min-height: 280px;
+				text-decoration: none;
+			}
+			.update-visual .visual-bar {
+				display: block;
+				flex-shrink: 0;
+				height: 6px;
+				background: #16a34a;
+			}
+			.update-visual .visual-body {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 24px;
+			}
+			.update-visual .visual-kicker {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: var(--ink-text-muted);
+			}
+			.update-visual .visual-mark {
+				font-size: 88px;
+				font-weight: 700;
+				line-height: 0.9;
+				letter-spacing: -0.04em;
+				color: var(--ink-text);
+			}
+			.update-visual .visual-foot {
+				font-size: 13px;
+				color: var(--ink-text-muted);
+			}
+			.update-body {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.update-flag {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: #6f86ff;
+				margin-bottom: 14px;
+			}
+			.update-flag::before {
+				content: '';
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				background: #35d06a;
+			}
+			.update-body h3 {
+				font-size: 30px;
+				font-weight: 700;
+				letter-spacing: var(--track-display);
+				line-height: 1.12;
+				margin: 0 0 12px;
+				color: var(--ink-text);
+			}
+			.update-body .update-summary {
+				font-size: 16px;
+				line-height: 1.6;
+				color: var(--ink-text-muted);
+				margin: 0 0 18px;
+				max-width: 520px;
+			}
+			.update-body .update-meta {
+				font-size: 13px;
+				color: var(--ink-text-muted);
+				margin-bottom: 18px;
+			}
+			.update-body .update-cta {
+				font-size: 14.5px;
+				font-weight: 700;
+				color: #8fa0ff;
+				text-decoration: none;
+			}
+			.update-body .update-cta:hover {
+				text-decoration: underline;
+			}
+			.update-rows {
+				list-style: none;
+				margin: 28px 0 0;
+				padding: 0;
+				border-top: 1px solid var(--ink-line);
+			}
+			.update-rows li a {
+				display: grid;
+				grid-template-columns: 150px 1fr auto;
+				gap: 20px;
+				align-items: baseline;
+				padding: 18px 0;
+				border-bottom: 1px solid var(--ink-line);
+				text-decoration: none;
+			}
+			.update-rows li a:hover .row-title {
+				color: #ffffff;
+			}
+			.update-rows .row-kicker {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.12em;
+				color: var(--ink-text-muted);
+			}
+			.update-rows .row-title {
+				font-size: 17px;
+				font-weight: 600;
+				color: var(--ink-text);
+				transition: color 0.15s ease;
+			}
+			.update-rows .row-desc {
+				display: block;
+				font-size: 13.5px;
+				color: var(--ink-text-muted);
+				margin-top: 3px;
+				font-weight: 400;
+			}
+			.update-rows .row-date {
+				font-size: 12.5px;
+				color: var(--ink-text-muted);
+				white-space: nowrap;
+			}
+			.update-rows .row-arrow {
+				color: #8fa0ff;
+				font-weight: 700;
+			}
+
+			/* ================= Popular tools (compact tiles) ================= */
+			.tool-grid {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 12px;
 			}
 			.tool-tile {
 				display: flex;
 				flex-direction: column;
-				gap: 6px;
-				padding: 20px;
+				gap: 10px;
+				padding: 18px;
+				background: var(--surface);
+				border: 1px solid var(--line);
 				border-radius: 12px;
-				border: 1px solid var(--card-border);
-				background: var(--card-bg);
 				text-decoration: none;
-				transition: all 0.2s ease;
-				box-shadow: var(--card-shadow);
+				transition: border-color 0.15s ease;
 			}
 			.tool-tile:hover {
-				border-color: var(--accent);
-				transform: translateY(-2px);
-				box-shadow: var(--card-shadow-hover);
+				border-color: rgb(var(--black));
 			}
-			.tool-tile .name {
-				font-size: 17px;
+			.tool-mono {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 38px;
+				height: 38px;
+				border: 1px solid var(--line);
+				border-radius: 9px;
+				font-size: 16px;
 				font-weight: 700;
-				color: rgb(var(--gray-dark));
-			}
-			.tool-tile .desc {
-				font-size: 14px;
-				color: rgb(var(--gray));
-				line-height: 1.5;
-			}
-			.tool-tile .arrow {
-				font-size: 13px;
 				color: var(--accent);
-				font-weight: 600;
+				background: var(--paper);
+			}
+			.tool-tile .t-name {
+				font-size: 16px;
+				font-weight: 700;
+				color: rgb(var(--black));
+			}
+			.tool-tile .t-desc {
+				font-size: 13px;
+				line-height: 1.45;
+				color: rgb(var(--gray));
+			}
+			.tool-tile .t-arrow {
+				font-size: 12.5px;
+				font-weight: 700;
+				color: var(--accent);
 				margin-top: auto;
-				padding-top: 8px;
+				padding-top: 6px;
 			}
 
-			/* ===== Category cards ===== */
-			.category-grid {
+			/* ================= Category tiles ================= */
+			.cat-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-				gap: 16px;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 12px;
 			}
-			.cat-card {
+			.cat-tile {
 				display: flex;
 				align-items: flex-start;
 				gap: 14px;
 				padding: 20px;
+				background: var(--paper);
+				border: 1px solid var(--line);
 				border-radius: 12px;
-				border: 1px solid var(--card-border);
-				background: var(--card-bg);
 				text-decoration: none;
-				transition: all 0.2s ease;
-				box-shadow: var(--card-shadow);
+				transition: border-color 0.15s ease;
 			}
-			.cat-card:hover {
-				border-color: var(--accent);
-				transform: translateY(-2px);
-				box-shadow: var(--card-shadow-hover);
+			.cat-tile:hover {
+				border-color: rgb(var(--black));
 			}
-			.cat-card .icon-box {
+			.cat-tile svg {
 				flex-shrink: 0;
-				width: 40px;
-				height: 40px;
-				border-radius: 10px;
-				background: rgba(var(--accent-rgb), 0.1);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-			.cat-card .icon-box svg {
 				width: 20px;
 				height: 20px;
 				color: var(--accent);
+				margin-top: 2px;
 			}
-			.cat-card .cat-info {
-				flex: 1;
-				min-width: 0;
-			}
-			.cat-card .cat-name {
+			.cat-tile .c-name {
 				font-size: 16px;
 				font-weight: 700;
-				color: rgb(var(--gray-dark));
-				margin: 0 0 4px 0;
+				color: rgb(var(--black));
+				margin: 0 0 3px;
 			}
-			.cat-card .cat-desc {
+			.cat-tile .c-desc {
 				font-size: 13px;
 				color: rgb(var(--gray));
-				line-height: 1.4;
+				line-height: 1.45;
+				margin: 0;
 			}
 
-			/* ===== Cards grid (reviews / compares / bests) ===== */
-			.cards-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-				gap: 16px;
-			}
-			.content-card {
+			/* ================= Comparisons (editorial VS rows) ================= */
+			.vs-list {
 				display: flex;
 				flex-direction: column;
-				gap: 8px;
-				padding: 18px;
-				border-radius: 12px;
-				border: 1px solid var(--card-border);
-				background: var(--card-bg);
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				background: var(--surface);
+				overflow: hidden;
+			}
+			.vs-row {
+				display: grid;
+				grid-template-columns: 5fr 7fr;
+				gap: 28px;
+				align-items: center;
+				padding: 28px 32px;
 				text-decoration: none;
-				transition: all 0.2s ease;
-				box-shadow: var(--card-shadow);
+				border-bottom: 1px solid var(--line);
+				transition: background 0.15s ease;
 			}
-			.content-card:hover {
-				border-color: var(--accent);
-				transform: translateY(-2px);
-				box-shadow: var(--card-shadow-hover);
+			.vs-row:last-child {
+				border-bottom: none;
 			}
-			.card-tag {
-				display: inline-block;
-				align-self: flex-start;
+			.vs-row:hover {
+				background: var(--paper);
+			}
+			.vs-lockup {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				font-size: 26px;
+				font-weight: 700;
+				letter-spacing: var(--track-display);
+				line-height: 1.1;
+				color: rgb(var(--black));
+			}
+			.vs-mark {
+				flex-shrink: 0;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 4px 9px;
+				background: var(--ink);
+				color: #fff;
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				border-radius: 6px;
+			}
+			.vs-info .vs-desc {
+				font-size: 14.5px;
+				line-height: 1.55;
+				color: rgb(var(--gray));
+				margin: 0 0 8px;
+			}
+			.vs-info .vs-meta {
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: var(--accent);
+			}
+
+			/* ================= Best guides (numbered magazine list) ================= */
+			.guide-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 0 48px;
+			}
+			.guide-row {
+				display: grid;
+				grid-template-columns: 52px 1fr;
+				gap: 16px;
+				align-items: start;
+				padding: 22px 0;
+				border-bottom: 1px solid var(--line);
+				text-decoration: none;
+			}
+			.guide-num {
+				font-size: 26px;
+				font-weight: 700;
+				letter-spacing: var(--track-display);
+				color: rgb(var(--gray-light));
+				line-height: 1;
+				padding-top: 2px;
+				font-variant-numeric: tabular-nums;
+			}
+			.guide-row:hover .guide-num {
+				color: var(--accent);
+			}
+			.guide-row .g-title {
+				font-size: 17.5px;
+				font-weight: 700;
+				color: rgb(var(--black));
+				line-height: 1.25;
+				margin: 0 0 5px;
+			}
+			.guide-row .g-desc {
+				font-size: 13.5px;
+				line-height: 1.5;
+				color: rgb(var(--gray));
+				margin: 0 0 6px;
+			}
+			.guide-row .g-arrow {
+				font-size: 12.5px;
+				font-weight: 700;
+				color: var(--accent);
+			}
+
+			/* ================= Latest reviews (compact list) ================= */
+			.review-list {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 0 48px;
+			}
+			.review-row {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+				padding: 18px 0;
+				border-bottom: 1px solid var(--line);
+				text-decoration: none;
+			}
+			.review-row .r-kicker {
 				font-size: 11px;
 				font-weight: 700;
 				text-transform: uppercase;
-				letter-spacing: 0.04em;
-				padding: 3px 8px;
-				border-radius: 6px;
-				color: white;
+				letter-spacing: 0.12em;
+				color: rgb(var(--gray));
 			}
-			.card-title {
-				font-size: 16px;
-				font-weight: 700;
-				color: rgb(var(--gray-dark));
-				margin: 0;
+			.review-row .r-title {
+				font-size: 16.5px;
+				font-weight: 600;
+				color: rgb(var(--black));
 				line-height: 1.3;
 			}
-			.card-desc {
-				font-size: 13px;
-				color: rgb(var(--gray));
-				line-height: 1.5;
-				margin: 0;
+			.review-row:hover .r-title {
+				color: var(--accent);
 			}
 
-			@media (max-width: 768px) {
+			/* ================= Responsive ================= */
+			@media (max-width: 1024px) {
+				.tool-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+				.cat-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+			@media (max-width: 820px) {
 				.hero {
-					padding: 40px 16px 32px;
+					grid-template-columns: 1fr;
+					gap: 32px;
+					padding: 48px 0 44px;
 				}
 				.hero h1 {
-					font-size: 32px;
+					font-size: 40px;
 				}
-				.hero p {
-					font-size: 16px;
+				.hero-sub {
+					max-width: 560px;
 				}
-				.hero-stats {
-					gap: 28px;
+				.update-feature {
+					grid-template-columns: 1fr;
+					gap: 20px;
 				}
-				.hero-stat .num {
-					font-size: 24px;
+				.update-visual {
+					min-height: 200px;
 				}
-				.section-block {
-					padding: 24px 16px;
+				.update-visual .visual-mark {
+					font-size: 60px;
 				}
-				.section-head h2 {
+				.vs-row {
+					grid-template-columns: 1fr;
+					gap: 14px;
+					padding: 22px 20px;
+				}
+				.vs-lockup {
 					font-size: 22px;
 				}
-				.popular-grid, .category-grid, .cards-grid {
+				.section {
+					padding: 48px 0;
+				}
+				.section-head {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 8px;
+					margin-bottom: 24px;
+				}
+				.section-head h2 {
+					font-size: 26px;
+				}
+				.update-rows li a {
+					grid-template-columns: 1fr auto;
+				}
+				.update-rows .row-kicker {
+					grid-column: 1 / -1;
+					margin-bottom: -10px;
+				}
+				.guide-grid,
+				.review-list {
 					grid-template-columns: 1fr;
+					gap: 0;
+				}
+			}
+			@media (max-width: 560px) {
+				.shell {
+					padding: 0 16px;
+				}
+				.hero h1 {
+					font-size: 33px;
+				}
+				.hero-sub {
+					font-size: 16.5px;
+				}
+				.discovery {
+					padding: 16px;
+				}
+				.discovery-row {
+					flex-direction: column;
+				}
+				.discovery-go {
+					width: 100%;
+				}
+				.tool-grid {
+					grid-template-columns: 1fr;
+				}
+				.cat-grid {
+					grid-template-columns: 1fr;
+				}
+				.hero-meta {
+					gap: 4px 8px;
+					font-size: 13px;
 				}
 			}
 		</style>
@@ -407,154 +901,223 @@ const latestUpdates = [
 	<body>
 		<Header />
 
-		{/* ===== Hero ===== */}
-		<section class="hero">
-			<h1>Find the Best AI Tools &amp; Software</h1>
-			<p>ToolStep is your AI tools and software review platform — in-depth comparisons, evidence-based reviews, and curated best-of guides to help you pick the right tool.</p>
-			<div class="hero-cta">
-				<a class="btn-primary" href="/reviews/">Browse Reviews →</a>
-				<a class="btn-secondary" href="/tools/">All Tools</a>
-				<a class="btn-secondary" href="/compare/">Compare Tools</a>
-			</div>
-			<div class="hero-stats">
-				<div class="hero-stat">
-					<div class="num">{reviewsCount}+</div>
-					<div class="label">Reviews</div>
+		{/* ===== Hero + Discovery ===== */}
+		<section class="band">
+			<div class="shell hero">
+				<div class="hero-copy">
+					<p class="hero-kicker">Independent AI tool reviews</p>
+					<h1>Find the Right AI Tool for the&nbsp;Job</h1>
+					<p class="hero-sub">
+						Independent reviews, comparisons, and practical guides for AI tools and software —
+						tested before we recommend.
+					</p>
+					<p class="hero-meta">
+						<span><strong>{reviewsCount}</strong> reviews</span>
+						<span class="dot">·</span>
+						<span><strong>{comparesCount}</strong> comparisons</span>
+						<span class="dot">·</span>
+						<span><strong>{guidesCount}</strong> buying guides</span>
+						<span class="dot">·</span>
+						<span>Updated weekly</span>
+					</p>
 				</div>
-				<div class="hero-stat">
-					<div class="num">{comparesCount}+</div>
-					<div class="label">Comparisons</div>
-				</div>
-				<div class="hero-stat">
-					<div class="num">{guidesCount}+</div>
-					<div class="label">Guides</div>
+
+				<div class="discovery">
+					<p class="discovery-label" id="discovery-label">What are you looking for?</p>
+					<div class="discovery-row">
+						<div class="discovery-input-wrap">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+								<circle cx="11" cy="11" r="8"></circle>
+								<path d="m21 21-4.3-4.3"></path>
+							</svg>
+							<input
+								type="text"
+								id="discovery-input"
+								placeholder="Search AI tools, use cases, or software…"
+								autocomplete="off"
+								aria-labelledby="discovery-label"
+							/>
+						</div>
+						<button class="discovery-go" id="discovery-go">Search</button>
+					</div>
+					<ul class="discovery-hint" id="discovery-hint"></ul>
+					<div class="quick-row">
+						<span class="quick-label">Popular:</span>
+						{quickCategories.map((c) => (
+							<a class="quick-link" href={c.href}>{c.label}</a>
+						))}
+					</div>
 				</div>
 			</div>
 		</section>
 
-		{/* ===== Latest AI Tool Updates ===== */}
-		<section class="section-block">
-			<div class="section-head">
-				<div>
-					<h2>Latest AI Tool Updates</h2>
-					<div class="section-sub">What changed in AI this month — reviewed the week it shipped.</div>
+		{/* ===== Latest AI updates (dark editorial band) ===== */}
+		<section class="band band--ink">
+			<div class="shell section">
+				<div class="section-head">
+					<div>
+						<p class="section-eyebrow">Latest AI Tool Updates</p>
+						<h2>What changed in AI this month</h2>
+						<p class="section-sub">Reviewed the week it shipped — pricing moves, agent betas, and new model releases.</p>
+					</div>
+					<a class="section-link" href="/reviews/">All reviews →</a>
 				</div>
-				<a class="view-all-link" href="/reviews/">All reviews →</a>
-			</div>
-			<div class="popular-grid">
-				{latestUpdates.map((u) => (
-					<a class="tool-tile" href={u.href}>
-						<span class="name">{u.name}</span>
-						<span class="desc">{u.desc}</span>
-						<span class="arrow">{u.date} · Read review →</span>
+
+				<div class="update-feature">
+					<a class="update-visual" href={featuredUpdate.href} aria-label={featuredUpdate.title}>
+						<span class="visual-bar"></span>
+						<span class="visual-body">
+							<span class="visual-kicker">{featuredUpdate.kicker}</span>
+							<span class="visual-mark">DS</span>
+							<span class="visual-foot">DeepSeek Flash · Pricing update</span>
+						</span>
 					</a>
-				))}
+					<div class="update-body">
+						<span class="update-flag">Featured Update</span>
+						<h3>{featuredUpdate.title}</h3>
+						<p class="update-summary">{featuredUpdate.summary}</p>
+						<p class="update-meta">{featuredUpdate.kicker} · {featuredUpdate.date}</p>
+						<a class="update-cta" href={featuredUpdate.href}>Read the review →</a>
+					</div>
+				</div>
+
+				<ul class="update-rows">
+					{updateRows.map((u) => (
+						<li>
+							<a href={u.href}>
+								<span class="row-kicker">{u.kicker}</span>
+								<span class="row-title">
+									{u.title}
+									<span class="row-desc">{u.summary}</span>
+								</span>
+								<span class="row-date">{u.date} <span class="row-arrow">→</span></span>
+							</a>
+						</li>
+					))}
+				</ul>
 			</div>
 		</section>
 
-		{/* ===== Popular AI Tools ===== */}
-		<section class="section-block">
-			<div class="section-head">
-				<div>
-					<h2>Popular AI Tools</h2>
-					<div class="section-sub">The most-searched AI tools, reviewed and compared on ToolStep.</div>
+		{/* ===== Popular AI tools ===== */}
+		<section class="band">
+			<div class="shell section">
+				<div class="section-head">
+					<div>
+						<p class="section-eyebrow">Popular AI Tools</p>
+						<h2>Start with the tools everyone asks about</h2>
+					</div>
+					<a class="section-link" href="/reviews/">All reviews →</a>
 				</div>
-				<a class="view-all-link" href="/reviews/">All reviews →</a>
-			</div>
-			<div class="popular-grid">
-				{popularTools.map((tool) => (
-					<a class="tool-tile" href={tool.href}>
-						<span class="name">{tool.name}</span>
-						<span class="desc">{tool.desc}</span>
-						<span class="arrow">Read review →</span>
-					</a>
-				))}
+				<div class="tool-grid">
+					{popularTools.map((tool) => (
+						<a class="tool-tile" href={tool.href}>
+							<span class="tool-mono" aria-hidden="true">{tool.name.slice(0, 1)}</span>
+							<span class="t-name">{tool.name}</span>
+							<span class="t-desc">{tool.desc}</span>
+							<span class="t-arrow">Read review →</span>
+						</a>
+					))}
+				</div>
 			</div>
 		</section>
 
-		{/* ===== Browse Categories ===== */}
-		<section class="section-block">
-			<div class="section-head">
-				<div>
-					<h2>Browse by Category</h2>
-					<div class="section-sub">Explore tools and guides by what you're trying to do.</div>
+		{/* ===== Browse by category ===== */}
+		<section class="band band--surface">
+			<div class="shell section">
+				<div class="section-head">
+					<div>
+						<p class="section-eyebrow">Browse by Category</p>
+						<h2>Explore tools by what you're trying to do</h2>
+					</div>
+					<a class="section-link" href="/category/">All categories →</a>
 				</div>
-				<a class="view-all-link" href="/category/">All categories →</a>
-			</div>
-			<div class="category-grid">
-				{categoryCards.map((cat) => (
-					<a class="cat-card" href={cat.href}>
-						<div class="icon-box">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<div class="cat-grid">
+					{categoryTiles.map((cat) => (
+						<a class="cat-tile" href={cat.href}>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 								<path d={cat.icon} />
 							</svg>
-						</div>
-						<div class="cat-info">
-							<h3 class="cat-name">{cat.name}</h3>
-							<p class="cat-desc">{cat.desc}</p>
-						</div>
-					</a>
-				))}
+							<span>
+								<h3 class="c-name">{cat.name}</h3>
+								<p class="c-desc">{cat.desc}</p>
+							</span>
+						</a>
+					))}
+				</div>
 			</div>
 		</section>
 
-		{/* ===== Featured Comparisons ===== */}
-		<section class="section-block">
-			<div class="section-head">
-				<div>
-					<h2>Featured Comparisons</h2>
-					<div class="section-sub">Head-to-head breakdowns of the most popular AI tools.</div>
+		{/* ===== Featured comparisons ===== */}
+		<section class="band">
+			<div class="shell section">
+				<div class="section-head">
+					<div>
+						<p class="section-eyebrow">Featured Comparisons</p>
+						<h2>Head-to-head, no marketing fluff</h2>
+					</div>
+					<a class="section-link" href="/compare/">All {comparesCount} comparisons →</a>
 				</div>
-				<a class="view-all-link" href="/compare/">All comparisons →</a>
-			</div>
-			<div class="cards-grid">
-				{featuredCompares.map((c) => (
-					<a class="content-card" href={`/compare/${c.slug}/`}>
-						<span class="card-tag" style={`background: ${c.color}`}>{c.category}</span>
-						<h3 class="card-title">{c.title}</h3>
-						<p class="card-desc">{c.description}</p>
-					</a>
-				))}
+				<div class="vs-list">
+					{featuredCompares.map((c) => (
+						<a class="vs-row" href={`/compare/${c.slug}/`}>
+							<span class="vs-lockup">
+								<span>{c.sideA}</span>
+								<span class="vs-mark">vs</span>
+								<span>{c.sideB}</span>
+							</span>
+							<span class="vs-info">
+								<p class="vs-desc">{c.description}</p>
+								<span class="vs-meta">{c.category} · Read comparison</span>
+							</span>
+						</a>
+					))}
+				</div>
 			</div>
 		</section>
 
-		{/* ===== Best Software Guides ===== */}
-		<section class="section-block">
-			<div class="section-head">
-				<div>
-					<h2>Best Software Guides</h2>
-					<div class="section-sub">Curated top picks for every software category.</div>
+		{/* ===== Best software guides ===== */}
+		<section class="band band--surface">
+			<div class="shell section">
+				<div class="section-head">
+					<div>
+						<p class="section-eyebrow">Best Guides</p>
+						<h2>Our picks, ranked and tested</h2>
+					</div>
+					<a class="section-link" href="/best/">All {guidesCount} guides →</a>
 				</div>
-				<a class="view-all-link" href="/best/">All best guides →</a>
-			</div>
-			<div class="cards-grid">
-				{bestGuides.map((b) => (
-					<a class="content-card" href={`/best/${b.slug}/`}>
-						<span class="card-tag" style={`background: ${b.color}`}>{b.category}</span>
-						<h3 class="card-title">{b.title}</h3>
-						<p class="card-desc">{b.description}</p>
-					</a>
-				))}
+				<div class="guide-grid">
+					{bestGuides.map((b, i) => (
+						<a class="guide-row" href={`/best/${b.slug}/`}>
+							<span class="guide-num">{String(i + 1).padStart(2, '0')}</span>
+							<span>
+								<h3 class="g-title">{b.title}</h3>
+								<p class="g-desc">{b.description}</p>
+								<span class="g-arrow">Read the guide →</span>
+							</span>
+						</a>
+					))}
+				</div>
 			</div>
 		</section>
 
-		{/* ===== Latest Reviews ===== */}
-		<section class="section-block">
-			<div class="section-head">
-				<div>
-					<h2>Latest Reviews</h2>
-					<div class="section-sub">Fresh, in-depth product comparisons and reviews.</div>
+		{/* ===== Latest reviews ===== */}
+		<section class="band">
+			<div class="shell section">
+				<div class="section-head">
+					<div>
+						<p class="section-eyebrow">Latest Reviews</p>
+						<h2>Fresh from the test bench</h2>
+					</div>
+					<a class="section-link" href="/reviews/">All reviews →</a>
 				</div>
-				<a class="view-all-link" href="/reviews/">All reviews →</a>
-			</div>
-			<div class="cards-grid">
-				{latestReviews.map((r) => (
-					<a class="content-card" href={r.href}>
-						<span class="card-tag" style={`background: ${r.color}`}>{r.category}</span>
-						<h3 class="card-title">{r.title}</h3>
-						<p class="card-desc">{r.desc}</p>
-					</a>
-				))}
+				<div class="review-list">
+					{latestReviews.map((r) => (
+						<a class="review-row" href={r.href}>
+							<span class="r-kicker">{r.category}</span>
+							<span class="r-title">{r.title}</span>
+						</a>
+					))}
+				</div>
 			</div>
 		</section>
 
@@ -572,3 +1135,49 @@ const latestUpdates = [
 		<Footer />
 	</body>
 </html>
+
+<script define:vars={{ discoveryIndex }}>
+	(function () {
+		var input = document.getElementById('discovery-input');
+		var go = document.getElementById('discovery-go');
+		var hint = document.getElementById('discovery-hint');
+		if (!input || !go || !hint) return;
+
+		function matches(q) {
+			q = q.trim().toLowerCase();
+			if (!q) return [];
+			return discoveryIndex
+				.filter(function (item) {
+					return (item.t + ' ' + item.s).toLowerCase().indexOf(q) !== -1;
+				})
+				.slice(0, 6);
+		}
+		function render(list) {
+			if (!list.length) {
+				hint.classList.remove('open');
+				hint.innerHTML = '';
+				return;
+			}
+			hint.innerHTML = list.map(function (m) {
+				return '<li><a href="' + m.u + '"><span class="h-title">' + m.t + '</span><span class="h-sub">' + m.s + '</span></a></li>';
+			}).join('');
+			hint.classList.add('open');
+		}
+		input.addEventListener('input', function () {
+			render(matches(input.value));
+		});
+		input.addEventListener('keydown', function (e) {
+			if (e.key === 'Enter') {
+				var list = matches(input.value);
+				window.location.href = list.length ? list[0].u : '/reviews/';
+			}
+		});
+		go.addEventListener('click', function () {
+			var list = matches(input.value);
+			window.location.href = list.length ? list[0].u : '/reviews/';
+		});
+		document.addEventListener('click', function (e) {
+			if (!hint.contains(e.target) && e.target !== input) hint.classList.remove('open');
+		});
+	})();
+</script>
