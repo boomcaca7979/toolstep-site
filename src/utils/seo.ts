@@ -1,25 +1,32 @@
 // SEO Title Engine
 // Centralized dynamic title builders for review, best, and compare pages.
-// All titles target high-CTR patterns: year, real testing, verdict.
+// All titles target high-CTR patterns: year, verdict — without unverified
+// testing claims (methodology is documentation-based; see /how-we-test/).
 
 const CURRENT_YEAR = 2026;
 
 /**
  * Build SEO title for a single-product review page.
- * Example: "Dell U2723QE Review (2026): Real Testing, Pros, Cons & Verdict"
+ * Example: "Dell U2723QE Review (2026): Pros, Cons & Verdict"
+ *
+ * Note: no "Real Testing" claim — most reviews are documentation-based
+ * (see /how-we-test/). HANDS_ON entries can override via entry.seoTitle.
  */
 export function buildReviewTitle(productName: string): string {
-  return `${productName} Review (${CURRENT_YEAR}): Real Testing, Pros, Cons & Verdict`;
+  return `${productName} Review (${CURRENT_YEAR}): Pros, Cons & Verdict`;
 }
 
 /**
  * Build SEO title for a "Best X" list page.
- * Example: "Best Standing Desk (2026): Ranked, Tested & Compared"
+ * Example: "Best Standing Desk (2026): Ranked & Compared"
+ *
+ * Note: no "Tested" claim — rankings are documentation-based unless an
+ * entry overrides via entry.seoTitle (per-page override in [slug].astro).
  */
 export function buildBestTitle(category: string): string {
   // Strip leading "Best " if caller already included it
   const cleanCategory = category.replace(/^Best\s+/i, '');
-  return `Best ${cleanCategory} (${CURRENT_YEAR}): Ranked, Tested & Compared`;
+  return `Best ${cleanCategory} (${CURRENT_YEAR}): Ranked & Compared`;
 }
 
 /**

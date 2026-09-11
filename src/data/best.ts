@@ -1302,11 +1302,11 @@ export const bestData: BestEntry[] = [
   {
     slug: 'best-budget-monitor',
     title: 'Best Budget Monitor',
-    h1: 'Best Budget Monitors (2026): Ranked, Tested & Compared',
+    h1: 'Best Budget Monitors (2026): Ranked & Compared',
     category: 'Monitors', color: '#2563eb',
     description: 'The 10 best budget monitors from $119 to $349, ranked by panel quality, resolution, and value.',
-    seoTitle: 'Best Budget Monitors 2026: 10 Tested Picks From $119',
-    seoDescription: 'The best budget monitors of 2026, ranked from $119. Compare 10 tested picks for gaming, work, and Mac — 1080p, 1440p, and 4K options with USB-C.',
+    seoTitle: 'Best Budget Monitors 2026: 10 Top Picks From $119',
+    seoDescription: 'The best budget monitors of 2026, ranked from $119. Compare 10 top picks for gaming, work, and Mac — 1080p, 1440p, and 4K options with USB-C.',
     intro: 'Budget monitors have improved significantly. Based on product documentation and specification analysis, 10 monitors from $119 to $349 are compared for text clarity, color accuracy, panel type, refresh rate, connectivity, and build quality. The list covers 1080p, 1440p, and 4K options for office work, gaming, and general use.',
     buyerGuide: {
       heading: 'How to Choose a Budget Monitor',
@@ -7738,7 +7738,7 @@ export const bestData: BestEntry[] = [
     title: 'Best Wireless Mechanical Keyboard',
     category: 'Keyboards', color: '#7c3aed',
     description: 'The 10 best wireless mechanical keyboards in 2026, evaluated for Bluetooth stability, latency, battery life, and switch feel.',
-    seoTitle: 'Best Wireless Mechanical Keyboard in 2026: 10 Picks Tested',
+    seoTitle: 'Best Wireless Mechanical Keyboard in 2026: 10 Picks Compared',
     seoDescription: 'Best wireless mechanical keyboard in 2026. 10 picks evaluated for Bluetooth stability, latency, battery life, switch feel, and multi-device switching.',
     intro: 'Wireless mechanical keyboards combine cable-free desks with tactile switch feel — but not all wireless is equal. Based on product documentation, 10 keyboards are compared for Bluetooth stability, 2.4GHz latency, battery life, hot-swappability, and multi-device switching. This list covers the intersection of wireless and mechanical only — see best-wireless-keyboard for membrane picks and best-mechanical-keyboard for wired boards.',
     buyerGuide: {

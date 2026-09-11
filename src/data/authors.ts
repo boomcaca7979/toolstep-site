@@ -81,7 +81,7 @@ export const authors: Author[] = [
       'M2 MacBook Pro 14" (primary test machine)',
       '27" 4K monitor for multi-monitor workflow testing',
     ],
-    experience: '6 years of software and peripheral reviews. Former project manager at a remote-first SaaS company (2019–2024). Has tested 150+ productivity tools and input devices.',
+    experience: '6 years of software and peripheral reviews. Former project manager at a remote-first SaaS company (2019–2024). Has evaluated 150+ productivity tools and input devices.',
     expertise: [
       'Wireless keyboards and mice',
       'Webcams and remote work hardware',

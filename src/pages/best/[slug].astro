@@ -85,6 +85,25 @@ function getSpec(specs: { label: string; value: string }[] | undefined, label: s
   return spec?.value ?? '—';
 }
 
+// Comparison table columns follow content type:
+// - Entries whose products actually carry hardware specs (Resolution/Panel/
+//   Refresh/Ports) keep the hardware table.
+// - Everything else (AI/software/productivity, and hardware categories like
+//   chairs/desks that have no electronic specs) renders a universal table:
+//   Price / Rating / Best For — no empty hardware columns.
+const HARDWARE_SPEC_LABELS = ['Resolution', 'Panel', 'Refresh', 'Ports'];
+const hasHardwareSpecs = entry.products.some(p =>
+  (p.specs ?? []).some(s => HARDWARE_SPEC_LABELS.includes(s.label))
+);
+
+// "Best For" cell: prefer the explicit bestFor field, fall back to a
+// truncated summary so the table stays scannable.
+function bestForCell(p: typeof entry.products[number]): string {
+  if (p.bestFor) return p.bestFor;
+  const s = p.summary.trim();
+  return s.length > 90 ? `${s.slice(0, 87).trimEnd()}…` : s;
+}
+
 // Average rating
 const avgRating = (entry.products.reduce((sum, p) => sum + p.rating, 0) / entry.products.length).toFixed(1);
 
@@ -793,7 +812,7 @@ const articleSchema = {
             <div class="hero-stats">
               <div class="hero-stat">
                 <div class="num">{entry.products.length}</div>
-                <div class="label">Products Tested</div>
+                <div class="label">Products Evaluated</div>
               </div>
               <div class="hero-stat">
                 <div class="num">{avgRating}</div>
@@ -929,42 +948,72 @@ const articleSchema = {
             ))}
           </div>
 
-          {/* Comparison Table */}
+          {/* Comparison Table — columns depend on content type */}
           <h2 id="comparison">Comparison Table</h2>
           <div class="compare-table-wrap">
-            <table class="compare-table">
-              <thead>
-                <tr>
-                  <th class="rank-col">#</th>
-                  <th>Name</th>
-                  <th>Brand</th>
-                  <th>Resolution</th>
-                  <th>Panel</th>
-                  <th>Refresh</th>
-                  <th>Ports</th>
-                  <th>Rating</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {entry.products.map((p) => (
+            {hasHardwareSpecs ? (
+              <table class="compare-table">
+                <thead>
                   <tr>
-                    <td class="rank">{p.rank}</td>
-                    <td class="name">{p.name}</td>
-                    <td>{p.brand}</td>
-                    <td>{getSpec(p.specs, 'Resolution')}</td>
-                    <td>{getSpec(p.specs, 'Panel')}</td>
-                    <td>{getSpec(p.specs, 'Refresh')}</td>
-                    <td>{getSpec(p.specs, 'Ports')}</td>
-                    <td class="rating">
-                      {p.rating}/5
-                      <div style="font-size:0.75rem; color:#f59e0b;">{stars(p.rating)}</div>
-                    </td>
-                    <td class="price">${p.price}</td>
+                    <th class="rank-col">#</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Resolution</th>
+                    <th>Panel</th>
+                    <th>Refresh</th>
+                    <th>Ports</th>
+                    <th>Rating</th>
+                    <th>Price</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {entry.products.map((p) => (
+                    <tr>
+                      <td class="rank">{p.rank}</td>
+                      <td class="name">{p.name}</td>
+                      <td>{p.brand}</td>
+                      <td>{getSpec(p.specs, 'Resolution')}</td>
+                      <td>{getSpec(p.specs, 'Panel')}</td>
+                      <td>{getSpec(p.specs, 'Refresh')}</td>
+                      <td>{getSpec(p.specs, 'Ports')}</td>
+                      <td class="rating">
+                        {p.rating}/5
+                        <div style="font-size:0.75rem; color:#f59e0b;">{stars(p.rating)}</div>
+                      </td>
+                      <td class="price">${p.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <table class="compare-table">
+                <thead>
+                  <tr>
+                    <th class="rank-col">#</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Best For</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {entry.products.map((p) => (
+                    <tr>
+                      <td class="rank">{p.rank}</td>
+                      <td class="name">{p.name}</td>
+                      <td>{p.brand}</td>
+                      <td class="price">${p.price}</td>
+                      <td class="rating">
+                        {p.rating}/5
+                        <div style="font-size:0.75rem; color:#f59e0b;">{stars(p.rating)}</div>
+                      </td>
+                      <td>{bestForCell(p)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
 
           <AdSlot position="content-mid" />
