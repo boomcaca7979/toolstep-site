@@ -6,7 +6,7 @@
 // toggled / audited / rolled back separately.
 //
 // The script URL and container ID below are the official Adsterra-generated
-// codes for toolstep.top — do not edit them.
+// Anti-Adblock code (2026-09 refresh) for toolstep.top — do not edit them.
 //
 // ADSTERRA_CONFIG.enabled is the master switch. It ships as `false` so the
 // experiment never loads any third-party script until explicitly enabled.
@@ -14,7 +14,7 @@
 export interface AdsterraConfig {
   /** Master switch — false = component renders nothing, zero third-party requests. */
   enabled: boolean;
-  /** Official Adsterra invoke.js URL for the Native Banner zone. */
+  /** Official Adsterra Anti-Adblock invoke.js URL for the Native Banner zone. */
   scriptSrc: string;
   /** Official Adsterra container div id the invoke.js injects into. */
   containerId: string;
@@ -34,7 +34,7 @@ export const ADSTERRA_CONFIG: AdsterraConfig = {
   // unified rollout.
   enabled: true,
   scriptSrc:
-    'https://pl31180616.profitableratecpmnetwork.com/115f0347827dcc42197dfe9f0a88d287/invoke.js',
+    'https://wistfulseverely.com/115f0347827dcc42197dfe9f0a88d287/invoke.js',
   containerId: 'container-115f0347827dcc42197dfe9f0a88d287',
   reservedMinHeight: 250,
   // Native Banner: max 1 per page, adult ads disabled for this property.
