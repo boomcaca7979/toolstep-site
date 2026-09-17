@@ -115,7 +115,7 @@ export const storiesData: StoryEntry[] = [
     'Best Standing Desks 2026',
     'Hardware',
     '#ea580c',
-    'Our top 5 standing desks evaluated for 90 days — see which one wins in 60 seconds.',
+    'Five standing desks ranked with prices — FlexiSpot E7 at $399 leads overall, with premium, design, budget, and value options compared side by side.',
     'Modern standing desk in a bright home office, cinematic product photo, vertical',
     [
       { headline: 'FlexiSpot E7', subtext: 'Best overall — $399', image: img('FlexiSpot E7 standing desk in home office, product photo, vertical', 'portrait_16_9') },
@@ -175,7 +175,7 @@ export const storiesData: StoryEntry[] = [
     'Best Wireless Mice 2026',
     'Hardware',
     '#ea580c',
-    '5 wireless mice evaluated for productivity — which is the most comfortable for 8-hour days?',
+    'Five wireless mice for long workdays ranked with prices — Logitech MX Master 3S at $99 leads, plus portable, ergonomic, Mac, and budget picks.',
     'Logitech MX Master 3S mouse on desk, cinematic product photo, vertical',
     [
       { headline: 'Logitech MX Master 3S', subtext: 'Best overall — $99', image: img('Logitech MX Master 3S mouse close-up, vertical', 'portrait_16_9') },
@@ -195,7 +195,7 @@ export const storiesData: StoryEntry[] = [
     'Best Webcams 2026',
     'Hardware',
     '#ea580c',
-    '5 webcams tested on Zoom — which makes you look most professional on calls?',
+    'Five webcams ranked with prices for calls and streaming — Logitech Brio 4K at $199 leads overall, with premium, budget, low-light, and value picks.',
     '4K webcam on monitor in home office, cinematic product photo, vertical',
     [
       { headline: 'Logitech Brio 4K', subtext: 'Best overall — $199', image: img('Logitech Brio 4K webcam on monitor, vertical', 'portrait_16_9') },
@@ -215,7 +215,7 @@ export const storiesData: StoryEntry[] = [
     'Best Work Headphones 2026',
     'Hardware',
     '#ea580c',
-    '5 noise-canceling headphones tested in open offices — which blocks noise best?',
+    'Five noise-canceling headphones for work ranked with prices — Sony WH-1000XM5 at $399 leads, with comfort, Apple, battery, and budget alternatives.',
     'Sony WH-1000XM5 headphones on desk, cinematic product photo, vertical',
     [
       { headline: 'Sony WH-1000XM5', subtext: 'Best overall — $399', image: img('Sony WH-1000XM5 headphones, vertical', 'portrait_16_9') },
@@ -235,7 +235,7 @@ export const storiesData: StoryEntry[] = [
     'Best Monitors 2026',
     'Hardware',
     '#ea580c',
-    '5 monitors evaluated for productivity — which 4K display is best for your desk?',
+    'Five productivity monitors ranked with prices — Dell UltraSharp U2723QE at $699 leads, plus 5K for Mac, budget 4K, 32-inch, and design picks.',
     '4K monitor on standing desk in modern office, cinematic, vertical',
     [
       { headline: 'Dell UltraSharp U2723QE', subtext: 'Best overall — $699', image: img('Dell UltraSharp 4K monitor, vertical', 'portrait_16_9') },
@@ -255,7 +255,7 @@ export const storiesData: StoryEntry[] = [
     'Best Monitor Light Bars 2026',
     'Hardware',
     '#ea580c',
-    '5 monitor light bars tested — which lights your desk without screen glare?',
+    'Five monitor light bars compared with prices, from the BenQ ScreenBar Halo at $129 to a $29 Quntis — glare-free desk lighting for every budget.',
     'BenQ ScreenBar Halo on monitor, cinematic product photo, vertical',
     [
       { headline: 'BenQ ScreenBar Halo', subtext: 'Best overall — $129', image: img('BenQ ScreenBar Halo monitor light, vertical', 'portrait_16_9') },
@@ -275,7 +275,7 @@ export const storiesData: StoryEntry[] = [
     'Best Desk Lamps 2026',
     'Hardware',
     '#ea580c',
-    '5 desk lamps evaluated for eye care — which LED lamp reduces eye strain best?',
+    'Five LED desk lamps ranked with prices for eye comfort — Glocusent at $49 leads overall, plus architect, smart, minimalist, and budget picks.',
     'LED architect desk lamp on wooden desk, cinematic, vertical',
     [
       { headline: 'Glocusent LED Desk Lamp', subtext: 'Best overall — $49', image: img('Glocusent LED desk lamp, vertical', 'portrait_16_9') },
@@ -295,7 +295,7 @@ export const storiesData: StoryEntry[] = [
     'Best USB-C Docks 2026',
     'Hardware',
     '#ea580c',
-    '5 USB-C docks tested with MacBook Pro — which has the most reliable connections?',
+    'Five USB-C docks for MacBook Pro ranked with prices — CalDigit TS4 at $399 leads overall, plus Thunderbolt, value, design, and budget picks.',
     'Thunderbolt USB-C dock on desk with cables, cinematic, vertical',
     [
       { headline: 'CalDigit TS4', subtext: 'Best overall — $399', image: img('CalDigit TS4 Thunderbolt dock, vertical', 'portrait_16_9') },
@@ -315,7 +315,7 @@ export const storiesData: StoryEntry[] = [
     'Best Laptop Stands 2026',
     'Hardware',
     '#ea580c',
-    '5 laptop stands evaluated for ergonomics — which raises your screen to eye level?',
+    'Five laptop stands ranked with prices to raise your screen to eye level — Rain Design mStand at $44 leads, plus portable, slim, and budget picks.',
     'Aluminum laptop stand on desk with MacBook, cinematic, vertical',
     [
       { headline: 'Roost Laptop Stand', subtext: 'Best portable — $89', image: img('Roost laptop stand, vertical', 'portrait_16_9') },
@@ -335,7 +335,7 @@ export const storiesData: StoryEntry[] = [
     'Best Phone Stands 2026',
     'Hardware',
     '#ea580c',
-    '5 phone stands tested on a desk — which keeps your second screen visible?',
+    'Five desk phone stands ranked with prices — Lamicall at $13 leads overall, plus wireless charging, adjustable, tablet-size, and budget picks.',
     'Adjustable phone stand on desk, cinematic product photo, vertical',
     [
       { headline: 'Lamicall Adjustable', subtext: 'Best overall — $13', image: img('Lamicall phone stand, vertical', 'portrait_16_9') },
@@ -355,7 +355,7 @@ export const storiesData: StoryEntry[] = [
     'Best Cable Management 2026',
     'Hardware',
     '#ea580c',
-    '5 cable management solutions tested — which eliminates desk clutter?',
+    'Five cable management solutions ranked with prices, from the Eve Room cable box at $25 to an $8 UGREEN cord cover — match the fix to your desk clutter.',
     'Clean desk with cable management box, cinematic, vertical',
     [
       { headline: 'Eve Room Cable Box', subtext: 'Best box — $25', image: img('Cable management box on desk, vertical', 'portrait_16_9') },
@@ -375,7 +375,7 @@ export const storiesData: StoryEntry[] = [
     'Best Desk Pads 2026',
     'Hardware',
     '#ea580c',
-    '5 desk pads tested — which protects your desk and unifies your workspace?',
+    'Five desk pads compared with prices: Knodel at $22 for overall use, YSAGi leather, Glorious for gaming, Sparco at $9 for budget, and a felt option.',
     'Large desk pad on wooden desk with keyboard mouse, vertical',
     [
       { headline: 'YSAGi Leather Pad', subtext: 'Best leather — $19', image: img('Leather desk pad on desk, vertical', 'portrait_16_9') },
@@ -395,7 +395,7 @@ export const storiesData: StoryEntry[] = [
     'Best Foot Rests 2026',
     'Hardware',
     '#ea580c',
-    '5 foot rests tested under desk — which improves circulation and posture?',
+    'Top 5 under-desk foot rests ranked with prices — ErgoFoam at $34 leads overall, with memory foam, adjustable, and budget options compared.',
     'Ergonomic foot rest under office desk, cinematic, vertical',
     [
       { headline: 'ErgoFoam Foot Rest', subtext: 'Best overall — $34', image: img('ErgoFoam foot rest under desk, vertical', 'portrait_16_9') },
@@ -577,7 +577,7 @@ export const storiesData: StoryEntry[] = [
     'ChatGPT vs Gemini',
     'AI',
     '#9333ea',
-    'Based on product documentation, both compared. See which AI assistant is better in 2026.',
+    'ChatGPT vs Gemini compared on product documentation: versatility versus Google Workspace integration, both at $20/mo, and which fits how you work.',
     'ChatGPT vs Google Gemini AI interface, vertical',
     [
       { headline: 'ChatGPT', subtext: 'Best for versatility', image: img('ChatGPT interface, vertical', 'portrait_16_9') },
@@ -657,7 +657,7 @@ export const storiesData: StoryEntry[] = [
     'Midjourney vs DALL-E 3',
     'AI',
     '#db2777',
-    'Based on product documentation, both AI image generators compared. See which wins in 2026.',
+    'Midjourney vs DALL-E 3 compared on product documentation: artistic quality versus prompt accuracy, $10/mo versus $20/mo, and Discord versus ChatGPT access.',
     'Midjourney vs DALL-E 3 AI image comparison, vertical',
     [
       { headline: 'Midjourney', subtext: 'Best for artistic quality', image: img('Midjourney AI art, vertical', 'portrait_16_9') },
@@ -696,7 +696,7 @@ export const storiesData: StoryEntry[] = [
     'Cursor vs GitHub Copilot',
     'AI',
     '#059669',
-    'Based on product documentation, both AI coding assistants compared. See which is better.',
+    'Cursor vs GitHub Copilot compared on product documentation: AI-first editing versus inline completion, $20/mo versus $10/mo, and who each suits best.',
     'Cursor vs GitHub Copilot AI coding, vertical',
     [
       { headline: 'Cursor', subtext: 'Best for AI-first editing', image: img('Cursor AI editor, vertical', 'portrait_16_9') },
@@ -798,7 +798,7 @@ export const storiesData: StoryEntry[] = [
     'Canva vs Adobe Express',
     'Design',
     '#db2777',
-    'Based on product documentation, both compared. See which is better for social media content.',
+    'Canva vs Adobe Express compared on product documentation: template breadth versus Adobe integration, $13/mo versus $9.99/mo, and who each fits best.',
     'Canva vs Adobe Express design tool, vertical',
     [
       { headline: 'Canva', subtext: 'Best for templates', image: img('Canva interface, vertical', 'portrait_16_9') },
@@ -878,7 +878,7 @@ export const storiesData: StoryEntry[] = [
     'OBS Studio Complete Guide',
     'Video',
     '#dc2626',
-    'Learn how to use OBS Studio in 60 seconds — the free streaming and recording tool.',
+    'How to set up OBS Studio, the free open-source streaming and recording tool — scenes, sources, and the 1080p 60fps settings used for streaming.',
     'OBS Studio interface on computer screen, vertical',
     [
       { headline: 'What is OBS?', subtext: 'Free streaming and recording software', image: img('OBS Studio interface, vertical', 'portrait_16_9') },
@@ -1000,7 +1000,7 @@ export const storiesData: StoryEntry[] = [
     'Grammarly vs ProWritingAid',
     'AI Writing',
     '#059669',
-    'Based on product documentation, both AI writing tools compared. See which is better for you.',
+    'Grammarly vs ProWritingAid compared on product documentation: quick edits versus deeper long-form analysis, $12/mo versus $10/mo, and which to choose.',
     'Grammarly vs ProWritingAid writing tool, vertical',
     [
       { headline: 'Grammarly', subtext: 'Best for quick edits', image: img('Grammarly interface, vertical', 'portrait_16_9') },
@@ -1062,7 +1062,7 @@ export const storiesData: StoryEntry[] = [
     'Best Website Builders 2026',
     'Website',
     '#7c3aed',
-    'Based on product documentation, 5 website builders compared. See which is best for your site.',
+    'Five website builders compared on product documentation with prices — WordPress at $5/mo leads overall, plus design, flexible, pro, and e-commerce picks.',
     'Website builder comparison ranking, vertical',
     [
       { headline: 'WordPress', subtext: 'Best overall — $5/mo', image: img('WordPress website builder, vertical', 'portrait_16_9') },
@@ -1124,7 +1124,7 @@ export const storiesData: StoryEntry[] = [
     'Perfect Home Office Setup',
     'Productivity',
     '#6366f1',
-    '5 essentials for a productive home office — see what you actually need.',
+    'The five pieces that make a home office work: standing desk, ergonomic chair, monitor light, mechanical keyboard, and noise canceling — with why each matters.',
     'Modern home office setup with desk and chair, vertical',
     [
       { headline: 'Standing Desk', subtext: 'Improves posture and energy', image: img('Standing desk in home office, vertical', 'portrait_16_9') },
@@ -1144,7 +1144,7 @@ export const storiesData: StoryEntry[] = [
     'Clean Desk Setup Guide',
     'Productivity',
     '#6366f1',
-    '5 cable management tricks to eliminate desk clutter in 60 seconds.',
+    'Five cable management fixes for a cleaner desk — cable boxes, sleeves, under-desk trays, clips, and labels — plus what each one does best.',
     'Clean organized desk without cables, vertical',
     [
       { headline: 'Cable Box', subtext: 'Hide power strips and adapters', image: img('Cable management box, vertical', 'portrait_16_9') },
@@ -1164,7 +1164,7 @@ export const storiesData: StoryEntry[] = [
     'Ergonomic Workspace Guide',
     'Productivity',
     '#6366f1',
-    '5 ergonomic adjustments to prevent back pain while working from home.',
+    'Five ergonomic adjustments that help prevent back pain at a desk: monitor at eye level, 90-degree knees, straight wrists, a foot rest, and regular breaks.',
     'Ergonomic workspace setup diagram, vertical',
     [
       { headline: 'Monitor Height', subtext: 'Top of screen at eye level', image: img('Monitor at eye level ergonomic, vertical', 'portrait_16_9') },
@@ -1184,7 +1184,7 @@ export const storiesData: StoryEntry[] = [
     '5 Productivity Tools We Love',
     'Productivity',
     '#6366f1',
-    'These 5 tools saved us 10+ hours a week. See which ones made the cut.',
+    'Five productivity tools that structure our daily work — Notion, Todoist, Slack, Linear, and Raycast — and what each one does well.',
     'Productivity tools on laptop screen, vertical',
     [
       { headline: 'Notion', subtext: 'All-in-one workspace', image: img('Notion app interface, vertical', 'portrait_16_9') },
@@ -1204,7 +1204,7 @@ export const storiesData: StoryEntry[] = [
     'Best Gaming Setup 2026',
     'Productivity',
     '#6366f1',
-    '5 essentials for a pro gaming setup that doubles as a workstation.',
+    'Five essentials for a gaming setup that pulls double duty as a workstation — monitor, keyboard, mouse, headset, and chair, with what matters for each.',
     'Gaming setup with RGB lighting, vertical',
     [
       { headline: 'Gaming Monitor', subtext: '144Hz+ for smooth gameplay', image: img('Gaming monitor with RGB, vertical', 'portrait_16_9') },
@@ -1246,7 +1246,7 @@ export const storiesData: StoryEntry[] = [
     'Smallpdf vs iLovePDF',
     'File Tools',
     '#0891b2',
-    'Based on product documentation, both PDF tools compared. See which free PDF tool is better.',
+    'Smallpdf vs iLovePDF compared on product documentation: simplicity versus feature depth, $9/mo versus $7/mo, and which has the stronger free tier.',
     'Smallpdf vs iLovePDF PDF editor comparison, vertical',
     [
       { headline: 'Smallpdf', subtext: 'Best for simplicity', image: img('Smallpdf interface, vertical', 'portrait_16_9') },
@@ -1266,7 +1266,7 @@ export const storiesData: StoryEntry[] = [
     'TinyPNG vs Squoosh',
     'File Tools',
     '#0891b2',
-    'Based on product documentation, both image compressors compared. See which is better.',
+    'TinyPNG vs Squoosh compared on product documentation: batch compression versus fine control, $25/yr versus free, and which formats each supports.',
     'TinyPNG vs Squoosh image compressor, vertical',
     [
       { headline: 'TinyPNG', subtext: 'Best for batch', image: img('TinyPNG interface, vertical', 'portrait_16_9') },
