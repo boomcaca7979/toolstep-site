@@ -86,7 +86,7 @@ const toolDetails: Record<string, { detailDescription: string; pros: string[]; c
 		metaDescription: 'Canva review: drag-and-drop graphic design with 100K+ templates. Real-time collaboration, brand kit, stock photos. Free tier + Pro from $13/mo. Reviewed 2026.',
 	},
 	figma: {
-		detailDescription: 'Figma has fundamentally changed how design teams collaborate by bringing interface design into the browser. Unlike traditional desktop design tools, Figma enables multiple designers to work on the same file simultaneously with live cursor tracking and instant comment threads. The platform excels at UI/UX design, prototyping, and design systems management with features like auto-layout, component variants, and interactive prototypes that feel like real applications. Figma\'s plugin ecosystem extends its capabilities with accessibility checkers, content generators, and design token management. Since Adobe\'s acquisition, Figma has continued to innovate while maintaining its generous free tier for individual designers.',
+		detailDescription: 'Figma has fundamentally changed how design teams collaborate by bringing interface design into the browser. Unlike traditional desktop design tools, Figma enables multiple designers to work on the same file simultaneously with live cursor tracking and instant comment threads. The platform excels at UI/UX design, prototyping, and design systems management with features like auto-layout, component variants, and interactive prototypes that feel like real applications. Figma\'s plugin ecosystem extends its capabilities with accessibility checkers, content generators, and design token management. Its proposed acquisition by Adobe was terminated in December 2023, and Figma remained independent — listing publicly in 2025 — while continuing to maintain a generous free tier for individual designers.',
 		pros: ['Real-time multiplayer collaboration', 'Powerful component system', 'Extensive plugin ecosystem'],
 		cons: ['Performance slows with very large files', 'Requires stable internet connection'],
 		metaDescription: 'Figma review: browser-based UI/UX design with real-time collaboration, auto-layout & prototyping. Plugin ecosystem. Free tier + Pro from $15/mo. Reviewed 2026.',
@@ -119,6 +119,216 @@ const toolEditorial: Record<string, {
   canva: { useCases: ['Producing social media graphics from templates', 'Building quick presentations with brand kits', 'Creating marketing collateral without design training'], freeLimits: 'The free plan locks brand kits, premium templates, background remover, and resize tools behind Pro.', notFor: 'UI/UX design or print-production vector work — Canva is template-first by design.', competitorNote: 'Compared to Figma, Canva is faster for non-designers but cannot do real component-based UI design.', verdict: 'The fastest path from idea to finished graphic for non-designers — Pro pays for itself with brand kits.', evidenceNote: 'Based on Canva official plan documentation as of June 2026.' },
   figma: { useCases: ['Designing app and web interfaces with live collaboration', 'Prototyping user flows before development', 'Maintaining shared design systems across teams'], freeLimits: 'The free tier covers 3 project files and limited version history — team features require paid seats.', notFor: 'Solo offline work on huge files — Figma is browser-first and needs a connection for full features.', competitorNote: 'Compared to Sketch, Figma is cross-platform and collaborative; compared to Penpot, it is more polished but paid.', verdict: 'The industry-standard UI design tool — the free tier is genuinely usable for individuals.', evidenceNote: 'Based on Figma official plan documentation as of June 2026.' },
   xmind: { useCases: ['Mapping project structures before kickoff', 'Brainstorming feature ideas visually', 'Building presentation-ready mind maps'], freeLimits: 'The free tier limits exports (watermarked images) and locks advanced features like pitch mode behind Pro.', notFor: 'Team real-time collaboration — XMind is a single-player thinking tool.', competitorNote: 'Compared to Miro, XMind is better for structured solo mind maps; Miro is better for team canvases.', verdict: 'The best-structured mind-mapping app for individual thinking — Pro is worth it if you export often.', evidenceNote: 'Based on XMind official plan documentation as of June 2026.' },
+};
+
+// Phase 4: deep-dive content per tool — key features, verified pricing tiers,
+// platforms, page purpose, and verified internal reads. All pricing claims are
+// consistent with the published meta descriptions and vendor plan pages.
+const toolDeepDive: Record<string, {
+  keyFeatures: Array<{ title: string; desc: string }>;
+  pricing: Array<{ plan: string; cost: string; note: string }>;
+  platforms: string;
+  purpose: string;
+  relatedLinks: Array<{ href: string; label: string }>;
+  evidenceNote: string;
+}> = {
+  smallpdf: {
+    keyFeatures: [
+      { title: 'Merge & split', desc: 'Combine scanned documents into one PDF or split a large file by page ranges.' },
+      { title: 'Format conversion', desc: 'Convert PDFs to and from Word, Excel, PowerPoint, and JPG for editing.' },
+      { title: 'Compression', desc: 'Shrink PDFs for email attachments and upload limits with quality presets.' },
+      { title: 'E-signing', desc: 'Sign contracts and request signatures directly in the browser.' },
+      { title: 'OCR (Pro)', desc: 'Turn scanned pages into selectable, searchable text.' },
+    ],
+    pricing: [
+      { plan: 'Free', cost: '$0', note: 'Core tools with a limited number of tasks per day.' },
+      { plan: 'Pro', cost: 'from $12/mo', note: 'Unlimited tasks, batch processing, OCR, desktop apps.' },
+    ],
+    platforms: 'Browser, Windows & Mac desktop apps, iOS, Android.',
+    purpose: 'ToolStep keeps a standalone Smallpdf profile because PDF workflows differ sharply by task — this page tracks what the free tier actually covers before you commit to Pro.',
+    relatedLinks: [
+      { href: '/reviews/smallpdf-vs-ilovepdf/', label: 'Smallpdf vs iLovePDF: which free tier goes further' },
+    ],
+    evidenceNote: 'Based on Smallpdf official plan documentation and published pricing as of June 2026.',
+  },
+  tinypng: {
+    keyFeatures: [
+      { title: 'Smart lossy compression', desc: 'Reduces PNG and JPEG sizes by selectively decreasing colors, typically up to 70% with minimal visible loss.' },
+      { title: 'WebP output', desc: 'Converts images to WebP for modern browsers and smaller payloads.' },
+      { title: 'Batch upload', desc: 'Drag and drop roughly 20 images per batch on the web tool.' },
+      { title: 'Developer API', desc: 'Automate compression in build pipelines and apps, with a free monthly quota.' },
+      { title: 'Integrations', desc: 'WordPress and Photoshop plugins plug compression into existing workflows.' },
+    ],
+    pricing: [
+      { plan: 'Web tool', cost: '$0', note: 'Free for batches of ~20 images.' },
+      { plan: 'Developer API', cost: 'metered', note: 'Free monthly quota, then per-image pricing for automation.' },
+    ],
+    platforms: 'Browser, REST API, WordPress plugin, Photoshop plugin.',
+    purpose: 'This page exists independently because image compression is a build-pipeline decision: the profile tracks batch limits and API metering that generic image-tool roundups skip.',
+    relatedLinks: [
+      { href: '/reviews/tinypng-vs-squoosh/', label: 'TinyPNG vs Squoosh: batch speed vs compression control' },
+    ],
+    evidenceNote: 'Based on TinyPNG official documentation and published API pricing as of June 2026.',
+  },
+  'notion-ai': {
+    keyFeatures: [
+      { title: 'Inline drafting & rewriting', desc: 'Generate and rewrite text directly inside Notion pages without switching apps.' },
+      { title: 'Summarization', desc: 'Condense long documents and meeting notes into summaries and action items.' },
+      { title: 'Workspace Q&A', desc: 'Ask questions and get answers grounded in your own notes and databases.' },
+      { title: 'Translation', desc: 'Translate content in place across multiple languages.' },
+    ],
+    pricing: [
+      { plan: 'Free plan', cost: 'not included', note: 'Notion AI is a paid add-on, not part of the free plan.' },
+      { plan: 'AI add-on', cost: 'from $10/member/mo', note: 'Per-member add-on on lower tiers; included with Business/Enterprise plans.' },
+    ],
+    platforms: 'Inside Notion apps: web, desktop, mobile.',
+    purpose: 'Notion AI gets its own profile because its value case is binary: teams already living in Notion gain workspace context no standalone assistant has, while non-Notion users gain nothing.',
+    relatedLinks: [
+      { href: '/reviews/notion-ai-vs-grammarly/', label: 'Notion AI vs Grammarly: workspace context vs writing depth' },
+      { href: '/reviews/notion-vs-confluence/', label: 'Notion vs Confluence: choosing the workspace first' },
+      { href: '/reviews/notion-alternatives-2026/', label: 'Notion alternatives if the ecosystem is not the fit' },
+    ],
+    evidenceNote: 'Based on Notion official AI plan documentation and published pricing as of June 2026.',
+  },
+  deepl: {
+    keyFeatures: [
+      { title: 'Neural translation', desc: 'Consistently natural output across 30+ languages, strongest in European pairs.' },
+      { title: 'Document translation', desc: 'Translate .docx and .pptx files while preserving original formatting.' },
+      { title: 'Glossaries', desc: 'Enforce consistent terminology for product and brand terms.' },
+      { title: 'DeepL Write', desc: 'Rephrase and polish source text, not just translate it.' },
+      { title: 'API access (Pro)', desc: 'Integrate translation into apps and localization pipelines.' },
+    ],
+    pricing: [
+      { plan: 'Free', cost: '$0', note: 'Web translator with character limits; document translation locked.' },
+      { plan: 'Pro', cost: 'from $8.74/mo', note: 'Unlimited use, document translation, API, and texts not retained for training.' },
+    ],
+    platforms: 'Web, Windows & Mac desktop apps, browser extensions, mobile apps, REST API.',
+    purpose: 'DeepL is profiled separately from translation roundups because its accuracy lead in European pairs — and narrower language coverage — is the entire decision.',
+    relatedLinks: [
+      { href: '/reviews/deepl-vs-google-translate/', label: 'DeepL vs Google Translate: accuracy vs coverage' },
+    ],
+    evidenceNote: 'Based on DeepL official documentation and published pricing as of June 2026.',
+  },
+  grammarly: {
+    keyFeatures: [
+      { title: 'Grammar & spelling', desc: 'Real-time correction as you type, everywhere you write.' },
+      { title: 'Clarity & tone', desc: 'Rewrite suggestions that adjust confidence, formality, and directness.' },
+      { title: 'Plagiarism check (Premium)', desc: 'Compare text against web pages and academic databases.' },
+      { title: 'Generative assistance', desc: 'Draft replies and short texts from prompts inside the editor.' },
+      { title: 'Ubiquitous integration', desc: 'Browser extension, Microsoft Office, desktop apps, and mobile keyboards.' },
+    ],
+    pricing: [
+      { plan: 'Free', cost: '$0', note: 'Grammar, spelling, and basic punctuation only.' },
+      { plan: 'Premium', cost: 'from $12/mo', note: 'Clarity, tone, full rewrites, and plagiarism detection.' },
+    ],
+    platforms: 'Browser extensions, web app, Windows/Mac apps, MS Office, iOS/Android keyboards.',
+    purpose: 'This profile stands alone because Grammarly\'s deciding factor is coverage — it follows you into every app — which is exactly what per-app writing tools cannot offer.',
+    relatedLinks: [
+      { href: '/reviews/grammarly-vs-prowritingaid/', label: 'Grammarly vs ProWritingAid: real-time reach vs long-form depth' },
+      { href: '/reviews/notion-ai-vs-grammarly/', label: 'Notion AI vs Grammarly: workspace context vs writing depth' },
+    ],
+    evidenceNote: 'Based on Grammarly official plan documentation as of June 2026.',
+  },
+  'obs-studio': {
+    keyFeatures: [
+      { title: 'Scene composition', desc: 'Unlimited scenes mixing window captures, cameras, images, and text.' },
+      { title: 'Audio mixing', desc: 'Per-source mixer with filters, gates, and compression.' },
+      { title: 'Live streaming', desc: 'RTMP output to Twitch, YouTube, and any custom ingest.' },
+      { title: 'Plugin ecosystem', desc: 'Community plugins add lower-thirds, overlays, and integrations.' },
+      { title: 'Cross-platform', desc: 'Identical core on Windows, macOS, and Linux.' },
+    ],
+    pricing: [
+      { plan: 'OBS Studio', cost: '$0', note: 'Free and open source (GPLv2). No watermark, no account, no feature paywall.' },
+    ],
+    platforms: 'Windows, macOS, Linux.',
+    purpose: 'OBS is profiled on its own because its trade is unusual: recording and streaming are professional-grade and free, but editing happens in a different app entirely.',
+    relatedLinks: [
+      { href: '/best/best-screen-recorder/', label: 'Best screen recorders ranked' },
+      { href: '/reviews/best-screen-recorders-mac/', label: 'Best screen recorders for Mac' },
+    ],
+    evidenceNote: 'Based on OBS official documentation and community-reported behavior as of June 2026.',
+  },
+  capcut: {
+    keyFeatures: [
+      { title: 'Multi-track timeline', desc: 'Layer video, audio, text, and stickers on a touch-friendly timeline.' },
+      { title: 'Auto-captions', desc: 'Generate and style subtitles from speech in seconds.' },
+      { title: 'Keyframes & chroma key', desc: 'Custom animation curves and green-screen removal without plug-ins.' },
+      { title: 'Template library', desc: 'Trending effect and transition templates for short-form formats.' },
+      { title: 'Cross-device projects', desc: 'Start on mobile, finish on desktop or web with synced projects.' },
+    ],
+    pricing: [
+      { plan: 'Free', cost: '$0', note: 'Core editing and export without watermark.' },
+      { plan: 'CapCut Pro', cost: 'subscription', note: 'Premium effects, transitions, and expanded cloud features.' },
+    ],
+    platforms: 'iOS, Android, Windows, macOS, Web.',
+    purpose: 'CapCut is profiled separately because it optimizes for short-form social output — the trade against full desktop NLEs is depth, not capability.',
+    relatedLinks: [
+      { href: '/best/best-video-editing-software/', label: 'Best video editing software ranked' },
+      { href: '/reviews/best-video-editors-beginners/', label: 'Best video editors for beginners' },
+    ],
+    evidenceNote: 'Based on CapCut official documentation as of June 2026.',
+  },
+  canva: {
+    keyFeatures: [
+      { title: 'Template library', desc: 'Hundreds of thousands of layouts for social, print, and presentations.' },
+      { title: 'Brand Kit (Pro)', desc: 'Lock logos, fonts, and palettes so every asset stays on-brand.' },
+      { title: 'Background remover (Pro)', desc: 'One-click subject cutout for photos.' },
+      { title: 'Magic Resize', desc: 'Reflow a design across platform dimensions instantly.' },
+      { title: 'Real-time collaboration', desc: 'Multiplayer editing and commenting shared with Figma-class tools.' },
+    ],
+    pricing: [
+      { plan: 'Free', cost: '$0', note: 'Core editor, free templates, and the standard stock library.' },
+      { plan: 'Pro', cost: 'from $13/mo', note: 'Brand Kit, premium templates, background remover, Magic Resize.' },
+    ],
+    platforms: 'Web, iOS, Android, Windows & Mac desktop apps.',
+    purpose: 'Canva keeps an independent profile because its audience — non-designers producing marketing output — is distinct from UI tool users, and its template-first trade deserves its own analysis.',
+    relatedLinks: [
+      { href: '/reviews/canva-vs-adobe-express/', label: 'Canva vs Adobe Express' },
+      { href: '/reviews/canva-vs-figma/', label: 'Canva vs Figma: templates vs design systems' },
+      { href: '/reviews/canva-alternatives-2026/', label: 'Canva alternatives ranked' },
+    ],
+    evidenceNote: 'Based on Canva official plan documentation as of June 2026.',
+  },
+  figma: {
+    keyFeatures: [
+      { title: 'Multiplayer editing', desc: 'Every collaborator edits the same file live, with cursors and comments.' },
+      { title: 'Auto layout & components', desc: 'Responsive frames and reusable component variants keep systems consistent.' },
+      { title: 'Interactive prototyping', desc: 'Clickable flows with transitions that behave like the real app.' },
+      { title: 'Dev Mode', desc: 'Inspectors generate specs and code snippets for engineering handoff.' },
+      { title: 'Plugin ecosystem', desc: 'Accessibility checks, content generation, and token management from the community.' },
+    ],
+    pricing: [
+      { plan: 'Starter', cost: '$0', note: 'Genuinely usable for individuals: 3 collaborative design files.' },
+      { plan: 'Professional', cost: 'from $15/editor/mo', note: 'Unlimited files, shared team libraries, and org features.' },
+    ],
+    platforms: 'Browser (primary), Windows & Mac desktop apps, mobile viewer apps.',
+    purpose: 'This page exists on its own because Figma is the reference point every other design tool is compared against — its collaboration model, not its feature list, is the story.',
+    relatedLinks: [
+      { href: '/reviews/figma-vs-sketch/', label: 'Figma vs Sketch' },
+      { href: '/reviews/canva-vs-figma/', label: 'Canva vs Figma: templates vs design systems' },
+      { href: '/alternatives/figma-alternatives/', label: 'Figma alternatives ranked' },
+    ],
+    evidenceNote: 'Based on Figma official plan documentation as of June 2026. Adobe acquisition terminated December 2023; Figma listed publicly in 2025.',
+  },
+  xmind: {
+    keyFeatures: [
+      { title: 'Multiple map structures', desc: 'Radial, logic, org-chart, and timeline layouts from one outline.' },
+      { title: 'ZEN mode', desc: 'Distraction-free full-screen focus for long thinking sessions.' },
+      { title: 'Pitch mode', desc: 'Turn a map into an auto-advancing presentation.' },
+      { title: 'Audio notes', desc: 'Record spoken context attached to any topic.' },
+      { title: 'Cross-platform sync', desc: 'Maps stay current across desktop, mobile, and web.' },
+    ],
+    pricing: [
+      { plan: 'Free', cost: '$0', note: 'Core mapping with watermarked image exports.' },
+      { plan: 'Pro', cost: 'from $4.92/mo', note: 'Full export formats, pitch mode, and advanced features.' },
+    ],
+    platforms: 'Windows, macOS, Linux, iOS, Android, Web.',
+    purpose: 'XMind is profiled alone because it is a single-player thinking tool — a positioning that conflicts with team-canvas apps and deserves evaluation on its own terms.',
+    relatedLinks: [
+      { href: '/best/best-mind-mapping-software/', label: 'Best mind mapping software ranked' },
+    ],
+    evidenceNote: 'Based on XMind official plan documentation as of June 2026.',
+  },
 };
 
 const detail = toolDetails[tool.id] || {
@@ -263,6 +473,86 @@ const pageTitle = `${tool.name} Review (2026): Pros, Cons & Pricing — ${SITE_T
 				font-size: 13px;
 				color: rgb(var(--gray));
 			}
+			.tool-deepdive {
+				margin-bottom: 32px;
+			}
+			.tool-deepdive h2 {
+				font-size: 20px;
+				margin: 24px 0 10px;
+			}
+			.tool-deepdive h3 {
+				font-size: 16px;
+				margin: 0 0 4px;
+			}
+			.feature-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.feature-list li {
+				margin-bottom: 12px;
+				font-size: 15px;
+				line-height: 1.7;
+				color: rgb(var(--gray-dark));
+			}
+			.feature-list strong {
+				display: block;
+				font-size: 15px;
+			}
+			.pricing-table {
+				width: 100%;
+				border-collapse: collapse;
+				font-size: 15px;
+			}
+			.pricing-table th,
+			.pricing-table td {
+				text-align: left;
+				padding: 10px 12px;
+				border-bottom: 1px solid rgb(var(--gray-light));
+				vertical-align: top;
+				line-height: 1.6;
+				color: rgb(var(--gray-dark));
+			}
+			.pricing-table th {
+				font-size: 13px;
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				color: rgb(var(--gray));
+			}
+			.pricing-table td:first-child {
+				font-weight: 600;
+				white-space: nowrap;
+			}
+			.pricing-table td:nth-child(2) {
+				font-weight: 600;
+				white-space: nowrap;
+			}
+			.tool-purpose {
+				font-size: 15px;
+				line-height: 1.7;
+				color: rgb(var(--gray-dark));
+			}
+			.tool-related-links {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.tool-related-links li {
+				margin-bottom: 8px;
+			}
+			.tool-related-links a {
+				color: var(--accent);
+				text-decoration: none;
+				font-weight: 500;
+			}
+			.tool-related-links a:hover {
+				text-decoration: underline;
+			}
+			.tool-platforms {
+				font-size: 14px;
+				color: rgb(var(--gray-dark));
+				margin-bottom: 8px;
+			}
 			.related-section {
 				margin-top: 40px;
 				padding-top: 40px;
@@ -334,6 +624,48 @@ const pageTitle = `${tool.name} Review (2026): Pros, Cons & Pricing — ${SITE_T
 					<h2>ToolStep's Recommendation</h2>
 					<p>{toolEditorial[tool.id].verdict}</p>
 					<p class="tool-evidence"><em>{toolEditorial[tool.id].evidenceNote}</em></p>
+				</div>
+			)}
+
+			{toolDeepDive[tool.id] && (
+				<div class="tool-deepdive">
+					<h2>Key Features</h2>
+					<ul class="feature-list">
+						{toolDeepDive[tool.id].keyFeatures.map((f) => (
+							<li>
+								<strong>{f.title}</strong>
+								{f.desc}
+							</li>
+						))}
+					</ul>
+					<h2>Plans &amp; Pricing</h2>
+					<table class="pricing-table">
+						<tr>
+							<th scope="col">Plan</th>
+							<th scope="col">Price</th>
+							<th scope="col">What you get</th>
+						</tr>
+						{toolDeepDive[tool.id].pricing.map((p) => (
+							<tr>
+								<td>{p.plan}</td>
+								<td>{p.cost}</td>
+								<td>{p.note}</td>
+							</tr>
+						))}
+					</table>
+					<p class="tool-evidence"><em>{toolDeepDive[tool.id].evidenceNote}</em></p>
+					<h2>Where It Runs</h2>
+					<p class="tool-platforms">{toolDeepDive[tool.id].platforms}</p>
+					<h2>Related on ToolStep</h2>
+					<ul class="tool-related-links">
+						{toolDeepDive[tool.id].relatedLinks.map((l) => (
+							<li>
+								<a href={l.href}>{l.label}</a>
+							</li>
+						))}
+					</ul>
+					<h2>Why This Page Exists</h2>
+					<p class="tool-purpose">{toolDeepDive[tool.id].purpose}</p>
 				</div>
 			)}
 

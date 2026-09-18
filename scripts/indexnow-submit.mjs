@@ -5,18 +5,21 @@
  * 工作模式：
  * 1. 生产部署自动模式（Vercel production build 后自动执行）：
  *    对比本次构建产物 dist/sitemap 与线上 sitemap，向 IndexNow 提交
- *    新增 + 删除 的 URL；并额外对比 title/description hash manifest，
- *    提交「URL 不变但 SEO 字段变化」的 URL（覆盖页面内容更新）。
+ *    新增 + 删除 的 URL；并额外对比 title/description/正文内容 hash manifest，
+ *    提交「URL 不变但 SEO 字段或正文内容变化」的 URL（覆盖页面内容更新）。
  * 2. 手动模式（覆盖「页面重要修改」）：
  *    node scripts/indexnow-submit.mjs https://www.toolstep.top/reviews/xxx/ [more urls...]
  *    或     INDEXNOW_URLS="url1,url2" node scripts/indexnow-submit.mjs
  *
  * Manifest 机制：
- * - 构建后从 dist HTML 提取每个 URL 的 <title> 与 <meta name="description">，
- *   计算 sha256，生成 dist/indexnow-manifest.json 随部署发布。
+ * - 构建后从 dist HTML 提取每个 URL 的 <title>、<meta name="description">
+ *   与正文内容（剔除 script/style/nav/footer 后的可见文本），分别计算 sha256，
+ *   生成 dist/indexnow-manifest.json 随部署发布。
  * - 下次构建时拉取线上 manifest（= 上一部署状态）做 diff：
- *   新增 ∪ 删除 ∪ title/desc hash 变化 → 提交；其余不提交。
- * - 纯 CSS/JS/layout 变化不改变 hash，不会触发提交。
+ *   新增 ∪ 删除 ∪ title/desc/正文 hash 变化 → 提交；其余不提交。
+ * - 纯 CSS/JS/layout 变化不改变 hash，不会触发提交（<style>/<link> 不进正文 hash）。
+ * - 正文 hash 兼容发布：旧版 manifest（无正文 hash 字段）仍可用于 title/desc diff，
+ *   正文 diff 在首个携带 hash 的部署落地后自动生效。
  * - 线上 manifest 缺失/损坏 → 安全降级为仅 URL diff；不会把全站当成更新页。
  * - 防滥用阀：hash 变化 URL 数超过阈值（默认 100 且占比 >50%）时只告警不提交。
  * - 可用 INDEXNOW_LIVE_MANIFEST_URL 覆盖线上 manifest 地址（仅测试用）。
@@ -31,6 +34,7 @@ import { existsSync } from 'node:fs';
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const SITE = 'https://www.toolstep.top';
 const HOST = 'www.toolstep.top';
@@ -48,26 +52,48 @@ function log(...args) {
 	console.log('[indexnow]', ...args);
 }
 
-/** 从 public/ 目录按 IndexNow 规则识别 key 文件（文件名即 key，内容须等于文件名） */
-async function resolveKey() {
-	if (process.env.INDEXNOW_KEY) {
-		return process.env.INDEXNOW_KEY.trim();
-	}
-	const publicDir = path.resolve('public');
-	if (existsSync(publicDir)) {
-		for (const file of await readdir(publicDir)) {
-			if (/^[a-f0-9-]{8,128}\.txt$/i.test(file)) {
-				const key = file.replace(/\.txt$/, '');
-				try {
-					const content = (await readFile(path.join(publicDir, file), 'utf8')).trim();
-					if (content === key) return key;
-				} catch {
-					// 读取失败则跳过该候选文件
-				}
-			}
-		}
-	}
-	return null;
+const sha = (s) => createHash('sha256').update(s, 'utf8').digest('hex').slice(0, 32);
+
+/** HTML 转义还原（仅 SEO 字段提取所需的最小集合） */
+export function unescapeHtml(s) {
+	return s
+		.replace(/&amp;/g, '&')
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&quot;/g, '"')
+		.replace(/&#0?39;|&#x0?27;/g, "'");
+}
+
+/**
+ * 提取页面「有意义的正文文本」用于内容 hash：
+ * - 剔除 script/style/template/noscript（非正文，且会被构建指纹/内联脚本污染）
+ * - 剔除 header/footer/nav（导航与页脚属站点级 layout，不随单页内容变化）
+ * - 剔除 HTML 注释与所有标签，还原转义，压缩空白
+ * - 内联 CSS 位于 <style> 内已被剔除；外链 CSS 不在 HTML 内 —— 样式变更不会触发正文 hash
+ */
+export function meaningfulText(html) {
+	return unescapeHtml(
+		html
+			.replace(/<!--[\s\S]*?-->/g, ' ')
+			.replace(/<(script|style|template|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+			.replace(/<(header|footer|nav)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+			.replace(/<[^>]+>/g, ' ')
+	)
+		.replace(/\s+/g, ' ')
+		.trim();
+}
+
+/** 从 dist HTML 提取 <title>、<meta description> 与正文内容 hash；缺失字段记为空串 hash */
+export function seoHashesFromHtml(html) {
+	const tMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+	const dMatch =
+		html.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i) ||
+		html.match(/<meta\s+content=["']([^"']*)["']\s+name=["']description["']/i);
+	return {
+		t: sha(unescapeHtml((tMatch?.[1] ?? '').replace(/\s+/g, ' ').trim())),
+		d: sha(unescapeHtml((dMatch?.[1] ?? '').replace(/\s+/g, ' ').trim())),
+		c: sha(meaningfulText(html)),
+	};
 }
 
 /** 提取 XML 中的 <loc> 值 */
@@ -112,29 +138,6 @@ async function urlsFromLive() {
 	return urls;
 }
 
-/** HTML 转义还原（仅 SEO 字段提取所需的最小集合） */
-function unescapeHtml(s) {
-	return s
-		.replace(/&amp;/g, '&')
-		.replace(/&lt;/g, '<')
-		.replace(/&gt;/g, '>')
-		.replace(/&quot;/g, '"')
-		.replace(/&#0?39;|&#x0?27;/g, "'");
-}
-
-/** 从 dist HTML 提取 <title> 与 <meta name="description">，返回 {t,d} hash；字段缺失记为空串 hash */
-function seoHashesFromHtml(html) {
-	const tMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-	const dMatch =
-		html.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i) ||
-		html.match(/<meta\s+content=["']([^"']*)["']\s+name=["']description["']/i);
-	const sha = (s) => createHash('sha256').update(s, 'utf8').digest('hex').slice(0, 32);
-	return {
-		t: sha(unescapeHtml((tMatch?.[1] ?? '').replace(/\s+/g, ' ').trim())),
-		d: sha(unescapeHtml((dMatch?.[1] ?? '').replace(/\s+/g, ' ').trim())),
-	};
-}
-
 /** dist 中 URL 对应的 HTML 文件路径（trailingSlash: 'always' -> 目录/index.html） */
 function distHtmlPath(url) {
 	const u = new URL(url);
@@ -143,23 +146,24 @@ function distHtmlPath(url) {
 	return existsSync(p) ? p : null;
 }
 
-/** 构建本次 manifest：{ urls: { [url]: {t,d} } } */
+/** 构建本次 manifest：{ urls: { [url]: {t,d,c} } } */
 async function buildManifest(urls) {
 	const entries = {};
 	for (const url of urls) {
 		const file = distHtmlPath(url);
 		if (!file) {
-			entries[url] = { t: '', d: '' };
+			entries[url] = { t: '', d: '', c: '' };
 			continue;
 		}
 		entries[url] = seoHashesFromHtml(await readFile(file, 'utf8'));
 	}
-	return { version: 1, generatedAt: new Date().toISOString(), urls: entries };
+	return { version: 2, generatedAt: new Date().toISOString(), urls: entries };
 }
 
 /**
  * 拉取并校验线上 manifest（上一部署状态）。
  * 任何缺失/格式错误/字段异常都返回 null（安全降级），绝不抛错阻断构建。
+ * 兼容 v1（仅 t/d）：c 字段允许缺失，缺失时正文 diff 自动跳过。
  */
 async function fetchLiveManifest() {
 	try {
@@ -175,7 +179,8 @@ async function fetchLiveManifest() {
 				!url.startsWith(SITE) ||
 				!v ||
 				typeof v.t !== 'string' ||
-				typeof v.d !== 'string'
+				typeof v.d !== 'string' ||
+				(v.c !== undefined && typeof v.c !== 'string')
 			) {
 				return null; // 任意一条结构异常即整体降级，避免局部误判
 			}
@@ -187,12 +192,22 @@ async function fetchLiveManifest() {
 	}
 }
 
-/** 找出 URL 不变但 title/desc hash 变化的页面 */
-function detectChangedUrls(current, previous) {
+/**
+ * 找出 URL 不变但 title/desc/正文 hash 变化的页面。
+ * 正文 hash 仅在上一部署也携带 c 字段时参与比较（版本兼容，防止首个携带 hash 的部署全站误报）。
+ */
+export function detectChangedUrls(current, previous) {
 	const changed = [];
 	for (const [url, cur] of current) {
 		const prev = previous.get(url);
-		if (prev && (prev.t !== cur.t || prev.d !== cur.d)) changed.push(url);
+		if (!prev) continue;
+		if (prev.t !== cur.t || prev.d !== cur.d) {
+			changed.push(url);
+			continue;
+		}
+		if (prev.c !== undefined && cur.c !== undefined && prev.c !== cur.c) {
+			changed.push(url);
+		}
 	}
 	return changed;
 }
@@ -208,7 +223,7 @@ async function publishManifest(manifest) {
 }
 
 /** 规范化手动传入的 URL：仅接受本站 URL，并按 trailingSlash: 'always' 策略补齐斜杠 */
-function normalizeManualUrl(raw) {
+export function normalizeManualUrl(raw) {
 	let u;
 	try {
 		u = new URL(raw);
@@ -242,6 +257,28 @@ async function submit(key, urlList) {
 			log(`非预期响应：${body.slice(0, 300)}`);
 		}
 	}
+}
+
+/** 读取 IndexNow key（INDEXNOW_KEY 环境变量 -> public/<key>.txt） */
+async function resolveKey() {
+	if (process.env.INDEXNOW_KEY) {
+		return process.env.INDEXNOW_KEY.trim();
+	}
+	const publicDir = path.resolve('public');
+	if (existsSync(publicDir)) {
+		for (const file of await readdir(publicDir)) {
+			if (/^[a-f0-9-]{8,128}\.txt$/i.test(file)) {
+				const key = file.replace(/\.txt$/, '');
+				try {
+					const content = (await readFile(path.join(publicDir, file), 'utf8')).trim();
+					if (content === key) return key;
+				} catch {
+					// 读取失败则跳过该候选文件
+				}
+			}
+		}
+	}
+	return null;
 }
 
 async function main() {
@@ -300,13 +337,15 @@ async function main() {
 	const added = [...next].filter((u) => !prev.has(u));
 	const removed = [...prev].filter((u) => !next.has(u));
 
-	// Manifest diff：识别「URL 不变但 title/description 变化」的页面。
+	// Manifest diff：识别「URL 不变但 title/description/正文变化」的页面。
 	// 任何异常都安全降级为仅新增/删除 diff，绝不阻断构建。
 	const manifest = await buildManifest(next);
 	const currentMap = new Map(Object.entries(manifest.urls).map(([u, v]) => [u, v]));
 	const prevManifest = await fetchLiveManifest();
 	let changed = [];
+	let hasContentHash = false;
 	if (prevManifest) {
+		hasContentHash = [...prevManifest.values()].some((v) => v.c !== undefined);
 		changed = detectChangedUrls(currentMap, prevManifest);
 		if (
 			changed.length > CHANGED_SUBMIT_ABS_LIMIT &&
@@ -326,7 +365,7 @@ async function main() {
 
 	log(
 		`diff 结果：线上 ${prev.size} 条，本次构建 ${next.size} 条，新增 ${added.length}，删除 ${removed.length}，` +
-			`更新(title/desc) ${changed.length}${prevManifest ? '' : '（降级模式，未检测）'}`
+			`更新(title/desc/正文) ${changed.length}${prevManifest ? (hasContentHash ? '' : '（上一部署无正文 hash，正文 diff 未参与）') : '（降级模式，未检测）'}`
 	);
 
 	if (urlList.length === 0) {
@@ -345,8 +384,13 @@ async function main() {
 	await publishManifest(manifest);
 }
 
-main().catch((err) => {
-	// postbuild 不应阻断部署；真正的失败原因已在上方输出
-	console.error('[indexnow] 错误:', err.message);
-	process.exitCode = 1;
-});
+// 仅在直接执行本脚本时运行 main（被测试脚本 import 时不运行）
+const thisFile = fileURLToPath(import.meta.url);
+const invokedFile = process.argv[1] ? path.resolve(process.argv[1]) : '';
+if (invokedFile === thisFile) {
+	main().catch((err) => {
+		// postbuild 不应阻断部署；真正的失败原因已在上方输出
+		console.error('[indexnow] 错误:', err.message);
+		process.exitCode = 1;
+	});
+}

@@ -41,6 +41,10 @@ export interface StoryEntry {
   authorSlug: string;
   /** Independent readable article body (plain text). Rendered below the AMP story as accessible content. */
   content: string;
+  /** Optional fact table rendered below the story (label/value rows with real, verifiable facts). */
+  keyFacts?: Array<{ label: string; value: string }>;
+  /** Optional related destination reads (parent review/compare/guide pages). */
+  relatedReads?: Array<{ href: string; label: string }>;
 }
 
 const PUBLISHER_LOGO = 'https://www.toolstep.top/favicon.svg';
@@ -62,6 +66,8 @@ function story(
   relatedStories: string[],
   authorSlug: string = 'toolstep-team',
   content: string = '',
+  keyFacts?: Array<{ label: string; value: string }>,
+  relatedReads?: Array<{ href: string; label: string }>,
 ): StoryEntry {
   const poster = img(posterPrompt, 'portrait_16_9');
   const posterSquare = img(posterPrompt, 'square');
@@ -106,6 +112,8 @@ function story(
     datePublished: '2026-06-26',
     authorSlug,
     content,
+    keyFacts,
+    relatedReads,
   };
 }
 
@@ -369,6 +377,16 @@ export const storiesData: StoryEntry[] = [
     ['best-standing-desk-2026', 'best-usb-c-dock-2026', 'best-monitor-2026'],
     'marcus-chen',
     'Cable clutter comes from two sources: the bundle of cables between your devices and power, and the visible run from desk edge to floor. The solutions in this ranking address each layer, and the best setup uses more than one.\n\nThe cable box approach — represented by the $25 enclosed box — is the highest-impact single purchase. It hides the power strip, adapters, and excess cable length entirely, transforming the messiest part of a desk in five minutes. Look for boxes with ventilation slots and side entry points. The Joto Cable Sleeve at $12 handles the visible run: a neoprene wrap that bundles several cables into one clean trunk, available in lengths you cut to size. Sleeves work best for cables that travel the same route; bundling a display cable with a charging cable in a sleeve is the classic tidy-up move.\n\nThe Vello Under-Desk Tray at $29 mounts beneath the desktop and routes cables out of sight before they reach the floor, which pairs perfectly with a cable box below. The Anker Magnetic Clips at $15 solve the daily-use problem: cables you plug and unplug, like a laptop charging cable, stay anchored to the desk edge and never slide off when disconnected. The UGREEN Cord Cover at $8 is a peel-and-stick channel for cables running along walls — the cheapest fix for the run from desk to outlet.\n\nSequence matters: route and bundle first, then attach clips, then conceal the power strip last. Adhesive-backed products hold better on wood and metal surfaces than on textured laminates; if your desk is laminate, screw-mounted trays outlast adhesive. A fully managed cable setup is not just cosmetic — it makes cleaning the desk easier and prevents the accidental disconnections that interrupt a workday.',
+    [
+      { label: 'Price range', value: '$8 cord covers to $29 under-desk trays' },
+      { label: 'Highest-impact fix', value: 'Enclosed cable box for the power strip' },
+      { label: 'Daily-use fix', value: 'Magnetic clips for chargers you plug and unplug' },
+      { label: 'Setup order', value: 'Route & bundle → clips & trays → conceal the power strip last' },
+    ],
+    [
+      { href: '/reviews/best-cable-management-desk/', label: 'Best cable management for desks: full ranking' },
+      { href: '/best/best-cable-management/', label: 'Cable management buying guide' },
+    ],
   ),
   story(
     'best-desk-pad-2026',
@@ -457,7 +475,7 @@ export const storiesData: StoryEntry[] = [
     'Zoom vs Google Meet',
     'Software',
     '#7c3aed',
-    'Based on documented specifications, both compared for video calls. See which is better for meetings in 2026.',
+    'Zoom vs Google Meet compared on meeting size, host controls, and price ($13.33/mo vs bundled in Workspace). Which video tool fits how your team meets.',
     'Zoom vs Google Meet video call interface, vertical',
     [
       { headline: 'Zoom', subtext: 'Best for large meetings', image: img('Zoom video call interface, vertical', 'portrait_16_9') },
@@ -467,10 +485,21 @@ export const storiesData: StoryEntry[] = [
       { headline: 'Our Pick', subtext: 'Zoom for pro, Meet for free', image: img('Zoom vs Google Meet winner, vertical', 'portrait_16_9') },
     ],
     'Read Full Comparison',
-    'https://www.toolstep.top/reviews/zoom-vs-google-meet',
+    'https://www.toolstep.top/reviews/zoom-vs-google-meet/',
     ['slack-vs-teams-story', 'notion-vs-obsidian-story', 'best-webcam-2026'],
     'sarah-park',
     'Zoom and Google Meet split the video calling market along a clear line: Zoom is the more capable tool, Meet is the more convenient one. Which serves you better depends on how much meeting machinery you actually need.\n\nZoom\'s advantages compound at scale. Meetings support up to 1,000 participants with breakout rooms, polling, live transcription, and hand-raising — features that webinars and large organizations rely on. The host controls are granular: waiting rooms, participant muting, screen-share permissions, and recording management all work reliably. Zoom\'s compression stays usable on poor connections, which is why it became the default for international calls. The Pro plan at $13.33 per month removes the 40-minute cap on group meetings and adds cloud recording.\n\nGoogle Meet\'s advantage is friction removal. It lives inside Gmail and Google Calendar — a meeting is one click from an email or an event invite, with no app install for guests. For teams inside Google Workspace, the $7-per-month Business Starter tier bundles Meet with email and Drive, making the marginal cost of video essentially zero. Meet has narrowed the feature gap: it now offers breakout rooms, polls, and 1080p calls, though recording and larger meeting sizes require higher Workspace tiers.\n\nFor a freelance consultant or a small team on Google\'s stack, Meet is genuinely sufficient and cheaper. For training sessions, client webinars, hybrid events, or any meeting where host control and reliability matter more than convenience, Zoom earns its price. A common pattern: companies standardize on Meet for internal meetings and keep Zoom for external-facing events, since guests join Zoom calls smoothly regardless of their own tooling.',
+    [
+      { label: 'Free-tier meeting cap', value: 'Zoom: 40 min group meetings · Meet: 60 min' },
+      { label: 'Large meetings', value: 'Zoom: up to 1,000 participants · Meet: scales by Workspace tier' },
+      { label: 'Paid price', value: 'Zoom Pro $13.33/mo · Meet bundled in Workspace from $7/mo' },
+      { label: 'Signature strength', value: 'Zoom: host controls & reliability · Meet: zero-friction Google integration' },
+    ],
+    [
+      { href: '/reviews/zoom-vs-google-meet/', label: 'Zoom vs Google Meet: the full comparison' },
+      { href: '/compare/microsoft-teams-vs-zoom/', label: 'Microsoft Teams vs Zoom' },
+      { href: '/alternatives/zoom-alternatives/', label: 'Zoom alternatives ranked' },
+    ],
   ),
   story(
     'todoist-vs-ticktick-story',
@@ -517,7 +546,7 @@ export const storiesData: StoryEntry[] = [
     'Linear vs Jira',
     'Software',
     '#7c3aed',
-    'Based on product documentation, both compared for sprint tracking. See which is better for software teams.',
+    'Linear vs Jira compared on speed, workflow depth, and price ($8 vs $7.53 per user). Which issue tracker fits startups vs enterprise teams.',
     'Linear vs Jira project management interface, vertical',
     [
       { headline: 'Linear', subtext: 'Best for speed and design', image: img('Linear app interface, vertical', 'portrait_16_9') },
@@ -527,17 +556,26 @@ export const storiesData: StoryEntry[] = [
       { headline: 'Our Pick', subtext: 'Linear for startups, Jira for enterprise', image: img('Linear vs Jira winner, vertical', 'portrait_16_9') },
     ],
     'Read Full Comparison',
-    'https://www.toolstep.top/reviews/linear-vs-jira',
+    'https://www.toolstep.top/reviews/linear-vs-jira/',
     ['slack-vs-teams-story', 'monday-vs-asana-story', 'todoist-vs-ticktick-story'],
     'sarah-park',
     'Linear and Jira both manage software development cycles, but they represent two generations of tooling. Jira is the configurable enterprise system that has accumulated two decades of features; Linear is the purpose-built tracker designed for speed above all else.\n\nThe speed difference is real and measurable. Linear\'s interface renders issue transitions instantly — keyboard shortcuts handle triage, cycling issues between states takes one keystroke, and the app never shows a loading spinner where Jira shows three. Teams that update issues dozens of times daily feel this difference as reclaimed time. Linear\'s opinionated design — cycles for sprints, projects for epics, triage queues for incoming work — means teams adopt a working system in an afternoon rather than a quarter of configuration. Pricing is $8 per user monthly.\n\nJira at $7.53 per user monthly trades speed for breadth. Its custom workflow engine supports any process a compliance-heavy organization requires: multi-stage approval gates, permission schemes per project, and field-level configurations that regulated industries mandate. The Atlassian Marketplace offers integrations with essentially every enterprise system. Scrum and SAFe methodologies map onto Jira structures that Linear deliberately does not model. The cost is interface weight — routine operations take more clicks, and teams routinely spend real money on consultants to configure it.\n\nFor startups and product teams of up to roughly 100 engineers, Linear is the better default: the velocity gain is immediate and the built-in workflow covers standard practice. Large organizations with complex process requirements, audit trails, or existing Atlassian ecosystems should stay on Jira, where its flexibility pays for its friction. Teams migrating find the export path one-way — plan accordingly.',
+    [
+      { label: 'Price', value: 'Linear $8/user/mo · Jira $7.53/user/mo' },
+      { label: 'Signature strength', value: 'Linear: speed & keyboard-first triage · Jira: configurable enterprise workflows' },
+      { label: 'Setup time', value: 'Linear: about an afternoon · Jira: often weeks of configuration' },
+      { label: 'Best fit', value: 'Linear: teams up to ~100 engineers · Jira: regulated & Atlassian shops' },
+    ],
+    [
+      { href: '/reviews/linear-vs-jira/', label: 'Linear vs Jira: the full comparison' },
+    ],
   ),
   story(
     'monday-vs-asana-story',
     'Monday.com vs Asana',
     'Software',
     '#7c3aed',
-    'Based on product documentation, both compared for project management. See which is better for teams.',
+    'Monday.com vs Asana compared on board flexibility, structure, and price ($8 vs $10.99 per seat). Which work manager fits how your team plans.',
     'Monday.com vs Asana project management interface, vertical',
     [
       { headline: 'Monday.com', subtext: 'Best for visual workflows', image: img('Monday.com interface, vertical', 'portrait_16_9') },
@@ -547,10 +585,21 @@ export const storiesData: StoryEntry[] = [
       { headline: 'Our Pick', subtext: 'Monday for visual, Asana for structured', image: img('Monday vs Asana winner, vertical', 'portrait_16_9') },
     ],
     'Read Full Comparison',
-    'https://www.toolstep.top/reviews/monday-vs-asana',
+    'https://www.toolstep.top/reviews/monday-vs-asana/',
     ['linear-vs-jira-story', 'slack-vs-teams-story', 'todoist-vs-ticktick-story'],
     'sarah-park',
     'Monday.com and Asana both occupy the work management tier between personal task lists and enterprise project suites, but they optimize for different working styles. Monday is the visual system builder; Asana is the structured task tracker.\n\nMonday.com\'s defining feature is its board customization. Every board is a table you construct from column types — status dropdowns, timelines, people, formulas, dependencies — and each board can render as kanban, Gantt, calendar, or workload view. This makes Monday adaptable to unconventional workflows: sales pipelines, content calendars, and inventory tracking all fit naturally. Pricing starts at $8 per seat monthly with a three-seat minimum. The learning curve centers on board design; teams invest upfront effort and get a system tailored to their process.\n\nAsana, at $10.99 per user monthly, imposes more structure and benefits from it. Tasks, projects, and portfolios follow a consistent hierarchy, and My Tasks gives each person a single prioritized inbox assembled from every project they touch. Dependencies and milestones are first-class features — Asana flags when a blocked task\'s predecessor slips and adjusts dates downstream. Timeline view handles scheduling with automatic conflict detection. The tradeoff is that unconventional workflows fight the tool rather than shape it.\n\nFor teams whose work varies by project type and who want to design their own boards, Monday\'s flexibility is the draw. For organizations standardizing task management across departments — marketing, operations, and engineering all in one system with consistent structure — Asana\'s rigor is the advantage. Both offer free tiers worth trialing with real work for a week: the interface each team gravitates toward naturally is usually the right long-term answer, because both tools are capable enough that adoption matters more than features.',
+    [
+      { label: 'Price', value: 'Monday $8/seat/mo (3-seat min) · Asana $10.99/user/mo' },
+      { label: 'Signature strength', value: 'Monday: visual board builder · Asana: structured tasks & dependencies' },
+      { label: 'Views', value: 'Monday: kanban, Gantt, calendar, workload · Asana: list, board, timeline, portfolios' },
+      { label: 'Best fit', value: 'Monday: custom workflows · Asana: standardized cross-department tracking' },
+    ],
+    [
+      { href: '/reviews/monday-vs-asana/', label: 'Monday vs Asana: the full comparison' },
+      { href: '/alternatives/monday-alternatives/', label: 'Monday.com alternatives ranked' },
+      { href: '/alternatives/asana-alternatives/', label: 'Asana alternatives ranked' },
+    ],
   ),
   story(
     'chatgpt-vs-claude-story',
@@ -667,10 +716,21 @@ export const storiesData: StoryEntry[] = [
       { headline: 'Our Pick', subtext: 'Midjourney for art, DALL-E for ease', image: img('Midjourney vs DALL-E winner, vertical', 'portrait_16_9') },
     ],
     'Read Full Comparison',
-    'https://www.toolstep.top/reviews/midjourney-vs-dalle3',
+    'https://www.toolstep.top/reviews/midjourney-vs-dalle3/',
     ['midjourney-vs-sd-story', 'canva-vs-figma-story', 'chatgpt-vs-claude-story'],
     'sarah-park',
-    'Midjourney produces images with a painterly, artistic quality that excels at concept art, character design, and stylized illustrations. Its default aesthetic leans toward dramatic lighting and rich color palettes, which means even simple prompts often yield visually striking results without much iteration. The tradeoff is control: Midjourney works exclusively through Discord, and while newer versions support more precise composition via --style and --ar parameters, fine-tuning specific details like exact object placement or text rendering remains inconsistent. Midjourney also generates a 2x2 grid by default, giving you four variations to choose from — useful for exploration, but it means you spend more time picking favorites.\n\nDALL-E 3, integrated into ChatGPT and available through OpenAI\'s API, takes a different approach. It prioritizes prompt adherence over stylistic flair. When you describe "a red ceramic mug on a wooden table next to a closed laptop," DALL-E 3 will place those objects exactly where you specified, with the correct colors and materials. This makes it the stronger choice for product mockups, informational graphics, and images where specific details matter. DALL-E 3 also handles text within images far better than Midjourney — you can request a sign that reads "Open 24 Hours" and it will render readable text instead of garbled characters.\n\nFor pricing, Midjourney\'s Basic plan at $10 per month gives you roughly 200 image generations, while DALL-E 3 through ChatGPT Plus costs $20 per month but bundles access to the full chatbot. If you only need images, Midjourney is cheaper per generation. If you want an AI assistant that also generates images, DALL-E 3 offers more value as a combined tool.\n\nOur recommendation: choose Midjourney when artistic quality and visual impact matter more than precision — social media content, book covers, and creative projects benefit from its default aesthetic. Choose DALL-E 3 when you need the image to match a specific description accurately — technical documentation, product presentations, and instructional content are its strength. For a deeper feature-by-feature breakdown, see our full comparison.'),
+    'Midjourney produces images with a painterly, artistic quality that excels at concept art, character design, and stylized illustrations. Its default aesthetic leans toward dramatic lighting and rich color palettes, which means even simple prompts often yield visually striking results without much iteration. The tradeoff is control: Midjourney works exclusively through Discord, and while newer versions support more precise composition via --style and --ar parameters, fine-tuning specific details like exact object placement or text rendering remains inconsistent. Midjourney also generates a 2x2 grid by default, giving you four variations to choose from — useful for exploration, but it means you spend more time picking favorites.\n\nDALL-E 3, integrated into ChatGPT and available through OpenAI\'s API, takes a different approach. It prioritizes prompt adherence over stylistic flair. When you describe "a red ceramic mug on a wooden table next to a closed laptop," DALL-E 3 will place those objects exactly where you specified, with the correct colors and materials. This makes it the stronger choice for product mockups, informational graphics, and images where specific details matter. DALL-E 3 also handles text within images far better than Midjourney — you can request a sign that reads "Open 24 Hours" and it will render readable text instead of garbled characters.\n\nFor pricing, Midjourney\'s Basic plan at $10 per month gives you roughly 200 image generations, while DALL-E 3 through ChatGPT Plus costs $20 per month but bundles access to the full chatbot. If you only need images, Midjourney is cheaper per generation. If you want an AI assistant that also generates images, DALL-E 3 offers more value as a combined tool.\n\nOur recommendation: choose Midjourney when artistic quality and visual impact matter more than precision — social media content, book covers, and creative projects benefit from its default aesthetic. Choose DALL-E 3 when you need the image to match a specific description accurately — technical documentation, product presentations, and instructional content are its strength. For a deeper feature-by-feature breakdown, see our full comparison.',
+    [
+      { label: 'Price', value: 'Midjourney Basic $10/mo (~200 images) · DALL-E 3 via ChatGPT Plus $20/mo' },
+      { label: 'Access', value: 'Midjourney: Discord & web · DALL-E 3: ChatGPT and OpenAI API' },
+      { label: 'Signature strength', value: 'Midjourney: painterly artistic quality · DALL-E 3: prompt adherence & in-image text' },
+      { label: 'Best fit', value: 'Midjourney: concept art & creative work · DALL-E 3: mockups & instructional graphics' },
+    ],
+    [
+      { href: '/reviews/midjourney-vs-dalle3/', label: 'Midjourney vs DALL-E 3: the full comparison' },
+      { href: '/reviews/runway-vs-pika/', label: 'Runway vs Pika: AI video generation' },
+    ],
+  ),
   story(
     'midjourney-vs-sd-story',
     'Midjourney vs Stable Diffusion',
@@ -778,7 +838,7 @@ export const storiesData: StoryEntry[] = [
     'Canva vs Figma',
     'Design',
     '#db2777',
-    'Based on product documentation, both design tools compared. See which is better for your design workflow.',
+    'Canva vs Figma compared on templates, UI design depth, and collaboration ($13 vs $12 per month). Marketers get Canva; product teams get Figma.',
     'Canva vs Figma design tool interface, vertical',
     [
       { headline: 'Canva', subtext: 'Best for non-designers', image: img('Canva interface, vertical', 'portrait_16_9') },
@@ -788,10 +848,21 @@ export const storiesData: StoryEntry[] = [
       { headline: 'Our Pick', subtext: 'Canva for social, Figma for UI', image: img('Canva vs Figma winner, vertical', 'portrait_16_9') },
     ],
     'Read Full Comparison',
-    'https://www.toolstep.top/reviews/canva-vs-figma',
+    'https://www.toolstep.top/reviews/canva-vs-figma/',
     ['canva-vs-adobe-story', 'figma-vs-sketch-story', 'midjourney-vs-dalle-story'],
     'sarah-park',
     'Canva and Figma are both browser-based design tools, but they serve different users: Canva is designed for non-designers producing content quickly, while Figma is a professional interface design tool that happens to be approachable. The overlap is smaller than their shared category suggests.\n\nCanva\'s 100,000-plus templates cover social posts, presentations, resumes, and print materials with drag-and-drop editing. A marketing manager with no design training produces on-brand Instagram content in minutes, and the brand kit feature locks fonts and colors so every team member\'s output stays consistent. Magic Resize converts one design across platform dimensions automatically — a task that means manual rework in other tools. At $13 monthly for Pro, it also bundles stock photos, video, and scheduling. Its limits appear at professional precision: advanced vector editing, component systems, and pixel-perfect prototyping are not its territory.\n\nFigma is the industry standard for product design. Real-time collaboration lets designers, engineers, and product managers work in the same file — cursors visible, comments live — and its component system, auto-layout, and design tokens scale to enterprise design systems. Developers inspect files and export assets directly, which tightens the design-to-code loop. At $12 monthly for Professional, it is priced comparably to Canva but targets a different job. Its weakness for non-designers is the blank canvas: no template library approaching Canva\'s, and a steeper learning curve around constraints and auto-layout.\n\nThe choice follows the work: social media content, presentations, and marketing collateral belong in Canva. App and website interfaces, design systems, and anything developers implement belong in Figma. Small teams sometimes run both — Canva for marketing output, Figma for product work — and that division holds up.',
+    [
+      { label: 'Price', value: 'Canva Pro $13/mo · Figma Professional $12/mo' },
+      { label: 'Templates', value: 'Canva: 100,000+ · Figma: community files, no template library' },
+      { label: 'Signature strength', value: 'Canva: brand kits & Magic Resize · Figma: components, auto-layout, Dev Mode' },
+      { label: 'Best fit', value: 'Canva: marketing & social content · Figma: product/UI design' },
+    ],
+    [
+      { href: '/reviews/canva-vs-figma/', label: 'Canva vs Figma: the full comparison' },
+      { href: '/reviews/canva-vs-adobe-express/', label: 'Canva vs Adobe Express' },
+      { href: '/reviews/figma-vs-sketch/', label: 'Figma vs Sketch' },
+    ],
   ),
   story(
     'canva-vs-adobe-story',
@@ -1042,7 +1113,7 @@ export const storiesData: StoryEntry[] = [
     'Squarespace vs Wix',
     'Website',
     '#7c3aed',
-    'Based on product documentation, both website builders compared. See which is better for DIY website building.',
+    'Squarespace vs Wix compared on design polish, layout freedom, and apps (both $16/mo). Design-led sites suit Squarespace; flexible builds suit Wix.',
     'Squarespace vs Wix website builder, vertical',
     [
       { headline: 'Squarespace', subtext: 'Best for design', image: img('Squarespace interface, vertical', 'portrait_16_9') },
@@ -1052,10 +1123,21 @@ export const storiesData: StoryEntry[] = [
       { headline: 'Our Pick', subtext: 'Squarespace for design, Wix for flexibility', image: img('Squarespace vs Wix winner, vertical', 'portrait_16_9') },
     ],
     'Read Full Comparison',
-    'https://www.toolstep.top/reviews/squarespace-vs-wix',
+    'https://www.toolstep.top/reviews/squarespace-vs-wix/',
     ['wordpress-vs-webflow-story', 'notion-vs-confluence-story', 'best-website-builder-story'],
     'sarah-park',
     'Squarespace and Wix cost the same — $16 monthly for comparable tiers — so the choice comes down to design philosophy and flexibility. Both are fully hosted builders requiring no technical maintenance, which is the shared appeal over WordPress.\n\nSquarespace wins on design refinement. Its templates are fewer in number but consistently polished — editorial-grade layouts with strong typography and spacing that make amateur content look professionally art-directed. The unified editing system (one panel controlling both content and style) keeps sites coherent, and its template structure prevents the layout chaos that plagues inexperienced builders. Photographer portfolios, restaurant sites, and small business pages are its natural territory. The tradeoff is constraint: the editor\'s structure is rigid, unusual layouts are hard to force, and its app ecosystem is thin.\n\nWix wins on flexibility. Its freeform drag-and-drop canvas places elements anywhere pixel-precisely, its app market adds functionality from booking systems to forums, and its template library vastly outnumbers Squarespace\'s. Wix Studio adds responsive controls professionals need, and its ADI (artificial design intelligence) generates a working site from a questionnaire — the fastest zero-to-website path anywhere. The tradeoff is the flip side of freedom: freeform placement lets less careful users build layouts that break on mobile or look cluttered, and the visual flexibility makes template consistency harder to maintain across pages.\n\nBoth handle e-commerce adequately for small catalogs; neither matches Shopify\'s depth for serious stores. Choose Squarespace when design polish matters more than functionality — portfolios, service businesses, content sites where visual quality drives perception. Choose Wix when you need specific functionality from its app market or want total layout control. A practical test: open both, build the same page in 30 minutes each, and notice which one fights your instincts less — that instinct predicts the two-year experience.',
+    [
+      { label: 'Price', value: '$16/mo on comparable tiers for both' },
+      { label: 'Signature strength', value: 'Squarespace: editorial-grade templates · Wix: freeform drag-and-drop + app market' },
+      { label: 'Fastest start', value: 'Wix ADI generates a site from a questionnaire' },
+      { label: 'Best fit', value: 'Squarespace: portfolios & design-led sites · Wix: functionality-heavy business sites' },
+    ],
+    [
+      { href: '/reviews/squarespace-vs-wix/', label: 'Squarespace vs Wix: the full comparison' },
+      { href: '/reviews/best-website-builders-2026/', label: 'Best website builders of 2026' },
+      { href: '/reviews/wordpress-vs-webflow/', label: 'WordPress vs Webflow' },
+    ],
   ),
   story(
     'best-website-builder-story',
@@ -1076,6 +1158,17 @@ export const storiesData: StoryEntry[] = [
     ['wordpress-vs-webflow-story', 'squarespace-vs-wix-story', 'notion-vs-confluence-story'],
     'sarah-park',
     'Website builders have matured into distinct specializations rather than one-size-fits-all platforms. The five here each win a clear category, and matching your project to the right specialization matters more than any feature-by-feature comparison.\n\nWordPress wins overall on versatility and ownership. At $5 monthly hosting costs, it runs everything from blogs to stores, and its plugin ecosystem — 59,000-plus extensions — means no capability ceiling: membership sites, forums, courses, and custom commerce all have mature options. You own the site outright and can migrate hosts freely. The tradeoff is maintenance responsibility: updates, security, and plugin compatibility are ongoing work.\n\nSquarespace wins design. Its templates are the most consistently polished in the industry, making content look professionally art-directed with zero design skill. Portfolios, restaurants, and service businesses where visual quality drives perception are its territory. Its constraint is flexibility — rigid structure, thin app ecosystem.\n\nWix wins flexibility and speed-to-launch. Freeform drag-and-drop placement, a large app market, and AI-generated starting sites mean the fastest path from nothing to published. Its risk is layout chaos from too much freedom.\n\nWebflow wins professional design control. Its visual designer outputs production-grade HTML and CSS, giving designers pixel precision without code, with managed hosting included. Marketing sites and design-led projects are its strength; complex custom functionality hits platform limits.\n\nShopify wins e-commerce outright: inventory, payments, shipping, and POS integrate natively, and its app store handles every retail need. At $29 monthly it is the most expensive here, but for a serious store, nothing else competes on commerce depth.\n\nQuick decision path: selling products (Shopify), visual-first small site (Squarespace), fastest launch (Wix), design precision (Webflow), maximum flexibility and ownership (WordPress).',
+    [
+      { label: 'Price range', value: '$5/mo (WordPress hosting) to $29/mo (Shopify)' },
+      { label: 'Overall pick', value: 'WordPress — versatility and ownership via 59,000+ plugins' },
+      { label: 'Category wins', value: 'Design: Squarespace · Flexibility: Wix · Pro control: Webflow · E-commerce: Shopify' },
+      { label: 'Decision rule', value: 'Match the builder to the job, not the feature list' },
+    ],
+    [
+      { href: '/reviews/best-website-builders-2026/', label: 'Best website builders of 2026: full ranking' },
+      { href: '/reviews/wordpress-vs-webflow/', label: 'WordPress vs Webflow' },
+      { href: '/reviews/squarespace-vs-wix/', label: 'Squarespace vs Wix' },
+    ],
   ),
   story(
     'notion-ai-vs-grammarly-story',
@@ -1138,6 +1231,17 @@ export const storiesData: StoryEntry[] = [
     ['best-standing-desk-2026', 'best-office-chair-2026', 'best-monitor-light-2026'],
     'marcus-chen',
     'A productive home office comes down to five essentials, each solving a specific physical problem that emerges from full-time desk work. The order of investment matters as much as the items themselves.\n\nThe standing desk is the foundation because it addresses the sitting problem at its root. Alternating between sitting and standing through the day reduces lower-back pressure and the post-work energy slump that pure sitters report. Programmable height presets are worth paying for — if switching positions takes effort, you will not switch.\n\nThe ergonomic chair is the second essential, and arguably where more budget belongs than the desk. Eight hours of inadequate support compounds into back and neck problems that no desk can offset. Prioritize adjustable lumbar support, seat depth, and armrest height over aesthetics; your spine does not care what the chair looks like.\n\nMonitor lighting is the most underestimated item. Screen glare and the contrast between a bright display and a dim room drive eye strain and headaches. A monitor light bar illuminates the desk without reflecting off the screen, and evening work becomes measurably more comfortable.\n\nA mechanical keyboard improves the typing experience through switch quality and sound, but its deeper value is consistency: a good board reduces finger fatigue over thousands of daily keystrokes. Low-profile options suit shared spaces.\n\nNoise-canceling headphones close the loop by controlling the auditory environment — deliveries, household noise, and street sound fragment attention in ways open-plan office veterans know well.\n\nBudget guidance: chair first, desk second, then peripherals in whatever order your pain points demand. Total quality setup runs $800 to $1,500 — significant, but amortized over years of daily use it undercuts a single month of coworking.',
+    [
+      { label: 'Investment order', value: 'Chair first, desk second, peripherals by pain point' },
+      { label: 'Typical budget', value: '$800–$1,500 for a complete quality setup' },
+      { label: 'Biggest health lever', value: 'Ergonomic chair — 8 hours of support compounds daily' },
+      { label: 'Most underestimated', value: 'Monitor light bar — removes glare-driven eye strain' },
+    ],
+    [
+      { href: '/reviews/best-standing-desk-home-office/', label: 'Best standing desks for home offices' },
+      { href: '/reviews/best-standing-desks-2026/', label: 'Best standing desks of 2026' },
+      { href: '/best/best-standing-desk/', label: 'Standing desk buying guide' },
+    ],
   ),
   story(
     'desk-cable-management-story',
