@@ -237,7 +237,7 @@ export const reviewEntryToContent: ReviewAdapter = (entry: ProductReviewEntry): 
     secondaryKeywords: deriveSecondaryKeywords(entry.slug, entry.category),
     keywordCluster: mapCategoryToCluster(entry.category, entry.categorySlug),
     searchIntent: 'commercial',
-    canonicalUrl: `https://toolstep.com/reviews/${entry.slug}/`,
+    canonicalUrl: `https://www.toolstep.top/reviews/${entry.slug}/`,
 
     // Commercial
     affiliate,
@@ -359,7 +359,7 @@ export const bestEntryToContent: BestListAdapter = (entry: BestEntry): BestListC
     secondaryKeywords: deriveSecondaryKeywords(entry.slug, entry.category),
     keywordCluster: mapCategoryToCluster(entry.category, categorySlug),
     searchIntent: 'commercial',
-    canonicalUrl: `https://toolstep.com/best/${entry.slug}/`,
+    canonicalUrl: `https://www.toolstep.top/best/${entry.slug}/`,
 
     // Commercial
     affiliate,
@@ -473,7 +473,7 @@ export const compareEntryToContent: ComparisonAdapter = (entry: CompareEntry): C
     secondaryKeywords: deriveSecondaryKeywords(entry.slug, entry.category),
     keywordCluster: mapCategoryToCluster(entry.category, categorySlug),
     searchIntent: 'commercial',
-    canonicalUrl: `https://toolstep.com/compare/${entry.slug}/`,
+    canonicalUrl: `https://www.toolstep.top/compare/${entry.slug}/`,
 
     // Commercial
     affiliate,
@@ -593,7 +593,7 @@ export const alternativeEntryToContent: AlternativeAdapter = (entry: Alternative
     secondaryKeywords: deriveSecondaryKeywords(entry.slug, entry.category),
     keywordCluster: mapCategoryToCluster(entry.category, categorySlug),
     searchIntent: 'commercial',
-    canonicalUrl: `https://toolstep.com/alternatives/${entry.slug}/`,
+    canonicalUrl: `https://www.toolstep.top/alternatives/${entry.slug}/`,
 
     // Commercial
     affiliate: 'low', // Alternatives are often software/subscription
@@ -741,6 +741,8 @@ export function reviewContentToEntry(content: ReviewContent): ProductReviewEntry
     content.sections.find((s) => s.heading === heading)?.content ?? '';
 
   // Reconstruct alternatives array from relatedContent
+  // Guard: legacy relatedContent.slug may store a full href (e.g. '/reviews/x/');
+  // only wrap bare slugs with the section prefix, same rule as relatedReviews below.
   const alternatives = content.relatedContent
     .filter((rc) => rc.relationship === 'related' || rc.relationship === 'compare')
     .map((rc) => {
@@ -749,9 +751,10 @@ export function reviewContentToEntry(content: ReviewContent): ProductReviewEntry
         : rc.type === 'comparison'
           ? '/compare/'
           : '/reviews/';
+      const slug = rc.slug.startsWith('/') ? rc.slug : `${hrefPrefix}${rc.slug}/`;
       return {
         name: rc.label,
-        href: `${hrefPrefix}${rc.slug}/`,
+        href: slug,
         desc: rc.description ?? '',
       };
     });
