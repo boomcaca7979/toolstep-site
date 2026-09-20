@@ -22,8 +22,8 @@ export const group5Reviews: ProductReviewEntry[] = [
     testingSummary: 'Based on product documentation, feature analysis, pricing comparison, and workflow evaluation, this review covers Bear\'s live-preview Markdown editor, nested tags, wiki-links, export formats, and themes. Pricing is compared against Obsidian Sync and Notion Plus. Usability is evaluated through workflow analysis of long-form article drafting, meeting notes, and a research literature library. This is an independent editorial review; no review unit was provided by Shiny Frog.',
     performance: 'Based on product documentation, Bear\'s main strength is editor responsiveness on Apple hardware. Notes open effectively instantly, and typing latency is imperceptible even with live preview rendering Markdown syntax as you type. By contrast, Obsidian (built on Electron) can show occasional typing delays on longer notes, and Notion frequently pauses when a page contains multiple embedded blocks due to server round-trips.\n\nNested tags are the second standout. Typing #work/projects/auto organizes a note into a hierarchy (Work → Projects → Auto) without manually creating folders. The tag picker auto-completes as you type, and the sidebar shows the full tag tree with note counts. Based on feature analysis, Bear\'s tag system is more elegant than folder-based competitors (Apple Notes, Evernote) and more intuitive than Obsidian\'s frontmatter-based approach for non-technical users.\n\nThe weak point is search. Based on feature analysis, Bear\'s full-text search is fast but basic — it supports phrase search and tag filters but not Boolean operators, regex, or saved dynamic queries. Finding "notes written in the last 30 days that mention keyboards and are tagged #research" requires multiple manual filters. By contrast, Notion handles this with a single database view, and Obsidian handles it with the Dataview plugin. Bear\'s search is fine for casual retrieval but limiting for power users managing large research libraries.',
     buildQuality: 'Product Quality / Reliability: Bear is a mature, stable product built specifically for Apple platforms. The app is built on Apple-native frameworks (Swift, Core Data, TextKit) rather than Electron, which is why it launches quickly and uses less RAM than Obsidian. The trade-off is the Apple-only limit — there is no Windows, Android, or web version, and Shiny Frog has stated a port would require a full rewrite.\n\nUpdate frequency is moderate. Based on the public release history, Shiny Frog ships updates roughly every 6 to 10 weeks, with bug fixes on a more frequent cadence. The cadence is slower than Notion (weekly) and comparable to Obsidian (every 4 to 6 weeks). Bear 2, a major rewrite announced in 2022, has been in development for over three years and does not have a public release date — the current Bear 1.x remains the supported version.\n\nEcosystem maturity is the main weakness. Based on feature analysis, Bear has no plugin system, no API for third-party automation, and a limited Shortcuts integration that supports basic actions (create note, append to note). There is no native integration with Slack, GitHub, Linear, or most project management tools — Bear is a standalone notes app, not a workspace. The export options (Markdown, HTML, PDF, Word, JPG) are clean and preserve formatting well, which softens the lock-in, but a user who wants to connect Bear to a larger workflow will hit walls. The Apple-native design means Bear pairs cleanly with Apple Notes, Apple Reminders, and Apple Calendar via drag-and-drop, but cross-platform teams will not find a place for it.',
-    easeOfUse: 'Based on feature analysis, Bear has a gentle learning curve for writers already comfortable with Markdown. Opening the app and typing a note requires zero training — the live preview renders Markdown syntax as you type, so you see formatted text (bold, headers, lists) rather than raw syntax. Reaching fluency with nested tags and wiki-links takes roughly 30 to 45 minutes. By contrast, Obsidian takes longer to reach basic fluency, and Notion takes 60 to 90 minutes.\n\nBeginner friendliness is the strongest part of Bear. The default three-pane layout (sidebar, note list, editor) matches Apple Mail and is immediately familiar. The Markdown cheatsheet is one click away in the help menu. The tag picker auto-completes as you type, so you do not have to remember tag names. There is no in-app onboarding tour, but the interface is intuitive enough that one is not missed. The seven built-in themes (including light, dark, and solarized variants) let users customize the look without configuration files.\n\nSetup experience is fast. Based on product documentation, after installing from the Mac App Store, Bear opens, creates a local vault, and is ready for the first note in minutes. iCloud sync activates automatically when you sign in to the Pro subscription, with notes syncing across devices in seconds over Wi-Fi. The one friction point is the Pro subscription requirement for sync: the free tier works perfectly on a single device, but multi-device users must pay $2.99/month or $28/year. There is no trial of Pro features — you pay (or do not) from day one, though the monthly price is low enough that the risk is small. The iPad and iPhone apps install and sync automatically once you sign in to the same Apple ID and Bear Pro account.',
-    value: 'At $2.99/month (or $28/year), Bear Pro is competitively priced against Obsidian Sync ($8/month) and Notion Plus ($10/month), and the free tier is unusually generous — all editing, tagging, and linking features work without paying. Compared to alternatives in the $0–$10/month range, it offers the most polished Apple-native Markdown experience and reliable iCloud sync. Because notes export cleanly to Markdown, you are never locked in, which keeps the long-term cost of switching low.',
+    easeOfUse: 'Based on feature analysis, Bear has a gentle learning curve for writers already comfortable with Markdown. Opening the app and typing a note requires zero training — the live preview renders Markdown syntax as you type, so you see formatted text (bold, headers, lists) rather than raw syntax. Reaching fluency with nested tags and wiki-links takes roughly 30 to 45 minutes. By contrast, Obsidian takes longer to reach basic fluency, and Notion takes 60 to 90 minutes.\n\nBeginner friendliness is the strongest part of Bear. The default three-pane layout (sidebar, note list, editor) matches Apple Mail and is immediately familiar. The Markdown cheatsheet is one click away in the help menu. The tag picker auto-completes as you type, so you do not have to remember tag names. There is no in-app onboarding tour, but the interface is intuitive enough that one is not missed. The seven built-in themes (including light, dark, and solarized variants) let users customize the look without configuration files.\n\nSetup experience is fast. Based on product documentation, after installing from the Mac App Store, Bear opens, creates a local vault, and is ready for the first note in minutes. iCloud sync activates automatically when you sign in to the Pro subscription, with notes syncing across devices in seconds over Wi-Fi. The one friction point is the Pro subscription requirement for sync: the free tier works perfectly on a single device, but multi-device users must pay $2.99/month or $29.99/year. There is no trial of Pro features — you pay (or do not) from day one, though the monthly price is low enough that the risk is small. The iPad and iPhone apps install and sync automatically once you sign in to the same Apple ID and Bear Pro account.',
+    value: 'At $2.99/month (or $29.99/year), Bear Pro is competitively priced against Obsidian Sync ($8/month) and Notion Plus ($10/month), and the free tier is unusually generous — all editing, tagging, and linking features work without paying. Compared to alternatives in the $0–$10/month range, it offers the most polished Apple-native Markdown experience and reliable iCloud sync. Because notes export cleanly to Markdown, you are never locked in, which keeps the long-term cost of switching low.',
     pros: [
       'Beautiful Markdown editor with live preview, typography presets, and seven built-in themes',
       'Nested tag system replaces folders — #work/projects/auto organizes notes hierarchically by tag',
@@ -55,18 +55,57 @@ export const group5Reviews: ProductReviewEntry[] = [
       'Power users who want plugins, API access, or custom templates — Bear has no extension system',
       'Budget buyers who want a one-time purchase — Bear Pro is a $36/year subscription',
     ],
-    specs: [],
+    specs: [
+      { label: 'Category', value: 'Markdown note-taking app' },
+      { label: 'Platforms', value: 'iPhone, iPad, Mac (Apple-only; no Windows, Android, or web)' },
+      { label: 'Sync', value: 'iCloud (CloudKit) with Bear Pro' },
+      { label: 'Editor', value: 'Markdown with inline live preview' },
+      { label: 'Organisation', value: 'Nested tags replace folders (e.g. #work/projects/auto)' },
+      { label: 'Themes', value: '3 free; 28+ with Bear Pro' },
+      { label: 'Export formats', value: 'TXT, Markdown, TextBundle, RTF, PDF, JPG, HTML, DOCX, ePub' },
+      { label: 'Search', value: 'Full-text; OCR search inside images and PDFs (Pro)' },
+      { label: 'Free tier', value: 'Local notes, scanning, and full export list' },
+      { label: 'Pro subscription', value: '$2.99/month (7-day free trial; discounted annual plan)' },
+      { label: 'Privacy', value: 'iCloud-only storage; per-note encryption; Apple Advanced Data Protection supported' },
+    ],
+    productDetails: [
+      {
+        heading: 'Apple-Only Platform Scope',
+        paragraphs: [
+          'Bear is built exclusively for Apple platforms — iPhone, iPad, and Mac. There is no Windows build, no Android app, and no web version, and Shiny Frog has described the app as built on Apple-native frameworks rather than a cross-platform toolkit such as Electron. For someone who works entirely inside the Apple ecosystem the limit is invisible; for anyone who also uses a Windows PC or an Android phone it rules Bear out.',
+          'Syncing is handled through iCloud rather than a Bear-operated server. The company states that it cannot read a user\'s notes, that notes can be encrypted individually for an extra layer of protection, and that Apple\'s Advanced Data Protection is supported.',
+        ],
+      },
+      {
+        heading: 'Export Formats and File Interoperability',
+        paragraphs: [
+          'Bear exports notes in a broad set of formats: TXT, Markdown, TextBundle, RTF, PDF, JPG, HTML, DOCX, and ePub. Markdown export writes plain .md files, which are the interchange format most other note tools read, so notes can be moved into Obsidian, VS Code, or any text editor without reformatting.',
+          'Internally, though, Bear keeps notes in its own database rather than as a folder of individual Markdown files. That is what makes search and sync fast, but it also means another app cannot be pointed directly at a Bear library, and moving a large library out is a batch export rather than a simple folder copy.',
+        ],
+      },
+      {
+        heading: 'Free Tier vs Bear Pro',
+        paragraphs: [
+          'Bear is usable for free on a single device. The free tier includes local storage, document scanning, the full export format list, three themes, and one app icon. Bear Pro is what unlocks iCloud sync across devices, the full set of more than 28 themes, OCR search inside images and PDFs, and the remaining app icons.',
+          'Bear Pro is billed at $2.99 per month with a 7-day free trial, and an annual plan is offered at a discount. Because every editing, tagging, and linking feature is available without paying, a single-device user can stay on the free tier indefinitely.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Notion vs Obsidian', href: '/reviews/notion-vs-obsidian/', desc: 'Two popular alternatives to Bear with different philosophies.' },
       { name: 'Obsidian Review', href: '/reviews/obsidian-review/', desc: 'A free, cross-platform Markdown notes app with plugins.' },
       { name: 'Notion vs Confluence', href: '/reviews/notion-vs-confluence/', desc: 'Team knowledge bases compared.' },
     ],
     faqs: [
-      { question: 'Is Bear free to use, or do you need Bear Pro?', answer: 'Bear is free to download and use for all core editing and organizing features, including the Markdown editor, nested tags, cross-note linking, and local storage. Bear Pro ($2.99/month or $28/year) unlocks iCloud sync across devices, the extra themes, and export to PDF, HTML, Word, and JPEG. You can use Bear free forever on a single device — Pro is only required if you sync across multiple Apple devices or want the export formats.' },
+      { question: 'Is Bear free to use, or do you need Bear Pro?', answer: 'Bear is free to download and use for all core editing and organizing features, including the Markdown editor, nested tags, cross-note linking, and local storage. Bear Pro ($2.99/month or $29.99/year) unlocks iCloud sync across devices, the extra themes, and export to PDF, HTML, Word, and JPEG. You can use Bear free forever on a single device — Pro is only required if you sync across multiple Apple devices or want the export formats.' },
       { question: 'Does Bear work on Windows or Android?', answer: 'No. Bear is Apple-only — it runs on iPhone, iPad, and Mac, and requires iOS 16 or later and macOS 13 or later. There is no Windows app, no Android app, and no web version. The developer, Shiny Frog, has stated that Bear is built on Apple-native frameworks (Swift, Core Data, TextKit) and porting to other platforms would require a full rewrite. If you use Windows or Android, consider Obsidian or Notion instead.' },
       { question: 'How does Bear compare to Obsidian?', answer: 'Bear and Obsidian are both Markdown notes apps, but they differ in scope. Bear is simpler and more polished — it feels like a native Apple app with a beautiful editor and tag-based organization. Obsidian is more powerful and extensible — it stores notes as plain Markdown files, supports plugins, and works on Windows, Android, and Linux. Choose Bear if you want a clean, Apple-only writing app; choose Obsidian if you want cross-platform access, plugins, and file-system-level control.' },
       { question: 'Can you use Bear for a second brain or Zettelkasten?', answer: 'Yes, with caveats. Bear supports cross-note linking with [[wiki-links]] and a backlinks panel, which is the core of a Zettelkasten system. The tag system also supports hierarchical organization (#ideas/technology/keyboards). However, Bear lacks graph visualization (Obsidian has this), block references, and daily-note templates out of the box. For a lightweight second brain, Bear works well; for a strict Zettelkasten, Obsidian is the more complete tool.' },
-      { question: 'Is Bear Pro worth the $2.99/month subscription?', answer: 'Yes, if you use Bear on more than one Apple device — the iCloud sync alone justifies the subscription, and it works reliably according to user reports. The extra themes and export formats are nice but secondary. If you only use Bear on a single Mac or iPhone, you can stick with the free tier indefinitely. The annual plan ($28/year) saves about $8 compared to monthly billing, so choose annual if you commit.' },
+      { question: 'Is Bear Pro worth the $2.99/month subscription?', answer: 'Yes, if you use Bear on more than one Apple device — the iCloud sync alone justifies the subscription, and it works reliably according to user reports. The extra themes and export formats are nice but secondary. If you only use Bear on a single Mac or iPhone, you can stick with the free tier indefinitely. The annual plan ($29.99/year) saves about $6 compared to monthly billing, so choose annual if you commit.' },
     ],
     compareSlugs: [],
   },
@@ -88,9 +127,9 @@ export const group5Reviews: ProductReviewEntry[] = [
     verdict: 'The Autonomous SmartDesk 2 is the best $299 motorized standing desk you can buy. Based on manufacturer specifications, the decent motor, four memory presets, and large 60 by 30 inch desktop make it the right pick if your budget caps at $350. It wobbles at full height with a heavy monitor arm and the customer service is slow, but for buyers who prioritize a large motorized desk at the lowest price, the SmartDesk 2 is the value champion.',
     quickVerdict: 'The Autonomous SmartDesk 2 is the best $299 motorized standing desk you can buy, and it shows. The single motor moves the desktop at a respectable 1.3 inches per second, the memory keypad saves four height presets, and the 60 by 30 inch surface holds a full setup. It wobbles noticeably at full height with a heavy monitor arm, the plastic feet feel cheap, and customer service is slow — but if your budget caps at $350, it is the desk to buy.',
     testingSummary: 'Based on product documentation, manufacturer specifications, and feature analysis, this review covers the Autonomous SmartDesk 2 motor speed, four memory presets, lift capacity, and 60 by 30 inch desktop. The desk is evaluated against manufacturer-published specs for motor speed, side-to-side wobble at seated and full standing height, and lift capacity with a multi-monitor setup. Pricing is compared against the FlexiSpot E7 and Uplift V2. This is an independent editorial review; no review unit was provided by Autonomous.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to Autonomous\'s published specifications, the SmartDesk 2 uses a single motor in the crossbar to raise the frame from about 29 inches to 47 inches, which covers users from roughly 5\'2" to 6\'2". The motor is rated to move the desk at about 1.3 inches per second and to lift up to 270 lbs — enough for a multi-monitor arm and a full desktop setup — and it uses a soft start and soft stop to avoid the lurch that cheaper single-motor desks produce.\n\nThe single-motor design is the source of the desk\'s two advertised trade-offs. It is louder than the dual-motor desks in the same price tier, and because the two legs are driven by one motor rather than synchronized electronically, the frame is reported to sway noticeably at full standing height under a heavy, off-center load. At seated heights the frame is described as solid.',
+    buildQuality: 'Autonomous builds the SmartDesk 2 around a steel frame, steel legs, and a steel crossbar, with a desktop in laminated MDF, bamboo, or oak. The bamboo top is solid rather than a veneer and is pre-finished with a matte sealant, though it is documented to dent under impact where the laminate tops resist dents better. The desktop measures 60 by 30 inches with gently rounded edges that are easier on the forearms than a square edge.\n\nThe documented weak point is the feet: the four leveling feet are hard plastic with a thin rubber pad rather than metal, and owners report they can creak on uneven floors and crack if the desk is dragged sideways instead of lifted. The rest of the structure — the leg glides, the motor mount, the metal cable tray, and the keypad mount — is described as solid for the price. Autonomous covers the frame, motor, legs, and keypad with a 5-year warranty and the desktop surface for 1 year, with an extended 7-year option.',
+    easeOfUse: 'The SmartDesk 2\'s control interface is a digital keypad with four memory presets, up and down buttons, and a small LED height readout. Pressing and holding a numbered button saves the current height and tapping it returns the desk there, and the presets are documented to survive a power loss. The keypad is functional rather than refined — the buttons have a soft feel and the display is dim in bright rooms — but it shows the current height and stores the heights a user actually needs.\n\nAssembly is the desk\'s largest practical cost. Autonomous documents roughly 90 minutes from box to finished desk, with the frame bolting together first, the desktop attaching from beneath with eight screws, and the keypad and motor cable routing last. One step needs a second person — lifting the 40 to 55 lb desktop onto the frame and holding it aligned while the screws go in. Autonomous includes an Allen key, a wrench, and a cable tray, and the keypad cable arrives pre-routed inside the legs.',
     value: 'At $299, the Autonomous SmartDesk 2 is the best value motorized standing desk under $350. Compared to alternatives in the $299–$599 range, it offers a 60 by 30 inch desktop, four memory presets, and a 270 lb lift capacity that pricier desks only modestly improve on. The single-motor frame and plastic feet are where the savings show, but for buyers whose priority is a large motorized desk at the lowest price, the SmartDesk 2 delivers more usable desk per dollar than the FlexiSpot E7 ($399) or Uplift V2 ($599), and the 5-year frame warranty protects the long-term investment.',
     pros: [
       'Affordable at $299 for a full motorized standing desk with a memory keypad',
@@ -122,7 +161,70 @@ export const group5Reviews: ProductReviewEntry[] = [
       'People who hate assembling furniture — the 90-minute build and two-person lift are non-trivial',
       'Anyone who needs responsive customer service during the warranty period',
     ],
-    specs: [],
+    specs: [
+      { label: 'Height range', value: '29" – 47"' },
+      { label: 'Weight capacity', value: '270 lbs' },
+      { label: 'Lift speed', value: '~1.3 in/s' },
+      { label: 'Motor', value: 'Single' },
+      { label: 'Desktop size', value: '60" x 30"' },
+      { label: 'Desktop options', value: 'Laminated MDF (black/white/walnut), bamboo, oak' },
+      { label: 'Presets', value: '4 memory positions' },
+      { label: 'Keypad', value: 'Digital with LED height readout' },
+      { label: 'Frame material', value: 'Steel' },
+      { label: 'Cable tray', value: 'Included' },
+      { label: 'Warranty (frame/motor/legs/keypad)', value: '5 years' },
+      { label: 'Warranty (desktop)', value: '1 year' },
+      { label: 'Assembly', value: '~90 minutes; two people for the desktop lift' },
+      { label: 'Price', value: '$299' },
+    ],
+    productDetails: [
+      {
+        heading: 'Motor Speed and Lift Performance',
+        paragraphs: [
+          'The SmartDesk 2 uses a single motor mounted in the crossbar under the desktop. Autonomous rates it at about 1.3 inches per second, which is quick for a desk in this price tier, and a full transition from seated to standing takes on the order of a dozen seconds — long enough to notice, short enough not to avoid. The lift capacity is rated at 270 lbs.',
+          'The motor includes soft start and soft stop, which smooths the beginning and end of travel and prevents the jerky lurch that inexpensive desks often produce. For a single-motor design, the motion quality is a genuine strength, and the desk does not overshoot a preset height. The trade-off is noise: the single motor is louder than the dual-motor desks in the same tier.',
+        ],
+      },
+      {
+        heading: 'Stability at Full Height',
+        paragraphs: [
+          'Stability is where the SmartDesk 2\'s budget engineering shows. At seated heights the frame is solid — leaning on it or resting elbows on it produces no perceptible movement, and the steel legs and crossbar do their job. The problem appears as the desk approaches its maximum height, where the legs are most extended and least rigid.',
+          'Above roughly 44 inches, the steel legs are reported to flex and the desk develops a side-to-side sway that becomes visible in a mounted monitor when typing firmly. The effect is worse with an off-center load such as a side-mounted monitor arm. The documented workarounds are to keep heavy loads centered and to avoid leaning on the desk while standing. Sitters who spend most of the day seated will find the sway tolerable; those who stand for hours with a heavy arm will not.',
+        ],
+      },
+      {
+        heading: 'Desktop Materials and Size',
+        paragraphs: [
+          'The 60 by 30 inch desktop is unusually generous for the price and is the desk\'s most immediately useful feature. It comfortably holds a large monitor, a laptop, a keyboard, a mouse, and a lamp with space left over, and the 30-inch depth leaves room for a monitor arm to sit behind the display without crowding the keyboard. The edges are gently rounded.',
+          'Autonomous offers the top in laminated MDF (black, white, or walnut), solid bamboo, and oak. The bamboo is the most popular and is a solid board rather than a veneer, pre-finished with a matte sealant that resists scratches and water rings. Its weakness is impact: the bamboo dents more readily than the laminate if something heavy is dropped on it. Choosing between them is a trade between feel and durability.',
+        ],
+      },
+      {
+        heading: 'Keypad and Memory Presets',
+        paragraphs: [
+          'The included keypad stores four height presets and includes up and down buttons for manual adjustment plus a small LED readout. Saving a preset is a press-and-hold on a numbered button, and returning to it is a tap. The presets persist through a power interruption, which matters for a desk that might be unplugged or lose power to a tripped breaker.',
+          'The keypad\'s shortcomings are cosmetic but telling. The buttons have a soft, vague travel rather than a crisp click, and the display is dim and hard to read in a bright room. It shows height only, with no weight readout and no named presets. These are the details that separate a $299 desk from a $599 one, and they are worth knowing before purchase rather than after.',
+        ],
+      },
+      {
+        heading: 'Assembly',
+        paragraphs: [
+          'Assembly is the SmartDesk 2\'s hidden cost in effort rather than money. Autonomous documents about 90 minutes from unboxing to a finished desk, and one step — lifting the 40 to 55 lb desktop onto the assembled frame and holding it aligned while the mounting screws go in — genuinely needs a second person. The desk ships in two boxes, one for the frame and one for the top.',
+          'The frame bolts together with a small number of leg and crossbar bolts and the motor cable, roughly half an hour with the included Allen key and wrench. The desktop attaches from beneath with eight screws, and the keypad and motor wiring are pre-routed inside the legs, needing only to be plugged in and tidied with the included cable tray. A cordless drill with a hex bit shortens the build, provided the screws are not over-torqued into the MDF.',
+        ],
+      },
+      {
+        heading: 'Plastic Feet and Customer Service',
+        paragraphs: [
+          'The SmartDesk 2\'s frame is steel, but its feet are not: the four leveling feet are hard plastic with a thin rubber pad, and they are the desk\'s most likely failure point. On an uneven floor they can creak under load, and dragging the desk sideways to reposition it can crack a foot — which is why lifting rather than dragging is the documented rule. Inexpensive aftermarket rubber feet are a common preventative upgrade.',
+          'Customer service is the desk\'s weakest aspect that has nothing to do with its engineering. Autonomous has a documented reputation for slow support: email replies can take several business days and began, in reported cases, with a request for photos and video, and phone support involves long hold times. The 5-year frame warranty is genuine and honored, but buyers who value responsive support should weigh that against the desks with faster service in the tier above.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-review/', desc: 'A more stable dual-motor desk for $100 more.' },
       { name: 'Uplift V2 Review', href: '/reviews/uplift-v2-review/', desc: 'The premium benchmark for standing desks.' },
@@ -155,9 +257,9 @@ export const group5Reviews: ProductReviewEntry[] = [
     verdict: 'The Apple Magic Keyboard with Touch ID is the best keyboard for Mac users who want a slim, quiet typing experience and seamless ecosystem pairing. Based on feature analysis, Touch ID is the killer feature for Apple Silicon Mac owners, and the month-long battery outlasts every backlit competitor. The lack of backlighting and the $149 price limit its appeal, but for Mac and iPad owners who value simplicity and design it is hard to beat.',
     quickVerdict: 'The Apple Magic Keyboard with Touch ID is the best keyboard for Mac users who want a slim, quiet, low-profile typing experience and seamless ecosystem pairing. Touch ID is the killer feature — unlock, Apple Pay, and password autofill from one button. At $149 with no backlighting and no mechanical switches, it is not for everyone, but for Mac and iPad owners who value simplicity and design, it is hard to beat.',
     testingSummary: 'Based on product documentation, manufacturer specifications, and feature analysis, this review covers the Apple Magic Keyboard with Touch ID typing feel, battery life, ecosystem pairing, and Touch ID functionality. The keyboard is evaluated against manufacturer-published specs for battery life, Touch ID compatibility, and Bluetooth pairing across Mac and iPad. Pricing is compared against alternatives in the wireless keyboard category. This is an independent editorial review; no review unit was provided by Apple.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to Apple\'s published specifications, the Magic Keyboard with Touch ID uses a scissor mechanism with about 1 mm of key travel — short and low-profile, in the vein of the MacBook keyboard rather than a mechanical board. The keys are stable when pressed off-center and land quietly, which is what suits the keyboard to long writing sessions and shared rooms. Apple does not offer alternate switch types or a hot-swap version; the keycaps are integrated and not intended to be removed.\n\nBattery life is rated at about a month per charge, and the keyboard recharges over the bundled USB-C-to-Lightning cable while it remains in use. The feature that distinguishes the Touch ID model is the fingerprint sensor in the top-right corner, which on Apple Silicon Macs handles unlocking, Apple Pay, password autofill, and authenticated settings changes.',
+    buildQuality: 'Apple builds the Magic Keyboard around an aluminum base plate that gives the slim keyboard enough weight to stay planted during fast typing. The keycaps are a tight-tolerance scissor design, matte-finished and matched to the Mac aesthetic, and the function row carries dedicated Spotlight, Dictation, and emoji keys that work natively in macOS. There is no backlight at any price.\n\nThe keyboard is a sealed product: the keycaps are not swappable, there is no first-party remapping software on Windows, and the battery is not user-replaceable, though Apple rates it for years of daily cycles. The keyboard is not rated for water resistance, so spills are a risk to avoid rather than a claim to rely on. The Touch ID button is recessed to prevent accidental presses, and Touch ID itself functions only on Apple Silicon Macs, not on Intel Macs or Windows PCs.',
+    easeOfUse: 'Connecting the Magic Keyboard is nearly automatic on Apple hardware: power it on near a Mac and a pairing prompt appears, after which the keyboard reconnects whenever the Mac wakes. It pairs over Bluetooth only — no dongle, no wired mode — and it holds one active device at a time, so moving between a Mac and an iPad means re-pairing rather than switching with a keystroke. That single-device model is the main contrast with multi-device keyboards such as the Logitech MX Keys S.\n\nOn Apple Silicon Macs the Touch ID button doubles as a power button, and the fingerprint sensor covers unlocks, Apple Pay, and password autofill — one press in place of typing a password. On Windows the keyboard types, but several keys are remapped (Command behaves as Windows, Option as Alt) and the function-row labels do not match, with no first-party software to change them. A wrist rest is a common pairing, because the aluminum front edge can press into the wrists during long sessions.',
     value: 'At $149, the Apple Magic Keyboard with Touch ID is priced at the premium end of the wireless keyboard category, especially given the lack of backlighting. Compared to alternatives in the $94–$179 range, it offers seamless Apple ecosystem pairing, Touch ID, and a month-long battery that no rival matches. The keyboard holds resale value well — Apple accessories retain around 60% of retail after two years — and the sealed battery is rated for several years of daily use, so the long-term cost of ownership is reasonable for Mac owners.',
     pros: [
       'Excellent scissor-switch typing feel with 1mm travel that is quiet and precise for long writing sessions',
@@ -190,7 +292,71 @@ export const group5Reviews: ProductReviewEntry[] = [
       'Power users who want to remap keys, build macros, or record sequences without third-party software',
       'Budget buyers who can find a perfectly serviceable Bluetooth keyboard for under $50',
     ],
-    specs: [],
+    specs: [
+      { label: 'Switch type', value: 'Scissor' },
+      { label: 'Key travel', value: '~1 mm' },
+      { label: 'Layout', value: 'Full-size standard; numeric-keypad model also available' },
+      { label: 'Backlight', value: 'None' },
+      { label: 'Touch ID', value: 'Yes (Apple Silicon Macs only)' },
+      { label: 'Battery', value: '~1 month per charge' },
+      { label: 'Charging', value: 'USB-C to Lightning cable (included)' },
+      { label: 'Charging while typing', value: 'Yes' },
+      { label: 'Connectivity', value: 'Bluetooth only (no dongle, no wired mode)' },
+      { label: 'Multi-device', value: 'One device at a time' },
+      { label: 'Function row', value: 'Spotlight, Dictation, emoji, media (native macOS)' },
+      { label: 'Base', value: 'Aluminum' },
+      { label: 'Keycaps', value: 'Integrated, not swappable' },
+      { label: 'Compatibility', value: 'macOS, iPadOS; limited remapping on Windows' },
+      { label: 'Price', value: '$149 (Touch ID) / $199 (numeric keypad)' },
+    ],
+    productDetails: [
+      {
+        heading: 'Scissor Switches and Typing Feel',
+        paragraphs: [
+          'The Magic Keyboard uses a scissor mechanism with about 1 mm of travel, which is the same family of feel as a modern MacBook keyboard: short, quiet, and cushioned. The short travel makes it hard to bottom out and keeps the sound soft, which is why writers and editors gravitate to it for long sessions, and why it is inoffensive in a shared room or on a call.',
+          'The trade-off is the absence of tactile feedback. A mechanical switch gives a distinct bump at the actuation point; the scissor mechanism gives almost none, so typists who rely on feedback rather than a light touch tend to prefer a mechanical board. The keycaps are integrated into the mechanism and not meant to be removed, so there is no keycap or switch customization path — the keyboard is a finished product rather than a platform.',
+        ],
+      },
+      {
+        heading: 'Touch ID and Apple Silicon',
+        paragraphs: [
+          'Touch ID is the reason to buy this model rather than the non-Touch ID version. On Apple Silicon Macs the fingerprint sensor in the top-right corner unlocks the machine, approves Apple Pay purchases, autofills passwords, and authenticates security-sensitive settings changes, all from a single press. It is faster than typing a password and works regardless of what is on screen.',
+          'The compatibility boundary is important: Touch ID requires an Apple Silicon Mac and does not function on Intel Macs or Windows PCs, where the keyboard still types but the sensor stays inert. Buyers pairing the keyboard with an iPad also lose Touch ID, since the sensor is Mac-only — though the button still acts as a power button on supported Macs. For anyone outside the Apple Silicon ecosystem, the non-Touch ID model is the sensible choice.',
+        ],
+      },
+      {
+        heading: 'Battery Life and Charging',
+        paragraphs: [
+          'Apple rates the Magic Keyboard for about a month between charges, a figure that reflects the absence of a backlight. Without illumination to drain the battery, the keyboard outlasts most wireless keyboards by a wide margin, which is the direct benefit of giving up backlighting. A full charge from empty takes about two hours over the included USB-C-to-Lightning cable.',
+          'The keyboard can be used while charging, so a depleted battery does not stop work, and it will charge from any USB port with the right cable or adapter. There is no quick-charge feature, so a fully dead keyboard needs a few minutes on the cable before it is usable again. The battery is sealed and not user-replaceable, though Apple rates it for years of daily cycles.',
+        ],
+      },
+      {
+        heading: 'Connectivity and Single-Device Pairing',
+        paragraphs: [
+          'The keyboard connects over Bluetooth only: there is no USB dongle and no wired data mode, which keeps the desk clean but removes the option of a wired fallback. On Apple devices pairing is essentially automatic — power on near a Mac and a prompt appears — and the keyboard reconnects on wake without user input.',
+          'The limitation is that it holds one active device at a time. There is no multipoint and no dedicated switching keys, so moving between a Mac and an iPad means re-pairing rather than tapping a button. For a single-Mac desk that is irrelevant; for anyone who alternates between two computers, a multi-device keyboard is the better fit, and it is the clearest functional difference between the Magic Keyboard and its cross-platform rivals.',
+        ],
+      },
+      {
+        heading: 'Design, Backlighting, and Build',
+        paragraphs: [
+          'The aluminum base plate gives the Magic Keyboard much of its character: the slim body has enough mass to stay put during fast typing, and the matte keycaps match the Mac\'s finish. The function row is Mac-specific, with dedicated Spotlight, Dictation, and emoji keys alongside media and brightness controls, all working natively in macOS without setup.',
+          'The cost of the slim design is the absence of backlighting, which most keyboards at this price include. Working in a dim room therefore depends on overhead light or a desk lamp. The standard model also omits a numeric keypad, which is available as a separate, wider model. Build quality is high — the aluminum resists scratches, the keycaps resist shine, and the keyboard wipes clean — though it is not rated for water resistance.',
+        ],
+      },
+      {
+        heading: 'Mac, iPad, and Windows Compatibility',
+        paragraphs: [
+          'On macOS the keyboard is fully native: it pairs instantly, the function row works without configuration, and Touch ID covers unlocking and authentication on Apple Silicon machines. On iPad it pairs over Bluetooth with any iPad running a modern iPadOS version, and the function row controls brightness, volume, and media, though Touch ID does not operate on iPad.',
+          'Windows is where the keyboard is weakest. It types over Bluetooth, but several keys are remapped — Command behaves as the Windows key, Option as Alt — and the function-row labels do not correspond to the actions, with no Apple software to change them. Third-party remapping tools can help, but for a Windows-primary setup a cross-platform keyboard is the more straightforward choice.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Mechanical Keyboard for Work', href: '/reviews/best-mechanical-keyboard-work/', desc: 'How the Keychron Q1 and other mechanical keyboards compare.' },
       { name: 'Best Office Mechanical Keyboard', href: '/reviews/best-office-mechanical-keyboard/', desc: 'Quiet mechanical switches for shared offices.' },
@@ -223,9 +389,9 @@ export const group5Reviews: ProductReviewEntry[] = [
     verdict: 'The Anker Prime 20000 PD is the best high-output power bank for laptop charging on the go. Based on manufacturer specifications, the 200W total output, 100W single-port PD, and smart display make it one of the few portable options that genuinely charges a MacBook Pro at full speed. It is expensive and heavy for casual phone charging, but for laptop users who travel or work remotely it justifies the $109 price.',
     quickVerdict: 'The Anker Prime 20000 PD is the best high-output power bank for laptop charging on the go in 2026. The 200W total output and 100W single-port PD charge a MacBook Pro at full speed, the smart display shows real-time wattage, and the 20000mAh capacity covers a full workday away from an outlet. At $109 it is expensive and 460 g is heavy for casual phone use — but if you need to charge a laptop portably, this is one of the few options that actually works.',
     testingSummary: 'Based on product documentation, manufacturer specifications, and feature analysis, this review covers the Anker Prime 20000 PD Power Bank 100W single-port USB-C PD output, real-world usable capacity in watt-hours, and recharge time with a 100W charger. The power bank is evaluated against manufacturer-published specs for output wattage, port configuration, and capacity. Pricing is compared against alternatives in the high-output power bank category. This is an independent editorial review; no review unit was provided by Anker.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The Anker Prime 20000 PD is a high-output power bank rated at 200W total across three ports, with a 100W single-port USB-C PD ceiling, a second USB-C port also rated at up to 100W, and a 67W USB-A port. The 20000mAh cell is rated at 3.7V nominal, or 74 watt-hours, which Anker translates to roughly one full charge of a 14-inch-class laptop or several smartphone charges. The rated numbers put it in the small group of power banks able to charge a laptop near wall-charger speed while also topping up phones.',
+    buildQuality: 'The body is brushed aluminum front and back with a matte plastic frame around the edges, weighing 460 g — dense for its size and better suited to a bag than a pocket. An active cooling fan engages only during sustained high-output charging and stays silent for single-port laptop charging, while Anker ActiveShield 2.0 temperature monitoring throttles output if the battery or ports exceed safe temperatures. The port set is two USB-C and one USB-A on the top edge, all clearly labeled.',
+    easeOfUse: 'A 1.3-inch OLED display on the front face reports real-time output wattage per port, remaining battery percentage, and estimated time to empty or full. A single side button wakes the display and cycles through per-port readings, and a low-power mode charges small devices such as earbuds at 5W. The power bank supports passthrough charging and can refill itself through any of its USB-C ports; no wall adapter is included in the box.',
     value: 'At $109, the Anker Prime 20000 PD is expensive — twice the price of basic 20000mAh power banks — but it is one of the few portable options that actually charges a laptop at full speed. Compared to alternatives in the $89–$129 range, it offers 200W total output, a 100W single-port ceiling, and a smart display that competitors match only partially. The 74Wh cell is rated for hundreds of charge cycles, and Anker\'s build quality holds resale value better than generic brands, so the long-term cost per charge is low for laptop users.',
     pros: [
       '200W total output charges a MacBook Pro and an iPhone simultaneously at full speed',
@@ -258,7 +424,68 @@ export const group5Reviews: ProductReviewEntry[] = [
       'Users wanting wireless charging — this is USB-only, no Qi pad',
       'Backpackers counting every gram — at 460 g it is heavier than lighter 10000mAh alternatives',
     ],
-    specs: [],
+    specs: [
+      { label: 'Capacity', value: '20000mAh / 74 Wh (3.7V nominal)' },
+      { label: 'Total output', value: '200W' },
+      { label: 'USB-C output', value: '2 ports, up to 100W each (PD 3.1 / PPS)' },
+      { label: 'USB-A output', value: '1 port, up to 67W (QC 3.0)' },
+      { label: 'Laptop charging', value: '14-inch MacBook Pro 0-50% in ~30 min; 0-100% in ~1 h 40 min at 100W' },
+      { label: 'Recharge time', value: '~1 h 30 min (100W), ~2 h 15 min (65W), ~4 h 30 min (30W)' },
+      { label: 'Display', value: '1.3-inch OLED — per-port wattage, battery percentage, time estimate' },
+      { label: 'Cooling', value: 'Active fan under sustained high output; ActiveShield 2.0 thermal monitoring' },
+      { label: 'Passthrough charging', value: 'Yes (100W in: ~60W to laptop + ~40W to bank)' },
+      { label: 'Dimensions', value: '15.2 x 5.4 x 5.4 cm' },
+      { label: 'Weight', value: '460 g' },
+      { label: 'In the box', value: '60 cm USB-C to USB-C cable, fabric pouch (no wall adapter)' },
+      { label: 'Airline rating', value: '74 Wh — carry-on only, not permitted in checked luggage' },
+      { label: 'Price', value: '$109' },
+    ],
+    productDetails: [
+      {
+        heading: 'Output and Charging Speed: 200W Across Three Ports',
+        paragraphs: [
+          'The Prime 20000 PD is rated at 200W of total output, distributed across two USB-C ports and one USB-A port. The first USB-C port can deliver up to 100W on its own — enough to charge a 14-inch MacBook Pro at full speed, matching and at peak exceeding the 67W charger Apple ships with that machine. The second USB-C port is also rated at up to 100W, and the USB-A port at up to 67W.',
+          'Anker rates the 100W USB-C port as charging a 14-inch MacBook Pro from 0 to 50% in about 30 minutes and from 0 to 100% in about 1 hour 40 minutes, roughly matching the stock Apple charger. With two devices connected the bank shares power across ports, and with three devices the total is capped at 200W and divided by demand rather than split evenly.',
+          'The smart display is what separates the Prime line from the cheaper PowerCore series. A small OLED panel shows real-time output wattage per port, current battery percentage, and estimated time to empty or full, so owners can see whether a laptop is actually pulling 100W or has fallen back to a trickle charge, and can read remaining capacity without guessing from four LED dots. The display wakes when a device is plugged or unplugged, then dims after a short interval.',
+        ],
+      },
+      {
+        heading: 'Capacity: 20000mAh in Real-World Use',
+        paragraphs: [
+          'The Prime 20000 PD carries a 20000mAh cell at 3.7V nominal, which equals 74 watt-hours. Anker rates that capacity as about 1.2 full charges for a 14-inch MacBook Pro (a 70 Wh battery), about 0.8 charges for a 16-inch MacBook Pro (100 Wh), and roughly four full charges for an iPhone 15. For a full day of mixed laptop and phone use away from an outlet, owners should expect to refill the power bank itself once.',
+          'The 74 Wh figure matters for air travel. FAA rules and most international airline policies allow lithium-ion batteries up to 100 Wh in carry-on baggage while prohibiting them in checked luggage, so the Prime 20000 PD can fly carry-on but cannot be packed in a checked bag. Carriers vary, so confirming with the airline before flying is advisable.',
+          'The capacity is a deliberate middle ground. Larger banks (for example 25000mAh at 92.5 Wh) sit closer to the 100 Wh airline ceiling and weigh more, while smaller banks (10000mAh at 37 Wh) are lighter but cannot fully charge a laptop. For laptop owners who fly, the 20000mAh class is the practical sweet spot.',
+        ],
+      },
+      {
+        heading: 'Design, Weight, and Build Quality',
+        paragraphs: [
+          'The Prime 20000 PD measures 15.2 cm long, 5.4 cm wide, and 5.4 cm thick, and weighs 460 g. The front and back are brushed aluminum, with a matte plastic frame housing the ports and display. The build is rigid with no perceptible flex, and at 460 g it is heavier than most phones — a backpack or bag accessory rather than a pocket one.',
+          'The display dominates the front face: a 1.3-inch OLED panel with white text on black, legible in both direct sunlight and dim rooms. A side button wakes the display, cycles through port-by-port wattage readings, and enables a low-power mode that charges small devices such as earbuds at 5W instead of full speed.',
+          'The port arrangement is two USB-C and one USB-A on the top edge, all labeled. The USB-C ports support PD 3.1 and PPS, and the USB-A port supports QC 3.0. Any of the USB-C ports can also serve as input for recharging. Accessories are minimal — a 60 cm USB-C to USB-C cable rated to 100W and a fabric pouch — and no wall adapter is included.',
+        ],
+      },
+      {
+        heading: 'Heat and Active Cooling',
+        paragraphs: [
+          'An internal active cooling fan engages during sustained high-output charging. Anker positions the fan to run only when the bank is pushed hard — charging a laptop and phones simultaneously — and to stay off for normal single-port laptop charging, where the aluminum chassis absorbs heat passively.',
+          'The bank supports Anker ActiveShield 2.0 temperature monitoring, which uses internal sensors to throttle output if the battery or ports exceed safe temperatures. The combination of a metal body, active cooling, and thermal monitoring is aimed at keeping a 200W bank within safe limits, which is a meaningful engineering requirement at this output level.',
+          'The chassis warms to the touch during sustained 200W output, which is expected for a bank of this power density, but the design targets safe rather than unreachable surface temperatures.',
+        ],
+      },
+      {
+        heading: 'Passthrough Charging and Recharging',
+        paragraphs: [
+          'The Prime 20000 PD supports passthrough charging: plugged into a wall charger while devices are attached, it recharges itself while charging the connected devices. Anker states that passthrough prioritizes the connected devices and tops up the bank with the remaining wattage — a 100W wall charger, for example, can charge a MacBook Pro at 60W while recharging the bank at 40W.',
+          'Recharging the bank itself takes about 1 hour 30 minutes from 0 to 100% with a 100W USB-C charger, about 2 hours 15 minutes with a 65W charger, and about 4 hours 30 minutes with a 30W charger. Because no wall adapter ships in the box, a 100W USB-C charger is required for the fastest refill.',
+          'The bank detects the connected charger wattage and adjusts its recharge rate automatically, with no manual toggle, and the smart display shows the current input wattage during recharge so owners can confirm the charger is actually supplying the expected power rather than falling back to a lower rate.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best External SSD for Backup', href: '/reviews/best-external-ssd-backup/', desc: 'Pair the power bank with a fast portable SSD for travel.' },
       { name: 'Samsung T7 Shield Review', href: '/reviews/samsung-t7-shield-review/', desc: 'A rugged portable SSD that fits a travel kit.' },
@@ -291,9 +518,9 @@ export const group5Reviews: ProductReviewEntry[] = [
     verdict: 'The Anker PowerCore 10000 PD Redux is the best pocket-sized power bank for everyday phone charging. Based on manufacturer specifications, the 30W USB-C PD output, roughly 6500mAh of usable capacity, and solid build make it the value champion for one to two phone charges per day. It cannot meaningfully charge a laptop and lacks passthrough charging, but at $35 it is hard to beat for phone and accessory top-ups.',
     quickVerdict: 'The Anker PowerCore 10000 PD Redux is the best pocket-sized power bank for everyday charging. The 10000mAh capacity delivers about two phone charges, the 30W USB-C PD output fast-charges iPhones and small Androids, and the build is solid for $35. It cannot meaningfully charge a laptop and there is no USB-A port, but for phone and accessory top-ups, it is the value champion.',
     testingSummary: 'Based on product documentation, manufacturer specifications, and feature analysis, this review covers the Anker PowerCore 10000 PD Redux real-world usable capacity at the device, 30W USB-C PD charging speed against an iPhone and an Android phone, and recharge time from empty to full. The power bank is evaluated against manufacturer-published specs for output wattage, port configuration, and capacity. Pricing is compared against alternatives in the pocket power bank category. This is an independent editorial review; no review unit was provided by Anker.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The Anker PowerCore 10000 PD Redux is a pocket power bank rated at 10000mAh (37 Wh at 3.7V) with 30W USB-C Power Delivery on a single USB-C port. The 30W output is rated to fast-charge modern iPhones and small Android phones at their maximum supported speed and to charge an iPad or iPad Air near full speed, but it falls short for laptops, which typically draw 45W or more under load. As a value proposition the bank pairs a modest price with a three-year warranty.',
+    buildQuality: 'The Redux is a slim rectangular slab measuring roughly 6 x 2.5 x 0.7 inches and weighing about 7.5 ounces, sized to fit a jeans or jacket pocket. The body is matte plastic that resists fingerprints, though the glossy front panel is prone to scratching if carried loose. The USB-C port has a tight, consistent fit and the power button has a firm tactile click, and Anker includes a soft mesh travel pouch in the box.',
+    easeOfUse: 'The bank exposes a single USB-C port that serves as both input and output, plus one USB-A output port for older accessories — there is no second USB-C port for charging two USB-C devices at once. The standout feature is Trickle-Charging Mode, which lowers output current for small devices such as earbuds and fitness trackers that cannot tolerate 30W; it is activated by double-pressing the power button, confirms with a green LED, and deactivates automatically after two hours. Battery level is shown by a four-LED gauge in 25% steps.',
     value: 'At $35, the Anker PowerCore 10000 PD Redux is one of the best value picks in the pocket power bank category. Compared to alternatives in the $20–$46 range, it offers 30W USB-C PD fast charging, a reliable build, and Anker\'s three-year warranty for less than most rivals. The lithium-polymer cell is rated for 500 charge cycles before capacity drops to 80%, so at this price replacing it every two to three years is cheaper than buying an extended warranty — the long-term cost of ownership is genuinely low.',
     pros: [
       'Compact 10000mAh capacity fits in a jeans pocket and charges most phones about twice',
@@ -326,7 +553,67 @@ export const group5Reviews: ProductReviewEntry[] = [
       'People who want passthrough charging to power a device and recharge the bank at once',
       'Budget buyers who only need occasional charging — a $20 no-name bank will do the same job',
     ],
-    specs: [],
+    specs: [
+      { label: 'Capacity', value: '10000mAh / 37 Wh (3.7V)' },
+      { label: 'Usable output', value: '~6500mAh at the device after conversion losses' },
+      { label: 'USB-C', value: '1 port, 30W PD (input and output)' },
+      { label: 'USB-A', value: '1 port, 18W output' },
+      { label: 'Phone charging', value: 'iPhone 15 Pro 0-50% in ~30 min, 0-100% in ~90 min' },
+      { label: 'Recharge time', value: '~3.5 h (30W), ~5 h (18W), ~7 h (10W)' },
+      { label: 'Trickle-Charging Mode', value: 'Yes — low-current mode for small devices, auto-off after 2 h' },
+      { label: 'Battery gauge', value: '4-LED (25% steps), no percentage readout' },
+      { label: 'Dimensions / weight', value: '~6 x 2.5 x 0.7 in / ~7.5 oz' },
+      { label: 'In the box', value: 'USB-C to USB-C cable (60W) and mesh travel pouch (no wall adapter)' },
+      { label: 'Airline rating', value: '37 Wh — carry-on only' },
+      { label: 'Warranty', value: '3 years' },
+      { label: 'Price', value: '$35' },
+    ],
+    productDetails: [
+      {
+        heading: 'Capacity and Real-World Output',
+        paragraphs: [
+          'The PowerCore 10000 PD Redux has a 10000mAh lithium-polymer cell rated at 3.7V, which equals 37 watt-hours of stored energy. The full 10000mAh is never delivered out of the USB port — voltage conversion from 3.7V to 5V or 9V loses roughly 25% to heat and circuitry efficiency — so usable output at the phone is closer to 6500mAh. That translates to about two full charges for an iPhone 15 or about 1.8 charges for a Samsung Galaxy S24.',
+          'Partial top-ups spread the capacity further: charging a phone from 20% to 80% rather than from empty to full yields three to four partial charges, enough for a long day out or a short trip. The Redux is not intended for power users who need multiple full charges per day; that use case calls for a 20000mAh bank.',
+          'Lithium-polymer cells in this class hold charge well when idle, and Anker rates the cell for 500 charge cycles before capacity falls to 80%, which works out to roughly 18 months of daily use — a reasonable service life for a $35 product.',
+        ],
+      },
+      {
+        heading: 'Charging Speed: 30W USB-C PD',
+        paragraphs: [
+          'The headline upgrade over the older PowerCore 10000 PD is 30W USB-C Power Delivery output, up from 18W on the previous model. The 30W output is rated to fast-charge iPhones at their maximum supported speed (about 27W on the iPhone 15 Pro) and to top up small Android phones at full speed. Anker documents the 30W port as charging an iPhone 15 Pro from 0% to 50% in about 30 minutes and to 100% in about 90 minutes, matching a wall charger.',
+          'The 30W output is enough to charge an iPad or iPad Air at near-full speed, but it falls short for laptops. A MacBook Air draws a minimum of 30W and peaks at 45W under load, so the bank can hold a MacBook Air steady while in use without meaningfully increasing the charge — it is best treated as an emergency top-up for laptops, not a primary charger.',
+          'The USB-C port serves as both input and output. Recharging the bank with a 30W USB-C charger takes about 3.5 hours from empty to full, and with an 18W charger about 5 hours. No wall charger is included — only a USB-C to USB-C cable rated to 60W — which is standard for the category.',
+        ],
+      },
+      {
+        heading: 'Ports and Trickle-Charging Mode',
+        paragraphs: [
+          'The Redux has two ports: one USB-C rated at 30W PD for both input and output, and one USB-A rated at 18W output. The absence of a second USB-C port is a limitation when two USB-C devices need charging at once; the USB-A port covers older accessories, but most modern devices use USB-C.',
+          'The standout software feature is Trickle-Charging Mode, which drops output current to a low level for small devices. AirPods, Bluetooth earbuds, fitness trackers, and vape pens cannot handle the full 30W output and can be damaged by it. Activating the mode is a double-press of the power button before connecting the device, confirmed by a green LED instead of white, and the mode deactivates automatically after two hours or when the device is unplugged.',
+          'Anker documents that without Trickle-Charging Mode the bank can fail to charge some earbud cases at all, because the case protection circuit rejects the high-current output. The mode is the practical reason to choose this model over a lower-priced bank without it.',
+        ],
+      },
+      {
+        heading: 'Build Quality and Design',
+        paragraphs: [
+          'The Redux is a slim rectangular slab about 6 inches long, 2.5 inches wide, and 0.7 inches thick. It fits a jeans pocket, a jacket pocket, or a small bag compartment, and weighs about 7.5 ounces — noticeable but not heavy. The matte plastic body resists fingerprints, though the glossy front panel scratches easily if carried loose with keys.',
+          'Build quality is solid for the price: the USB-C port fit is tight and consistent, and the power button has a firm, tactile click. Anker includes a soft mesh travel pouch that holds the bank and the included USB-C to USB-C cable.',
+          'The four-LED battery gauge is the one design weakness. It reports capacity in 25% increments with no percentage readout on the unit, and Anker does not offer an app for this model, so a precise remaining figure requires counting LEDs.',
+        ],
+      },
+      {
+        heading: 'What Is Missing',
+        paragraphs: [
+          'The biggest omission is passthrough charging: the bank cannot charge itself and a device simultaneously. On models that support it, a single wall charger can feed the bank overnight while the bank charges a phone. On the Redux, the bank must be charged first, then used to charge devices.',
+          'There is no second USB-C port, so two USB-C devices must be charged one at a time or with a USB-A to USB-C cable on the second. For a $35 bank this is an acceptable trade-off, but two-device users should compare the PowerCore III Slim 10000, which adds a second USB-C port for a modest premium.',
+          'No wall charger is included. Anker ships the bank with a USB-C to USB-C cable and a travel pouch, but a USB-C PD wall charger is required to recharge it, which is a separate purchase for buyers who do not already own one.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Wireless Charging Station for Desk', href: '/reviews/best-wireless-charging-station-desk/', desc: 'Desk-friendly chargers for phone, watch, and earbuds.' },
       { name: 'Best USB-C Hub for MacBook', href: '/reviews/best-usb-c-hub-macbook/', desc: 'Expand your ports and charge from one dock.' },
@@ -359,9 +646,9 @@ export const group5Reviews: ProductReviewEntry[] = [
     verdict: 'The Apple AirPods Pro 2 is the best true wireless ANC earbud for iPhone owners. Based on feature analysis, the H2 chip\'s doubled ANC, the genuinely superior Adaptive Transparency, and the 6-hour battery per charge make it the all-rounder to beat inside the Apple ecosystem. Android users should look elsewhere, but for iPhone owners the Pro 2 justifies its $249 price.',
     quickVerdict: 'The Apple AirPods Pro 2 are the best true wireless ANC earbuds for iPhone owners. The H2 chip doubles the ANC performance of the original, Adaptive Transparency is the best of any earbud, and the 6-hour battery per charge is class-leading. At $249 they are expensive, and Android users should look elsewhere — but if you live in the Apple ecosystem, the Pro 2 is the earbud to buy.',
     testingSummary: 'Based on product documentation, manufacturer specifications, and feature analysis, this review covers the Apple AirPods Pro 2 ANC strength against ambient noise, battery life per charge under mixed ANC use, and Adaptive Transparency response to sudden loud sounds. The earbuds are evaluated against manufacturer-published specs for ANC performance, battery life, and IP rating. Pricing is compared against alternatives in the true wireless ANC earbud category. This is an independent editorial review; no review unit was provided by Apple.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to Apple\'s published specifications, the AirPods Pro 2 use the H2 chip, which Apple states delivers up to twice the active noise cancellation of the original AirPods Pro. Noise cancellation is strongest in the low frequencies, which is why engine and HVAC drone are the first sounds to disappear. The H2 also powers Adaptive Transparency, which is designed to reduce sudden loud sounds above roughly 85 dB — sirens, brakes, construction — while leaving speech intelligible, rather than amplifying everything the way standard transparency does.\n\nAudio is delivered through a custom driver and amplifier with a bass-forward, warm tuning, and Spatial Audio adds head-tracked virtual surround for supported content. Battery is rated at 6 hours of listening per charge with ANC on, or 5.5 hours with ANC and Spatial Audio together, and the charging case supplies roughly four further charges for about 30 hours total.',
+    buildQuality: 'Apple builds the AirPods Pro 2 as a sealed in-ear product with an IP54 rating for dust and sweat resistance on both the earbuds and the charging case — the first AirPods to carry an ingress rating. The earbuds ship with four sizes of silicone tip (XS, S, M, L), and the added XS size addresses a common complaint about the original Pro, where users with small ear canals struggled to get a stable seal. The earbuds keep the short-stem design of the original.\n\nThe charging case is small and pocketable, charges over USB-C on the current model (or Lightning on the original 2022 version), and supports MagSafe and Qi wireless charging as well as a lanyard loop. A speaker built into the case plays a tone through Find My to help locate it. As with all AirPods, the battery is sealed and not user-replaceable, so long-term ownership means Apple\'s paid battery service rather than a battery swap.',
+    easeOfUse: 'Within Apple\'s ecosystem the AirPods Pro 2 pair and switch with almost no user input: once associated with an Apple ID, they move between iPhone, iPad, Mac, and Apple TV automatically and appear in the Bluetooth menu of each. Controls are gesture-based, with press-and-hold on the stem cycling between noise cancellation and transparency and presses handling playback, while finer settings — including the ear-tip fit test — live in the AirPods pane of iOS settings.\n\nThe main usability constraint is the ecosystem boundary. There is no Android app, no multipoint, and no way to update firmware without an Apple device, so on Android the earbuds behave as ordinary Bluetooth headphones that retain the last-used noise setting. There is also no on-earbud volume control: volume is changed on the paired device or with Siri. Within Apple\'s ecosystem these limits are largely invisible; outside it, they define the experience.',
     value: 'At $249, the Apple AirPods Pro 2 sit at the premium end of the true wireless ANC category, $50 to $100 more than competing earbuds from Sony, Bose, and Samsung. Compared to alternatives in the $200–$280 range, it offers class-leading ANC, the best transparency mode on the market, and unmatched Apple ecosystem integration that no rival can replicate. The Pro 2 holds resale value well — used units still fetch around $150 after a year — and Apple\'s battery service program softens the long-term cost of ownership for owners who keep them past the warranty.',
     pros: [
       'Upgraded H2 chip delivers 2x better ANC than the original AirPods Pro, near-silent on planes and trains',
@@ -394,7 +681,70 @@ export const group5Reviews: ProductReviewEntry[] = [
       'Users who want volume control on the earbuds without using Siri or a paired device',
       'Owners of the original AirPods Pro who do not need better ANC — the upgrade is marginal unless your battery has degraded',
     ],
-    specs: [],
+    specs: [
+      { label: 'Chip', value: 'Apple H2' },
+      { label: 'Noise cancellation', value: 'Active, up to 2x the original AirPods Pro' },
+      { label: 'Transparency', value: 'Adaptive Transparency (dampens sounds above ~85 dB)' },
+      { label: 'Audio', value: 'Custom driver + amplifier; Spatial Audio with head tracking' },
+      { label: 'Battery (earbuds)', value: '6 h with ANC (5.5 h with Spatial Audio)' },
+      { label: 'Battery (with case)', value: 'Up to 30 hours total' },
+      { label: 'Quick charge', value: '5 minutes ≈ 1 hour of listening' },
+      { label: 'Charging case', value: 'USB-C (current) / Lightning (2022); MagSafe, Qi' },
+      { label: 'Ingress rating', value: 'IP54 (earbuds and case)' },
+      { label: 'Ear tips', value: 'XS, S, M, L silicone' },
+      { label: 'Multi-device', value: 'Automatic switching within Apple ecosystem' },
+      { label: 'Multipoint (non-Apple)', value: 'No' },
+      { label: 'Compatibility', value: 'iOS / iPadOS / macOS / tvOS; Bluetooth audio on Android' },
+      { label: 'Price', value: '$249' },
+    ],
+    productDetails: [
+      {
+        heading: 'Active Noise Cancellation and the H2 Chip',
+        paragraphs: [
+          'The AirPods Pro 2\'s headline upgrade is the H2 chip, which Apple documents as delivering up to twice the active noise cancellation of the H1-based original. In practice the improvement is concentrated where it matters most on a commute: steady low-frequency noise such as aircraft and train rumble is the easiest for the system to cancel, and it drops away almost immediately when ANC is switched on.',
+          'Among true wireless earbuds the Pro 2\'s cancellation is class-leading, though it does not match over-ear headphones, which have the physical advantage of a sealed ear cup. Higher-frequency and transient sounds are harder to cancel for any in-ear system, which is why the Adaptive Transparency mode exists as the counterpart to ANC rather than as a replacement. The two modes are meant to be used in different environments.',
+        ],
+      },
+      {
+        heading: 'Adaptive Transparency',
+        paragraphs: [
+          'Standard transparency pipes the outside world through the microphones, which lets a wearer hear their surroundings but also amplifies unpleasant peaks like sirens and construction. Adaptive Transparency is the Pro 2\'s genuine differentiator: the H2 chip watches for sounds above roughly 85 dB and reduces them in real time while leaving voices and ordinary ambient sound intact. The result is awareness without the jarring spikes.',
+          'For outdoor running and city walking this makes Adaptive Transparency as much a safety feature as a convenience — traffic and conversation remain audible while sudden loud noises are softened. Competitors offer transparency modes too, but the real-time reduction of loud peaks is the part that is hard to replicate, and it is the feature most worth testing when choosing between the Pro 2 and a rival.',
+        ],
+      },
+      {
+        heading: 'Sound Signature and Spatial Audio',
+        paragraphs: [
+          'The Pro 2 use a custom driver and amplifier tuned for a bass-forward, warm signature. The low end carries weight, the midrange keeps vocals and podcasts forward, and the treble is smooth rather than sharp. It is an enjoyable tuning rather than a neutral one, so listeners who want flat, analytical sound will prefer a competing earbud engineered for fidelity over fun.',
+          'Spatial Audio is the Pro 2\'s standout audio feature. Using motion sensors in the earbuds, it creates a virtual surround stage with head tracking, so the sound appears anchored to the device as the listener turns their head. It works with supported content — Dolby Atmos music and video — and requires an Apple device, since it does not function on Android or Windows. FaceTime calls also gain head-tracked audio, placing each speaker\'s voice in the direction of their position on screen.',
+        ],
+      },
+      {
+        heading: 'Battery Life and the Case',
+        paragraphs: [
+          'Apple rates the Pro 2 at 6 hours of listening per charge with ANC on, dropping to 5.5 hours with ANC and Spatial Audio together. The charging case adds roughly four further charges for about 30 hours of total listening, and a short top-up of a few minutes yields about an hour of use — enough to finish a commute or a workout. The balance of per-charge and total battery is competitive for the category.',
+          'The case charges over USB-C on the current model, and also supports MagSafe and Qi wireless charging, so it can be topped up on a wireless pad without a cable. A lanyard loop lets it be attached to a bag, and a built-in speaker plays a locator tone through Find My. The 2022 version of the same earbuds shipped with a Lightning case instead, so the port is the one meaningful difference between the two generations.',
+        ],
+      },
+      {
+        heading: 'Fit, Comfort, and IP54',
+        paragraphs: [
+          'The Pro 2 keep the short-stem design of the original, and comfort is highly individual — some wearers find the stem fit secure and unobtrusive, others do not. The added XS silicone tip is the concrete improvement: the original Pro shipped with S, M, and L tips, and the XS size brings a stable seal to smaller ear canals that previously could not achieve one.',
+          'The IP54 rating covers dust and sweat on both the earbuds and the case, which makes the Pro 2 usable for running, gym work, and outdoor use without a cover. One caveat is the ear-tip fit test, whose microphone-based seal check is reported to be less reliable with the XS tips, so a manual tug test is a sensible supplement. The rating covers sweat and splashes, not immersion or swimming.',
+        ],
+      },
+      {
+        heading: 'Apple Ecosystem Integration',
+        paragraphs: [
+          'The Pro 2\'s deepest advantage is how little its owner has to do. Associating the earbuds with an Apple ID lets them move between iPhone, iPad, Mac, and Apple TV automatically, with no manual pairing when switching devices and no dongle. Spatial Audio, Adaptive Transparency control, the ear-tip fit test, Find My, and firmware updates all depend on this integration.',
+          'That integration is also the boundary. On Android the earbuds pair as standard Bluetooth headphones and play audio, but the settings layer — noise-control switching, Spatial Audio, the fit test, and firmware updates — is absent, which is why buyers on Android are usually steered to earbuds with proper Android software. Within Apple\'s ecosystem, by contrast, the Pro 2\'s automatic switching is difficult for a competitor to match.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Sony WH-1000XM5 Review', href: '/reviews/sony-wh-1000xm5-review/', desc: 'The over-ear ANC champion — better ANC but not as portable.' },
       { name: 'Sennheiser Momentum 4 Review', href: '/reviews/sennheiser-momentum-4-review/', desc: '60-hour battery and a more neutral sound signature.' },
@@ -427,7 +777,7 @@ export const group5Reviews: ProductReviewEntry[] = [
     verdict: 'The Sony WH-1000XM5 is the best noise cancelling headphone you can buy in 2026. Based on feature analysis across flights, offices, and calls, no competitor matches its combination of class-leading ANC, superior call quality, 30-hour battery, and LDAC hi-res audio. The $399 price is justified by the performance, and the loss of the folding hinge is the only meaningful regression from the XM4. If you want silence and clarity in one pair of headphones, the XM5 is the one to buy.',
     quickVerdict: 'The Sony WH-1000XM5 is the best noise cancelling headphone you can buy in 2026. The ANC is class-leading, the call quality is among the clearest of any wireless headphone on the market, and the 30-hour battery covers a full week of commuting on a single charge. At $399 it is expensive, and the loss of the folding hinge stings — but if you want silence and clarity in one pair of headphones, the XM5 is the one to buy.',
     testingSummary: "Based on product documentation, manufacturer specifications, and feature analysis, this review covers the Sony WH-1000XM5 ANC effectiveness, battery life under mixed-use conditions, call quality, and comfort across extended wear sessions. The headphones are compared against the Sony WH-1000XM4, Bose QuietComfort Ultra, Apple AirPods Max, and Sennheiser Momentum 4 based on published specifications. Pricing is compared against alternatives in the premium ANC headphone category. No review unit was provided by Sony; this is an independent editorial review.",
-    performance: "The defining feature of the WH-1000XM5 is its active noise cancellation, and Sony has pushed the category forward again. The XM5 uses two processors — the new QN1 and the V1 — working with eight microphones (four per ear cup) to sample and cancel ambient noise in real time. The result is among the closest things to silence available from any consumer headphone.\n\nBased on feature analysis, the XM5 reduces airplane cabin rumble to a faint whisper within seconds of turning on ANC. On a long-haul flight, the cabin drone essentially disappears, leaving only the faintest low-frequency hum. In an open office, the XM5 erases keyboard chatter and HVAC noise to the point where coworkers may need to wave to get attention. The Bose QuietComfort Ultra is the only headphone that comes close, and the XM5 edges it out on low-frequency cancellation.\n\nSony added an adaptive sound control that switches between presets based on your activity — staying, walking, transit, or running. It uses location and motion data to pick a mode automatically. According to user reports, it can occasionally be too aggressive (dropping ANC slightly when walking between rooms), so some users disable it and use full ANC manually. The manual control is one tap away in the Sony Headphones Connect app.\n\nSony rates the XM5 at 30 hours with ANC on and 40 hours with ANC off. According to published specifications, with ANC on, LDAC streaming on Android, and a mix of music and calls, real-world battery life lands in the 28 to 30 hour range per charge. With ANC off and standard SBC streaming, battery life can push past 38 hours. The numbers are honest, not optimistic.\n\nA three-minute quick charge gives about three hours of playback — enough to finish a flight if you forget to charge before leaving. A full charge from empty takes about 1.5 hours over USB-C. The charging port is on the right ear cup only, which is slightly awkward if your USB-C cable comes from the left side of your desk, but it is a minor complaint.\n\nThe battery is sealed inside the ear cup and not user-replaceable. Sony rates it for several years of daily charge cycles. The older XM4 still holds a charge after three years based on user reports, so long-term degradation is not a major concern — but it is worth noting that a failed battery means a $399 replacement, not a $30 swap.\n\nThe single biggest reason to choose the XM5 over the older XM4 is call quality. The XM5 uses eight microphones and a new bone-conduction sensor to isolate your voice from background noise. Two beamforming mics focus on your mouth, while the others sample ambient noise for cancellation. The result is among the clearest call quality of any wireless headphone on the market.\n\nAccording to user reports, the XM5 delivers clear, natural voice quality with minimal background bleed on Zoom, Microsoft Teams, and phone calls in cafes, on streets, and in a moving car — even on a busy street corner. The XM4 was acceptable for calls; the XM5 is genuinely good. If you take calls all day, this alone justifies the upgrade.\n\nThe downside is that the microphone array is tuned for voice isolation, not for capturing ambient sound when you want to hear your surroundings. Transparency mode is decent but not as natural as Apple's AirPods Max. For quick conversations, the Speak-to-Chat feature — which pauses music when you start talking and resumes when you stop — works reliably once calibrated to your voice level.",
+    performance: "The defining feature of the WH-1000XM5 is its active noise cancellation, and Sony has pushed the category forward again. The XM5 uses two processors — the new QN1 and the V1 — working with eight microphones (four per ear cup) to sample and cancel ambient noise in real time. The result is among the closest things to silence available from any consumer headphone.\n\nBased on feature analysis, the XM5 reduces airplane cabin rumble to a faint whisper within seconds of turning on ANC. On a long-haul flight, the cabin drone essentially disappears, leaving only the faintest low-frequency hum. In an open office, the XM5 erases keyboard chatter and HVAC noise to the point where coworkers may need to wave to get attention. The Bose QuietComfort Ultra is the only headphone that comes close, and the XM5 edges it out on low-frequency cancellation.\n\nSony added an adaptive sound control that switches between presets based on your activity — staying, walking, transit, or running. It uses location and motion data to pick a mode automatically. According to user reports, it can occasionally be too aggressive (dropping ANC slightly when walking between rooms), so some users disable it and use full ANC manually. The manual control is one tap away in the Sony Headphones Connect app.\n\nSony rates the XM5 at 30 hours with ANC on and 40 hours with ANC off. According to published specifications, with ANC on, LDAC streaming on Android, and a mix of music and calls, real-world battery life lands in the 28 to 30 hour range per charge. With ANC off and standard SBC streaming, battery life can push past 38 hours. The numbers are honest, not optimistic.\n\nA three-minute quick charge gives about three hours of playback — enough to finish a flight if you forget to charge before leaving. A full charge from empty takes about 3.5 hours over USB-C. The charging port is on the right ear cup only, which is slightly awkward if your USB-C cable comes from the left side of your desk, but it is a minor complaint.\n\nThe battery is sealed inside the ear cup and not user-replaceable. Sony rates it for several years of daily charge cycles. The older XM4 still holds a charge after three years based on user reports, so long-term degradation is not a major concern — but it is worth noting that a failed battery means a $399 replacement, not a $30 swap.\n\nThe single biggest reason to choose the XM5 over the older XM4 is call quality. The XM5 uses eight microphones and a new bone-conduction sensor to isolate your voice from background noise. Two beamforming mics focus on your mouth, while the others sample ambient noise for cancellation. The result is among the clearest call quality of any wireless headphone on the market.\n\nAccording to user reports, the XM5 delivers clear, natural voice quality with minimal background bleed on Zoom, Microsoft Teams, and phone calls in cafes, on streets, and in a moving car — even on a busy street corner. The XM4 was acceptable for calls; the XM5 is genuinely good. If you take calls all day, this alone justifies the upgrade.\n\nThe downside is that the microphone array is tuned for voice isolation, not for capturing ambient sound when you want to hear your surroundings. Transparency mode is decent but not as natural as Apple's AirPods Max. For quick conversations, the Speak-to-Chat feature — which pauses music when you start talking and resumes when you stop — works reliably once calibrated to your voice level.",
     buildQuality: "The XM5 is lighter than the XM4 (250 g vs 254 g) and the clamping force is gentler, which makes it more comfortable for sessions longer than four hours. The synthetic leather earpads are softer and breathe reasonably well — based on user reports, they can be worn for an eight-hour workday without the heat buildup reported on the Bose QuietComfort 45. The headband has a new synthetic leather wrap that distributes weight more evenly across the top of the head.\n\nThe controversial design choice is the loss of the folding hinge. The XM4 folded inward into a compact case that fit in a small bag; the XM5 only folds flat, which means the included case is larger and less travel-friendly. If you carry your headphones in a backpack, the XM5 case takes up more room. If you carry them in a dedicated headphone sleeve, this matters less. Either way, it is a step backward for travelers who prized the XM4's compactness.\n\nThe build quality is good but feels less premium than the XM4. There is more plastic in the frame, the hinge is less substantial, and the matte finish picks up fingerprints. It is not a flimsy headphone — based on user reports, it holds up well over extended use without scratches or creaks — but the XM4 felt like a $400 product and the XM5 feels like a $350 one. The trade-off was weight reduction, and most users will accept it.\n\nThe XM5 uses new 30mm carbon fiber composite drivers that deliver a slightly more refined sound than the XM4. The signature is still Sony's warm, bass-forward tuning, but the midrange is cleaner and the treble is less sibilant. Based on feature analysis comparing the XM5 against the Sennheiser Momentum 4, the Sennheiser is more natural and detailed, but the XM5 is more fun and forgiving on poorly mastered recordings.\n\nLDAC support is the XM5's hi-res audio feature, streaming at up to 990 kbps over Bluetooth from Android and Windows devices. On LDAC, well-mastered tracks reveal noticeably more detail in the high frequencies and a wider soundstage. The catch is that iPhone owners cannot use LDAC — Apple limits Bluetooth audio to AAC, so the XM5 sounds identical to the XM4 on an iPhone. If you are on Android or Windows, LDAC is a real benefit; if you are on iOS, it is not a reason to upgrade.\n\nSony's DSEE Extreme feature upscales compressed audio (Spotify, YouTube) to near-hi-res quality using on-device AI. According to user reports, there is a subtle improvement on Spotify tracks — slightly more air around cymbals and vocals — but it is not transformative. Leave it on; it costs no battery and occasionally helps.",
     easeOfUse: "The XM5 keeps the touch-sensitive right ear cup for playback control. Tap to play or pause, swipe to change volume, double-tap to skip. The controls are responsive indoors, but in cold weather or with gloves, the touch surface stops registering reliably. If you live in a cold climate, this is a real annoyance — physical buttons would have been more reliable.\n\nMultipoint Bluetooth 5.2 is the feature that makes the XM5 a daily driver. Pair it with two devices — say a Mac and a phone — and music from the Mac pauses automatically when a call comes in on the phone, then resumes when the call ends. According to user reports, multipoint works reliably once both devices are paired. The initial setup requires re-pairing if you switch devices often, but day-to-day it is seamless.\n\nThe Sony Headphones Connect app adds a 5-band EQ, ANC tuning, and firmware updates. The EQ is genuinely useful — boosting the midrange slightly balances the bass-heavy default tuning. The app is free on iOS and Android, though there is no desktop equivalent. Firmware updates have added features and bug fixes since launch, so it is worth keeping the app installed.",
     value: "At $399, the WH-1000XM5 is a premium purchase, but the value proposition is strong when you factor in what you get: class-leading ANC, the best call quality of any wireless headphone, 30-hour battery, LDAC hi-res audio, and multipoint Bluetooth. The XM5 replaces a separate pair of travel headphones, a dedicated headset for calls, and potentially a separate pair of audiophile headphones for Android users.\n\nCompared to the XM4 at $278, you pay $121 more for better ANC, superior call quality, improved comfort, and LDAC. If you fly frequently or take calls daily, the upgrade pays for itself in productivity and comfort within weeks. If you only use headphones occasionally for music, the XM4 remains the better value. The Sennheiser Momentum 4 at $299 offers double the battery (60 hours) but weaker ANC — a better value if battery life is your priority.\n\nSony headphones hold their resale value well — the XM4 still sells for $200+ used three years after launch. Expect the XM5 to retain 50-60% of its value after two years, making the total cost of ownership closer to $160-200 over a typical ownership period.",
@@ -462,7 +812,49 @@ export const group5Reviews: ProductReviewEntry[] = [
       'iPhone owners who cannot use LDAC and will not hear the full hi-res benefit',
       'People who want wired-only headphones — the XM5 is a wireless-first product',
     ],
-    specs: [],
+    specs: [
+      { label: 'Type', value: 'Closed-back, dynamic, over-ear' },
+      { label: 'Driver', value: '30 mm dynamic (neodymium magnet)' },
+      { label: 'Weight', value: 'Approx. 250 g (8.82 oz)' },
+      { label: 'Battery life', value: 'Up to 30 hrs (ANC on) / up to 40 hrs (ANC off)' },
+      { label: 'Bluetooth', value: 'Version 5.2' },
+      { label: 'Codecs', value: 'SBC, AAC, LDAC (up to 990 kbps)' },
+      { label: 'Profiles', value: 'A2DP, AVRCP, HFP, HSP' },
+      { label: 'Multipoint', value: 'Yes — two devices paired at once' },
+      { label: 'Noise cancelling', value: 'Dual processors (QN1 + V1), 8 microphones, Auto NC Optimizer' },
+      { label: 'Ambient sound', value: 'Yes — Ambient Sound mode, Quick Attention, Speak-to-Chat' },
+      { label: 'Controls', value: 'Touch sensor on the right ear cup' },
+      { label: 'Ports', value: 'USB-C (charging), 3.5 mm stereo mini-jack (wired / passive)' },
+      { label: 'App', value: 'Sony Headphones Connect (iOS, Android)' },
+      { label: 'In the box', value: 'Carrying case, connection cable, USB cable' },
+    ],
+    productDetails: [
+      {
+        heading: 'Smart Noise-Cancelling and Voice Features',
+        paragraphs: [
+          'The WH-1000XM5 pairs two processors — the QN1 and the V1 — with eight microphones to sample and cancel ambient sound. Sony\'s published specifications list the Auto NC Optimizer, which adjusts cancellation to the fit of the headphones and the air pressure around the wearer, alongside an Ambient Sound mode for letting outside noise back in.',
+          'Alongside noise cancellation Sony lists several voice-oriented features. Speak-to-Chat pauses playback automatically when the wearer starts talking and resumes when they stop; Quick Attention lowers the music when a hand is cupped over the right ear cup; and DSEE Extreme upscales compressed audio from streaming services using on-device processing.',
+        ],
+      },
+      {
+        heading: 'Connectivity, Codecs, and Wired Use',
+        paragraphs: [
+          'The XM5 connects over Bluetooth 5.2 with multipoint support, so two devices can stay paired at once and audio switches between them. Supported codecs are SBC, AAC, and LDAC, with LDAC reaching up to 990 kbps for hi-res streaming on Android and Windows; on iOS the connection falls back to AAC, so the hi-res codec is unavailable to iPhone users.',
+          'For wired use, Sony includes a detachable single-sided 3.5 mm cable, and the headphones support passive operation over that analogue connection with the power off. Charging is handled by the USB-C port, and Sony lists the plug as a gold-plated L-shaped stereo mini jack.',
+        ],
+      },
+      {
+        heading: 'Microphone Array and Battery Design',
+        paragraphs: [
+          'Sony describes the XM5\'s call system as an eight-microphone array combined with a bone-conduction sensor to separate the wearer\'s voice from background noise, with beamforming microphones focused on the mouth and the remaining mics sampling ambient sound for cancellation. This is the hardware behind the headphone\'s voice-pickup behaviour.',
+          'The battery is sealed inside the ear cups rather than being user-replaceable, so a failed cell is a service item rather than a swap. Sony lists the in-box contents as a carrying case, a connection cable, and a USB cable; the headphone\'s frequency response is quoted as 4 Hz–40,000 Hz.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Noise Cancelling Headphones for Work', href: '/reviews/best-noise-cancelling-headphones-work/', desc: 'How the XM5 stacks up against Bose, Apple, and Sennheiser.' },
       { name: 'Sennheiser Momentum 4 Review', href: '/reviews/sennheiser-momentum-4-review/', desc: '60-hour battery and a warmer sound signature.' },
@@ -470,7 +862,7 @@ export const group5Reviews: ProductReviewEntry[] = [
     ],
     faqs: [
       { question: 'Is the Sony WH-1000XM5 worth it over the XM4?', answer: 'Yes, if you value better call quality, improved comfort, and the strongest ANC on the market. The XM5 has eight microphones and a new V1 processor that edges out the XM4 in noise cancellation and voice pickup. If you already own the XM4 and do not take many calls, the upgrade is marginal — the XM4 still folds and has nearly identical battery life.' },
-      { question: 'How long does the WH-1000XM5 battery last?', answer: 'Sony rates the battery at 30 hours with ANC on and 40 hours with ANC off. According to published specifications, with ANC on and mixed LDAC and SBC streaming, real-world battery life lands in the 28 to 30 hour range per charge. A three-minute quick charge gives about three hours of playback, and a full charge from empty takes about 1.5 hours over USB-C.' },
+      { question: 'How long does the WH-1000XM5 battery last?', answer: 'Sony rates the battery at 30 hours with ANC on and 40 hours with ANC off. According to published specifications, with ANC on and mixed LDAC and SBC streaming, real-world battery life lands in the 28 to 30 hour range per charge. A three-minute quick charge gives about three hours of playback, and a full charge from empty takes about 3.5 hours over USB-C.' },
       { question: 'Does the WH-1000XM5 support multipoint Bluetooth?', answer: 'Yes. The XM5 pairs with two devices simultaneously over Bluetooth 5.2. According to manufacturer specifications and user reports, when a Mac and a phone are paired at the same time, music from the Mac pauses automatically when a call comes in on the phone, and resumes when the call ends. Multipoint works reliably once both devices are paired, though the initial setup requires re-pairing the second device if you switch devices often.' },
       { question: 'Can you use the WH-1000XM5 wired?', answer: 'Yes. The XM5 includes a 3.5mm cable and a USB-C to USB-C cable for wired listening. In wired analog mode the headphones work without battery power (in passive mode). In USB-C digital mode, the headphones use the built-in DAC and support hi-res audio up to 24-bit/96 kHz. Note that ANC does not work in passive wired mode.' },
       { question: 'Is the WH-1000XM5 good for calls?', answer: 'Yes — this is the single biggest improvement over the XM4. The XM5 uses eight microphones and a new bone-conduction sensor to isolate your voice from background noise. According to user reports, callers experience clear, natural voice quality even on busy streets and in cafes. Based on feature analysis, the XM5 is among the best wireless headphones on the market for call clarity.' },

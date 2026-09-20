@@ -29,6 +29,7 @@ import type {
 } from '../best';
 import type {
   ReviewEditorial,
+  ProductDetailSection,
 } from '../products';
 
 // ============================================================
@@ -149,6 +150,8 @@ export type ReviewContent = ToolStepContent & {
   notFor: string[];
   /** Optional evidence metadata (Phase 3). */
   editorial?: ReviewEditorial;
+  /** Optional product-specific deep-dive modules (Phase 1 content recovery). */
+  productDetails?: ProductDetailSection[];
 };
 
 export type ComparisonContent = ToolStepContent & {

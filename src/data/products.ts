@@ -12,6 +12,17 @@ export interface ProductSpec {
   value: string;
 }
 
+/**
+ * A product-specific deep-dive module (Phase 1 content recovery).
+ * Rendered inside the optional "Detailed Review" section as an H3 subhead
+ * followed by one or more paragraphs. Only rendered when present, so entries
+ * without `productDetails` produce byte-identical output to before.
+ */
+export interface ProductDetailSection {
+  heading: string;
+  paragraphs: string[];
+}
+
 export interface ProductReviewEntry {
   slug: string;
   productName: string;
@@ -39,6 +50,9 @@ export interface ProductReviewEntry {
   bestFor: string[];
   notFor: string[];
   specs: ProductSpec[];
+  /** Optional product-specific deep-dive modules (Phase 1 content recovery).
+   * Rendered as a "Detailed Review" section with H3 subheads only when present. */
+  productDetails?: ProductDetailSection[];
   alternatives: { name: string; href: string; desc: string }[];
   faqs: ProductFaq[];
   compareSlugs?: string[];
@@ -63,6 +77,10 @@ export interface ReviewEditorial {
   evidenceNote?: string;
   /** Optional single-product decision statement. */
   decisionNote?: string;
+  /** Optional override for the methodology section heading (H2 + table of
+   * contents). Defaults to "Testing Summary" when absent, so entries without
+   * an override are unaffected. */
+  sectionLabel?: string;
 }
 
 export const productReviews: ProductReviewEntry[] = [

@@ -53,7 +53,70 @@ export const group1Reviews: ProductReviewEntry[] = [
       'You want premium aluminum build quality — look at the Keychron K2 Pro ($130)',
       'You need per-key RGB customization software — the K8 has only key combos',
     ],
-    specs: [],
+    specs: [
+      { label: 'Switch type', value: 'Mechanical, hot-swappable (Gateron)' },
+      { label: 'Switch options', value: 'Brown (tactile), Red (linear), Blue (clicky)' },
+      { label: 'Layout', value: 'Tenkeyless (87 keys)' },
+      { label: 'Connectivity', value: 'Bluetooth 5.1 / USB-C wired' },
+      { label: 'Multi-device pairing', value: 'Up to 3 devices' },
+      { label: 'Battery', value: '4000 mAh, ~78 h (backlight medium, RGB off)' },
+      { label: 'Charging', value: 'USB-C, ~3 h; usable while charging' },
+      { label: 'Backlight', value: 'White LED (per-key RGB option)' },
+      { label: 'Keycap material', value: 'ABS, Cherry profile' },
+      { label: 'Key rollover', value: 'N-key rollover' },
+      { label: 'Case material', value: 'ABS plastic' },
+      { label: 'Compatibility', value: 'macOS, Windows, iPadOS, Android (dual-printed legends)' },
+      { label: 'Hot-swap option', value: '+$10' },
+      { label: 'Price', value: '$84' },
+    ],
+    productDetails: [
+      {
+        heading: 'Gateron Brown Switches and Typing Feel',
+        paragraphs: [
+          'Keychron ships the K8 with a choice of Gateron mechanical switches, and brown is the default recommendation for office use. Brown switches are tactile: they have a bump at the actuation point, around 2 mm into the stroke, that tells the finger a key has registered, and they bottom out at about 4 mm with roughly 45 g of actuation force. That is lighter than a typical membrane keyboard, which is part of why long typing sessions fatigue the hands less.',
+          'The switch flavor decides the sound. Brown is the moderate option — tactile but not clicky, which keeps it from being disruptive in a shared office. Red switches are linear and quieter still but give no tactile confirmation, and blue switches are deliberately loud and belong in a private room. Because the keyboard is offered in a hot-swappable version, the switch choice is not permanent.',
+        ],
+      },
+      {
+        heading: 'Hot-Swappable Switch Design',
+        paragraphs: [
+          'The hot-swap option adds about $10 and is the single most consequential upgrade to the K8. A hot-swappable board accepts switch swaps with a puller and no soldering, which turns the keyboard from a fixed product into an adjustable one: a buyer who finds brown switches too quiet can move to a more tactile switch, and anyone who prefers silence can fit linear or silent switches.',
+          'The practical benefit is repair. Mechanical switches are rated for tens of millions of presses but do fail eventually, and on a non-hot-swappable keyboard a single dead switch means a dead board. On the hot-swap K8 the failed switch is pulled and replaced individually, which extends the keyboard\'s useful life well beyond a sealed alternative.',
+        ],
+      },
+      {
+        heading: 'Bluetooth 5.1 and Multi-Device Pairing',
+        paragraphs: [
+          'The K8 pairs over Bluetooth 5.1 with up to three devices and switches among them with a key combination rather than re-pairing. Keychron documents the same dual-printed Mac and Windows legends backed by a hardware toggle on the side of the case, so the keyboard reads correctly on either platform. It is also registered as compatible with iPadOS and Android.',
+          'Bluetooth switching is the one place the keyboard shows its price tier: there is a short delay of a second or two as the connection transfers to the newly selected device, which is tolerable for occasional switching but noticeable if you hop between devices constantly. In active typing, latency is low enough to be imperceptible, and a USB-C wired mode drops it further and doubles as the charging path.',
+        ],
+      },
+      {
+        heading: 'Battery Life and Charging',
+        paragraphs: [
+          'The K8 carries a 4000 mAh battery, which is large for a wireless keyboard, and Keychron rates it at roughly 78 hours of active typing with the white backlight at medium and RGB off. That is effectively a week of heavy use per charge. Turning on per-key RGB cuts battery life drastically, which is the main reason the RGB version is hard to recommend for office work.',
+          'Charging is over USB-C and takes about three hours from empty, and the keyboard continues to type while it charges, so a flat battery does not interrupt work. For office use the sensible configuration is RGB off with the white backlight at medium — that is the setting that produces the rated week of runtime.',
+        ],
+      },
+      {
+        heading: 'Build: Plastic Case and ABS Keycaps',
+        paragraphs: [
+          'The K8\'s clearest cost saving is its case: the shell is ABS plastic, textured to hide fingerprints. It feels solid in the hand and does not rattle, but under firm typing there is a slight flex toward the center of the board, most noticeable when bottoming out the spacebar. This does not affect function, but it is the reason the K8 is a $84 keyboard rather than a premium one; the aluminum Keychron K2 Pro is the step up for buyers who want a rigid case.',
+          'The stock keycaps are thin ABS in Cherry profile. ABS is known to develop a shine over months of heavy use — a cosmetic change, not a defect — and because the keyboard uses a standard Cherry-profile mount, any compatible PBT set can replace them. Swapping to PBT is the conventional upgrade once the stock caps begin to polish.',
+        ],
+      },
+      {
+        heading: 'Tenkeyless Layout and Ergonomics',
+        paragraphs: [
+          'The K8 is a tenkeyless board with 87 keys, meaning it omits the numeric keypad and the roughly four inches of width that come with it. The practical effect is that the mouse sits closer to the body, which reduces the reach across the desk that leads to shoulder tension. For anyone who types, codes, or browses more than they enter numbers, the TKL layout is the ergonomic default.',
+          'The trade-off is the missing keypad, which matters for heavy spreadsheet or data-entry work. Keychron\'s own range covers that case with the compact K4 and the full-size K10. The K8\'s layout also carries a complete function layer — media controls, backlight controls, and the Mac/Windows toggle are all on the Fn row — and the legends are printed front-facing so they stay readable as the caps wear.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Office Mechanical Keyboard', href: '/reviews/best-office-mechanical-keyboard/', desc: 'Our full roundup including the K8.' },
       { name: 'Logitech MX Keys S Review', href: '/reviews/logitech-mx-keys-s-review/', desc: 'The low-profile alternative worth knowing about.' },
@@ -90,9 +153,9 @@ export const group1Reviews: ProductReviewEntry[] = [
     verdict: 'The Herman Miller Aeron is among the best ergonomic chairs evaluated. According to manufacturer specifications, the Pellicle mesh is engineered to retain tension over time, the PostureFit SL is designed to reduce end-of-day back fatigue, and the 12-year comprehensive warranty makes it the most cost-effective chair per year of ownership. Skip it only if you sit under 4 hours a day, need 4D armrests, or want a headrest. Rating: 4.9/5.',
     quickVerdict: 'The Herman Miller Aeron remains a top recommendation for ergonomic seating. Based on manufacturer specifications, the PostureFit SL is designed to reduce end-of-day back fatigue across 8-hour sessions. At $1,495 it is not cheap, but the 12-year warranty and the way it holds up over a decade make it the most cost-effective chair on a per-year basis. If you sit for a living, this is the one to buy.',
     testingSummary: 'Based on manufacturer specifications and published product documentation, the Herman Miller Aeron (Size B, graphite, with PostureFit SL) is evaluated for its ergonomic support, Pellicle mesh durability, thermal comfort, and adjustability. Feature analysis compares it head-to-head against the Steelcase Leap V2 and Branch Ergonomic Chair. This is an independent editorial review; the unit was purchased at retail, not provided by Herman Miller.',
-    performance: '',
+    performance: 'According to Herman Miller\'s published specifications, the Aeron\'s performance rests on the Pellicle suspension — a woven elastomeric mesh that supports the sitter across a broad surface and lets air pass through — combined with the PostureFit SL back support, which uses two adjustable pads at the sacrum and lumbar curve rather than a single static cushion. The chair is offered in three sizes (A, B, and C) so that the frame and seat pan match the sitter rather than the reverse.\n\nHerman Miller load-tests the chair and rates the Size B for users roughly 5\'4" to 6\'2" and 130 to 230 lbs. The tilt mechanism is die-cast aluminum and includes a tilt limiter plus forward tilt, letting the sitter lock several distinct recline angles. The Pellicle weave is engineered to hold its tension for the length of the warranty rather than sagging the way cheaper mesh does.',
     buildQuality: 'The Aeron is overbuilt in a way that becomes obvious the moment you handle it. The frame is glass-reinforced polypropylene, the tilt mechanism is die-cast aluminum, and the base is a single piece of reinforced polymer that has been load-tested to 350 lbs. Every adjustment clicks into place with a tactile, precise feel — there is no play, no wobble, no plastic creak. Compare that to the Branch chair, where the armrest mechanism has visible flex when you lean on it.\n\nThe Pellicle suspension material is the headline feature. It is a woven composite of elastomeric yarn developed by Herman Miller specifically for this chair, and it is engineered not to sag over the warranty period. According to Herman Miller specifications, the Pellicle mesh is designed to retain tension long-term. Cheap mesh chairs sag within a year; this one is engineered for the warranty period.\n\nThe 12-year warranty is comprehensive. It covers all parts, all labor, and includes on-site service if you live near a Herman Miller dealer. According to owner reports cited by Herman Miller and third-party retailers, customers have received free mesh replacements and mechanism rebuilds in years 8 and 9 with no questions asked. No other chair manufacturer comes close — Steelcase offers a lifetime warranty on the Leap V2, but the fine print limits it to 10 years of single-shift use.',
-    easeOfUse: '',
+    easeOfUse: 'The Aeron arrives fully assembled, so setup amounts to unpacking it and unlocking the casters; the only real task is tuning. The controls are placed conventionally and are self-evident — the tilt limiter on the left, height on the right, and armrest height and width adjustments under each pad. The PostureFit SL pads add a tension dial, and Herman Miller\'s guidance is to spend the first week making small adjustments until the chair matches the body.\n\nThe armrests adjust for height and width and pivot slightly outward, but they are not 4D — depth adjustment is absent, which is the chair\'s most-cited limitation against the Steelcase Leap V2. Herman Miller provides a sizing tool to choose among sizes A, B, and C, and the practical rule is to size up when a person falls between two sizes, because the added seat-pan width matters more than a slight height mismatch.',
     value: 'At $1,495, the Herman Miller Aeron is the most expensive chair recommended in this category — nearly four times the price of the Branch Ergonomic Chair ($345) and $466 more than the Steelcase Leap V2 ($1,029). But on a per-year basis, the Aeron is arguably the best-value chair long-term. The 12-year comprehensive warranty means the chair costs roughly $125 per year over its warrantied lifespan, and according to Herman Miller specifications the Pellicle mesh is engineered not to sag. Used Aerons still sell for $700+, so resale value cushions the upfront cost. If you sit 6+ hours a day and plan to keep one chair for a decade, the Aeron is the most cost-effective pick long-term — even though the upfront number stings.',
     pros: [
       'Pellicle mesh stays cool through 8+ hours of sitting — zero heat buildup in summer',
@@ -123,7 +186,62 @@ export const group1Reviews: ProductReviewEntry[] = [
       'Your budget caps at $500 — see our sub-$500 picks',
       'You have wide hips — even Size C can feel narrow across the pelvis for users over 230 lbs',
     ],
-    specs: [],
+    specs: [
+      { label: 'Design', value: 'Pellicle suspension seat and back' },
+      { label: 'Back support', value: 'PostureFit SL (dual adjustable pads)' },
+      { label: 'Sizes', value: 'A, B, C' },
+      { label: 'Size B fit', value: '~5\'4" – 6\'2", 130 – 230 lbs' },
+      { label: 'Tilt', value: 'Tilt limiter + forward tilt, multiple lock angles' },
+      { label: 'Armrests', value: 'Height and width adjustable, slight pivot (not 4D)' },
+      { label: 'Frame', value: 'Glass-reinforced polypropylene' },
+      { label: 'Base', value: 'Reinforced polymer, load-tested' },
+      { label: 'Lumbar option', value: 'Standard lumbar (saves ~$170) or PostureFit SL' },
+      { label: 'Headrest', value: 'Not offered by Herman Miller' },
+      { label: 'Warranty', value: '12 years, comprehensive (parts, labor, mesh)' },
+      { label: 'Assembly', value: 'Arrives fully assembled' },
+      { label: 'Price', value: '$1,495' },
+    ],
+    productDetails: [
+      {
+        heading: 'Pellicle Suspension and Thermal Comfort',
+        paragraphs: [
+          'The Aeron\'s seat and back are made from Pellicle, a woven composite of elastomeric yarn developed by Herman Miller for this chair. Instead of compressing foam, the sitter\'s weight is distributed across the tensioned weave, which spreads pressure over a larger area and keeps the material off the skin in a way a foam cushion cannot. The material is the reason the chair\'s silhouette is unlike any other office chair.',
+          'Pellicle also solves heat. Air passes continuously through the open weave, so the back does not trap warmth the way a thick foam or leather back does over a long day. For anyone who runs warm or works in a poorly ventilated room, the mesh is the feature that distinguishes the Aeron from cheaper chairs, and Herman Miller documents the weave as engineered not to sag across the warranty period.',
+        ],
+      },
+      {
+        heading: 'PostureFit SL Back Support',
+        paragraphs: [
+          'PostureFit SL replaces a single static lumbar pad with two adjustable pads — one at the sacrum and one along the lumbar curve — that can be tensioned to follow the shape of the spine. The distinction from a conventional lumbar cushion is that the support is not a fixed lump pressing in one spot; it is a shaped pair of pads that the sitter tunes to their own back.',
+          'Because the pads adjust to movement rather than sitting static, the support remains in contact as the sitter shifts, which is where the benefit shows up over an eight-hour day. It is the single most consequential option on the chair for anyone with a history of lower-back trouble. Herman Miller also sells the Aeron with a standard lumbar pad, which saves roughly $170, for buyers who want the chair as a preventive purchase rather than a remedy.',
+        ],
+      },
+      {
+        heading: 'Sizes A, B, and C',
+        paragraphs: [
+          'The Aeron is offered in three sizes rather than one, which is unusual and consequential. Size B fits the widest range of adults and is the default; Size A is built for smaller frames and Size C for larger ones. Because both the seat pan and the back frame change with the size, matching the chair to the body is a real part of the buying decision rather than a marketing flourish.',
+          'The most common complaint about the Aeron is the front edge of the seat pressing against the backs of the thighs, and that complaint is fundamentally a sizing issue: it is felt most by shorter sitters in a seat that is slightly too deep for them. A footrest that raises the knees closer to level, or sizing down, is the usual remedy. Herman Miller provides a sizing tool, and the practical advice for anyone between sizes is to size up.',
+        ],
+      },
+      {
+        heading: 'Tilt, Armrests, and Adjustability',
+        paragraphs: [
+          'The tilt mechanism is die-cast aluminum and includes both a tilt limiter and a forward-tilt setting. The limiter lets the sitter stop the recline at a chosen angle rather than falling all the way back, and forward tilt leans the seat to support an upright, active posture for work that benefits from sitting forward. Together they give a wider set of usable postures than a simple recline.',
+          'The armrests are the clearest weakness. They adjust in height and width and pivot slightly, but they are not four-way adjustable, and the inability to move them forward and back or to lock them at a precise depth is the most common reason buyers choose the Steelcase Leap V2 instead. For sitters who keep their elbows on the desk while typing, that difference in armrest travel is worth weighing before purchase.',
+        ],
+      },
+      {
+        heading: 'Build Quality and the 12-Year Warranty',
+        paragraphs: [
+          'The Aeron is heavy, and the weight is the point: the frame is glass-reinforced polypropylene, the tilt mechanism is die-cast aluminum, and the base is a single reinforced polymer piece. Every adjustment lands with a precise, tactile click rather than the wobble and plastic creak that budget chairs develop, and the base is load-tested to well above any normal user\'s weight.',
+          'The 12-year comprehensive warranty is the chair\'s strongest long-term argument. It covers parts, labor, and the Pellicle mesh itself — the component most likely to be excluded by a cheaper warranty — and it is roughly twice the length of the coverage on mid-tier chairs. On a per-year basis the Aeron\'s upfront price is less daunting than it appears, and the chair is documented to hold value on the resale market better than almost any competitor.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Branch Ergonomic Chair Review', href: '/reviews/branch-ergonomic-chair-review/', desc: 'The best $400 alternative in this category.' },
       { name: 'Best Ergonomic Chair Under $500', href: '/reviews/best-ergonomic-chair-under-500/', desc: 'Strong mid-tier options that close the gap.' },
@@ -228,9 +346,9 @@ export const group1Reviews: ProductReviewEntry[] = [
     verdict: 'The Logitech Brio 4K is the best webcam under $150 in 2026. According to manufacturer specifications, the 4K30 sensor, RightLight 3 HDR, and Windows Hello IR are designed to handle backlit windows, low-light calls, and recorded video demos. It is not flawless — the 65-degree default field of view is tight and there is no physical privacy shutter — but for the majority of remote workers, no other webcam at this price matches its combination of image quality, HDR, and face unlock. Rating: 4.6/5.',
     quickVerdict: 'The Logitech Brio 4K is the best webcam under $150 in 2026. Sharp 4K30 video, RightLight 3 HDR that actually handles backlit windows, 5x digital zoom that stays sharp through 3x, and Windows Hello IR for face unlock. There are better webcams at twice the price, but for most remote workers the Brio is the right call.',
     testingSummary: 'Based on manufacturer specifications and published product documentation, the Logitech Brio 4K is evaluated for its 4K30 video quality, RightLight 3 HDR performance, digital zoom sharpness, and Windows Hello IR face-unlock speed. Feature analysis compares it head to head against the Logitech C920x, Insta360 Link, Anker PowerConf C200, and Razer Kiyo Pro across common remote-work scenarios including internal standups, client calls, recorded video demos, and after-hours low-light conditions. This is an independent editorial review; no review unit was provided by Logitech.',
-    performance: '',
+    performance: 'According to Logitech\'s published specifications, the Brio captures 4K at 30 fps and 1080p at 60 fps, and 4K output requires a USB 3.0 or USB-C connection — on a USB 2.0 port the camera drops to 1080p. The sensor is paired with RightLight 3 with HDR, which is designed to preserve face detail when a bright window sits behind the subject rather than reducing the subject to a silhouette.\n\nLogitech specifies a 5x digital zoom and a choice of three fields of view — 65, 78, and 90 degrees — selectable in software. The Brio carries an infrared sensor for Windows Hello face unlock, and its dual omnidirectional microphones with noise cancellation are tuned to reduce room echo on calls. The default 65-degree field of view is the tightest of the three.',
     buildQuality: 'The Brio is a small, dense webcam with a matte plastic body and a glass front element. The clip is sturdy, with a rubber pad that grips both flat and curved monitors. According to Logitech specifications, the clip is compatible with flat monitors, curved ultrawides, and laptops. The clip tilts but does not pan — if you need horizontal adjustment, you have to move the whole webcam.\n\nThe Brio has a standard 1/4-inch tripod thread on the bottom, so you can mount it on a small tripod or a monitor arm if your monitor does not have a flat top edge. The included USB-C cable is 5 feet long, which is enough to reach a desktop under the desk but tight if you want to route it through a cable manager.\n\nA monitor riser lifts both monitor and webcam to eye level — a webcam that sits below your eye line shoots up your nostrils and looks unprofessional. If you use a laptop, a laptop stand does the same job and prevents neck strain.',
-    easeOfUse: '',
+    easeOfUse: 'The Brio is a UVC device: it works plug-and-play on macOS, Windows, ChromeOS, and most Linux distributions with no driver installation, and Logitech ships both a USB-A-to-USB-C and a USB-C-to-USB-C cable in the box. Logi Tune, available for Mac and Windows, is where the camera\'s extra capabilities are unlocked — the 4K resolution, the zoom presets, color tuning, and the field-of-view selection all live in that free app.\n\nPhysically the camera mounts with a hinged clip that grips flat monitors, curved ultrawides, and laptop lids, and it also carries a standard 1/4-inch tripod thread on the underside. The clip tilts but does not pan, so horizontal repositioning means moving the whole camera. There is no physical privacy shutter; the lens must be angled down or the camera unplugged to guarantee privacy.',
     value: 'At $129, the Logitech Brio 4K is not cheap for a webcam, but it is the strongest value in its category because it bundles four features that normally cost extra: 4K30 resolution, RightLight 3 HDR, 5x digital zoom, and Windows Hello IR. The closest 4K competitor, the Insta360 Link, costs $170 more for a gimbal that most desk workers will not use. The Razer Kiyo Pro at $149 lacks both 4K and Windows Hello. Against the $69 Logitech C920x, the $60 premium buys HDR that rescues backlit-window setups and face unlock that would otherwise require a new laptop.\n\nLong-term value is exceptional: the Brio launched in 2017 and remains Logitech\'s flagship webcam nine years later, with continued software support through Logi Tune. The sturdy mount, glass front element, and firmware updates mean the Brio outlasts multiple laptops. There is no recurring subscription, and the USB-C cable is replaceable. The only depreciation risk is sensor resolution — 4K30 is now standard, and 8K webcams may arrive in the coming years — but for daily video calls, the Brio will remain relevant for the foreseeable future.',
     pros: [
       '4K30 and 1080p60 video with crisp detail in good light',
@@ -263,7 +381,69 @@ export const group1Reviews: ProductReviewEntry[] = [
       'Your desk is poorly lit and you will not add a light — fix lighting first',
       'You need uncompressed HDMI output — get the Elgato Facecam Pro',
     ],
-    specs: [],
+    specs: [
+      { label: 'Resolution', value: '4K at 30 fps / 1080p at 60 fps' },
+      { label: 'Sensor', value: '4K with RightLight 3 HDR' },
+      { label: 'Field of view', value: '65°, 78°, 90° (software selectable)' },
+      { label: 'Zoom', value: '5x digital' },
+      { label: 'Face unlock', value: 'Windows Hello IR sensor' },
+      { label: 'Microphones', value: 'Dual omnidirectional, noise-canceling' },
+      { label: 'Connection', value: 'USB 3.0 / USB-C (1080p on USB 2.0)' },
+      { label: 'Cables included', value: 'USB-A to USB-C, USB-C to USB-C' },
+      { label: 'Mounting', value: 'Clip (flat, curved, laptop) + 1/4-20 tripod thread' },
+      { label: 'Privacy shutter', value: 'None' },
+      { label: 'Software', value: 'Logi Tune (macOS, Windows)' },
+      { label: 'Compatibility', value: 'UVC — macOS, Windows, ChromeOS, Linux' },
+      { label: 'Price', value: '$129' },
+    ],
+    productDetails: [
+      {
+        heading: '4K30 and 1080p60 Video',
+        paragraphs: [
+          'The Brio\'s headline capability is its 4K sensor, which resolves noticeably finer detail in hair, fabric, and skin texture than a 1080p webcam. That resolution matters even though most conferencing platforms downscale the stream: the extra pixels first gather more light, which improves how the image holds up in dim rooms, and second leave room to crop without the image falling apart.',
+          'The Brio also shoots 1080p at 60 fps, which is the setting that matters for recorded video where smooth motion is expected. The camera\'s 4K capability is gated by the connection: Logitech documents that 4K needs USB 3.0 or USB-C, and on a USB 2.0 port the camera falls back to 1080p. Checking for a blue USB 3.0 port or a USB-C port is the one compatibility step worth taking before buying.',
+        ],
+      },
+      {
+        heading: 'RightLight 3 HDR and Backlit Rooms',
+        paragraphs: [
+          'RightLight 3 with HDR is the feature that separates the Brio from cheaper 4K cameras. A webcam without HDR has to choose between exposing for the face or the background, and when a bright window sits behind the subject the face loses that contest and turns dark. The Brio\'s HDR processing is designed to keep both the face and the room legible in that situation.',
+          'This is a common home-office problem rather than an edge case, since desks frequently face windows. HDR does not fix a genuinely dark room, but it does remove the silhouette effect that makes backlit calls look unprofessional. For buyers whose desk sits near a window, it is the strongest single argument for the Brio over a cheaper camera.',
+        ],
+      },
+      {
+        heading: '5x Digital Zoom and Field of View',
+        paragraphs: [
+          'The Brio offers a 5x digital zoom and three selectable fields of view. Because digital zoom crops rather than magnifies optically, its usefulness depends entirely on sensor resolution, and the 4K sensor is what makes a moderate crop hold up. Zoom past roughly the halfway point and the image begins to soften, so the zoom is best used for modest re-framing rather than close-ups.',
+          'The field of view spans 65, 78, and 90 degrees, selectable in Logi Tune. The 65-degree default is the tightest and is well suited to a single subject but cramped for two people at one desk; 78 degrees is the usual sweet spot for solo calls; and 90 degrees shows the whole desk at the cost of more edge distortion. Choosing the right field of view is often more useful than using the zoom.',
+        ],
+      },
+      {
+        heading: 'Windows Hello IR Face Unlock',
+        paragraphs: [
+          'The Brio carries an infrared sensor that supports Windows Hello, which lets a Windows machine sign in with a face rather than a password. For desktops that lack a built-in IR camera, the Brio is one of the least expensive ways to add face unlock, and because the sensor also reads in low light it works in a dim room.',
+          'The IR sensor does not interfere with ordinary video calls, so it costs nothing on macOS or other platforms even though face unlock itself is a Windows feature — Apple does not expose third-party webcam face unlock on the Mac. The camera\'s other software-enabled behavior, such as locking the screen when the user looks away, is optional and configured through Logi Tune.',
+        ],
+      },
+      {
+        heading: 'Microphones and Audio',
+        paragraphs: [
+          'The Brio includes two omnidirectional microphones with noise cancellation. For a webcam they are strong: voices come through clearly and room echo is reduced, which is enough for internal standups and casual calls. They are not, however, a substitute for a dedicated USB microphone or a headset boom, both of which sound noticeably richer on recorded or client-facing audio.',
+          'The sensible pattern is to use the webcam microphones for everyday internal calls and to pair the camera with a dedicated microphone when the audio will be recorded or matters more than the convenience. This is an honest limitation of every webcam in this class rather than a knock on the Brio specifically.',
+        ],
+      },
+      {
+        heading: 'Mounting, Cables, and Software',
+        paragraphs: [
+          'The Brio\'s clip grips flat and curved monitors as well as laptop lids, and its underside carries a standard 1/4-inch tripod thread for mounting on a small tripod or monitor arm when the display has no flat top edge. The clip adjusts in tilt only, so fine horizontal framing means repositioning the whole camera, and there is no physical shutter — privacy is handled by angling the lens down or unplugging the cable.',
+          'Logitech includes two cables, USB-A-to-USB-C and USB-C-to-USB-C, so the camera connects to either port type without an adapter. Logi Tune is the free companion app for Mac and Windows that unlocks 4K, the zoom presets, color tuning, and the field-of-view selection. Without Logi Tune the camera still works, but at its default settings rather than its full capability.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Webcam for Remote Work', href: '/reviews/best-webcam-remote-work/', desc: 'See how the Brio ranks against every webcam in this category.' },
       { name: 'Best Webcam for Remote Work', href: '/reviews/best-webcam-remote-work/', desc: 'Picks for video calls, including at-home lighting conditions.' },
@@ -296,9 +476,9 @@ export const group1Reviews: ProductReviewEntry[] = [
     verdict: 'The BenQ ScreenBar Halo is among the best monitor light bars in this category. According to manufacturer specifications, the asymmetric optics are designed to eliminate screen reflection, the wireless knob makes brightness adjustments trivial, and the bidirectional auto-dimming is designed to nail the right level in changing light. At $129 it is expensive for a desk light, but if you work at a monitor after dark, nothing else comes close. Rating: 4.8/5.',
     quickVerdict: 'The BenQ ScreenBar Halo is among the best monitor light bars in this category. Asymmetric optics eliminate screen glare entirely, the wireless knob is genuinely useful, and the auto-dimming sensor nails brightness in changing light. At $129 it is expensive for a desk light, but if you work at a monitor after dark, nothing else comes close.',
     testingSummary: 'Based on manufacturer specifications and published product documentation, the BenQ ScreenBar Halo is evaluated for its asymmetric optics, wireless knob usability, and bidirectional auto-dimming performance in real-world scenarios including nightly monitor work after sunset. Feature analysis compares it side-by-side against competitor light bars, covering desk surface lux, screen reflection on glossy panels, and wireless knob battery life between charges. This is an independent editorial review; no review unit was provided by BenQ.',
-    performance: '',
+    performance: 'According to BenQ\'s published specifications, the Halo\'s defining feature is its asymmetric optical design: a custom lens redirects the LED beam forward and downward at roughly a 25-degree angle so the light lands on the desk and keyboard rather than the screen. BenQ specifies a color temperature range from 2700K to 6500K adjustable in 100K steps, a Color Rendering Index above 95, and a 5V 1A power draw over USB-C.\n\nThe wireless knob is rechargeable and mates magnetically with a contact pad on the top of the bar; BenQ rates it at roughly 40 days per charge. The knob sets brightness across 15 levels and toggles power. A front-mounted ambient sensor reads desk lux every few seconds and adjusts brightness in both directions to hold a target level — the key difference from the original ScreenBar Plus, whose sensor only dims.',
     buildQuality: 'The bar itself is matte aluminum with a rubberized clip that fits monitors up to 1.5 inches thick. BenQ includes a separate curved-monitor adapter in the box, which is the difference between the Halo fitting a 1000R Samsung Odyssey and not. The clip has a counterweight that hangs behind the monitor to balance the bar — this is the same mechanism BenQ has used since the original ScreenBar, and according to BenQ specifications it is engineered to hold up over time without sagging.\n\nThe bar weighs 1.4 lbs, which is light enough that the monitor does not tilt forward under the load but heavy enough to feel substantial. The knob is milled aluminum with a rubber base. The included USB-C cable is braided and 5 feet long, which is plenty to reach a monitor USB hub or a desktop.',
-    easeOfUse: '',
+    easeOfUse: 'Setup is a clip rather than an installation. The rubberized clip squeezes onto the top edge of the monitor and a counterweight behind the panel balances the bar; BenQ ships a curved-monitor adapter in the box, and the clip is documented to fit panels up to about 1.5 inches thick, or 1.8 inches with the adapter. Power comes from any USB-A or USB-C port, and the bar ships with a braided USB-A-to-USB-C cable.\n\nDay-to-day control happens entirely through the wireless knob, because there is no power button on the bar itself. Rotating the knob sets brightness in 15 steps, pressing it toggles power, and holding it for about two seconds disables auto-dimming. The knob is a Bluetooth device that does not need to sit on the bar to function, so it can be kept wherever is convenient on the desk.',
     value: 'At $129, the BenQ ScreenBar Halo is the most expensive monitor light bar we recommend, $30 more than the already-excellent ScreenBar Plus. Compared to alternatives in the $39–$129 range, it offers class-leading asymmetric optics, a wireless knob, and bidirectional auto-dimming that no cheaper bar matches. The bar has no consumable parts and the LED is rated for tens of thousands of hours, so the long-term cost of ownership is effectively zero beyond the initial purchase.',
     pros: [
       'Asymmetric optics produce zero screen reflection, even on glossy panels',
@@ -328,7 +508,63 @@ export const group1Reviews: ProductReviewEntry[] = [
       'You cannot justify $129 when the original ScreenBar Plus is $99',
       'You use a laptop-only setup with no external monitor',
     ],
-    specs: [],
+    specs: [
+      { label: 'Type', value: 'Monitor light bar' },
+      { label: 'Light source', value: 'LED with asymmetric optics' },
+      { label: 'Color temperature', value: '2700K – 6500K (100K steps)' },
+      { label: 'Color rendering', value: 'CRI 95+' },
+      { label: 'Brightness control', value: '15 levels via wireless knob' },
+      { label: 'Auto-dimming', value: 'Bidirectional ambient sensor' },
+      { label: 'Wireless knob battery', value: '~40 days per charge' },
+      { label: 'Knob charging', value: 'Magnetic contact pad (USB-C)' },
+      { label: 'Power input', value: '5V 1A, USB-A / USB-C' },
+      { label: 'Monitor thickness', value: 'Up to 1.5" (1.8" with curved adapter)' },
+      { label: 'Curved-monitor adapter', value: 'Included' },
+      { label: 'Bar weight', value: '1.4 lbs' },
+      { label: 'Cable', value: 'Braided USB-A to USB-C, 5 ft' },
+      { label: 'Price', value: '$129' },
+    ],
+    productDetails: [
+      {
+        heading: 'Asymmetric Optics: How the Light Is Aimed',
+        paragraphs: [
+          'The reason to buy any BenQ ScreenBar is the asymmetric lens. A generic clip-on bar fires light in a broad hemisphere, so a large share of the output goes up and backward and lands on the screen as a reflection. The Halo instead bends the beam forward and down at roughly a 25-degree angle, so the light is delivered to the desk surface and the keyboard rather than the panel above them.',
+          'The difference is most visible on glossy screens, where even a small amount of stray light produces a horizontal streak across the top of the display. Because the Halo\'s beam is directional, that reflection does not form, which is why the bar is unusually well suited to glossy ultrawides and the glass-fronted iMac. It is a lighting-design solution rather than a brightness one.',
+        ],
+      },
+      {
+        heading: 'The Wireless Knob: Control and Battery',
+        paragraphs: [
+          'The Halo replaces the in-line dial of earlier ScreenBars with a palm-sized wireless knob. It communicates with the bar over Bluetooth, and it charges by snapping magnetically onto a contact pad on top of the bar. Rotating it moves brightness through 15 levels, pressing it toggles power, and a two-second hold turns auto-dimming off.',
+          'BenQ rates the knob at roughly 40 days per charge, and charging runs about 90 minutes from a phone charger. Because the knob is wireless and does not need to sit on the bar, it can be placed at the edge of the desk where the hand actually rests. The one caveat is its magnetic attachment: strong enough to hold it while charging, but light enough that an elbow can send it to the floor.',
+        ],
+      },
+      {
+        heading: 'Auto-Dimming and Color Temperature',
+        paragraphs: [
+          'The ambient light sensor sits on the front of the bar below the LED strip. It samples desk brightness every few seconds and adjusts the output to hold a target level, and unlike the ScreenBar Plus it can bring the light both up and down. That bidirectional behavior is what makes the feature useful across a full day, when ambient light shifts from bright afternoon to dark evening.',
+          'Color temperature spans 2700K to 6500K in 100K steps, which is finer granularity than most competitors: the Baseus bar offers three fixed temperatures and the Yeelight Pro moves in 500K steps. A CRI above 95 means the light renders color accurately enough to do visual work under the bar, which is the reason designers and video editors tend to prefer this model.',
+        ],
+      },
+      {
+        heading: 'Mounting and Monitor Compatibility',
+        paragraphs: [
+          'The Halo clips onto the top edge of a monitor and balances itself with a counterweight that hangs behind the panel. That counterweight is the same mechanism BenQ has used since the original ScreenBar and is the reason the bar does not tip a thin display forward. BenQ documents compatibility up to about 1.5 inches of panel thickness, extending to 1.8 inches with the included curved-monitor adapter.',
+          'The adapter is the difference between the Halo fitting a curved ultrawide and not, and it is included rather than sold separately. The bar weighs about 1.4 lbs — light enough not to disturb the monitor\'s balance, heavy enough to feel substantial. Because everything mounts to the top edge, the setup depends on having a flat top edge to clip to; a monitor on an articulating arm without one is a poor fit.',
+        ],
+      },
+      {
+        heading: 'Build and Power',
+        paragraphs: [
+          'The bar is matte aluminum with a rubberized clip, and the knob is milled aluminum on a rubber base. The braided USB-A-to-USB-C cable is five feet long, enough to reach a monitor USB hub or a desktop port. BenQ includes the cable but expects the buyer to supply the USB power source, which can be a monitor hub, a desktop port, a phone charger, or a power bank.',
+          'The Halo\'s move to USB-C input is a small but real improvement over the original ScreenBar Plus, which used USB-A only. Because the bar draws a standard 5V 1A, there is no proprietary power brick to lose, and any suitable USB-C cable works as a replacement if the bundled one is misplaced — a meaningful convenience for a device that lives on the desk every day.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Monitor Light Bar', href: '/reviews/best-monitor-light-bar/', desc: 'See how the Halo ranks against every bar in this category.' },
       { name: 'Best Desk Lamp for Eye Care', href: '/reviews/best-desk-lamp-eye-care/', desc: 'Prefer a traditional lamp? These made the cut.' },
@@ -361,9 +597,9 @@ export const group1Reviews: ProductReviewEntry[] = [
     verdict: 'The Logitech MX Master 3S is the best productivity mouse you can buy in 2026. According to manufacturer specifications, the MagSpeed scroll wheel, glass-tracking 8000 DPI sensor, and quiet clicks combined with Flow multi-computer control deliver an unmatched daily experience across Mac, Windows, and iPad. It is not cheap at $99 and right-handed only, but for knowledge workers who spend six or more hours at a computer, no other mouse comes close. Rating: 4.8/5.',
     quickVerdict: 'The Logitech MX Master 3S is the best productivity mouse you can buy in 2026, full stop. The MagSpeed scroll wheel remains the benchmark, the new 8000 DPI sensor finally tracks on glass, and the quiet clicks are 90% quieter than the previous generation. At $99 it is not cheap, but for anyone who spends six or more hours a day at the computer, it pays for itself in comfort.',
     testingSummary: 'Based on manufacturer specifications and published product documentation, the Logitech MX Master 3S is evaluated across Mac, Windows, and iPad for its MagSpeed scroll wheel performance, 8000 DPI sensor tracking on glass and other surfaces, click noise reduction, and Flow multi-computer control. Feature analysis covers typical knowledge-work scenarios including code reviews and long-document scrolling. This is an independent editorial review; no review unit was provided by Logitech.',
-    performance: '',
+    performance: 'According to Logitech\'s published specifications, the MX Master 3S raises the sensor to 8000 DPI and, more importantly, uses the Darkfield tracking system that is rated to work on glass and other glossy surfaces where earlier MX mice required a mouse pad. The sensor reports a polling rate of 125 Hz over Bluetooth and 133 Hz over the Logi Bolt receiver — adequate for productivity work and deliberately below the rates a gaming mouse would use.\n\nThe other half of the performance story is the MagSpeed scroll wheel, an electromagnetic wheel that switches between a notched ratchet mode and a frictionless free-spin mode. Logitech specifies that the wheel can be toggled manually or left to Smart Shift, which registers the speed of the roll. The 3S also documents clicks that are up to 90 percent quieter than the previous-generation MX Master 3.',
     buildQuality: 'The MX Master 3S keeps the same sculpted humpback shape as the MX Master 3. The shape fills the palm without forcing the wrist into a flat position. According to Logitech specifications, the ergonomic shape is designed to reduce fatigue hotspots over extended use compared to flatter mice. The thumb rest is rubberized and angled slightly outward, which keeps the thumb off the desk.\n\nThe shell is a soft-touch plastic that picks up fingerprints but feels premium in the hand. The build quality is excellent — there is no flex when you squeeze the mouse, no rattling when you shake it, and the buttons have a consistent click force across the entire surface. The weight is 141 grams, which sounds heavy but helps the mouse glide predictably across a desk pad.\n\nThe mouse is right-handed only, and that is the single biggest criticism of the design. Left-handed users have to look elsewhere. If you are a lefty, the best wireless mouse for work guide includes ambidextrous alternatives.\n\nFor consistent glide, pairing with a large desk pad (see the large desk pad review) is recommended. The combination of a quality surface and a quality mouse is genuinely transformative — your hand stops fighting the input and the input gets out of the way.',
-    easeOfUse: '',
+    easeOfUse: 'The MX Master 3S pairs with up to three devices over Bluetooth or the bundled Logi Bolt receiver, and switching between them is a button press rather than a re-pairing. Logitech Flow is the feature most buyers come for: with Logi Options+ installed on two computers on the same network, the cursor crosses from one screen to the other and the clipboard travels with it, so text copied on a Mac can be pasted on a Windows PC.\n\nLogi Options+ is also where the mouse\'s depth lives — per-application button mapping, gesture controls, DPI and scroll-speed tuning, and Smart Shift sensitivity. The software is free on macOS and Windows and requires an account for the full feature set. Charging is over USB-C with the port on the front face, so the cable points toward the user while the mouse is plugged in; a short charge is documented to yield hours of use.',
     value: 'At $99, the Logitech MX Master 3S sits at the premium end of the productivity mouse category, but it justifies the price through features no cheaper competitor can match. The MagSpeed scroll wheel, 8000 DPI glass-tracking sensor, and Flow multi-computer control are exclusive to Logitech\'s MX line — the $40 M720 Triathlon offers three-device pairing but mechanical scrolling and a 1000 DPI sensor. Against the older MX Master 3 at $79, the $20 premium buys quiet clicks and glass tracking that meaningfully change daily use in shared offices and on glass desks.\n\nLong-term value is strong: Logitech rates the battery for 70 days per charge and the sealed cell holds up over years of charge cycles based on owner reports of the previous generation still performing after three years. The three-year warranty and durable shell mean the 3S is a multi-year investment, not a yearly replacement. If you amortize the $99 over a typical three-to-five year lifespan, the cost per month of daily use is under $3 — a bargain for a tool that touches every workday.',
     pros: [
       'MagSpeed electromagnetic scroll wheel — still the best on any mouse',
@@ -397,7 +633,70 @@ export const group1Reviews: ProductReviewEntry[] = [
       'You already own the MX Master 3 and use a desk pad — the upgrades are minor',
       'Your budget tops out at $40 — get the M720 Triathlon',
     ],
-    specs: [],
+    specs: [
+      { label: 'Sensor', value: 'Darkfield high-precision, 8000 DPI' },
+      { label: 'Tracking surfaces', value: 'Glass and glossy surfaces supported' },
+      { label: 'Polling rate', value: '125 Hz (Bluetooth) / 133 Hz (Logi Bolt)' },
+      { label: 'Scroll wheel', value: 'MagSpeed electromagnetic (ratchet + free-spin)' },
+      { label: 'Buttons', value: '7, plus thumb wheel and gesture button' },
+      { label: 'Connectivity', value: 'Bluetooth / Logi Bolt USB receiver' },
+      { label: 'Multi-device', value: 'Up to 3 devices (Easy-Switch)' },
+      { label: 'Flow', value: 'Yes (requires Logi Bolt + Logi Options+)' },
+      { label: 'Battery', value: '70 days per charge' },
+      { label: 'Charging', value: 'USB-C (front port), usable while charging' },
+      { label: 'Weight', value: '141 g' },
+      { label: 'Compatibility', value: 'macOS, Windows, iPadOS, iOS; basic on Linux' },
+      { label: 'Software', value: 'Logi Options+ (free)' },
+      { label: 'Price', value: '$99' },
+    ],
+    productDetails: [
+      {
+        heading: 'MagSpeed Scroll Wheel',
+        paragraphs: [
+          'The MagSpeed wheel is the MX Master 3S\'s signature feature. It is an electromagnetic wheel that operates in two modes: a notched ratchet mode where each detent advances a line, and a free-spin mode where the wheel decouples from the detents and continues under its own momentum. The transition is handled by Smart Shift, which reads how hard the wheel is flicked and switches modes accordingly, or it can be toggled manually with the button behind the wheel.',
+          'The practical effect is that a gentle roll moves line by line through a document while a hard flick coasts through a very long page without repeated swipes. Few other productivity mice offer a wheel that both notches and free-spins, and Logitech\'s implementation is the reference. Beside the main wheel sits a horizontal thumb wheel for side-to-side scrolling, which is genuinely useful in wide spreadsheets and video timelines.',
+        ],
+      },
+      {
+        heading: '8000 DPI Darkfield Sensor and Glass Tracking',
+        paragraphs: [
+          'The 3S doubles the sensor resolution of the previous MX Master 3 to 8000 DPI, though most users will run it far lower — 8000 DPI is meant for very high-resolution displays and small hand movements, and the daily-use sweet spot is a fraction of that. The more consequential change is the Darkfield tracking system, which is rated to work on glass and glossy surfaces.',
+          'Earlier MX mice skipped and stuttered on a glass desk and effectively demanded a mouse pad. The Darkfield sensor removes that requirement, which matters for anyone who works on a glass tabletop or travels and ends up on hotel furniture. It is one of the few sensor upgrades that changes where the mouse can be used rather than just how precisely it tracks.',
+        ],
+      },
+      {
+        heading: 'Quiet Clicks',
+        paragraphs: [
+          'The "S" in MX Master 3S stands for silent. Logitech documents the primary left and right clicks as up to 90 percent quieter than the MX Master 3, which is the difference between a click that carries across an open office and one that barely registers. For shared spaces, calls, and late-night work, it is the most immediately noticeable change in the 3S.',
+          'The trade-off is feel: quiet mechanisms tend to be slightly softer than a crisp mechanical click, and some users prefer the older model\'s sharper action. It is also worth noting that the silence applies to the main clicks — the side buttons are conventional and audible. For buyers whose priority is a low-noise desk, the quiet clicks alone justify choosing the 3S over the 3.',
+        ],
+      },
+      {
+        heading: 'Logitech Flow Across Computers',
+        paragraphs: [
+          'Flow is the feature that keeps the MX Master 3S at the top of productivity shortlists. With the mouse paired to two computers and Logi Options+ running on both, the cursor crosses from one machine\'s screen to the other as if the displays were part of one multi-monitor setup. The clipboard follows it, so copied text can be pasted on the other machine, and files can be dragged between computers over the local network.',
+          'Flow needs the Logi Bolt receiver rather than Bluetooth, all machines on the same network, and Logi Options+ installed on each. Setup is a few minutes per machine. For anyone running a desktop and a laptop, or a Mac and a PC side by side, it removes the need for a second mouse or a KVM switch, and it is the single strongest reason to stay within Logitech\'s MX line.',
+        ],
+      },
+      {
+        heading: 'Battery and USB-C Charging',
+        paragraphs: [
+          'Logitech rates the MX Master 3S battery at 70 days per charge, and charging is over USB-C. The mouse can be used while it charges, so a low battery does not interrupt work, and a short charge yields a usable amount of runtime. The charge port is on the front face, which means the cable points toward the user during charging — a minor ergonomic quirk rather than a functional problem.',
+          'The battery is sealed and not user-replaceable, and Logitech rates it for several years of charge cycles. Because the cell is not swappable, the realistic ownership model is a multi-year device rather than an indefinite one, which is typical of premium wireless mice. This is the trade-off for the light weight and the charging convenience.',
+        ],
+      },
+      {
+        heading: 'Software: Logi Options+',
+        paragraphs: [
+          'Logi Options+ is effectively required to use the mouse\'s defining features. It is where Flow is configured, where per-application button mappings are built, and where DPI, scroll speed, and Smart Shift sensitivity are tuned. The software is free and runs on macOS and Windows, and assigning different actions per application — a tab switch in a browser, a mute in a conferencing app, a macro in an editor — is the workflow that makes the extra buttons worth having.',
+          'The requirement cuts the other way on platforms Logi Options+ does not fully cover, notably Linux, where the mouse works as a basic pointing device without Flow or per-app mapping. The software also collects usage data by default, with an opt-out during setup. For buyers who want the mouse to be fully configurable without any companion software, that expectation should be adjusted before purchase.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Wireless Mouse for Productivity', href: '/reviews/best-wireless-mouse-productivity/', desc: 'How the 3S stacks up against 8 other mice.' },
       { name: 'Logitech MX Keys S Review', href: '/reviews/logitech-mx-keys-s-review/', desc: 'The keyboard built to pair with it.' },
@@ -431,9 +730,9 @@ export const group1Reviews: ProductReviewEntry[] = [
     verdict: 'The Branch Ergonomic Chair is among the best mid-tier ergonomic chairs in this category. According to manufacturer specifications, the adjustable lumbar support, breathable mesh back, and 4D armrests are engineered for extended daily use, and the 7-year warranty is the longest in this price tier. It is the chair to buy if you sit 6+ hours a day and cannot justify a $1,395 Herman Miller Aeron. Skip it only if you sit under 4 hours a day or are over 6\'2". Rating: 4.4/5.',
     quickVerdict: 'The Branch Ergonomic Chair is the best ergonomic chair you can buy for under $400. Its adjustable lumbar support, breathable mesh back, and 7-year warranty put it ahead of every budget competitor and within striking distance of chairs costing three to four times as much. If you sit 6 or more hours a day and cannot justify a $1,395 Herman Miller Aeron, this is the chair to buy.',
     testingSummary: 'Based on manufacturer specifications and published product documentation, the Branch Ergonomic Chair is evaluated for its adjustable lumbar support (height and depth), mesh back breathability, 4D armrest flexibility, and seat pressure distribution. Feature analysis covers ergonomic support across different body types and sitting durations. This is an independent editorial review; no review unit was provided by Branch.',
-    performance: '',
+    performance: 'According to Branch\'s published specifications, the Ergonomic Chair pairs a tensioned mesh back with a lumbar pad that adjusts in both height and depth — a combination that is uncommon below $400 and the chair\'s central ergonomic feature. The seat is foam under a fabric cover and slides forward to set depth, and the tilt mechanism is a synchro tilt, meaning the back reclines at a faster rate than the seat so the feet stay flat during recline.\n\nBranch specifies a recommended user range up to roughly 6\'2". The chair sits on a die-cast aluminum base with a class-4 gas cylinder, and it is covered by a 7-year warranty on the frame, mechanism, and upholstery, with the gas cylinder covered for 5 years — the longest coverage in this price tier.',
     buildQuality: 'The chair feels solid for the price. The base is die-cast aluminum (not plastic, as on many budget chairs), the gas cylinder is class-4 rated (the standard for office chairs), and the castors are rated for carpet and hard floors. According to Branch specifications, the frame is engineered to be free of creaks or rattles over time.\n\nThe 7-year warranty is the longest in this price tier. Branch covers the frame, mechanism, and upholstery for the full period; the gas cylinder is covered for 5 years. For comparison, the Hbada budget chair offers a 1-year warranty, and the SIHIO M18 offers 3 years. The warranty is a real indicator of expected lifespan — Branch is betting the chair will last 7 years of daily use, and the build quality supports that expectation.\n\nOne honest note on the castors: they are basic nylon castors that work fine on hard floors but struggle on medium-pile carpet. Rolling the chair across carpet can require noticeable effort. If your office is carpeted, budget $30 for a set of rollerblade-style castors or a chair mat.',
-    easeOfUse: '',
+    easeOfUse: 'Assembly is documented as a one-person job: the chair ships in a single box and goes together in three steps — backrest to seat, seat to base, then the armrests — using the included Allen key, with every bolt bagged and labeled. The controls are the conventional set and are placed conventionally: a height lever under the seat, a tension knob, and a tilt lock that selects among three recline positions plus a free-float mode.\n\nThe armrests are 4D — height, width, depth, and pivot — so they can be dropped below desk height to let the chair pull all the way in, or slid back so they do not catch the desk when standing. The mesh back needs no maintenance and the fabric seat wipes clean. The one documented constraint is the castors: the stock nylon castors are fine on hard floors but are reported to drag on medium-pile carpet, where rollerblade-style castors or a chair mat are the usual fix.',
     value: 'At $345, the Branch Ergonomic Chair sits in the sweet spot of the mid-tier market — meaningfully better-built than sub-$200 chairs like the Hbada, and roughly a quarter the price of the premium Herman Miller Aeron ($1,395). For that price you get adjustable lumbar support (height and depth), 4D armrests, a breathable mesh back, and a 7-year warranty that is the longest in this price tier. Compared to the SIHIO M18 at $279, the Branch costs $66 more but adds depth-adjustable lumbar, a longer warranty, and seat foam that holds up better over long sessions. If you sit 6+ hours a day, the per-day cost over the 7-year warranty works out to roughly 13 cents — making the Branch one of the best value ergonomic chairs on the market.',
     pros: [
       'Adjustable lumbar support — height and depth, rare under $400',
@@ -466,7 +765,70 @@ export const group1Reviews: ProductReviewEntry[] = [
       'Your budget can stretch to $1,400 for an Aeron or Leap V2',
       'You need premium upholstery or color options',
     ],
-    specs: [],
+    specs: [
+      { label: 'Back', value: 'Tensioned mesh' },
+      { label: 'Lumbar support', value: 'Adjustable height and depth' },
+      { label: 'Seat', value: 'Foam with fabric cover, sliding depth adjustment' },
+      { label: 'Armrests', value: '4D (height, width, depth, pivot)' },
+      { label: 'Tilt', value: 'Synchro tilt, 3 lock positions + free-float' },
+      { label: 'Base', value: 'Die-cast aluminum' },
+      { label: 'Gas cylinder', value: 'Class 4' },
+      { label: 'Recommended user height', value: 'Up to ~6\'2"' },
+      { label: 'Warranty (frame / mechanism / upholstery)', value: '7 years' },
+      { label: 'Warranty (gas cylinder)', value: '5 years' },
+      { label: 'Headrest', value: 'Optional add-on, ~$49' },
+      { label: 'Castors', value: 'Nylon (hard floor)' },
+      { label: 'Assembly', value: 'One person, ~20 minutes' },
+      { label: 'Price', value: '$345' },
+    ],
+    productDetails: [
+      {
+        heading: 'Adjustable Lumbar Support',
+        paragraphs: [
+          'Lumbar support is the feature that separates a real ergonomic chair from a decorative one, and it is the single strongest reason to choose the Branch over a budget chair. The chair\'s back pad moves in height and in depth, so it can be positioned against the lower back rather than left to press into the kidneys or sit below the spine. A fixed lumbar pad happens to match only a narrow range of bodies; adjustment is what makes the support useful across them.',
+          'Depth adjustment matters as much as height. Different sitters want the pad to press more or less firmly against the lumbar curve, and being able to tune that pressure is what keeps the back supported without being pushed forward. This dual adjustability is the capability that budget chairs at half the price almost always lack.',
+        ],
+      },
+      {
+        heading: 'The Mesh Back and Breathability',
+        paragraphs: [
+          'The backrest is tensioned mesh on a flexible frame, a design popularized by the Herman Miller Aeron. Rather than concentrating support on a single foam pad, the mesh distributes the sitter\'s weight across the panel while letting air pass through. The result is a backrest that both supports and breathes, which is the reason mesh backs are preferred in warm rooms.',
+          'Branch uses a woven elastomeric mesh that is documented to hold tension over time, in contrast to the cheap elastic mesh on very low-cost chairs that sags within months. The seat is the exception: it is fabric over foam rather than mesh, so it traps more heat than the back does. Sitters who run warm will notice the seat warming up before the back does, and a cooling cushion or periodic standing breaks address that.',
+        ],
+      },
+      {
+        heading: 'The Seat and Depth Adjustment',
+        paragraphs: [
+          'The seat is high-density foam under a breathable fabric cover. It is comfortable through a normal working session, but it is the chair\'s most obvious compromise: over a very long continuous sit the foam compresses and the pan beneath becomes perceptible. That is the practical boundary between a mid-tier chair and a premium one, whose denser foam or mesh seat holds up across a longer day.',
+          'The seat slides forward to adjust depth, which matters at both ends of the size range. A shorter sitter benefits from a shallower seat that does not press the front edge into the backs of the knees, while a taller sitter wants a deeper seat to support more of the thigh. The front edge is waterfall-shaped to reduce pressure under the thighs, and the seat locks firmly once set.',
+        ],
+      },
+      {
+        heading: '4D Armrests',
+        paragraphs: [
+          'The armrests adjust in four directions — height, width, depth, and pivot — and each adjustment clicks into a positive lock rather than sliding freely under pressure. Four-way movement is what lets the armrests support the elbows without forcing the chair away from the desk: they can be dropped below desk height or slid back so they clear the desk when standing.',
+          'Where fixed or height-only armrests force the sitter to choose between hovering the elbows and resting them at the wrong height, 4D armrests allow a neutral position, which reduces shoulder tension over a long day. The pads are polyurethane — firmer than gel, softer than hard plastic — and the one criticism is a small amount of lateral play even when locked.',
+        ],
+      },
+      {
+        heading: 'Synchro-Tilt Mechanism',
+        paragraphs: [
+          'The chair uses a synchro-tilt, meaning the back reclines faster than the seat tilts, usually at roughly a 2:1 ratio. That geometry is the correct one for an ergonomic chair because it keeps the feet flat on the floor during recline, rather than lifting them as a simple tilt does. The recline offers three lockable positions plus a free-float mode for active sitting.',
+          'Tension is adjustable with a knob under the seat, and this is the chair\'s most common complaint: even at the lowest tension setting the recline is firm, which lighter sitters find resistant. Heavier sitters tend to find it about right. The free-float mode, which lets the chair move with the sitter, is a genuine feature rather than a gimmick for anyone who likes to shift position while thinking.',
+        ],
+      },
+      {
+        heading: 'Build, Warranty, and Castors',
+        paragraphs: [
+          'The chair feels solid for its price. The base is die-cast aluminum rather than the plastic common on budget chairs, the gas cylinder is class-4 rated, and the frame is documented to be free of the creaks and rattles that cheaper mechanisms develop. Branch backs the frame, mechanism, and upholstery with a 7-year warranty and the gas cylinder with 5 years, both longer than any chair in the price tier — a warranty is a statement about expected lifespan, and 7 years is a strong one.',
+          'The castors are the weak point. The stock nylon castors roll easily on hard floors but are reported to drag on medium-pile carpet, which is why a set of rollerblade-style castors or a chair mat is a common and inexpensive upgrade for carpeted offices. The headrest, meanwhile, is not included: it is an optional add-on, worth buying for anyone who reclines to read or take calls, and unnecessary for sitters who stay upright.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Ergonomic Chair Under $500', href: '/reviews/best-ergonomic-chair-under-500/', desc: 'The wider roundup where Branch is our top pick.' },
       { name: 'Herman Miller Aeron Review', href: '/reviews/herman-miller-aeron-review/', desc: 'The premium benchmark at 4x the price.' },

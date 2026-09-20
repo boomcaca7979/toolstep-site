@@ -49,6 +49,12 @@ const methodLine =
       'Based on product documentation and specification analysis');
 const related = getRelatedForReview(entry.productName, entry.slug, entry.category, entry.brand, entry.compareSlugs);
 
+// Phase 1 recovery: the methodology section heading is "Testing Summary" by
+// default. Entries whose evidence is documentation-based may override it (e.g.
+// "How This Review Was Built") via editorial.sectionLabel. Absent override →
+// identical heading to before, so other entries are unaffected.
+const methodSectionLabel = editorial?.sectionLabel ?? 'Testing Summary';
+
 // Best-list pages (multi-product roundups) must not emit Product/Review schema.
 // Determined by data field (brand === "Multiple") or explicit best-page slug.
 const isBestListPage = entry.brand === 'Multiple' || BEST_PAGE_SLUGS.has(entry.slug);
@@ -61,10 +67,15 @@ const categoryLabel = categoryPage ? categoryPage.pluralName : entry.category;
 
 const tocSections = [
   { id: 'quick-verdict', label: 'Quick Verdict' },
-  { id: 'testing-summary', label: 'Testing Summary' },
+  { id: 'testing-summary', label: methodSectionLabel },
   { id: 'performance', label: 'Performance' },
   { id: 'build-quality', label: 'Build Quality' },
   { id: 'ease-of-use', label: 'Ease of Use' },
+  // Product-specific deep-dive modules. Only present on entries that carry
+  // `productDetails`; otherwise this spread is empty and the TOC is identical.
+  ...(entry.productDetails && entry.productDetails.length > 0
+    ? [{ id: 'detailed-review', label: 'Detailed Review' }]
+    : []),
   { id: 'value', label: 'Value' },
   { id: 'pros-cons', label: 'Pros & Cons' },
   { id: 'who-should-buy', label: 'Who Should Buy' },
@@ -154,6 +165,7 @@ const tocSections = [
         lastUpdated={entry.lastUpdated}
         testingDuration={entry.testingDuration}
         productsTested={entry.productsTested}
+        evidenceType={entry.editorial?.evidenceType}
       />
 
       <nav class="toc" aria-label="Table of contents">
@@ -176,7 +188,7 @@ const tocSections = [
         <p>{entry.quickVerdict}</p>
       </div>
 
-      <h2 id="testing-summary">Testing Summary</h2>
+      <h2 id="testing-summary">{methodSectionLabel}</h2>
       <p>{entry.testingSummary}</p>
 
       {editorial && editorial.evidenceType === 'HANDS_ON' ? (
@@ -200,8 +212,17 @@ const tocSections = [
       <p>{entry.buildQuality}</p>
 
       <h2 id="ease-of-use">Ease of Use</h2>
-      <p>{entry.easeOfUse}</p>
-
+      <p>{entry.easeOfUse}</p>{entry.productDetails && entry.productDetails.length > 0 && (
+        <section id="detailed-review">
+          <h2>Detailed Review</h2>
+          {entry.productDetails.map((module) => (
+            <div>
+              <h3>{module.heading}</h3>
+              {module.paragraphs.map((para) => <p>{para}</p>)}
+            </div>
+          ))}
+        </section>
+      )}
       <h2 id="value">Value Analysis</h2>
       <p>{entry.value}</p>
 

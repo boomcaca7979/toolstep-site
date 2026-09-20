@@ -19,9 +19,9 @@ export const group4Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Keychron Q1 is the best $149 entry point into custom mechanical keyboards available in 2026. Based on product documentation and feature analysis, the gasket mount delivers a cushioned typing feel, the CNC aluminum body is designed for rigidity without flex, the hot-swap mechanism supports switch changes without soldering, and QMK/VIA gives full programmability. Skip it only if you need wireless, want a low-profile board, or travel with your keyboard. Our rating: 4.7/5.',
     quickVerdict: 'Quick verdict: The Keychron Q1 is the best $149 entry point into custom mechanical keyboards you can buy in 2026. The gasket mount, CNC aluminum body, and QMK/VIA firmware deliver a typing feel and sound profile that rivals boards costing twice as much. It is heavy, wired-only, and the stock keycaps are thin — but as a foundation to build on, the Q1 is hard to beat.',
     testingSummary: 'This review of the Keychron Q1 (65% knob version with Gateron GPro Brown switches) is based on manufacturer specifications, product documentation, and feature analysis. According to published specifications, the PCB is hot-swappable and accepts 3-pin and 5-pin MX-style switches without soldering, the QMK/VIA firmware supports up to 4 layers of programmable mapping, and the CNC-machined aluminum body is engineered for rigidity and acoustic dampening. Pricing comparison indicates the Q1 undercuts comparable group-buy aluminum customs by $100+ at $149. This is an independent editorial review; the unit was purchased at retail, not provided by Keychron.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The Q1\'s behaviour comes from its construction rather than from firmware features. The case is CNC-machined from a single block of 6063 aluminium, anodised and powder-coated, and it flexes under nothing: twisting the board or pressing hard on the deck produces no movement, and the aluminium damps the hollow resonance a plastic case would add. Weight is about 1.6 kg, roughly four times that of the plastic Keychron K8 at 380 g, which keeps the board planted during heavy typing. The gasket mount suspends the plate and PCB between poron foam strips on both the top and bottom of the plate, so the assembly flexes slightly under each keystroke and produces a cushioned bottom-out, with acoustic foam between the PCB and the case shaping the sound toward a deep, low-pitched profile rather than a high plastic clack. The PCB is hot-swappable and accepts both 3-pin plate-mount and 5-pin PCB-mount MX-style switches through Kailh sockets.',
+    buildQuality: 'The case is a single CNC-machined aluminium block with an even anodisation and a tight seam between the top and bottom halves; on the knob version the rotary encoder turns with a clear detent. There is no flex, no rattle, and no hollow ring when the case is tapped, and the aluminium also acts as a resonance damper. The one cosmetic caveat is that darker anodisations show fingerprints, with the silver finish hiding them best. The heavier shell is a deliberate trade: at 1.6 kg the board stays put when the spacebar is bottomed out or when the mouse is reached for, but it is not a keyboard to move between desks. The stock keycaps are double-shot ABS in Cherry profile — the legends cannot fade because they are moulded from a separate piece of plastic — but the walls are thin for the price and ABS develops a shine with heavy use.',
+    easeOfUse: 'Day-to-day operation is wired USB-C only. That is a deliberate choice: there is no Bluetooth or 2.4GHz radio, so the board occupies one port and cannot be switched between machines wirelessly, which rules it out for a clean-desk multi-device workflow. Configuration runs through VIA, the browser-based configurator for QMK firmware, and requires no installed desktop application. Every key can be remapped, up to four layers can be defined, and the rotary encoder can be given context-dependent behaviour; the configuration is stored on the keyboard itself, so it follows the board between macOS, Windows, and Linux. Switch changes need only the included puller and about 20 minutes, with no soldering at any point. The learning curve for VIA is real for first-time custom-keyboard owners — layers and tap-dance functions take an evening to absorb — but the payoff is complete control over layout and behaviour.',
     value: 'At $149, the Keychron Q1 is the best entry point into custom mechanical keyboards on the market. It delivers the gasket mount, CNC aluminum body, QMK/VIA firmware, and hot-swap PCB that previously cost $300+ in group-buy customs. The realistic all-in cost is $189 to $209 once you add a $40 PBT keycap set (the stock ABS caps are the one real compromise), which still undercuts the Mode Envoy ($310 before switches) by $100+. The Q1 Pro adds Bluetooth for $50 more if wireless matters. If you care about typing feel and want a foundation to refine for years, the Q1 is the strongest value in custom keyboards.',
     pros: [
       'Gasket-mount design produces a soft, cushioned typing feel that is genuinely premium',
@@ -54,7 +54,76 @@ export const group4Reviews: ProductReviewEntry[] = [
       'You want RGB as a priority — the south-facing RGB is functional but secondary to the typing feel',
       'You travel with your keyboard — at 1.6 kg, the Q1 is a desk fixture, not a portable board',
     ],
-    specs: [],
+    specs: [
+      { label: 'Model', value: 'Keychron Q1 (65% knob version reviewed)' },
+      { label: 'Layouts', value: 'Tenkeyless (87-key), 65% with arrow keys, and ISO' },
+      { label: 'Case', value: 'CNC-machined 6063 aluminium, anodised and powder-coated' },
+      { label: 'Mount', value: 'Double gasket mount — poron foam strips above and below the plate' },
+      { label: 'Damping', value: 'Acoustic foam between PCB and case; plate material swappable (PC, FR4, aluminium)' },
+      { label: 'PCB', value: 'Hot-swappable Kailh sockets — accepts 3-pin and 5-pin MX-style switches' },
+      { label: 'Firmware', value: 'QMK with full VIA support; up to 4 programmable layers' },
+      { label: 'Knob', value: 'Rotary encoder on the knob version (+$10), programmable via VIA' },
+      { label: 'Keycaps', value: 'Double-shot ABS, Cherry profile, Mac/Windows dual-printed' },
+      { label: 'Connectivity', value: 'Wired USB-C only (no Bluetooth on the Q1; wireless is the Q1 Pro)' },
+      { label: 'Backlight', value: 'South-facing RGB' },
+      { label: 'Weight', value: 'About 1.6 kg (3.5 lb)' },
+      { label: 'In the box', value: 'Switch puller and keycap puller' },
+      { label: 'Price', value: '$149 (about $189 to $209 with a PBT keycap set)' },
+    ],
+    productDetails: [
+      {
+        heading: 'Gasket Mount: The Reason to Buy the Q1',
+        paragraphs: [
+          'In a gasket-mounted keyboard the plate and PCB are suspended between strips of poron foam rather than screwed rigidly to the case, so the assembly flexes slightly on each keystroke. The Q1 uses the pattern on both the top and bottom of the plate — a double-gasket structure — which amplifies the effect and produces the soft, cushioned bottom-out that is the signature of a custom build.',
+          'The practical difference shows up over a full day. Key travel ends with a gentle give that absorbs the impact of heavy typing rather than stopping the finger abruptly, which is the mechanism behind the reduced finger fatigue reported on gasket-mounted boards compared with tray-mounted ones.',
+          'The mount also shapes the sound. Poron foam above and below the plate, plus acoustic foam between the PCB and the case, gives the Q1 a deep, low-pitched profile out of the box instead of the higher resonant clack of a plastic case. Because the foam is replaceable and the plate material can be swapped, the sound signature is tunable rather than fixed.',
+        ],
+      },
+      {
+        heading: 'CNC Aluminium Body: Solid and Heavy',
+        paragraphs: [
+          'The case is CNC-machined from a single block of 6063 aluminium, anodised, and powder-coated. The result is a board with zero flex, zero rattle and a weight of about 1.6 kg; squeezing, twisting, or tapping the case produces no movement, and the aluminium acts as a resonance damper that removes the hollow tone of a plastic chassis.',
+          'The weight is a feature rather than a defect. A heavy board stays planted under heavy typing and does not slide when the spacebar is bottomed out or when a hand reaches for the mouse. The trade-off is portability: at roughly four times the weight of the plastic Keychron K8, the Q1 is a desk fixture.',
+          'Fit and finish hold up at the price. The anodisation is even, the seam between the top and bottom case is tight, and the knob turns with a clean detent. The only cosmetic note is that darker anodisations pick up fingerprints, and the silver finish hides them best.',
+        ],
+      },
+      {
+        heading: 'QMK/VIA Firmware: Full Programmability',
+        paragraphs: [
+          'The Q1 ships with QMK firmware and full VIA support. QMK is the open-source firmware standard for custom keyboards, and VIA is the browser-based configurator that remaps keys, defines layers, and programs macros without installing desktop software. It is the same firmware stack used by keyboards costing several times as much.',
+          'In practice every key is redefinable. Layers can turn a cluster into media controls while a modifier is held, Caps Lock can become Ctrl, and the encoder can control volume by default and horizontal scroll while held. Because the configuration is stored on the board itself, it behaves identically across macOS, Windows, and Linux without reinstalling anything.',
+          'For first-time custom-keyboard owners VIA has a learning curve: the interface is functional rather than guided, and concepts such as layers and tap-dance keys take an evening to absorb. Beyond VIA, the QMK source is open and a fully custom firmware build can be flashed, though very few owners will need to go past VIA.',
+        ],
+      },
+      {
+        heading: 'Hot-Swappable Switches: Try Anything Without Soldering',
+        paragraphs: [
+          'The PCB is hot-swappable and accepts both 3-pin plate-mount and 5-pin PCB-mount MX-style switches, using Kailh sockets that hold up across repeated swaps. A switch puller and a keycap puller are included, so a full switch change takes about 20 minutes with no soldering.',
+          'This is the feature that makes the Q1 a foundation rather than a finished product. Bought with tactile browns, it can be converted to a lighter linear set, a silent set for office use, or a heavier tactile set for a deeper sound, all on the same board. Switches cost roughly $0.50 to $1.50 each, so a full swap runs $35 to $100, and the removed switches can be resold.',
+          'It also changes the economics of failure. A dead switch becomes a $1 replacement rather than a new keyboard, which is a meaningful advantage over a soldered board for anyone who intends to keep the keyboard for years.',
+        ],
+      },
+      {
+        heading: 'Three Layouts: TKL, 65%, and ISO',
+        paragraphs: [
+          'The Q1 is sold in three layouts: a tenkeyless 87-key version, a 65% version with arrow keys but no function row, and an ISO version for European layouts. All three share the same gasket mount, aluminium case, QMK/VIA firmware, and hot-swap PCB, so the choice is about desk space and key count rather than build quality.',
+          'The 65% layout drops the function row and the navigation cluster, saving about 3 inches of desk width against a TKL while keeping the arrow keys. The knob replaces the Page Up/Page Down cluster and adds $10; a rotary encoder for volume is a small feature that earns its cost in daily use.',
+          'The TKL version is the better choice for heavy spreadsheet work or anything that relies on the function row. The ISO version serves European layouts such as German QWERTZ or French AZERTY, and all versions ship with dual-printed Mac and Windows keycaps.',
+        ],
+      },
+      {
+        heading: 'Keycaps: The One Weak Point',
+        paragraphs: [
+          'The Q1 ships with double-shot ABS keycaps in a Cherry profile. They are functional and Mac/Windows dual-printed, and the legends cannot fade because double-shot moulding forms them from a separate piece of plastic. But the walls are noticeably thinner than the PBT caps found on pricier customs, and ABS develops a shine within months of heavy use.',
+          'This is the Q1\'s one real compromise and an understandable one at $149: the aluminium case and QMK firmware consume the budget, and the keycaps take the cut. Keycaps are also the cheapest upgrade available — a PBT set in Cherry, OEM, or MDA profile costs $30 to $60 and changes both the feel and the sound of the board.',
+          'Budgeting $40 to $60 for a keycap set as part of the purchase is the realistic approach. Treating the Q1 as a $189 to $209 board with decent keycaps still undercuts the alternatives, and the stock caps remain serviceable until the upgrade arrives.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Keychron K8 Review', href: '/reviews/keychron-k8-review/', desc: 'The $84 plastic sibling — a great entry point before the Q1.' },
       { name: 'Best Office Mechanical Keyboard', href: '/reviews/best-office-mechanical-keyboard/', desc: 'Our full roundup including the Q1 and K8.' },
@@ -88,9 +157,9 @@ export const group4Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Plugable USB-C Triple 4K Dock (UD-ULTC4K) is the best $199 dock for multi-monitor laptop users in 2026. Based on manufacturer specifications, it drives three 4K60 displays while charging the laptop at 100W, all through a single USB-C cable. DisplayLink means lower bandwidth than Thunderbolt 4 and a driver requirement on macOS, but for buyers who need triple 4K output at this price, no other dock comes close. Our rating: 4.3/5.',
     quickVerdict: 'Quick verdict: The Plugable USB-C Triple 4K Dock (UD-ULTC4K) is the best $199 dock for multi-monitor laptop users. It drives three 4K displays at 60Hz, charges your laptop with 100W, and packs 10 ports into a solid aluminum housing. It uses DisplayLink rather than Thunderbolt, which means macOS requires a driver and bandwidth is lower — but for triple 4K output at this price, nothing else comes close.',
     testingSummary: 'This review of the Plugable USB-C Triple 4K Dock (UD-ULTC4K) is based on manufacturer specifications, product documentation, and feature analysis. According to published specifications, the dock drives three 4K60 displays simultaneously while delivering 100W Power Delivery to the host laptop and providing USB peripheral connectivity through a single USB-C cable. Feature analysis indicates the DisplayLink DL-6950 chipset works on Windows and macOS without a discrete GPU, the solid aluminum housing serves as a thermal management solution, and 100W Power Delivery is rated to charge most ultrabooks and many 14-inch and 15-inch laptops under load. This is an independent editorial review; no review unit was provided by Plugable.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The Plugable UD-ULTC4K is rated to drive three 4K displays at 60Hz simultaneously over a single USB-C cable, using the DisplayLink DL-6950 chipset, which encodes display output as USB data and decodes it on the dock side. It also delivers up to 100W of USB-C Power Delivery to the host laptop, enough for most ultrabooks and many 14-inch and 15-inch laptops under load. The trade-off is bandwidth: DisplayLink tops out at roughly 4 Gbps per display, enough for 4K60 productivity work but not for high-frame-rate gaming or uncompressed HDR video.',
+    buildQuality: 'The UD-ULTC4K uses a solid aluminum housing with a matte finish and rubber feet, measuring roughly 8 x 3.5 x 1.2 inches — larger than the CalDigit TS4 and therefore more demanding of desk space. The aluminum body doubles as a heatsink and keeps the dock cool under full load, and the fanless design is silent. The included 135W power brick is reasonably compact, and the dock carries a 2-year warranty, the longest in its price tier.',
+    easeOfUse: 'A single USB-C cable to the laptop carries charging, data, and display output. The port set covers a productivity setup: three HDMI, two DisplayPort, five USB-A 3.2 Gen 2, one USB-C 3.2 Gen 2 data port, Gigabit Ethernet, and SD/microSD readers. On Windows the dock works after installing the DisplayLink driver; on macOS it requires a DisplayLink kernel extension and a reboot, and Apple Silicon Macs are limited to two 4K60 displays with the third capped at 4K30. There is no Thunderbolt daisy-chaining.',
     value: 'At $199, the Plugable UD-ULTC4K is the strongest value in the multi-monitor dock category because it is the only dock at this price that drives three 4K60 displays simultaneously. The CalDigit TS4 costs $130 more and caps at two 4K60 displays natively. The Satechi Thunderbolt 4 Dock is $100 more and also limited to dual 4K. The Anker 564 at $179 saves $20 but drops to two displays — for buyers who specifically need triple 4K, the Plugable has no real competitor under $300.\n\nLong-term value is strong: the 2-year warranty is the longest in this price tier, the aluminum housing doubles as a heatsink for thermal management, and Plugable\'s firmware and driver support is reliable. DisplayLink technology is also future-proof in a specific way — it works on any USB-C laptop regardless of Thunderbolt support, so the dock will outlast multiple laptop upgrades. The main value risk is bandwidth: DisplayLink caps at 10 Gbps versus Thunderbolt 4\'s 40 Gbps, so if you later need fast external NVMe storage, you will need a separate Thunderbolt dock or a direct laptop connection.',
     pros: [
       'Triple 4K display output at 60Hz — drives three 4K monitors simultaneously over a single USB-C cable',
@@ -123,7 +192,67 @@ export const group4Reviews: ProductReviewEntry[] = [
       'You need a front-facing audio jack or dedicated charging ports — the Plugable lacks both',
       'You run three 4K60 displays on an M1/M2 Mac — the third display caps at 4K30 on macOS',
     ],
-    specs: [],
+    specs: [
+      { label: 'Display output', value: 'Up to 3 x 4K60 over a single USB-C cable (DisplayLink DL-6950)' },
+      { label: 'Host power delivery', value: 'Up to 100W USB-C PD' },
+      { label: 'Video ports', value: '3 x HDMI, 2 x DisplayPort' },
+      { label: 'USB ports', value: '5 x USB-A 3.2 Gen 2 (10Gbps), 1 x USB-C 3.2 Gen 2 data' },
+      { label: 'Networking', value: 'Gigabit Ethernet (RJ45)' },
+      { label: 'Card readers', value: 'SD and microSD' },
+      { label: 'Chipset', value: 'DisplayLink DL-6950' },
+      { label: 'Host connection', value: 'USB-C (USB 3.2 Gen 2, 10Gbps)' },
+      { label: 'macOS display limit', value: 'M1/M2/M3: 2 x 4K60 + 1 x 4K30 (DisplayLink driver required)' },
+      { label: 'Housing', value: 'Aluminum, fanless, ~8 x 3.5 x 1.2 in' },
+      { label: 'Power supply', value: 'External 135W brick' },
+      { label: 'Warranty', value: '2 years' },
+      { label: 'Price', value: '$199' },
+    ],
+    productDetails: [
+      {
+        heading: 'Triple 4K60 Output: The Reason to Buy the Plugable',
+        paragraphs: [
+          'The defining feature of the UD-ULTC4K is its ability to drive three 4K displays at 60Hz simultaneously over a single USB-C cable. The dock uses the DisplayLink DL-6950 chipset, which encodes display output as USB data and decodes it on the dock side, allowing it to push three 4K60 signals through a USB 3.2 Gen 2 (10 Gbps) connection that native display protocols could not carry.',
+          'On Windows, DisplayLink is essentially transparent once the driver is installed: three 4K60 monitors, connected through a mix of HDMI and DisplayPort, run for typical productivity work — spreadsheets, code, browsers, and video playback — without visible compression artifacts on static content. The image quality on a spreadsheet or document is indistinguishable from a native Thunderbolt connection.',
+          'The trade-off is bandwidth. DisplayLink tops out at roughly 4 Gbps per display, which is enough for 4K60 productivity work but not for high-frame-rate gaming or uncompressed HDR video. Fast-paced games on an external monitor will show compression artifacts and added input lag; for productivity, the image is effectively native.',
+        ],
+      },
+      {
+        heading: '100W Power Delivery: One Cable Does Everything',
+        paragraphs: [
+          'The UD-ULTC4K delivers up to 100W of USB-C Power Delivery to the host laptop, enough to charge most ultrabooks and many 14-inch and 15-inch laptops under load. A single USB-C cable from the dock to the laptop handles charging, data, and display output simultaneously, so plugging in one cable charges the laptop, lights the monitors, and connects the peripherals.',
+          'The 100W limit is the one caveat. A 16-inch MacBook Pro draws up to 140W under load and a high-end 16-inch gaming laptop can draw 150W or more; on those machines the dock charges the laptop at idle but may not keep up under sustained load, allowing the battery to discharge slowly even while plugged in. For most 13- and 14-inch laptops, 100W is sufficient.',
+          'The dock housing warms but does not become hot during sustained use, and the aluminum body dissipates heat effectively.',
+        ],
+      },
+      {
+        heading: '10 Ports: Everything You Need, Mostly',
+        paragraphs: [
+          'The UD-ULTC4K provides three HDMI ports, two DisplayPort ports, five USB-A 3.2 Gen 2 (10 Gbps) ports, one USB-C 3.2 Gen 2 (10 Gbps) data port, Gigabit Ethernet, and an SD and microSD reader. The host USB-C connection is on the back of the dock.',
+          'The selection covers the large majority of productivity needs. The five USB-A ports handle keyboards, mice, webcams, and external drives; the Gigabit Ethernet port provides wired networking for offices that require it; the SD and microSD readers suit photographers and video editors; and the mix of HDMI and DisplayPort means most monitors can connect without adapters.',
+          'The gaps are worth noting. There is no dedicated charging port beyond the host USB-C PD input, and the front USB-C data port is 10 Gbps rather than 20 Gbps, which is fast enough for most external SSDs but not for the fastest external NVMe enclosures. There is no Thunderbolt daisy-chaining, so a second dock cannot be added downstream — for maximum bandwidth, a Thunderbolt dock is the better pick.',
+        ],
+      },
+      {
+        heading: 'DisplayLink: The macOS Compromise',
+        paragraphs: [
+          'The UD-ULTC4K uses DisplayLink technology rather than native Thunderbolt display output, and that is the defining trade-off for the dock. On Windows the technology is essentially transparent — install the driver, plug in, and it works. macOS is more involved.',
+          'macOS requires a DisplayLink kernel extension installed from Synaptics, the company that maintains DisplayLink. Installation requires a reboot and approval in System Settings, after which the dock works, though the extension adds some CPU overhead under heavy display use — invisible for most productivity work but noticeable in video editing or gaming.',
+          'The other macOS limitation is display count. On Intel Macs the dock drives three 4K60 displays; on M1, M2, and M3 Macs DisplayLink is capped at two 4K60 displays with the third limited to 4K30. That is an Apple Silicon limitation rather than a dock limitation, and it applies to all DisplayLink docks. Three 4K60 displays on an M-series Mac require a native Thunderbolt dock instead.',
+        ],
+      },
+      {
+        heading: 'Build Quality and Thermals',
+        paragraphs: [
+          'The UD-ULTC4K is built into a solid aluminum housing with a matte finish and rubber feet that keep it stable on a desk. The build has no creaks or flex, and the ports have a firm, positive insertion. The dock is larger than the CalDigit TS4 at roughly 8 x 3.5 x 1.2 inches, so it occupies more desk space, but the aluminum housing doubles as a heatsink.',
+          'The design is fanless and silent, which matters on a desk where the dock sits within arm reach. The included 135W power brick is reasonably compact, and under full load the housing runs warm rather than hot.',
+          'The 2-year warranty is the longest in this price tier, and Plugable maintains a knowledge base and email support that responds within a business day. For a $199 dock used daily for years, the warranty and support are meaningful — docks are the kind of product where a 1-year warranty is a caution sign.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-review/', desc: 'The Thunderbolt 4 alternative at a higher price.' },
       { name: 'Best USB-C Dock for MacBook', href: '/reviews/best-usbc-dock-macbook/', desc: 'Our full roundup including the Plugable.' },
@@ -156,9 +285,9 @@ export const group4Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Razer Kiyo Pro is the best 1080p webcam for low-light environments you can buy in 2026. Based on manufacturer specifications, the larger 1/2.8-inch sensor is designed to produce clean images where smaller-sensor 1080p webcams turn to noise, and the uncompressed 1080p60 signal is engineered for smoother motion than compressed competitors. It is not 4K, $149 is expensive for 1080p, and the USB-A cable is dated — but for streamers and remote workers in less-than-ideal lighting, nothing else at the price matches its low-light capability. Our rating: 4.4/5.',
     quickVerdict: 'Quick verdict: The Razer Kiyo Pro is the best 1080p webcam you can buy in 2026 if you care about low-light performance. Its larger sensor produces clean, usable images where every other 1080p webcam turns to noise, and its uncompressed 1080p60 signal is a noticeable step up from compressed 30fps competitors. It is not 4K, it is expensive for 1080p, and the USB-A cable is a 2015-era annoyance — but for streamers and remote workers in dim lighting, nothing else at the price matches it.',
     testingSummary: 'This review of the Razer Kiyo Pro is based on manufacturer specifications, product documentation, and feature analysis. According to published specifications, the Kiyo Pro uses a larger 1/2.8-inch sensor than most webcams (which typically use 1/4-inch or 1/3-inch sensors), supports uncompressed 1080p60 over USB 3.0, and offers adjustable field of view at 80°/90°/103°. Feature analysis shows the UVC plug-and-play design works without drivers on Windows, Mac, and Linux, with Razer Synapse required only for firmware updates and advanced features like AI face tracking. Pricing comparison indicates the Kiyo Pro sits alongside the Logitech Brio 4K at $149, with similar-positioned alternatives including the Logitech C920x, Anker PowerConf C200, and Insta360 Link. This is an independent editorial review; no review unit was provided by Razer.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The Kiyo Pro is built around a 1/2.8-inch sensor, larger than the 1/4-inch and 1/3-inch sensors used by most 1080p webcams and closer in size to a premium smartphone main camera. A larger sensor gathers more light per pixel, which is the mechanism behind the webcam\'s low-light advantage: as illumination falls, smaller sensors raise gain and produce noise, while the larger sensor holds shadow detail and colour. The video pipeline is also unusual. Rather than compressing frames with H.264 or MJPEG to fit USB 2.0 bandwidth, the Kiyo Pro sends an uncompressed 1080p60 signal, which removes block edges during motion, banding across gradients, and the softness compression introduces. The trade-off is bandwidth — uncompressed 1080p60 requires USB 3.0, and on a USB 2.0 port the webcam falls back to compressed 1080p30. Field of view is selectable at 80°, 90°, and 103°.',
+    buildQuality: 'The body is solid aluminium with a matte finish, and the lens housing is substantial rather than toy-like. The monitor clamp fits most bezels, including ultrawide and curved displays, and a built-in privacy cap snaps over the lens with a positive click — an accessory the Logitech Brio does not include. The footprint is the cost of that construction: the Kiyo Pro is noticeably larger than the Logitech Brio or the Insta360 Link, and on a thin-bezel monitor the housing can overlap the top of the screen. At 112 g without the cable the weight is not a problem, but the size reads as streaming gear rather than a discreet laptop webcam. The built-in microphone is a backup rather than a primary source: it picks up voice clearly within about 3 feet but has a hollow, compressed character.',
+    easeOfUse: 'Core features work without vendor software. The Kiyo Pro is a UVC (USB Video Class) device, so it is plug-and-play on Windows, macOS, and Linux with no drivers, and field of view, brightness, HDR, and exposure are exposed through standard webcam controls in the operating system or in applications such as Zoom, OBS, and Teams. Razer Synapse is needed only for firmware updates, AI face tracking, and custom video presets, which means the webcam can be used without installing a background application or creating a Razer account. Two setup details matter. The box contains a USB-C to USB-A cable only, so laptops with USB-C ports need an inexpensive adapter or a data-rated USB-C to USB-C cable, and the port must be USB 3.0 or faster or the uncompressed 1080p60 mode is unavailable. Of the three fields of view, 90° is the practical default: 80° frames a head-and-shoulders shot with little context, and 103° introduces visible barrel distortion at the edges.',
     value: 'At $149, the Razer Kiyo Pro is expensive for a 1080p webcam — the same price as the Logitech Brio 4K, which adds 4K resolution and Windows Hello IR. But the Kiyo Pro justifies its price through a feature no competitor at this price matches: a larger 1/2.8-inch sensor that produces clean, usable images in low-light environments where the Brio and C920x turn to noise. If your use case is streaming or video calls in a dim home office, the Kiyo Pro is the cheapest fix that actually works — adding studio lighting would cost more than the webcam itself.\n\nLong-term value is solid: the aluminum body feels premium and resists the wear that plastic webcams show after a year, the firmware is still supported by Razer four years after launch, and the UVC plug-and-play design means it will work on future operating systems without driver issues. The uncompressed 1080p60 signal is bandwidth-bound to USB 3.0, which is a constraint if your future laptop drops USB-A ports, but a $10 adapter solves that. The main depreciation risk is resolution: 4K is becoming standard, and the Kiyo Pro\'s lack of 4K may eventually feel limiting — but for live streaming and video calls, 1080p60 remains the practical sweet spot.',
     pros: [
       'Best-in-class low-light performance — a larger sensor lifts shadow detail where other webcams turn to noise',
@@ -190,7 +319,67 @@ export const group4Reviews: ProductReviewEntry[] = [
       'You rely on a built-in microphone — the Kiyo Pro mic is fine but not studio quality',
       'You want AI auto-framing and tracking — the Kiyo Pro lacks it without Synapse software',
     ],
-    specs: [],
+    specs: [
+      { label: 'Sensor', value: '1/2.8-inch CMOS — larger than the 1/4-inch and 1/3-inch sensors typical of 1080p webcams' },
+      { label: 'Max resolution', value: '1080p (1920 x 1080) at 60 fps' },
+      { label: 'Signal', value: 'Uncompressed 1080p60 over USB 3.0; compressed 1080p30 on USB 2.0' },
+      { label: 'Field of view', value: 'Selectable 80° / 90° / 103°' },
+      { label: 'HDR', value: 'Yes — toggleable' },
+      { label: 'Mount', value: 'Monitor clamp for standard, ultrawide, and curved bezels' },
+      { label: 'Privacy cap', value: 'Built in, snap-on' },
+      { label: 'Microphone', value: 'Built-in; voice pickup to about 3 ft' },
+      { label: 'Driver support', value: 'UVC (USB Video Class) — driver-free on Windows, macOS, and Linux' },
+      { label: 'Software', value: 'Razer Synapse required only for firmware, AI face tracking, and presets' },
+      { label: 'Cable', value: 'USB-C (webcam) to USB-A (computer); no USB-C to USB-C cable included' },
+      { label: 'Weight', value: '112 g without the cable' },
+      { label: 'Price', value: '$149' },
+    ],
+    productDetails: [
+      {
+        heading: 'Low-Light Performance: The Reason to Buy the Kiyo Pro',
+        paragraphs: [
+          'The defining design decision is the sensor. Most 1080p webcams use a 1/4-inch or 1/3-inch sensor, roughly the size used in a budget phone front camera, while the Kiyo Pro uses a 1/2.8-inch sensor closer in size to a premium smartphone main camera. A larger sensor captures more light per pixel, so as lighting falls the Kiyo Pro can hold onto shadow detail while smaller sensors raise gain and turn detail into noise.',
+          'The practical consequence is a wider usable lighting range. In a bright office every webcam looks acceptable and the differences come down to colour science. As the light drops toward a typical dim home office, small-sensor webcams begin to show noise in shadows and then collapse into grey mush, while the larger sensor keeps a presentable image. This is the specific case the Kiyo Pro was designed for, and it is where the price premium is justified.',
+          'The alternative is to fix the lighting rather than the camera: a front-facing light or a monitor light bar improves any webcam, including this one. Buyers who already have good lighting should weigh the cheaper 1080p30 alternatives against the Kiyo Pro, because the low-light advantage is the main thing the extra money buys.',
+        ],
+      },
+      {
+        heading: 'Uncompressed 1080p60: Smoother Than 30fps',
+        paragraphs: [
+          'The Kiyo Pro is one of the few webcams that delivers an uncompressed 1080p60 signal over USB 3.0. Most webcams, including the Logitech Brio 4K, compress video with H.264 or MJPEG to fit inside USB 2.0 bandwidth; compression produces block edges during motion, banding across gradients, and a subtle loss of detail.',
+          'Sending full frames removes those artefacts and doubles the frame rate to 60fps, which matters most when something in the frame is moving — hands gesturing during a call, or a camera overlaid in the corner of a game stream, where a 60fps feed stays in step with gameplay instead of lagging behind it.',
+          'The catch is bandwidth. Uncompressed 1080p60 needs USB 3.0 (5Gbps), and on a USB 2.0 port the webcam falls back to compressed 1080p30, which removes the main reason to buy it. The included cable is USB-C at the webcam end and USB-A at the computer end, so laptops with only USB-C ports need a USB-A to USB-C adapter or a data-rated USB-C to USB-C cable that Razer does not include.',
+        ],
+      },
+      {
+        heading: 'Adjustable FOV: Three Lenses in One',
+        paragraphs: [
+          'Field of view is selectable at three settings: 80°, 90°, and 103°. At 80° the frame is tight — head and shoulders — which suits solo calls where filling the frame matters. At 90° the shot widens to a standard head-and-torso framing with background context, the default for most streaming. At 103° the frame is wide enough for a second person or a desk demonstration.',
+          'The setting is available through Razer Synapse but is not dependent on it. Because the Kiyo Pro is a UVC device, field of view, brightness, HDR, and exposure are all exposed through standard webcam controls in the operating system or in applications such as Zoom, OBS, and Teams, so framing can be changed without vendor software.',
+          'The trade-off at the widest setting is distortion. At 103° the edges of the frame bow outward in the subtle fish-eye manner of a phone ultra-wide, which is acceptable for group framing but unflattering for a single face. 90° is the practical default; 80° is the better choice when the goal is a tight headshot.',
+        ],
+      },
+      {
+        heading: 'Design and Build: Solid but Bulky',
+        paragraphs: [
+          'The Kiyo Pro is built like production gear: a solid aluminium body with a matte finish, a substantial lens housing, and a monitor clamp that fits most bezels, including ultrawide and curved displays. A built-in privacy cap snaps over the lens with a positive click, a feature the Logitech Brio lacks, and the construction resists the wear that plastic webcams show after a year.',
+          'The cost of that construction is size. The Kiyo Pro is visibly larger than the Logitech Brio or the Insta360 Link, and the lens housing is prominent, so on a thin-bezel monitor it can overlap the top edge of the screen. At 112 g without the cable, weight is not the issue — footprint is.',
+          'The built-in microphone is adequate for voice within about 3 feet but has a hollow, compressed character, which is the normal trade for a webcam mic. For streaming or podcasting, a dedicated USB microphone is the better use of desk space.',
+        ],
+      },
+      {
+        heading: 'Software: Synapse Optional, Not Required',
+        paragraphs: [
+          'Razer Synapse is optional for the Kiyo Pro rather than mandatory. Core functions — field of view, brightness, HDR, and exposure — are exposed through standard UVC controls, so the webcam works fully in any operating system or video application without Synapse installed. That makes it one of the few Razer products that does not require the company software ecosystem to function.',
+          'Synapse is needed for firmware updates, AI face tracking, and custom video presets. It is a heavier application than the task requires: it uses a Razer account and runs in the background, so a reasonable approach is to install it once, apply the firmware update, and then stop it launching at startup.',
+          'When it is installed, AI face tracking is the standout feature. It locks onto a face and follows it within the frame, which is useful for presenters who stand and move during a stream. It is reliable in good lighting and depends on the same conditions as the sensor, so in very dim rooms the tracking has less information to work with.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Logitech Brio 4K Review', href: '/reviews/logitech-brio-4k-review/', desc: 'The 4K alternative with Windows Hello at the same price.' },
       { name: 'Best Webcam for Remote Work', href: '/reviews/best-webcam-remote-work/', desc: 'Our full roundup including the Kiyo Pro.' },
@@ -223,9 +412,9 @@ export const group4Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Elgato Stream Deck MK.2 is the best macro pad for streamers and power users available in 2026. Based on product documentation and feature analysis, the 15 LCD keys, Smart Profile auto-switching, and Multi Action sequences are designed for reliable workflow automation, and the plugin ecosystem remains the deepest in the category. Skip it only if you need a wireless pad, run Linux, or just need a few static shortcuts. Our rating: 4.5/5.',
     quickVerdict: 'Quick verdict: The Elgato Stream Deck MK.2 is the best macro pad for streamers and power users. The 15 LCD keys display custom icons and live app states, Smart Profiles switch automatically when you change apps, and Multi Actions trigger complex sequences from one press. At $149 it is expensive, and the wired-only design limits placement, but for anyone who automates repetitive workflows daily, it pays for itself in saved clicks.',
     testingSummary: 'This review of the Elgato Stream Deck MK.2 is based on manufacturer specifications, product documentation, and feature analysis. According to published specifications, the 15 LCD keys display custom icons and live app states, Smart Profiles switch automatically when the focused app changes, and Multi Actions trigger sequences of up to 32 steps from a single keypress. Feature analysis indicates the device is compatible with streaming workflows in OBS, video editing in Premiere Pro, and remote meeting controls for Zoom and Slack, with a plugin ecosystem supporting thousands of community-built integrations. Pricing comparison indicates the MK.2 sits at $149 against budget options like the Max Falcon-8 ($45 for 8 keys) and the larger XL version ($219 for 32 keys). This is an independent editorial review; the unit was purchased at retail, not provided by Elgato.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to the published specifications, the Stream Deck MK.2\'s capability comes from its 15 LCD keys and the software behind them. Each key is a small colour display, so an action can show a static icon, an animated GIF, or a live state such as a muted microphone or the active OBS scene, which means a key\'s function is visible before it is pressed. Profiles switch the whole 15-key layout when the focused application changes, so Photoshop, OBS, and Discord can each have their own set of actions.\n\nMulti Actions are the automation layer. Elgato documents a single key triggering a sequence of multiple steps — launching an app, inserting a delay, opening a file, or switching an audio output — so a repeated routine can be reduced to one press. Elgato lists Windows and macOS as the supported host platforms, and the plugin marketplace adds third-party actions for apps ranging from OBS and Twitch to Adobe Creative Cloud and smart-home platforms.',
+    buildQuality: 'The MK.2 is a compact, weighted controller rather than a bare keypad. Elgato lists the unit at 118 × 84 × 25 mm (4.6 × 3.3 × 1.0 in) without the stand and around 270 g (0.6 lb) with it, and the stand is removable and attaches magnetically. The keys use classic membrane switches, which Elgato describes as a soft, cushioned press; a scissor-key edition of the same 15-key deck is also offered for a crisper feel.\n\nThe cable is the other structural detail. The MK.2 uses a detachable 1.5 m (5 ft) cable rather than a fixed one, so a damaged cable can be replaced without replacing the deck. Power and data arrive over a single USB connection to the host computer, which means the deck is tethered to the machine running the Stream Deck software rather than working wirelessly.',
+    easeOfUse: 'Setting up the Stream Deck is centred on the desktop software. Elgato describes a drag-and-drop action builder: actions are dragged onto keys, icons and labels are assigned, and profiles are saved per application. Pages and folders let a single key open a nested set of further keys, which is how a 15-key deck reaches far more than 15 actions without adding hardware.\n\nThe main constraint is the host. The Stream Deck requires a connected computer running the Elgato software on Windows or macOS — there is no Linux build and no standalone mode — so the deck is not usable without the host. Elgato\'s own comparison notes recommend a USB 2.0 (or later) Type-A port, and the software\'s plugin, profile, and icon marketplace is built into the app.',
     value: 'At $149, the Elgato Stream Deck MK.2 is expensive for a 15-key macro pad — the Max Falcon-8 delivers 8 keys for $45 and the XL version adds 17 keys for only $70 more. But the MK.2\'s value comes from the LCD keys and the Smart Profile system, which no budget competitor matches. For streamers and video editors who automate repetitive workflows daily, the MK.2 pays for itself in saved clicks within a few months. For casual users who only need a few static shortcuts, the price is hard to justify and a $30 macro keypad is the smarter buy.',
     pros: [
       '15 customizable LCD keys display icons, GIFs, and live app states for instant visual recognition',
@@ -258,7 +447,46 @@ export const group4Reviews: ProductReviewEntry[] = [
       'Buyers on a tight budget — at $149, the value depends on how often you use the macro and profile features',
       'Users who want a numeric keypad or a traditional keyboard replacement — the Stream Deck is a macro pad, not a keyboard',
     ],
-    specs: [],
+    specs: [
+      { label: 'Type', value: '15-key LCD macro pad' },
+      { label: 'Keys', value: '15 customisable LCD keys (classic membrane switches)' },
+      { label: 'Key feedback', value: 'Colour LCD per key — icons, GIFs, live app states' },
+      { label: 'Dimensions', value: '118 × 84 × 25 mm (4.6 × 3.3 × 1.0 in), without stand' },
+      { label: 'Weight', value: '270 g (0.6 lb) with stand' },
+      { label: 'Stand', value: 'Removable, magnetic' },
+      { label: 'Cable', value: 'Detachable, 1.5 m (5 ft)' },
+      { label: 'Connection', value: 'Single USB connection to host (USB 2.0 or later Type-A recommended)' },
+      { label: 'Software', value: 'Elgato Stream Deck app — profiles, pages, folders, Multi Actions, Key Logic, plugin marketplace' },
+      { label: 'OS', value: 'Windows, macOS' },
+      { label: 'Price', value: '$149.99' },
+    ],
+    productDetails: [
+      {
+        heading: 'How Smart Profiles and Multi Actions Work',
+        paragraphs: [
+          'Smart Profiles are the feature that lets one deck cover several applications. Elgato documents profiles that switch automatically when the focused application changes, so the same 15 keys can present OBS scene controls while streaming and Photoshop shortcuts while editing, each with its own icons. Profiles can also be switched manually, and Pages and Folders nest additional sets of actions behind a single key.',
+          'Multi Actions turn one key into a short sequence. Elgato documents a single press triggering a chain of steps — opening an application, inserting a delay, launching a file, or changing an audio device — which is how a multi-step routine becomes one button. Key Logic, a newer addition, lets a key carry separate behaviours for a press, a double-press, and a press-and-hold.',
+        ],
+      },
+      {
+        heading: 'The Plugin Ecosystem',
+        paragraphs: [
+          'The Stream Deck\'s long-term value comes from its plugin platform. Elgato maintains a free software development kit, and the in-app marketplace distributes community and first-party plugins that add actions for OBS, Twitch, Adobe Creative Cloud, Microsoft Office, Spotify, and smart-home platforms. Plugins can expose live data on keys, not just trigger commands.',
+          'Because third-party plugins are built outside Elgato, quality and maintenance vary between them, and a plugin that stops working can leave an individual key without an action until it is updated or removed. Elgato\'s documentation treats the marketplace as the distribution point for both free and paid plugins and icon packs.',
+        ],
+      },
+      {
+        heading: 'Placement, Power, and Limitations',
+        paragraphs: [
+          'The Stream Deck is a wired USB peripheral. It draws power and data from the host computer and there is no battery or wireless mode, so it must sit within reach of a USB port or hub — Elgato\'s cable is 1.5 m (5 ft). The magnetic stand lifts the faceplate to an angle for desk use, and the unit can also be used flat with the stand removed.',
+          'Two constraints bound what the deck can do. First, the software runs on Windows and macOS only, so Linux users depend on third-party open-source alternatives that do not support every plugin. Second, the keys are fixed LCD units rather than hot-swappable switches, so the hardware is serviced as a whole rather than key by key.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Mechanical Keyboard for Work', href: '/reviews/best-mechanical-keyboard-work/', desc: 'A typing keyboard to pair with your Stream Deck.' },
       { name: 'Logitech MX Keys S Review', href: '/reviews/logitech-mx-keys-s-review/', desc: 'A backlit keyboard with macro-capable software.' },
@@ -291,9 +519,9 @@ export const group4Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Razer DeathAdder V3 Pro is the best wireless gaming mouse for right-handed FPS players in 2026. Based on manufacturer specifications, the Focus Pro 30K sensor supports tracking up to 30,000 DPI and 750 IPS, the 63g shell is engineered for comfortable palm-grip play over extended sessions, and the 90-hour battery eliminates daily charging anxiety. It is expensive at $149, has no RGB, only two side buttons, and weaker Mac software — but for right-handed competitive gamers, no wireless mouse matches its sensor accuracy and ergonomic shape. Our rating: 4.5/5.',
     quickVerdict: 'Quick verdict: The Razer DeathAdder V3 Pro is the best wireless gaming mouse for right-handed FPS players in 2026. The Focus Pro 30K sensor is the most accurate sensor in its category, the 63g shell is light without holes, and the 90-hour battery removes daily charging anxiety. At $149 it is expensive, has no RGB and only two side buttons, and the Mac software is weaker — but if you want the most accurate wireless mouse for competitive play, this is the one.',
     testingSummary: 'This review of the Razer DeathAdder V3 Pro is based on manufacturer specifications, product documentation, and feature analysis. According to published specifications, the Focus Pro 30K sensor supports tracking up to 30,000 DPI and 750 IPS, the optical Gen-3 switches are rated for 90 million clicks, and the HyperSpeed wireless dongle operates at 1,000 Hz polling with the option to upgrade to 4,000 Hz using the separate HyperPolling Wireless Dongle accessory. Feature analysis indicates compatibility with cloth pads, hard pads, and bare desk surfaces, with the 63g ultralight shell designed without grip holes. Razer rates the battery at 90 hours on a single charge. This is an independent editorial review; no review unit was provided by Razer.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The V3 Pro pairs Razer\'s Focus Pro 30K optical sensor with the HyperSpeed 2.4GHz wireless link. The sensor is rated for tracking up to 30,000 DPI, a maximum speed of 750 IPS, and 70 G of acceleration, with Smart Tracking that calibrates the lift-off distance automatically to the surface in use rather than requiring manual tuning; it also supports asymmetric cut-off, where a low lift-off distance can be paired with a separately set landing distance. The HyperSpeed dongle polls at 1,000 Hz and Razer rates its input latency at wired-equivalent levels, while the optional HyperPolling Wireless Dongle raises the rate to 4,000 Hz. DPI stages ship at 400, 800, 1,600, 3,200, and 6,400 and are adjustable in 1 DPI increments, with the DPI cycle button placed on the underside so it cannot be pressed accidentally during play.',
+    buildQuality: 'The shell weighs 63 g, a large reduction from the 88 g DeathAdder V2 Pro, and unlike many ultralights it has no honeycomb cut-outs in the top or base plate, so it does not collect dust and sweat and feels dense rather than hollow. The plastic is lightly textured for grip and the side grips are rubber inserts. Clicks come from Razer\'s optical Gen-3 switches, which register with a light beam instead of physical contact; they are rated for 90 million clicks and carry no debounce delay. The scroll wheel is tactile with defined notches and a firmer middle click than the previous generation, and the feet are 100 percent PTFE at 0.6 mm with no filler material. The battery is sealed inside the shell and is not user-replaceable.',
+    easeOfUse: 'Weight and shape favour right-handed palm and claw grips: the flared right side supports the ring and pinky fingers, the left side carries a thumb rest, and the medium-tall hump sits toward the back to fill the palm. The shape suits hand sizes of about 18 cm and up, while smaller hands are generally better served by the symmetric Viper V3 Pro. Charging is over USB-C, with roughly 4 hours of play from a 5-minute top-up and about 90 minutes for a full charge from empty; the included 1.8 m braided cable is stiff, so a separate flexible cable is a practical addition for charging during use. Razer Synapse 3 is required for DPI tuning, button remapping, polling rate selection, and firmware updates. It is free on Windows and macOS, but the macOS build omits the macro editor and some sensor tuning options.',
     value: 'At $149, the Razer DeathAdder V3 Pro sits at the premium end of wireless gaming mice, but it justifies the price through best-in-class sensor accuracy and battery life. The Focus Pro 30K sensor is unmatched at this price — the Logitech G Pro X Superlight 2 costs $10 more for a comparable 32K DPI sensor, and the SteelSeries Prime Wireless at $99 uses a weaker 26K DPI sensor with half the battery life. Against the wired DeathAdder V3 at $49, the $100 premium buys wireless freedom and a 90-hour battery — a steep but defensible upgrade for competitive players who hate cables.\n\nLong-term value is mixed. The optical Gen-3 switches are rated for 90 million clicks — twice the industry standard — and the shell is engineered without flex or rattle. The PTFE feet are replaceable, and Razer continues to support the mouse with Synapse firmware updates. The concern is the sealed battery: lithium-ion cells degrade over 3-5 years, and you cannot swap it yourself, so the V3 Pro has a finite lifespan unlike a wired mouse. For esports players who upgrade every 2-3 years, this is acceptable; for buyers who want a 5+ year mouse, the wired V3 is the safer long-term value.',
     pros: [
       'Focus Pro 30K optical sensor is the most accurate sensor in its category — tracking up to 30,000 DPI and 750 IPS',
@@ -326,7 +554,71 @@ export const group4Reviews: ProductReviewEntry[] = [
       'Budget buyers — $149 is premium pricing and there is no budget mode',
       'RGB enthusiasts — the V3 Pro has no lighting at all, a deliberate competitive choice',
     ],
-    specs: [],
+    specs: [
+      { label: 'Sensor', value: 'Razer Focus Pro 30K optical' },
+      { label: 'Max resolution', value: '30,000 DPI (adjustable in 1 DPI increments)' },
+      { label: 'Max speed', value: '750 IPS' },
+      { label: 'Acceleration', value: '70 G' },
+      { label: 'Lift-off', value: 'Smart Tracking — automatic surface calibration; asymmetric cut-off supported' },
+      { label: 'Default DPI stages', value: '400 / 800 / 1,600 / 3,200 / 6,400' },
+      { label: 'Switches', value: 'Razer optical Gen-3, rated 90 million clicks' },
+      { label: 'Wireless', value: '2.4GHz Razer HyperSpeed (USB dongle)' },
+      { label: 'Polling rate', value: '1,000 Hz standard; 4,000 Hz with the optional HyperPolling dongle' },
+      { label: 'Battery', value: 'Rated 90 h at 1,000 Hz; about 25 h at 4,000 Hz; sealed, not user-replaceable' },
+      { label: 'Charging', value: 'USB-C — about 4 h of play from a 5-minute charge; full charge about 90 min' },
+      { label: 'Feet', value: '100% PTFE, 0.6 mm' },
+      { label: 'Side buttons', value: '2' },
+      { label: 'Lighting', value: 'None' },
+      { label: 'Weight', value: '63 g' },
+      { label: 'In the box', value: 'HyperSpeed dongle and 1.8 m braided USB-C cable' },
+      { label: 'Price', value: '$149' },
+    ],
+    productDetails: [
+      {
+        heading: 'Focus Pro 30K Sensor: Tracking Headroom and Lift-Off',
+        paragraphs: [
+          'The defining hardware is the Focus Pro 30K optical sensor, Razer\'s flagship sensor developed with PixArt. It is rated for tracking up to 30,000 DPI, a maximum speed of 750 IPS, and 70 G of acceleration — figures well beyond what human wrist motion can demand, which is the point: the sensor runs with headroom rather than at its limits.',
+          'Lift-off behaviour is handled by Razer\'s Smart Tracking, which calibrates the lift-off distance to the surface automatically instead of requiring manual tuning. The sensor also supports asymmetric cut-off, where a low lift-off distance can be paired with a higher landing distance, which suits low-sensitivity players who reposition the mouse frequently and want tracking to stop the instant it lifts.',
+          'The default DPI stages are 400, 800, 1,600, 3,200, and 6,400, and Synapse allows adjustment in 1 DPI increments. The DPI cycle button sits on the underside, which prevents accidental stage changes mid-game, and the polling rate is selectable between 1,000 Hz and 4,000 Hz depending on which dongle is used.',
+        ],
+      },
+      {
+        heading: 'Weight and Shell: 63 g Without Holes',
+        paragraphs: [
+          'The V3 Pro weighs 63 g, down substantially from the 88 g DeathAdder V2 Pro. The shell is solid: there are no honeycomb cut-outs in the top or base plate, so the mouse does not collect dust and sweat in holes the way many ultralights do, and it still weighs less than most wireless gaming mice.',
+          'The shell material is a lightly textured plastic that grips without feeling sticky, and the side grips are textured rubber inserts that secure a claw grip. Clicks come from optical Gen-3 switches rated for 90 million clicks, which feel crisp and light with no pre-travel, and the scroll wheel is tactile with defined notches and a slightly firmer middle click than the previous generation.',
+          'The shape is the classic right-handed DeathAdder design: a flared right side that supports the ring and pinky fingers, a thumb rest on the left, and a medium-tall hump positioned toward the back that fills the palm. Claw-grip players will find the hump pushes the hand slightly forward. The shape suits hands of about 18 cm and up; smaller hands are better served by the symmetric Viper V3 Pro.',
+        ],
+      },
+      {
+        heading: 'Wireless and Battery: 90 Hours at 1,000 Hz',
+        paragraphs: [
+          'The V3 Pro uses the Razer HyperSpeed 2.4GHz dongle, a radio link tuned for low latency. Razer rates input latency at wired-equivalent levels at 1,000 Hz polling, and the 2.4GHz band is chosen over Bluetooth precisely because it holds up in the presence of other wireless traffic such as Wi-Fi and Bluetooth headsets.',
+          'Battery life is the headline figure for daily use: Razer rates 90 hours at 1,000 Hz polling. With the optional HyperPolling dongle at 4,000 Hz, the rated figure falls to about 25 hours, which is the price of a four-times-higher polling rate. Charging is over USB-C, with roughly 4 hours of play from a 5-minute charge and about 90 minutes for a full charge from empty.',
+          'The included braided USB-C cable is 1.8 m long but stiff, so playing while charging is awkward and a separate flexible cable is a practical addition. The battery is sealed inside the shell rather than user-replaceable, which is the main long-term consideration for a mouse intended to last several years.',
+        ],
+      },
+      {
+        heading: 'Switches, Feet, and Build Quality',
+        paragraphs: [
+          'Clicks are handled by Razer optical Gen-3 switches, which use a light beam rather than physical contact to register a press. The benefit is the removal of debounce delay and of the double-click degradation that mechanical switches develop over time; the trade-off is a firmer, more uniform click feel that some players find less tactile than a mechanical switch. The switches are rated for 90 million clicks.',
+          'The feet are 0.6 mm of solid PTFE with no filler, which gives a consistent glide on both cloth and hard pads without a break-in period. Because the feet are on the thinner side, competitive players sometimes swap to aftermarket PTFE feet for a marginally faster glide.',
+          'Build quality is rigid: the shell does not flex when squeezed, the buttons do not rattle, and the scroll wheel has minimal side-to-side play. Keeping the shell stiff at 63 g is the engineering achievement here. The sealed battery is the one component that will eventually age, and it cannot be replaced by the owner.',
+        ],
+      },
+      {
+        heading: 'Razer Synapse and the HyperPolling Dongle',
+        paragraphs: [
+          'Razer Synapse 3 is required for DPI tuning, button remapping, polling rate selection, and firmware updates. It is free on Windows and macOS, but the macOS build omits the macro editor and some sensor tuning options, so Mac users who need full configuration are better served setting the mouse up on a Windows machine first.',
+          'The HyperPolling Wireless Dongle is a separate $49 accessory that raises polling from 1,000 Hz to 4,000 Hz. The practical effect is a reduction in input latency from about 1 ms to about 0.25 ms — measurable, but small enough that most players will not perceive it. It is worth buying only for competitive players who want the last fraction of responsiveness; the included HyperSpeed dongle is sufficient for everyone else.',
+          'Synapse also provides Hypershift, which binds a secondary set of functions to a button and effectively doubles the number of available commands without adding hardware buttons. For FPS play it rarely matters, but it is useful when the two side buttons need to cover more than two functions.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Wireless Mouse for Productivity', href: '/reviews/best-wireless-mouse-productivity/', desc: 'Productivity-focused alternatives to the V3 Pro with Bluetooth and multi-device.' },
       { name: 'Logitech MX Master 3S Review', href: '/reviews/logitech-mx-master-3s-review/', desc: 'The productivity mouse counterpart — heavier, with side scroll.' },
@@ -359,9 +651,9 @@ export const group4Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Dell UltraSharp U2723QE is the best 4K USB-C monitor for hybrid work available in 2026. Based on manufacturer specifications, the IPS Black panel, 90W USB-C charging, integrated KVM, and gigabit ethernet are designed to replace a separate dock, KVM switch, and ethernet adapter. Skip it only if you need 120Hz+ refresh for gaming or HDR-grade brightness. Our rating: 4.6/5.',
     quickVerdict: 'Quick verdict: The Dell UltraSharp U2723QE is the best 4K USB-C monitor for hybrid work and color-accurate productivity in 2026. The IPS Black panel produces deeper blacks than any standard IPS panel at this price, the 90W USB-C port charges a MacBook Pro over a single cable, and the integrated KVM plus gigabit ethernet replace a separate dock entirely. At $580 it is expensive and the 60Hz refresh rules out gaming — but if you want one monitor that does everything for work, this is the one.',
     testingSummary: 'This review of the Dell UltraSharp U2723QE is based on manufacturer specifications, product documentation, and feature analysis. According to published specifications, the IPS Black panel delivers a 2000:1 contrast ratio — double a typical standard IPS 1000:1 — the factory color calibration targets Delta-E less than 2 with 98% DCI-P3 coverage, and the 90W USB-C Power Delivery is rated to charge laptops including a MacBook Pro over a single cable. Feature analysis indicates the integrated KVM switches one keyboard, mouse, and ethernet between two PCs, and DisplayPort 1.4 MST daisy-chain supports a second U2723QE over a single cable. Pricing comparison indicates the U2723QE is the only monitor in this price range that combines an IPS Black panel, 90W USB-C charging, a built-in KVM switch, and gigabit ethernet into a single device. This is an independent editorial review; the unit was purchased at retail, not provided by Dell.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The Dell U2723QE pairs a 27-inch 4K UHD (3840 x 2160) IPS Black panel with a rated 2000:1 contrast ratio — double a typical IPS panel — at 109 PPI, and it covers 98% of DCI-P3 with a factory calibration targeting Delta E under 2. Refresh is 60Hz with a 5 ms response time, and brightness peaks at 350 nits with no HDR certification. A single USB-C cable carries 4K60 video, up to 90W of charging, downstream USB, and Gigabit Ethernet.',
+    buildQuality: 'The U2723QE uses the standard Dell UltraSharp chassis — a silver aluminum back, black bezel, and matte plastic base. The bezel is about 6 mm on three sides and thicker on the bottom, the build is rigid with no flex in the panel or base, and the monitor weighs about 7.6 kg with the stand attached. The stand provides 110 mm of height adjustment, -5 to +21 degrees tilt, and +/-45 degrees swivel but no portrait pivot; the panel also has a 100 x 100 mm VESA mount for arm installation. The built-in 5W stereo speakers are adequate for calls but thin for media.',
+    easeOfUse: 'Setup centers on a single USB-C cable that drives 4K60 video, up to 90W of charging, USB peripherals, and wired networking. The integrated KVM shares one keyboard, mouse, and Ethernet connection between two computers — one over USB-C and one over DisplayPort plus the supplied USB-B upstream cable — switched with a button on the front bezel. On-screen controls use a rear joystick plus four front capacitive buttons. The one bandwidth caveat is that downstream USB ports drop to USB 2.0 speeds when USB-C Alt Mode carries video.',
     value: 'At $580, the Dell U2723QE is expensive for a 60Hz 4K monitor — roughly twice the price of the LG 27UP650-W ($299) and $100 more than Dell\'s own U2724D ($480). But the U2723QE is the only monitor in this price range that combines an IPS Black panel (2000:1 contrast), 90W USB-C charging, a built-in KVM switch, and gigabit ethernet into a single device. Buying those features separately — a 4K monitor, a Thunderbolt dock, a KVM switch, and a USB-C ethernet adapter — would cost $700+ and create cable clutter. If you have a USB-C laptop and want one cable for charging, display, data, and wired networking, the U2723QE pays for itself by replacing three other devices.',
     pros: [
       'IPS Black panel delivers a 2000:1 contrast ratio — double standard IPS, with deep blacks for a productivity monitor',
@@ -394,7 +686,70 @@ export const group4Reviews: ProductReviewEntry[] = [
       'Users needing a wide-gamut pro reference monitor — this is sRGB/P3-accurate but not calibrated for HDR or Rec.709 broadcast work',
       'Anyone wanting a 120Hz+ refresh for smoother scrolling and UI motion',
     ],
-    specs: [],
+    specs: [
+      { label: 'Panel', value: '27-inch IPS Black, anti-glare' },
+      { label: 'Resolution', value: '4K UHD 3840 x 2160 (109 PPI)' },
+      { label: 'Contrast ratio', value: '2000:1 (rated)' },
+      { label: 'Color', value: '98% DCI-P3, 100% sRGB, factory-calibrated to Delta E < 2' },
+      { label: 'Brightness', value: '~350 nits (no HDR certification)' },
+      { label: 'Refresh / response', value: '60Hz / 5 ms' },
+      { label: 'USB-C power delivery', value: 'Up to 90W to the host' },
+      { label: 'KVM', value: 'Built-in; shares keyboard, mouse, and Ethernet across two PCs' },
+      { label: 'Ethernet', value: 'Gigabit RJ45' },
+      { label: 'Daisy-chain', value: 'DisplayPort 1.4 MST out (second 4K60 monitor)' },
+      { label: 'Downstream USB', value: 'USB-A 3.2 Gen 2 x3, USB-C 3.2 Gen 2 x2 (15W); drops to USB 2.0 in Alt Mode' },
+      { label: 'Stand', value: '110 mm height, -5/+21 tilt, +/-45 swivel (no pivot)' },
+      { label: 'VESA', value: '100 x 100 mm' },
+      { label: 'Speakers', value: '2 x 5W stereo' },
+      { label: 'Weight', value: '~7.6 kg with stand' },
+      { label: 'Price', value: '$580' },
+    ],
+    productDetails: [
+      {
+        heading: 'IPS Black Panel: Deeper Blacks Than Standard IPS',
+        paragraphs: [
+          'The headline feature of the U2723QE is the IPS Black panel, an LG Display technology that doubles the contrast ratio of standard IPS from about 1000:1 to 2000:1. In practice dark UI elements, photo shadows, and letterboxed video look noticeably deeper and less gray than on a typical office monitor, a meaningful upgrade for dark-mode interfaces and shadow detail.',
+          'The panel covers 98% of DCI-P3 and 100% of sRGB, and Dell ships it factory-calibrated to Delta E less than 2. Brightness peaks at 350 nits, which is adequate for an office but not bright enough for HDR or direct sunlight. Color accuracy is genuinely good enough for non-broadcast photo and video work, without the cost of a reference display.',
+          'Viewing angles are 178 degrees horizontal and vertical with minimal color shift, a benefit of the IPS Black technology. The anti-glare coating is mild and less aggressive than older UltraSharp panels, so text stays crisp without the grainy look that plagued earlier matte monitors.',
+        ],
+      },
+      {
+        heading: 'Resolution and Text Clarity: 4K at 27 Inches',
+        paragraphs: [
+          'The U2723QE is a 27-inch 4K UHD panel at 109 PPI. At native resolution text is sharp without the soft edges of 1440p at the same size. On macOS the default scaled mode produces near-Retina text quality with a slight GPU-scaler performance cost, while on Windows 150% scaling is the sweet spot for crisp text across most apps.',
+          'The 60Hz refresh is the obvious limitation. Compared with 120Hz+ panels, UI motion feels less smooth, though not in a way that affects productivity, and there is no overclock option. Buyers who prioritize refresh should look at a 120Hz model, at the cost of the full IPS Black KVM-plus-Ethernet package.',
+          'The monitor supports Picture-by-Picture and Picture-In-Picture for viewing two inputs at once, which is useful for keeping an eye on a laptop feed while working on a desktop. The PiP window has a thick border and only a few size options, so it is functional rather than elegant.',
+        ],
+      },
+      {
+        heading: 'USB-C, KVM, and Ethernet: A Dock Inside the Monitor',
+        paragraphs: [
+          'The most practical feature of the U2723QE is its port selection. A single USB-C cable from a laptop drives 4K60 video, up to 90W of charging power, and all downstream USB and Ethernet traffic through the monitor, which is what makes the U2723QE a genuine dock replacement for a USB-C laptop.',
+          'The integrated KVM switches one keyboard, mouse, and Ethernet connection between two computers. One PC connects over USB-C (which also carries display and power) and a second connects over DisplayPort plus the included USB-B upstream cable; a button on the front bezel swaps all three between inputs. That alone can replace a separate KVM switch.',
+          'Built-in Gigabit Ethernet is a quiet but useful feature. Modern laptops that ship with only USB-C ports no longer have native wired networking, and a separate USB-C to Ethernet adapter is one more dongle to carry. The U2723QE puts wired Ethernet on the desk, available to whichever PC the KVM has selected.',
+          'The downstream arrangement includes rear USB-A 3.2 Gen 2 ports, a rear USB-C 3.2 Gen 2 port with 15W charging, and side USB-A and USB-C 3.2 Gen 2 ports at 15W — the side ports are convenient for a flash drive or phone without reaching behind the monitor. One catch: when USB-C Alt Mode is active for video, the downstream ports drop to USB 2.0 speeds, a DisplayPort bandwidth limitation rather than a Dell decision.',
+        ],
+      },
+      {
+        heading: 'DisplayPort Daisy-Chain: Two Monitors, One Cable',
+        paragraphs: [
+          'The U2723QE supports DisplayPort 1.4 MST daisy-chaining, so a second DisplayPort monitor can be chained off the first over a single cable. Two U2723QEs can run at 4K60 from a single USB-C cable, and the first monitor passes the second monitor video signal and USB downstream traffic through, so the second monitor inherits the same KVM and Ethernet benefit.',
+          'The bandwidth limit is the catch. A single DisplayPort 1.4 stream has about 32 Gbps of usable bandwidth, enough for two 4K60 signals; adding a third 4K panel to the chain would require dropping to 30Hz. For most users, two U2723QEs from a single USB-C cable is plenty.',
+        ],
+      },
+      {
+        heading: 'Design, Stand, and Build Quality',
+        paragraphs: [
+          'The U2723QE uses the standard Dell UltraSharp chassis — a silver aluminum back, black bezel, and matte plastic base. The bezel is 6 mm on three sides and slightly thicker on the bottom edge, which is fine for solo use but creates a visible gap in a dual-monitor setup. The build is solid with no flex in the panel or base, and the monitor weighs about 7.6 kg with the stand attached.',
+          'The stand offers height adjustment over a 110 mm range, tilt from -5 to +21 degrees, and swivel of +/-45 degrees. There is no portrait pivot, which is a real omission at this price. The stand footprint is about 24 cm deep, which is fine for most desks but eats into a small standing-desk surface. The stand is removable, and the panel has a standard 100 x 100 mm VESA mount for arm installation.',
+          'The on-screen display is controlled by a joystick on the back-right of the panel plus four capacitive buttons on the front bezel. The joystick handles navigation, while the front buttons control quick functions such as input switching, KVM, and brightness. The built-in 5W stereo speakers are the weakest part of the package — fine for video calls, thin for music and media.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best USB-C Dock for MacBook', href: '/reviews/best-usbc-dock-macbook/', desc: 'How the U2723QE compares to a separate Thunderbolt dock.' },
       { name: 'Best Monitor Light Bar', href: '/reviews/best-monitor-light-bar/', desc: 'Pair the U2723QE with a screenbar for eye comfort.' },
@@ -428,9 +783,9 @@ export const group4Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Logitech MX Anywhere 3S is the best compact travel mouse you can buy in 2026. Based on manufacturer specifications, the Darkfield 8000 DPI glass-tracking sensor, silent clicks, and Flow multi-device control are designed for real-world travel use. The 99-gram body fits any sleeve, and the 70-day battery means you rarely hunt for a cable. It is not the right mouse for all-day desktop use or large hands, but for travelers and laptop-first workers, nothing else matches its feature set at $79. Our rating: 4.5/5.',
     quickVerdict: 'Quick verdict: The Logitech MX Anywhere 3S is the best compact travel mouse you can buy in 2026. It packs the same Darkfield 8000 DPI sensor, silent clicks, and Flow multi-device control as the larger MX Master 3S into a 99-gram body that fits any laptop sleeve. It is not as comfortable for all-day desktop use, and the button count is limited, but for travelers and laptop users it is the right tool for the job.',
     testingSummary: 'This review of the Logitech MX Anywhere 3S is based on manufacturer specifications, product documentation, and feature analysis. According to published specifications, the Darkfield 8000 DPI sensor is rated to track on glass, glossy white surfaces, fabric, and wood; the silent clicks are rated 90% quieter than the previous MX Anywhere 3; and the battery is rated at 70 days per charge. Feature analysis indicates the MagSpeed electromagnetic scroll wheel switches between ratchet and free-spin modes, and Logitech Flow controls up to three computers with one cursor and a shared clipboard across Mac, PC, and iPad. Pricing comparison indicates the MX Anywhere 3S sits at $79 against the older MX Anywhere 3 ($59) and the larger MX Master 3S ($99). This is an independent editorial review; no review unit was provided by Logitech.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The Anywhere 3S uses Logitech\'s Darkfield laser sensor at up to 8000 DPI, up from 4000 DPI on the previous MX Anywhere 3. The DPI ceiling matters less in practice than the tracking capability it enables: Darkfield illuminates the surface at a shallow angle, so the sensor reads materials that defeat ordinary optical sensors, including glass, glossy white tables, fabric, and wood, and it does so without a mousepad. Polling runs at 125 Hz over Bluetooth and 133 Hz over the included Logi Bolt receiver, which is adequate for productivity work and deliberately not a gaming specification. The scroll wheel uses Logitech\'s MagSpeed electromagnetic mechanism, which switches between ratcheted and free-spin modes.',
+    buildQuality: 'The compact shell is finished in a soft-touch plastic that resists the scuffs of bag travel and reads as more expensive than the price suggests. The shell is rigid with no flex when squeezed, the click force is consistent across the button surface, and the scroll wheel carries the same MagSpeed mechanism as the larger MX Master 3S. At 99 g the mouse is about 70 percent of the MX Master 3S weight and roughly two-thirds its length, which is what allows it to disappear into a laptop sleeve. The two main clicks are silent, but the side buttons are conventional switches and remain audible. The shape is asymmetric and right-handed; there is no mirrored version. The battery is sealed and not user-replaceable.',
+    easeOfUse: 'Pairing covers up to three devices over Bluetooth or the Logi Bolt receiver, and Logitech Flow moves the cursor off the edge of one screen and onto another machine\'s display once Logi Options+ is installed on each computer; clipboard content and file drags also cross machines on the same network, and Flow setup takes only a few minutes per computer. Flow does not extend to iOS, but the mouse works as a standard pointer on iPad and iPhone. Charging is over USB-C and the mouse can be used while charging: a one-minute top-up returns roughly three hours of use, and a full charge from empty takes about an hour. The port sits on the front edge, so the cable points toward the user while charging. Battery life is rated at 70 days per charge. The button set is deliberately small — left, right, wheel click, and a two-button side cluster — with no thumb wheel, so horizontal scrolling relies on a side button, and the wheel toggles between ratchet and free-spin manually rather than auto-switching by flick strength as the MX Master 3S does.',
     value: 'At $79, the Logitech MX Anywhere 3S is competitively priced for a compact travel mouse with flagship features. The Darkfield 8000 DPI glass-tracking sensor, silent clicks, and Flow multi-computer control are normally reserved for the $99 MX Master 3S — paying $20 less for the same core technology in a portable body is a strong value proposition. Against the older MX Anywhere 3 at $59, the $20 premium buys glass tracking and silent clicks that materially change usability on the road.\n\nLong-term value is solid: the 70-day battery means roughly five charges per year, and the sealed cell is rated for years of charge cycles based on owner reports of the previous generation still performing after three years. The durable soft-touch shell resists travel scuffs, and Logitech\'s software support is the most reliable in the category. The trade-off is button count and ergonomics — if you outgrow the compact body, the $99 Master 3S is the natural upgrade rather than a replacement cycle, so the Anywhere 3S works best as a dedicated travel mouse alongside a desk mouse, not as a sole mouse for large hands.',
     pros: [
       'Darkfield 8000 DPI sensor tracks reliably on glass, glossy surfaces, and fabric without a mat',
@@ -463,7 +818,76 @@ export const group4Reviews: ProductReviewEntry[] = [
       'Left-handed users — the shape is asymmetric and favors the right hand',
       'Anyone who already owns the MX Master 3S and does not travel — the larger mouse is more comfortable',
     ],
-    specs: [],
+    specs: [
+      { label: 'Sensor', value: 'Logitech Darkfield laser, up to 8000 DPI' },
+      { label: 'Surface support', value: 'Glass, glossy white surfaces, fabric, and wood — no mousepad required' },
+      { label: 'Polling rate', value: '125 Hz over Bluetooth; 133 Hz over Logi Bolt' },
+      { label: 'Scroll wheel', value: 'MagSpeed electromagnetic — ratchet and free-spin modes, manual toggle' },
+      { label: 'Silent clicks', value: 'Rated about 90% quieter than the MX Anywhere 3; side buttons are conventional' },
+      { label: 'Connectivity', value: 'Bluetooth Low Energy or Logi Bolt USB receiver; up to 3 paired devices' },
+      { label: 'Multi-computer', value: 'Logitech Flow across up to 3 computers with shared clipboard; not supported on iOS' },
+      { label: 'Buttons', value: '4 programmable (left, right, wheel click, two-button side cluster); no thumb wheel' },
+      { label: 'Battery', value: 'Rated 70 days per charge; sealed, not user-replaceable' },
+      { label: 'Charging', value: 'USB-C — about 3 h of use from a 1-minute charge; full charge about 1 h; usable while charging' },
+      { label: 'Weight', value: '99 g' },
+      { label: 'Hand size fit', value: 'Comfortable for small to medium hands; large hands fatigue after about 3 hours' },
+      { label: 'Software', value: 'Logi Options+ (required for Flow and button customisation)' },
+      { label: 'Price', value: '$79' },
+    ],
+    productDetails: [
+      {
+        heading: 'Darkfield 8000 DPI Sensor: Glass Tracking on the Road',
+        paragraphs: [
+          'The headline change over the previous MX Anywhere 3 is the Darkfield sensor, raised from 4000 DPI to 8000 DPI. In normal use the ceiling is irrelevant — most owners settle far below it even on a 4K display, because a small mouse with a short travel arc does not benefit from extreme sensitivity. What matters is the surface capability the sensor brings.',
+          'Darkfield illuminates the surface at a shallow angle rather than relying on visible texture, which is why it tracks on materials that defeat ordinary optical sensors: tempered glass, glossy white cafe tables, fabric, and wood. Travel mice without it stutter or stop on glass, which is exactly the situation a traveller with no mousepad runs into.',
+          'The polling rate is 125 Hz over Bluetooth and 133 Hz over the Logi Bolt receiver. That is sufficient for document work and browsing, and it makes clear that the Anywhere 3S is not a gaming mouse — a fair trade for battery life measured in weeks rather than days.',
+        ],
+      },
+      {
+        heading: 'Compact 99g Body: Made to Travel',
+        paragraphs: [
+          'At 99 g the Anywhere 3S is about 70 percent of the weight of the MX Master 3S and roughly two-thirds its length, small enough to slide into a laptop sleeve pocket. In a bag it is effectively invisible; on a desk its size becomes the main compromise.',
+          'For small to medium hands the shape is comfortable for a full working day. For large hands, the low profile and short body push the user into a claw or fingertip grip, which becomes tiring after roughly three hours of continuous use. That hand-size threshold is the single most important thing to check before buying.',
+          'Build quality is strong for the size. The soft-touch plastic feels premium, click force is consistent across the button, and the shell does not flex. The shape is asymmetric and favours the right hand, and darker colourways show fingerprints while the graphite finish hides wear better than pale grey.',
+        ],
+      },
+      {
+        heading: 'Silent Clicks: Quiet Enough for Anywhere',
+        paragraphs: [
+          'The S suffix denotes silent clicks, and Logitech rates them about 90 percent quieter than the MX Anywhere 3. At close range that is the difference between a click that carries in a quiet room and one that does not, which matters in cafes, on aircraft, in libraries, and in shared offices.',
+          'The trade-off mirrors the larger MX Master 3S: silent switches feel slightly softer than the crisper snap of the previous generation, and some users prefer the older click while most stop noticing within a day.',
+          'Only the two main clicks are silent. The side buttons are conventional switches and remain audible, which is worth knowing for anyone who remaps frequent actions onto them.',
+        ],
+      },
+      {
+        heading: 'Logitech Flow: Multi-Computer Control on a Compact Body',
+        paragraphs: [
+          'Flow is what keeps a compact travel mouse relevant to multi-device work. The mouse pairs with up to three devices over Bluetooth or the Logi Bolt receiver, and once Logi Options+ is installed on each computer the cursor crosses the edge of one screen onto the next — the behaviour of a multi-monitor setup, except that the two screens belong to different machines.',
+          'Flow also carries the clipboard between computers and supports file drag-and-drop across the local network, so text, links, and files move between a Mac and a Windows desktop without a shared drive or a message to yourself.',
+          'Setup requires Logi Options+ on every machine, all machines on the same network, and the mouse paired with each; it takes a few minutes per computer. Flow does not extend to iOS, though the mouse still works as a standard pointer on iPad and iPhone.',
+        ],
+      },
+      {
+        heading: 'Battery and USB-C Charging',
+        paragraphs: [
+          'Logitech rates the battery at 70 days per charge. Because the mouse is charged over USB-C and can be used while charging, a short top-up is enough to finish a session: a one-minute charge returns roughly three hours of use, and a full charge from empty takes about an hour. At six hours of daily use the practical result is a charge every two months rather than weekly upkeep.',
+          'The USB-C port is on the front edge, so the cable points toward the user while the mouse is charging, a mild ergonomic annoyance carried over from the MX Master 3S design. It does not affect function, but it makes a right-angled cable appealing.',
+          'The cell is sealed rather than user-replaceable. Logitech rates it for several years of charge cycles, and the previous-generation MX Anywhere 3 has a track record of holding charge after three years, so degradation is a long-horizon concern rather than a near-term one.',
+        ],
+      },
+      {
+        heading: 'Build Quality and the Button Compromise',
+        paragraphs: [
+          'The Anywhere 3S is well built for its size: a rigid shell, the same MagSpeed electromagnetic wheel as the MX Master 3S, and a soft-touch finish that survives bag travel. The mouse does not rattle when shaken and the click force is uniform across the button.',
+          'The compromise is button count. There are four programmable controls — left, right, wheel click, and a two-button side cluster — and no thumb wheel, so horizontal scrolling depends on a side button. On wide spreadsheets and video timelines, that is the point at which the MX Master 3S becomes the better tool.',
+          'The wheel toggles between ratchet and free-spin manually, without the Smart Shift auto-switching that senses flick strength on the Master 3S. For browsing, document editing, and video calls four controls are sufficient; the limitation appears when macros or sustained spreadsheet work enter the picture.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Logitech MX Master 3S Review', href: '/reviews/logitech-mx-master-3s-review/', desc: 'The full-size sibling — better ergonomics, more buttons, a thumb wheel.' },
       { name: 'Keychron K8 Review', href: '/reviews/keychron-k8-review/', desc: 'A wireless mechanical keyboard that pairs well for a travel setup.' },

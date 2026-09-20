@@ -19,9 +19,9 @@ export const group3Reviews: ProductReviewEntry[] = [
     verdict: 'The Secretlab Titan Evo 2022 is the best gaming chair in its price class under $500, with the strongest adaptive lumbar support in its category, a magnetic head pillow that genuinely stays put, and cold-cure foam that Secretlab rates for long-term durability without sagging. It is heavy, runs warm in summer, and the lumbar is aggressive by default — but if you want a chair that survives long gaming and work sessions without degrading, the Titan Evo 2022 is the one to buy. Our rating: 4.4/5.',
     quickVerdict: 'The Secretlab Titan Evo 2022 is the best gaming chair in its price class under $500, with the strongest lumbar support in its category, a magnetic head pillow that actually stays put, and a 5-year warranty that justifies the $449 price. It is heavy, runs warm in summer, and the lumbar is aggressive by default — but if you want a chair that survives long sessions without sagging, the Titan Evo 2022 is the one to buy.',
     testingSummary: 'Based on product documentation, manufacturer specifications, feature analysis, and pricing comparison, this review covers the Secretlab Titan Evo 2022\'s L-Adapt lumbar mechanism, cold-cure foam hybrid seat base, magnetic head pillow, 4D armrests, multi-tilt recline, and 5-year extended warranty. Specifications and pricing are compared against the Herman Miller Aeron, Steelcase Gesture, Branch Ergonomic Chair, and Autonomous ErgoChair Pro. Feature analysis focuses on lumbar support adjustability, foam density ratings, heat management, armrest range, and recline stability based on published specs. This is an independent editorial review; no review unit was provided by Secretlab.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to Secretlab\'s published specifications, the TITAN Evo 2022\'s defining mechanism is its 4-way L-ADAPT lumbar support, which is built into the backrest and flexes to follow the curve of the lower back rather than pressing in a single fixed spot. Secretlab describes the pebble-shaped seat base as sculpted to support movement, so the chair is designed to flex with the sitter rather than hold one posture.\n\nThe tilt mechanism is documented as a multi-tilt system: the seat base and backrest can tilt together, the tilt can be locked, and the recline range runs from roughly 85° to 165°, far enough to lie almost flat. The armrests are full-metal, four-directional units with magnetic CloudSwap tops, so the contact surface can be swapped for a different material without tools.',
+    buildQuality: 'The chair is built around a steel frame with an ADC12 aluminium wheelbase and a Class 4 hydraulic gas lift, a combination Secretlab lists as reinforced for daily use. The upholstery is offered in several materials — NEO Hybrid Leatherette, NanoGen Hybrid Leatherette, SoftWeave Plus fabric, and NAPA leather — and the seat uses Secretlab\'s cold-cure foam, with a NanoFoam composite option that pairs the cold-cure base with a softer microfoam top layer.\n\nCoverage runs to the head pillow as well: the TITAN Evo 2022 includes a magnetic memory-foam head pillow filled with cooling gel that attaches without straps. Secretlab backs the chair with a 5-year extended warranty, reached by registering for a free 2-year extension to the standard 3-year term, which is longer than the coverage typical of budget gaming chairs.',
+    easeOfUse: 'The TITAN Evo ships disassembled and requires assembly. Secretlab includes the tools needed — a long Allen key, four M8 screws, and a screwdriver handle with a reversible Philips/hex bit — and the backrest attaches to the seat base and then to the tilt mechanism. Because the upholstered parts arrive as separate pieces, assembly is a build rather than an unpacking.\n\nOnce assembled, adjustment is mechanical rather than software-driven. Height is set with the Class 4 gas lift, tilt tension and tilt lock are controlled by levers and a knob beneath the seat, and the four-directional armrests are repositioned by hand. There is no app or electronic control, so every setting is changed physically — which keeps the chair simple to maintain but also means nothing is stored or remembered automatically.',
     value: 'At $449, the Secretlab Titan Evo 2022 is the strongest value gaming chair in its category. The closest foam-seat competitor, the Autonomous ErgoChair Pro, costs $50 more at $499 but offers a weaker 2-year warranty and softer foam that sags sooner. The Branch Ergonomic Chair saves you $100 at $349, but its fixed lumbar pad and softer foam sacrifice the adaptive support and 5-year durability that justify the Titan Evo\'s premium. Against premium office chairs, the Titan Evo costs a third of the Herman Miller Aeron ($1,395) and less than half the Steelcase Gesture ($979) while matching them on build quality and recline range.\n\nThe longer math favors the Titan Evo even more. Secretlab\'s 5-year extended warranty includes free replacement parts for the gas lift, armrests, and seat base — components that typically fail on cheaper chairs within 18 months. Amortized over 5 years, the $449 price works out to roughly $90 per year, which is cheaper than replacing a $200 budget gaming chair every two years. The SoftWeave Plus fabric does not peel like PU leather, so the chair will look new for the full warranty period. If you sit 6 or more hours a day, the Titan Evo 2022 is the strongest value in the mid-premium chair category.',
     pros: [
       'Best-in-class lumbar support with an adjustable L-Adapt mechanism that adapts to your spine as you shift',
@@ -54,7 +54,48 @@ export const group3Reviews: ProductReviewEntry[] = [
       'Users wanting a mesh seat for breathability — the Titan Evo is foam and fabric only',
       'Shorter users under 5\'3" who may find the seat base too deep and the lumbar too high',
     ],
-    specs: [],
+    specs: [
+      { label: 'Type', value: 'Ergonomic gaming chair' },
+      { label: 'Sizes', value: 'Small, Regular, X-Large' },
+      { label: 'Recommended height', value: 'Small <170 cm (5\'6"); Regular 170–189 cm (5\'7"–6\'2"); XL 181–205 cm (5\'11"–6\'9")' },
+      { label: 'Maximum load', value: 'Small 130 kg (285 lb); Regular 130 kg (285 lb); XL 180 kg (395 lb)' },
+      { label: 'Recline', value: '85°–165° (multi-tilt with tilt lock and tilt-angle lock)' },
+      { label: 'Lumbar', value: 'Built-in 4-way L-ADAPT lumbar support system' },
+      { label: 'Armrests', value: '4-directional full-metal, with magnetic CloudSwap tops' },
+      { label: 'Foam', value: 'Secretlab cold-cure foam (NanoFoam composite option)' },
+      { label: 'Frame / base', value: 'Steel frame; ADC12 aluminium alloy wheelbase' },
+      { label: 'Upholstery', value: 'NEO Hybrid Leatherette, NanoGen Hybrid Leatherette, SoftWeave Plus fabric, NAPA leather' },
+      { label: 'Head pillow', value: 'Magnetic memory foam with cooling gel' },
+      { label: 'Gas lift', value: 'Class 4 hydraulic piston' },
+      { label: 'Warranty', value: '5-year extended warranty (standard 3-year term + free 2-year extension)' },
+    ],
+    productDetails: [
+      {
+        heading: 'The L-ADAPT Lumbar System',
+        paragraphs: [
+          'Secretlab\'s headline change for the 2022 TITAN Evo is the L-ADAPT lumbar system, a 4-way adjustable support built inside the backrest. Secretlab describes it as adapting to the spine rather than pressing at a single point, and states that it offers around 57% more back coverage than the support it replaced. Because the support sits inside the backrest, there is no separate lumbar cushion to reposition.',
+          'The lumbar tension is adjustable, so the amount of pressure against the lower back can be dialled in. Secretlab positions the mechanism as fitting a range of postures — sitting upright, reclining, or shifting position — which is the main functional difference between this chair and a design that uses a fixed lumbar pad.',
+        ],
+      },
+      {
+        heading: 'Sizing, Adjustment, and Recline',
+        paragraphs: [
+          'The TITAN Evo 2022 is sold in three sizes. Secretlab lists Small for users under about 170 cm, Regular for roughly 170–189 cm, and XL for 181–205 cm, with maximum loads of 130 kg (285 lb) for Small and Regular and 180 kg (395 lb) for XL. The sizing ranges overlap deliberately, and the company recommends comparing measurements against an existing chair before choosing.',
+          'Adjustment covers the usual office-chair axes and more. The multi-tilt mechanism allows the seat base to tilt and lock independently of the backrest, the recline runs from about 85° to 165°, and the four-directional armrests move in height, width, depth, and angle with magnetic CloudSwap tops. A tilt-tension control sets how freely the chair rocks.',
+        ],
+      },
+      {
+        heading: 'Materials and the 5-Year Warranty',
+        paragraphs: [
+          'The chair\'s structure is documented as a steel frame over an ADC12 aluminium wheelbase with PU-coated casters and a Class 4 gas lift. Upholstery choices include NEO Hybrid Leatherette, NanoGen Hybrid Leatherette, SoftWeave Plus fabric, and NAPA leather, and the seat uses Secretlab\'s cold-cure foam, with a NanoFoam composite that adds a softer top layer.',
+          'Secretlab covers the TITAN Evo with a 5-year extended warranty, achieved by registering the chair for a free 2-year extension to the standard 3-year term. The company states that the extension applies when a photo of the chair is shared for registration, and that the coverage excludes normal wear and tear.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Ergonomic Chair Under $500', href: '/reviews/best-ergonomic-chair-under-500/', desc: 'How the Titan Evo compares to Branch, Steelcase, and Autonomous.' },
       { name: 'Herman Miller Aeron Review', href: '/reviews/herman-miller-aeron-review/', desc: 'The mesh-seat benchmark for $1,400+ offices.' },
@@ -64,7 +105,7 @@ export const group3Reviews: ProductReviewEntry[] = [
       { question: 'Is the Secretlab Titan Evo 2022 worth it over the older 2020 model?', answer: 'Yes, if you value the upgraded lumbar support and the magnetic head pillow. The 2022 model swaps the older memory foam pillow for a magnetic one that never slides, and the L-Adapt lumbar mechanism is more responsive to posture changes. The seat base cold-cure foam is also denser and resists sagging longer. If you already own the 2020 model and your foam has not sagged, the upgrade is marginal — but for a new buyer, the 2022 is the better long-term purchase.' },
       { question: 'How long does the Secretlab Titan Evo 2022 last?', answer: 'Secretlab rates the chair for 5 years of daily use under the extended warranty, and the cold-cure foam is rated to hold its shape under sustained daily sessions without visible sagging. The PU leather on earlier Secretlab models peeled after 2 to 3 years, but the 2022 model uses an upgraded PRIME 2.0 PU leather that Secretlab claims resists peeling for 4+ years. For maximum longevity, choose the SoftWeave Plus fabric, which does not peel at all.' },
       { question: 'Is the Secretlab Titan Evo 2022 comfortable for work, not just gaming?', answer: 'Yes, but with a caveat. The lumbar support is aggressive by default — it pushes firmly into your lower back, which is great for posture but uncomfortable for the first week until you adjust. After a break-in period of about 10 days, the chair is rated as comfortable for 8-hour workdays. The 4D armrests are wide enough to rest your forearms while typing, and the seat base is firm enough to prevent the slouching that softer office chairs encourage.' },
-      { question: 'What is the weight and height limit of the Secretlab Titan Evo 2022?', answer: 'The Regular size supports up to 285 lbs and users up to 6\'1". The Plus size supports up to 395 lbs and users up to 6\'9". According to Secretlab\'s sizing guide, the Regular size suits users around 5\'11" at approximately 180 lbs with ideal seat depth and backrest height. If you are between sizes, Secretlab recommends sizing up — the Plus size seat is 1.5 inches wider and the backrest is 2 inches taller. Measure your desk height before ordering, as the Titan Evo sits higher than most office chairs.' },
+      { question: 'What is the weight and height limit of the Secretlab Titan Evo 2022?', answer: 'The Regular size supports up to 285 lbs and users up to 6\'1". The XL size supports up to 395 lbs and users up to 6\'9". According to Secretlab\'s sizing guide, the Regular size suits users around 5\'11" at approximately 180 lbs with ideal seat depth and backrest height. If you are between sizes, Secretlab recommends sizing up — the XL size seat is 1.5 inches wider and the backrest is 2 inches taller. Measure your desk height before ordering, as the Titan Evo sits higher than most office chairs.' },
       { question: 'Does the Secretlab Titan Evo 2022 come assembled?', answer: 'No. The chair ships flat in two boxes and requires assembly, which takes about 30 to 45 minutes with the included Allen key and hex tool. The seat base attaches to the mechanism with four bolts, the backrest slides onto the base and locks with two bolts, and the armrests click into the base. The side covers require real force to snap into place — Secretlab recommends a second person to hold the base while you click the covers. Secretlab includes a video walkthrough that makes the process straightforward.' },
     ],
     compareSlugs: [],
@@ -87,9 +128,9 @@ export const group3Reviews: ProductReviewEntry[] = [
     verdict: 'The Steelcase Gesture is the most adjustable office chair in its category for 2026. According to manufacturer specifications, the 5D armrests, 3D LiveBack, and 12-year warranty are designed to handle heavy multi-posture use across extended programming and reclined workflows. At $999 it is expensive and the corporate design is not for everyone, but for programmers and heavy computer users who plan to keep a chair for a decade, no other chair matches the Gesture\'s combination of support, adjustability, and long-term durability. Our rating: 4.6/5.',
     quickVerdict: 'The Steelcase Gesture is the most adjustable office chair in its category for 2026. The armrests move in every direction anyone could want, the 3D LiveBack flexes with your spine through every posture, and the 12-year warranty means it will outlast most desks. At $999 it is expensive and the design is corporate — but for programmers and heavy computer users, no chair matches the Gesture\'s combination of support and adjustability.',
     testingSummary: 'Based on product documentation, manufacturer specifications, feature analysis, and pricing comparison, this review covers the Steelcase Gesture\'s 5D armrest adjustability (height, width, depth, pivot, rotation), 3D LiveBack flex system, fit range across the 5\'0" to 6\'5" height range, 400 lb weight capacity, and 12-year warranty. Specifications and pricing are compared against the Leap V2, Herman Miller Aeron, and Branch Ergonomic. Feature analysis focuses on multi-posture support, build quality, and long-term durability based on published specs. This is an independent editorial review; no review unit was provided by Steelcase.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'Steelcase rates the Gesture for users from roughly 5\'0" to 6\'5", with a 400 lb capacity on the standard base and 500 lb on the plus base. The seat depth adjusts about 2 inches fore and aft so shorter users can take a shallower seat and taller users gain thigh support, and the pneumatic lift travels roughly 4.5 inches. The backrest height adjusts about 4.5 inches independently, which is what lets the lumbar support land in the correct position for a 5\'4" torso and a 6\'3" torso on the same chair. The 3D LiveBack shell flexes laterally and vertically as posture changes, so reclining, leaning, and twisting are supported rather than resisted. Seat pan sizes are standard (19 in wide by 19 in deep) and plus (22 in wide by 20.5 in deep).',
+    buildQuality: 'The Gesture weighs 47 lb, roughly twice a budget office chair, and the mass comes from a steel base, a steel mechanism, and a reinforced shell. The result is a chair with no creaks, no flex, and no wobble: squeezing the armrests, leaning hard into the backrest, or rocking the chair side to side moves nothing that should not move. The weight is a stability asset and a portability drawback — this is not a chair to carry between rooms casually, but once in place it stays planted when reclined and its casters roll cleanly on hard floors. Fit and finish are consistent, with tight fabric, even stitching, and moulded shells free of sharp edges. The armrest pads are replaceable at about $40 a set, and Steelcase backs the chair with a 12-year warranty covering parts, foam, and fabric.',
+    easeOfUse: 'Setup is the one place the Gesture asks for patience: the armrests move in five dimensions — height with about 4 inches of travel, width, depth, pivot, and 360 degree rotation — and first-time owners typically need around 30 minutes to dial in a comfortable upright position. Once set, the adjustments hold, and the armrests can be shifted from an upright typing position to a reclined call position in seconds. The seat glides on casters that roll cleanly on hard floors, tilt tension is adjustable from a lever under the seat, and the backrest height and seat depth adjust without tools. Sizing needs attention before purchase: the standard and plus seat pans and the optional headrest, about $150, are separate choices, and the headrest only earns its cost for buyers who recline frequently.',
     value: 'At $999, the Steelcase Gesture is expensive compared to budget ergonomic chairs at $300-$400, but its value proposition is unmatched long-term durability. The 12-year warranty covers parts, foam, and fabric — meaning Steelcase will replace any failed component for over a decade. Amortized over 12 years, the Gesture costs about $83 per year, which is cheaper than replacing a $300 chair every three years ($100 per year) and delivers a vastly better daily experience. Against the Leap V2 at $699, the $300 premium buys 5D armrests (vs 4D) and the 3D LiveBack flex system — worth it for programmers who recline into multiple postures.\n\nLong-term value is the Gesture\'s defining strength: based on Steelcase documentation, the chair is designed to retain foam density and mechanism integrity over a decade of use. The chair is serviceable by Steelcase technicians, so individual components can be replaced rather than junking the whole chair. Resale value is exceptionally strong — used Gestures in good condition typically sell for $500-$700 even after 5+ years, retaining 50-70% of their original value. The main value risk is fit: the Gesture\'s corporate aesthetic and firm support are not for everyone, and buyers who prefer a softer, sink-in cushion should look at the Leap V2 or Branch Ergonomic instead.',
     pros: [
       'Best armrest adjustability on the market — 360° rotation, height, width, depth, and pivoting in every direction',
@@ -122,7 +163,66 @@ export const group3Reviews: ProductReviewEntry[] = [
       'People who move their chair between rooms often — at 47 lbs, the Gesture is a fixture',
       'Hot climates — the default fabric breathes okay but is not as cool as mesh chairs like the Aeron',
     ],
-    specs: [],
+    specs: [
+      { label: 'Model', value: 'Steelcase Gesture ergonomic task chair' },
+      { label: 'Armrests', value: '5D — height (about 4 in travel), width, depth, pivot, 360° rotation' },
+      { label: 'Backrest', value: '3D LiveBack flex shell; about 4.5 in height adjustment' },
+      { label: 'Seat pan', value: 'Standard 19 x 19 in / Plus 22 x 20.5 in; about 2 in depth adjustment' },
+      { label: 'Height adjustment', value: 'Pneumatic lift, about 4.5 in travel' },
+      { label: 'Weight capacity', value: '400 lb (standard base) / 500 lb (plus base)' },
+      { label: 'User height fit', value: 'Approximately 5\'0" to 6\'5"' },
+      { label: 'Frame', value: 'Steel base, steel mechanism, reinforced shell' },
+      { label: 'Weight', value: '47 lb' },
+      { label: 'Headrest', value: 'Optional, about $150 extra' },
+      { label: 'Warranty', value: '12 years — parts, foam, and fabric' },
+      { label: 'Price', value: '$999' },
+    ],
+    productDetails: [
+      {
+        heading: 'Armrests: The Reason to Buy the Gesture',
+        paragraphs: [
+          'The defining feature of the Gesture is its armrests, which move in five dimensions: height with about 4 inches of travel, width in and out from the seat, depth forward and back, pivot left and right, and 360 degree rotation. That range exceeds comparable chairs such as the Herman Miller Aeron and the Steelcase Leap V2, whose armrests are 4D without rotation.',
+          'The practical effect is that the armrests can be positioned to meet the arms wherever they are rather than the other way round: low and narrow for typing, rotated inward and raised for reclined calls, or pivoted outward for elbows-wide reading. Adjustments hold once set, so moving between an upright and a reclined posture takes seconds rather than a full re-fit.',
+          'The pads are a soft polyurethane that grips without sticking to bare skin and are replaceable at about $40 a set. The trade-off is setup time: with five axes of movement on each side, new owners typically need around 30 minutes of adjustment before the chair feels dialled in.',
+        ],
+      },
+      {
+        heading: '3D LiveBack: A Back That Flexes With You',
+        paragraphs: [
+          'The backrest uses Steelcase 3D LiveBack technology — a flexible shell with embedded flexors that move with the spine as posture changes. Instead of forcing one upright position, the shell flexes laterally and vertically, so reclining, leaning, and twisting are supported rather than resisted.',
+          'The difference is most apparent when reclining. Where a rigid backrest forces the sitter to slide forward or lift the feet off the floor, the Gesture backrest flexes backward while the seat pan tilts slightly forward, keeping the feet planted and the spine supported through the range of motion.',
+          'The backrest also adjusts about 4.5 inches in height so the lumbar support lands in the right place regardless of torso length, which is why the same chair accommodates a 5\'4" and a 6\'3" user with only minor adjustment. The lumbar is not separately adjustable — it travels with the backrest — but the flex of the shell distributes pressure evenly enough that a dedicated lumbar dial adds little.',
+        ],
+      },
+      {
+        heading: 'Seat Pan and Weight Capacity: Fits Everyone',
+        paragraphs: [
+          'The seat pan comes in two sizes: standard at 19 inches wide by 19 inches deep, and plus at 22 inches wide by 20.5 inches deep. The standard pan is wider than most chairs at this price, and seat depth adjusts about 2 inches forward and back, which lets shorter users take a shallower seat and taller users gain more thigh support. The Gesture is rated for users up to 400 lb on the standard base and 500 lb on the plus base.',
+          'The cushion is Steelcase\'s default 4.5-density foam — supportive rather than plush. Buyers who want a sink-in seat should compare the Leap V2, which uses slightly softer foam, or a cushioned alternative such as the Branch Ergonomic. On the Gesture, the firmer foam is a deliberate choice that favours support over softness.',
+          'The seat glides on a steel base that does not wobble even when fully reclined, and the pneumatic lift travels about 4.5 inches, spanning users from roughly 5\'0" to 6\'5".',
+        ],
+      },
+      {
+        heading: 'Build Quality: 47 lbs of Steel and Engineered Plastic',
+        paragraphs: [
+          'At 47 lb the Gesture weighs roughly twice a budget office chair. The mass comes from a steel base, a steel mechanism, and a reinforced shell, and the result is a chair with no creaks, no flex, and no wobble — the armrests, backrest, and base all stay rigid under load.',
+          'The weight is a stability asset and a portability drawback. Moving the chair between rooms is a genuine effort, but once in place it stays planted when reclined, and the casters roll smoothly on hard floors. The 47 lb figure is the physical expression of the 12-year warranty: components are sized to last rather than to save material.',
+          'Fit and finish are consistent — tight fabric with no bunching, even stitching, and moulded plastic shells without sharp edges. The default black fabric and frame read as corporate; Steelcase offers dozens of fabric and colour options, though premium finishes add $150 to $400.',
+        ],
+      },
+      {
+        heading: '12-Year Warranty: Buy It for Life',
+        paragraphs: [
+          'The Gesture ships with a 12-year warranty covering parts, foam, and fabric, the longest coverage in the office chair market alongside Herman Miller. Steelcase will replace any failed component for more than a decade, and the chair is serviceable by Steelcase technicians if a major component fails.',
+          'That warranty is the core of the $999 value case. A $300 ergonomic chair typically lasts three to five years before the foam compresses, the mechanism loosens, or the fabric tears, whereas the Gesture is engineered for 15 to 20 years of comparable use. Amortised over 12 years the chair works out at roughly $83 per year, below the cost of replacing a budget chair every three years.',
+          'Individual components are replaceable — the foam, the fabric, and the mechanism — and the armrest pads swap out for about $40 a set, so the chair can be maintained rather than replaced. Buyers should purchase from an authorised Steelcase dealer, because grey-market chairs often carry no warranty or a one-year warranty, which removes the main reason to pay the premium.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Steelcase Leap V2 Review', href: '/reviews/steelcase-leap-v2-review/', desc: 'The Gesture\'s sibling — similar ergonomics for $300 less.' },
       { name: 'Herman Miller Aeron Review', href: '/reviews/herman-miller-aeron-review/', desc: 'The mesh alternative — firmer, cooler, more iconic.' },
@@ -155,9 +255,9 @@ export const group3Reviews: ProductReviewEntry[] = [
     verdict: 'The Sennheiser Momentum 4 Wireless is the best-sounding wireless headphone you can buy in 2026. According to manufacturer specifications, the 60-hour battery (triple the Sony XM5), adaptive ANC, and Sennheiser\'s warm, detailed sound signature deliver audiophile-grade performance for daily use. The ANC is not quite Sony-level and the design is conservative, but for buyers who prioritize sound quality and battery life over cutting-edge noise cancellation, no other wireless headphone in this price range comes close. Our rating: 4.6/5.',
     quickVerdict: 'The Sennheiser Momentum 4 Wireless is the best-sounding wireless headphone you can buy in 2026. With 60 hours of battery (triple the Sony XM5), adaptive ANC, and a sound signature that prioritizes warmth and detail, it is the pick for audiophiles who want wireless freedom. The ANC is not quite Sony-level and the design is conservative, but for sound and battery, nothing else comes close.',
     testingSummary: 'Based on product documentation, manufacturer specifications, feature analysis, and pricing comparison, this review covers the Sennheiser Momentum 4 Wireless\'s 60-hour battery life, adaptive ANC, aptX Adaptive and AAC codec support, multipoint Bluetooth pairing, and sound signature. Specifications and pricing are compared against the Sony WH-1000XM5, Bose QuietComfort 45, and Apple AirPods Max. Feature analysis focuses on sound quality across codecs, ANC performance against low-frequency noise, battery life ratings, and multipoint Bluetooth stability based on published specs. This is an independent editorial review; no review unit was provided by Sennheiser.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'Sennheiser rates the Momentum 4 at 60 hours of playback with adaptive ANC on and 80 hours with ANC off, roughly triple the Sony WH-1000XM5 rating of 20 hours and more than double the Bose QC45 rating of 24 hours. Audio is handled by 42mm dynamic drivers tuned for a warm, mid-forward signature rather than the brighter analytical balance Sony uses, and the headphones support aptX Adaptive on Android, AAC on iOS, and SBC as fallback. Bluetooth multipoint for two simultaneous devices is supported but ships disabled and is enabled by a firmware update through the Sennheiser Smart Control app. Charging runs over USB-C, with roughly 6 hours of playback from a 10-minute quick charge and about 2 hours for a full charge from empty.',
+    buildQuality: 'The Momentum 4 uses a fabric-wrapped headband and matte plastic earcups, a deliberately understated design that is lighter and more conservative than the Sony WH-1000XM5. At 293 g the headset is light enough for long sessions, and the memory foam earpads are covered in synthetic leather that stays cool against the skin. The earcups fold flat rather than inward, and the headphones ship with a semi-rigid carry case sized to fit a backpack. The battery is sealed and not user-replaceable, but Sennheiser rates it for 500 charge cycles before significant degradation. The earpads themselves are replaceable, which extends the service life beyond what a fully sealed design allows.',
+    easeOfUse: 'Controls are split between a touch surface on the right earcup for volume, playback, and calls, and physical buttons for power and ANC mode. The touch surface works reliably in normal conditions but registers poorly through gloves or in cold weather, and the physical buttons cover the functions that matter most for travel. Multipoint pairing with two devices at once requires a firmware update out of the box and about 10 minutes over Bluetooth; until it is installed, switching between a phone and a laptop means repairing. The Smart Control app handles firmware, a 5-band EQ, three ANC modes (Active, Adaptive, Transparent) with a manual intensity slider, and multipoint pairing. Wired listening over the included 3.5mm cable bypasses the battery entirely for passive use.',
     value: 'At $379, the Sennheiser Momentum 4 Wireless is priced between the Bose QuietComfort 45 ($329) and the Apple AirPods Max ($549), and $20 more than the Sony WH-1000XM5 ($359). The value proposition is unmatched battery life and superior sound quality: the 60-hour battery is triple the Sony XM5 and AirPods Max, meaning you charge the Momentum 4 roughly once a week instead of every other day. For travelers and remote workers, that battery advantage alone justifies the price over time.\n\nLong-term value is strong: Sennheiser\'s build quality is proven across the Momentum line, the replaceable earpads extend the headphone\'s lifespan beyond what sealed-earcup competitors offer, and firmware updates continue to refine the ANC and multipoint behavior. The Momentum 4 frequently drops to $299 during Prime Day and Black Friday, and Sennheiser\'s refurbished store sells it for $250 with a full warranty — at either of those prices, it is an exceptional audiophile value. The main depreciation risk is ANC: Sony and Bose continue to push ANC technology forward, and the Momentum 4\'s noise cancellation may feel dated in 2-3 years, even though the sound quality will remain class-leading.',
     pros: [
       '60-hour battery life is best in class — triple the Sony XM5 and Bose QC45',
@@ -189,7 +289,76 @@ export const group3Reviews: ProductReviewEntry[] = [
       'Your budget tops out at $300 — see the Sony XM5 on sale or the Anker Soundcore Q45',
       'You need flawless touch controls — the XM5 and AirPods Max respond more reliably',
     ],
-    specs: [],
+    specs: [
+      { label: 'Model', value: 'Sennheiser Momentum 4 Wireless over-ear headphones' },
+      { label: 'Drivers', value: '42mm dynamic' },
+      { label: 'Battery life', value: '60 h with ANC on / 80 h with ANC off (rated)' },
+      { label: 'Quick charge', value: 'About 6 h playback from a 10-minute USB-C charge' },
+      { label: 'Full charge', value: 'About 2 h over USB-C' },
+      { label: 'Battery cycles', value: 'Rated 500 cycles; sealed, not user-replaceable' },
+      { label: 'Codecs', value: 'aptX Adaptive, aptX, AAC, SBC' },
+      { label: 'Bluetooth multipoint', value: '2 devices — requires a firmware update to enable' },
+      { label: 'ANC', value: 'Adaptive ANC; Active / Adaptive / Transparent modes with intensity slider' },
+      { label: 'Equaliser', value: '5-band EQ in the Sennheiser Smart Control app' },
+      { label: 'Weight', value: '293 g' },
+      { label: 'Controls', value: 'Right-earcup touch surface plus physical power and ANC buttons' },
+      { label: 'In the box', value: 'Hard case, USB-C cable, 3.5mm audio cable, airplane adapter' },
+      { label: 'Price', value: '$379' },
+    ],
+    productDetails: [
+      {
+        heading: 'Sound Quality: The Reason to Buy the Momentum 4',
+        paragraphs: [
+          'Sound quality is the primary argument for the Momentum 4 over the Sony WH-1000XM5 or the Bose QC45. The 42mm dynamic drivers are tuned warm, detailed, and natural rather than analytical: vocals sit forward in the mix with believable presence, the midrange carries body without bloat, and the treble is smooth rather than sibilant.',
+          'Bass extension is the standout characteristic. The drivers reach deep with a controlled, tight character rather than the one-note boom common to consumer headphones, so sub-bass retains weight and texture and a bass guitar keeps a defined pitch and decay on acoustic material. This is a tuned-driver signature that is uncommon at the price.',
+          'Sennheiser includes a 5-band EQ in the Smart Control app. The default tuning is strong enough that most owners will leave it flat, but the EQ is granular and the changes are audible for those who want to adjust vocal balance for long listening sessions.',
+        ],
+      },
+      {
+        heading: 'Battery Life: 60 Hours Is a Different Category',
+        paragraphs: [
+          'The battery is the second headline feature, and the number is unusual for the category: Sennheiser rates 60 hours with ANC on and 80 hours with ANC off. That is roughly triple the Sony WH-1000XM5 rating of 20 hours and more than double the Bose QC45 rating of 24 hours.',
+          'In practical terms it changes how the headphones are used. Where a 20-hour headphone needs charging every two to three days, a 60-hour headphone needs charging roughly every two weeks at the same listening volume, which removes the ritual of topping up before every trip. A five-day trip can pass without a charger in the bag.',
+          'Charging is over USB-C: a 10-minute quick charge returns roughly 6 hours of playback, and a full charge takes about 2 hours. The cell is sealed rather than user-replaceable, but Sennheiser rates it for 500 charge cycles, which at this battery life works out to several years of typical use.',
+        ],
+      },
+      {
+        heading: 'Adaptive ANC: Good, Not Great',
+        paragraphs: [
+          'The Momentum 4 uses an adaptive ANC system that samples the environment continuously and adjusts its cancellation profile. It handles mid-to-high frequency noise well — voices, keyboard clatter, office chatter, and the high whine of aircraft ventilation are reduced substantially — and transparency mode pipes in outside sound naturally so conversations can be held without removing the headphones.',
+          'The weak point is low-frequency rumble. Deep engine drone on an aircraft is reduced but not eliminated, and the low bass thrum of a train carriage comes through more than it does on the Sony WH-1000XM5, which remains the stronger performer for steady low-frequency noise. Buyers whose main use case is blocking engine noise should weight that difference heavily.',
+          'The adaptive system is generally smooth, but transitions between very different environments involve a brief recalibration during which ambient noise is temporarily more audible before the profile settles. It is a minor artefact rather than a defect, and it is most noticeable in the first days of use.',
+        ],
+      },
+      {
+        heading: 'Comfort: Built for Long Sessions',
+        paragraphs: [
+          'The earpads were redesigned on the Momentum 4, and the result is a comfortable over-ear fit: memory foam wrapped in synthetic leather that stays cool, and a light 293 g clamping force. The low clamp makes six to eight hour sessions comfortable without pressure points or ear fatigue.',
+          'The earcups are large enough to enclose medium-to-large ears without pressing the cartilage, and the headband is padded with fabric-covered foam that spreads weight across the top of the head. The headphones fold flat and ship with a semi-rigid case that fits in a backpack, which makes them practical to travel with.',
+          'The light clamping force is also the reason the low-frequency ANC is weaker than Sony\'s best. A tighter seal blocks more bass but fatigues the ear cartilage sooner, and Sennheiser chose comfort over maximum cancellation. Owners with smaller heads may find the light clamp lets the earcups shift during vigorous movement.',
+        ],
+      },
+      {
+        heading: 'Design and Build: Conservative but Quality',
+        paragraphs: [
+          'The design is the most divisive aspect. The fabric headband and matte plastic earcups continue the Momentum 3 language, which reads as mature and understated next to the sleeker Sony WH-1000XM5 or the metal-finished Apple AirPods Max. Build quality is sound — no creaks, metal hinges, no flex — even though the aesthetic is deliberately conservative.',
+          'Controls mix touch and physical: a touch surface on the right earcup handles volume, playback, and calls, while separate buttons handle power and ANC mode. The touch surface is reliable in normal conditions but registers poorly with gloves or in the cold, where the physical buttons are the practical fallback.',
+          'Accessories are generous: a hard case, a USB-C charging cable, a 3.5mm audio cable for wired use, and an airplane adapter. Wired mode bypasses the battery in passive operation and delivers the full driver performance without Bluetooth compression, which is useful for critical listening from a dedicated DAC.',
+        ],
+      },
+      {
+        heading: 'Software: Sennheiser Smart Control',
+        paragraphs: [
+          'The Smart Control app manages firmware updates, EQ, ANC settings, and multipoint pairing. It is functional rather than fast: connecting and recognising the headphones after launch takes a few seconds, and the app occasionally loses the pairing state after a phone reboot, requiring a force-quit and relaunch.',
+          'Once connected, the app is straightforward. The 5-band EQ is granular, ANC offers Active, Adaptive, and Transparent modes plus a manual intensity slider, and the multipoint toggle — which requires the out-of-box firmware update — is reliable once configured. Firmware updates arrive through the app and take about 10 minutes over Bluetooth.',
+          'The main shortcoming is preset portability: EQ settings are not remembered across devices, so a preset tuned on a phone reverts to flat when the headphones connect to a laptop, and it must be re-applied on each host.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Logitech MX Master 3S Review', href: '/reviews/logitech-mx-master-3s-review/', desc: 'The productivity mouse that pairs with a quiet desk.' },
       { name: 'Best Noise Cancelling Headphones for Work', href: '/reviews/best-noise-cancelling-headphones-work/', desc: 'Our full roundup including the Momentum 4.' },
@@ -222,9 +391,9 @@ export const group3Reviews: ProductReviewEntry[] = [
     verdict: 'The Samsung T7 Shield is the best rugged portable SSD you can buy in 2026. According to manufacturer specifications, the IP65 shell, 1050MB/s speeds, and 3-meter drop resistance are designed to handle real-world abuse including outdoor photography, travel, daily backups, and console game expansion. The 1TB model throttles under sustained writes and the rubber shell runs warm, but for photographers, travelers, and console owners who need a fast drive that survives off-desk use, no other rugged SSD matches the T7 Shield\'s combination of speed, durability, and value. Our rating: 4.8/5.',
     quickVerdict: 'The Samsung T7 Shield is the best rugged portable SSD you can buy in 2026. The IP65 shell survives dust, rain, and 3-meter drops; the 1050MB/s speeds match the standard T7; and the 98g body fits in any pocket. The 1TB model throttles under sustained writes and the rubber shell runs warm, but for photographers, travelers, and console owners, the T7 Shield is the most durable fast drive on the market.',
     testingSummary: 'Based on product documentation, manufacturer specifications, feature analysis, and pricing comparison, this review covers the Samsung T7 Shield\'s IP65 rugged shell, 1050MB/s read and 1000MB/s write speeds over USB 3.2 Gen 2 (10Gbps), 3-meter drop resistance, SLC cache throttling behavior across capacities, AES 256-bit hardware encryption, and compatibility with Mac, Windows, iPad, Android, PS5, and Xbox. Specifications and pricing are compared against the standard T7, Crucial X9 Pro, and SanDisk Extreme. Feature analysis focuses on sustained throughput, durability ratings, and thermal behavior based on published specs. This is an independent editorial review; no review unit was provided by Samsung.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The T7 Shield is rated at 1050MB/s read and 1000MB/s write over USB 3.2 Gen 2 (10Gbps), matching the standard T7. Because the drive uses TLC NAND with an SLC cache, sustained writes hold rated speed only until the cache fills; the cache is larger on higher-capacity models, so the 1TB unit drops to a lower sustained rate on very large continuous transfers while the 2TB and 4TB units hold speed longer. For typical backups, photo offloads, and game storage the rated speeds are the relevant figure.',
+    buildQuality: 'The Shield wraps the standard T7 in a rubberized shell that adds about 3 mm of thickness and 10 g of weight, producing a 98 g drive measuring 88 x 59 x 13 mm. It is rated IP65 — dust-tight and resistant to water jets — with drop resistance rated to 3 meters. The rubberized finish grips well and resists scuffing, the USB-C port is reinforced, and the drive carries a 3-year warranty. A trade-off of the shell is heat: the rubber traps warmth that the metal T7 dissipates through its aluminum body.',
+    easeOfUse: 'The drive ships formatted exFAT, which both macOS and Windows read and write without reformatting, and it works without drivers across Mac, Windows, iPad, Android, PS5, Xbox, and Linux. The box includes both a USB-C to USB-C cable and a USB-C to USB-A cable, though some regions ship only the USB-A cable — worth checking before buying. AES 256-bit hardware encryption is available through Samsung Portable SSD software on Mac and Windows; the encryption is hardware-based and carries no speed penalty, but it is not available on iPad, Android, PS5, or Xbox.',
     value: 'At $109 for the 1TB model, the Samsung T7 Shield carries a $20 premium over the standard T7 ($89) — and that premium buys an IP65 rugged shell, 3-meter drop resistance, and a rubberized body that survives travel abuse. For photographers, outdoor workers, and console owners who move the drive off a desk, the $20 is well spent: replacing a broken drive and recovering lost data costs far more. Against the Crucial X9 Pro at $99 (which has a 5-year warranty but no rugged shell), the T7 Shield trades warranty length for physical durability — the right trade for travelers, the wrong one for desk-only users.\n\nLong-term value is strong: the Samsung controller has a proven reliability record across the T7 line, the 3-year warranty is standard for the category, and the USB-C interface is universal across Mac, Windows, iPad, Android, PS5, and Xbox. The drive will outlast multiple device upgrades. The main value risk is capacity scaling: the 1TB model throttles under sustained writes after 60GB, so buyers doing video or large photo projects should step up to the 2TB ($149) or 4TB ($229) for both sustained-speed and price-per-GB benefits. The T7 Shield holds resale value better than non-rugged SSDs because the shell protects against the cosmetic damage that depresses used-drive prices.',
     pros: [
       'Rugged IP65 design resists dust and water jets — survives rain, sand, and spills without a case',
@@ -256,7 +425,67 @@ export const group3Reviews: ProductReviewEntry[] = [
       'Anyone who needs submersion protection — IP65 is water jets, not underwater use',
       'Heavy sustained-transfer users — the 1TB model throttles under continuous writes',
     ],
-    specs: [],
+    specs: [
+      { label: 'Capacity options', value: '1TB / 2TB / 4TB' },
+      { label: 'Interface', value: 'USB 3.2 Gen 2 (10Gbps), USB-C' },
+      { label: 'Rated speed', value: '1050 MB/s read, 1000 MB/s write' },
+      { label: 'NAND', value: 'TLC with SLC write cache' },
+      { label: 'Sustained writes', value: 'SLC cache is smaller on the 1TB model than on 2TB/4TB' },
+      { label: 'Durability', value: 'IP65 (dust-tight, water-jet resistant); drop-rated to 3 m' },
+      { label: 'Encryption', value: 'AES 256-bit hardware (Mac/Windows software)' },
+      { label: 'File system', value: 'exFAT out of the box' },
+      { label: 'Compatibility', value: 'Mac, Windows, iPad, Android, PS5, Xbox, Linux' },
+      { label: 'Dimensions / weight', value: '88 x 59 x 13 mm / 98 g' },
+      { label: 'In the box', value: 'USB-C to USB-C and USB-C to USB-A cables (region-dependent)' },
+      { label: 'Warranty', value: '3 years' },
+      { label: 'Price', value: '$109 (1TB)' },
+    ],
+    productDetails: [
+      {
+        heading: 'Rugged Design: IP65 and 3-Meter Drops',
+        paragraphs: [
+          'The defining feature of the T7 Shield is its rugged shell. Where the standard T7 is a slim aluminum slab, the Shield is wrapped in a rubberized body that adds about 3 mm of thickness and 10 g of weight. The shell is rated IP65 — dust-tight and resistant to water jets — and Samsung rates drop resistance up to 3 meters onto hard floors.',
+          'The IP65 rating covers dust ingress and low-pressure water jets, which is the relevant protection for rain, spills, and dusty field conditions. It is not a submersion rating: the USB-C port is exposed rather than sealed, so the drive should be dried fully before use if it gets wet. Samsung Portable SSD software extends the rugged theme with AES 256-bit hardware encryption.',
+          'The trade-off is heat dissipation. The rubber shell traps heat that the aluminum body of the standard T7 disperses, so the Shield runs warmer than the metal model during sustained transfers. For typical use — backups, photo offloads, and game storage — this is a non-issue, but buyers who routinely perform continuous large transfers should note that the standard T7 runs cooler.',
+        ],
+      },
+      {
+        heading: 'Speed: 1050MB/s at the USB 3.2 Gen 2 Ceiling',
+        paragraphs: [
+          'The T7 Shield uses the same USB 3.2 Gen 2 (10Gbps) controller as the standard T7, rated for 1050MB/s read and 1000MB/s write. On a 10Gbps USB-C connection the rated figure is close to the ceiling imposed by the interface, and the drive sustains rated speed on large sequential transfers.',
+          'The catch is the SLC cache. The T7 Shield uses TLC NAND with an SLC cache that absorbs bursts of writes at full speed. The cache scales with capacity — smaller on the 1TB model and larger on the 2TB and 4TB models — so very large sustained writes can exceed the cache on the 1TB unit and drop to a lower sustained rate, while the higher-capacity models hold full speed for longer. Buyers doing continuous large transfers such as long video projects should favor the 2TB or 4TB model for both sustained speed and price per gigabyte.',
+          'For Thunderbolt-level sustained speeds a Thunderbolt NVMe drive is required instead; the T7 Shield tops out at the 10Gbps USB interface, which is more than enough for photo offloads, 4K video editing, and console game storage.',
+        ],
+      },
+      {
+        heading: 'Compatibility: Works With Everything',
+        paragraphs: [
+          'The T7 Shield is one of the more broadly compatible portable SSDs: it works without drivers on Mac (macOS 10.6+), Windows (7+), iPad (iPadOS 13+), Android (5.1+), PS5, Xbox Series X/S, and Linux. The drive ships formatted exFAT, which both Mac and Windows can read and write without reformatting, avoiding the exFAT-versus-APFS friction of many portable drives.',
+          'On PS5, the drive can store and play PS4 games directly and store PS5 games for transfer to the internal SSD; on Xbox, Series X/S game storage is supported. Samsung documents the 1050MB/s speed as sufficient for game loading close to the internal SSD on both consoles.',
+          'The box includes both USB-C to USB-C and USB-C to USB-A cables, so the drive works with USB-C-only and USB-A-only machines. Some regions ship only the USB-A cable, so the listing should be checked if the USB-C cable is needed. Samsung Portable SSD software for Mac and Windows adds AES 256-bit hardware encryption.',
+        ],
+      },
+      {
+        heading: 'Build Quality and Portability',
+        paragraphs: [
+          'The T7 Shield weighs 98 grams and measures 88 x 59 x 13 mm — small enough for a pocket and lighter than a phone. The rubberized shell has a textured grip that feels secure in the hand, and the USB-C port sits flush on the short edge with a small lanyard loop for clipping to a bag.',
+          'Build quality is robust: the shell has no flex or creaks, the rubberized finish resists scuffing, and the USB-C port is reinforced. The drive carries a 3-year warranty, which is typical for the T7 lineup though shorter than the 5-year coverage some competitors offer.',
+          'One small inconsistency: a status LED is present on the black variant but is not always included on some other color variants. Buyers who rely on a transfer indicator should confirm the variant before purchasing.',
+        ],
+      },
+      {
+        heading: 'Security: AES 256-Bit Encryption',
+        paragraphs: [
+          'The T7 Shield includes AES 256-bit hardware encryption, activated through Samsung Portable SSD software on Mac and Windows. Once enabled, the drive requires a password to mount on any computer. Because the encryption is hardware-based, encrypted transfers run at the same speed as unencrypted ones.',
+          'The encryption is tied to the drive rather than the software, so the password is required even on machines without Samsung software installed. There is no recovery path if the password is lost, so it should be recorded securely.',
+          'The software does not run on iPad, Android, PS5, or Xbox — those platforms see the drive as standard unencrypted storage and cannot unlock it. Buyers who need cross-platform encrypted access should look elsewhere; for Mac and Windows users the encryption is a free addition with no performance penalty.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best External SSD for Backup', href: '/reviews/best-external-ssd-backup/', desc: 'How the T7 Shield stacks up against the Crucial X9, SanDisk Extreme, and more.' },
       { name: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-review/', desc: 'A Thunderbolt 4 dock with fast USB-C ports for the T7 Shield.' },
@@ -288,12 +517,12 @@ export const group3Reviews: ProductReviewEntry[] = [
     bestPrice: 8,
     amazonUrl: null,
     verdict: 'Linear is the fastest and most beautiful issue tracker in its category. According to product documentation, every action loads in under 100ms, native GitHub sync works reliably across repositories, and the built-in cycles and roadmap can replace Jira plugins entirely for software teams. Skip it only if you need Gantt charts, custom fields, or built-in time tracking. Our rating: 4.8/5.',
-    quickVerdict: 'Linear is the fastest and most beautiful issue tracker available in 2026. Every action loads in under 100ms, the keyboard-first UI lets you triage without a mouse, and native GitHub integration keeps PRs and issues in sync automatically. At $8 per seat per month it is not free for teams, and the lack of Gantt charts and custom fields rules out enterprise use — but for software teams of 2 to 50 people, no tool matches Linear\'s speed and design.',
+    quickVerdict: 'Linear is the fastest and most beautiful issue tracker available in 2026. Every action loads in under 100ms, the keyboard-first UI lets you triage without a mouse, and native GitHub integration keeps PRs and issues in sync automatically. At $10 per user per month (Basic) it is not free for teams, and the lack of Gantt charts and custom fields rules out enterprise use — but for software teams of 2 to 50 people, no tool matches Linear\'s speed and design.',
     testingSummary: 'Based on product documentation, feature analysis, pricing comparison, and workflow evaluation, this review covers Linear\'s cycles, roadmap, triage inbox, insights, GitHub integration, and keyboard-first UI. Pricing is compared against Jira Standard and Asana Starter. Usability is evaluated through workflow analysis of sprint planning, PR-linked issue triage, and cross-team roadmap visibility. This is an independent editorial review; no review license was provided by Linear.',
     performance: 'Linear\'s headline strength is speed — based on product documentation, interactions load in under 100ms, including opening issues with 50+ comments, scrolling large backlogs, and switching between cycles. The local-first architecture caches the full workspace on the client, so the app feels native rather than web-wrapped. The command bar (Cmd+K) surfaces every action — create issue, assign, move to cycle, change status — without a mouse.\n\nGitHub integration is the second standout. Based on feature analysis, when a PR mentions an issue ID (e.g., ENG-123), Linear links it, marks the issue "In Review" when the PR opens, and flips it to "Done" when the PR merges. The integration supports GitHub and GitLab natively. The documented limitation is bulk historical import: the Jira importer has file size limits on attachments, a constraint Linear documents but does not surface prominently.\n\nThe triage inbox is where Linear pulls ahead of Jira for daily work. Every new issue lands in a single inbox, and you triage with keyboard shortcuts — assign, prioritize, route to a cycle, or archive. Based on workflow evaluation, this consolidated triage flow reduces the navigation overhead that Jira imposes (each issue requiring a separate screen). The insights dashboards (cycle time, throughput, escalation rate) are available but limited — there is no way to build custom reports without exporting to CSV.',
     buildQuality: 'Product Quality / Reliability: Linear is a mature, stable product. Based on product documentation and public changelog, Linear ships updates weekly — typically on Tuesdays — with a public changelog that documents every change, including bug fixes and minor UI tweaks. This cadence is faster than Jira\'s monthly cycle and meaningfully faster than Asana\'s quarterly feature drops.\n\nUpdate frequency is high. The public changelog and release notes indicate consistent weekly releases with documented bug fixes and feature additions. Stability is enterprise-grade based on Linear\'s published status page and SOC 2 Type II certification.\n\nEcosystem maturity is the main weakness. Based on feature analysis, Linear has roughly 40 native integrations (GitHub, GitLab, Slack, Figma, Zendesk, Front, Sentry, Notion) compared to Jira\'s 1,000+ marketplace apps. For teams that depend on niche integrations — Salesforce, ServiceNow, custom internal tools — Linear will not have a native connector and you will need to build automation through Zapier or Linear\'s GraphQL API. The API itself is well-documented and stable.\n\nData residency and compliance are enterprise-grade: Linear is SOC 2 Type II certified, GDPR compliant, and offers EU data residency on the Enterprise plan. Encryption is at rest (AES-256) and in transit (TLS 1.3). These are table stakes for a project management tool in 2026, but Linear clears the bar cleanly where newer competitors like Height still trail.',
     easeOfUse: 'Based on feature analysis, Linear has a learning curve of roughly 1 to 2 hours for engineers coming from Jira or GitHub Issues, and longer for non-technical project managers. The keyboard-first design means the productivity ceiling is high but the floor is also higher than a click-driven tool like Trello. Engineers familiar with agile workflows adapt quickly; users transitioning from Jira may need time to unlearn muscle memory around Jira\'s navigation patterns.\n\nBeginner friendliness is a mixed picture. The default workspace structure (Teams → Projects → Issues) is intuitive, and the triage inbox guides new users through what to do next. But there is no in-app onboarding tour, no template library, and no guided setup for common workflows (sprint planning, bug triage, roadmap planning). Linear assumes you already know agile terminology — cycles, sprints, triage, estimates. A marketing or operations team with no agile background would struggle where a software team would not.\n\nSetup experience is fast based on product documentation. Creating a workspace, inviting users via email, connecting GitHub OAuth, and importing the first issues is documented as taking under 30 minutes. SSO setup (Google Workspace) is supported. The mobile apps (iOS and Android) mirror the desktop feature set almost completely. The one setup weak point is migration: the Jira importer works but is slow on large workspaces, and there is no built-in importer for Asana, GitHub Projects, or Clubhouse — you have to use CSV export or the API.',
-    value: 'At $8 per seat per month (billed annually), Linear matches Jira Standard on price and undercuts Asana Starter ($11) by $3. For that price you get the fastest issue tracker on the market (under 100ms vs Jira\'s 1 to 3 seconds), native GitHub sync, built-in cycles and roadmap, and offline support — features that Jira only matches with paid plugins. The free solo tier makes evaluation zero-risk. The value math breaks down only for enterprise teams that need Gantt charts, custom fields, or built-in time tracking, where Jira plus plugins is a more complete (if slower) solution.',
+    value: 'At $10 per user per month (billed annually), Linear undercuts Asana Starter ($11). For that price you get the fastest issue tracker on the market (under 100ms vs Jira\'s 1 to 3 seconds), native GitHub sync, built-in cycles and roadmap, and offline support — features that Jira only matches with paid plugins. The free solo tier makes evaluation zero-risk. The value math breaks down only for enterprise teams that need Gantt charts, custom fields, or built-in time tracking, where Jira plus plugins is a more complete (if slower) solution.',
     pros: [
       'Fastest issue tracker on the market — every action loads in under 100ms, even with 10,000+ issues',
       'Beautiful keyboard-first UI with command bar (Cmd+K), shortcuts for every action, and no mouse required',
@@ -304,7 +533,7 @@ export const group3Reviews: ProductReviewEntry[] = [
       'Native desktop apps for Mac and Windows plus a polished mobile app for iOS and Android',
     ],
     cons: [
-      'No free plan for teams — the free tier is single-user only, so any team of 2+ pays $8 per seat',
+      'Free tier caps at 2 teams and 250 issues — teams that outgrow it pay from $10 per user',
       'Limited customization — you cannot rename fields, add custom statuses, or heavily modify workflows',
       'No Gantt charts — Linear is agile-first and does not support traditional waterfall planning',
       'Smaller integration ecosystem than Jira — fewer third-party tools connect natively',
@@ -325,7 +554,70 @@ export const group3Reviews: ProductReviewEntry[] = [
       'Teams requiring built-in time tracking or expense management',
       'Organizations with complex Jira migrations and deep Jira automation',
     ],
-    specs: [],
+    specs: [
+      { label: 'Product', value: 'Linear — issue tracking and project planning for software teams' },
+      { label: 'Free tier', value: 'Unlimited members, 2 teams, 250 issues (permanent)' },
+      { label: 'Basic / Business plans', value: '$10 / $16 per user/month (billed annually)' },
+      { label: 'Cycles', value: 'Built in — default 2 weeks, configurable 1 to 4 weeks' },
+      { label: 'Roadmap', value: 'Built in, with shareable read-only links' },
+      { label: 'GitHub / GitLab', value: 'Native integration — PRs, commits, and branches link to issues automatically' },
+      { label: 'Keyboard', value: 'Command bar (Cmd+K / Ctrl+K); shortcut for every action' },
+      { label: 'Platforms', value: 'Native macOS and Windows desktop apps; iOS and Android mobile apps' },
+      { label: 'Offline', value: 'Local-first cache — read and write offline, syncs on reconnect' },
+      { label: 'Integrations', value: 'About 40 native integrations (GitHub, GitLab, Slack, Figma, Zendesk, Sentry, Notion)' },
+      { label: 'API', value: 'Documented GraphQL API' },
+      { label: 'Compliance', value: 'SOC 2 Type II; GDPR; EU data residency on Enterprise' },
+      { label: 'Encryption', value: 'AES-256 at rest, TLS 1.3 in transit' },
+      { label: 'Time tracking', value: 'None built in — requires a third-party tool (Toggl, Harvest, Clockify)' },
+      { label: 'Gantt charts', value: 'Not supported — agile-first (cycles and roadmap only)' },
+      { label: 'Price', value: 'From $10 per user/month (Basic, billed annually)' },
+    ],
+    productDetails: [
+      {
+        heading: 'Speed: The Reason to Switch to Linear',
+        paragraphs: [
+          'Linear is built on a local-first architecture: the workspace is cached on the client so reads happen locally, and writes land in the local cache immediately and sync to the server in the background. Linear documents interactions loading in under 100ms, including opening issues with long comment threads, scrolling large backlogs, and switching between cycles.',
+          'That architecture is the reason the app feels native rather than web-wrapped. Because reads do not wait on the network, the perceived cost of opening, editing, or moving an issue is close to zero, which changes behaviour: triage becomes something a team does continuously rather than avoids.',
+          'Speed is the main axis on which Linear differentiates from Jira. Jira has invested in performance, but its architecture still routes most reads through the server, so equivalent views take seconds where Linear takes a fraction of a second.',
+        ],
+      },
+      {
+        heading: 'Keyboard-First UI: Never Touch the Mouse',
+        paragraphs: [
+          'The interface is built around the keyboard. A command bar (Cmd+K on macOS, Ctrl+K on Windows) is the single entry point for creating issues, searching, jumping to projects, and changing status, and a shortcut exists for essentially every action in the app. Shortcuts are consistent across desktop and mobile.',
+          'The visual design is restrained — clean typography, generous spacing, a limited palette, and a dark mode designed deliberately rather than inverted. Desktop apps for macOS and Windows are native builds rather than wrappers around the web UI, and the iOS and Android apps mirror most of the desktop feature set.',
+          'The trade-off is discoverability. Because the product is keyboard-first, some features sit behind shortcuts that must be learned, and the learning curve is real for users coming from a click-driven tracker such as Trello or Jira. The productivity ceiling is high, but it takes roughly a week of use to reach.',
+        ],
+      },
+      {
+        heading: 'GitHub and GitLab Integration: Native, Not Bolted On',
+        paragraphs: [
+          'Mentioning an issue ID, for example ENG-123, in a pull request title, a commit message, or a branch name links the PR to the issue automatically, displays it in the issue view, and updates the issue status when the PR merges. No manual linking, browser extension, or third-party connector is required.',
+          'Setup is per repository and takes only a few minutes. Once connected, PRs appear in Linear within seconds of being opened, and branch names containing an issue ID associate themselves with that issue. The integration supports GitHub and GitLab natively rather than through a marketplace add-on.',
+          'The integration carries more context than a simple link: diff statistics, reviewer, and merge status appear inside the issue view, so implementation status is visible without leaving Linear. For teams that live in pull requests, this makes the issue tracker the single source of truth with PR context attached.',
+        ],
+      },
+      {
+        heading: 'Cycles and Roadmap: Agile Built In',
+        paragraphs: [
+          'Cycles and roadmap are native features rather than marketplace add-ons. Cycles default to two weeks and are configurable from one to four weeks, and issues are assigned to a cycle with a single keystroke. The cycle view surfaces burndown, velocity, and unassigned issues together.',
+          'The roadmap view plots projects and cycles on a timeline with issues grouped by project and status, which is what makes multi-cycle planning legible: dependencies and sequencing become visible in a way a flat issue list does not show. Read-only roadmap links can be shared so stakeholders follow the plan without an account.',
+          'The limitation is that Linear is agile-first. There are no Gantt charts, no waterfall planning, and no dependency modelling beyond simple blocking relationships. Teams that need complex dependency graphs should treat that as a disqualifier rather than as a gap that will be filled later.',
+        ],
+      },
+      {
+        heading: 'Offline Support and Mobile',
+        paragraphs: [
+          'The local-first architecture means the app works without a connection. Issues can be created, edited, reassigned, and commented on offline, and changes sync when the connection returns; because writes go to the local cache first, the offline experience is broadly the same as the online one for reading and writing.',
+          'The iOS and Android apps cache the workspace locally as well, so triage on a phone runs at the same speed as on the desktop. The mobile UI is a simplified version of the desktop interface — bulk editing and advanced filters are absent — which makes it well suited to clearing a backlog during a commute.',
+          'The macOS and Windows desktop apps are native rather than Electron wrappers, so they use native window chrome and integrate with OS notifications. Linear also posts issue updates and cycle reminders to Slack or Microsoft Teams channels for teams that prefer a chat-integrated workflow.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Linear vs Jira', href: '/reviews/linear-vs-jira/', desc: 'The full comparison — where each tool wins for software teams.' },
       { name: 'Notion vs Obsidian', href: '/reviews/notion-vs-obsidian/', desc: 'Note-taking tools that pair with an issue tracker.' },
@@ -333,7 +625,7 @@ export const group3Reviews: ProductReviewEntry[] = [
     ],
     faqs: [
       { question: 'Is Linear really faster than Jira?', answer: 'Yes — measurably. According to Linear\'s published documentation, interactions load in under 100ms including opening issues with 50+ comments, scrolling large backlogs, and switching between cycles; Jira typically takes 1 to 3 seconds for equivalent views. Linear achieves this with a local-first architecture that caches data on your machine and syncs in the background. Every action — creating an issue, assigning it, moving it between cycles — feels instant. Jira has improved its speed in 2026, but Linear is still in a different class for responsiveness.' },
-      { question: 'Does Linear have a free plan?', answer: 'Linear offers a free tier, but it is limited to a single user. Any team of 2 or more people needs the Standard plan at $8 per seat per month (billed annually) or $10 per seat billed monthly. The free tier includes unlimited issues, cycles, and projects for one user, so it is useful for solo developers or evaluation. There is no time-limited trial — the free tier is permanent for one user.' },
+      { question: 'Does Linear have a free plan?', answer: 'Linear offers a free tier for everyone — it includes unlimited members, 2 teams, and up to 250 issues, and it is permanent with no time-limited trial. Teams that need more teams or issues move to Basic at $10 per user per month (billed annually); Business is $16 per user per month and adds private teams, guests, and advanced features. The free tier is useful for small teams and for evaluation.' },
       { question: 'Does Linear integrate with GitHub?', answer: 'Yes. Linear has native GitHub and GitLab integrations that sync pull requests, commits, and branches to issues automatically. Mention an issue ID (e.g., ENG-123) in a PR title or commit message, and Linear links the PR to the issue, updates the issue status when the PR merges, and shows the PR directly in the issue view. Setup takes about 5 minutes per repository. According to Linear\'s documentation, the integration works reliably across multiple repositories with no manual syncing required.' },
       { question: 'Can Linear replace Jira for an enterprise team?', answer: 'It depends. Linear replaces Jira for software teams up to about 50 people who run agile workflows and do not need Gantt charts, custom fields, or deep enterprise automation. For larger organizations or teams with complex Jira configurations (custom workflows, scripted automations, Sarbanes-Oxley compliance), Jira remains the safer choice. See our Linear vs Jira comparison for a full breakdown of where each tool wins.' },
       { question: 'Does Linear work offline?', answer: 'Yes. Linear uses a local-first architecture that caches your workspace on your machine. You can create, edit, and reassign issues offline; changes sync when you reconnect. According to Linear\'s documentation, offline changes sync within seconds of reconnecting. The mobile apps also work offline for reading and basic editing.' },
@@ -358,9 +650,9 @@ export const group3Reviews: ProductReviewEntry[] = [
     verdict: 'The Satechi Thunderbolt 4 Dock is the cleanest way to turn a Thunderbolt 4 laptop into a dual-4K workstation on one cable. According to manufacturer specifications, the 40Gbps bandwidth, 96W charging, and three downstream TB4 ports deliver workstation-grade performance for dual 4K60 monitor setups and fast NVMe storage. The missing SD card reader and warm temperatures under sustained load are real trade-offs, but for buyers who want a compact, driver-free Thunderbolt 4 dock at $299, the Satechi is the right pick. Our rating: 4.5/5.',
     quickVerdict: 'The Satechi Thunderbolt 4 Dock is the cleanest way to turn a Thunderbolt 4 laptop into a dual-4K workstation on one cable. It delivers 40Gbps bandwidth, 96W charging that keeps a 16-inch MacBook Pro topped up under load, and three downstream TB4 ports for storage and displays. It lacks an SD card reader and runs warm under load, but the build quality and Thunderbolt 4 reliability are excellent at $299.',
     testingSummary: 'Based on product documentation, manufacturer specifications, feature analysis, and pricing comparison, this review covers the Satechi Thunderbolt 4 Dock\'s 40Gbps Thunderbolt 4 bandwidth, 96W Power Delivery, three downstream TB4 ports, dual 4K 60Hz display support, daisy-chain capability, and compatibility with macOS and Windows. Specifications and pricing are compared against the CalDigit TS4 and Plugable USB-C Triple. Feature analysis focuses on sustained storage throughput, dual 4K60 display stability, charging behavior, and thermal design based on published specs. This is an independent editorial review; no review unit was provided by Satechi.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The dock presents the full 40Gbps Thunderbolt 4 pipeline to a compatible host on a single cable. Satechi rates it at 40Gbps host bandwidth with three downstream Thunderbolt 4 ports, each capable of 40Gbps data tunnelling, DisplayPort Alt Mode video, and up to 15W of bus power, plus 96W of Power Delivery back to the host. Because data, video, and peripherals share the same 40Gbps budget, storage throughput is highest when only one class of device is active: driving two 4K 60Hz monitors claims a large share of the link for video and leaves less bandwidth for PCIe tunnelling to an NVMe enclosure. That contention is a property of the Thunderbolt 4 standard rather than a limitation of the Satechi hardware, and it applies equally to every dock built on the platform.',
+    buildQuality: 'The chassis is a compact aluminium slab with an even space-grey anodisation and no flex or rattle in the frame. The aluminium body doubles as the heatsink, so the dock is fanless and silent in every workload: under normal load (dual 4K monitors and a single SSD) the case stays cool to the touch, and under sustained load with two 4K displays, a large NVMe transfer, and 96W of host charging running together the top surface becomes distinctly warm by design. Satechi\'s approach is to shed heat passively through the housing rather than throttle throughput, and the dock does not reduce performance to manage temperature. A rear power button cuts power to every attached peripheral without unplugging the host cable, and the front status indicator is a single small white dot rather than the bright blue LED common on budget docks.',
+    easeOfUse: 'The dock is plug-and-play on macOS and Windows with no driver installation, so dual 4K60 displays, Gigabit Ethernet, and storage are available as soon as the host cable is connected; a single Thunderbolt 4 cable carries charging, video, and data, which is the dock\'s main advantage over a multi-cable USB-C hub. Two practical compromises are worth planning for: the included Thunderbolt 4 cable is only 0.8m, so buyers who want the dock further from the laptop need a longer active Thunderbolt 4 cable, and every USB-A port faces the rear, so thumb drives must be reached round the back. There is also no SD or microSD slot. The dock does not implement DisplayLink, so a host without a Thunderbolt 3 or 4 port falls back to USB-C data speeds and a single display instead of multi-monitor output.',
     value: 'At $299, the Satechi Thunderbolt 4 Dock sits in the middle of the Thunderbolt dock price range — $100 less than the CalDigit TS4 ($399) and $100 more than the Plugable USB-C Triple ($199, though that uses DisplayLink rather than Thunderbolt). The value proposition depends on what you need: if you want native 40Gbps Thunderbolt 4 bandwidth for fast external NVMe storage and dual 4K60 displays without installing drivers, the Satechi is the cheapest clean option. The TS4\'s $100 premium buys an SD card reader, two extra TB4 ports, and 98W charging — worth it only if you actually need those extras.\n\nLong-term value is strong: Thunderbolt 4 is a forward-looking standard that will work on future laptops for years, the aluminum housing is designed for sustained durability, and Satechi\'s firmware support is reliable. The 96W charging is enough for any current MacBook Pro, and the three downstream TB4 ports support daisy-chaining up to six devices — meaning the dock can grow with your setup. The main value risk is the missing SD card reader: if you later pick up photography or video work, you will need a separate $20-$40 card reader, which adds cable clutter. For buyers who do not need a card reader, the Satechi is the strongest Thunderbolt 4 value under $300.',
     pros: [
       'Thunderbolt 4 delivers 40Gbps bandwidth — enough for dual 4K 60Hz displays, fast storage, and peripherals on one cable',
@@ -392,7 +684,74 @@ export const group3Reviews: ProductReviewEntry[] = [
       'Photographers and video editors who need a built-in SD card reader on the dock',
       'Anyone who needs more than 3 downstream Thunderbolt ports — see the CalDigit TS4 instead',
     ],
-    specs: [],
+    specs: [
+      { label: 'Thunderbolt version', value: 'Thunderbolt 4 (Thunderbolt 3 host compatible)' },
+      { label: 'Host bandwidth', value: '40Gbps' },
+      { label: 'Power Delivery to host', value: '96W' },
+      { label: 'Downstream Thunderbolt 4', value: '3 ports — 40Gbps data, DisplayPort Alt Mode, 15W bus power each' },
+      { label: 'USB-A', value: '3 ports at 5Gbps' },
+      { label: 'Ethernet', value: '1 x Gigabit RJ45' },
+      { label: 'Audio', value: '1 x 3.5mm jack' },
+      { label: 'Display support', value: 'Dual 4K @ 60Hz on a Thunderbolt host' },
+      { label: 'Daisy chain', value: 'Up to 6 Thunderbolt devices behind one host port' },
+      { label: 'Drivers', value: 'None required (macOS / Windows)' },
+      { label: 'Card reader', value: 'None' },
+      { label: 'Included cable', value: '0.8m Thunderbolt 4' },
+      { label: 'Power button', value: 'Yes (rear) — cuts power to peripherals without unplugging the host' },
+      { label: 'Price', value: '$299' },
+    ],
+    productDetails: [
+      {
+        heading: 'Thunderbolt 4 Bandwidth: 40Gbps in Practice',
+        paragraphs: [
+          'Thunderbolt 4 specifies a 40Gbps aggregate link per port, and the Satechi dock exposes that bandwidth on the host connection and on each of its three downstream Thunderbolt 4 ports. The 40Gbps is a shared budget: DisplayPort video tunnelled to monitors, PCIe traffic to NVMe enclosures, and USB data all draw from the same pool, so how much bandwidth reaches storage depends on how many displays are active at the same time.',
+          'With a single NVMe enclosure attached and no displays driven, the enclosure is the limiting component rather than the dock, because a Thunderbolt 4 link carries more than any single consumer SSD can sustain in either direction. Driving two 4K 60Hz monitors claims a substantial share of the link for DisplayPort tunnelling, which reduces the bandwidth left for storage. This behaviour is inherent to the Thunderbolt 4 architecture and is identical on every dock built to the standard.',
+          'For typical docked workflows — editing video from an external SSD, backing up to an NVMe enclosure, or running a Time Machine drive alongside monitors — the dock is not the bottleneck. Contention only becomes visible when three high-bandwidth devices, such as multiple NVMe enclosures plus displays, are pushed at once.',
+        ],
+      },
+      {
+        heading: '96W Power Delivery: Charges While You Work',
+        paragraphs: [
+          'The dock supplies 96W of Power Delivery to the host over the same Thunderbolt 4 cable, which covers a 14-inch MacBook Pro at full speed and a 16-inch MacBook Pro under sustained load. Satechi reserves a portion of the dock power budget for bus-powered downstream peripherals, so portable SSDs that draw from the Thunderbolt cable do not steal charging headroom from the laptop.',
+          'The 96W ceiling is the relevant constraint for Windows buyers. Thin-and-light laptops and MacBook Pros sit at or below 96W, but a 17-inch gaming laptop or a mobile workstation with a discrete GPU can draw 130W to 230W under simultaneous CPU and GPU load. On such a machine the dock slows battery discharge rather than charging it, so the laptop\'s rated charger wattage should be compared against the dock\'s 96W before buying.',
+        ],
+      },
+      {
+        heading: 'Three Downstream Thunderbolt 4 Ports',
+        paragraphs: [
+          'The dock carries three downstream Thunderbolt 4 ports, three USB-A ports at 5Gbps, one Gigabit Ethernet port, and a 3.5mm audio jack. Each downstream Thunderbolt 4 port supports 40Gbps data tunnelling, DisplayPort Alt Mode for video, and up to 15W of bus power, which is what separates a Thunderbolt 4 dock from a USB-C hub that multiplexes a single 10Gbps link.',
+          'Three downstream ports is the dock\'s main limitation next to the CalDigit TS4, which carries five. Teams running three or more Thunderbolt peripherals — several NVMe enclosures, a Thunderbolt display, and a downstream dock — will need to daisy-chain to fit them all; a dual-monitor-plus-storage desk fits within three ports with one to spare.',
+          'All three USB-A ports face the rear, so there is no front port for quick access to a thumb drive, and the layout deliberately omits a card reader. Satechi kept the body compact and the port count focused on the dual-4K-and-storage workflow instead of maximising port volume.',
+        ],
+      },
+      {
+        heading: 'Compact Aluminium Body: Build and Thermals',
+        paragraphs: [
+          'The chassis is a compact aluminium slab with a space-grey anodisation that matches Apple-silicon finishes, and the frame is rigid with no flex or rattle. The aluminium case is also the heatsink, so the dock has no fan and stays silent in every workload.',
+          'Under normal load — dual 4K monitors and one SSD — the case stays cool to the touch. Under sustained heavy load, with two 4K displays, a large NVMe transfer, and 96W of host charging running together, the top surface becomes noticeably warm, which is expected when a fanless 40Gbps dock dissipates that much power through its housing. Satechi designs the enclosure to shed heat passively rather than to throttle.',
+          'Two details are handled well: a rear power button cuts power to every attached peripheral without unplugging the host cable, and the front status indicator is a single small white dot rather than the bright blue LED common on budget docks.',
+        ],
+      },
+      {
+        heading: 'Daisy-Chain Support and Compatibility',
+        paragraphs: [
+          'Thunderbolt 4 supports daisy-chaining, in which multiple Thunderbolt devices are connected in series behind a single host port. Each downstream Thunderbolt 4 port accepts a Thunderbolt device, and Thunderbolt displays and storage enclosures can be chained off one another up to a total of six devices behind a single host connection.',
+          'Daisy-chaining shares the 40Gbps link across every device in the chain, so two 4K60 displays chained together each claim a portion of the same budget. For most desks, connecting each display to its own downstream port gives a cleaner bandwidth split; daisy-chaining is the better answer when the port count runs out.',
+          'The dock is driver-free on macOS and Windows 11 with Thunderbolt 3 or 4 hosts. It does not implement DisplayLink, so a laptop with a plain USB-C port and no Thunderbolt will not obtain multi-monitor output from it — such a host falls back to USB-C data speeds and a single display, and buyers in that position should compare a DisplayLink dock instead.',
+        ],
+      },
+      {
+        heading: 'The Missing SD Card Reader',
+        paragraphs: [
+          'The dock has no SD or microSD slot, which is its most conspicuous omission at $299. The CalDigit TS4 includes both readers, and many cheaper docks ship with one. Photographers and video editors who offload camera cards at the desk will need a separate USB card reader, adding $20 to $40 and another cable to the setup.',
+          'The omission is a deliberate trade rather than an oversight: Satechi optimised the dock for the dual-4K-and-storage workflow and kept the body compact by leaving readers out. Buyers who need card access should compare the CalDigit TS4; buyers who do not get a smaller footprint and a lower price for the same 40Gbps pipeline.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'CalDigit TS4 Review', href: '/reviews/caldigit-ts4-review/', desc: 'The port-rich premium alternative with 5 TB4 ports.' },
       { name: 'Plugable USB-C Triple Review', href: '/reviews/plugable-usb-c-triple-review/', desc: 'A budget USB-C dock for non-Thunderbolt laptops.' },
@@ -425,9 +784,9 @@ export const group3Reviews: ProductReviewEntry[] = [
     verdict: 'The LG C2 42" OLED is the best small-screen OLED in its category. According to manufacturer specifications, the perfect OLED blacks, infinite contrast, and 5.8ms input lag deliver strong performance for movies, 4K 120Hz gaming, and mixed use. Skip it only if your room is bright (get the G3) or you need a desktop monitor (get the Dell U2723QE). Our rating: 4.7/5.',
     quickVerdict: 'The LG C2 42" OLED is the best small-screen OLED you can buy in 2026. The perfect blacks, infinite contrast, and 120Hz 4K gaming make it stunning for movies and PS5 or Xbox use. At $999 it is expensive for a 42-inch panel, and the peak brightness trails the LG G3 — but if you watch in a controlled-lighting room, the C2 delivers 90% of the picture quality of the G3 at a lower price.',
     testingSummary: 'Based on product documentation, manufacturer specifications, feature analysis, and pricing comparison, this review covers the LG C2 42" OLED\'s OLED panel technology, 120Hz 4K HDMI 2.1 support, HDR brightness (rated at 800 nits peak HDR), input lag (5.8ms at 120Hz, 9.2ms at 60Hz per LG specs), color accuracy (99% DCI-P3 coverage), Dolby Vision IQ, WebOS smart platform, and burn-in prevention features (pixel shifting, logo dimming, screen shift). Specifications and pricing are compared against the LG G3, Samsung QD-OLED, and Dell U2723QE. Feature analysis focuses on picture quality, gaming performance, and longevity based on published specs. This is an independent editorial review; no review unit was provided by LG.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The LG C2 42" OLED pairs a self-emissive OLED panel with the a9 Gen 5 processor, delivering true zero-light black levels and effectively infinite contrast. All four HDMI ports are HDMI 2.1 and support 4K at 120Hz, VRR (40-120Hz), ALLM, and HGiG tone mapping, and LG rates input lag at 5.8 ms at 120Hz and 9.2 ms at 60Hz. The panel is rated at about 800 nits peak in HDR and about 350 nits in SDR, with 99% DCI-P3 coverage and Delta E under 2 after calibration.',
+    buildQuality: 'The C2 is built around a 0.25-inch bezel on three sides and a panel about 1.8 inches deep at its thickest point, with a flush wall-mount profile. The center-mounted aluminum stand is stable and raises the panel about 2 inches to leave room for a soundbar underneath, and build quality is high for the price. LG burn-in mitigation — pixel shifting, logo dimming, and screen shift — is built into the panel, which LG rates for 100,000 hours of mixed use.',
+    easeOfUse: 'The C2 runs LG WebOS, which launches apps in about 2 to 3 seconds and includes every major streaming service plus an over-the-air tuner. The Magic Remote works like a pointer with point-and-click navigation, a scroll wheel, voice search, and a low-light backlight. Inputs include four HDMI 2.1 ports, one USB 2.0 port, Ethernet, optical audio out, a 3.5 mm headphone jack, and an antenna input. The WebOS home screen is ad-supported, and the C2 does not decode DTS-HD or DTS:X.',
     value: 'At $999, the LG C2 42" OLED is the only true OLED TV under 48 inches on the market — and the smallest OLED period. It undercuts the LG G3 ($1,299) by $300 while delivering 90% of the picture quality in a controlled-lighting room. The 120Hz 4K HDMI 2.1 support, Dolby Vision, and 5.8ms input lag make it the best small-screen gaming TV in its category. The trade-off is peak brightness (800 nits vs the G3\'s 1,500) and the ad-supported WebOS home screen. For a dark room or evening viewing, the C2 is the strongest value in small-screen OLEDs.',
     pros: [
       'Infinite contrast with perfect blacks — OLED pixels turn off individually for true zero-light black levels',
@@ -460,7 +819,68 @@ export const group3Reviews: ProductReviewEntry[] = [
       'DTS audio users — the C2 does not decode DTS-HD or DTS:X from Blu-ray or home theater receivers',
       'Sports fans in bright rooms — the ABL dims the screen during bright stadium scenes',
     ],
-    specs: [],
+    specs: [
+      { label: 'Panel', value: 'OLED evo, 42-inch (self-emissive)' },
+      { label: 'Resolution / refresh', value: '4K UHD (3840 x 2160) at up to 120Hz' },
+      { label: 'HDMI', value: '4 x HDMI 2.1 (48 Gbps) — 4K120, VRR, ALLM, HGiG' },
+      { label: 'HDR', value: 'Dolby Vision IQ, HDR10, HLG; Dolby Vision Gaming at 4K120' },
+      { label: 'Peak brightness', value: '~800 nits (HDR), ~350 nits (SDR)' },
+      { label: 'Input lag', value: '5.8 ms at 120Hz, 9.2 ms at 60Hz (per LG specs)' },
+      { label: 'Color', value: '99% DCI-P3, Delta E < 2 after calibration' },
+      { label: 'VRR range', value: '40-120Hz (G-Sync and FreeSync compatible)' },
+      { label: 'Processor', value: 'a9 Gen 5 AI Processor' },
+      { label: 'Smart platform', value: 'WebOS (ad-supported home screen)' },
+      { label: 'Audio', value: '2.2-channel, 20W; Dolby Atmos decode only (no DTS-HD/DTS:X)' },
+      { label: 'Other inputs', value: 'USB 2.0, Ethernet, optical audio out, 3.5 mm jack, antenna' },
+      { label: 'Burn-in mitigation', value: 'Pixel shifting, logo dimming, screen shift; rated 100,000 h mixed use' },
+      { label: 'Price', value: '$999 (42-inch)' },
+    ],
+    productDetails: [
+      {
+        heading: 'Picture Quality: Perfect Blacks and Infinite Contrast',
+        paragraphs: [
+          'The defining feature of the C2 is its OLED panel. Unlike LCD screens that use a backlight and block light through liquid crystals, OLED pixels are self-emissive — each pixel produces its own light and switches off completely to display black. The result is a true zero-light black level and an effectively infinite contrast ratio, so dark scenes emit no light in the black areas, which no LCD can match.',
+          'The C2 handles HDR content such as Dolby Vision well: specular highlights carry more punch than an LCD in the same price class while shadows retain detail that LCDs tend to crush. The a9 Gen 5 processor upscales 1080p content well, though 480p and 720p sources still show their age. The panel handles 24p cinema without judder, and motion interpolation can be tuned down to avoid the soap-opera effect.',
+          'The OLED evo panel is rated about 20% brighter than the standard OLED of the previous generation, peaking at roughly 800 nits in HDR. That is good for a controlled-lighting room but trails brighter QD-OLED and MLA panels; in a dark room the difference is largely invisible, while in a bright room the brighter panels hold highlights better against ambient light.',
+        ],
+      },
+      {
+        heading: 'Gaming: 4K at 120Hz with HDMI 2.1',
+        paragraphs: [
+          'The C2 is one of the strongest gaming displays in its class. All four HDMI ports are HDMI 2.1, supporting 4K at 120Hz, Variable Refresh Rate, Auto Low Latency Mode, and HGiG tone mapping, and LG rates input lag at 5.8 ms at 120Hz and 9.2 ms at 60Hz — among the lowest of any TV. The panel is rated to accept 4K120 output from PS5, Xbox Series X, and HDMI 2.1-compatible PCs.',
+          'The C2 supports both G-Sync and FreeSync for PC gaming, with a VRR range of 40Hz to 120Hz. OLED response time is effectively instant, so there is no ghosting or motion blur in fast-paced games — the single biggest advantage of OLED over LCD for gaming. The C2 also supports Dolby Vision Gaming at 4K120, which the Xbox Series X uses for supported titles and which produces noticeably punchier highlights than standard HDR10.',
+          'The Game Optimizer menu groups VRR, ALLM, HDR tone mapping, and motion settings into a single quick-access bar, which avoids digging through the full settings menu during play.',
+        ],
+      },
+      {
+        heading: 'Brightness and ABL: The Trade-Offs of OLED',
+        paragraphs: [
+          'The peak brightness of about 800 nits in HDR is good for a controlled-lighting room but lower than competing QD-OLED panels and MLA-based models. In a bright room with direct sunlight the OLED blacks remain perfect, but highlights look washed out and the overall image is dim; buyers in sunlit rooms should consider a brighter panel or plan on curtains during daytime viewing.',
+          'The Auto Brightness Limiter is the more noticeable trade-off. ABL dims the entire screen when a high percentage of pixels are bright — a white web page, a snowy scene, a bright stadium shot — to protect the panel from overcurrent. The effect is a visible dim when switching from a dark movie to a bright scene, and it is the most common complaint from new OLED owners. Lowering OLED Pixel Brightness to 80-90 reduces the effect but does not disable ABL entirely.',
+          'For SDR content the C2 peaks at about 350 nits, which is enough for most rooms but lower than mid-range LCDs that reach 500+ nits. In a bright office or a sunlit living room the C2 looks dim for daytime TV; in an evening viewing room or home theater it is at its best.',
+        ],
+      },
+      {
+        heading: 'Smart Platform and Audio: WebOS Is Fast but Ad-Supported',
+        paragraphs: [
+          'The C2 runs LG WebOS on the a9 Gen 5 processor. Apps launch in about 2 to 3 seconds, navigation is smooth, and the home screen loads quickly. All major streaming apps are present — Netflix, Disney+, Apple TV, YouTube, Amazon Prime Video, Hulu, and HBO Max — and the built-in tuner supports over-the-air channels via an antenna.',
+          'The catch is that the WebOS home screen is ad-supported: sponsored content appears as a row, and LG promotes its own services prominently. The ads cannot be disabled entirely, though the home screen can be rearranged to push them down. Buyers who want an ad-free experience can use an external Apple TV 4K or Roku streaming stick instead of the built-in platform.',
+          'Audio is the weak point. The 2.2-channel speakers (20W total) are clear but thin, with little bass and boxed-in dialogue in loud scenes. The C2 decodes Dolby Atmos but cannot produce a convincing Atmos image from two speakers, so a soundbar is a recommended pairing. The C2 does not decode DTS-HD or DTS:X, so a DTS Blu-ray collection requires a receiver that handles DTS.',
+        ],
+      },
+      {
+        heading: 'Design and Inputs: Thin, Elegant, and Well-Connected',
+        paragraphs: [
+          'The C2 is one of the better-designed TVs in its class. The bezel is 0.25 inches thin on three sides — nearly flush with the image — and the panel is about 1.8 inches deep at its thickest point, with a flush wall-mount profile. The center-mounted aluminum stand is stable and raises the panel about 2 inches off the surface, leaving room for a soundbar underneath.',
+          'All four HDMI ports are HDMI 2.1, supporting the full 48Gbps bandwidth for 4K120. There is also one USB 2.0 port for media playback, an Ethernet port, optical audio out, a 3.5 mm headphone jack, and an antenna input. The absence of a higher-power USB port is a minor inconvenience, since a streaming stick cannot be powered from the TV USB port while using HDMI.',
+          'The Magic Remote works like a pointer with point-and-click navigation and a scroll wheel, voice search launches apps and finds content reliably, and the remote backlight activates in low light. The same remote ships across LG 2022 and 2023 TVs, so owners of a previous LG will already be familiar with it.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Monitor Light Bar', href: '/reviews/best-monitor-light-bar/', desc: 'Bias lighting that pairs with an OLED without washing out blacks.' },
       { name: 'Dell U2723QE Review', href: '/reviews/dell-u2723qe-review/', desc: 'A 4K USB-C monitor for desk-bound work.' },

@@ -19,9 +19,9 @@ export const group2Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The CalDigit TS4 is the best Thunderbolt 4 dock available in 2026. Based on manufacturer specifications, the 18 ports, 98W charging, UHS-II SD reader, and fanless design justify the premium price for power users. Skip it only if you have a single monitor or a non-Thunderbolt laptop. Our rating: 4.8/5.',
     quickVerdict: 'Quick verdict: The CalDigit TS4 is the best Thunderbolt 4 dock you can buy in 2026. According to published specifications, it handles dual 4K monitors, full-speed NVMe transfers, and 98W charging. At $399 it is expensive, but feature analysis shows it is the most capable dock in its category.',
     testingSummary: 'Based on product documentation, feature analysis, pricing comparison, and specification evaluation, this review covers the CalDigit TS4\'s 18-port layout, 98W host charging, UHS-II SD reader, dual 4K@60Hz support, and Thunderbolt 4 daisy-chaining. Pricing is compared against the Satechi Thunderbolt 4 Dock and Anker 555. This is an independent editorial review; no review unit was provided by CalDigit.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'The CalDigit TS4 performance case rests on three rated capabilities: 98W of host charging, dual 4K@60Hz display output over the full 40 Gbps of Thunderbolt 4, and five downstream Thunderbolt 4 ports for high-bandwidth peripherals. Together these allow a single dock to drive a dual-monitor desk, charge a 16-inch MacBook Pro under load, and sustain full-speed Thunderbolt storage. The caveat is that a Thunderbolt 3 or 4 host is required to realize any of it — on a plain USB-C laptop the dock falls back to slower USB data and single-display output.',
+    buildQuality: 'The TS4 is a fanless aluminum chassis weighing 1.6 lbs and measuring roughly 9 x 9 x 2 inches. The metal body doubles as a passive heatsink, so the dock runs warm but stays silent under sustained load. Power comes from a separate 180W brick that runs warm in use, and the boxed 0.5 m Thunderbolt 4 cable is short, so a longer active cable may be needed for a laptop on a stand. Firmware updates ship through the CalDigit firmware tool.',
+    easeOfUse: 'Setup is a single Thunderbolt 4 cable to the host. The 18-port layout places rarely changed devices on the rear — five Thunderbolt 4 ports, five USB-A ports, DisplayPort, Ethernet, and card readers — while a USB-C 20Gbps port, a USB-A port, and a headphone jack sit on the front to reduce reaching behind the dock. Thunderbolt daisy-chaining supports up to six downstream devices without consuming another host port. Note that base M1 MacBooks remain limited to one external display regardless of the dock.',
     value: 'At $399, the CalDigit TS4 is expensive — nearly twice the price of the Satechi Thunderbolt 4 dock ($299) and 2.6x the Anker 555 ($150). But for that premium you get 18 ports (versus 9 on the Satechi and 8 on the Anker), a UHS-II SD reader (rare on docks), 98W charging that handles a 16-inch MacBook Pro under full load, and rock-stable firmware. If you need dual 4K@60Hz, full-speed Thunderbolt NVMe transfers, or UHS-II SD card speeds, the TS4 is the only dock that delivers all three reliably. If you only need one monitor and a few USB ports, the Anker 555 covers most of the same ground at less than half the price.',
     pros: [
       '18 ports — 5 Thunderbolt 4 downstream, 5 USB-A 10Gbps, USB-C, SD UHS-II, ethernet',
@@ -57,7 +57,83 @@ export const group2Reviews: ProductReviewEntry[] = [
       'You have a non-Thunderbolt USB-C laptop — the TS4 will fall back to USB-C speeds',
       'Your budget tops out at $200 — see our USB-C hub guide',
     ],
-    specs: [],
+    specs: [
+      { label: 'Total ports', value: '18' },
+      { label: 'Thunderbolt 4 downstream', value: '5 x 40 Gbps' },
+      { label: 'USB-A', value: '6 x 10 Gbps (5 rear, 1 front)' },
+      { label: 'USB-C data ports', value: '1 x 10 Gbps rear, 1 x 10 Gbps front, 1 x 20 Gbps front' },
+      { label: 'Display output', value: '1 x DisplayPort 1.4' },
+      { label: 'Host charging', value: '98W over Thunderbolt 4' },
+      { label: 'Display support', value: 'Dual 4K@60Hz; single 8K@30Hz or 6K@60Hz' },
+      { label: 'Daisy-chaining', value: 'Up to 6 downstream Thunderbolt devices' },
+      { label: 'Ethernet', value: 'Gigabit RJ45' },
+      { label: 'Card readers', value: 'UHS-II SD and microSD' },
+      { label: 'Audio', value: '3.5 mm combo jack + digital audio out (front)' },
+      { label: 'Dimensions / weight', value: '9 x 9 x 2 in / 1.6 lbs' },
+      { label: 'Power supply', value: 'External 180W brick' },
+      { label: 'Included cable', value: '0.5 m Thunderbolt 4' },
+      { label: 'Price', value: '$399' },
+    ],
+    productDetails: [
+      {
+        heading: 'Ports: 18 Is a Lot, and They Are the Right 18',
+        paragraphs: [
+          'The CalDigit TS4 provides 18 ports in total. On the rear are five Thunderbolt 4 downstream ports (40 Gbps each), five USB-A 10Gbps ports, one DisplayPort 1.4 output, one USB-C 10Gbps port, Gigabit Ethernet, a UHS-II SD reader, and a microSD reader. The front panel adds two USB-C ports (one 10Gbps, one 20Gbps), one USB-A port, a 3.5 mm audio combo jack, and a digital audio out.',
+          'Five Thunderbolt 4 downstream ports is more than most desktop setups need, but the headroom means external NVMe enclosures, high-resolution displays, and downstream Thunderbolt devices can all connect without daisy-chaining. Bandwidth is shared across the chain, which is adequate for typical multi-drive workflows.',
+          'The UHS-II SD reader is the clearest differentiator at this price. Many docks ship only UHS-I readers, which are capped at roughly 104 MB/s; a UHS-II reader targets the faster bus used by pro-grade cards, which matters for photographers and videographers who offload raw or ProRes footage.',
+          'The front-facing audio combo jack is a small but practical detail: a headset can stay plugged into the dock rather than the laptop, so docking and undocking involves one cable instead of two.',
+        ],
+      },
+      {
+        heading: 'Charging: 98W Handles the 16-inch MacBook Pro',
+        paragraphs: [
+          'The TS4 delivers 98W of host charging over its Thunderbolt 4 connection. According to CalDigit specifications, that is enough to charge a 16-inch MacBook Pro under sustained load, which draws between 96W and 100W during demanding tasks such as video encoding. Docks that cap at 60W or 85W can leave a 16-inch MacBook Pro draining under heavy load even while plugged in.',
+          'A 14-inch MacBook Pro draws less under load, so the 98W ceiling is more headroom than that machine requires. Buyers who may later move to a 16-inch model still benefit from the higher limit.',
+          'One documented caveat: the USB-A ports are rated at 7.5W, which is fine for peripherals but slow for an iPhone, and the front USB-C ports are rated at 20W. A dedicated USB-C charger is faster for phones.',
+        ],
+      },
+      {
+        heading: 'Display Support: Dual 4K@60Hz Without Compromise',
+        paragraphs: [
+          'The TS4 drives dual 4K monitors at 60Hz simultaneously using the full 40 Gbps bandwidth of Thunderbolt 4, without the refresh-rate caveats that affect USB-C docks relying on DisplayPort Alt Mode. Standard USB-C docks typically split bandwidth and cap the second display at 4K 30Hz or lower.',
+          'For single-display setups, the dock supports one 8K display at 30Hz or one 6K display at 60Hz over a downstream Thunderbolt port, which is useful for 6K and 8K workflows.',
+          'Important caveat: base M1 MacBooks support only one external display regardless of the dock, a hardware limitation of the chip rather than the dock. M1 Pro, M1 Max, M2 Pro, M2 Max, M3, and M3 Pro chips support dual displays. Buyers should confirm the chip in their Mac before purchasing.',
+        ],
+      },
+      {
+        heading: 'Data Transfer: Full Thunderbolt Speed',
+        paragraphs: [
+          'Each of the five downstream Thunderbolt 4 ports provides the full 40 Gbps of Thunderbolt bandwidth, shared across the chain. With a single NVMe enclosure attached, a Thunderbolt 4 dock can approach the direct-to-Mac speed of the enclosure; adding a second high-bandwidth device to the chain splits the available bandwidth between them.',
+          'The USB-A ports are rated at 10 Gbps each, which is sufficient for external hard drives, audio interfaces, and most peripherals, while the rear USB-C 10Gbps port targets fast external SSDs.',
+          'For most workflows the dock bandwidth is not the limiting factor — the TS4 has more headroom than the peripherals typically attached to it.',
+        ],
+      },
+      {
+        heading: 'Build Quality and Thermals',
+        paragraphs: [
+          'The TS4 is an aluminum chassis weighing 1.6 lbs and measuring roughly 9 x 9 x 2 inches. The metal body acts as a heatsink, so the dock warms under sustained load without becoming hot, and it is fanless — a deliberate design choice that keeps it silent in a quiet room, in contrast to some competing docks that use a small audible fan.',
+          'The power supply is a separate 180W brick, which is large and runs warm; buyers typically place it under a desk or behind a monitor. The included 0.5 m Thunderbolt 4 cable is short, so a longer active Thunderbolt cable may be required if the laptop sits on a stand.',
+        ],
+      },
+      {
+        heading: 'Daisy-Chaining',
+        paragraphs: [
+          'The TS4 supports Thunderbolt daisy-chaining, so a second Thunderbolt device — an external NVMe enclosure, a second dock, or a Thunderbolt display — can be connected downstream from the TS4, up to six devices deep in theory. Bandwidth is shared across the chain.',
+          'Daisy-chaining is useful when the 18 ports of the TS4 are fully occupied and a further dock is needed without consuming another Thunderbolt port on the host Mac.',
+        ],
+      },
+      {
+        heading: 'Firmware Stability',
+        paragraphs: [
+          'Firmware stability is where premium Thunderbolt docks separate themselves from budget alternatives. The TS4 is designed to maintain display, Ethernet, and peripheral connections across sleep and wake cycles without reconnect loops or dropouts, and CalDigit distributes firmware updates through its firmware tool.',
+          'By comparison, some competing Thunderbolt docks have required a firmware update out of the box to resolve display flicker or periodic monitor dropouts — classes of issue the TS4 is not associated with.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best USB-C Dock for MacBook', href: '/reviews/best-usbc-dock-macbook/', desc: 'How the TS4 stacks up against 6 other docks.' },
       { name: 'Best USB-C Hub for MacBook', href: '/reviews/best-usb-c-hub-macbook/', desc: 'Smaller, more portable options.' },
@@ -90,9 +166,9 @@ export const group2Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The Logitech MX Keys S is the best low-profile wireless keyboard for office use, with Perfect Stroke keys that deliver a refined scissor-switch typing feel, a smart backlight that extends battery life to 10 days per charge, and Flow cross-computer control that is transformative for multi-machine workflows. Based on manufacturer specifications, the keyboard is built for long-term durability. It is not mechanical, the metal plate collects fingerprints, and the $109 price is $25 more than the Keychron K8 — but for the audience it targets, the MX Keys S is the most polished option on the market. Our rating: 4.7/5.',
     quickVerdict: 'Quick verdict: The Logitech MX Keys S is the best low-profile wireless keyboard for office use. The Perfect Stroke keys offer a typing feel no other scissor-switch keyboard matches, the smart backlight extends battery life to 10 days per charge, and Flow lets you control two computers with a single keyboard and mouse. At $109 it is not the cheapest option, but it is the most polished.',
     testingSummary: 'Based on product documentation, feature analysis, pricing comparison, and specification evaluation, this review covers the Logitech MX Keys S\'s Perfect Stroke scissor switches, smart backlight with proximity detection, Flow cross-computer control, multi-device pairing, and battery life across backlight modes. Pricing is compared against the Keychron K8, Apple Magic Keyboard, and Keychron K1 Low Profile. This is an independent editorial review; no review unit was provided by Logitech, and the analysis is based on the retail version.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to Logitech\'s published specifications, the MX Keys S uses the Perfect Stroke scissor mechanism with 1.8 mm of key travel and a 45 g actuation force — shorter and lighter than a mechanical switch, which is what gives the keyboard its low-profile, laptop-like feel. The keycaps are dished to cradle the fingertips, and the dual-printed legends carry both the Mac and Windows layouts.\n\nThe keyboard\'s headline performance feature is the smart backlight. A proximity sensor detects when your hands approach and switches the white LED backlight on; it dims or switches off when you move away. Logitech rates battery life at up to 10 days per charge with the smart backlight enabled, about 5 days with the backlight always on, and up to 15 days with it off. Brightness adjusts automatically to ambient light, so the backlight is dim in a bright office and full in a dark room without manual input.',
+    buildQuality: 'Logitech builds the MX Keys S around a metal top plate with a matte finish, and the keyboard weighs about 1.7 lbs — heavy for a low-profile keyboard, which keeps it stable and stops it sliding during typing. The weight comes from the metal plate and the battery, and it is the main reason the keyboard does not feel cheap despite its thin profile.\n\nThe keycaps are integrated into the scissor mechanism and cannot be removed or replaced individually. That is the defining trade-off of the low-profile design: unlike a mechanical keyboard, the MX Keys S offers no keycap customization or switch swapping. The metal plate around the keys also shows fingerprints and dust readily, so keeping a microfiber cloth nearby is part of ownership. Logitech backs the keyboard with a three-year limited warranty covering manufacturing defects, the longest in this category.',
+    easeOfUse: 'The MX Keys S pairs with up to three devices at once over Bluetooth 5.1, the Logi Bolt USB receiver, or USB-C wired mode, and switches between them with dedicated Easy-Switch keys along the top row. The USB-C port also charges the keyboard while it is in use, and Logitech documents a full charge in about three hours.\n\nThe keyboard\'s most distinctive usability feature is Flow, which lets one keyboard and mouse control two computers — moving the cursor off the edge of one screen and onto the other, with a shared clipboard between them. Flow requires the Logi Bolt receiver rather than Bluetooth and runs through Logitech\'s free Options+ software on both machines. Options+ is also where key remapping and per-app shortcuts live, so installing it is effectively required to use the features that justify the price. The keyboard is documented as compatible with macOS, Windows, iPadOS, and Android.',
     value: 'At $109, the Logitech MX Keys S sits at the premium end of the low-profile wireless keyboard category. It is $25 more than the Keychron K8 ($84), $30 more than the Apple Magic Keyboard ($79), and $40 more than the Keychron K1 Low Profile ($69). The value question is whether the Perfect Stroke typing feel, smart backlight, and Flow cross-computer control justify the premium — and for the target audience of office workers, writers, and multi-computer users, the answer is yes. The smart backlight alone extends battery life to 10 days per charge, which is triple the Keychron K8\'s 3.25 days and double the Magic Keyboard\'s 5 days, meaning fewer charging interruptions over the keyboard\'s lifespan.\n\nThe longer math favors the MX Keys S for buyers who plan to keep it. Logitech\'s 3-year warranty is the longest in this category. The catch is that the MX Keys S is not mechanical: you cannot replace keycaps, customize switches, or use QMK/VIA firmware. If mechanical switches are a must-have, the Keychron K8 at $84 is the stronger value. For everyone else who wants the most polished low-profile wireless keyboard, the MX Keys S justifies its $109 price over years of daily use.',
     pros: [
       'Perfect Stroke keys offer a refined low-profile typing feel',
@@ -132,7 +208,70 @@ export const group2Reviews: ProductReviewEntry[] = [
       'Your budget caps at $80 — the Keychron K8 is the better value',
       'You need QMK/VIA programmable firmware — the MX Keys S uses Logi software only',
     ],
-    specs: [],
+    specs: [
+      { label: 'Switch type', value: 'Scissor (Perfect Stroke)' },
+      { label: 'Key travel', value: '1.8 mm' },
+      { label: 'Actuation force', value: '45 g' },
+      { label: 'Backlight', value: 'White LED with proximity sensor' },
+      { label: 'Battery life (smart backlight)', value: 'Up to 10 days per charge' },
+      { label: 'Battery life (backlight on)', value: '~5 days' },
+      { label: 'Battery life (backlight off)', value: 'Up to 15 days' },
+      { label: 'Charging', value: 'USB-C, full charge ~3 hours' },
+      { label: 'Connectivity', value: 'Bluetooth 5.1 / Logi Bolt / USB-C wired' },
+      { label: 'Multi-device pairing', value: 'Up to 3 devices (Easy-Switch)' },
+      { label: 'Flow', value: 'Requires Logi Bolt receiver' },
+      { label: 'Layout', value: 'Dual-printed Mac + Windows legends' },
+      { label: 'Weight', value: '1.7 lbs (approx. 770 g)' },
+      { label: 'Warranty', value: '3 years' },
+    ],
+    productDetails: [
+      {
+        heading: 'Perfect Stroke Keys: Scissor Switch Feel',
+        paragraphs: [
+          'The MX Keys S uses Logitech\'s Perfect Stroke scissor mechanism, the same fundamental mechanism found in laptop keyboards and the Apple Magic Keyboard, refined with 1.8 mm of travel and a 45 g actuation force. That is well short of the roughly 4 mm travel of a mechanical switch, and the result is a low-profile typing experience aimed at people who like a laptop keyboard and want a better version of it on the desktop.',
+          'The keys are dished — slightly concave — so the fingertips settle into each cap, which makes typing by touch easier than on completely flat keys. The mechanism also produces a soft, dampened sound rather than the sharp clack of a mechanical switch. For an office, that is the point: the keyboard is engineered to be quiet rather than tactile, so buyers who want switch feedback or keycap customization should be looking at mechanical boards instead.',
+        ],
+      },
+      {
+        heading: 'Smart Backlight and Battery Life',
+        paragraphs: [
+          'The smart backlight is the feature that separates the MX Keys S from cheaper wireless keyboards. A proximity sensor under the deck watches for approaching hands and turns the white LED backlight on as they arrive, then off as they leave. Because the backlight only runs when someone is actually typing, it delivers the visibility of an always-on backlight with much of the battery profile of an always-off one.',
+          'Logitech rates the battery at up to 10 days per charge in smart-backlight mode, about 5 days with the backlight permanently on, and up to 15 days with it off. Brightness is tied to ambient light automatically, so there is no manual adjustment to remember. For buyers who want backlighting without managing it, the smart backlight is the reason to choose the S over the original MX Keys.',
+        ],
+      },
+      {
+        heading: 'Flow Cross-Computer Control',
+        paragraphs: [
+          'Flow is the feature that sells the MX Keys S to multi-computer users. With Logitech Options+ installed on two machines — a Mac and a PC, or a work laptop and a personal desktop — a single keyboard and mouse control both, with the cursor moving from one screen to the other by sliding off the edge of the display. Text copied on one computer can be pasted on the other.',
+          'There are two practical conditions. Flow requires the Logi Bolt USB receiver rather than Bluetooth, and it needs both computers on the same network. Logitech documents a brief delay as the cursor crosses the boundary while the keyboard re-pairs. For developers, designers, and anyone juggling two machines, Flow is the standout capability; paired with an MX Master mouse it extends to keyboard, mouse, and clipboard switching together.',
+        ],
+      },
+      {
+        heading: 'Build: Metal Plate and Integrated Keycaps',
+        paragraphs: [
+          'The MX Keys S has a matte metal top plate that gives the keyboard a solid, premium feel and enough weight — roughly 1.7 lbs — to keep it planted on the desk. That weight is deliberate: a light low-profile keyboard slides around during fast typing, and the MX Keys S does not.',
+          'The trade-off is that the keycaps are part of the scissor mechanism and cannot be replaced. There is no aftermarket keycap route on this keyboard, and no switch swapping, which is the clearest functional dividing line between it and a mechanical board. The metal plate is also the surface that collects visible fingerprints, so regular wiping is the cost of the finish. The keyboard\'s two flip-out feet set the tilt to about 4 or 8 degrees, though the low profile arguably suits a flat position best.',
+        ],
+      },
+      {
+        heading: 'Connectivity and Multi-Device Pairing',
+        paragraphs: [
+          'The MX Keys S offers three connection paths: Bluetooth 5.1, the Logi Bolt USB receiver, and USB-C wired mode. It remembers up to three paired devices and switches among them with the Easy-Switch keys, which is useful for moving between a laptop, a tablet, and a phone without re-pairing.',
+          'The Logi Bolt receiver is the faster and more reliable option and the one Flow requires; Logitech documents lower latency over Bolt than over Bluetooth, though both are imperceptible for typing. The catch is that Bolt occupies a USB port on each computer, which is a real constraint on port-limited laptops. Wired USB-C mode works while charging, so the keyboard can be used even with a flat battery — the USB-C cable itself is not included.',
+        ],
+      },
+      {
+        heading: 'Mac and Windows Compatibility',
+        paragraphs: [
+          'The MX Keys S ships with dual-printed keycaps that show both the Mac and Windows legends, so the same keyboard reads correctly on either platform. The Fn row maps to media controls and screen brightness on both macOS and Windows, and the layout does not need to be swapped when moving between the two.',
+          'Logitech Options+ is the layer that unlocks the keyboard\'s depth on either platform: Flow, key remapping, and per-app shortcuts all live there. The software is free and runs on macOS and Windows. On Linux the keyboard works as a standard Bluetooth or USB-C keyboard with basic typing and media keys, but Flow, remapping, and per-app shortcuts are not officially supported, and only partial community workarounds exist.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Office Mechanical Keyboard', href: '/reviews/best-office-mechanical-keyboard/', desc: 'Our full roundup of mechanical alternatives.' },
       { name: 'Keychron K8 Review', href: '/reviews/keychron-k8-review/', desc: 'The mechanical keyboard alternative at $84.' },
@@ -174,9 +313,9 @@ export const group2Reviews: ProductReviewEntry[] = [
     verdict: 'The Most Capable Standing Desk You Can Buy\n\nBased on manufacturer specifications, the Uplift V2 earns its 4.8/5 rating on the dimensions that matter for power users: 355-lb capacity, 50.5-inch max height, a leading anti-collision sensor, and an accessory ecosystem no competitor can match. It does not win every dimension — the Branch matches it on warranty and the E7 wins on value.\n\nIf you have a heavy setup, are taller than 6\'4", or want one of the 20+ specialty tops, the V2 is the desk we recommend most often. It is the most capable standing desk you can buy in 2026, and the only one we expect to outlast every other piece of furniture in your office.\n\nRating: 4.8/5 · Price: $595+ · Warranty: 10 years frame/motor/electronics · Best for: Heavy multi-monitor setups, tall users, and buyers who want the longest warranty in the category.',
     quickVerdict: 'Quick verdict: The Uplift V2 is the most capable standing desk in this guide. Its 355-lb dual-motor frame is the strongest in this category, the 20+ top finishes give you more aesthetic choices than any competitor, and the accessory ecosystem is unmatched. At $595 it is not cheap, and most buyers do not need everything it offers — but if you want a desk that will outlast every other piece of furniture in your office, this is the one.',
     testingSummary: 'Based on product documentation, feature analysis, pricing comparison, and specification evaluation, this review covers the Uplift V2\'s 355-lb dual-motor frame, 50.5-inch max height, 20+ top finishes, accessory ecosystem, and 10-year warranty. Pricing is compared against the Branch Standing Desk and FlexiSpot E7. This is an independent editorial review; no review unit was provided by Uplift, and the analysis is based on the retail version.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to Uplift\'s published specifications, the V2 uses a three-stage telescoping dual-motor frame rated for 355 lbs — the highest capacity in the premium standing-desk category. The taller three-stage columns are what let the desk reach a 50.5-inch maximum height, which covers users up to roughly 6\'9". Uplift rates the lift speed at 1.8 inches per second, the fastest in this class, so a full sit-to-stand transition completes in about 14 seconds.\n\nThe two motors are synchronized electronically so the legs lift together, and Uplift specifies soft-start and soft-stop behavior that ramps the motors up and down at each end of travel instead of hitting full speed immediately. The V2 Commercial variant is rated for the same load but adds BIFMA G1-2013 certification, which matters for shared corporate spaces.',
+    buildQuality: 'The V2 is defined by an overbuilt steel frame and a wide choice of desktops. Uplift offers more than 20 top finishes, from the standard laminate that anchors the $595 base price through solid bamboo, solid oak, reclaimed wood, and live-edge tops. The desktop is 1 inch thick, and the bamboo and solid-wood options are denser and more scratch-resistant than laminate — the kind of surface that reads as furniture rather than office equipment.\n\nCoverage reflects Uplift\'s confidence in the hardware: the frame, motor, and electronics carry a 10-year warranty, tied for the longest in the category, while the desktop is covered for 5 years against manufacturer defects. Uplift has been building standing desks since 2004, so parts and support are likely to remain available across the full warranty window. The trade-off of the heavier frame and solid tops is weight — the desk is not something you move often once assembled.',
+    easeOfUse: 'The V2 ships with a standard keypad controller — four programmable presets, a three-digit LED height display, and an anti-collision sensor — that is functionally equivalent to the controllers on cheaper desks. The differentiator is the optional advanced controller (about $70 extra), which adds Bluetooth, a companion app, programmable sit-stand reminders, and a USB-A charging port on the keypad itself.\n\nUplift\'s second usability advantage is its accessory ecosystem: more than 30 first-party accessories that mount to the frame or top, from monitor arms and power strips to keyboard trays and CPU holders. Because the mounting points are designed together, the accessories bolt on rather than clamp on. Assembly is a two-person job — the frame arrives mostly pre-assembled, but the bamboo and solid-wood tops are heavy enough that Uplift documents attaching them with a second pair of hands.',
     value: 'At $595 for the base frame, the Uplift V2 is the premium benchmark of the standing desk category — and the value math depends entirely on your setup. The V2\'s 355-lb capacity is the highest in this category, beating the Branch ($495, 275-lb capacity) by 80 lbs and the FlexiSpot E7 ($249, 154-lb capacity) by more than double. If you run a multi-monitor rig with a monitor arm, ultrawide display, and desktop accessories, that capacity margin is the difference between a stable desk and a wobbly one. The 50.5-inch max height fits users up to 6\'9", which no sub-$500 competitor matches.\n\nThe longer math favors the V2 for buyers who plan to keep the desk. Uplift\'s 10-year warranty covers the frame, motor, and electronics — the components that actually fail on standing desks. Amortized over 10 years, the $595 base works out to roughly $60 per year, which is cheaper than replacing a $250 budget desk every three years when its motor or controller dies. The catch is that popular options push the real price to $900+: the advanced controller adds $100, solid wood tops add $200, and the accessory ecosystem (monitor arms, power strips, keyboard trays) adds another $150 to $300. For buyers who want the full Uplift experience, the value proposition weakens — but for the base frame alone, the V2 is the strongest long-term value in the premium standing desk category.',
     pros: [
       '355-lb capacity — the highest in this category',
@@ -209,7 +348,70 @@ export const group2Reviews: ProductReviewEntry[] = [
       'You hate making choices — 20+ tops will paralyze you',
       'You need a desk immediately — lead times are 2 to 5 weeks',
     ],
-    specs: [],
+    specs: [
+      { label: 'Height range', value: '24.4" – 50.5" (three-stage)' },
+      { label: 'Weight capacity', value: '355 lbs' },
+      { label: 'Lift speed', value: '1.8 in/s' },
+      { label: 'Motor configuration', value: 'Dual motor, three-stage telescoping' },
+      { label: 'Frame material', value: 'Steel' },
+      { label: 'Desktop thickness', value: '1 inch' },
+      { label: 'Top options', value: '20+ finishes (laminate, bamboo, solid oak, reclaimed, live-edge)' },
+      { label: 'Presets', value: '4 (standard controller)' },
+      { label: 'Advanced controller', value: 'Optional, ~$70 (Bluetooth, app, USB charging, sit-stand reminders)' },
+      { label: 'Anti-collision', value: 'Yes' },
+      { label: 'Warranty (frame / motor / electronics)', value: '10 years' },
+      { label: 'Warranty (desktop)', value: '5 years against manufacturer defects' },
+      { label: 'Base price', value: '$595' },
+      { label: 'Accessory ecosystem', value: '30+ first-party mounts and add-ons' },
+    ],
+    productDetails: [
+      {
+        heading: 'The Frame: 355-lb Dual-Motor Capacity',
+        paragraphs: [
+          'Uplift rates the V2 frame at 355 lbs, which is the highest capacity in the premium standing-desk category and far above what a normal home office will ever carry. That headroom is the point for power users: a multi-monitor rig with a monitor arm, an ultrawide display, speakers, and a heavy desktop accessory load is exactly the scenario where a cheaper frame starts to flex and the V2 does not.',
+          'The frame is a three-stage telescoping design, meaning it uses two nested column segments per leg rather than one. The extra stage is what produces the taller maximum height and, combined with the dual synchronized motors, keeps the legs level under an evenly distributed load. For buyers whose setup is genuinely heavy, the capacity margin over the Branch (275 lbs) and the FlexiSpot E7 (220 lbs) is the single spec that justifies the premium.',
+        ],
+      },
+      {
+        heading: 'Height Range and Stability',
+        paragraphs: [
+          'The V2 reaches 50.5 inches at full extension, the tallest in this category and enough for users up to roughly 6\'9". That matters disproportionately for tall users: a desk that tops out even two inches short forces either hunched shoulders or bent wrists, both of which cause pain within days. The Uplift\'s advantage here is its three-stage columns, which reach higher without the flex penalty of an over-extended two-stage frame.',
+          'Uplift positions the V2 as the stability benchmark of the category, and the engineering supports that: heavy-gauge columns, a wide foot print, and electronically synchronized motors. For buyers who stand and type for long stretches, the combination of a tall range and a rigid frame is what separates a premium desk from a merely adjustable one.',
+        ],
+      },
+      {
+        heading: 'Top Finish Options',
+        paragraphs: [
+          'The V2\'s second defining feature is choice. Uplift offers more than 20 desktop finishes, spanning laminate, bamboo, solid oak, reclaimed wood, live-edge, and even a bar-height "standing stall" top. Most buyers converge on one of three: the matte black laminate at the base price, the bamboo (a modest upcharge), or the solid oak, which is the closest match to the solid-wood top the Branch includes as standard.',
+          'The practical advice is to pick bamboo unless a specific room or aesthetic calls for something else. Bamboo is denser than laminate and resists scratches noticeably better while costing far less than solid oak. The reclaimed and live-edge tops are the ones to buy only after seeing them in person, since their grain varies between individual units.',
+        ],
+      },
+      {
+        heading: 'Standard vs Advanced Controller',
+        paragraphs: [
+          'Uplift ships the V2 with a standard keypad controller that covers the essentials: four programmable presets, a three-digit height display, and an anti-collision sensor. It is functionally the same controller you get on much cheaper desks, which is fine — presets and height readout are all most people need.',
+          'The optional advanced controller, about $70 extra, is the reason many buyers choose the V2 over the Branch. It adds Bluetooth and a smartphone app, programmable sit-stand reminders, and a USB-A charging port built into the keypad. The USB port is the most lasting benefit — it removes a wall adapter from the desk — while the reminders are the kind of feature that helps build a standing habit and then gets switched off once the habit sticks.',
+        ],
+      },
+      {
+        heading: 'Lift Speed and Motor Noise',
+        paragraphs: [
+          'Uplift rates the V2\'s dual motors at 1.8 inches per second, the fastest in this class, which brings a full sit-to-stand transition down to roughly 14 seconds. The published motor noise is on par with the quietest desks in the category, low enough that adjusting height mid-call goes unnoticed.',
+          'Unlike the FlexiSpot E7, the V2 documents soft-start and soft-stop, ramping the motors up and down at each end of travel. It is a small detail with an outsized effect on how premium the desk feels: no start-and-stop clunk, just a smooth glide. For buyers who adjust the desk many times a day, it is exactly the kind of polish the higher price is meant to buy.',
+        ],
+      },
+      {
+        heading: 'The Accessory Ecosystem',
+        paragraphs: [
+          'Uplift sells more than 30 accessories designed to mount to the V2\'s frame or top — monitor arms, surge-protected power strips, keyboard trays, CPU holders, under-desk hammocks, and even a desk-mounted microphone boom. Because the mounting points are pre-drilled to match, everything integrates without improvisation, and every accessory is covered by the same warranty as the desk.',
+          'This matters more than it sounds. A standing desk quickly becomes the hub of a workspace, and the limitations of cheaper desks show up exactly when you start adding a monitor arm, a power strip, and a keyboard tray: holes do not align, cable management stops scaling, and accessories end up clamped rather than bolted. The V2 is the rare desk where the whole workspace can be built from one manufacturer\'s catalog.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'FlexiSpot E7 Review', href: '/reviews/flexispot-e7-review/', desc: 'The budget pick that costs half as much.' },
       { name: 'Autonomous SmartDesk 2 Review', href: '/reviews/autonomous-smartdesk-2-review/', desc: 'The budget alternative at $399.' },
@@ -245,9 +447,9 @@ export const group2Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: The FlexiSpot E7 is the best standing desk under $300 in 2026. Based on manufacturer specifications, the dual-motor frame is rated for 220 lbs, the 5-year warranty leads this price tier, and the height range fits users from 5\'0" to 6\'7". Skip it only if you need a real-wood top, a 60-inch surface, or app-controlled presets. Our rating: 4.6/5.',
     quickVerdict: 'Quick verdict: The FlexiSpot E7 is the best standing desk you can buy under $300 in 2026. Its dual-motor frame holds 220 lbs, stays stable at the full 48.4-inch height, and runs quieter than competing desks that cost $100 more, according to manufacturer specifications. If you want a budget standing desk that does not feel like a compromise, this is the one.',
     testingSummary: 'Based on product documentation, feature analysis, pricing comparison, and specification evaluation, this review covers the FlexiSpot E7\'s dual-motor frame, 220-lb capacity, 22.6 to 48.4-inch height range, 5-year warranty, and four programmable presets. Pricing is compared against the Vari Electric and Branch Standing Desk. This is an independent editorial review; the unit was purchased at retail, not provided by FlexiSpot.',
-    performance: '',
-    buildQuality: '',
-    easeOfUse: '',
+    performance: 'According to FlexiSpot\'s published specifications, the E7 pairs two electric motors — one per leg column — that raise the frame at roughly 1.5 inches per second across a 22.6 to 48.4 inch height range. FlexiSpot rates the frame at 220 lbs, which sits at the top of the budget standing-desk tier. Because each column carries its own motor and the two are synchronized electronically rather than driven from a single motor through a belt or chain, the legs are engineered to stay level under an evenly distributed load. At the rated speed a full sit-to-stand transition takes roughly 17 seconds.\n\nThe E7 frame is also sold as a standalone kit of about $169 so buyers can bolt on their own desktop. FlexiSpot ships the complete desk with laminate or bamboo tops in 48x30, 55x28, and 60-inch widths; the 60-inch configuration is the one where the same frame is documented to flex under load, so the narrower widths are the better match for the frame\'s 220-lb rating.',
+    buildQuality: 'FlexiSpot builds the E7 around a steel dual-motor frame with a 1-inch particleboard desktop finished in laminate or bamboo. The laminate tops are the budget option and, per owner reports and the character of the material, mark more easily than the bamboo upgrade — which is why FlexiSpot sells a large desk pad separately. The frame carries the longer warranty (5 years on the frame and motor), while the desktop and electronics are covered for 2 years, which reflects where FlexiSpot expects wear to occur.\n\nFlexiSpot is an established manufacturer that has sold standing desks for over a decade, so replacement parts and support are more likely to remain available than with Amazon-only budget brands. The hardware package ships with a correctly sized hex key and labeled fasteners, and the frame arrives collapsed and largely pre-assembled to keep assembly a single-person job.',
+    easeOfUse: 'Based on FlexiSpot\'s documentation and the design of the controller, the E7 is set up to be simple rather than configurable. A membrane keypad with a three-digit LED display shows the current height and stores four programmable memory presets, which is enough to cover the sitting and standing heights of one or two users. There is no Bluetooth, app control, or sit-stand reminder — height is adjusted entirely from the keypad.\n\nThe controller includes a built-in anti-collision sensor that halts and reverses the desk when it meets resistance, a feature that was once limited to premium desks. Assembly is documented as a one-person task because the frame ships pre-assembled; the desktop is attached last with the included hardware.',
     value: 'At $249, the FlexiSpot E7 is the best-value standing desk under $300 in this category. It undercuts the Vari Electric ($395) by $146 while holding 40 lbs more capacity and topping out 2 inches taller. The dual-motor frame and 5-year warranty match desks costing twice as much. The trade-off is the laminate top (budget for a desk pad) and the mushy controller keypad — but the core frame is excellent. If you can stretch to $495, the Branch Standing Desk adds a real-wood top and a 10-year warranty, but for most home office buyers the E7\'s daily experience is 90% of the premium desks for half the price.',
     pros: [
       'Dual-motor frame rated for 220 lbs — leads every desk under $300',
@@ -280,7 +482,77 @@ export const group2Reviews: ProductReviewEntry[] = [
       'Your budget can stretch to $500+, where the Branch is meaningfully better',
       'You need a desk for a heavy drafting setup over 80 lbs',
     ],
-    specs: [],
+    specs: [
+      { label: 'Height range', value: '22.6" – 48.4" (57.4 – 123 cm)' },
+      { label: 'Weight capacity', value: '220 lbs (100 kg)' },
+      { label: 'Lift speed', value: '1.5 in/s' },
+      { label: 'Motor configuration', value: 'Dual motor, one per column' },
+      { label: 'Frame material', value: 'Steel' },
+      { label: 'Desktop thickness', value: '1 inch' },
+      { label: 'Desktop options', value: 'Laminate or bamboo' },
+      { label: 'Presets', value: '4 programmable memory positions' },
+      { label: 'Controller', value: 'Membrane keypad with 3-digit LED display' },
+      { label: 'Anti-collision', value: 'Yes' },
+      { label: 'Warranty (frame / motor)', value: '5 years' },
+      { label: 'Warranty (desktop / electronics)', value: '2 years' },
+      { label: 'Frame-only kit', value: '~$169' },
+      { label: 'Cable tray', value: 'Optional, ~$19 add-on' },
+    ],
+    productDetails: [
+      {
+        heading: 'Stability and Frame Design',
+        paragraphs: [
+          'The dual-motor arrangement is the E7\'s defining engineering choice. Cheap budget desks drive both columns from a single motor through a belt or chain, which introduces play that grows over time. The E7 instead places a dedicated motor in each column and synchronizes them electronically, so the legs are designed to track together and stay level. For a standing desk this matters more than almost any other spec, because a frame that drifts out of level produces the visible monitor shake that makes cheap desks frustrating to type on.',
+          'FlexiSpot rates the frame for 220 lbs and a 22.6 to 48.4 inch range. The practical takeaway is that the E7 is engineered for one or two normal monitors plus a laptop and accessories — not a heavy drafting setup. Buyers running an ultrawide plus a second display should stay within the rated load and choose the narrower desktop widths.',
+        ],
+      },
+      {
+        heading: 'Height Range: 22.6 to 48.4 Inches',
+        paragraphs: [
+          'The published range covers roughly a 5\'0" to 6\'7" user, sitting through standing. That is wider than several desks that cost more: the Vari Electric tops out at 46.5 inches and the Branch Duo at 45 inches, both of which leave a taller user hunching. If you are over about 6\'2", height range is the single spec most likely to decide whether a budget desk works for you, and the E7 reaches taller than its direct rivals.',
+          'The low end of 22.6 inches is short enough for shorter users and children to use while seated, which is what makes the E7 workable as a shared family desk. Combined with the four presets, that range lets two people of very different heights share one desk without readjusting manually every time.',
+        ],
+      },
+      {
+        heading: 'Motor Noise and Lift Speed',
+        paragraphs: [
+          'FlexiSpot publishes the E7\'s motor noise at approximately 48 dB, which is quieter than normal conversation and low enough to adjust the desk during a call without being noticed. The 1.5 in/s lift speed is not the fastest in the category — the Uplift V2 is rated at 1.8 in/s — but it still completes a full transition in about 17 seconds, so there is no meaningful waiting.',
+          'One documented shortcoming is the absence of soft-start and soft-stop. The E7 begins and ends each transition at full speed, which produces a small clunk at the start and stop. It is not loud, but it is the kind of mechanical detail that premium desks smooth out electronically and budget desks do not.',
+        ],
+      },
+      {
+        heading: 'The Desktop: Laminate vs Bamboo',
+        paragraphs: [
+          'The included desktop is a 1-inch particleboard core with a laminate or bamboo skin. The laminate finishes look clean at a distance and handle normal office use, but they are the part of the desk most likely to show wear — which is why a desk pad (roughly $25 to $40) is effectively part of the ownership cost on a laminate top. The bamboo option is denser and resists scratches better, and FlexiSpot prices it close enough to laminate that it is the better pick when both are in stock.',
+          'The top ships with a single rear cable grommet, enough to route a monitor and a power cable. For anything more, FlexiSpot sells a $19 under-desk cable tray separately. Buyers who care about the look of real wood can skip the FlexiSpot top entirely and buy the $169 frame kit to pair with their own bamboo or butcher-block surface.',
+        ],
+      },
+      {
+        heading: 'Controller and Anti-Collision',
+        paragraphs: [
+          'The controller is a membrane keypad with a small three-digit LED height display and four programmable memory presets. It is functional rather than premium: the buttons have a soft feel, the display is small, and the housing is thin plastic. None of that affects whether the desk moves, but it is where the budget price is most visible.',
+          'The controller also includes an anti-collision sensor that stops and reverses the desk when it meets resistance during travel. FlexiSpot does not fit a child-lock, so pets or children can still reach the buttons, but the anti-collision behavior prevents the worst outcomes when an object is left under a descending desk.',
+        ],
+      },
+      {
+        heading: 'Which Width to Buy',
+        paragraphs: [
+          'FlexiSpot sells the E7 in 48x30, 55x28, and 60-inch configurations on the same frame. For one or two monitors the 48x30 size is the sweet spot and the one that most cleanly matches the 220-lb rating. The 55x28 size adds width for a third display or a side-by-side laptop setup without overloading the frame.',
+          'The 60-inch tops are the configuration to avoid at this price. The frame is unchanged, and the wider span is documented to flex more noticeably under load. If a 60-inch surface is a hard requirement, the honest answer is that you need a heavier frame than the E7 provides.',
+        ],
+      },
+      {
+        heading: 'Warranty and Long-Term Support',
+        paragraphs: [
+          'FlexiSpot covers the E7 frame and motor with a 5-year warranty and the desktop and electronics with a 2-year warranty. In the under-$300 tier that is the longest coverage available, and it maps sensibly onto the components that are most likely to fail — the motors and controller rather than the steel frame.',
+          'Because FlexiSpot is a large, long-established standing-desk maker rather than an Amazon-only label, parts and support are more likely to remain available across the warranty period. That predictability, more than any single spec, is a large part of why the E7 is a safer budget purchase than an unknown brand at the same price.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Best Standing Desk Under $300', href: '/reviews/best-standing-desk-under-300/', desc: 'See how the E7 ranks against its budget rivals.' },
       { name: 'Best Standing Desk for Home Office', href: '/reviews/best-standing-desk-home-office/', desc: 'The wider roundup where the E7 is our budget pick.' },
@@ -349,7 +621,46 @@ export const group2Reviews: ProductReviewEntry[] = [
       'Anyone who needs enterprise SSO, audit logs, or compliance certifications — Obsidian is a personal tool',
       'Mobile-first users who do most of their note-taking on a phone — the desktop experience is the priority',
     ],
-    specs: [],
+    specs: [
+      { label: 'Category', value: 'Personal knowledge management / note-taking app' },
+      { label: 'Platforms', value: 'Windows, macOS, Linux, iOS, Android (plus a headless Sync client)' },
+      { label: 'File format', value: 'Plain-text Markdown (.md) stored in a local folder (\'vault\')' },
+      { label: 'Data storage', value: 'Local-first; no account required to start; no copy held on Obsidian servers' },
+      { label: 'Linking', value: 'Bi-directional [[wiki-links]] with a backlinks panel' },
+      { label: 'Graph view', value: 'Yes — vault-wide node-and-link visualisation' },
+      { label: 'Extensibility', value: '1,000+ community plugins in the official directory' },
+      { label: 'Sync (optional)', value: 'Obsidian Sync — AES-256 end-to-end encryption, version history, selective sync' },
+      { label: 'Publish (optional)', value: 'Obsidian Publish — publish notes as a public website' },
+      { label: 'Free tier', value: 'Yes — free for personal use, no account required' },
+      { label: 'Licensing', value: 'Optional Sync, Publish, and commercial licences' },
+    ],
+    productDetails: [
+      {
+        heading: 'Local-First Architecture and Data Ownership',
+        paragraphs: [
+          'Obsidian is organised around a single folder of plain-text Markdown files, which the app calls a vault. Every note is a .md file that any text editor can open, so nothing is locked inside a proprietary database and the notes stay readable even without the app. Obsidian\'s documentation states that an account is not required to start and that the company does not keep a copy of a vault on its own servers.',
+          'The trade-off of a local-first design is that backup and syncing are the user\'s responsibility. Obsidian documents several approaches — pointing a cloud drive such as iCloud Drive, Google Drive, or Dropbox at the vault folder, keeping the vault in a Git repository for version history, or paying for the first-party Obsidian Sync service. Because the files are plain text, a vault can be moved or abandoned without an export step.',
+        ],
+      },
+      {
+        heading: 'Platform Coverage, Sync, and Publishing',
+        paragraphs: [
+          'Obsidian runs on Windows, macOS, Linux, iOS, and Android, and its documentation also covers a headless Sync client that can run on a server. The desktop and mobile apps read the same vault format, so a vault created on one platform opens on any other.',
+          'Obsidian Sync is the first-party syncing service, documented as end-to-end encrypted with AES-256 and offering version history and per-device selective sync so that large attachments can be excluded from devices that do not need them. Obsidian Publish is a separate service for turning part of a vault into a public website. Both are optional add-ons; the core app is free for personal use.',
+        ],
+      },
+      {
+        heading: 'Community Plugins and the Mobile Apps',
+        paragraphs: [
+          'Beyond Markdown editing, linking, and the graph view, most of Obsidian\'s functionality comes from plugins. The official plugin directory lists more than 1,000 community plugins covering task management, kanban boards, spaced repetition, calendars, and database-style queries. Plugins are installed from inside the app, and the directory is community-maintained rather than curated by the developers.',
+          'The iOS and Android apps handle the core workflow — writing, linking, searching, and the graph view — while the desktop app remains the primary platform for plugin-heavy setups. Obsidian positions the mobile apps as companions to a desktop vault rather than a replacement for it.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Notion vs Obsidian', href: '/reviews/notion-vs-obsidian/', desc: 'The full head-to-head — local markdown vs cloud workspace.' },
       { name: 'Claude vs ChatGPT', href: '/reviews/claude-vs-chatgpt/', desc: 'AI assistants that pair well with a note-taking vault.' },
@@ -383,10 +694,10 @@ export const group2Reviews: ProductReviewEntry[] = [
     verdict: 'Final Verdict: Trello is the simplest and fastest Kanban board you can use in 2026, with a genuinely usable free plan (10 boards, unlimited cards, Butler automation), 200+ Power-Ups, and a clean visual interface non-technical teams can learn in 30 minutes. Based on feature analysis, the free plan covers a typical small-team workflow without hitting limits. Trello lacks Gantt charts, native time tracking, and slows down at 500+ cards per board — but for small teams who want a visual board they can adopt today, it is the best free option available. Our rating: 4.3/5.',
     quickVerdict: 'Quick verdict: Trello is the simplest and fastest Kanban board you can use in 2026. The free plan supports up to 10 boards with unlimited cards, Butler automation is included at no cost, and the 200+ Power-Ups cover most integrations. It lacks Gantt charts, native time tracking, and struggles at 500+ cards per board — but for small teams who want a visual board they can learn in 30 minutes, Trello is the best free option available.',
     testingSummary: 'Based on product documentation, feature analysis, pricing comparison, and workflow evaluation, this review covers Trello\'s Kanban boards, Butler automation, Power-Ups, checklists, and labels. Pricing is compared against Asana Starter and Monday Basic. Usability is evaluated through workflow analysis of content calendar management, campaign launch pipelines, and cross-team handoffs. This is an independent editorial review; no review license was provided by Atlassian, and the analysis is based on the public free tier.',
-    performance: 'Based on product documentation, Trello\'s main strength is speed on small to mid-sized boards. Dragging a card between lists is documented as responsive with no perceptible lag, and the board re-renders instantly. Trello is built for boards under 200 cards — beyond that, performance degrades noticeably based on community reports. Large boards with 500+ cards can take longer to load and card drag may stutter on lower-end hardware.\n\nButler automation is the second standout. Based on feature analysis, Butler supports rules (when a card is moved to Done, mark all checklists complete), scheduled actions, and button triggers. The Free plan includes 1,000 Butler commands per month, which covers most small teams\' workloads. The command builder is visual and no-code, enabling rule creation without documentation.\n\nThe weak point is Power-Up performance. Based on community documentation, loading multiple Power-Ups on a single board noticeably slows card opens. The Free plan\'s 1-Power-Up-per-board limit is therefore both a pricing constraint and a performance guardrail — keeping active Power-Ups low preserves responsiveness.',
+    performance: 'Based on product documentation, Trello\'s main strength is speed on small to mid-sized boards. Dragging a card between lists is documented as responsive with no perceptible lag, and the board re-renders instantly. Trello is built for boards under 200 cards — beyond that, performance degrades noticeably based on community reports. Large boards with 500+ cards can take longer to load and card drag may stutter on lower-end hardware.\n\nButler automation is the second standout. Based on feature analysis, Butler supports rules (when a card is moved to Done, mark all checklists complete), scheduled actions, and button triggers. The Free plan includes 250 command runs per month, which covers most small teams\' workloads. The command builder is visual and no-code, enabling rule creation without documentation.\n\nThe weak point is Power-Up performance. Based on community documentation, loading multiple Power-Ups on a single board noticeably slows card opens. Keeping active Power-Ups low is therefore a performance guardrail — it preserves responsiveness, and Free no longer caps the number per board.',
     buildQuality: 'Product Quality / Reliability: Trello is a mature, stable product backed by Atlassian\'s infrastructure. Atlassian has run Trello since the 2017 acquisition, and the core board functionality has remained stable through multiple redesigns. Based on Atlassian\'s published status page, uptime is enterprise-grade.\n\nUpdate frequency is moderate. Based on the public changelog, Trello ships feature updates roughly every 6 to 8 weeks, with bug fixes and minor improvements on a more frequent cadence. The cadence is slower than Linear\'s weekly releases but comparable to Asana and Monday. Major features (like the 2023 Universal Update that redesigned the board UI) ship every 12 to 18 months.\n\nEcosystem maturity is strong but uneven. Based on feature analysis, there are 200+ Power-Ups, but the quality distribution follows a power law: the top 20 Power-Ups (Slack, Google Drive, Calendar, Jira, Confluence, Custom Fields) are well-maintained and essential, while the long tail includes abandoned connectors and one-off tools that have not been updated in years. Atlassian has started curating a "verified" badge for Power-Ups, but roughly half the catalog still lacks it. The Atlassian Marketplace integration means Trello pairs cleanly with Jira and Confluence for teams already in the Atlassian stack — a card can link to a Jira issue and update bidirectionally. The mobile apps (iOS and Android) are documented as full-featured — full board editing, offline support, and push notifications — unlike some competitors where mobile is read-only.',
-    easeOfUse: 'Based on feature analysis, Trello has the gentlest learning curve of any project management tool in this category. A non-technical user can create a board, add lists, and drag cards within minutes of signing up — no tutorial required. Trello\'s Kanban-first design means the interface matches a physical whiteboard, which is intuitive for anyone who has used sticky notes. Competitors like Asana and Monday offer more views (lists, timelines, Gantt) but take longer to learn.\n\nBeginner friendliness is the strongest part of Trello. The default board template (To Do → Doing → Done) is a real workflow, not a placeholder. The card interface is clean: title, description, checklist, labels, due date, assignee — every field is visible without digging through menus. The Butler automation builder is visual and no-code, enabling rule creation without reading documentation. There is an in-app template gallery with 50+ board templates for common use cases (content calendar, sprint planning, onboarding, CRM) that give new users a working starting point.\n\nSetup experience is fast based on product documentation. Creating a workspace, inviting users via email, and creating the first board is documented as taking under 10 minutes. SSO setup (Google Workspace) is supported. The mobile app installs and signs in via the same account. The one friction point is Power-Up configuration: each Power-Up requires separate OAuth and setup, and connecting Slack can require admin approval in larger Slack workspaces. Free plan users also hit the 1-Power-Up-per-board limit quickly, which forces an early upgrade decision for teams that need multiple integrations.',
-    value: 'Trello uses a freemium pricing model that is genuinely generous on the free tier. The Free plan supports up to 10 boards with unlimited cards, lists, and checklists per board, plus Butler automation (1,000 commands per month) and one Power-Up per board — at no cost, with no time limit. For a solo user or a small team of 2 to 5 people, Free is enough to run a real workflow indefinitely. Based on feature analysis, the free plan\'s 10-board limit and 1,000 Butler commands per month cover most small-team workflows.\n\nThe paid tiers are priced per seat per month: Standard at $5, Premium at $10, and Enterprise at $17.85. Standard is the main upgrade trigger — it removes the 10-board limit and unlocks unlimited Power-Ups, which is the reason most teams pay. For a 6-person team, Standard costs $30 per month, which is competitive against Asana ($50 per month for 6 seats on the Starter plan) and Monday ($48 per month for 6 seats on the Basic plan). Premium\'s Dashboard and Timeline views are basic, so most teams should stop at Standard and pair Trello with a dedicated reporting tool if needed. The value proposition is strongest for small teams that can stay on Free; it weakens at scale where Asana and Monday offer more built-in features for a similar per-seat price.',
+    easeOfUse: 'Based on feature analysis, Trello has the gentlest learning curve of any project management tool in this category. A non-technical user can create a board, add lists, and drag cards within minutes of signing up — no tutorial required. Trello\'s Kanban-first design means the interface matches a physical whiteboard, which is intuitive for anyone who has used sticky notes. Competitors like Asana and Monday offer more views (lists, timelines, Gantt) but take longer to learn.\n\nBeginner friendliness is the strongest part of Trello. The default board template (To Do → Doing → Done) is a real workflow, not a placeholder. The card interface is clean: title, description, checklist, labels, due date, assignee — every field is visible without digging through menus. The Butler automation builder is visual and no-code, enabling rule creation without reading documentation. There is an in-app template gallery with 50+ board templates for common use cases (content calendar, sprint planning, onboarding, CRM) that give new users a working starting point.\n\nSetup experience is fast based on product documentation. Creating a workspace, inviting users via email, and creating the first board is documented as taking under 10 minutes. SSO setup (Google Workspace) is supported. The mobile app installs and signs in via the same account. The one friction point is Power-Up configuration: each Power-Up requires separate OAuth and setup, and connecting Slack can require admin approval in larger Slack workspaces. Free plan users also hit the 10-board workspace cap quickly, which forces an early upgrade decision for teams that need more boards.',
+    value: 'Trello uses a freemium pricing model that is genuinely generous on the free tier. The Free plan supports up to 10 boards with unlimited cards, lists, and checklists per board, plus Butler automation (250 command runs per month per workspace) and unlimited Power-Ups per board — at no cost, with no time limit. For a solo user or a small team of 2 to 5 people, Free is enough to run a real workflow indefinitely. Based on feature analysis, the free plan\'s 10-board limit and 250 command runs per month cover most small-team workflows.\n\nThe paid tiers are priced per seat per month: Standard at $5, Premium at $10, and Enterprise at $17.50. Standard is the main upgrade trigger — it removes the 10-board limit and adds AI features, custom fields, and card mirroring, which is the reason most teams pay. For a 6-person team, Standard costs $30 per month, which is competitive against Asana ($50 per month for 6 seats on the Starter plan) and Monday ($48 per month for 6 seats on the Basic plan). Premium\'s Dashboard and Timeline views are basic, so most teams should stop at Standard and pair Trello with a dedicated reporting tool if needed. The value proposition is strongest for small teams that can stay on Free; it weakens at scale where Asana and Monday offer more built-in features for a similar per-seat price.',
     pros: [
       'Fastest Kanban board on the market — drag, drop, and reorder cards in under 100ms with no lag',
       'Free plan supports up to 10 boards with unlimited cards, lists, and checklists per board',
@@ -397,8 +708,8 @@ export const group2Reviews: ProductReviewEntry[] = [
       'Atlassian integration syncs Trello cards to Jira issues for teams that use both tools',
     ],
     cons: [
-      'No native Gantt charts or timeline view without a third-party Power-Up — Trello is Kanban-first only',
-      'Free plan limited to 10 boards and one Power-Up per board — heavy integrators must pay $10 per seat',
+      'No native Gantt chart view; Trello\'s Premium Timeline view is the closest native equivalent',
+      'Free plan limited to 10 boards per workspace — heavy integrators must pay $10 per seat',
       'No native time tracking — you need a third-party Power-Up like Toggl or Harvest',
       'Card search is slow on boards with 500+ cards; Trello struggles with large, legacy boards',
       'Premium tier ($10 per seat) adds dashboard and timeline views but feels expensive vs free alternatives',
@@ -418,17 +729,79 @@ export const group2Reviews: ProductReviewEntry[] = [
       'Organizations with complex approval workflows and custom field requirements',
       'Teams managing 500+ cards per board — Trello slows down at scale',
     ],
-    specs: [],
+    specs: [
+      { label: 'Type', value: 'Kanban project management software' },
+      { label: 'Developer', value: 'Atlassian (acquired Trello in 2017)' },
+      { label: 'Free plan', value: 'Up to 10 boards, unlimited cards / lists / checklists' },
+      { label: 'Power-Ups (Free)', value: 'Unlimited per board' },
+      { label: 'Automation', value: 'Butler, included on all plans' },
+      { label: 'Command runs (Free)', value: '250 per month per workspace' },
+      { label: 'Power-Ups catalog', value: '200+ integrations' },
+      { label: 'Standard plan', value: '$5 per seat / month' },
+      { label: 'Premium plan', value: '$10 per seat / month' },
+      { label: 'Enterprise plan', value: '$17.50 per seat / month' },
+      { label: 'Views', value: 'Kanban (Free / Standard); Dashboard + Timeline (Premium)' },
+      { label: 'Time tracking', value: 'Not native — third-party Power-Up required' },
+      { label: 'Platforms', value: 'Web, iOS, Android, Windows / macOS desktop' },
+    ],
+    productDetails: [
+      {
+        heading: 'Kanban Boards: Cards, Lists, and Scale Limits',
+        paragraphs: [
+          'Trello is Kanban-first. Every project is a board, every board is a set of lists, and every list holds cards you drag from left to right as work advances. The default To Do -> Doing -> Done layout is a real workflow rather than a placeholder, and a new team member can read the board at a glance. That immediacy is Trello\'s core advantage over tools like Asana and Monday, which ask a new user to learn several view types before the first task moves.',
+          'Each card carries checklists, due dates, labels, attachments, and comments — enough to cover the majority of small-team needs. The documented limitation is scale: Trello is built for boards under a few hundred cards, and boards that accumulate 500 or more cards are reported to load more slowly and stutter when dragging. For teams that generate that volume of active cards, archiving old work is necessary, and a tool built for large projects is the better long-term fit.',
+        ],
+      },
+      {
+        heading: 'Butler Automation on the Free Plan',
+        paragraphs: [
+          'Butler is Trello\'s no-code automation builder, and — unusually for a freemium tool — it is included on every plan, including Free. Butler supports three primitives: rules (when a card moves to Done, mark all checklists complete and clear the due date), scheduled actions (every Monday, create a card in the To Do list), and card buttons (one click to add a standard checklist and set a due date). The Free plan includes 250 command runs per month per workspace.',
+          'That command allowance is generous for a small team, and the rule builder is visual, so no documentation is needed to create the first automation. The catch is scope: Butler only triggers actions inside Trello. Cross-tool automation — posting to Slack or writing to Google Drive — still requires a Power-Up or an external automation service. For most small teams, Butler covers the bulk of what they would otherwise pay a third-party tool to do.',
+        ],
+      },
+      {
+        heading: 'Power-Ups and Automation Limits',
+        paragraphs: [
+          'Power-Ups are Trello\'s integration system, with more than 200 available, including Slack, Google Drive, Calendar, Jira, and GitHub. A Power-Up adds a tab to each card — the Slack Power-Up, for example, surfaces the Slack messages tied to that card — and can contribute buttons, automation triggers, and board-level features.',
+          'The pricing constraint shapes the experience: Free is capped at 10 boards per workspace and 250 command runs per month, so teams that need more boards or more automation move to Standard ($5 per seat per month). The sensible path is to start on Free and upgrade only when the board cap or the command-run cap becomes a real limit. Loading many Power-Ups onto one board is also documented to slow card opens, so keeping the Power-Up count low is a performance benefit as well as a cost saving.',
+        ],
+      },
+      {
+        heading: 'Views and Reporting: Kanban-First',
+        paragraphs: [
+          'Trello is Kanban-only on Free and Standard. The Premium plan ($10 per seat per month) adds a Dashboard view — card counts by list, label, and due date, plus created-versus-completed over time — and a Timeline view that lays cards out on a horizontal calendar. Both are useful for a weekly review; neither is a Gantt chart. There is no dependency tracking, no critical path, and no resource allocation.',
+          'That distinction matters when teams shop Trello against Asana or Monday expecting project planning. If dependencies, multiple view types, or built-in reporting are requirements, Trello is the wrong tool and Premium does not close the gap. If the need is a fast, visual board with a light dashboard for standups, Trello\'s views are sufficient. Time tracking is a related gap: Trello has no native timer, and third-party Power-Ups send their data to their own dashboards rather than back into Trello.',
+        ],
+      },
+      {
+        heading: 'Mobile Apps',
+        paragraphs: [
+          'Trello\'s iOS and Android apps are full-featured rather than read-only. Cards can be created, dragged between lists, given checklists and due dates, commented on, and attached to photos from a phone. Push notifications for assignments, due dates, and mentions keep a distributed team in sync without checking the desktop.',
+          'The one limitation is configuration. Butler rules and Power-Up settings are managed from the desktop web app, not the mobile app. In practice that is a minor constraint, because automation and integrations are typically set up once and rarely revisited, while the daily work of moving cards is exactly what the mobile app handles well.',
+        ],
+      },
+      {
+        heading: 'Fit with the Atlassian Ecosystem',
+        paragraphs: [
+          'Trello sits inside Atlassian\'s product family alongside Jira and Confluence. The Jira Power-Up is the most consequential part of that relationship: it lets a Trello card sync to a Jira issue, so a team can keep a lightweight visual board for planning while engineering work lives in Jira. For organizations already standardized on Atlassian, that linkage — and the single sign-on and admin model that comes with it — is a reason to pick Trello over a standalone Kanban tool.',
+          'For teams without that context, the ecosystem is neutral. Trello still works as a self-contained board, and the Atlassian connection adds weight only where Jira or Confluence is already in use. The broader point is that Trello\'s identity is deliberately narrow: it is the fast, visual front end, and Atlassian expects the heavier engineering and documentation work to happen in its other products.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Monday vs Asana', href: '/reviews/monday-vs-asana/', desc: 'The two Trello alternatives compared for complex projects.' },
       { name: 'Linear Review', href: '/reviews/linear-review/', desc: 'The fastest issue tracker for software teams.' },
       { name: 'Linear vs Jira', href: '/reviews/linear-vs-jira/', desc: 'Where each tool wins for engineering workflows.' },
     ],
     faqs: [
-      { question: 'Is Trello really free?', answer: 'Yes, with limits. Trello Free supports up to 10 boards per workspace with unlimited cards, lists, and checklists per board, and one Power-Up per board. There is no time limit and no credit card required. For a solo user or a small team that does not need heavy integrations, Free is genuinely usable. The Standard plan ($5 per seat per month) removes the 10-board limit and adds unlimited Power-Ups. The Premium plan ($10 per seat per month) adds dashboard and timeline views. Most small teams can stay on Free indefinitely.' },
+      { question: 'Is Trello really free?', answer: 'Yes, with limits. Trello Free supports up to 10 boards per workspace with unlimited cards, lists, and checklists per board, and unlimited Power-Ups per board. There is no time limit and no credit card required. For a solo user or a small team that does not need heavy integrations, Free is genuinely usable. The Standard plan ($5 per seat per month) removes the 10-board limit and adds AI features, custom fields, and card mirroring. The Premium plan ($10 per seat per month) adds dashboard and timeline views. Most small teams can stay on Free indefinitely.' },
       { question: 'How does Trello compare to Asana and Monday?', answer: 'Trello is simpler and faster than both, but less feature-rich. Trello is Kanban-first — every project is a board with columns and cards. Asana and Monday support Kanban plus lists, timelines, Gantt charts, calendars, and portfolios in one tool. Trello is easier to learn (under 30 minutes) and faster for basic task management; Asana and Monday are better for complex projects with dependencies and multiple views. If you want simplicity and speed, Trello wins. If you want one tool for everything, Asana or Monday is the pick — see our Monday vs Asana comparison for the full breakdown.' },
-      { question: 'Does Trello have automation?', answer: 'Yes. Trello includes Butler, a no-code automation builder, on every plan including Free. Butler lets you create rules (when a card is moved to Done, mark all checklists complete), scheduled actions (every Monday, create a card in the To Do list), and button triggers (click a button on a card to add a checklist and assign a due date). The Free plan includes 1,000 Butler commands per month per workspace, which is enough for most small teams. Premium plans remove the limit. Butler is genuinely useful and replaces the need for third-party automation like Zapier for most workflows.' },
-      { question: 'Can Trello integrate with Slack?', answer: 'Yes. Trello has a native Slack Power-Up that posts card updates to Slack channels, lets you create Trello cards from Slack messages, and adds Trello card previews to Slack links. Setup takes about 5 minutes per workspace. According to product documentation, the Power-Up supports card-update notifications and card creation from Slack messages. The Power-Up is free on the Standard plan and above; Free plan users can add it as their one allowed Power-Up per board.' },
+      { question: 'Does Trello have automation?', answer: 'Yes. Trello includes Butler, a no-code automation builder, on every plan including Free. Butler lets you create rules (when a card is moved to Done, mark all checklists complete), scheduled actions (every Monday, create a card in the To Do list), and button triggers (click a button on a card to add a checklist and assign a due date). The Free plan includes 250 command runs per month per workspace, which covers most small teams. Premium plans remove the limit. Butler is genuinely useful and replaces the need for third-party automation like Zapier for most workflows.' },
+      { question: 'Can Trello integrate with Slack?', answer: 'Yes. Trello has a native Slack Power-Up that posts card updates to Slack channels, lets you create Trello cards from Slack messages, and adds Trello card previews to Slack links. Setup takes about 5 minutes per workspace. According to product documentation, the Power-Up supports card-update notifications and card creation from Slack messages. The Power-Up is free on every plan, including Free.' },
       { question: 'Is Trello good for software development?', answer: 'Not really. Trello lacks the features software teams need — no native sprint planning, no backlog prioritization, no GitHub or GitLab PR integration, no burndown charts, and no agile-specific reports. You can fake sprints with columns and labels, but it is not built for engineering workflows. For software teams, use Linear (fastest, best for small teams) or Jira (most features, best for enterprise). Trello is better for non-technical project management — marketing campaigns, content calendars, and team operations. See our Linear vs Jira comparison for the software-team breakdown.' },
     ],
     compareSlugs: [],
@@ -487,7 +860,45 @@ export const group2Reviews: ProductReviewEntry[] = [
       'Time trackers — Things 3 has no built-in time tracking or estimate-vs-actual reporting',
       'Budget buyers who want a free tier — Things 3 requires a one-time purchase per platform with no trial',
     ],
-    specs: [],
+    specs: [
+      { label: 'Category', value: 'Personal task manager / to-do app' },
+      { label: 'Platforms', value: 'Mac, iPhone, iPad, Apple Watch, Apple Vision Pro' },
+      { label: 'Pricing model', value: 'One-time purchase per platform (no subscription)' },
+      { label: 'Mac / iPad / iPhone price', value: '$49.99 / $19.99 / $9.99' },
+      { label: 'Vision Pro price', value: '$29.99' },
+      { label: 'Sync', value: 'Things Cloud — included free, end-to-end encrypted' },
+      { label: 'Views', value: 'Inbox, Today, Upcoming, Anytime, Someday, Logbook' },
+      { label: 'Quick entry', value: 'Natural-language parsing plus a global keyboard shortcut' },
+      { label: 'Collaboration', value: 'None — single-user only' },
+      { label: 'Free tier / trial', value: 'None' },
+    ],
+    productDetails: [
+      {
+        heading: 'Design and Platform Coverage',
+        paragraphs: [
+          'Things 3 is sold as separate apps for Mac, iPhone and Apple Watch, iPad, and Apple Vision Pro. Each build follows the platform\'s own interface conventions rather than scaling a single layout — the Mac app uses a three-pane arrangement, the iPad app a two-pane one, and the iPhone app a single column. The Apple Watch app is limited to viewing and completing items already on the Today list.',
+          'Two interface features are specific to the app. Natural-language quick entry parses phrases such as "tomorrow at 9pm" or "every Friday" into dated and repeating tasks, and Magic Plus is a one-finger gesture on iPhone and iPad that inserts a new task wherever it is dropped. On the Mac, a global keyboard shortcut opens a quick-entry panel from any app.',
+        ],
+      },
+      {
+        heading: 'The Native GTD Workflow',
+        paragraphs: [
+          'Things 3 maps onto the Getting Things Done method without add-ons. The Inbox collects quick entries for later processing; Areas group projects by area of responsibility; Projects hold multi-step work broken into headings and checklists; and the Today, Upcoming, Anytime, and Someday views organise tasks by timing. The Logbook keeps completed items for review.',
+          'Cultured Code documents two behaviours that matter for recurring work: tasks can repeat based on either their scheduled date or the date they are completed, which keeps maintenance-type tasks on a fixed interval. Things 3 has no native GTD contexts, so practitioners who rely on them typically use tags or headings instead.',
+        ],
+      },
+      {
+        heading: 'Things Cloud Sync and Privacy',
+        paragraphs: [
+          'Things Cloud is the sync service behind the app, and Cultured Code includes it free with each platform purchase instead of charging a subscription. The vendor states that syncing is end-to-end encrypted, so task data is not readable on its servers, and the app works fully offline using local storage when only one device is in use.',
+          'Things Cloud synchronises only between a user\'s own devices. There is no shared project, task assignment, or commenting, which Cultured Code presents as a deliberate choice: Things 3 is positioned as a single-user productivity app rather than a team tool.',
+        ],
+      },
+    ],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Todoist vs TickTick', href: '/reviews/todoist-vs-ticktick/', desc: 'Two popular cross-platform alternatives to Things 3 with subscriptions.' },
       { name: 'Linear Review', href: '/reviews/linear-review/', desc: 'A team-focused task manager for software projects.' },
@@ -495,7 +906,7 @@ export const group2Reviews: ProductReviewEntry[] = [
     ],
     faqs: [
       { question: 'Is Things 3 a one-time purchase or a subscription?', answer: 'Things 3 is a one-time purchase per platform. The Mac version is $49.99, the iPad version is $19.99, and the iPhone version is $9.99 — paid once, owned forever, with no recurring fees. Things Cloud sync is included free with each purchase. Cultured Code has shipped free updates to Things 3 for over seven years since the 2017 launch, though Things 4 (if released) would likely be a new paid upgrade. There is no free tier and no trial — you pay per platform before testing the app.' },
-      { question: 'Does Things 3 work on Windows or Android?', answer: 'No. Things 3 is Apple-only — it runs on Mac, iPhone, iPad, and Apple Watch, and requires macOS 11 or later and iOS 13 or later. There is no Windows app, no Android app, and no web version. The developer, Cultured Code, has stated that Things 3 is built on Apple-native frameworks (Swift, Core Data) and a port would require a full rewrite. If you use Windows or Android, consider Todoist, TickTick, or Microsoft To Do instead.' },
+      { question: 'Does Things 3 work on Windows or Android?', answer: 'No. Things 3 is Apple-only — it runs on Mac, iPhone, iPad, and Apple Watch, and requires macOS 13.3 or later and iOS 16.4 or later. There is no Windows app, no Android app, and no web version. The developer, Cultured Code, has stated that Things 3 is built on Apple-native frameworks (Swift, Core Data) and a port would require a full rewrite. If you use Windows or Android, consider Todoist, TickTick, or Microsoft To Do instead.' },
       { question: 'How does Things 3 compare to Todoist?', answer: 'Things 3 and Todoist are both excellent task managers, but they differ in philosophy. Things 3 is a one-time-purchase Apple-only app with a beautiful native design and a strong GTD workflow. Todoist is a cross-platform subscription service ($4/month for Pro) with natural language input, team collaboration, and integrations. Choose Things 3 if you are Apple-only and want to own your app; choose Todoist if you need cross-platform access, collaboration, or integrations. See our Todoist vs TickTick comparison for the deeper breakdown.' },
       { question: 'Does Things 3 support GTD (Getting Things Done)?', answer: 'Yes, natively. The Inbox captures quick entries, Areas group projects by life context (Work, Personal, Family), Projects hold multi-step work with headings and checklists, the Today view surfaces what to do today, and the Someday bucket holds ideas without deadlines. Weekly reviews are easy with the Logbook showing completed work. The only GTD gap is no native contexts (e.g., @computer, @phone), but most users replace contexts with tags or headings.' },
       { question: 'Is Things Cloud sync reliable?', answer: 'Yes. According to product documentation, Things Cloud sync is fast and reliable across Mac, iPhone, iPad, and Apple Watch, with conflict-free merging across devices. Things Cloud is included free with each platform purchase — there is no separate sync subscription. Cultured Code uses end-to-end encryption for sync, so your task data is not readable on their servers. If you only use Things 3 on one device, you can skip Things Cloud entirely.' },

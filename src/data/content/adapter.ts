@@ -282,6 +282,9 @@ export const reviewEntryToContent: ReviewAdapter = (entry: ProductReviewEntry): 
     // Evidence metadata (Phase 3)
     editorial: entry.editorial,
 
+    // Product-specific deep-dive modules (Phase 1 content recovery)
+    productDetails: entry.productDetails,
+
     // Presentation
     heroImage: entry.heroImage,
   };
@@ -798,6 +801,7 @@ export function reviewContentToEntry(content: ReviewContent): ProductReviewEntry
     compareSlugs: content.compareWith,
     relatedProducts,
     editorial: content.editorial,
+    productDetails: content.productDetails,
   };
 }
 

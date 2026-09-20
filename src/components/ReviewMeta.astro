@@ -8,14 +8,40 @@ interface Props {
   publishDate?: string;
   /** Last updated date (e.g., 'June 2026') */
   lastUpdated: string;
-  /** Testing duration (e.g., '90 days') */
+  /** Testing duration (e.g., '90 days'). Rendered as "Evaluation Period" only when the entry carries hands-on evidence. */
   testingDuration: string;
   /** Number of products evaluated for this review/comparison */
   productsTested: number;
+  /**
+   * Evidence type from the review data (Phase 4). Drives how the testing meta
+   * row is labelled so a review never implies a measurement window it did not run:
+   *   - 'HANDS_ON'                     → "Evaluation Period: {testingDuration}"
+   *   - any other explicit type        → "Review Basis: Specification Analysis"
+   *   - undefined (legacy entries)     → previous behaviour, "Evaluation Period: {testingDuration}"
+   */
+  evidenceType?: string;
 }
 
-const { authorSlug, publishDate, lastUpdated, testingDuration, productsTested } = Astro.props;
+const { authorSlug, publishDate, lastUpdated, testingDuration, productsTested, evidenceType } = Astro.props;
 const author = getAuthor(authorSlug);
+
+// Phase 4: the "Evaluation Period" label is only honest when the review has real
+// hands-on testing evidence. Documentation / specification based entries show an
+// honest "Review Basis" label instead of implying a testing window. Entries with
+// no evidenceType (legacy data) keep their previous rendering, so nothing is
+// fabricated and no historical data is rewritten.
+const EVIDENCE_BASIS: Record<string, string> = {
+  DOCUMENTATION: 'Specification Analysis',
+  SPECIFICATION: 'Specification Analysis',
+  PUBLIC_INFO: 'Public Information Analysis',
+  MIXED: 'Mixed Evidence',
+};
+const hasHandsOnEvidence = evidenceType === 'HANDS_ON';
+const usesDocumentationBasis = Boolean(evidenceType) && !hasHandsOnEvidence;
+const basisLabel = usesDocumentationBasis ? 'Review Basis' : 'Evaluation Period';
+const basisValue = usesDocumentationBasis
+  ? (EVIDENCE_BASIS[evidenceType as string] ?? 'Specification Analysis')
+  : testingDuration;
 
 /** Format ISO date to human-readable (e.g., 'June 26, 2026') */
 function formatDate(iso: string): string {
@@ -56,8 +82,8 @@ function formatDate(iso: string): string {
   </div>
   <div class="meta-row">
     <div class="meta-item">
-      <span class="meta-label">Evaluation Period</span>
-      <span class="meta-value">{testingDuration}</span>
+      <span class="meta-label">{basisLabel}</span>
+      <span class="meta-value">{basisValue}</span>
     </div>
     <div class="meta-divider"></div>
     <div class="meta-item">
