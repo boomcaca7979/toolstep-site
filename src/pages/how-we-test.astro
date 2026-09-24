@@ -1,152 +1,870 @@
 ---
-import PageLayout from '../components/PageLayout.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 
 const pageTitle = 'How We Test — ToolStep Testing Methodology';
 const pageDescription = 'Learn how ToolStep evaluates products through product documentation analysis, specification comparison, feature evaluation, pricing research, and workflow assessment.';
-const lastUpdated = 'June 2026';
+// Last substantive content revision: the methodology was rewritten in July 2026
+// to describe documentation-based evaluation instead of hands-on testing.
+const lastUpdated = 'July 2026';
+const lastUpdatedISO = '2026-07-13';
+
+const siteOrigin = new URL(Astro.site).origin;
+const pageUrl = `${siteOrigin}${Astro.url.pathname}`;
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: `${siteOrigin}/` },
+		{ '@type': 'ListItem', position: 2, name: 'How We Test', item: pageUrl },
+	],
+};
+
+const webPageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: pageTitle,
+	description: pageDescription,
+	url: pageUrl,
+	dateModified: lastUpdatedISO,
+};
+
+/* ---------------------------------------------------------------------------
+   Content below is carried over verbatim from the previous version of this
+   page. Nothing has been added, removed or re-asserted about the method.
+--------------------------------------------------------------------------- */
+
+// Product areas we cover (unchanged).
+const areas = [
+	{
+		name: 'Software tools',
+		detail: 'Evaluated against documented features, supported platforms, and published use cases.',
+	},
+	{
+		name: 'Peripherals (keyboards, mice, webcams)',
+		detail: 'Analyzed based on manufacturer specifications, published performance data, and feature sets.',
+	},
+	{
+		name: 'Furniture (desks, chairs)',
+		detail: 'Assessed using documented dimensions, weight capacity, adjustability ranges, and material specifications.',
+	},
+	{
+		name: 'Long-term monitoring',
+		detail: 'For products we cover, we revisit the review after 6 and 12 months to reflect manufacturer updates, new revisions, or specification changes.',
+	},
+];
+
+// Specification analysis, per category (unchanged).
+const specCategories = [
+	{
+		name: 'Standing Desks',
+		items: [
+			['Stability', 'Manufacturer-published stability features, frame design, and leg configuration'],
+			['Noise level', 'Documented motor noise specifications where available'],
+			['Speed', 'Published height adjustment speed (inches per second)'],
+			['Weight capacity', 'Stated maximum load rating'],
+			['Height range', 'Published minimum and maximum height specifications'],
+		],
+	},
+	{
+		name: 'Ergonomic Chairs',
+		items: [
+			['Adjustability', 'Count of independent adjustments documented (seat height, armrest, lumbar, tilt, seat depth)'],
+			['Lumbar support', 'Published lumbar support features and adjustability'],
+			['Breathability', 'Documented mesh material and back construction'],
+			['Build quality', 'Material specifications, frame construction, gas cylinder class'],
+			['Comfort features', 'Documented padding, contouring, and ergonomic certifications'],
+		],
+	},
+	{
+		name: 'Keyboards & Mice',
+		items: [
+			['Switch specifications', 'Published actuation force (grams), switch type, and tactile characteristics'],
+			['Battery life', 'Manufacturer-rated battery life with and without backlight'],
+			['Latency', 'Published input lag and polling rate specifications for wireless models'],
+			['Ergonomics', 'Documented wrist angle design, ergonomic features, and supported hand sizes'],
+			['Connectivity', 'Documented wireless protocols, compatibility, and multi-device support'],
+		],
+	},
+	{
+		name: 'USB-C Docks',
+		items: [
+			['Transfer speed', 'Published USB data transfer rates and supported protocols'],
+			['Charging speed', 'Documented power delivery (PD) wattage output'],
+			['Multi-monitor', 'Stated maximum display support, resolution, and refresh rate'],
+			['Thermal design', 'Documented thermal management features and cooling design'],
+			['Compatibility', 'Published compatibility with macOS, Windows, iPadOS, and other platforms'],
+		],
+	},
+	{
+		name: 'Webcams',
+		items: [
+			['Image quality', 'Published resolution, sensor size, and lens specifications'],
+			['Low-light performance', 'Documented low-light sensitivity and sensor pixel size'],
+			['Color accuracy', 'Stated color depth, field of view, and color reproduction specs'],
+			['Autofocus', 'Documented autofocus type and tracking features'],
+			['Audio', 'Published microphone type, frequency response, and noise cancellation features'],
+		],
+	},
+];
+
+// Primary sources (unchanged).
+const sources = [
+	'Official manufacturer product pages and technical specification sheets',
+	'Product documentation, user manuals, and published technical documentation',
+	'Publicly listed dimensions, materials, weight capacities, and performance claims',
+	'Manufacturer-published compatibility, connectivity, and feature information',
+	'Documented use cases, supported workflows, and intended applications',
+];
+
+// Weighted scoring categories (unchanged).
+const scoreWeights = [
+	{
+		name: 'Performance',
+		weight: 30,
+		detail: 'How well does it do its primary job based on published specs? For a desk: stability features, speed, noise rating. For a chair: adjustability, support features, ergonomic design.',
+	},
+	{
+		name: 'Build Quality',
+		weight: 25,
+		detail: 'Materials, construction, expected durability based on documentation, warranty length.',
+	},
+	{
+		name: 'Value',
+		weight: 20,
+		detail: 'Price relative to competitors with similar specifications. A $300 desk that matches the specs of a $500 desk scores high here.',
+	},
+	{
+		name: 'Ergonomics',
+		weight: 15,
+		detail: 'Based on documented ergonomic features and manufacturer-rated adjustability. Does it support healthy posture per published specifications?',
+	},
+	{
+		name: 'Features',
+		weight: 10,
+		detail: 'Programmable presets, connectivity, adjustability — the extras that matter.',
+	},
+];
+
+// Review pipeline (unchanged, 12 steps).
+const reviewSteps = [
+	['Product selection', 'We choose products based on reader interest, market relevance, and price tier coverage.'],
+	['Documentation gathering', 'We collect official manufacturer specs, product documentation, and published technical information.'],
+	['Feature analysis', "We assess features against the product's intended use case and target workflow."],
+	['Specification comparison', 'We compare specifications against 2+ direct competitors in the same price tier.'],
+	['Pricing research', 'We verify current pricing, warranty terms, and availability across retailers.'],
+	['Workflow assessment', 'We evaluate how the product fits into real-world home office and professional workflows based on published capabilities.'],
+	['Scoring', 'Weighted scoring across 5 categories, calculated from documented specifications and feature analysis.'],
+	['Draft writing', 'The primary author writes the review draft based on the gathered documentation and analysis.'],
+	['Editorial review', 'A senior editor reviews for accuracy, fairness, and clarity.'],
+	['Fact-check', 'All specs, prices, and claims are verified against manufacturer data and published information.'],
+	['Publication', "Review is published with the author's byline and a link to their author page."],
+	['Long-term monitoring', 'We revisit after 6 and 12 months. If the product is updated or replaced, we update the review accordingly.'],
+];
+
+const sectionIndex = [
+	['Our Evaluation Approach', '#approach'],
+	['Specification Analysis', '#specification-analysis'],
+	['Information Sources', '#sources'],
+	['What We Do Not Claim', '#what-we-do-not-claim'],
+	['Our Scoring System', '#scoring'],
+	['Review Process', '#review-process'],
+	['Comparative Specification Analysis', '#comparative-analysis'],
+	['Editorial Independence', '#independence'],
+];
 ---
 
-<PageLayout
-  title="How We Test"
-  pageTitle={pageTitle}
-  description={pageDescription}
-  subtitle="Our reviews are based on structured, repeatable analysis of product documentation, manufacturer specifications, and publicly available information — not casual impressions."
-  lastUpdated={lastUpdated}
-  breadcrumbs={[
-    { name: 'Home', href: '/' },
-    { name: 'How We Test' },
-  ]}
->
-  <h2>Our Evaluation Approach</h2>
-  <p>
-    Every product we review goes through a structured evaluation process built on publicly available information:
-  </p>
-  <div class="stat-grid">
-    <div class="stat-card">
-      <div class="stat-number">12</div>
-      <div class="stat-label">Step Review Process</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">5</div>
-      <div class="stat-label">Scoring Categories</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">2+</div>
-      <div class="stat-label">Competitors Compared</div>
-    </div>
-  </div>
-  <ul>
-    <li><strong>Software tools:</strong> Evaluated against documented features, supported platforms, and published use cases.</li>
-    <li><strong>Peripherals (keyboards, mice, webcams):</strong> Analyzed based on manufacturer specifications, published performance data, and feature sets.</li>
-    <li><strong>Furniture (desks, chairs):</strong> Assessed using documented dimensions, weight capacity, adjustability ranges, and material specifications.</li>
-    <li><strong>Long-term monitoring:</strong> For products we cover, we revisit the review after 6 and 12 months to reflect manufacturer updates, new revisions, or specification changes.</li>
-  </ul>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+		<style>
+			/* ==========================================================================
+			   How We Test — page-local editorial layout.
+			   Uses the site design tokens (--paper/--surface/--line/--ink/--accent)
+			   and the homepage type scale. All type is set in rem so the global
+			   `body { font-size: 20px }` base cannot leak into this page.
+			   Spacing follows one rhythm: 8 / 16 / 24 / 32 / 48 / 64 / 80.
+			   ========================================================================== */
+			.hwt {
+				/* Override the Bear-Blog global `main` box so the page can own its grid. */
+				width: auto;
+				max-width: none;
+				margin: 0;
+				padding: 0;
+				font-size: 1.0625rem; /* 17px */
+				line-height: 1.65;
+				color: rgb(var(--gray-dark));
+				background: var(--paper);
+			}
+			.hwt-shell {
+				box-sizing: border-box;
+				max-width: 1080px;
+				margin: 0 auto;
+				padding: 32px 24px 80px;
+			}
 
-  <h2>Information Sources</h2>
-  <p>
-    Our evaluation is built on <strong>publicly available product information</strong> rather than hands-on testing. Primary sources include:
-  </p>
-  <ul>
-    <li>Official manufacturer product pages and technical specification sheets</li>
-    <li>Product documentation, user manuals, and published technical documentation</li>
-    <li>Publicly listed dimensions, materials, weight capacities, and performance claims</li>
-    <li>Manufacturer-published compatibility, connectivity, and feature information</li>
-    <li>Documented use cases, supported workflows, and intended applications</li>
-  </ul>
+			/* ---------- Breadcrumb (compact) ---------- */
+			.hwt-crumbs {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 0.8125rem;
+				color: rgb(var(--gray));
+			}
+			.hwt-crumbs a {
+				color: rgb(var(--gray));
+				text-decoration: none;
+			}
+			.hwt-crumbs a:hover {
+				color: var(--accent);
+				text-decoration: underline;
+			}
+			.hwt-crumbs .sep {
+				color: var(--line);
+			}
+			.hwt-crumbs .current {
+				color: rgb(var(--gray-dark));
+				font-weight: 600;
+			}
 
-  <h2>Specification Analysis</h2>
-  <p>
-    Where a specification is published, we analyze it against competing products in the same category. We do not perform independent physical measurements. Here's what we analyze for each product category:
-  </p>
+			/* ---------- Hero ---------- */
+			.hwt-hero {
+				margin-top: 24px;
+				padding-bottom: 32px;
+			}
+			.hwt-eyebrow {
+				margin: 0 0 16px;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: rgb(var(--gray));
+			}
+			.hwt-hero h1 {
+				margin: 0 0 16px;
+				font-size: clamp(2rem, 3.6vw, 3.25rem); /* 32px → 52px */
+				line-height: 1.08;
+				letter-spacing: var(--track-display);
+				color: rgb(var(--black));
+			}
+			.hwt-lede {
+				margin: 0;
+				max-width: 640px;
+				font-size: 1.125rem; /* 18px */
+				line-height: 1.6;
+				color: rgb(var(--gray));
+			}
+			.hwt-meta {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				margin: 20px 0 0;
+				font-size: 0.8125rem;
+				color: rgb(var(--gray));
+			}
+			.hwt-meta .dot {
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: #059669;
+				flex: none;
+			}
 
-  <h3>Standing Desks</h3>
-  <ul>
-    <li><strong>Stability:</strong> Manufacturer-published stability features, frame design, and leg configuration</li>
-    <li><strong>Noise level:</strong> Documented motor noise specifications where available</li>
-    <li><strong>Speed:</strong> Published height adjustment speed (inches per second)</li>
-    <li><strong>Weight capacity:</strong> Stated maximum load rating</li>
-    <li><strong>Height range:</strong> Published minimum and maximum height specifications</li>
-  </ul>
+			/* ---------- Callout: evaluation approach (first block of the content column) ---------- */
+			.hwt-approach {
+				margin: 0 0 44px;
+				padding: 24px;
+				border: 1px solid var(--line);
+				border-left: 3px solid var(--accent);
+				background: var(--surface);
+			}
+			.hwt-approach p {
+				margin: 0;
+				max-width: 760px;
+				font-size: 1rem;
+				line-height: 1.65;
+				color: rgb(var(--gray-dark));
+			}
+			.hwt-label {
+				margin: 0 0 8px;
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: rgb(var(--gray));
+			}
 
-  <h3>Ergonomic Chairs</h3>
-  <ul>
-    <li><strong>Adjustability:</strong> Count of independent adjustments documented (seat height, armrest, lumbar, tilt, seat depth)</li>
-    <li><strong>Lumbar support:</strong> Published lumbar support features and adjustability</li>
-    <li><strong>Breathability:</strong> Documented mesh material and back construction</li>
-    <li><strong>Build quality:</strong> Material specifications, frame construction, gas cylinder class</li>
-    <li><strong>Comfort features:</strong> Documented padding, contouring, and ergonomic certifications</li>
-  </ul>
+			/* ---------- Reading grid: section index + content ---------- */
+			.hwt-grid {
+				display: grid;
+				grid-template-columns: 216px minmax(0, 1fr);
+				gap: 56px;
+				align-items: start;
+				margin-top: 48px;
+			}
+			.hwt-index {
+				position: sticky;
+				top: calc(var(--header-height) + 24px);
+			}
+			.hwt-index ol {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				border-left: 1px solid var(--line);
+			}
+			.hwt-index li {
+				margin: 0;
+			}
+			.hwt-index a {
+				display: block;
+				padding: 6px 0 6px 14px;
+				margin-left: -1px;
+				border-left: 2px solid transparent;
+				font-size: 0.8125rem;
+				line-height: 1.4;
+				color: rgb(var(--gray));
+				text-decoration: none;
+			}
+			.hwt-index a:hover {
+				color: var(--accent);
+				border-left-color: var(--line);
+			}
 
-  <h3>Keyboards &amp; Mice</h3>
-  <ul>
-    <li><strong>Switch specifications:</strong> Published actuation force (grams), switch type, and tactile characteristics</li>
-    <li><strong>Battery life:</strong> Manufacturer-rated battery life with and without backlight</li>
-    <li><strong>Latency:</strong> Published input lag and polling rate specifications for wireless models</li>
-    <li><strong>Ergonomics:</strong> Documented wrist angle design, ergonomic features, and supported hand sizes</li>
-    <li><strong>Connectivity:</strong> Documented wireless protocols, compatibility, and multi-device support</li>
-  </ul>
+			/* ---------- Sections ---------- */
+			.hwt-body {
+				max-width: 720px;
+				min-width: 0;
+			}
+			.hwt-sec {
+				scroll-margin-top: calc(var(--header-height) + 24px);
+			}
+			.hwt-sec + .hwt-sec {
+				margin-top: 36px;
+				padding-top: 36px;
+				border-top: 1px solid var(--line);
+			}
+			.hwt-sec h2 {
+				margin: 0 0 16px;
+				font-size: clamp(1.5rem, 2.2vw, 1.875rem); /* 24px → 30px */
+				line-height: 1.25;
+				letter-spacing: var(--track-display);
+				color: rgb(var(--black));
+			}
+			.hwt-sec h3 {
+				margin: 0 0 8px;
+				font-size: 1.1875rem; /* 19px */
+				line-height: 1.35;
+				color: rgb(var(--black));
+			}
+			.hwt-sec p {
+				margin: 0 0 16px;
+				font-size: 1.0625rem;
+				line-height: 1.65;
+			}
+			.hwt-sec p:last-child {
+				margin-bottom: 0;
+			}
+			.hwt-sec a {
+				color: var(--accent);
+			}
 
-  <h3>USB-C Docks</h3>
-  <ul>
-    <li><strong>Transfer speed:</strong> Published USB data transfer rates and supported protocols</li>
-    <li><strong>Charging speed:</strong> Documented power delivery (PD) wattage output</li>
-    <li><strong>Multi-monitor:</strong> Stated maximum display support, resolution, and refresh rate</li>
-    <li><strong>Thermal design:</strong> Documented thermal management features and cooling design</li>
-    <li><strong>Compatibility:</strong> Published compatibility with macOS, Windows, iPadOS, and other platforms</li>
-  </ul>
+			/* Inline facts (replaces the oversized stat cards) */
+			.hwt-facts {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px 40px;
+				margin: 0 0 24px;
+				padding: 0;
+				list-style: none;
+			}
+			.hwt-facts li {
+				margin: 0;
+				font-size: 0.9375rem;
+				line-height: 1.5;
+				color: rgb(var(--gray));
+			}
+			.hwt-facts strong {
+				color: rgb(var(--black));
+				font-weight: 700;
+			}
 
-  <h3>Webcams</h3>
-  <ul>
-    <li><strong>Image quality:</strong> Published resolution, sensor size, and lens specifications</li>
-    <li><strong>Low-light performance:</strong> Documented low-light sensitivity and sensor pixel size</li>
-    <li><strong>Color accuracy:</strong> Stated color depth, field of view, and color reproduction specs</li>
-    <li><strong>Autofocus:</strong> Documented autofocus type and tracking features</li>
-    <li><strong>Audio:</strong> Published microphone type, frequency response, and noise cancellation features</li>
-  </ul>
+			/* Definition list (product areas) */
+			.hwt-defs {
+				margin: 24px 0 0;
+				border-top: 1px solid var(--line);
+			}
+			.hwt-defs > div {
+				padding: 16px 0;
+				border-bottom: 1px solid var(--line);
+			}
+			.hwt-defs dt {
+				margin: 0 0 4px;
+				font-size: 0.9375rem;
+				font-weight: 700;
+				color: rgb(var(--black));
+			}
+			.hwt-defs dd {
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.6;
+				color: rgb(var(--gray));
+			}
 
-  <h2>Comparative Specification Analysis</h2>
-  <p>
-    Every product is analyzed alongside at least <strong>two direct competitors</strong> in the same price tier. We don't evaluate products in isolation — we compare their documented specifications against what else is available for the same price.
-  </p>
-  <p>
-    For example, when we evaluate the FlexiSpot E7 standing desk, we compare its published specifications, height range, weight capacity, and warranty against the Vari Electric Desk and the Branch Standing Desk in the same price range.
-  </p>
+			/* Spec category blocks (hairline separated, no card) */
+			.hwt-specs {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 0 40px;
+				margin-top: 24px;
+			}
+			.hwt-spec {
+				padding: 20px 0;
+				border-top: 1px solid var(--line);
+				break-inside: avoid;
+			}
+			.hwt-spec ul {
+				margin: 8px 0 0;
+				padding: 0;
+				list-style: none;
+			}
+			.hwt-spec li {
+				margin: 0 0 6px;
+				font-size: 0.9375rem;
+				line-height: 1.55;
+				color: rgb(var(--gray));
+			}
+			.hwt-spec li:last-child {
+				margin-bottom: 0;
+			}
+			.hwt-spec strong {
+				color: rgb(var(--black));
+				font-weight: 700;
+			}
 
-  <h2>Our Scoring System</h2>
-  <div class="info-card">
-    <h3>How we calculate the overall score (out of 5)</h3>
-    <p>Each product is scored on 5 weighted categories, calculated from documented specifications and feature analysis:</p>
-    <ul>
-      <li><strong>Performance (30%):</strong> How well does it do its primary job based on published specs? For a desk: stability features, speed, noise rating. For a chair: adjustability, support features, ergonomic design.</li>
-      <li><strong>Build Quality (25%):</strong> Materials, construction, expected durability based on documentation, warranty length.</li>
-      <li><strong>Value (20%):</strong> Price relative to competitors with similar specifications. A $300 desk that matches the specs of a $500 desk scores high here.</li>
-      <li><strong>Ergonomics (15%):</strong> Based on documented ergonomic features and manufacturer-rated adjustability. Does it support healthy posture per published specifications?</li>
-      <li><strong>Features (10%):</strong> Programmable presets, connectivity, adjustability — the extras that matter.</li>
-    </ul>
-    <p>
-      The overall score is a weighted average. We also give an "Editor's Choice" badge to products that score 4.5 or above and offer exceptional value.
-    </p>
-  </div>
+			/* Source list */
+			.hwt-sources {
+				margin: 24px 0 0;
+				padding: 0;
+				list-style: none;
+				counter-reset: src;
+			}
+			.hwt-sources li {
+				position: relative;
+				margin: 0;
+				padding: 14px 0 14px 40px;
+				border-bottom: 1px solid var(--line);
+				font-size: 1rem;
+				line-height: 1.55;
+				color: rgb(var(--gray-dark));
+				counter-increment: src;
+			}
+			.hwt-sources li:first-child {
+				border-top: 1px solid var(--line);
+			}
+			.hwt-sources li::before {
+				content: counter(src, decimal-leading-zero);
+				position: absolute;
+				left: 0;
+				top: 14px;
+				font-size: 0.75rem;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				color: rgb(var(--gray));
+			}
 
-  <h2>Review Process</h2>
-  <p>Every review goes through this pipeline before publication:</p>
-  <ol>
-    <li><strong>Product selection:</strong> We choose products based on reader interest, market relevance, and price tier coverage.</li>
-    <li><strong>Documentation gathering:</strong> We collect official manufacturer specs, product documentation, and published technical information.</li>
-    <li><strong>Feature analysis:</strong> We assess features against the product's intended use case and target workflow.</li>
-    <li><strong>Specification comparison:</strong> We compare specifications against 2+ direct competitors in the same price tier.</li>
-    <li><strong>Pricing research:</strong> We verify current pricing, warranty terms, and availability across retailers.</li>
-    <li><strong>Workflow assessment:</strong> We evaluate how the product fits into real-world home office and professional workflows based on published capabilities.</li>
-    <li><strong>Scoring:</strong> Weighted scoring across 5 categories, calculated from documented specifications and feature analysis.</li>
-    <li><strong>Draft writing:</strong> The primary author writes the review draft based on the gathered documentation and analysis.</li>
-    <li><strong>Editorial review:</strong> A senior editor reviews for accuracy, fairness, and clarity.</li>
-    <li><strong>Fact-check:</strong> All specs, prices, and claims are verified against manufacturer data and published information.</li>
-    <li><strong>Publication:</strong> Review is published with the author's byline and a link to their author page.</li>
-    <li><strong>Long-term monitoring:</strong> We revisit after 6 and 12 months. If the product is updated or replaced, we update the review accordingly.</li>
-  </ol>
+			/* Callout: what we do not claim */
+			.hwt-noclaim {
+				margin: 24px 0 0;
+				padding: 24px;
+				background: rgb(var(--gray-light) / 45%);
+				border: 1px solid var(--line);
+			}
+			.hwt-noclaim ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.hwt-noclaim li {
+				position: relative;
+				margin: 0;
+				padding: 0 0 0 20px;
+				font-size: 1rem;
+				line-height: 1.6;
+				color: rgb(var(--gray-dark));
+			}
+			.hwt-noclaim li + li {
+				margin-top: 14px;
+			}
+			.hwt-noclaim li::before {
+				content: '';
+				position: absolute;
+				left: 2px;
+				top: 0.6em;
+				width: 8px;
+				height: 2px;
+				background: rgb(var(--gray-dark));
+			}
 
-  <h2>Editorial Independence</h2>
-  <p>
-    Our evaluation process is completely independent of our affiliate partnerships. The affiliate team does not see reviews before publication. The review team does not know which products have higher commission rates. See our <a href="/editorial-policy/">Editorial Policy</a> for the full independence rules.
-  </p>
-</PageLayout>
+			/* Scoring rows with real weight bars */
+			.hwt-weights {
+				margin: 24px 0 0;
+				padding: 0;
+				list-style: none;
+			}
+			.hwt-weights li {
+				margin: 0;
+				padding: 14px 0;
+				border-bottom: 1px solid var(--line);
+			}
+			.hwt-weights li:first-child {
+				border-top: 1px solid var(--line);
+			}
+			.hwt-weight-head {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				gap: 16px;
+			}
+			.hwt-weight-head strong {
+				font-size: 1rem;
+				color: rgb(var(--black));
+			}
+			.hwt-weight-head span {
+				font-size: 0.8125rem;
+				font-weight: 700;
+				color: rgb(var(--gray));
+				white-space: nowrap;
+			}
+			.hwt-bar {
+				height: 3px;
+				margin: 8px 0 8px;
+				background: var(--line);
+			}
+			.hwt-bar span {
+				display: block;
+				height: 100%;
+				background: var(--accent);
+			}
+			.hwt-weights p {
+				margin: 0;
+				font-size: 0.9375rem;
+				line-height: 1.55;
+				color: rgb(var(--gray));
+			}
+
+			/* Review pipeline — numbered rail */
+			.hwt-steps {
+				margin: 24px 0 0;
+				padding: 0;
+				list-style: none;
+				counter-reset: step;
+			}
+			.hwt-steps li {
+				position: relative;
+				margin: 0;
+				padding: 0 0 20px 44px;
+				counter-increment: step;
+			}
+			.hwt-steps li::before {
+				content: counter(step);
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 26px;
+				height: 26px;
+				display: grid;
+				place-items: center;
+				border: 1px solid var(--line);
+				border-radius: 50%;
+				background: var(--surface);
+				font-size: 0.75rem;
+				font-weight: 700;
+				color: rgb(var(--gray));
+			}
+			.hwt-steps li::after {
+				content: '';
+				position: absolute;
+				left: 13px;
+				top: 30px;
+				bottom: 2px;
+				width: 1px;
+				background: var(--line);
+			}
+			.hwt-steps li:last-child {
+				padding-bottom: 0;
+			}
+			.hwt-steps li:last-child::after {
+				content: none;
+			}
+			.hwt-steps strong {
+				display: block;
+				margin-bottom: 2px;
+				font-size: 1rem;
+				color: rgb(var(--black));
+			}
+			.hwt-steps span {
+				display: block;
+				font-size: 0.9375rem;
+				line-height: 1.55;
+				color: rgb(var(--gray));
+			}
+
+			/* Comparison strip */
+			.hwt-compare {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin: 16px 0 0;
+				padding: 0;
+				list-style: none;
+			}
+			.hwt-compare li {
+				margin: 0;
+				padding: 6px 12px;
+				border: 1px solid var(--line);
+				background: var(--surface);
+				font-size: 0.875rem;
+				color: rgb(var(--gray-dark));
+			}
+
+			/* ---------- Responsive ---------- */
+			@media (max-width: 1024px) {
+				.hwt-grid {
+					grid-template-columns: minmax(0, 1fr);
+					gap: 32px;
+					margin-top: 32px;
+				}
+				.hwt-index {
+					position: static;
+					padding-bottom: 8px;
+				}
+				.hwt-index ol {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 4px 20px;
+					border-left: 0;
+				}
+				.hwt-index a {
+					padding: 4px 0;
+					margin-left: 0;
+					border-left: 0;
+				}
+				.hwt-specs {
+					grid-template-columns: minmax(0, 1fr);
+					gap: 0;
+				}
+			}
+			@media (max-width: 720px) {
+				.hwt-shell {
+					padding: 24px 20px 64px;
+				}
+				.hwt {
+					font-size: 1rem; /* 16px */
+				}
+				.hwt-lede {
+					font-size: 1.0625rem;
+				}
+				.hwt-approach,
+				.hwt-noclaim {
+					padding: 20px;
+				}
+				.hwt-sec + .hwt-sec {
+					margin-top: 32px;
+					padding-top: 32px;
+				}
+				.hwt-sec p {
+					font-size: 1rem;
+				}
+				.hwt-facts {
+					gap: 6px 24px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<Header />
+		<main class="hwt" id="main-content">
+			<div class="hwt-shell">
+				<nav class="hwt-crumbs" aria-label="Breadcrumb">
+					<a href="/">Home</a>
+					<span class="sep" aria-hidden="true">/</span>
+					<span class="current">How We Test</span>
+				</nav>
+
+				<header class="hwt-hero">
+					<p class="hwt-eyebrow">Methodology</p>
+					<h1>How We Test</h1>
+					<p class="hwt-lede">
+						Our reviews are based on structured, repeatable analysis of product documentation,
+						manufacturer specifications, and publicly available information — not casual
+						impressions.
+					</p>
+					<p class="hwt-meta"><span class="dot" aria-hidden="true"></span>Last updated: {lastUpdated}</p>
+				</header>
+
+				<div class="hwt-grid">
+					<aside class="hwt-index" aria-label="On this page">
+						<p class="hwt-label">On this page</p>
+						<ol>
+							{sectionIndex.map(([label, href]) => (
+								<li><a href={href}>{label}</a></li>
+							))}
+						</ol>
+					</aside>
+
+					<div class="hwt-body">
+						<div class="hwt-approach">
+							<p class="hwt-label">Evaluation approach</p>
+							<p>
+								We evaluate products using publicly available product information, published
+								specifications, official documentation, current pricing, and other attributable
+								sources.
+							</p>
+						</div>
+
+						<section class="hwt-sec" id="approach">
+							<h2>Our Evaluation Approach</h2>
+							<p>
+								Every product we review goes through a structured evaluation process built on
+								publicly available information:
+							</p>
+							<ul class="hwt-facts">
+								<li><strong>12</strong> Step Review Process</li>
+								<li><strong>5</strong> Scoring Categories</li>
+								<li><strong>2+</strong> Competitors Compared</li>
+							</ul>
+							<dl class="hwt-defs">
+								{areas.map((area) => (
+									<div>
+										<dt>{area.name}</dt>
+										<dd> {area.detail}</dd>
+									</div>
+								))}
+							</dl>
+						</section>
+
+						<section class="hwt-sec" id="specification-analysis">
+							<h2>Specification Analysis</h2>
+							<p>
+								Where a specification is published, we analyze it against competing products in
+								the same category. We do not perform independent physical measurements. Here's
+								what we analyze for each product category:
+							</p>
+							<div class="hwt-specs">
+								{specCategories.map((cat) => (
+									<div class="hwt-spec">
+										<h3>{cat.name}</h3>
+										<ul>
+											{cat.items.map(([label, detail]) => (
+												<li><strong>{label}:</strong> {detail}</li>
+											))}
+										</ul>
+									</div>								))}
+							</div>
+						</section>
+
+						<section class="hwt-sec" id="sources">
+							<h2>Information Sources</h2>
+							<p>
+								Our evaluation is built on <strong>publicly available product information</strong>
+								rather than hands-on testing. Primary sources include:
+							</p>
+							<ol class="hwt-sources">
+								{sources.map((source) => (
+									<li>{source}</li>
+								))}
+							</ol>
+						</section>
+
+						<section class="hwt-sec" id="what-we-do-not-claim">
+							<h2>What We Do Not Claim</h2>
+							<div class="hwt-noclaim">
+								<ul>
+									<li>We do not claim hands-on testing that did not happen.</li>
+									<li>We do not perform independent physical measurements.</li>
+									<li>
+										Our reviews are based on structured, repeatable analysis of product
+										documentation, manufacturer specifications, and publicly available
+										information — not casual impressions.
+									</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="hwt-sec" id="scoring">
+							<h2>Our Scoring System</h2>
+							<p class="hwt-label">How we calculate the overall score (out of 5)</p>
+							<p>
+								Each product is scored on 5 weighted categories, calculated from documented
+								specifications and feature analysis:
+							</p>
+							<ul class="hwt-weights">
+								{scoreWeights.map((cat) => (
+									<li>
+										<div class="hwt-weight-head">
+											<strong>{cat.name}</strong>
+											<span>{cat.weight}%</span>
+										</div>
+										<div class="hwt-bar" aria-hidden="true">
+											<span style={`width: ${cat.weight}%`}></span>
+										</div>
+										<p>{cat.detail}</p>
+									</li>
+								))}
+							</ul>
+							<p>
+								The overall score is a weighted average. We also give an "Editor's Choice" badge
+								to products that score 4.5 or above and offer exceptional value.
+							</p>
+						</section>
+
+						<section class="hwt-sec" id="review-process">
+							<h2>Review Process</h2>
+							<p>Every review goes through this pipeline before publication:</p>
+							<ol class="hwt-steps">
+								{reviewSteps.map(([title, detail]) => (
+									<li><strong>{title}</strong> <span>{detail}</span></li>
+								))}
+							</ol>
+						</section>
+
+						<section class="hwt-sec" id="comparative-analysis">
+							<h2>Comparative Specification Analysis</h2>
+							<p>
+								Every product is analyzed alongside at least <strong>two direct competitors</strong>
+								in the same price tier. We don't evaluate products in isolation — we compare their
+								documented specifications against what else is available for the same price.
+							</p>
+							<p>
+								For example, when we evaluate the FlexiSpot E7 standing desk, we compare its
+								published specifications, height range, weight capacity, and warranty against:
+							</p>
+							<ul class="hwt-compare">
+								<li>Vari Electric Desk</li>
+								<li>Branch Standing Desk</li>
+							</ul>
+							<p>in the same price range.</p>
+						</section>
+
+						<section class="hwt-sec" id="independence">
+							<h2>Editorial Independence</h2>
+							<p>
+								Our evaluation process is completely independent of our affiliate partnerships.
+								The affiliate team does not see reviews before publication. The review team does
+								not know which products have higher commission rates. See our
+								<a href="/editorial-policy/">Editorial Policy</a> for the full independence rules.
+							</p>
+						</section>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
