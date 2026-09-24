@@ -14,7 +14,15 @@
 export interface AdsterraConfig {
   /** Master switch — false = component renders nothing, zero third-party requests. */
   enabled: boolean;
-  /** Official Adsterra Anti-Adblock invoke.js URL for the Native Banner zone. */
+  /**
+   * Official Adsterra Native Banner invoke.js URL for Ad Unit 31080117
+   * (NativeBanner_1, Website toolstep.top).
+   *
+   * Host note: Adsterra migrated this zone's delivery host to the
+   * pl31180616.profitableratecpmnetwork.com node (the earlier legacy host is
+   * no longer used). The path key (115f0347827dcc42197dfe9f0a88d287) and the
+   * container id are unchanged — only the host differs.
+   */
   scriptSrc: string;
   /** Official Adsterra container div id the invoke.js injects into. */
   containerId: string;
@@ -34,7 +42,7 @@ export const ADSTERRA_CONFIG: AdsterraConfig = {
   // unified rollout.
   enabled: true,
   scriptSrc:
-    'https://wistfulseverely.com/115f0347827dcc42197dfe9f0a88d287/invoke.js',
+    'https://pl31180616.profitableratecpmnetwork.com/115f0347827dcc42197dfe9f0a88d287/invoke.js',
   containerId: 'container-115f0347827dcc42197dfe9f0a88d287',
   reservedMinHeight: 250,
   // Native Banner: max 1 per page, adult ads disabled for this property.
