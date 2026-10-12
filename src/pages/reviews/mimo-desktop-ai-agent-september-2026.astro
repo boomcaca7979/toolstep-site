@@ -2,7 +2,6 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import AdUnit from '../../components/ads/AdUnit.astro';
 import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
 
 const title = "Xiaomi MiMo Desktop: AI Agent Beta Opens for Invites (September 2026) | ToolStep";
@@ -96,8 +95,6 @@ const publishDate = '2026-09-09';
 
     <h2>Why This Is Different from a Chatbot</h2>
     <p>The practical difference is the shape of the output. A chatbot gives you text you must copy, reformat, and assemble into the actual deliverable. MiMo Desktop's loop ends with the deliverable itself: a formatted document, a working spreadsheet, a slide deck, a web page, or a software project you can open and edit. That shift — from answers to artifacts — is the same direction the whole agent market is moving, and Xiaomi's implementation concentrates it on the desktop, where the files and tools already live.</p>
-
-    <AdUnit slot="2222222222" format="rectangle" layout="responsive" />
 
     <h2>How the Agent Actually Executes Work</h2>
     <p>Per Xiaomi's announcement, MiMo Desktop's execution stack is organized around three routing layers: <strong>Harness / Agent / Skill</strong>. A submitted goal is decomposed into tasks automatically; each task is routed to the appropriate agent and skill; and the agents coordinate to carry the work through. Along the way the system performs <strong>tool calling</strong> — invoking the specific capabilities a step requires — and manages <strong>long-task cost optimization</strong>, which matters because multi-step agent runs are where token costs usually balloon.</p>

@@ -2,8 +2,6 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import AdSlot from '../../components/AdSlot.astro';
-import AdUnit from '../../components/ads/AdUnit.astro';
 import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import { getBestEntries, getBestEntryBySlug } from '../../data/content';
@@ -906,8 +904,6 @@ const articleSchema = {
             </>
           )}
 
-          <AdSlot position="hero-below" />
-
           {/* Top 10 Picks */}
           <h2 id="top-picks">Top 10 Picks</h2>
           <div class="picks-list">
@@ -941,9 +937,6 @@ const articleSchema = {
                     <div class="pick-price">${p.price}</div>
                   </div>
                 </div>
-                {i === 4 && (
-                  <AdUnit slot="2222222222" format="horizontal" layout="in-article" />
-                )}
               </>
             ))}
           </div>
@@ -1016,8 +1009,6 @@ const articleSchema = {
             )}
           </div>
 
-          <AdSlot position="content-mid" />
-
           {/* Adsterra Phase 1 experiment — Native Banner, experiment pages only. */}
           <AdsterraBanner pageType="best" />
 
@@ -1050,8 +1041,6 @@ const articleSchema = {
           )}
 
           {/* FAQ */}
-          <AdUnit slot="3333333333" format="auto" layout="responsive" />
-
           <h2 id="faq">FAQ</h2>
           <div class="faq-list">
             {entry.faqs.map(faq => (
@@ -1117,7 +1106,6 @@ const articleSchema = {
           )}
 
           {/* Previous / Next */}
-          <AdSlot position="content-end" />
 
           {/* E-E-A-T: Full Affiliate Disclosure */}
           <AffiliateDisclosure />
@@ -1148,11 +1136,9 @@ const articleSchema = {
               ))}
             </ul>
           </nav>
-          <AdSlot position="sidebar" />
         </aside>
       </div>
     </div>
-    <AdSlot position="mobile-bottom" />
     <Footer />
   </body>
 </html>

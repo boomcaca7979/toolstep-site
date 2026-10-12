@@ -2,9 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import AdSlot from '../../components/AdSlot.astro';
 import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
-import AdUnit from '../../components/ads/AdUnit.astro';
 import { getAlternativeEntries, getAlternativeEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildAlternativesTitle } from '../../utils/seo';
@@ -784,8 +782,6 @@ const articleSchema = {
             </div>
           </section>
 
-          <AdSlot position="hero-below" />
-
           <div class="intro">{entry.intro}</div>
 
           {editorial && (
@@ -859,8 +855,6 @@ const articleSchema = {
               )}
             </>
           )}
-
-          <AdUnit slot="1111111111" format="horizontal" layout="in-article" />
 
           <h2 id="alternatives-table">Alternatives Table</h2>
           <div class="alt-table-wrap">
@@ -943,15 +937,12 @@ const articleSchema = {
             </ul>
           </div>
 
-          <AdSlot position="content-mid" />
           <AdsterraBanner pageType="alternatives" />
 
           <h2 id="why-choose">Why Choose an Alternative</h2>
           <ul class="why-list">
             {entry.whyChoose.map((reason) => <li>{reason}</li>)}
           </ul>
-
-          <AdUnit slot="3333333333" format="auto" layout="responsive" />
 
           <h2 id="faq">FAQ</h2>
           <div class="faq-list">
@@ -979,8 +970,6 @@ const articleSchema = {
             </>
           )}
 
-          <AdSlot position="content-end" />
-
           <nav class="nav-links" aria-label="Alternatives navigation">
             {prevEntry ? (
               <a href={`/alternatives/${prevEntry.slug}/`} class="prev">
@@ -1006,10 +995,8 @@ const articleSchema = {
               ))}
             </ul>
           </div>
-          <AdSlot position="sidebar" />
         </aside>
       </div>
-      <AdSlot position="mobile-bottom" />
     </main>
     <Footer />
   </body>

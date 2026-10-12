@@ -2,7 +2,6 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import AdUnit from '../../components/ads/AdUnit.astro';
 import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
 
 const title = "DeepSeek Flash Price Cut: New Lower API Pricing Starts September 10, 2026 | ToolStep";
@@ -107,8 +106,6 @@ const publishDate = '2026-09-09';
 
     <h3>Peak Hours: The 2x Multiplier</h3>
     <p>During peak hours, all three new prices are <strong>doubled</strong>. That means cache-hit input at ¥0.04, cache-miss input at ¥2, and output at ¥8 per million tokens during peak windows. This peak/off-peak split is the most important caveat in the announcement: the headline prices are the floor, not the ceiling. Batch jobs, scheduled evaluations, and background processing should target off-peak windows to actually realize the savings.</p>
-
-    <AdUnit slot="2222222222" format="rectangle" layout="responsive" />
 
     <h2>Why the Cache-Hit Price Cut Matters Most</h2>
     <p>The 60% cut on cache-hit input is the standout change, and it is aimed directly at how modern AI applications actually consume tokens. Any workload that re-sends similar context — multi-turn chat, agent loops that carry system prompts and tool results forward, RAG pipelines with stable knowledge bases, coding assistants working inside one repository — hits the prompt cache constantly. On those workloads, cache-hit tokens can make up the majority of billed input, so a 60% reduction on that line changes the effective cost per request far more than the headline percentages suggest.</p>

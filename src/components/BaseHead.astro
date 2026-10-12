@@ -5,7 +5,6 @@ import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import { SITE_TITLE } from '../consts';
-import { ADSENSE_CONFIG } from '../config/adsense';
 import { Font } from 'astro:assets';
 
 interface Props {
@@ -75,16 +74,6 @@ const currentURL = new URL(Astro.url.pathname, Astro.site);
 
 
 <Font cssVariable="--font-atkinson" preload />
-
-<!-- Google AdSense — loaded once globally with async to protect CWV -->
-{ADSENSE_CONFIG.enabled && (
-  <script
-    is:inline
-    async
-    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CONFIG.client}`}
-    crossorigin="anonymous"
-  ></script>
-)}
 
 <!-- Canonical URL -->
 <link rel="canonical" href={resolvedCanonicalURL} />

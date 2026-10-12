@@ -2,9 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import AdSlot from '../../components/AdSlot.astro';
 import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
-import AdUnit from '../../components/ads/AdUnit.astro';
 import { getCompareEntries, getReviewEntries } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildCompareTitle } from '../../utils/seo';
@@ -641,8 +639,6 @@ const articleSchema = {
         </>
       )}
 
-      <AdSlot position="hero-below" />
-
       {/* Score */}
       <h2 id="score">Score</h2>
       <div class="score-cards">
@@ -678,8 +674,6 @@ const articleSchema = {
           ))}
         </tbody>
       </table>
-
-      <AdUnit slot="2222222222" format="horizontal" layout="in-article" />
 
       {/* Pros */}
       <h2 id="pros">Pros</h2>
@@ -745,7 +739,6 @@ const articleSchema = {
         </ul>
       )}
 
-      <AdSlot position="content-mid" />
       <AdsterraBanner pageType="compare" />
 
       {editorial && (
@@ -783,8 +776,6 @@ const articleSchema = {
           )}
         </>
       )}
-
-      <AdSlot position="content-end" />
 
       {/* FAQ */}
       <h2 id="faq">FAQ</h2>
@@ -852,7 +843,6 @@ const articleSchema = {
       )}
 
       {/* Previous / Next */}
-      <AdSlot position="content-end" />
 
       <div class="nav-links">
         {prevEntry ? (
@@ -869,7 +859,6 @@ const articleSchema = {
         ) : <span></span>}
       </div>
     </div>
-    <AdSlot position="mobile-bottom" />
     <Footer />
   </body>
 </html>

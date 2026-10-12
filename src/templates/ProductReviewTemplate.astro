@@ -10,7 +10,6 @@ import Footer from '../components/Footer.astro';
 import ProductCTACard from '../components/ProductCTACard.astro';
 import ReviewMeta from '../components/ReviewMeta.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
-import AdUnit from '../components/ads/AdUnit.astro';
 import AdsterraBanner from '../components/ads/AdsterraBanner.astro';
 import { buildProductReviewMeta } from '../lib/seo';
 import { getRelatedForReview } from '../lib/related';
@@ -203,8 +202,6 @@ const tocSections = [
         <p><strong>ToolStep's take:</strong> {editorial.decisionNote}</p>
       )}
 
-      <AdUnit slot="1111111111" format="horizontal" layout="in-article" />
-
       <h2 id="performance">Performance Evaluation</h2>
       <p>{entry.performance}</p>
 
@@ -242,7 +239,6 @@ const tocSections = [
         </div>
       </div>
 
-      <AdUnit slot="2222222222" format="rectangle" layout="responsive" />
       <AdsterraBanner pageType="reviews" />
 
       <h2 id="specs">Specs</h2>
@@ -282,8 +278,6 @@ const tocSections = [
           <li><a href={alt.href}>{alt.name}</a> — {alt.desc}</li>
         ))}
       </ul>
-
-      <AdUnit slot="3333333333" format="auto" layout="responsive" />
 
       <h2 id="faq">FAQ</h2>
       <div class="faq">
