@@ -140,12 +140,14 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
   };
 }
 
+// ToolStep reviews products; it does not sell them. The Product node therefore
+// carries no Offer: an affiliate link is not a merchant listing, and marking one
+// up would claim stock, shipping and return policies we do not have.
 export function buildReviewSchema(opts: {
   productName: string;
   productBrand: string;
   productCategory: string;
   productImage?: string;
-  price: number;
   ratingValue: number;
   authorName: string;
   authorUrl?: string;
@@ -157,36 +159,32 @@ export function buildReviewSchema(opts: {
 }) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Review',
-    itemReviewed: {
-      '@type': 'Product',
-      name: opts.productName,
-      ...(opts.productImage ? { image: opts.productImage } : {}),
-      brand: { '@type': 'Brand', name: opts.productBrand },
-      category: opts.productCategory,
-      offers: {
-        '@type': 'Offer',
-        price: opts.price,
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
+    '@type': 'Product',
+    name: opts.productName,
+    ...(opts.productImage ? { image: opts.productImage } : {}),
+    brand: { '@type': 'Brand', name: opts.productBrand },
+    category: opts.productCategory,
+    review: {
+      '@type': 'Review',
+      name: `${opts.productName} review`,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: opts.ratingValue,
+        bestRating: 5,
+        worstRating: 1,
       },
+      author: {
+        '@type': 'Person',
+        name: opts.authorName,
+        ...(opts.authorUrl ? { url: opts.authorUrl } : {}),
+        ...(opts.authorJobTitle ? { jobTitle: opts.authorJobTitle } : {}),
+      },
+      publisher: { '@type': 'Organization', name: SITE_NAME },
+      url: opts.url,
+      datePublished: opts.datePublished,
+      dateModified: opts.dateModified || opts.datePublished,
+      reviewBody: opts.reviewBody,
     },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: opts.ratingValue,
-      bestRating: 5,
-      worstRating: 1,
-    },
-    author: {
-      '@type': 'Person',
-      name: opts.authorName,
-      ...(opts.authorUrl ? { url: opts.authorUrl } : {}),
-      ...(opts.authorJobTitle ? { jobTitle: opts.authorJobTitle } : {}),
-    },
-    publisher: { '@type': 'Organization', name: SITE_NAME },
-    datePublished: opts.datePublished,
-    dateModified: opts.dateModified || opts.datePublished,
-    reviewBody: opts.reviewBody,
   };
 }
 
@@ -321,7 +319,6 @@ export function buildComparePageMeta(entry: CompareEntry, authorName: string, pu
   const canonical = buildCanonical(`/compare/${entry.slug}`);
   const pageUrl = `${SITE_URL}/compare/${entry.slug}/`;
   const topRating = Math.max(entry.productA.rating, entry.productB.rating);
-  const bestPrice = Math.min(entry.productA.price, entry.productB.price);
 
   return {
     title,
@@ -340,7 +337,6 @@ export function buildComparePageMeta(entry: CompareEntry, authorName: string, pu
       productName: entry.title,
       productBrand: entry.productA.brand,
       productCategory: entry.category,
-      price: bestPrice,
       ratingValue: topRating,
       authorName,
       datePublished: publishDate,
@@ -397,7 +393,6 @@ export function buildProductReviewMeta(entry: ProductReviewEntry, authorName: st
       productBrand: entry.brand,
       productCategory: entry.category,
       productImage: entry.heroImage,
-      price: entry.bestPrice,
       ratingValue: entry.ratingValue,
       authorName,
       authorUrl,
