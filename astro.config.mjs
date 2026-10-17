@@ -13,10 +13,13 @@ export default defineConfig({
 		mdx(),
 		sitemap({
 			// Exclude demo/placeholder blog posts from the sitemap (also noindex via frontmatter)
+			// Exclude the /blog/ hub: it lists only those demo posts, so it is noindex
+			// (see src/pages/blog/index.astro) and must not be submitted either.
 			// Exclude canonical-override source URLs (cannibalization whitelist):
 			// those pages canonicalize to their /reviews/ target and must not be listed.
 			filter: (page) => {
 				const pathname = new URL(page).pathname;
+				if (pathname === '/blog/') return false;
 				if (/^\/blog\/(first-post|second-post|third-post|using-mdx|markdown-style-guide)\/?$/.test(pathname)) return false;
 				if (CANONICAL_OVERRIDES[pathname] !== undefined) return false;
 				return true;
