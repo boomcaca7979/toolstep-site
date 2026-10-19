@@ -1,0 +1,220 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/how-to-test-your-vpn/';
+const title = 'Does Your VPN Actually Protect You? Leak Tests, Kill Switch, and DNS | ToolStep';
+const description = 'A repeatable protocol for testing a VPN: baseline, exit IP, DNS, IPv6, WebRTC, kill switch and split tunnelling — plus what these checks genuinely cannot show.';
+const headline = 'Does Your VPN Actually Protect You? Leak Tests, Kill Switch, and DNS';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "Does passing every leak test mean I am anonymous?",
+			acceptedAnswer: { '@type': 'Answer', text: "No. It means the tunnel behaves as claimed on your device. Your provider still terminates your traffic, sites still identify your session and anything you submit, and your ISP still sees that you connected to a VPN." },
+		},
+		{
+			'@type': 'Question',
+			name: "WebRTC showed a 192.168 address. Is that a leak?",
+			acceptedAnswer: { '@type': 'Answer', text: "It discloses a private interface address to the page — a privacy nuisance, not exposure of your public location, and browsers often mask it behind mDNS. The result to act on is a public address matching your baseline." },
+		},
+		{
+			'@type': 'Question',
+			name: "IPv6 is unavailable while connected. Should I fix it?",
+			acceptedAnswer: { '@type': 'Answer', text: "Usually that is the safe outcome of an IPv4-only tunnel, at the cost of IPv6-only services. The case to fix is a routable IPv6 address that still exists alongside the tunnel." },
+		},
+		{
+			'@type': 'Question',
+			name: "How often should I re-test?",
+			acceptedAnswer: { '@type': 'Answer', text: "After every client, OS, router, protocol or configuration change and every new network, plus a monthly pass on the quick checks." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Does Your VPN Actually Protect You? Leak Tests, Kill Switch, and DNS</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      A VPN is a promise about a network path that almost nobody re-checks after the first week: client updates, router changes, a split-tunnel rule or an OS upgrade can all quietly alter it. Here is a protocol you can run and repeat identically, and what passing does not prove.
+    </p>
+
+    <div class="answer-box">
+      <h2>The short version</h2>
+      <p>Test three states, not one: <strong>baseline</strong> (VPN off), <strong>connected</strong>, and <strong>after a forced disconnect</strong>. Record results with the endpoint name and date, so a later run is comparable.</p>
+      <p>Six checks cover the common failures: the address a site sees, which resolver answered, IPv6, WebRTC, the kill switch, and split tunnelling.</p>
+      <p>None of this makes you anonymous: a VPN moves trust from your ISP and local network to your provider, and it does not hide you from a site you log into.</p>
+    </div>
+
+    <h2>What a VPN is defending</h2>
+    <p>Every check below needs a threat model: a VPN protects the path between your device and the exit server, so a local observer cannot read your traffic in cleartext, and the destination sees the exit server's address rather than yours. Anonymity is not the claim — the provider terminates your traffic, your ISP can see that you connected, and any account you sign into identifies you whatever address it came from.</p>
+
+    <h2>Set the baseline</h2>
+    <p>Note four things with the VPN off, because without them the connected results mean nothing: the public IPv4 and IPv6 addresses a test site reports; the DNS servers the OS uses; whether the browser resolves names itself or through a network DNS filter (see the <a href="/guides/dns-level-ad-blocking/">DNS-level blocking guide</a>); and the exit address you expect.</p>
+    <pre><code># Windows
+ipconfig /all
+nslookup example.com
+
+# macOS
+scutil --dns | head -40
+
+# Linux
+resolvectl status
+dig example.com</code></pre>
+
+    <h2>Check 1: the address sites actually see</h2>
+    <p>Connect, then <em>reload</em> the test page — a page opened before connecting keeps reporting the old answer. Use an endpoint that reports IPv4 and IPv6 together, so partial coverage cannot look like full coverage; <a href="https://ipleak.net/" rel="noopener">ipleak.net</a> shows the address a request arrived with, not a geolocation guess.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Result</th><th>Reading</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Exit address only</td><td>Tunnel carries this traffic</td></tr>
+          <tr><td>Exit plus baseline address</td><td>Something bypassed the tunnel — check split tunnelling, IPv6</td></tr>
+          <tr><td>Exit address, wrong location</td><td>Wrong exit, or stale geolocation data</td></tr>
+          <tr><td>Baseline address only</td><td>Not connected, or this app is outside the tunnel</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Retest in a second browser and a non-browser application: some clients tunnel only certain traffic by default.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Check 2: DNS, which is two questions</h2>
+    <p>The first is <em>which resolver answers</em>. If queries still go to your ISP's resolver, it learns every name you look up even though the content is tunnelled. Confirm the resolver in your baseline output changed to one the client provides.</p>
+    <p>The second is <em>which path the query takes</em>:</p>
+    <ul>
+      <li>A browser using DNS over HTTPS may resolve through a third-party resolver, bypassing whatever the VPN configured — check the browser's own setting first.</li>
+      <li>A network DNS filter installed on the system may take queries first, so the answer you see came through a path neither product controls.</li>
+    </ul>
+
+    <h2>Check 3: IPv6</h2>
+    <p>A tunnel is frequently IPv4-only while the interface keeps a routable IPv6 address, and systems generally prefer IPv6 when it is available: unhandled, that traffic leaves the physical interface and the destination records your true address. Ask an IPv6-aware endpoint for its view while connected:</p>
+    <ul>
+      <li><strong>No IPv6 reported.</strong> Usually correct for an IPv4-only tunnel: you lose IPv6-only services and gain no leak.</li>
+      <li><strong>An IPv6 address belonging to the exit.</strong> The client handles it deliberately.</li>
+      <li><strong>Your baseline IPv6 address.</strong> Fix this first: if the client's documentation does not say how it handles IPv6, disable IPv6 on the interface or use a client that does.</li>
+    </ul>
+
+    <h2>Check 4: WebRTC</h2>
+    <p>WebRTC is a browser API for peer connections (the specification is public at the <a href="https://www.w3.org/TR/webrtc/" rel="noopener">W3C</a>); establishing one gathers candidate interface addresses, so a scripted page can read things about your local network that plain requests never exposed. Read results carefully, because "leak" is used loosely here:</p>
+    <ul>
+      <li>A private address such as <code>192.168.x.x</code> tells the page about your LAN layout, not your public location; browsers often mask it with an <code>mDNS</code> name.</li>
+      <li>A public address matching your baseline is the one to act on: a candidate came from the physical interface.</li>
+      <li>An address matching the tunnel exit is expected.</li>
+    </ul>
+    <p>Behaviour differs by browser and version, so test yours and retest after updates. Restricting WebRTC can break conferencing tools, so decide case by case.</p>
+
+    <h2>Check 5: the kill switch, tested honestly</h2>
+    <p>Pressing "disconnect" inside the client is the weak test: a graceful disconnect lets the client tear down its own block. Do this instead, with something long-running in progress:</p>
+    <ol>
+      <li>Start a sustained transfer, such as a large download.</li>
+      <li>Force the tunnel to drop without the client's cooperation: unplug the upstream link, disable the physical adapter, or block the VPN protocol at the router.</li>
+      <li>Read the outcome. Good: traffic stops and resumes only when the tunnel returns. Bad: the transfer continues, or a new connection succeeds over the physical interface.</li>
+      <li>Restore the link and confirm the client reconnects rather than leaving you silently unprotected.</li>
+      <li>Test persistence: reboot with the switch enabled and check it is still armed, then re-check after a client update.</li>
+    </ol>
+    <p>Find out whether the switch is application-level or a genuine system firewall rule; that decides what survives a client crash. Browsers with their own DNS settings, and updater services, do not always respect the default block.</p>
+
+    <h2>Check 6: split tunnelling, the leak you configured</h2>
+    <p>Split tunnelling is a hole by design, so test what it excludes. With "allow local network" on, traffic to private ranges leaves through the physical interface — intended, but those destinations can see you. Check each excluded application from the exit point of view, not the client's status text: an excluded browser shows your real address. Look for rules you did not write, such as update services or captive-portal handling. After removing a rule, flush caches, restart the application and re-test — stale routes produce both false passes and false failures.</p>
+
+    <div class="warn-box">
+      <h2>What passing cannot show</h2>
+      <ul>
+        <li><strong>Provider behaviour.</strong> Nothing you run locally shows whether a provider keeps logs or honours its policy. Treat "no logs" as a contractual statement.</li>
+        <li><strong>Exit reputation.</strong> A clean tunnel leaving from a shared address can still be blocked, rate-limited, or flagged.</li>
+        <li><strong>Malware, accounts, and correlation.</strong> The tunnel carries traffic and does not vet it; a positioned observer can compare timing without reading contents.</li>
+        <li><strong>Endpoint quality.</strong> Results depend on which endpoint and browser you used. Two disagreeing is normal — record which said what.</li>
+      </ul>
+      <p>Do not quote or invent leak percentages: there is no honest figure, since it depends on client version, platform, protocol and configuration.</p>
+    </div>
+
+    <h2>A record you can repeat</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Field</th><th>Baseline</th><th>Connected</th><th>After forced drop</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Public IPv4 seen</td><td></td><td></td><td></td></tr>
+          <tr><td>IPv6 seen / resolver that answered</td><td></td><td></td><td></td></tr>
+          <tr><td>Long transfer outcome</td><td>n/a</td><td>n/a</td><td></td></tr>
+          <tr><td>Client version, OS build, endpoint, date</td><td colspan="3"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>If you are still choosing a service, protocol support and kill-switch behaviour are among the differences that matter — see <a href="/compare/expressvpn-vs-nordvpn/">ExpressVPN vs NordVPN</a>, <a href="/reviews/nordvpn-vs-surfshark/">NordVPN vs Surfshark</a>, and our <a href="/best/best-vpn-service/">VPN service picks</a>. Router-level setups move the tunnel to another device, so some of these checks belong on the router; the <a href="/best/best-vpn-router/">VPN router roundup</a> covers that case.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

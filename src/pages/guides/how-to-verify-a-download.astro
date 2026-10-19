@@ -1,0 +1,184 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/how-to-verify-a-download/';
+const title = 'How to Verify a Download Before You Install It: Checksums and Signatures | ToolStep';
+const description = 'Use certutil, Get-FileHash, shasum, sha256sum and GPG to confirm a downloaded file is intact and really came from the publisher — and understand what that check does not prove.';
+const headline = 'How to Verify a Download Before You Install It: Checksums and Signatures';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "If the checksum matches, is the file safe to run?",
+			acceptedAnswer: { '@type': 'Answer', text: "No. A matching checksum means the file is identical to what the publisher hashed and arrived intact. It cannot tell you the file is free of malicious code, and it passes even if an attacker replaced both the file and the published value." },
+		},
+		{
+			'@type': 'Question',
+			name: "Why is the hash published on the same website I downloaded from?",
+			acceptedAnswer: { '@type': 'Answer', text: "Often that is what a project can offer, and it still catches corruption and mirror tampering. It does not defend against an attacker who controls the site. When both a checksum and a detached signature exist, the signature checked against a separately obtained key is the stronger control." },
+		},
+		{
+			'@type': 'Question',
+			name: "Do I need to verify files from an app store or package manager?",
+			acceptedAnswer: { '@type': 'Answer', text: "Not manually. Stores and package managers such as apt or dnf already validate integrity and origin during installation. This guide is for loose downloads: direct installer links, mirrors, firmware files, and model weights." },
+		},
+		{
+			'@type': 'Question',
+			name: "Is SHA-256 the right algorithm?",
+			acceptedAnswer: { '@type': 'Answer', text: "Match whatever the publisher posted, and prefer SHA-256 when you choose. MD5 and SHA-1 still reveal a corrupted transfer, but they are not appropriate where you need to rule out intentional substitution." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    code, pre { background: #f3f4f6; border-radius: 8px; font-size: 0.88rem; }
+    code { padding: 2px 6px; }
+    pre { padding: 14px 16px; overflow-x: auto; margin: 0 0 20px; line-height: 1.55; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Verify a Download Before You Install It: Checksums and Signatures</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      A large installer, a firmware image, a set of model weights, an archive pulled from a mirror at 2am. You click, wait, and open it — and you have no way of knowing whether the bytes that landed on disk are the bytes the project produced. Verification closes that gap in under a minute. Here is how to do it on Windows, macOS, and Linux, what a signature adds over a hash, and — importantly — what neither one proves.
+    </p>
+
+    <div class="answer-box">
+      <h2>The two checks people mix up</h2>
+      <p><strong>Integrity:</strong> the file was not truncated or corrupted in transit. A checksum comparison answers this, and it catches the most common real-world failure, which is simply a bad download.</p>
+      <p><strong>Origin:</strong> the file really came from the publisher rather than from someone who substituted it. A checksum published on the same page as the download only partly answers this. A cryptographic signature checked against a public key you established by another route answers it properly.</p>
+      <p>Neither check tells you the software is free of malicious code or bugs. It tells you that you have exactly the file the publisher shipped, and — with signatures — reasonable confidence about who that was.</p>
+    </div>
+
+    <h2>Before you start: get the expected value from the right place</h2>
+    <p>Look for a file named something like <code>SHA256SUMS</code>, a "verified hashes" table on the release page, or a checksum listed next to each download link. Two habits matter more than the tool you use:</p>
+    <ul>
+      <li><strong>Compare the same algorithm.</strong> If the publisher posts SHA-256, compute SHA-256. Older projects sometimes publish only MD5 or SHA-1, which still detect corruption but are no longer good enough where deliberate substitution is the concern.</li>
+      <li><strong>Get the expected value over a channel you did not get the file from</strong> when one exists — the project's main site rather than a random mirror, or a signed announcement rather than the download page itself. This is the step that upgrades integrity checking into origin checking.</li>
+    </ul>
+
+    <h2>Windows</h2>
+    <p>Two options ship with the system. PowerShell's <code>Get-FileHash</code> is the one to prefer; <code>certutil</code> works from a plain command prompt.</p>
+    <pre><code>Get-FileHash -Algorithm SHA256 -Path C:\Users\you\Downloads\setup.exe</code></pre>
+    <pre><code>certutil -hashfile C:\Users\you\Downloads\setup.exe SHA256</code></pre>
+    <p><code>Get-FileHash</code> defaults to SHA256, prints uppercase hex, and is documented in the <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash">Microsoft PowerShell reference</a>. Its output has spaces removed in the hash itself, while <code>certutil</code> wraps the value across lines — if a comparison fails, check you are not just looking at formatting.</p>
+
+    <h3>Verify a detached signature on Windows</h3>
+    <p>Windows has no built-in GPG. If a project publishes a <code>.sig</code> or <code>.asc</code> file, install GnuPG (or the GPG4Win suite) and use the same commands as the Linux section below. A signature is only as good as the public key you check it with, so import keys from the publisher's stated fingerprint rather than from a keyserver alone.</p>
+
+    <h2>macOS</h2>
+    <p>macOS ships <code>shasum</code>, which takes the digest algorithm as an option:</p>
+    <pre><code>shasum -a 256 ~/Downloads/tool.tar.gz</code></pre>
+    <p>The <code>openssl</code> binary is also present on recent macOS releases and can produce the same digest:</p>
+    <pre><code>openssl dgst -sha256 ~/Downloads/tool.tar.gz</code></pre>
+    <p>Note that macOS does not include GNU coreutils' <code>sha256sum</code> under that name by default. If you copy commands from Linux documentation and the command is not found, use <code>shasum -a 256</code> instead of installing anything.</p>
+
+    <h2>Linux</h2>
+    <p>Coreutils provides <code>sha256sum</code> — see the <a href="https://man7.org/linux/man-pages/man1/sha256sum.1.html">sha256sum manual page</a> and the wider <a href="https://www.gnu.org/software/coreutils/manual/html_node/index.html">GNU Coreutils manual</a>:</p>
+    <pre><code>sha256sum tool.tar.gz</code></pre>
+    <p>The real value on Linux is batch verification. When a project ships a checksums file alongside several artefacts, run it from the download directory:</p>
+    <pre><code>sha256sum -c SHA256SUMS</code></pre>
+    <p>Each line is reported as <code>OK</code> or <code>FAILED</code>. Distributions publish hashes the same way: <a href="https://help.ubuntu.com/community/UbuntuHashes">Ubuntu's official hash listings</a> and the <a href="https://www.debian.org/security/">Debian security pages</a> both show how publishers present digests for images and updates.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Signatures: the part that establishes who published it</h2>
+    <p>A detached signature is a file created by signing the digest with the publisher's private key. You verify it with their public key:</p>
+    <pre><code>gpg --verify tool.tar.gz.asc tool.tar.gz
+gpg --list-keys --fingerprint PUBLISHER_KEY_ID</code></pre>
+    <p>A good verification line reports a valid signature and a fingerprint. Compare that fingerprint to the one the project publishes in a location that would be harder to swap — its main site, its documentation, or a previous copy you kept. See the <a href="https://www.gnupg.org/documentation/">GnuPG documentation</a> for option details, since flag behaviour differs between versions.</p>
+    <p>The hierarchy of trust, weakest to strongest, looks like this: no check at all, then a hash from the same page as the file, then a hash from a channel you separated from the download, then a signature from a key whose fingerprint you confirmed independently. Each step costs a little time and rules out a different class of failure.</p>
+
+    <h2>When the check fails: what to do</h2>
+    <ul>
+      <li><strong>Re-download before concluding anything.</strong> A mismatch most often means an interrupted transfer, a browser that saved a partially written file, or an archive that was re-extracted over itself.</li>
+      <li><strong>Check you hashed the right file.</strong> Timestamps and duplicate names in Downloads are a frequent cause of false alarms.</li>
+      <li><strong>Check the algorithm and encoding.</strong> MD5 against SHA-256, uppercase against lowercase, and a checksum file with the wrong filename all produce mismatches that look like attacks.</li>
+      <li><strong>Confirm the expected value is current.</strong> Projects rebuild releases; a hash bookmarked last month may not match today's artefact.</li>
+      <li><strong>If a re-download still mismatches, stop.</strong> Do not "just try installing it". Fetch from the project's primary site, and if it still differs, treat the copy you have as untrusted and report it to the project.</li>
+    </ul>
+
+    <div class="warn-box">
+      <h2>Limits worth stating plainly</h2>
+      <p>A verification pass is not a safety verdict. Malicious or simply buggy code signed by the real publisher still passes every check in this guide. Antivirus and reputation tools cover a different risk, and neither replaces the other — our look at <a href="/best/best-antivirus-software/">the best antivirus software</a> explains what those products actually catch.</p>
+      <p>Also: verification proves what a file <em>is</em>, not what it will do. An installer can be genuine and still request elevated privileges, phone home, or bundle components you did not choose. Read the permission prompts. A checksum cannot protect you from consent you gave willingly.</p>
+    </div>
+
+    <h2>A practical minimum, if you do nothing else</h2>
+    <ol>
+      <li>Download from the project's own domain, over the site's HTTPS link — not from a search-ad result or a "download portal".</li>
+      <li>Compute SHA-256 on the file and compare it character-for-character with the value on that same site.</li>
+      <li>Where the project publishes a signature, verify it against a key whose fingerprint you saw somewhere else.</li>
+      <li>Keep the checksum file next to the archive if you store it long term — it is also how you detect bit rot later, alongside the health checks in <a href="/guides/how-to-check-drive-health/">our drive-health guide</a>.</li>
+    </ol>
+
+    <h2>FAQ</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p>Related on ToolStep: the installer you check is often one you fetched outside a store — see <a href="/reviews/obs-studio-complete-guide/">our OBS Studio setup walkthrough</a> and the <a href="/alternatives/obs-alternatives/">OBS alternatives</a> list for cases where the download source varies by mirror. If you are pulling large model files, <a href="/reviews/best-open-weight-ai-models-coding-2026/">our open-weight models ranking</a> covers where those artefacts are published and what their licences permit. For the wider security picture, browse <a href="/category/security/">security tools</a>.</p>
+
+    <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

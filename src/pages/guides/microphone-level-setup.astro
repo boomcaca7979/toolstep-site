@@ -1,0 +1,189 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/microphone-level-setup/';
+const title = 'Why Your Microphone Sounds Too Quiet: Gain, Input Levels, and OS Limits | ToolStep';
+const description = 'A four-stage troubleshooting flow for a quiet microphone: physical path, OS input volume and gain, app processing, then distance and polar pattern. What gain, input level and clipping actually mean.';
+const headline = 'Why Your Microphone Sounds Too Quiet: Gain, Input Levels, and OS Limits';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "What input level should my microphone be set to?",
+			acceptedAnswer: { '@type': 'Answer', text: "There is no single correct number that applies to every microphone, room, and app. The goal is relative: your voice moves the meter clearly and consistently at normal speech, peaks do not sit flat against the top, and the setting still sounds right when you lean back or talk louder." },
+		},
+		{
+			'@type': 'Question',
+			name: "Why does my microphone volume slider look greyed out or missing?",
+			acceptedAnswer: { '@type': 'Answer', text: "Some devices do not expose input gain to the operating system, so the control is shown disabled or omitted entirely. Set the level with a dial or pad switch on the microphone, on the interface, in the device driver panel, or with the input volume inside your app." },
+		},
+		{
+			'@type': 'Question',
+			name: "Is distorted microphone audio always caused by gain being too high?",
+			acceptedAnswer: { '@type': 'Answer', text: "Usually, but the overdriven stage may be the capsule because the source is too close, the interface gain, the OS input volume, or software effects applied afterwards. Change one control at a time and listen for the point where the harshness goes away." },
+		},
+		{
+			'@type': 'Question',
+			name: "Should I turn off automatic gain control?",
+			acceptedAnswer: { '@type': 'Answer', text: "Turn it off while diagnosing, then decide. It hides the real level by pushing quiet voices up and loud ones down. Measure with it disabled to confirm your hardware is genuinely healthy; many people leave it on for calls and off for recording." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Why Your Microphone Sounds Too Quiet: Gain, Input Levels, and OS Limits</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      "Can you hear me? You're really faint" sends most people hunting for one volume slider — but the slider they find is only one of four places where the level gets decided. Here is an order of operations that finds the culprit.
+    </p>
+
+    <div class="answer-box">
+      <h2>The short version</h2>
+      <p>Your level is set by a chain of stages, and any one of them can be the limit: the physical path (cable, jack, hub, selected device), the OS input volume and gain, the processing inside the meeting or recording app, then your distance and aim.</p>
+      <p>Work through them in that order, one variable at a time. Turning the volume up first usually gives a louder version of the same bad signal.</p>
+      <ul>
+        <li><strong>Gain</strong> amplifies the signal. More gain makes a weak microphone louder, and its noise louder at the same rate.</li>
+        <li><strong>Input level</strong> is what the meter shows: how much signal arrives after whatever gain has been applied.</li>
+        <li><strong>Clipping</strong> is what happens when the signal exceeds what a stage can carry. The peaks flatten and the audio crackles. It cannot be undone afterwards.</li>
+      </ul>
+    </div>
+
+    <h2>Stage 1: confirm the physical path</h2>
+    <p>Before touching a setting, prove the signal arrives at all. Three checks cover most cases:</p>
+    <ol>
+      <li><strong>Is the right device selected?</strong> Laptops have a built-in mic and headsets add a second input with a similar name, so the system may be capturing the built-in microphone while you speak into one on the desk.</li>
+      <li><strong>Is a hardware mute engaged?</strong> A mute button, a mute LED, or a dial on an inline cable produces a silent meter with healthy-looking settings.</li>
+      <li><strong>Does the connection match the microphone?</strong> A USB microphone needs a data-capable port; some hubs and charge-only cables enumerate it without audio, and an analogue condenser expecting phantom power gives little signal from a jack that does not supply it.</li>
+    </ol>
+    <p>A Bluetooth headset used as the microphone also falls back to its hands-free profile, which is a likelier cause of "you sound thin" than your input level.</p>
+
+    <h2>Stage 2: set the operating system input level</h2>
+    <h3>macOS</h3>
+    <p>Open the Sound settings, select the <strong>Input</strong> tab, then speak and watch the level indicator. Apple's guide to <a href="https://support.apple.com/guide/mac-help/change-the-sound-input-settings-mchlp2567/mac" rel="noopener">sound input settings</a> documents the input volume control and notes that it is unavailable for some devices. A greyed-out control means the device exposes no gain the system can change — set the level on the microphone or interface instead.</p>
+    <h3>Windows</h3>
+    <p>Go to <strong>Settings &gt; System &gt; Sound</strong>, find the Input section, and open the properties of the selected microphone to reach its volume. The classic sound control panel's <strong>Recording</strong> tab adds a Levels page, where built-in drivers often expose a boost control; boost raises the noise floor along with your voice, so use the smallest value that gives a healthy meter. If the microphone is missing or silent in every app, work through Microsoft's <a href="https://support.microsoft.com/en-us/windows/hardware/audio/fix-sound-or-audio-problems-in-windows" rel="noopener">audio troubleshooting guide</a> first, because a driver or permission fault looks identical to a level fault.</p>
+    <h3>Check the app permission too</h3>
+    <p>Both systems can deny one app microphone access while leaving the device healthy for everything else. If a single app is silent, check the permission before you touch gain.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Stage 3: the app is not a passive pipe</h2>
+    <p>Meeting software processes what it receives rather than what your microphone produced:</p>
+    <ul>
+      <li><strong>Automatic gain control</strong> raises quiet voices and lowers loud ones. It is why a badly set-up microphone sounds passable on a call but noisy once someone records it.</li>
+      <li><strong>Noise suppression</strong> subtracts steady-state sound; aggressive settings clip consonants, which people describe as "too quiet".</li>
+      <li><strong>Compression and normalising</strong> narrow the dynamic range so your level sits in a small band.</li>
+    </ul>
+    <p>The useful technique: <strong>disable automatic gain while you measure</strong>, set the OS and hardware level until a normal voice gives a healthy, unclipped meter, then re-enable it and listen. If the level only looked fine because software was rescuing you, you now hear the noise floor it was lifting. Recording apps such as OBS add their own per-source gain — see our <a href="/reviews/obs-studio-complete-guide/">OBS Studio guide</a>.</p>
+
+    <h2>Stage 4: distance and polar pattern</h2>
+    <p>If gain is adequate and processing is sane, the remaining cause is physics. Every step the microphone moves away from your mouth asks the later stages for more gain, which adds room noise and more chance of clipping. Moving it closer beats turning it up.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Pattern</th><th>What it hears</th><th>Effect on your level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cardioid</td><td>Front, rejects rear</td><td>Must face your mouth; drops off when you turn away</td></tr>
+          <tr><td>Supercardioid / hypercardioid</td><td>Tighter front, some rear</td><td>More isolation, less forgiveness</td></tr>
+          <tr><td>Omnidirectional</td><td>All directions equally</td><td>Consistent as you move — and it hears the keyboard</td></tr>
+          <tr><td>Figure-8</td><td>Front and back, rejects sides</td><td>Two people facing each other, not a conference call</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A level that swings as you move is a pattern-and-aim problem: adding gain to compensate for a cardioid microphone pointing past your mouth amplifies the wrong thing.</p>
+
+    <div class="warn-box">
+      <h2>Common mistakes that make it worse</h2>
+      <ul>
+        <li><strong>Stacking gain in two places.</strong> Hardware boost plus maximum OS input volume plus app gain gives distortion no single control can fix.</li>
+        <li><strong>Treating distortion as low level.</strong> A clipped signal can sound thin, so people add more gain. If the meter pegs and the audio crackles, turn something down.</li>
+        <li><strong>Judging by other people's sliders.</strong> Gain that suits a dynamic microphone can be far too much for a condenser two centimetres from your mouth.</li>
+        <li><strong>Testing only in the meeting app.</strong> Automatic gain hides level problems, so check a system input meter or a bare recording first.</li>
+      </ul>
+    </div>
+
+    <h2>A five-minute check you can repeat</h2>
+    <ol>
+      <li>Select the device at the system level and confirm its name matches the hardware.</li>
+      <li>Turn off automatic gain and noise suppression in the app you are testing.</li>
+      <li>Speak at normal call volume and watch a system input meter; adjust one control until peaks are present but never pinned.</li>
+      <li>Say something loud, then lean back. If the loud pass clips or the distant pass disappears, fix distance and aim before gain.</li>
+      <li>Re-enable processing, record a short clip and play it back rather than trusting the live meter.</li>
+    </ol>
+
+    <h2>Where the hardware still sets the ceiling</h2>
+    <p>Software cannot recover a signal that never arrived. A genuinely quiet source — a dynamic microphone on a low-output interface — needs gain from hardware that suits it, so choosing a microphone whose output and pattern fit your distance is usually easier than amplifying one that does not. Our picks for <a href="/best/best-usb-microphone/">best USB microphones</a> and <a href="/best/best-podcast-microphone/">podcast microphones</a> separate the ones that need a lot of gain from those that do not. Platforms also differ in how much processing they impose — see <a href="/compare/microsoft-teams-vs-zoom/">Microsoft Teams vs Zoom</a> and <a href="/reviews/zoom-vs-google-meet/">Zoom vs Google Meet</a>.</p>
+    <p>Two limits. Gain does not distinguish voice from hiss, fan, or keyboard, so a quiet room is a prerequisite. And if you monitor through headphones, raise the level gradually: feedback and a sudden peak at high monitoring gain can hurt.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

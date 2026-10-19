@@ -1,0 +1,193 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/external-monitor-setup/';
+const title = 'External Monitor Setup on Mac and Windows: Resolution, Scaling, Refresh Rate | ToolStep';
+const description = 'Extend or mirror, native resolution versus scaling, refresh rate, cable and port bandwidth, docks, daisy chains and DisplayLink — with the checks that separate spec-sheet theory from device reality.';
+const headline = 'External Monitor Setup on Mac and Windows: Resolution, Scaling, Refresh Rate, and Mirroring';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "Should I lower the resolution to make text bigger?",
+			acceptedAnswer: { '@type': 'Answer', text: "No — set the native resolution and change the operating system's scaling instead, because a resampled panel softens everything." },
+		},
+		{
+			'@type': 'Question',
+			name: "My 144Hz monitor only offers 60Hz. Why?",
+			acceptedAnswer: { '@type': 'Answer', text: "Almost always bandwidth or path: port revision at each end, cable rating, colour settings, the monitor's input options, or a dock between them. Test a direct connection with the supplied cable." },
+		},
+		{
+			'@type': 'Question',
+			name: "Can I daisy-chain two monitors?",
+			acceptedAnswer: { '@type': 'Answer', text: "Only with DisplayPort Multi-Stream Transport at both ends and an OS path that extends the chain; Windows generally does, macOS chained displays often mirror." },
+		},
+		{
+			'@type': 'Question',
+			name: "Is DisplayLink the same as a USB-C to DisplayPort cable?",
+			acceptedAnswer: { '@type': 'Answer', text: "No — DisplayLink renders on the CPU and ships video over USB through a driver, with weaker motion performance and higher latency than a native signal." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>External Monitor Setup on Mac and Windows: Resolution, Scaling, Refresh Rate, and Mirroring</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Connecting a monitor should be a cable and a settings page. Instead it is blurry text, 60 Hz when the box promised 144, or two displays showing one window. The setup is a chain, and every link has its own ceiling.
+    </p>
+
+    <div class="answer-box">
+      <h2>The short version</h2>
+      <ul>
+        <li><strong>Pick the mode first.</strong> Extend gives two workspaces; mirror puts one image on two panels — for presenting, not working.</li>
+        <li><strong>Resolution and scaling are separate.</strong> Set native resolution, then change scaling — lowering resolution to enlarge text is why a new monitor looks bad.</li>
+        <li><strong>Refresh is negotiated,</strong> not declared: the highest rate the monitor, port, cable, and dock agree on.</li>
+      </ul>
+    </div>
+
+    <h2>Step 1: choose the mode</h2>
+    <p><strong>Extend</strong> gives two desktop areas you can drag windows between — what you want for work. <strong>Mirror</strong> shows the same image on both panels at a shared resolution, what you want for a projector or TV. <strong>Second screen only</strong> turns the laptop panel off. On Windows the mode lives in <strong>Settings &rarr; System &rarr; Display</strong>; Microsoft documents the options in its <a href="https://support.microsoft.com/en-us/windows/hardware/display-graphics/how-to-use-multiple-monitors-in-windows" rel="noopener">multiple monitors guide</a>. On macOS it is in the Displays settings. Two things trip people: a mirrored pair is capped at a shared resolution, and on macOS the panel with the menu bar decides where the Dock appears.</p>
+
+    <h2>Step 2: native resolution, then scaling</h2>
+    <p>A panel has a fixed pixel grid, and only one resolution matches it pixel to pixel. Anything else is resampled, and that is what makes text fuzzy.</p>
+    <h3>Windows</h3>
+    <p>Two controls: resolution, and the scaling percentage applied to interface elements. Set native resolution, then raise scaling until text is comfortable. Each monitor can run a different percentage, which is why matching panel densities helps — mixed scales are where blurry-window complaints come from.</p>
+    <h3>macOS</h3>
+    <p>macOS lists resolution choices that also change the apparent size of the interface, which is why the list reads confusingly. The options that look like "larger text" are scaled modes: the same pixel output, rendered so elements take more space. On lower-density external panels useful scaled modes are few, and comfortable sharp text is a property of the panel, not of a setting — density is what we examine in our <a href="/best/best-monitor-for-macbook/">monitors for MacBook</a> roundup.</p>
+    <div class="warn-box">
+      <h2>Two claims to distrust</h2>
+      <p><strong>"Supports 4K."</strong> That can mean 4K/60 at full colour, 4K/30, or reduced colour — depending on the port revision at both ends and the cable.</p>
+      <p><strong>Port shape is not capability.</strong> A USB-C socket may carry a native display signal, need an adapter, drive one display, or have no video at all — Thunderbolt and plain USB-C look identical, so check the machine's specifications.</p>
+    </div>
+
+    <h2>Step 3: refresh rate</h2>
+    <p>Refresh is the outcome of that negotiation. Windows advanced display settings list the rates the path supports; on macOS they sit within the resolution choices. If the top rate is missing, check in order:</p>
+    <ul>
+      <li>A cable not rated for the mode, or a long run.</li>
+      <li>The monitor's input settings: some panels cap one HDMI input, or need an on-screen-menu feature enabled first.</li>
+      <li>Colour settings asking for more than the path can carry at that rate.</li>
+      <li>A dock or adapter with a lower ceiling than either end.</li>
+      <li>Variable refresh: adaptive sync support is stated per model, not inferred from a high rate.</li>
+    </ul>
+    <p>For definitions, the standards bodies: <a href="https://www.displayport.org/" rel="noopener">VESA's DisplayPort pages</a> and the <a href="https://www.hdmi.org/" rel="noopener">HDMI specification page</a>. For your hardware, both spec sheets — together they settle most "why not 144 Hz" arguments.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Step 4: cables, ports and bandwidth</h2>
+    <p>Bandwidth is the budget every mode spends, and nominal rates differ widely between HDMI, DisplayPort, and Thunderbolt generations. Three consequences matter:</p>
+    <ul>
+      <li><strong>Resolution, refresh, and colour depth draw from the same pool,</strong> so dropping one can make another possible.</li>
+      <li><strong>Compression changes what is achievable:</strong> Display Stream Compression carries modes that exceed a link, with support device-specific at both ends.</li>
+      <li><strong>Adapters have their own limits:</strong> a USB-C to HDMI dongle often drives one display, at less than the port it plugs into.</li>
+    </ul>
+    <p>USB-C ports that carry video use DisplayPort Alternate Mode, and how many lanes the host dedicates changes a display's bandwidth — documented per machine, never per connector shape.</p>
+
+    <h2>Step 5: docks are a shared pool, not a splitter</h2>
+    <p>A dock's uplink is one fixed pipe, and everything attached draws from it: two outputs does not mean two displays at your target mode while Ethernet and storage are in use. Delivery also depends on the host — where a machine provides a single display stream, a dual-head dock may duplicate rather than extend. And an under-powered dock produces dropouts that look like a failing monitor.</p>
+    <p>Our <a href="/reviews/caldigit-ts4-vs-satechi-thunderbolt-4-dock/">CalDigit TS4 vs Satechi Thunderbolt 4 dock</a> comparison works through per-port budgets; the <a href="/best/best-usb-c-dock/">USB-C dock</a>, <a href="/best/best-thunderbolt-4-dock/">Thunderbolt 4 dock</a>, and <a href="/best/best-laptop-dock/">laptop dock</a> roundups separate models by displays delivered per host, not port count.</p>
+
+    <h2>Step 6: DisplayLink is a different mechanism</h2>
+    <p>DisplayLink renders frames on the CPU, encodes them, and ships them over USB — the answer when no native output is left. A driver must be installed, so the display is unavailable until that driver loads, and motion-sensitive work is weaker than over a native connection. Supported resolutions and display counts depend on adapter, host, OS release, and driver version; see the <a href="https://www.synaptics.com/products/displaylink-graphics" rel="noopener">DisplayLink pages from Synaptics</a> for which driver supports which platform. Use it for a static second screen, not for video or games.</p>
+
+    <h2>How many displays, really</h2>
+    <p>External display count is a property of the machine, not of how many cables you own, and it moves with your settings. Read the vendor's per-model table for: maximum external displays, the maximum per port, whether the count changes with the lid closed, and whether integrated and discrete paths differ.</p>
+
+    <h2>A troubleshooting order that converges</h2>
+    <ol>
+      <li><strong>Detect and identify.</strong> Confirm which output sees which panel, and that the monitor is on the right input.</li>
+      <li><strong>Go direct with one monitor:</strong> remove dock, adapter, and extension. Most problems disappear here.</li>
+      <li><strong>Swap the cheap variable:</strong> a cable rated for the target mode. Blackouts and flicker at high refresh are often the cable.</li>
+      <li><strong>Establish a conservative baseline:</strong> native resolution at 60 Hz, then raise refresh and colour one change at a time.</li>
+      <li><strong>Update from the right source:</strong> graphics drivers from the machine or GPU vendor, dock and monitor firmware from the accessory maker. Microsoft documents how Windows obtains and rolls back <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/display/" rel="noopener">display drivers</a>.</li>
+      <li><strong>Separate device from account:</strong> another user profile, or another computer on the same monitor and cable, shows whether the problem is hardware, drivers, or settings.</li>
+    </ol>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Symptom</th><th>Check, in order</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Blurry text at native resolution</td><td>Scaling percentage, then a non-integer scale, then a resolution that is not native</td></tr>
+          <tr><td>Edges of the image cut off</td><td>Underscan/overscan on the monitor's HDMI input</td></tr>
+          <tr><td>Flicker or blackouts at high refresh</td><td>Cable rating or length, then dock ceiling, then port revision</td></tr>
+          <tr><td>Second monitor mirrors the first</td><td>Wrong mode selected, or MST/Alternate Mode limits on the host</td></tr>
+          <tr><td>Works direct, not through the dock</td><td>Adapter capability or shared dock bandwidth, not the monitor</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Limits worth stating</h2>
+    <p>No setting adds a display output the hardware does not have, and no adapter overcomes a host's display budget. If the requirement exceeds what the machine documents, the options are a different host, more native outputs, or DisplayLink on its own terms. Portable monitors add a twist: many need a second power connection for full brightness, per the unit's manual — see our <a href="/reviews/best-portable-monitor-work/">portable monitor test</a>. For panel choice, see the <a href="/category/monitors/">monitors category</a> and the <a href="/best/best-ultrawide-monitor/">ultrawide roundup</a>.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

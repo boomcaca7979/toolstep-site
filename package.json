@@ -9,6 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "node scripts/indexnow-submit.mjs",
+    "test": "node --experimental-strip-types --test \"tests/*.test.mjs\"",
+    "test:build": "node --test \"tests/build/*.test.mjs\"",
     "preview": "astro preview",
     "astro": "astro"
   },

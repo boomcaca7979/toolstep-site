@@ -1,0 +1,211 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/dns-level-ad-blocking/';
+const title = 'Block Ads and Trackers at the Network Level: Pi-hole vs AdGuard Home | ToolStep';
+const description = 'Where to place a network DNS blocker, how to choose upstream resolvers, verify that blocking works, undo over-broad rules, and understand the DoH bypass and the limits of DNS filtering.';
+const headline = 'Block Ads and Trackers at the Network Level: Pi-hole vs AdGuard Home, Set Up and Verified';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "Does DNS blocking stop all ads?",
+			acceptedAnswer: { '@type': 'Answer', text: "No. It stops requests for separate advertising and analytics hostnames that appear on your lists. Content served from the page's own domain — sponsored results, promoted listings, first-party video ads — usually remains, and so does any tracker on a domain the lists have not caught yet." },
+		},
+		{
+			'@type': 'Question',
+			name: "Why do some devices ignore it?",
+			acceptedAnswer: { '@type': 'Answer', text: "Those devices resolve their own names: browser secure DNS, Android Private DNS, an encrypted DNS profile, or an app with a hardcoded resolver. Each request then never reaches your blocker. Coverage has to be tested per device." },
+		},
+		{
+			'@type': 'Question',
+			name: "Is this enough protection on its own?",
+			acceptedAnswer: { '@type': 'Answer', text: "No. It reduces advertising and tracking traffic and can stop access to domains a list has already flagged, but it inspects nothing, cannot catch a fresh phishing domain, and does nothing about content that reaches the device. Use it beside a content blocker and real endpoint security." },
+		},
+		{
+			'@type': 'Question',
+			name: "How do I fix a site that broke after enabling blocking?",
+			acceptedAnswer: { '@type': 'Answer', text: "Find the exact denied domain in the query log, allow that single domain, flush the client's DNS cache, and retest. Avoid broad regex allowances and never disable an entire list to fix one site." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Block Ads and Trackers at the Network Level: Pi-hole vs AdGuard Home, Set Up and Verified</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      A DNS blocker cuts advertising and tracking traffic for every device on your network, including the ones that will never accept a browser extension. It is also the most over-sold home networking project: much of what people expect from it is what a content blocker does, not what DNS does.
+    </p>
+
+    <div class="answer-box">
+      <h2>The short version</h2>
+      <p>A DNS blocker answers "where is <code>ads.example.com</code>?" with a dead address instead of the real one, so the device never connects.</p>
+      <ul>
+        <li><strong>It works on everything that asks your network for DNS</strong> — phones, TVs, consoles, the fridge — with no per-device software.</li>
+        <li><strong>It cannot touch content served from the same domain as the page.</strong> Sponsored listings and first-party video ads survive.</li>
+        <li><strong>It is bypassed by any client that resolves its own names</strong> — browser secure DNS, Android Private DNS, or an app with a hardcoded resolver.</li>
+        <li><strong>It is not antivirus.</strong> Some lists include known-bad domains, but DNS blocking inspects nothing that arrives.</li>
+      </ul>
+      <p>Set it up as a complement to a browser content blocker, not a replacement, and verify device by device.</p>
+    </div>
+
+    <h2>Pi-hole or AdGuard Home?</h2>
+    <p>Both do the same core job; the honest differences are operational.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th></th><th>Pi-hole</th><th>AdGuard Home</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Setup</td><td>Installer, then web admin; docs at <a href="https://docs.pi-hole.net/" rel="noopener">docs.pi-hole.net</a></td><td>One guided first-run page, then web admin; see the <a href="https://adguard.com/en/adguard-home/overview.html" rel="noopener">official AdGuard Home overview</a></td></tr>
+          <tr><td>Blocklists</td><td>Gravity pulls hosts-style groups on a schedule</td><td>Filter lists, hosts-style and other formats, per list</td></tr>
+          <tr><td>Custom rules</td><td>Exact block/allow plus regex lists</td><td>Filtering rules, allow/block domains, DNS rewrites</td></tr>
+          <tr><td>Per-client control</td><td>Groups from client entries; policies attach to groups</td><td>Clients by static address or CIDR, each with own settings</td></tr>
+          <tr><td>Encrypted DNS server</td><td>Usually a separate component in front</td><td>Handled directly, including DoH and DoT</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Pi-hole has the larger documentation and community-list ecosystem; AdGuard Home's single binary and built-in encrypted endpoints are easier to place somewhere narrow. Either way, run exactly one instance — two blockers in a chain multiply the failure modes.</p>
+
+    <h2>Where to put it</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Placement</th><th>Covers</th><th>Misses</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>LAN box, handed out by DHCP</td><td>Most devices as they join</td><td>Static-IP clients, guest networks, private-DNS devices</td></tr>
+          <tr><td>Router's DNS setting</td><td>Clients that ask the router</td><td>Clients that override it entirely</td></tr>
+          <tr><td>Per-device manual DNS</td><td>That one device, reliably</td><td>Everything else</td></tr>
+          <tr><td>On the VPN server or exit</td><td>Off-site devices</td><td>Local traffic; watch for a circular dependency</td></tr>
+          <tr><td>Secondary Wi-Fi network for IoT</td><td>Chattiest devices, contained</td><td>Any client on the main network</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Two traps. The blocker needs a fixed address — a static lease, or one outside the DHCP pool — because if its IP changes, clients keep querying a device that is no longer there. And if your router hands out its own address as DNS and forwards upstream, clients never learn about the blocker.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Choosing upstream resolvers</h2>
+    <p>The blocker must forward whatever it does not block, and that choice is a privacy decision, not a formality:</p>
+    <ul>
+      <li><strong>Your ISP's resolver</strong> is usually fastest and gives the nearest CDN answers, but every query the blocker allowed is visible to them.</li>
+      <li><strong>A public recursive resolver</strong> such as Cloudflare's <a href="https://developers.cloudflare.com/1.1.1.1/" rel="noopener">1.1.1.1</a> service shifts trust from your ISP to the resolver operator, whose options are on its <a href="https://developers.cloudflare.com/1.1.1.1/setup/" rel="noopener">1.1.1.1 setup page</a>. Read the operator's logging claims rather than relying on reputation.</li>
+      <li><strong>Your own recursive resolver</strong> (Unbound in front of the root servers) removes the third party, at the cost of the upstream's blocklist and cache warmth.</li>
+    </ul>
+    <p>Configure at least two upstreams so one outage is not an internet outage, and remember that if the blocker is unreachable and the client falls back to the router, blocking silently stops.</p>
+    <p>Many resolvers reject private addresses by design, so local hostnames stop resolving — DNS-rebind protection usually needs local entries added rather than disabled. And a VPN that pushes its own DNS can loop: the client uses your blocker, which forwards through the VPN.</p>
+
+    <h2>Verify it is actually blocking</h2>
+    <p>Do not infer coverage from a dashboard: test each device with a name you deliberately blocked.</p>
+    <ol>
+      <li><strong>Add one test domain to your block list</strong> — one you chose, not one from a list you cannot audit.</li>
+      <li><strong>Query the blocker directly</strong> from a client on that network:</li>
+    </ol>
+    <pre><code>nslookup my-test-domain.example 192.168.1.20
+dig @192.168.1.20 my-test-domain.example +short
+ipconfig /flushdns          # Windows, after a change</code></pre>
+    <ol start="3">
+      <li>Expect a dead address such as <code>0.0.0.0</code> or <code>::</code>, or no answer. Confirm the same query against your router's resolver returns a real address — that difference proves the path goes through the blocker.</li>
+      <li><strong>Check the query log</strong> for the client's address and the blocked status: that entry is your evidence the device really uses this resolver.</li>
+      <li><strong>Test the browser separately.</strong> If the system query is blocked but the resource loads, secure DNS is in use — check the browser's DNS setting, the Android Private DNS field, and any DNS profile on iOS or macOS.</li>
+      <li>Repeat for smart TVs and consoles, which frequently ignore DHCP DNS details.</li>
+    </ol>
+
+    <h2>Undoing a rule that broke something</h2>
+    <p>Something will break — usually a login flow, a captcha, a video embed, or a game launcher. Work the loop instead of guessing:</p>
+    <ol>
+      <li>Reproduce the failure, then filter the query log to that client and look for denied queries.</li>
+      <li>Identify the single domain the site needed. If several were denied, allow them one at a time and retest.</li>
+      <li>Add an <strong>exact-domain allow entry</strong>. Prefer that over a regex, and never over a disabled list.</li>
+      <li>Have the client drop its cached answer — flush DNS or restart the browser — because a cached failure persists after the fix.</li>
+      <li>Write down what you allowed and why: an unexplained allow entry is a bug waiting to be deleted.</li>
+    </ol>
+    <div class="warn-box">
+      <h2>The over-blocking mistake to avoid</h2>
+      <p>The most damaging rules are the broad ones. Allowing a whole content-delivery or authentication provider to "fix" one site can unblock tracking for thousands of domains in one line. Equally, blocking a domain many unrelated services share — an analytics endpoint, an OCSP address, a storage bucket host — breaks things where you will not think to look. Make a necessary rule as narrow as the interface allows and as short-lived as you can.</p>
+    </div>
+
+    <h2>Limits, stated honestly</h2>
+    <ul>
+      <li><strong>Nothing is inspected.</strong> Queries are names, so the blocker cannot rewrite a page, hide an element, or strip a parameter.</li>
+      <li><strong>Lists lag reality.</strong> New tracker domains rotate faster than lists update.</li>
+      <li><strong>Caching and alternate paths.</strong> Devices cache answers; some use DNS-over-QUIC or hardcode IPs, bypassing resolution.</li>
+      <li><strong>Not anonymity, not security.</strong> A DNS blocker changes nothing about what your IP address reveals. Keep the browser extension and endpoint protection — see our <a href="/best/best-antivirus-software/">antivirus roundup</a>.</li>
+    </ul>
+    <p>A VPN changes which network sees your traffic, and its own DNS behaviour is worth testing rather than assuming — our <a href="/guides/how-to-test-your-vpn/">VPN leak and kill-switch testing guide</a> covers how to confirm which resolver a device really uses. For where the blocker lives, our <a href="/best/best-vpn-router/">VPN router picks</a> and <a href="/best/best-wifi-router/">best Wi-Fi routers</a> pages discuss the router-side customisation that makes per-network DNS practical.</p>
+    <p>It also degrades quietly — lists stop updating, addresses change after a firmware update — so re-run the test-domain query every few months.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

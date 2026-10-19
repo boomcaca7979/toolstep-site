@@ -51,7 +51,7 @@ export const ADSTERRA_CONFIG: AdsterraConfig = {
   // Rollout: page types where the Native Banner is eligible (Tier A commercial
   // content). Static /reviews/*.astro pages are Tier B — deferred to a later
   // stage because they are individually hand-authored files.
-  eligibleTypes: ['best', 'compare', 'alternatives', 'reviews'],
+  eligibleTypes: ['best', 'compare', 'alternatives', 'reviews', 'guides'],
 };
 
 /** Whether the Native Banner may render for a given page type. */

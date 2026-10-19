@@ -12,6 +12,96 @@ const pageDescription =
 // Every entry mirrors the target page's own title, summary and publication date.
 const guides = [
 	{
+		title: 'Passkeys Explained: How They Work, What They Protect, and How Not to Get Locked Out',
+		href: '/guides/passkeys-explained/',
+		topic: 'Security & accounts',
+		summary:
+			'What a passkey is in credential terms, how WebAuthn challenge-response sign-in works, the difference between synced and device-bound passkeys, and the recovery planning that decides whether you are safer or locked out.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'How to Verify a Download Before You Install It: Checksums and Signatures',
+		href: '/guides/how-to-verify-a-download/',
+		topic: 'Security & accounts',
+		summary:
+			'Working checksum commands for Windows, macOS and Linux, how to check a publisher signature, and why a matching hash proves integrity rather than safety.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'The 3-2-1 Backup Rule, Applied to a Real Home-Office Computer',
+		href: '/guides/3-2-1-backup-rule/',
+		topic: 'Storage & backup',
+		summary:
+			'A concrete three-copy, two-media, one-off-site plan for one machine — why sync is not backup, how to automate it, and how to run a restore drill that actually proves the data is recoverable.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'How to Move Your Password Vault to a New Manager Without Losing Accounts',
+		href: '/guides/password-manager-migration/',
+		topic: 'Security & accounts',
+		summary:
+			'The order that keeps a vault migration reversible: export, verify, import, reconcile item by item, re-enrol second factors, cut over device by device, then destroy the plaintext file.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'Why Your Microphone Sounds Too Quiet: Gain, Input Levels, and OS Limits',
+		href: '/guides/microphone-level-setup/',
+		topic: 'Audio & conferencing',
+		summary:
+			'A four-stage signal-chain check for a quiet microphone — physical path, operating system gain, app processing, then distance and polar pattern — with what gain, input level and clipping actually mean.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'Fix Your Webcam Image: Exposure, White Balance, Framing, and Light',
+		href: '/guides/webcam-image-setup/',
+		topic: 'Audio & conferencing',
+		summary:
+			'Six layers in the order that converges — light, exposure, white balance, framing, frame rate, app processing — and a local-clip test that tells you whether the room, the camera or the meeting app is at fault.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'How to Check Whether a Drive Is Failing — and What to Do in the Hours You Have Left',
+		href: '/guides/how-to-check-drive-health/',
+		topic: 'Storage & backup',
+		summary:
+			'What SMART counters and SSD wear data really report, the failure signals they miss, and an order of operations that protects the data before any diagnostic workload touches the disk.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'Block Ads and Trackers at the Network Level: Pi-hole vs AdGuard Home, Set Up and Verified',
+		href: '/guides/dns-level-ad-blocking/',
+		topic: 'Network',
+		summary:
+			'Where to place a DNS blocker, how to choose upstream resolvers, commands that prove blocking is live on each device, how to undo a rule that broke a site — and the DoH bypass that quietly exempts some clients.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'Does Your VPN Actually Protect You? Leak Tests, Kill Switch, and DNS',
+		href: '/guides/how-to-test-your-vpn/',
+		topic: 'Network',
+		summary:
+			'A repeatable protocol: baseline, exit address, DNS, IPv6, WebRTC, a kill-switch test that does not rely on the client cooperating, and the split-tunnel rules you forgot you added.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
+		title: 'External Monitor Setup on Mac and Windows: Resolution, Scaling, Refresh Rate, and Mirroring',
+		href: '/guides/external-monitor-setup/',
+		topic: 'Displays & docks',
+		summary:
+			'Extend versus mirror, native resolution against scaling, why refresh rate is negotiated rather than declared, and how cable revision, dock bandwidth and DisplayLink decide what your desk actually does.',
+		date: 'October 2026',
+		dateISO: '2026-10-18',
+	},
+	{
 		title: 'Claude AI Watermarks Explained: Does Claude Watermark AI Text?',
 		href: '/guides/claude-ai-watermark/',
 		topic: 'AI & models',
@@ -71,7 +161,9 @@ const collectionSchema = {
 		<script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
 		<style>
 			.guides-wrap {
-				max-width: 760px;
+				box-sizing: border-box;
+				width: 100%;
+				max-width: 768px;
 				margin: 0 auto;
 				padding: 48px 24px 64px;
 				min-height: calc(100vh - 200px);

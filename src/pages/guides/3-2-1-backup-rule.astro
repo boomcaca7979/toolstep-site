@@ -1,0 +1,181 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/3-2-1-backup-rule/';
+const title = 'The 3-2-1 Backup Rule, Applied to a Real Home-Office Computer | ToolStep';
+const description = 'What 3-2-1 means in practice on one Mac or PC: which copies to make, how to automate them, why sync is not backup, and how to run a restore drill that proves it works.';
+const headline = 'The 3-2-1 Backup Rule, Applied to a Real Home-Office Computer';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "Is cloud sync the same as a backup?",
+			acceptedAnswer: { '@type': 'Answer', text: "No. Sync keeps locations matching, so deletions, bad saves, and encrypted files spread to everywhere that is connected. Version history helps, but a rolling window is not an archive and an account lockout reaches both." },
+		},
+		{
+			'@type': 'Question',
+			name: "Does a second computer in the same house count as a different medium?",
+			acceptedAnswer: { '@type': 'Answer', text: "Only weakly. Same power supply, same flood zone, same theft, often the same shared storage. A drive in another building, or a separate cloud account, is a genuinely different risk pool." },
+		},
+		{
+			'@type': 'Question',
+			name: "How often should I test a restore?",
+			acceptedAnswer: { '@type': 'Answer', text: "Quarterly is a sensible default, and any cadence beats none. Test one file from last month, one whole folder restored somewhere new, and one pull specifically from the off-site copy." },
+		},
+		{
+			'@type': 'Question',
+			name: "What about data that only exists in a web app?",
+			acceptedAnswer: { '@type': 'Answer', text: "It needs an export plan, because your disk backup never sees it. Schedule exports of mail, contacts, notes, and cloud-only documents into a folder that your Time Machine or File History destination actually covers." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>The 3-2-1 Backup Rule, Applied to a Real Home-Office Computer</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      The 3-2-1 rule is the most repeated backup advice on the internet and the least implemented, because it is usually explained as an abstraction rather than as a decision about your actual machine and data. This version assumes one home-office computer — from what counts as a copy to the restore test that proves you have one.
+    </p>
+
+    <div class="answer-box">
+      <h2>What 3-2-1 actually asks for</h2>
+      <p><strong>Three copies of anything you would hate to lose</strong> — the live data plus two independent backups.</p>
+      <p><strong>Two different kinds of media</strong>, so a single failure mode cannot take both: an internal disk plus an external drive, not two identical drives from the same batch.</p>
+      <p><strong>One copy somewhere else</strong> — a different building: a drive at a relative's home, or a cloud account not used for everyday file sharing.</p>
+      <p>The idea is usually credited to Backblaze; see its <a href="https://www.backblaze.com/blog/the-3-2-1-backup-strategy/">explanation of the strategy</a>. A rule of thumb rather than a standard — the point is not the digits but that redundancy and physical separation solve different problems.</p>
+    </div>
+
+    <h2>First, the trap: sync is not backup</h2>
+    <p>Most home-office "backups" are synchronisation, which fails in four predictable ways:</p>
+    <ul>
+      <li><strong>Deletions propagate.</strong> Delete a folder by accident and it vanishes from every connected device and the cloud copy.</li>
+      <li><strong>Bad edits propagate.</strong> Wrong program, lossy re-save, and the corrupted version is now authoritative everywhere.</li>
+      <li><strong>Encryption propagates.</strong> Ransomware on the synced machine encrypts what it can reach, including the cloud folder, unless the service keeps independent versions.</li>
+      <li><strong>Access is not ownership.</strong> A billing failure, lockout, or policy dispute can cut you off from everything in one account.</li>
+    </ul>
+    <p>Version history helps — see <a href="/reviews/google-drive-vs-dropbox-vs-onedrive/">Google Drive vs Dropbox vs OneDrive</a> for how the three handle conflicting and restored versions. But a rolling 30-day window is not an archive of a project you touched last March, and a lockout blocks the history along with the files.</p>
+
+    <h2>A concrete plan for one machine</h2>
+    <p>Assume a laptop with roughly 500 GB of data: documents, a photo library, and one client project folder.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Copy</th><th>Where it lives</th><th>How it is made</th><th>What it protects against</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1 — live</td><td>Internal drive</td><td>Nothing; this is the original</td><td>—</td></tr>
+          <tr><td>2 — local backup</td><td>External SSD or HDD attached most days</td><td>Time Machine on macOS, File History plus a system image on Windows</td><td>Accidental deletion, bad saves, a failed disk, most ransomware while the drive is unplugged</td></tr>
+          <tr><td>3 — off-site</td><td>Cloud backup account, or a second drive rotated out monthly</td><td>A dedicated backup client, or a scheduled rotation</td><td>Fire, theft, flood, or anything taking the laptop and dock drive together</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The local backup should be a backup application, not a folder you drag things into.</p>
+
+    <h3>Capacity and hardware reality</h3>
+    <p>Buy a destination at least twice the size of the data you protect: backup software keeps multiple versions, and incrementals after the first full copy fill the drive. Rankings for <a href="/best/best-external-ssd/">the best external SSDs</a>, <a href="/best/best-external-hdd/">the best external hard drives</a>, and <a href="/best/best-nas/">the best NAS devices</a> cover the trade-offs; <a href="/reviews/best-external-ssd-backup/">our backup-focused external drive list</a> is closest to this use case. A NAS can be a local target, but a NAS inside the same network is not your off-site copy.</p>
+
+    <h2>Turn on the automation you already have</h2>
+    <p>Neither platform needs third-party software for copy 2.</p>
+    <p><strong>macOS.</strong> Time Machine keeps hourly, daily, and weekly versions to an attached disk or supported network volume; steps are in Apple's <a href="https://support.apple.com/en-us/guide/mac-help/mh35860/mac">Time Machine user guide</a>. Two things people miss: Time Machine does not back up the macOS system files themselves, so a full restore means reinstalling the OS and pulling data back; and iCloud Drive and iCloud Photos already live with Apple, so decide whether you want them inside the local backup too.</p>
+    <p><strong>Windows.</strong> File History saves repeat copies of items in your libraries and chosen folders; setup and restore steps are in Microsoft's <a href="https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-and-restore-with-file-history">Backup and restore with File History</a>. It is not a whole-disk image, so pair it with a system image or treat reinstalling Windows as part of your recovery plan. If your machine runs a release whose free updates have ended, that is a reason for a working backup, not to postpone one.</p>
+    <p>Add copy 3 with a purpose-built service if the volume justifies a subscription; our comparison of <a href="/best/best-online-backup-service/">the best online backup services</a> and <a href="/best/best-cloud-storage/">the best cloud storage</a> explains which keep independent historical versions rather than mirroring your current state.</p>
+
+    <div class="warn-box">
+      <h2>The offline copy is the one everyone skips</h2>
+      <p>Three copies mean little if all are always connected, because malware, a compromised account token, and a confused sync client reach everything plugged in. The fix is cheap: one destination that is deliberately not always available. Unplug the Time Machine drive after a backup weekly. Keep the cloud backup in an account with its own password and second factor, not mapped as a drive letter. Rotate a physical drive to another location. An offline copy turns "we got hit by ransomware" into an inconvenience instead of a negotiation.</p>
+    </div>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Run a restore drill (this is where the plan becomes real)</h2>
+    <p>Schedule it quarterly, working through these in order:</p>
+    <ol>
+      <li><strong>Single file, from last month.</strong> Restore one document you edited last month from the version history. This proves the history exists, not just the latest mirror.</li>
+      <li><strong>A whole folder to a different location.</strong> Restore your most important project folder to the Desktop, not over the original. This proves you can recover without risking the live data.</li>
+      <li><strong>Off-site pull.</strong> Restore something from copy 3 specifically. Off-site copies silently stop updating — often because a client uninstalled itself after an OS upgrade.</li>
+      <li><strong>Annually: full-system feasibility.</strong> Confirm you can get from a dead machine to running again — which installer, which key, which account, which drive. You need not wipe a laptop; write down the path and check the pieces are where you think they are.</li>
+    </ol>
+    <p>Keep a one-page note beside the backup drive with three lines: where the three copies are, how to start a restore, and which account unlocks each one. In a real incident the person recovering is often not the person who designed the plan.</p>
+
+    <h2>Common failure patterns</h2>
+    <ul>
+      <li><strong>One drive doing both jobs.</strong> One external disk serving as both your local and off-site copy is one failure from zero copies.</li>
+      <li><strong>Backup software left pointed at a stale path.</strong> The classic silent failure: the destination drive was renamed, reformatted, or replaced, and nothing was written for months. Check the date of the newest backup, not the app icon in your menu bar.</li>
+      <li><strong>Protecting files but not settings, licences, or credentials.</strong> A restored machine with no key files, 2FA seeds, or server details is a slow, expensive rebuild.</li>
+      <li><strong>Skipping the media difference.</strong> Two drives from the same batch can share a defect. Different media types, or at least different brands and purchase dates, spread that risk.</li>
+      <li><strong>Never checking the drive's health.</strong> Backup destinations are ordinary disks and fail accordingly. <a href="/guides/how-to-check-drive-health/">Our guide to reading drive health</a> covers what SMART does and does not tell you.</li>
+    </ul>
+
+    <h2>FAQ</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p>Related: <a href="/reviews/best-cloud-storage-2026/">our cloud storage ranking</a> and <a href="/reviews/best-external-ssd-backup/">backup-focused external drives</a> cover hardware and services; <a href="/how-we-test/">how we test</a> explains the editorial process.</p>
+
+    <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

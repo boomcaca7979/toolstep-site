@@ -1,0 +1,188 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/passkeys-explained/';
+const title = 'Passkeys Explained: How They Work, What They Protect, and How Not to Get Locked Out | ToolStep';
+const description = 'What a passkey is, how WebAuthn public-key sign-in works, the difference between synced and device-bound passkeys, and the recovery steps that keep you out of your own account.';
+const headline = 'Passkeys Explained: How They Work, What They Protect, and How Not to Get Locked Out';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "Are passkeys the same as two-factor authentication?",
+			acceptedAnswer: { '@type': 'Answer', text: "No. A passkey is a complete credential, not a second factor bolted onto a password. It proves identity with a signature from a private key that stays on your side, so there is usually no password step and no code step. Many accounts still list both methods side by side." },
+		},
+		{
+			'@type': 'Question',
+			name: "Can a passkey be stolen or reused on another website?",
+			acceptedAnswer: { '@type': 'Answer', text: "It cannot be replayed on a lookalike domain because the credential is scoped to the origin it was made for. What can go wrong is losing access to wherever the private key lives — an unlockable device, or a sync account that gets locked or recovered by someone else." },
+		},
+		{
+			'@type': 'Question',
+			name: "What happens if I lose the device holding my passkey?",
+			acceptedAnswer: { '@type': 'Answer', text: "Synced passkeys are available from another device on the same provider account, and you can revoke the old credential from account security settings. Device-bound passkeys, such as those on a security key, are simply gone until you re-enrol. That distinction decides how bad the loss is." },
+		},
+		{
+			'@type': 'Question',
+			name: "Should I delete my passwords after creating a passkey?",
+			acceptedAnswer: { '@type': 'Answer', text: "Not right away. Support varies by site and browser, older hardware may not complete a passkey prompt, and losing the provider account password would take your synced passkeys with it. Keep a fallback until you have signed in successfully on more than one device." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Passkeys Explained: How They Work, What They Protect, and How Not to Get Locked Out</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      Most people have been offered a passkey by a site they log into and hesitated. This guide covers what a passkey is, the two storage models under one word, and the recovery planning that keeps you safer rather than locked out.
+    </p>
+
+    <div class="answer-box">
+      <h2>The short version</h2>
+      <p>A passkey is a public/private key pair created for one specific website or app. The private half stays on your devices, unlocked by your face, fingerprint, or device PIN. Signing in proves you hold that private key without sending a secret the site could lose in a breach.</p>
+      <p>It is meaningfully harder to phish than a password. The residual risk moves to whatever unlocks the device or account storing your passkeys, and to your ability to recover when that is unavailable.</p>
+    </div>
+
+    <h2>What a passkey is, in credential terms</h2>
+    <p>The underlying standard is <a href="https://www.w3.org/TR/webauthn-2/">WebAuthn</a>, the browser API for public-key credentials, built alongside the <a href="https://fidoalliance.org/passkeys/">FIDO Alliance</a>'s passkey programme. Creating one produces a key pair bound to that site's origin: the public key is registered with the website, the private key never leaves your side.</p>
+    <p>At sign-in:</p>
+    <ol>
+      <li>The site asks your browser to authenticate, presenting its origin and a one-time challenge.</li>
+      <li>Your browser asks the provider which saved credential matches that origin.</li>
+      <li>You verify yourself to the device — Touch ID, Windows Hello, a fingerprint, or a PIN.</li>
+      <li>The device signs the challenge with the private key and returns only the signature.</li>
+      <li>The site checks it against the public key stored during enrolment.</li>
+    </ol>
+    <p>Two properties follow: the transmitted secret is a single-use signature, so nothing reusable can be captured; and because the credential is scoped to an origin, a lookalike domain will not match.</p>
+
+    <h2>Two kinds of passkeys, and the difference that matters</h2>
+    <p>One word covers two storage models. Before deleting a password, work out which one you created.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th></th><th>Synced passkey</th><th>Device-bound passkey</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Private key lives</td><td>Provider sync vault — an OS keychain or password manager</td><td>One physical device or security key</td></tr>
+          <tr><td>Other devices</td><td>Yes, any device on the same provider account</td><td>No — you carry the hardware</td></tr>
+          <tr><td>Lost device means</td><td>Sign in from another synced device, if you control the provider account</td><td>Gone until you re-enrol</td></tr>
+          <tr><td>Its weak point</td><td>The provider account's recovery process</td><td>Physical custody and spare hardware</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Apple's iCloud Keychain is the clearest synced example: iCloud Keychain must be set up on the Mac before you can create one there — see <a href="https://support.apple.com/en-us/guide/passwords/mchl4af65d1a/mac/15">Sign in to an account on your Mac with a passkey</a>. Windows is the opposite default: <a href="https://support.microsoft.com/en-us/accounts-billing/security/manage-your-saved-passkeys">Microsoft's guidance on managing saved passkeys</a> calls a device-bound passkey one stored to that Windows device and deletable from Settings.</p>
+
+    <h2>Set one up without painting yourself out</h2>
+    <p>Creating one is quick; verifying you could still get in without it is the part people skip. In order:</p>
+    <ol>
+      <li><strong>Sign in with your password first.</strong> Enrol from an authenticated session, not a recovery flow.</li>
+      <li><strong>Confirm where it was stored.</strong> The prompt usually names the provider — a keychain, a password manager, or "this device". If it is ambiguous, also create the passkey on a second device rather than assuming sync.</li>
+      <li><strong>Create a second passkey on hardware you do not carry with the first.</strong> A laptop plus a phone is a reasonable pair; a phone plus the watch on the same charger is not.</li>
+      <li><strong>Keep at least one non-passkey method working.</strong> A retained password, a recovery code, or a verified second email address. Do not remove it in the same week you enrol.</li>
+      <li><strong>Test the fallback while everything is fine.</strong> Sign out, sign in with the second passkey, and confirm the provider account can still be unlocked from a rarely used browser.</li>
+      <li><strong>Only then make the passkey your primary method.</strong></li>
+    </ol>
+    <p>On shared or borrowed hardware, skip enrolment entirely: anyone who can unlock the device can complete verification, so a passkey created there is effectively a shared key.</p>
+
+    <div class="warn-box">
+      <h2>The recovery risk is the real story</h2>
+      <p>A passkey removes the "I forgot my password" path but not the need for recovery — it relocates it. For a synced passkey, your provider account becomes the master dependency: if it is locked, or its recovery process social-engineered, the passkeys inside move with it. For a device-bound passkey the dependency is physical: lose the only key and you are back to whatever fallback the site still allows.</p>
+      <p>Passkeys cut credential theft on the site side, but they concentrate importance on the account that stores or syncs them. Treat that account — usually your primary email or platform login — as needing the strongest second factor and the most careful recovery settings.</p>
+    </div>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Where passkeys go wrong: the common failures</h2>
+    <ul>
+      <li><strong>Enrolling on one device only.</strong> The usual route to a lockout.</li>
+      <li><strong>Assuming cross-vendor portability.</strong> A passkey synced into an Apple keychain is available to Apple devices; a Windows or Android device is not automatically covered. Cross-device sign-in by QR code exists because sync does not cross provider boundaries — practise it as a fallback, do not assume it.</li>
+      <li><strong>Deleting the password immediately.</strong> Sites differ in supported browsers and platforms, and the fallback is what you need on an unfamiliar machine.</li>
+      <li><strong>Forgetting passkeys inherit the device's trust.</strong> A weak unlock — a four-digit PIN shared with family, an always-unlocked tablet — makes the passkey as weak as that unlock.</li>
+      <li><strong>Never revoking.</strong> Old passkeys for a phone you sold or a laptop you wiped stay valid until removed. Both <a href="https://support.microsoft.com/en-us/accounts-billing/security/manage-your-saved-passkeys">Windows Settings</a> and each site's account security page list what is enrolled.</li>
+    </ul>
+
+    <h2>If your device is lost: the order of operations</h2>
+    <ol>
+      <li>Sign in to the affected site from any device you still control, using your fallback.</li>
+      <li>Open its account security or passkey management page and remove the credential tied to the missing hardware.</li>
+      <li>If your provider account may itself be exposed, change its password and end active sessions before touching individual sites.</li>
+      <li>Enrol a replacement passkey on a device you have, then verify the revoked one no longer appears.</li>
+      <li>Re-check the enrolled-credential list once things have settled: an entry for the replaced device can survive a re-enrolment.</li>
+    </ol>
+
+    <h2>When a passkey is not the right answer</h2>
+    <p>Some accounts genuinely warrant a hardware-bound credential instead of a synced one: banking, a domain registrar, an Apple or Google account that unlocks backups. There device-bound is a feature — you trade convenience for the guarantee that no remote sync can hand an attacker your key. Conversely, on low-stakes accounts with no recovery options at all, a passkey on a single device can turn a lost phone into an unrecoverable situation.</p>
+
+    <h2>FAQ</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p>Related on ToolStep: <a href="/compare/1password-vs-bitwarden/">1Password vs Bitwarden</a> covers whether a password manager should hold passkeys for you, and <a href="/best/best-password-manager/">the best password managers</a> ranking explains which sync credentials across platforms. If you are switching managers rather than authentication methods, follow <a href="/guides/password-manager-migration/">our vault migration guide</a> first; see <a href="/category/security/">Security tools</a> for more. Our methodology is in <a href="/how-we-test/">how we test</a>.</p>
+
+    <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

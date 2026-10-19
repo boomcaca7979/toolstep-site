@@ -1,0 +1,202 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/how-to-check-drive-health/';
+const title = 'How to Check Whether a Drive Is Failing — and What to Do in the Hours You Have Left | ToolStep';
+const description = 'What SMART attributes and SSD wear counters really tell you, the failure signals they miss, and the order to act in when a drive starts dropping out or throwing read errors.';
+const headline = 'How to Check Whether a Drive Is Failing — and What to Do in the Hours You Have Left';
+const published = '2026-10-18';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: "My drive reports SMART status as OK. Is it safe?",
+			acceptedAnswer: { '@type': 'Answer', text: "Only un-flagged. A pass means no vendor threshold has been crossed at that moment. Drives do fail without prior SMART warning, especially from electronic or firmware faults, and some attributes never arrive through USB enclosures. Keep backups regardless of the report." },
+		},
+		{
+			'@type': 'Question',
+			name: "Should I run a disk repair tool if I suspect failure?",
+			acceptedAnswer: { '@type': 'Answer', text: "After the copy, not before. Repair, extended self-tests, defragmentation, scrubs, and benchmarks are sustained workloads on a device you already distrust." },
+		},
+		{
+			'@type': 'Question',
+			name: "How many reallocated sectors mean the drive is dying?",
+			acceptedAnswer: { '@type': 'Answer', text: "There is no universal number, because thresholds are manufacturer- and model-specific. Trend plus symptoms is the defensible test: a climbing count with read errors or dropouts is enough reason to stop trusting the drive with the only copy of anything." },
+		},
+		{
+			'@type': 'Question',
+			name: "Do SSDs warn before they fail?",
+			acceptedAnswer: { '@type': 'Answer', text: "Sometimes — through wear, available-spare, media and integrity error counters, and unsafe shutdown counts. But they can also stop responding with no advance signal, so wear figures are planning information, not an alarm." },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Check Whether a Drive Is Failing — and What to Do in the Hours You Have Left</h1>
+      <p class="meta">Published October 18, 2026 &middot; ToolStep Editorial Team</p>
+    </header>
+
+    <p class="lead">
+      A dying drive rarely announces it: it hesitates, throws one read error you blame on the cable, then works fine for weeks. Here is what the health data says, what it cannot say, and the order to act in.
+    </p>
+
+    <div class="answer-box">
+      <h2>The short version</h2>
+      <p><strong>Back up before you diagnose.</strong> Repair tools, self-tests, defragmentation and benchmarks are sustained workloads on a device you already suspect. Copy first, in small batches, starting with what could not be recreated.</p>
+      <p>Then read two sources: the drive's self-report (SMART plus SSD wear counters), and your own observations. The second is often the earlier warning, and needs no software.</p>
+      <p>A clean report is the absence of a flag, not a guarantee.</p>
+    </div>
+
+    <h2>What SMART and wear counters actually report</h2>
+    <p>SMART (Self-Monitoring, Analysis and Reporting Technology) is a set of per-drive counters plus thresholds the manufacturer sets per model. It is a dashboard, not a verdict.</p>
+    <h3>Mechanical drives</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Signal</th><th>What it means</th><th>What it does not mean</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Reallocated sector count</td><td>Blocks retired after problems</td><td>Not the data lost: one sector is a handful of bytes</td></tr>
+          <tr><td>Current pending sector count</td><td>Sectors awaiting reassignment after a read problem</td><td>Not permanent: a successful rewrite can resolve it</td></tr>
+          <tr><td>Uncorrectable / offline uncorrectable</td><td>Data that could not be recovered</td><td>Not always visible in file access yet</td></tr>
+          <tr><td>UDMA CRC error count</td><td>Transfer errors on the cable or connector</td><td>Often the cable, not the drive</td></tr>
+          <tr><td>Spin retry / seek error counts</td><td>Mechanical attempts that needed repeats</td><td>Not a countdown to failure</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Solid-state and NVMe drives</h3>
+    <p>Flash reports write endurance consumed, spare blocks remaining, media and data-integrity errors, unsafe power losses, and bytes written. Wear indicators are estimates from write volume against a design figure: they describe consumption, not imminent death. Attribute names differ between vendors, and some NVMe health data is only correctly read by the manufacturer's own tool.</p>
+
+    <h2>How to read the health data</h2>
+    <h3>Windows</h3>
+    <p>PowerShell's Storage module needs no install. In an elevated prompt:</p>
+    <pre><code>Get-PhysicalDisk | Select-Object FriendlyName, BusType, Media_type, HealthStatus
+Get-PhysicalDisk | Get-StorageReliabilityCounter | Select-Object DeviceId, Temperature, Wear, ReadErrorsTotal, WriteErrorsTotal</code></pre>
+    <p><code>HealthStatus</code> is Windows' interpretation of the drive's report. A healthy-looking <code>HealthStatus</code> on a drive that disconnects points at the cable, port, or enclosure rather than the platters.</p>
+    <h3>macOS</h3>
+    <p>Disk Utility's First Aid checks and repairs the file system — useful for volume problems, and documented by Apple in the <a href="https://support.apple.com/guide/disk-utility/dskutl1040/mac" rel="noopener">Disk Utility repair guide</a>. It is not a hardware health report, and you should run it after backing up. For hardware counters, <code>smartctl</code> from the open-source <a href="https://www.smartmontools.org/" rel="noopener">smartmontools</a> project reads them directly:</p>
+    <pre><code>sudo smartctl -a /dev/disk4
+sudo smartctl -a -d sat /dev/disk4   # some USB/SATA enclosures need the device type forced</code></pre>
+    <h3>Linux</h3>
+    <pre><code>sudo smartctl -a /dev/sda
+sudo smartctl -x /dev/nvme0
+sudo smartctl -t long /dev/sda      # extended self-test: run only after your copy is safe</code></pre>
+    <p>Record the model and firmware with <code>smartctl -i</code>: SSD firmware updates sometimes address reliability issues, and the manufacturer's tool says whether one applies to your model.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>The signals SMART does not contain</h2>
+    <p>Weigh these as much as any counter.</p>
+    <ul>
+      <li><strong>Intermittent disappearance.</strong> The volume unmounts or re-enumerates, especially when the desk is brushed or the drive is warm.</li>
+      <li><strong>Long stalls during reads.</strong> A folder copy freezes at the same file each time; a region is likely unreadable.</li>
+      <li><strong>Read-only remount.</strong> Some file systems force a volume read-only after detecting inconsistency — loud, even when SMART says nothing.</li>
+      <li><strong>Errors in the system log.</strong> I/O errors, resets and timeouts appear in Event Viewer, Console, or <code>dmesg</code> with the device name.</li>
+      <li><strong>Progressive corruption.</strong> Archives that no longer extract, photos that render half grey, checksums that stop matching — our <a href="/guides/how-to-verify-a-download/">download verification guide</a> covers hashing anything important.</li>
+      <li><strong>Any new mechanical noise.</strong> Clicking, ticking in a repeating rhythm, or a persistent high-pitched tone means stop: power it down rather than testing whether it recovers.</li>
+    </ul>
+
+    <h2>What the report cannot tell you</h2>
+    <ul>
+      <li><strong>It does not predict timing.</strong> Thresholds are vendor-defined per model, and crossing one is a manufacturer's policy decision, not a physical event.</li>
+      <li><strong>Electronic and firmware failures give no warning.</strong> A controller, power component, or firmware fault can end a drive between one poll and the next.</li>
+      <li><strong>Enclosures hide data.</strong> Many USB-to-SATA bridges do not forward SMART commands, so a blank or partial report is often a transport limitation. Test the drive internally, or with another bridge.</li>
+      <li><strong>Nobody is watching unless you set it up:</strong> a health page opened once a year shows only that moment, while scheduled checks with a log give the trend.</li>
+      <li><strong>Temperature and utilisation are context, not verdicts:</strong> a cool drive is not necessarily a healthy one.</li>
+    </ul>
+    <p><a href="https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data" rel="noopener">Backblaze's published drive statistics</a> show failure rates varying by model and batch — among datacentre drives under management, not a single desktop disk.</p>
+
+    <div class="warn-box">
+      <h2>The hours you have left: order of operations</h2>
+      <ol>
+        <li><strong>Stop writing to it.</strong> Close syncing clients, backup agents, downloads, virtual machines, and anything with a database on that volume.</li>
+        <li><strong>Copy in priority order, in small batches.</strong> Documents, then irreplaceable photos and video, then project source files, then settings and licences, then anything reinstallable. A hang then costs one folder, not the session.</li>
+        <li><strong>Expect failures and record them.</strong> If a file aborts the copy, skip it and continue; the list of files that would not read is itself diagnostic.</li>
+        <li><strong>Verify the copy by opening it.</strong> A transfer that completed without error can still have copied corrupt content; open a sample from each category.</li>
+        <li><strong>Only now run diagnostics.</strong> Self-test, First Aid or <code>fsck</code>, vendor tools, and a cable/port/enclosure swap to rule out the cheap explanations.</li>
+        <li><strong>Do not repeatedly power-cycle a mechanical drive that is making noise.</strong> Each spin-up is more wear on a device already struggling.</li>
+      </ol>
+      <p>Do not run recovery software against the failing drive itself: it writes temporary files and re-reads the whole surface. Point it at a healthy target disk; if the data justifies it, get a professional recovery quote first.</p>
+    </div>
+
+    <h2>Turning the result into a decision</h2>
+    <ul>
+      <li><strong>Counters clean, symptoms present:</strong> suspect the connection. Replace the cable, change the port, test the drive outside its enclosure, update firmware, and check the power path — an under-powered hub produces dropouts that look like a dying disk.</li>
+      <li><strong>Counters stable but non-zero:</strong> a monitored drive, not a trusted one. Keep a log, and never let it hold the only copy.</li>
+      <li><strong>Counters rising, or integrity errors present:</strong> plan replacement now and stop using it for anything that matters.</li>
+      <li><strong>SSD endurance genuinely consumed:</strong> it may run a long time still, but it is no longer a place for primary data.</li>
+      <li><strong>Noisy mechanical drive:</strong> the decision is made. Copy what you can, then retire it.</li>
+    </ul>
+    <p>A disk is a component, not a backup. Whether you replace it with a <a href="/best/best-external-ssd/">portable SSD</a>, a desktop <a href="/best/best-external-hdd/">external hard drive</a>, or a <a href="/best/best-nas/">NAS</a> with redundancy, redundancy is what protects you — our <a href="/guides/3-2-1-backup-rule/">3-2-1 backup guide</a> walks through the layout, and the <a href="/category/storage/">storage category</a> lists the related roundups. Redundancy inside one box is still one box: two disks from the same batch, in the same room, on the same supply share your bad days.</p>
+    <p>Set a cadence you will keep: a monthly health check appended to a log, and a backup that leaves the room.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>
