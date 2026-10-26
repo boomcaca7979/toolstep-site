@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Monday vs Asana: Best Work Management Tool 2026 | ToolStep";
 const description = "Monday vs Asana 2026 comparison: boards, automation, timelines, pricing, and integrations. Find which work management platform wins for your team.";
@@ -424,6 +425,9 @@ const description = "Monday vs Asana 2026 comparison: boards, automation, timeli
     <p>Neither Monday nor Asana is optimized for software development. Both support Kanban boards and integrations with GitHub and Jira, but neither has native sprint planning, burndown charts, or developer-specific workflows. For software development, consider Linear, Jira, or GitHub Projects instead. For cross-functional work that includes engineering, Asana is slightly better due to dependencies.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

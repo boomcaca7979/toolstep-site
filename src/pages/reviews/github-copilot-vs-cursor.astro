@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "GitHub Copilot vs Cursor: Best AI Coding Tool 2026 | ToolStep";
 const description = "GitHub Copilot vs Cursor 2026 comparison: inline completions, codebase context, agent workflows, pricing, and IDE support. Find which AI coding tool wins.";
@@ -409,6 +410,9 @@ const description = "GitHub Copilot vs Cursor 2026 comparison: inline completion
     <p>Yes, you can use both together. Since Cursor is built on a VS Code fork, you can install the GitHub Copilot extension inside Cursor. However, most developers pick one. A common approach is to use Cursor for daily coding and complex refactoring, and keep Copilot for quick inline completions in other IDEs like JetBrains or Visual Studio. The combined cost is $30 per month.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

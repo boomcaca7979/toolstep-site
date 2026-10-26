@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 import { getBestEntries, getBestEntryBySlug } from '../../data/content';
 import { authors } from '../../data/authors';
 import { buildBestTitle } from '../../utils/seo';
@@ -1106,6 +1107,9 @@ const articleSchema = {
           )}
 
           {/* Previous / Next */}
+
+          {/* Story that declares this page as its primary destination */}
+          <RelatedStory />
 
           {/* E-E-A-T: Full Affiliate Disclosure */}
           <AffiliateDisclosure />

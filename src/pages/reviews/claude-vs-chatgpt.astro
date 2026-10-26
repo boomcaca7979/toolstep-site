@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Claude vs ChatGPT: Which AI Assistant Is Better in 2026? | ToolStep";
 const description = "Claude vs ChatGPT 2026 comparison: writing, coding, reasoning, pricing, context, and safety. Find which AI assistant wins for your workflow today.";
@@ -409,6 +410,9 @@ const description = "Claude vs ChatGPT 2026 comparison: writing, coding, reasoni
 
     <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

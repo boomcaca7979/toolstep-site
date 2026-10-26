@@ -3,8 +3,16 @@ import PageLayout from '../../components/PageLayout.astro';
 import { storiesData } from '../../data/stories';
 
 const pageTitle = 'Web Stories — ToolStep Visual Stories';
-const pageDescription = `${storiesData.length} visual web stories covering hardware reviews, software comparisons, and productivity tips. Swipe through our top picks in 60 seconds.`;
+const pageDescription = `${storiesData.length} web stories covering hardware reviews, software comparisons, and productivity guides — concise, text-first breakdowns of the tools we test.`;
 const lastUpdated = 'June 2026';
+
+const fmtDate = (iso) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
 
 // Group by category preserving order
 const categories: { name: string; color: string; items: typeof storiesData }[] = [];
@@ -21,7 +29,7 @@ for (const story of storiesData) {
 <PageLayout
   title="ToolStep Web Stories: Software & AI Tool Guides — ToolStep"
   description={pageDescription}
-  subtitle={`${storiesData.length} visual stories — swipe through our top picks, comparisons, and buying guides in 60 seconds.`}
+  subtitle={`${storiesData.length} stories — clear, text-first breakdowns of our top picks, comparisons, and buying guides.`}
   lastUpdated={lastUpdated}
   breadcrumbs={[
     { name: 'Home', href: '/' },
@@ -38,25 +46,15 @@ for (const story of storiesData) {
         </h2>
         <div class="stories-grid">
           {cat.items.map((story) => (
-            <a href={`/stories/${story.slug}/`} class="story-card">
-              <div class="story-poster">
-                <img
-                  src={story.poster}
-                  alt={story.title}
-                  width="270"
-                  height="480"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="story-overlay">
-                  <div class="story-category" style={`background: ${story.color}`}>{story.category}</div>
-                  <div class="story-pages-badge">{story.pages.length} slides</div>
-                </div>
+            <a href={`/stories/${story.slug}/`} class="story-card" style={`--accent: ${story.color}`}>
+              <div class="story-eyebrow">
+                <span class="eyebrow-dot" aria-hidden="true"></span>
+                <span class="eyebrow-cat">{story.category}</span>
+                <time class="eyebrow-date" datetime={story.datePublished}>{fmtDate(story.datePublished)}</time>
               </div>
-              <div class="story-info">
-                <div class="story-title">{story.title}</div>
-                <div class="story-desc">{story.description}</div>
-              </div>
+              <h3 class="story-title">{story.title}</h3>
+              <p class="story-desc">{story.description}</p>
+              <span class="story-read">Read the story <span aria-hidden="true">→</span></span>
             </a>
           ))}
         </div>
@@ -97,7 +95,7 @@ for (const story of storiesData) {
   }
   .stories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 1rem;
   }
   .story-card {
@@ -105,77 +103,71 @@ for (const story of storiesData) {
     color: inherit;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    transition: transform 0.15s ease;
+    gap: 0.45rem;
+    padding: 1.05rem 1.15rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
   }
   .story-card:hover {
     transform: translateY(-3px);
+    border-color: rgb(var(--gray));
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
   }
-  .story-poster {
-    position: relative;
-    aspect-ratio: 9 / 16;
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-  }
-  .story-poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .story-overlay {
-    position: absolute;
-    inset: 0;
+  .story-eyebrow {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0.5rem;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.5) 100%);
-  }
-  .story-category {
-    align-self: flex-start;
-    font-size: 0.68rem;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
   }
-  .story-pages-badge {
-    align-self: flex-end;
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 3px 8px;
-    border-radius: 6px;
-    backdrop-filter: blur(4px);
+  .eyebrow-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--accent);
   }
-  .story-info {
-    padding: 0 0.1rem;
+  .eyebrow-cat {
+    color: rgb(var(--gray-dark));
+  }
+  .eyebrow-date {
+    margin-left: auto;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgb(var(--gray));
   }
   .story-title {
-    font-size: 0.92rem;
+    font-size: 1.02rem;
     font-weight: 700;
     color: rgb(var(--black));
-    line-height: 1.3;
-    margin-bottom: 0.15rem;
+    line-height: 1.32;
+    margin: 0.1rem 0 0;
   }
   .story-desc {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     color: rgb(var(--gray));
-    line-height: 1.4;
+    line-height: 1.5;
+    margin: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  .story-read {
+    margin-top: auto;
+    padding-top: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
   @media (max-width: 720px) {
     .stories-grid {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: 1fr;
       gap: 0.75rem;
     }
   }

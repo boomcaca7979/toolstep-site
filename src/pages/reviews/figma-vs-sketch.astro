@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Figma vs Sketch: Which Design Tool Is Better in 2026? | ToolStep";
 const description = "Figma vs Sketch 2026 comparison: collaboration, prototyping, components, pricing, platform support, and ecosystem. Find which design tool wins for your team.";
@@ -420,6 +421,9 @@ const description = "Figma vs Sketch 2026 comparison: collaboration, prototyping
     <p>Sketch has a larger and more mature plugin ecosystem, with thousands of plugins built over a decade. Figma's plugin ecosystem is newer but growing fast, with official support since 2019. Sketch plugins tend to be more powerful for Mac-specific workflows, while Figma plugins are more focused on collaboration and developer handoff.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

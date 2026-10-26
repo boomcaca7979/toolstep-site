@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Canva vs Figma: Which Design Tool Is Better in 2026? | ToolStep";
 const description = "Canva vs Figma 2026 comparison: features, pricing, collaboration, prototyping, and use cases. Find which design tool wins for your workflow today.";
@@ -394,6 +395,9 @@ const description = "Canva vs Figma 2026 comparison: features, pricing, collabor
 
     <p style="text-align:center;margin:2rem 0;"><small>Learn more about our <a href="/editorial-policy/">editorial policy</a>.</small></p>
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

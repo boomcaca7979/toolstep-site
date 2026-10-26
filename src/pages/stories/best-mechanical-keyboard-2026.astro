@@ -3,6 +3,11 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 
+// Text-first editorial layout: this page ships no og:image / twitter:image /
+// JSON-LD `image`. The imagery it used to reference came from
+// trae-api-cn.mchost.guru (now 302 -> authentication failed) and the interim
+// locally generated placeholder card was retired with it.
+
 const pageTitle = 'Best Mechanical Keyboards 2026: 5 Evaluated for Work';
 const pageDescription = 'We evaluated 5 mechanical keyboards — Keychron K8, MX Keys S, Ducky One 3, NuPhy Air75, Keychron Q1. See which fits best for work in 2026.';
 const publishDate = '2026-06-26';
@@ -93,7 +98,7 @@ const faqs = [
 
 const tocSections = [
   { id: 'tldr', label: 'TL;DR' },
-  { id: 'story-gallery', label: 'Story Gallery: 5 Keyboards at a Glance' },
+  { id: 'keyboards-at-a-glance', label: '5 Keyboards at a Glance' },
   { id: 'comparison-table', label: 'Quick Comparison Table' },
   { id: 'keychron-k8', label: '1. Keychron K8 — Best Wireless' },
   { id: 'logitech-mx-keys-s', label: '2. Logitech MX Keys S — Best Productivity' },
@@ -116,13 +121,14 @@ const tocSections = [
   { id: 'related-articles', label: 'Related Articles' },
 ];
 
-const storySlides = [
-  { headline: 'Keychron K8', subtext: 'Best wireless — $79', prompt: 'Keychron K8 mechanical keyboard on desk, vertical' },
-  { headline: 'Logitech MX Keys S', subtext: 'Best productivity — $109', prompt: 'Logitech MX Keys S keyboard on desk, vertical' },
-  { headline: 'Ducky One 3', subtext: 'Best typing feel — $99', prompt: 'Ducky One 3 mechanical keyboard, vertical' },
-  { headline: 'NuPhy Air75', subtext: 'Best low-profile — $109', prompt: 'NuPhy Air75 low-profile keyboard, vertical' },
-  { headline: 'Keychron Q1', subtext: 'Best premium — $179', prompt: 'Keychron Q1 custom keyboard, vertical' },
-];
+// Section anchors for each keyboard's full analysis further down the page.
+const keyboardAnchors = {
+  'Keychron K8': 'keychron-k8',
+  'Logitech MX Keys S': 'logitech-mx-keys-s',
+  'Ducky One 3': 'ducky-one-3',
+  'NuPhy Air75': 'nuphy-air75',
+  'Keychron Q1': 'keychron-q1',
+};
 
 const storySchema = {
   '@context': 'https://schema.org',
@@ -140,7 +146,6 @@ const storySchema = {
       url: 'https://www.toolstep.top/favicon.svg',
     },
   },
-  image: [`https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent('Mechanical keyboard on wooden desk with RGB lighting, product photo, vertical')}&image_size=portrait_16_9`],
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
 };
 
@@ -164,9 +169,6 @@ const faqSchema = {
   })),
 };
 
-function img(prompt: string, size: string = 'portrait_16_9'): string {
-  return `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent(prompt)}&image_size=${size}`;
-}
 ---
 
 <!doctype html>
@@ -182,13 +184,11 @@ function img(prompt: string, size: string = 'portrait_16_9'): string {
   <meta property="og:description" content={pageDescription} />
   <meta property="og:url" content={pageUrl} />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content={img('Mechanical keyboard on wooden desk with RGB lighting, product photo, landscape', 'landscape_16_9')} />
   <meta property="og:site_name" content="ToolStep" />
 
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content={pageTitle} />
   <meta name="twitter:description" content={pageDescription} />
-  <meta name="twitter:image" content={img('Mechanical keyboard on wooden desk with RGB lighting, product photo, landscape', 'landscape_16_9')} />
 
   <script type="application/ld+json" set:html={JSON.stringify(storySchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -217,16 +217,6 @@ function img(prompt: string, size: string = 'portrait_16_9'): string {
         </div>
       </header>
 
-      <img
-        src={img('Mechanical keyboard on wooden desk with RGB lighting, product photo, landscape', 'landscape_16_9')}
-        alt="Best mechanical keyboards 2026 lineup on a wooden desk"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        width="1280"
-        height="720"
-      />
-
       <section id="tldr" class="tldr-section">
         <h2>TL;DR</h2>
         <div class="tldr-card">
@@ -244,25 +234,19 @@ function img(prompt: string, size: string = 'portrait_16_9'): string {
         </ul>
       </nav>
 
-      <section id="story-gallery" class="story-gallery">
-        <h2>Story Gallery: 5 Keyboards at a Glance</h2>
-        <p>Swipe through our visual story to see each keyboard in action, then read the full analysis below.</p>
-        <div class="gallery-grid">
-          {storySlides.map((slide, i) => (
-            <div class="gallery-card">
-              <img
-                src={img(slide.prompt)}
-                alt={`${slide.headline} mechanical keyboard — ${slide.subtext}`}
-                loading="lazy"
-                decoding="async"
-                width="360"
-                height="640"
-              />
-              <div class="gallery-card-text">
-                <h3>{slide.headline}</h3>
-                <p>{slide.subtext}</p>
-              </div>
-            </div>
+      <section id="keyboards-at-a-glance" class="keyboards-glance">
+        <h2>5 Keyboards at a Glance</h2>
+        <p>The five keyboards evaluated in this guide and the role each earns. Every card links to its full analysis below, or jump straight to the <a href="#comparison-table">comparison table</a>.</p>
+        <div class="glance-grid">
+          {keyboards.map((k, i) => (
+            <a class="glance-card" href={`#${keyboardAnchors[k.name]}`}>
+              <span class="glance-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="glance-tag">{k.tagline}</span>
+              <span class="glance-name">{k.name}</span>
+              <span class="glance-meta">${k.price} · {k.switchType}</span>
+              <span class="glance-best">Best for: {k.bestFor}</span>
+              <span class="glance-link">Full analysis ↓</span>
+            </a>
           ))}
         </div>
         <p class="gallery-cta">
@@ -272,8 +256,9 @@ function img(prompt: string, size: string = 'portrait_16_9'): string {
 
       <section id="comparison-table">
         <h2>Quick Comparison Table</h2>
-        <table class="comparison-table">
-          <thead>
+        <div class="table-scroll">
+          <table class="comparison-table">
+            <thead>
             <tr>
               <th>Keyboard</th>
               <th>Price</th>
@@ -297,7 +282,8 @@ function img(prompt: string, size: string = 'portrait_16_9'): string {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       </section>
 
       <section id="keychron-k8">
@@ -542,6 +528,10 @@ function img(prompt: string, size: string = 'portrait_16_9'): string {
 
   <style>
     .story-page { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    /* Bare tables (Performance / Pricing) would otherwise push the page wider
+       than the viewport on phones; make them scroll in place instead. */
+    table:not(.comparison-table) { display: block; overflow-x: auto; }
     .breadcrumb { font-size: 0.85rem; color: #666; margin-bottom: 1.5rem; }
     .breadcrumb a { color: #2563eb; text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
@@ -558,12 +548,21 @@ function img(prompt: string, size: string = 'portrait_16_9'): string {
     .toc li { padding: 0.2rem 0; break-inside: avoid; }
     .toc a { color: #2563eb; text-decoration: none; font-size: 0.9rem; }
     .toc a:hover { text-decoration: underline; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin: 1rem 0; }
-    .gallery-card { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
-    .gallery-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 0; margin: 0; }
-    .gallery-card-text { padding: 0.75rem; }
-    .gallery-card-text h3 { font-size: 0.95rem; margin: 0; }
-    .gallery-card-text p { font-size: 0.8rem; color: #666; margin: 0.25rem 0 0; }
+    .glance-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .glance-card {
+      display: flex; flex-direction: column; gap: 0.3rem;
+      padding: 1rem 1.1rem; background: #fff;
+      border: 1px solid #e5e7eb; border-top: 3px solid #ea580c; border-radius: 10px;
+      text-decoration: none;
+      transition: box-shadow 0.15s ease;
+    }
+    .glance-card:hover { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); }
+    .glance-num { font-size: 1.5rem; font-weight: 800; line-height: 1; color: #ea580c; }
+    .glance-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #666; }
+    .glance-name { font-size: 1.05rem; font-weight: 700; color: #1a1a1a; }
+    .glance-meta { font-size: 0.82rem; color: #555; }
+    .glance-best { font-size: 0.82rem; color: #555; }
+    .glance-link { margin-top: 0.35rem; font-size: 0.8rem; font-weight: 600; color: #ea580c; }
     .gallery-cta { text-align: center; margin: 1.5rem 0; }
     .gallery-cta a { color: #ea580c; font-weight: 700; text-decoration: none; }
     .comparison-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }

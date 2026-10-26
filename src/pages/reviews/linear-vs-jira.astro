@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Linear vs Jira: Which Project Tool Is Better in 2026? | ToolStep";
 const description = "Linear vs Jira 2026 comparison: speed, issues, sprints, roadmaps, pricing, and integrations. Find which project tool wins for software development teams.";
@@ -419,6 +420,9 @@ const description = "Linear vs Jira 2026 comparison: speed, issues, sprints, roa
     <p>Both integrate well with GitHub, but Linear's integration is more automated. When you mention a Linear issue in a GitHub PR title or branch name, Linear automatically links the PR, updates status when the PR merges, and closes the issue if configured. Jira requires more manual linking but supports deeper integration with Bitbucket and GitLab for enterprise workflows.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

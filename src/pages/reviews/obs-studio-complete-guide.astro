@@ -4,6 +4,7 @@ import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const pageTitle = 'OBS Studio Complete Guide: How to Record Your Screen for Free in 2026 - ' + SITE_TITLE;
 const pageDescription = 'A step-by-step guide to using OBS Studio for screen recording and live streaming. Completely free and works on Windows, Mac, and Linux.';
@@ -95,6 +96,9 @@ const pageDescription = 'A step-by-step guide to using OBS Studio for screen rec
 			<p><em>Disclaimer: This post contains affiliate links. We may earn a commission if you purchase through these links.</em></p>
 
 			<AffiliateDisclosure />
+		  {/* Story that declares this page as its primary destination */}
+		  <RelatedStory />
+
 		</main>
 		<Footer />
 	</body>

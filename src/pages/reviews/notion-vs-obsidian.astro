@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Notion vs Obsidian: Which Note App Is Better in 2026? | ToolStep";
 const description = "Notion vs Obsidian 2026 comparison: blocks vs markdown, sync, pricing, collaboration, plugins, and use cases. Find which note app fits your workflow.";
@@ -409,6 +410,9 @@ const description = "Notion vs Obsidian 2026 comparison: blocks vs markdown, syn
     <p>Notion has the better mobile app for everyday use. Its iOS and Android apps mirror the desktop experience with full database support, templates, and collaboration. Obsidian's mobile app is functional but slower for complex vaults, and lacks some plugin support. For quick capture and team access on the go, Notion wins. For reading and light editing of a research vault, Obsidian mobile works fine.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

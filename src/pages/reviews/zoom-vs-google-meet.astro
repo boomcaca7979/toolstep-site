@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Zoom vs Google Meet: Best Video Call Tool 2026 | ToolStep";
 const description = "Zoom vs Google Meet 2026 comparison: participant limits, recording, AI features, pricing, security, and integrations. Find which video tool fits your team.";
@@ -427,6 +428,9 @@ const description = "Zoom vs Google Meet 2026 comparison: participant limits, re
     <p>Both are highly secure. Zoom uses AES-256 GCM encryption, supports end-to-end encryption for one-on-one calls, and is SOC 2 Type II and HIPAA compliant. Google Meet uses the same encryption as Google Workspace, is SOC 2 Type II and HIPAA compliant, and benefits from Google's broader security infrastructure. For enterprise compliance, both meet the bar. For end-to-end encryption, Zoom offers it for one-on-one calls while Google Meet does not.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

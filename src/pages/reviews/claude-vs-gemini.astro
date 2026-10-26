@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Claude vs Gemini: Which AI Assistant Is Better in 2026? | ToolStep";
 const description = "Claude vs Gemini 2026 comparison: context window, reasoning, coding, pricing, multimodal, and safety. Find which AI assistant wins for your workflow.";
@@ -433,6 +434,9 @@ const description = "Claude vs Gemini 2026 comparison: context window, reasoning
     <p>Yes, and many professionals do. A common workflow is to use Gemini for research and data-heavy drafts because of its 2 million token window and built-in search, then refine the output in Claude for final polish and voice consistency. The combined monthly cost is around $40, which is still less than a single hour of freelance writer or developer time.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

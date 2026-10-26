@@ -1,4 +1,7 @@
 ---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
 import { storiesData } from '../../data/stories';
 import { authors } from '../../data/authors';
 
@@ -16,7 +19,34 @@ const pageUrl = new URL(`/stories/${story.slug}/`, Astro.site).toString();
 const publisherUrl = new URL('/', Astro.site).toString();
 const storiesIndexUrl = new URL('/stories/', Astro.site).toString();
 
-// Story metadata schema (Discover-friendly)
+// Text-first editorial layout: this page intentionally ships no story imagery
+// and no og:image / twitter:image / JSON-LD `image`. The imagery it used to
+// reference came from trae-api-cn.mchost.guru (now 302 -> authentication
+// failed) and the interim gradient placeholder cards were retired with it.
+const words = story.content.split(/\s+/).filter(Boolean).length;
+const readMinutes = Math.max(2, Math.round(words / 200));
+const fmtDate = (iso) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+// pages[0] is the cover (same text as the hero below) and the last page is the
+// CTA slide (rendered as a real link). Everything in between is the story body.
+const slideCards = story.pages.slice(1, -1);
+
+const ctaPage = story.pages.find((p) => p.ctaUrl);
+const ctaUrl = ctaPage?.ctaUrl ?? null;
+const ctaLabel = ctaPage?.ctaLabel ?? 'Read the full breakdown';
+
+const relatedStories = (story.relatedStories ?? [])
+  .filter((slug) => slug !== story.slug)
+  .map((slug) => storiesData.find((s) => s.slug === slug))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s));
+const relatedReads = story.relatedReads ?? [];
+
 const storySchema = {
   '@context': 'https://schema.org',
   '@type': 'WebStory',
@@ -28,16 +58,11 @@ const storySchema = {
   publisher: {
     '@type': 'Organization',
     name: 'ToolStep',
-    logo: {
-      '@type': 'ImageObject',
-      url: story.publisherLogo,
-    },
+    logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', Astro.site).toString() },
   },
-  image: [story.poster, story.posterLandscape],
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
 };
 
-// Breadcrumb schema
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -50,341 +75,315 @@ const breadcrumbSchema = {
 ---
 
 <!doctype html>
-<html ⚡ lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{story.title} — ToolStep Web Stories</title>
     <meta name="description" content={story.description} />
     <link rel="canonical" href={pageUrl} />
 
-    {/* Open Graph + Twitter for share-friendly */}
     <meta property="og:title" content={story.title} />
     <meta property="og:description" content={story.description} />
-    <meta property="og:image" content={story.poster} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:type" content="article" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={story.title} />
     <meta name="twitter:description" content={story.description} />
-    <meta name="twitter:image" content={story.poster} />
 
-    {/* AMP runtime */}
-    <script is:inline async src="https://cdn.ampproject.org/v0.js"></script>
-    <script is:inline async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
-
-    {/* Story metadata schema */}
     <script type="application/ld+json" set:html={JSON.stringify(storySchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-
-    {/* AMP boilerplate CSS */}
-    <style is:inline amp-boilerplate>
-      body {
-        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      }
-      @-webkit-keyframes -amp-start {
-        from { visibility: hidden; }
-        to { visibility: visible; }
-      }
-      @-moz-keyframes -amp-start {
-        from { visibility: hidden; }
-        to { visibility: visible; }
-      }
-      @-ms-keyframes -amp-start {
-        from { visibility: hidden; }
-        to { visibility: visible; }
-      }
-      @-o-keyframes -amp-start {
-        from { visibility: hidden; }
-        to { visibility: visible; }
-      }
-      @keyframes -amp-start {
-        from { visibility: hidden; }
-        to { visibility: visible; }
-      }
-    </style>
-    <noscript set:html={'<style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>'} />
-
-    {/* Custom styles — AMP-safe (no external fonts, no !important on layout) */}
-    <style is:inline amp-custom>
-      :root {
-        --story-accent: {story.color};
-      }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #1a1a1a;
-      }
-      amp-story {
-        background: #1a1a1a;
-      }
-
-      /* Cover slide */
-      .cover-headline {
-        font-size: 2.4rem;
-        font-weight: 800;
-        line-height: 1.15;
-        color: #ffffff;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-        margin: 0 0 0.5rem;
-      }
-      .cover-subtext {
-        font-size: 1.05rem;
-        line-height: 1.5;
-        color: rgba(255, 255, 255, 0.92);
-        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
-        margin: 0;
-      }
-
-      /* Content slide headlines */
-      .slide-headline {
-        font-size: 2rem;
-        font-weight: 800;
-        line-height: 1.2;
-        color: #ffffff;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
-        margin: 0 0 0.5rem;
-      }
-      .slide-subtext {
-        font-size: 1.1rem;
-        line-height: 1.5;
-        color: rgba(255, 255, 255, 0.92);
-        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
-        font-weight: 500;
-        margin: 0;
-      }
-
-      /* CTA slide */
-      .cta-headline {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: #ffffff;
-        margin: 0 0 0.5rem;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-      }
-      .cta-subtext {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.88);
-        margin: 0 0 1.5rem;
-        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-      }
-
-      /* Gradient overlay layer (for readability) */
-      .gradient-overlay {
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.15) 0%,
-          rgba(0, 0, 0, 0.0) 35%,
-          rgba(0, 0, 0, 0.0) 55%,
-          rgba(0, 0, 0, 0.7) 100%
-        );
-        height: 100%;
-        width: 100%;
-      }
-
-      /* Category badge */
-      .category-badge {
-        display: inline-block;
-        font-size: 0.72rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        padding: 4px 10px;
-        border-radius: 6px;
-        margin-bottom: 0.75rem;
-        color: #ffffff;
-        background: var(--story-accent);
-      }
-
-      /* Publisher / author footer text */
-      .publisher-text {
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.65);
-        margin-top: 0.5rem;
-        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-      }
-
-
-      /* CTA button (amp-story-cta-layer) */
-      .cta-button {
-        display: inline-block;
-        padding: 0.8rem 2rem;
-        border-radius: 50px;
-        background: var(--story-accent);
-        color: #ffffff;
-        font-weight: 700;
-        font-size: 1rem;
-        text-decoration: none;
-        text-align: center;
-        margin: 0 auto;
-      }
-
-      /* Readable article below the story */
-      .story-article {
-        max-width: 680px;
-        margin: 0 auto;
-        padding: 32px 20px 48px;
-        background: #ffffff;
-        color: #1a1a1a;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      }
-      .story-article h2 {
-        font-size: 1.4rem;
-        font-weight: 800;
-        margin: 28px 0 12px;
-        color: #111111;
-      }
-      .story-article h2:first-child {
-        margin-top: 0;
-      }
-      .story-article p {
-        font-size: 1rem;
-        line-height: 1.75;
-        margin: 0 0 14px;
-      }
-      .story-facts {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.95rem;
-        margin: 0 0 8px;
-      }
-      .story-facts td {
-        padding: 9px 10px;
-        border-bottom: 1px solid #e5e5e5;
-        vertical-align: top;
-        line-height: 1.55;
-      }
-      .story-facts td:first-child {
-        font-weight: 700;
-        white-space: nowrap;
-        width: 1%;
-      }
-      .story-reads {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .story-reads li {
-        margin-bottom: 10px;
-      }
-      .story-reads a {
-        color: #2563eb;
-        font-weight: 600;
-        text-decoration: none;
-      }
-      .story-reads a:hover {
-        text-decoration: underline;
-      }
-    </style>
   </head>
   <body>
-    <amp-story
-      standalone=""
-      title={story.title}
-      publisher="ToolStep"
-      publisher-logo-src={story.publisherLogo}
-      poster-portrait-src={story.poster}
-      poster-square-src={story.posterSquare}
-      poster-landscape-src={story.posterLandscape}
-    >
-      {story.pages.map((page, i) => (
-        <amp-story-page id={page.id}>
-          <amp-story-grid-layer template="fill">
-            <amp-img
-              src={page.image}
-              width="720"
-              height="1280"
-              layout="responsive"
-            />
-          </amp-story-grid-layer>
-          <amp-story-grid-layer template="fill">
-            <div class="gradient-overlay"></div>
-          </amp-story-grid-layer>
-          <amp-story-grid-layer template="vertical" class="text-layer">
-            {i === 0 && (
-              <>
-                <span class="category-badge">{story.category}</span>
-                <h1 class="cover-headline">{page.headline}</h1>
-                {page.subtext && <p class="cover-subtext">{page.subtext}</p>}
-                <p class="publisher-text">By {authorName} · ToolStep</p>
-              </>
-            )}
-            {i > 0 && i < story.pages.length - 1 && (
-              <>
-                <h2 class="slide-headline">{page.headline}</h2>
-                {page.subtext && <p class="slide-subtext">{page.subtext}</p>}
-              </>
-            )}
-            {i === story.pages.length - 1 && (
-              <>
-                <h2 class="cta-headline">{page.headline}</h2>
-                {page.subtext && <p class="cta-subtext">{page.subtext}</p>}
-              </>
-            )}
-          </amp-story-grid-layer>
-          {page.ctaLabel && page.ctaUrl && (
-            <amp-story-cta-layer>
-              <a class="cta-button" href={page.ctaUrl}>{page.ctaLabel}</a>
-            </amp-story-cta-layer>
-          )}
-        </amp-story-page>
-      ))}
+    <Header />
+    <main class="story-shell" id="main-content">
+      <article>
+        <nav class="story-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <a href={storiesIndexUrl}>Stories</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span class="current">{story.title}</span>
+        </nav>
 
-      {/* Related stories */}
-      {story.relatedStories.length > 0 && (
-        <amp-story-page id="related">
-          <amp-story-grid-layer template="fill">
-            <amp-img
-              src={story.posterLandscape}
-              width="1280"
-              height="720"
-              layout="responsive"
-            />
-          </amp-story-grid-layer>
-          <amp-story-grid-layer template="fill">
-            <div class="gradient-overlay"></div>
-          </amp-story-grid-layer>
-          <amp-story-grid-layer template="vertical" class="text-layer">
-            <h2 class="cta-headline">More Stories</h2>
-            <p class="cta-subtext">Swipe to explore more from ToolStep</p>
-          </amp-story-grid-layer>
-          <amp-story-cta-layer>
-            <a class="cta-button" href={storiesIndexUrl}>Browse All Stories</a>
-          </amp-story-cta-layer>
-        </amp-story-page>
-      )}
-    </amp-story>
+        <header class="story-hero">
+          <span class="badge">{story.category}</span>
+          <h1>{story.title}</h1>
+          <p class="lede">{story.description}</p>
+          <p class="byline">By {authorName} · ToolStep · <time datetime={story.datePublished}>{fmtDate(story.datePublished)}</time> · {readMinutes} min read</p>
+        </header>
 
-    {/* Readable article version — independent value below the visual story */}
-    <article class="story-article">
-      <h2>{story.title}: Key Facts</h2>
-      {story.keyFacts && story.keyFacts.length > 0 && (
-        <table class="story-facts">
-          {story.keyFacts.map((f) => (
-            <tr>
-              <td>{f.label}</td>
-              <td>{f.value}</td>
-            </tr>
-          ))}
-        </table>
-      )}
-      {story.content.split('\n\n').map((para) => <p>{para}</p>)}
-      {story.relatedReads && story.relatedReads.length > 0 && (
-        <>
-          <h2>Keep Reading on ToolStep</h2>
-          <ul class="story-reads">
-            {story.relatedReads.map((r) => (
-              <li>
-                <a href={r.href}>{r.label}</a>
+        <section class="story-points" aria-labelledby="points-title">
+          <h2 id="points-title">The Story at a Glance</h2>
+          <ol class="points">
+            {slideCards.map((page, i) => (
+              <li class="point" style={`--accent: ${story.color};`}>
+                <span class="point-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <div class="point-text">
+                  <h3>{page.headline}</h3>
+                  {page.subtext && <p>{page.subtext}</p>}
+                </div>
               </li>
             ))}
-          </ul>
-        </>
-      )}
-    </article>
+          </ol>
+        </section>
+
+        <section class="story-body">
+          <h2>Key Facts</h2>
+          {story.keyFacts && story.keyFacts.length > 0 && (
+            <table class="story-facts">
+              {story.keyFacts.map((f) => (
+                <tr>
+                  <td>{f.label}</td>
+                  <td>{f.value}</td>
+                </tr>
+              ))}
+            </table>
+          )}
+          {story.content.split('\n\n').map((para) => <p>{para}</p>)}
+
+          {ctaUrl && (
+            <p class="story-cta">
+              <a href={ctaUrl}>{ctaLabel}</a>
+            </p>
+          )}
+
+          {relatedStories.length > 0 && (
+            <>
+              <h2>More Stories on This Topic</h2>
+              <ul class="story-reads">
+                {relatedStories.map((r) => (
+                  <li><a href={`/stories/${r.slug}/`}>{r.title}</a></li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {relatedReads.length > 0 && (
+            <>
+              <h2>Keep Reading on ToolStep</h2>
+              <ul class="story-reads">
+                {relatedReads.map((r) => (
+                  <li><a href={r.href}>{r.label}</a></li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <p class="story-back">
+            <a href={storiesIndexUrl}>← Browse all ToolStep Stories</a>
+          </p>
+        </section>
+      </article>
+    </main>
+    <Footer />
   </body>
 </html>
+
+<style>
+  .story-shell {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+  }
+  .story-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    color: rgb(var(--gray));
+    margin: 0 0 1.25rem;
+  }
+  .story-breadcrumb a {
+    color: rgb(var(--gray));
+    text-decoration: none;
+  }
+  .story-breadcrumb a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .story-breadcrumb .sep {
+    color: rgb(var(--gray-light));
+  }
+  .story-breadcrumb .current {
+    color: rgb(var(--gray-dark));
+    font-weight: 600;
+  }
+  .story-hero {
+    border-top: 4px solid var(--accent);
+    padding-top: 1.5rem;
+    margin-bottom: 2.25rem;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: #ffffff;
+    background: var(--accent);
+  }
+  .story-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.18;
+    margin: 1rem 0 0.75rem;
+    color: rgb(var(--black));
+  }
+  .story-hero .lede {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    color: rgb(var(--gray-dark));
+    margin: 0 0 0.9rem;
+  }
+  .story-hero .byline {
+    font-size: 0.85rem;
+    color: rgb(var(--gray));
+    margin: 0;
+  }
+  .story-points {
+    margin: 0 0 2.5rem;
+  }
+  .story-points > h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 0 14px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(var(--gray-light));
+    color: rgb(var(--black));
+  }
+  .points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .point {
+    display: grid;
+    grid-template-columns: 3.2rem 1fr;
+    gap: 0.85rem;
+    align-items: start;
+    padding: 1.05rem 1.2rem 1.05rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+  }
+  .point-num {
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .point-text h3 {
+    font-size: 1.12rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.3rem;
+    color: rgb(var(--black));
+  }
+  .point-text p {
+    font-size: 0.97rem;
+    line-height: 1.6;
+    margin: 0;
+    color: rgb(var(--gray-dark));
+  }
+  .story-body h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 28px 0 12px;
+    color: rgb(var(--black));
+  }
+  .story-body p {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0 0 14px;
+    color: rgb(var(--gray-dark));
+  }
+  .story-facts {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin: 0 0 8px;
+  }
+  .story-facts td {
+    padding: 9px 10px;
+    border-bottom: 1px solid #e5e5e5;
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .story-facts td:first-child {
+    font-weight: 700;
+    white-space: nowrap;
+    width: 1%;
+    color: rgb(var(--black));
+  }
+  .story-cta {
+    margin: 28px 0 8px;
+  }
+  .story-cta a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .story-cta a:hover {
+    text-decoration: underline;
+  }
+  .story-reads {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .story-reads li {
+    margin-bottom: 10px;
+  }
+  .story-reads a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .story-reads a:hover {
+    text-decoration: underline;
+  }
+  .story-back {
+    margin: 32px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid rgb(var(--gray-light));
+    font-size: 0.92rem;
+  }
+  .story-back a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .story-back a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 480px) {
+    .story-shell {
+      padding: 16px 14px 48px;
+    }
+    .story-hero h1 {
+      font-size: 1.7rem;
+    }
+    .point {
+      grid-template-columns: 2.4rem 1fr;
+      padding: 0.9rem 0.85rem;
+    }
+    .point-num {
+      font-size: 1.35rem;
+    }
+    .point-text h3 {
+      font-size: 1.02rem;
+    }
+  }
+</style>

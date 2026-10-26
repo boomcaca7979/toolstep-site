@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Notion vs Confluence: Best Documentation Tool 2026 | ToolStep";
 const description = "Notion vs Confluence 2026 comparison: flexibility, permissions, Jira integration, pricing, and use cases. Find which documentation tool wins for your team.";
@@ -417,6 +418,9 @@ const description = "Notion vs Confluence 2026 comparison: flexibility, permissi
     <p>Both platforms have invested in AI. Notion AI offers writing assistance, summarization, Q&A across your workspace, and autofill for database properties, making it well-suited for content-heavy workflows. Confluence Intelligence, powered by Atlassian Intelligence, focuses on summarizing pages, generating Jira issues from text, and answering questions across Atlassian products. Notion AI is more polished for writers; Confluence AI is stronger for engineering and ops context.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

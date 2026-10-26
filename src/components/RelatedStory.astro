@@ -1,0 +1,79 @@
+---
+/**
+ * Related story block for a review / comparison / best / alternatives page.
+ *
+ * The relation comes from the data file, not from title similarity: every story
+ * declares its primary destination as the CTA of its last slide (`ctaUrl`).
+ * This component inverts that declaration, so a page links to a story only when
+ * the story itself says that page is its subject. No props are needed — the
+ * component resolves the current pathname at build time, which keeps callers
+ * from having to pass (and potentially mistype) a slug.
+ *
+ * Pages with no matching story render nothing at all.
+ */
+import { storiesData } from '../data/stories';
+
+const pathname = Astro.url.pathname;
+
+const matches = storiesData
+  .filter((story) => {
+    const cta = story.pages.find((page) => page.ctaUrl)?.ctaUrl;
+    if (!cta) return false;
+    return cta.replace('https://www.toolstep.top', '') === pathname;
+  })
+  .slice(0, 3);
+---
+
+{matches.length > 0 && (
+  <aside class="related-story" aria-label="Web stories on this topic">
+    <h2>{matches.length > 1 ? 'Web Stories on This Topic' : 'Web Story on This Topic'}</h2>
+    <ul>
+      {matches.map((story) => (
+        <li>
+          <a href={`/stories/${story.slug}/`}>{story.title}</a>
+          <div class="desc">{story.description}</div>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+<style>
+  .related-story {
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+  .related-story h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.15rem;
+    color: #232f3e;
+  }
+  .related-story ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .related-story li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  .related-story li:last-child {
+    border-bottom: none;
+  }
+  .related-story a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .related-story a:hover {
+    text-decoration: underline;
+  }
+  .related-story .desc {
+    color: #666;
+    font-size: 0.88rem;
+    margin-top: 0.2rem;
+  }
+</style>

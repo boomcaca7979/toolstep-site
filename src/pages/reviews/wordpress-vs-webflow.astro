@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "WordPress vs Webflow: Best Website Builder 2026 | ToolStep";
 const description = "WordPress vs Webflow 2026 comparison: CMS flexibility, visual design, hosting, SEO, ecommerce, and pricing to help you pick the right website builder.";
@@ -409,6 +410,9 @@ const description = "WordPress vs Webflow 2026 comparison: CMS flexibility, visu
     <p>Webflow includes managed hosting with SSL, CDN, and DDoS protection on every plan, which means you never patch servers or worry about downtime. WordPress requires you to arrange hosting yourself, whether shared, VPS, or managed WordPress hosting, and you are responsible for updates, backups, and security hardening. For users who want zero maintenance, Webflow wins; for users who want full server control, WordPress wins.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

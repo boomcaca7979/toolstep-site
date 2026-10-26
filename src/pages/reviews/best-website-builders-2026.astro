@@ -3,6 +3,7 @@ import Header from '../../components/Header.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const pageTitle = 'Best Website Builders 2026: Ranked for Design, Business & Developers';
 const pageDescription = 'Best website builders 2026: Webflow, Framer, WordPress, Squarespace, and Wix ranked. Compare design flexibility, SEO, pricing, CMS, and use cases.';
@@ -314,6 +315,9 @@ const itemListSchema = {
       </div>
 
       <AffiliateDisclosure />
+      {/* Story that declares this page as its primary destination */}
+      <RelatedStory />
+
     </main>
     <Footer />
   </body>

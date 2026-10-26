@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Slack vs Teams: Which Team Chat Is Better in 2026? | ToolStep";
 const description = "Slack vs Teams 2026 comparison: channels, integrations, video calls, pricing, and security. Find which team chat platform wins for your organization.";
@@ -423,6 +424,9 @@ const description = "Slack vs Teams 2026 comparison: channels, integrations, vid
     <p>Both meet enterprise security standards with SSO, SCIM provisioning, audit logs, and data loss prevention. Teams has a slight edge for regulated industries because of Microsoft Purview compliance, eDiscovery, and native integration with Active Directory. Slack matches most enterprise requirements but third-party tools fill gaps in archiving and compliance.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>

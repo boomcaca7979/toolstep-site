@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import RelatedStory from '../../components/RelatedStory.astro';
 
 const title = "Todoist vs TickTick: Which Task Manager Is Better in 2026? | ToolStep";
 const description = "Todoist vs TickTick 2026 comparison: natural language input, calendar, habit tracking, pricing, and platforms. Find which task manager wins.";
@@ -415,6 +416,9 @@ const description = "Todoist vs TickTick 2026 comparison: natural language input
     <p>Yes, but it adds friction. A common setup is Todoist for team projects and shared lists, plus TickTick for personal tasks, habits, and time blocking. The two apps do not sync natively, so tasks must be managed separately. Most users pick one to avoid duplication, with Todoist favored for teams and TickTick for solo productivity.</p>
 
   </article>
+    {/* Story that declares this page as its primary destination */}
+    <RelatedStory />
+
   </main>
   <Footer />
 </body>
