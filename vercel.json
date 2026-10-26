@@ -1,16 +1,13 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
   "redirects": [
     { "source": "/sitemap.xml", "destination": "/sitemap-index.xml", "permanent": true },
+
     { "source": "/reviews/best-webcam-work-from-home", "destination": "/reviews/best-webcam-remote-work/", "permanent": true },
     { "source": "/reviews/best-webcam-work-from-home/", "destination": "/reviews/best-webcam-remote-work/", "permanent": true },
     { "source": "/reviews/best-noise-canceling-headphones-work", "destination": "/reviews/best-noise-cancelling-headphones-work/", "permanent": true },
-    { "source": "/reviews/best-noise-canceling-headphones-work/", "destination": "/reviews/best-noise-cancelling-headphones-work/", "permanent": true },
-    { "source": "/reviews/:slug", "destination": "/reviews/:slug/", "permanent": true },
-    { "source": "/about", "destination": "/about/", "permanent": true },
-    { "source": "/guides", "destination": "/guides/", "permanent": true },
-    { "source": "/privacy", "destination": "/privacy/", "permanent": true },
-    { "source": "/tools/:slug", "destination": "/tools/:slug/", "permanent": true },
-    { "source": "/how-we-test", "destination": "/how-we-test/", "permanent": true }
+    { "source": "/reviews/best-noise-canceling-headphones-work/", "destination": "/reviews/best-noise-cancelling-headphones-work/", "permanent": true }
   ],
   "headers": [
     {

@@ -24,7 +24,7 @@ const lastUpdated = 'June 2026';
 
   <div class="team-grid">
     {authors.map((author) => (
-      <a href={`/authors/${author.slug}`} class="team-card">
+      <a href={`/authors/${author.slug}/`} class="team-card">
         <img src={author.avatar} alt={`${author.name} portrait`} loading="lazy" width="80" height="80" />
         <div class="team-info">
           <h3>{author.name}</h3>

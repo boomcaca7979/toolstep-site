@@ -30,7 +30,7 @@ function getReviewCount(authorSlug: string): number {
 
   <div class="authors-grid">
     {authors.map((author) => (
-      <a href={`/authors/${author.slug}`} class="author-card">
+      <a href={`/authors/${author.slug}/`} class="author-card">
         <img src={author.avatar} alt={`${author.name} portrait`} loading="lazy" width="100" height="100" />
         <div class="author-info">
           <h2>{author.name}</h2>
