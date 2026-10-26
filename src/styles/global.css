@@ -66,6 +66,17 @@ main {
 	margin: auto;
 	padding: 3em 1em;
 }
+/* Review/best pages scope their own `main { max-width: 820px }`, which replaces
+   the responsive cap above and leaves the fixed 720px width uncapped: on a
+   390px phone the page then lays out 752px wide and is cut off on the right.
+   Restore the cap on narrow screens only — the desktop column is unchanged. */
+@media (max-width: 839px) {
+	main {
+		width: auto !important;
+		max-width: 100% !important;
+		box-sizing: border-box;
+	}
+}
 h1,
 h2,
 h3,

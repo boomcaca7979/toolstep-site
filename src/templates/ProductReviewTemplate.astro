@@ -115,6 +115,7 @@ const tocSections = [
       .verdict-box strong { color: #1e40af; }
       .rating-box { display: flex; align-items: center; gap: 1rem; background: linear-gradient(135deg, #fff7ed, #ffedd5); border: 1px solid #fed7aa; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
       .rating-box .score { font-size: 2.5rem; font-weight: 800; color: #ea580c; }
+      .rating-box .score-max { font-size: 1rem; font-weight: 700; margin-left: 2px; }
       .rating-box .stars { color: #f59e0b; font-size: 1.2rem; letter-spacing: 2px; }
       .rating-box .label { color: #9a3412; font-weight: 600; }
       .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
@@ -174,10 +175,10 @@ const tocSections = [
       </nav>
 
       <div class="rating-box">
-        <div class="score">{entry.ratingValue}</div>
+        <div class="score">{entry.ratingValue}<span class="score-max">/5</span></div>
         <div>
           <div class="stars">{'★'.repeat(Math.round(entry.ratingValue))}{'☆'.repeat(5 - Math.round(entry.ratingValue))}</div>
-          <div class="label">Our Verdict</div>
+          <div class="label">ToolStep Editorial Score</div>
         </div>
       </div>
 

@@ -310,6 +310,10 @@ export const group1Reviews: ProductReviewEntry[] = [
       'You want to curl up cross-legged — the seat pan is shaped for upright sitting',
     ],
     specs: [],
+    editorial: {
+      evidenceType: 'DOCUMENTATION',
+      sectionLabel: 'How This Review Was Built',
+    },
     alternatives: [
       { name: 'Herman Miller Aeron Review', href: '/reviews/herman-miller-aeron-review/', desc: 'The premium benchmark and the Leap V2\'s main rival.' },
       { name: 'Steelcase Gesture Review', href: '/reviews/steelcase-gesture-review/', desc: 'Steelcase\'s newer flagship for multi-device workflows.' },

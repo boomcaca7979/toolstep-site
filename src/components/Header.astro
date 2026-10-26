@@ -108,6 +108,8 @@ const searchIndex = [
 	</div>
 </header>
 
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+
 <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search ToolStep" hidden>
 	<div class="search-panel">
 		<div class="search-row">
@@ -144,7 +146,8 @@ const searchIndex = [
 		function closeSearch() {
 			overlay.hidden = true;
 			trigger.setAttribute('aria-expanded', 'false');
-			document.body.style.overflow = '';
+			// Leave the lock in place if the mobile menu is still open underneath.
+			if (!menu || !menu.classList.contains('open')) document.body.style.overflow = '';
 		}
 		function renderResults(query) {
 			var q = query.trim().toLowerCase();
@@ -182,17 +185,91 @@ const searchIndex = [
 		});
 
 		if (toggle && menu) {
+			var backdrop = document.getElementById('menu-backdrop');
+			var lastFocused = null;
+			var lockedY = 0;
+
+			function isMenuOpen() {
+				return menu.classList.contains('open');
+			}
+			function holdScroll() {
+				// `overflow: hidden` on the root or body makes Chrome drop the current
+				// scroll offset (the page jumps to the top behind the panel), and pinning
+				// the body with position:fixed would unstick the header. Pinning the
+				// offset instead keeps the page exactly where the reader left it.
+				if (isMenuOpen() && window.pageYOffset !== lockedY) window.scrollTo(0, lockedY);
+			}
+			function lockScroll() {
+				lockedY = window.pageYOffset || 0;
+				window.addEventListener('scroll', holdScroll, { passive: true });
+			}
+			function unlockScroll() {
+				window.removeEventListener('scroll', holdScroll);
+				window.scrollTo(0, lockedY);
+			}
+			function openMenu() {
+				lastFocused = document.activeElement;
+				lockScroll();
+				menu.classList.add('open');
+				toggle.classList.add('active');
+				toggle.setAttribute('aria-expanded', 'true');
+				if (backdrop) backdrop.hidden = false;
+				var first = menu.querySelector('a');
+				if (first) first.focus({ preventScroll: true });
+			}
+			function closeMenu(restoreFocus) {
+				menu.classList.remove('open');
+				toggle.classList.remove('active');
+				toggle.setAttribute('aria-expanded', 'false');
+				if (backdrop) backdrop.hidden = true;
+				unlockScroll();
+				if (restoreFocus !== false) {
+					(lastFocused && lastFocused.focus ? lastFocused : toggle).focus({ preventScroll: true });
+				}
+			}
+			function menuFocusables() {
+				return [toggle].concat(Array.prototype.slice.call(menu.querySelectorAll('a')));
+			}
+
 			toggle.addEventListener('click', function () {
-				var isOpen = menu.classList.toggle('open');
-				toggle.classList.toggle('active', isOpen);
-				toggle.setAttribute('aria-expanded', String(isOpen));
+				if (isMenuOpen()) closeMenu();
+				else openMenu();
 			});
 			menu.querySelectorAll('a').forEach(function (link) {
 				link.addEventListener('click', function () {
-					menu.classList.remove('open');
-					toggle.classList.remove('active');
-					toggle.setAttribute('aria-expanded', 'false');
+					closeMenu(false);
 				});
+			});
+			if (backdrop) {
+				backdrop.addEventListener('click', function () {
+					closeMenu();
+				});
+			}
+			document.addEventListener('keydown', function (e) {
+				if (!isMenuOpen()) return;
+				if (e.key === 'Escape') {
+					e.preventDefault();
+					closeMenu();
+					return;
+				}
+				if (e.key === 'Tab') {
+					var items = menuFocusables();
+					if (!items.length) return;
+					var first = items[0];
+					var last = items[items.length - 1];
+					if (e.shiftKey && document.activeElement === first) {
+						e.preventDefault();
+						last.focus();
+					} else if (!e.shiftKey && document.activeElement === last) {
+						e.preventDefault();
+						first.focus();
+					}
+				}
+			});
+			// The panel only exists below 960px; if the window grows while it is open,
+			// drop the state so the scroll lock is not left behind.
+			window.addEventListener('resize', function () {
+				if (isMenuOpen() && window.innerWidth > 960) closeMenu(false);
 			});
 		}
 	})();
@@ -369,6 +446,17 @@ const searchIndex = [
 	.mobile-menu {
 		display: none;
 	}
+	/* Sits under the header (z 200) and over the page, so any pixel the panel does
+	   not paint — safe-area gaps, mid-transition frames — is dark, never article text. */
+	.menu-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 190;
+		background: rgba(15, 17, 22, 0.6);
+	}
+	.menu-backdrop[hidden] {
+		display: none;
+	}
 
 	/* ===== Search overlay ===== */
 	.search-overlay {
@@ -493,15 +581,19 @@ const searchIndex = [
 		}
 		.mobile-menu {
 			display: none;
-			position: absolute;
-			top: 100%;
+			/* Full-height sheet: the header's own 64px plus its 3px accent border
+			   leaves exactly the rest of the viewport, so nothing shows beneath it. */
+			position: fixed;
+			top: calc(var(--header-height) + 3px);
 			left: 0;
 			right: 0;
+			bottom: 0;
 			background: var(--header-ink);
-			border-bottom: 1px solid var(--ink-line);
-			padding: 8px 24px 24px;
-			max-height: calc(100vh - var(--header-height));
+			padding: 8px 24px calc(24px + env(safe-area-inset-bottom, 0px));
 			overflow-y: auto;
+			overscroll-behavior: contain;
+			-webkit-overflow-scrolling: touch;
+			box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 		}
 		.mobile-menu.open {
 			display: block;

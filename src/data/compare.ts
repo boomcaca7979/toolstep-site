@@ -2229,7 +2229,10 @@ export const compareData: CompareEntry[] = [
       evidenceLabel: "documentation-analysis",
       evidenceNote: "Based on official product documentation and published pricing as of June 2026. Both vendors change bundling and feature scope frequently; verify current plans before purchase.",
     },
-    relatedReviews: ['/reviews/chatgpt-vs-copilot'],
+    // No sibling review exists for this comparison: /reviews/chatgpt-vs-copilot/
+    // covers GitHub Copilot (a coding tool), not Microsoft Copilot. Pointing here
+    // would surface the wrong product as a "related review".
+    relatedReviews: [],
     lastUpdated: 'June 2026', testingDuration: '30 days', authorSlug: 'toolstep-team',
   },
   {

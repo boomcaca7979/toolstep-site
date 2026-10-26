@@ -4,7 +4,7 @@
 
 import type { BestEntry } from '../data/best';
 import type { CompareEntry } from '../data/compare';
-import type { ProductReviewEntry } from '../data/products';
+import type { ProductReviewEntry, ReviewEvidenceType } from '../data/products';
 
 const CURRENT_YEAR = 2026;
 const SITE_NAME = 'ToolStep';
@@ -35,10 +35,120 @@ export function buildAlternativesTitle(toolName: string): string {
 
 // === Description Builders ===
 
-export function buildReviewDescription(productName: string, _testingDuration: string, verdict: string): string {
+/**
+ * Meta-description budget. Google truncates the snippet at roughly 155–160
+ * characters, so anything longer is invisible text. The old builder hard-cut the
+ * verdict at 120 chars and prefixed a 143-char generic sentence, which pushed
+ * the only page-specific words past the cut on all 35 data-driven review pages.
+ */
+const DESCRIPTION_MAX = 160;
+
+/** Honest, short evidence disclosure. Never claims testing that did not happen. */
+function buildEvidenceDisclosure(evidenceType?: ReviewEvidenceType, testingDuration?: string): string {
+  if (evidenceType === 'HANDS_ON') {
+    const duration = (testingDuration ?? '').trim();
+    return duration ? `Tested over ${duration}.` : 'Hands-on testing.';
+  }
+  // DOCUMENTATION / SPECIFICATION / PUBLIC_INFO / MIXED / undefined all render
+  // the same honest label the page body uses: analysis, not lab measurement.
+  return 'Based on published specs, not hands-on testing.';
+}
+
+/**
+ * Words that cannot end a sentence. A cut that leaves one of these stranded
+ * produces snippets like "…into a dual-4K workstation on." — grammatically
+ * broken and visibly unfinished in a search result.
+ */
+const DANGLING_WORDS = new Set([
+  'a', 'an', 'the', 'and', 'or', 'but', 'nor', 'of', 'to', 'for', 'with', 'without',
+  'in', 'on', 'at', 'by', 'from', 'into', 'onto', 'over', 'under', 'between', 'than',
+  'as', 'if', 'when', 'while', 'because', 'so', 'that', 'which', 'who', 'whose',
+  'is', 'are', 'was', 'were', 'be', 'been', 'its', 'their', 'our', 'your', 'this',
+  'these', 'those', 'via', 'per', 'plus', 'vs',
+]);
+
+/**
+ * Trim prose to a character budget without cutting a word in half.
+ * Preference order: whole text → first full sentence → last clause boundary →
+ * last word boundary. Then repair the tail: drop stranded function words and
+ * unfinished relative clauses so the snippet is a complete thought.
+ * Always returns text ending in terminal punctuation.
+ */
+export function clipForMeta(text: string, max: number): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+
+  // 1. A complete first sentence that already fits.
+  const sentence = clean.match(/^(.{30,}?[.!?])(?=\s|$)/);
+  if (sentence && sentence[1].length <= max) return sentence[1];
+
+  const slice = clean.slice(0, max);
+  // 2. Clause boundary — keeps the claim that precedes it intact.
+  const clause = Math.max(slice.lastIndexOf(', '), slice.lastIndexOf('; '), slice.lastIndexOf(' — '));
+  if (clause >= Math.floor(max * 0.55)) {
+    return finishClause(slice.slice(0, clause), max);
+  }
+  // 3. Word boundary.
+  const word = slice.lastIndexOf(' ');
+  return finishClause(word > 0 ? slice.slice(0, word) : slice, max);
+}
+
+/**
+ * Clean up a candidate cut so it reads as a finished clause:
+ *   - drop a stranded trailing function word ("…workstation on" → "…workstation")
+ *   - drop an unfinished relative clause ("…Mac users who want a slim" → "…Mac users")
+ * Never returns fewer than half the budget: if repairing would gut the snippet,
+ * the original cut is returned instead.
+ */
+function finishClause(candidate: string, max: number): string {
+  let body = candidate.replace(/[,;:\s—]+$/, '');
+  const floor = Math.floor(max * 0.5);
+
+  // Stranded function word: back off word by word.
+  for (;;) {
+    const cut = body.lastIndexOf(' ');
+    if (cut <= 0) break;
+    const last = body.slice(cut + 1).toLowerCase().replace(/[^a-z]/g, '');
+    if (!DANGLING_WORDS.has(last)) break;
+    if (cut < floor) break;
+    body = body.slice(0, cut).replace(/[,;:\s—]+$/, '');
+  }
+
+  // Unfinished relative clause: "… users who want a slim" has no noun left.
+  const relative = body.match(/\s(who|which|whose)\s+\S+(\s+\S+){0,3}$/i);
+  if (relative && relative.index !== undefined && relative.index >= floor) {
+    body = body.slice(0, relative.index).replace(/[,;:\s—]+$/, '');
+  }
+
+  return `${body}.`;
+}
+
+export function buildReviewDescription(
+  productName: string,
+  testingDuration: string,
+  verdict: string,
+  evidenceType?: ReviewEvidenceType,
+): string {
+  // Some verdicts open with a heading line ("The Most Capable Standing Desk
+  // You Can Buy") separated from the prose by a blank line. Collapsing it into
+  // the next sentence produced "…You Can Buy Based on manufacturer
+  // specifications." — a run-on that never names the product. Drop the heading.
+  const deheaded = verdict.replace(/^\s*[^\n.!?]{5,90}\n\s*\n/, '');
+
   // Collapse whitespace/newlines so the meta description attribute stays single-line
-  const cleanVerdict = verdict.replace(/\s+/g, ' ').trim().slice(0, 120);
-  return `${productName} review covering features, specifications, pricing, pros, cons, and practical use cases based on product documentation and detailed analysis. ${cleanVerdict}`;
+  const cleanVerdict = deheaded
+    .replace(/\s+/g, ' ')
+    .replace(/^(final\s+)?verdict\s*:\s*/i, '')
+    .trim();
+
+  const disclosure = buildEvidenceDisclosure(evidenceType, testingDuration);
+  const budget = DESCRIPTION_MAX - disclosure.length - 1;
+
+  const lead = cleanVerdict
+    ? clipForMeta(cleanVerdict, budget)
+    : `${productName} review: what it does well, where it falls short, and who should buy it.`;
+
+  return `${lead} ${disclosure}`;
 }
 
 export function buildBestDescription(category: string, count: number, _testingDuration: string): string {
@@ -366,7 +476,12 @@ export interface ProductReviewPageMeta {
 
 export function buildProductReviewMeta(entry: ProductReviewEntry, authorName: string, authorJobTitle?: string): ProductReviewPageMeta {
   const title = buildReviewTitle(entry.productName);
-  const description = buildReviewDescription(entry.productName, entry.testingDuration, entry.verdict);
+  const description = buildReviewDescription(
+    entry.productName,
+    entry.testingDuration,
+    entry.verdict,
+    entry.editorial?.evidenceType,
+  );
   const canonical = buildCanonical(`/reviews/${entry.slug}`);
   const pageUrl = `${SITE_URL}/reviews/${entry.slug}/`;
   const authorUrl = `${SITE_URL}/authors/${entry.authorSlug}`;
