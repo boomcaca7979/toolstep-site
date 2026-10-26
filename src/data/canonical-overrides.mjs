@@ -16,12 +16,18 @@
 // trailingSlash: 'always').
 
 export const CANONICAL_OVERRIDES = {
-  // ===== A. /compare/ vs /reviews/ — 17 exact-slug duplicates =====
+  // ===== A. /compare/ vs /reviews/ — 16 exact-slug duplicates =====
+  //
+  // 2026-10-25 (round 2) — removed:
+  //   '/compare/chatgpt-vs-copilot/' : '/reviews/chatgpt-vs-copilot/'
+  // The two pages cover different subjects: the /compare/ page compares
+  // ChatGPT with Microsoft Copilot (Microsoft 365), while the /reviews/ page
+  // compares ChatGPT with GitHub Copilot (coding). They are not duplicates, so
+  // the source stays self-canonical and stays in the sitemap.
   '/compare/claude-vs-chatgpt/': '/reviews/claude-vs-chatgpt/',
   '/compare/chatgpt-vs-gemini/': '/reviews/chatgpt-vs-gemini/',
   '/compare/claude-vs-gemini/': '/reviews/claude-vs-gemini/',
   '/compare/canva-vs-figma/': '/reviews/canva-vs-figma/',
-  '/compare/chatgpt-vs-copilot/': '/reviews/chatgpt-vs-copilot/',
   '/compare/cursor-vs-windsurf/': '/reviews/cursor-vs-windsurf/',
   '/compare/expressvpn-vs-nordvpn/': '/reviews/expressvpn-vs-nordvpn/',
   '/compare/figma-vs-sketch/': '/reviews/figma-vs-sketch/',

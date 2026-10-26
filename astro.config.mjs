@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 import { CANONICAL_OVERRIDES } from './src/data/canonical-overrides.mjs';
+import canonicalLinkRewrite from './src/integrations/canonical-link-rewrite.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
 	trailingSlash: 'always',
 	integrations: [
 		mdx(),
+		canonicalLinkRewrite(),
 		sitemap({
 			// Exclude demo/placeholder blog posts from the sitemap (also noindex via frontmatter)
 			// Exclude the /blog/ hub: it lists only those demo posts, so it is noindex
