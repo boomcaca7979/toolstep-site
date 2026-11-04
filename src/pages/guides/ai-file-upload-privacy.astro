@@ -1,0 +1,197 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/ai-file-upload-privacy/';
+const title = 'Before Uploading Files to AI: A Privacy Checklist | ToolStep';
+const description = 'Uploading a file to an AI chatbot sends its contents to vendor servers. A checklist for classifying files, checking provider data controls, and redacting first.';
+const headline = 'Before Uploading Files to AI: A Privacy and Security Checklist';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'What actually happens when I upload a file to an AI chatbot?',
+			acceptedAnswer: { '@type': 'Answer', text: 'The file is copied from your device to the provider\'s servers, where software extracts its text and structure so the model can process it. Your conversation and its attachments may be stored for some period, and depending on your account tier and settings, that content may be reviewed by humans or used to train future models. The exact behavior depends on the provider and your settings, so check the data controls before uploading anything sensitive.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How can I stop a provider from using my chats for training?',
+			acceptedAnswer: { '@type': 'Answer', text: 'All major consumer providers offer some form of data control: OpenAI\'s settings at help.openai.com, Google\'s activity controls at support.google.com, and Anthropic\'s privacy settings each include training opt-outs and history controls. Open your account\'s data settings page and look for the training-use and chat-history toggles before relying on the tool for anything personal.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Is a paid plan automatically more private?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Not automatically, though enterprise and team agreements typically include stronger commitments, such as contractual exclusions from training use, that consumer terms do not. The word "typically" matters: the specifics live in each plan\'s terms and admin settings. Verify what your plan and your organization\'s configuration actually say rather than assuming the tier upgrades privacy on its own.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'What should I never upload to a consumer AI chatbot?',
+			acceptedAnswer: { '@type': 'Answer', text: 'As a baseline: other people\'s personal data you have no right to share, client files covered by confidentiality agreements, credentials and API keys, and medical or financial records you would not want stored on a third-party server. If the file genuinely needs AI analysis but contains those items, redact them first or use a local model that never leaves your device.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Before Uploading Files to AI: A Privacy and Security Checklist</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to consumer AI chatbots on web, Windows, macOS, iOS, Android &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      Dragging a PDF into a chatbot feels like opening it on your own screen. It is not. Upload is publish: the file's entire contents — including parts you did not read, like metadata and hidden text — leave your device and land on a vendor's servers, where what happens next depends on your plan and your settings. This checklist takes two minutes and prevents the uploads people regret.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>Before uploading anything, classify the file: does it contain personal data, client data, credentials, or financial or medical information? Then check your provider's data settings — training opt-out, chat history retention, temporary chats — on the official settings pages for OpenAI, Google, and Anthropic. Redact what does not need to be there, and use a local model for files that should never leave your device at all.</p>
+    </div>
+
+    <h2>What an upload actually does</h2>
+    <p>Three things happen the moment a file reaches a consumer AI chatbot:</p>
+    <ol>
+      <li><strong>The content leaves your device.</strong> The full file — every page, every comment, every tracked change, every metadata field — is transmitted to the provider's infrastructure.</li>
+      <li><strong>It gets stored in some form.</strong> Your conversation and attachments are retained per the provider's policies, which differ by account tier and by the settings you have chosen. Retention periods and training use are the two big variables, and both are set by your plan and your toggles.</li>
+      <li><strong>Its fate depends on settings you may never have opened.</strong> Depending on the tier and configuration, content may be excluded from training, used to train, or reviewed by human quality-assurance processes. None of this is invisible — it is all documented — but it is also not the default question people ask before dragging a file in.</li>
+    </ol>
+    <p>The important discipline: do not trust folklore about what a provider does. Settings and terms change. Check the current pages — <a href="https://help.openai.com/" rel="noopener">OpenAI's help center</a>, <a href="https://support.google.com/" rel="noopener">Google's support pages for Gemini activity settings</a>, and <a href="https://support.anthropic.com/" rel="noopener">Anthropic's support site</a> — before uploading anything that matters.</p>
+
+    <h2>Step 1 — Classify the file before it leaves</h2>
+    <p>Most regretted uploads share one cause: nobody looked at the file as a <em>data object</em> rather than a task. A quick classification settles it:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Content type</th><th>Examples</th><th>Consumer-chatbot risk</th><th>Reasonable handling</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Public / generic</td><td>Public documents, homework prompts, generic templates</td><td>Low</td><td>Upload freely</td></tr>
+          <tr><td>Your own personal data</td><td>Contracts with your name, IDs, home address, tax forms</td><td>Moderate</td><td>Redact identifiers; prefer temporary chat and training opt-out</td></tr>
+          <tr><td>Other people's data</td><td>Employee records, customer lists, friends' contact details</td><td>High</td><td>Redact or avoid; you may not have the right to share it</td></tr>
+          <tr><td>Client / confidential</td><td>NDAs, unreleased work, legal agreements</td><td>High</td><td>Only under an agreement that permits it (enterprise tiers typically exclude training — verify your contract)</td></tr>
+          <tr><td>Credentials &amp; secrets</td><td>API keys, passwords, tokens, private keys</td><td>Critical</td><td>Never upload in any form</td></tr>
+          <tr><td>Medical / financial</td><td>Diagnoses, records, account numbers</td><td>High</td><td>Redact to the minimum needed, or use a local model</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Two habits make this fast. First, open the file and scroll it end to end before uploading — attachments often contain pages or comments you forgot about. Second, assume that anything in the file is in the conversation: if you would not paste it into the chat box, do not ship it inside an attachment.</p>
+
+    <h2>Step 2 — Check your provider's data controls</h2>
+    <p>Every major provider exposes settings that materially change what happens to your uploads. Rather than memorizing current defaults — which change — learn the <em>types</em> of controls to look for:</p>
+    <ul>
+      <li><strong>Training-use opt-out.</strong> A toggle (or plan-dependent default) that excludes your conversations from future model training. OpenAI documents its data controls in its help center; Google's Gemini activity settings live under your Google account's activity controls; Anthropic documents privacy choices in its support and privacy pages.</li>
+      <li><strong>Chat history and retention.</strong> Options to disable history entirely, delete past conversations, or set how long chats are kept. Disabling history typically also changes how your data is handled — read the description on the settings page for the specifics of the plan you are on.</li>
+      <li><strong>Temporary or ephemeral chats.</strong> A mode that keeps the conversation out of your history and, per the provider's documentation, applies different retention handling. Useful as a default habit for file work.</li>
+      <li><strong>Human review.</strong> Some tiers and some flagged conversations can be reviewed by staff; the settings pages and terms explain when. If that is unacceptable for a file, it belongs in step 4 instead.</li>
+    </ul>
+
+    <h2>Step 3 — Understand enterprise vs consumer tiers</h2>
+    <p>Business and enterprise agreements <em>typically</em> include commitments consumer plans do not: contractual exclusion from training use, admin-controlled retention, and audit logging. "Typically" is the operative word — the specifics are in the contract your organization signed, and the enforcement is in the admin console your IT team configured. If you work with confidential material, ask which tier you are on and what the agreement says about uploads, rather than assuming the chat product you use at work behaves like the consumer site. Coding tools raise the same questions with higher stakes; our <a href="/guides/ai-coding-assistant-privacy/">AI coding assistant privacy guide</a> covers them in depth.</p>
+
+    <h2>Step 4 — Redact before you upload</h2>
+    <p>Redaction is usually cheaper than avoidance. Strip what the task does not need:</p>
+    <ul>
+      <li><strong>Metadata first.</strong> Documents carry author names, email addresses, file paths, and editing history in properties you never see. Clean them before upload — our <a href="/guides/remove-file-metadata/">file metadata removal guide</a> walks the tools.</li>
+      <li><strong>Identifiers next.</strong> Names, account numbers, addresses, signatures — replace with placeholders. The model does not need real values to summarize a contract's structure or explain a form.</li>
+      <li><strong>Hidden content.</strong> PDFs can contain embedded attachments, comments, and form-field data; spreadsheets can hide extra tabs. Export a flattened copy and check the page count.</li>
+    </ul>
+    <p>A quick check for surprises in a text-exportable file:</p>
+    <pre><code># Preview what text extraction will actually see (macOS/Linux)
+pdftotext contract.pdf - | grep -iE "name|ssn|account|api[_-]?key"
+# Inspect embedded metadata
+exiftool -a -G1 contract.pdf | less</code></pre>
+    <p>If grep surfaces the very strings you were worried about, redact the source document first — the extraction will find whatever you leave behind.</p>
+
+    <h2>Step 5 — Know the local and offline alternatives</h2>
+    <p>For files that should not leave your device at all, local models are now a real option. Running an open-weight model on your own machine — for example via <a href="https://ollama.com/" rel="noopener">Ollama</a> — keeps the file, the conversation, and the output entirely on your hardware. The trade-offs are honest ones: smaller models are less capable than frontier cloud models, and setup takes some effort. But for summarizing a sensitive contract, drafting from private notes, or working with medical or financial records, "the file never leaves" beats raw capability for many tasks.</p>
+    <div class="warn-box">
+      <h2>The compliance trap: privacy settings are not legal approval</h2>
+      <p>Turning on a training opt-out does not authorize you to upload other people's data. If you handle client files, patient records, or employee information, the question is whether your agreements and applicable rules permit that data to be processed by a third-party service at all — a question about contracts and law, not about a settings toggle. When in doubt, the answer is redaction or a local model, and for organizations, a written policy rather than individual judgment calls.</p>
+    </div>
+
+    <h2>Step 6 — Set rules if others depend on you</h2>
+    <p>Individuals can improvise; teams cannot. A minimal workplace policy covers:</p>
+    <ul>
+      <li><strong>Which tier.</strong> Name the approved product and account type, and confirm its training-exclusion status in the contract.</li>
+      <li><strong>Which files.</strong> A one-line classification rule: "no client-identifiable or credential-bearing files; redact everything else."</li>
+      <li><strong>Which settings.</strong> Admin-configured retention, disabled training use, and who verifies those settings after contract renewals.</li>
+      <li><strong>What to do after a mistake.</strong> A no-blame path to report an accidental upload quickly — fast reporting matters more than zero incidents.</li>
+    </ul>
+    <p>And keep your own account hygiene tight regardless of tier: a strong unique password and passkeys matter here as anywhere else — our <a href="/best/best-password-manager/">password manager picks</a> cover the tooling. For files that need sharing rather than analysis, our <a href="/guides/share-large-files-securely/">secure large-file transfer guide</a> covers the encrypted-transfer path.</p>
+
+    <h2>The 60-second pre-upload checklist</h2>
+    <ol>
+      <li><strong>Classify:</strong> does this file contain personal, client, credential, medical, or financial data?</li>
+      <li><strong>Minimize:</strong> redact identifiers and strip metadata — does the task survive?</li>
+      <li><strong>Check settings:</strong> training opt-out, history retention, temporary chat — verified on the provider's current settings page, not assumed.</li>
+      <li><strong>Pick the channel:</strong> consumer chat for low-risk content, enterprise tier for work, local model for anything that must not leave the device.</li>
+      <li><strong>Decide on deletion:</strong> clear the conversation afterwards if your provider's controls allow it to matter.</li>
+    </ol>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

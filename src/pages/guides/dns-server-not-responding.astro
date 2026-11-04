@@ -1,0 +1,213 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/dns-server-not-responding/';
+const title = 'DNS Server Not Responding: Complete Fix Guide | ToolStep';
+const description = 'Fix the "DNS server is not responding" error and DNS_PROBE_FINISHED_NO_INTERNET: flush the cache, switch to 1.1.1.1 or 8.8.8.8, and repair your router.';
+const headline = 'DNS Server Not Responding: A Complete Troubleshooting Guide';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Is a "DNS server not responding" error the same as having no internet?',
+			acceptedAnswer: { '@type': 'Answer', text: 'No. Your device still has a network connection; it just cannot translate names like example.com into IP addresses. Anything that connects by raw IP address keeps working, which is exactly what the https://1.1.1.1 test checks. Full loss of connectivity is a different fault at the IP or router layer.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Which public DNS should I use: 1.1.1.1, 8.8.8.8, or 9.9.9.9?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Any of the three is a reliable replacement for a failing ISP resolver: 1.1.1.1 is Cloudflare, 8.8.8.8 is Google, and 9.9.9.9 is Quad9, which also filters known malware domains. Set two of them as primary and secondary so a single outage does not take your browsing down again. Each operator documents its setup and logging on its own site.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Will changing my DNS server make my internet faster?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It will not raise your bandwidth, but it can make pages start loading sooner because each new hostname requires a lookup. The practical gain from a well-run public resolver is consistency: fewer timeouts and stale answers than a struggling ISP resolver. Download and upload speeds are unaffected either way.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Why does the DNS error keep coming back after I fix it?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Recurring errors point at something that resets or interferes on a schedule: a router that hands out its own address as DNS and forwards badly, security software or a VPN that intercepts name resolution, an old firmware bug, or an ISP resolver that fails under evening load. Set DNS manually on the device as a workaround and, if the error stops, work upstream to find what was interfering.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>DNS Server Not Responding: A Complete Troubleshooting Guide</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows 10/11, macOS, routers &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      The error blames a server you have probably never thought about, but the fault is just as often on your own device: a poisoned cache, a VPN that never released its resolver, a hosts-file edit from last year, or a router forwarding queries nowhere. DNS faults are among the most diagnosable network problems — this guide isolates the failing layer before changing anything.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>Open <code>https://1.1.1.1</code> in a browser.</strong> If the page loads, your connection is fine and only name resolution is broken: flush the DNS cache (<code>ipconfig /flushdns</code> on Windows; <code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code> on macOS), then switch the device to a public resolver — 1.1.1.1 (Cloudflare), 8.8.8.8 (Google), or 9.9.9.9 (Quad9). If the raw IP does not load either, this is a connectivity fault, not DNS; work through the broader <a href="/guides/wifi-connected-no-internet/">connected-but-no-internet checklist</a> instead.</p>
+    </div>
+
+    <h2>What "DNS server not responding" actually means</h2>
+    <p>DNS is the phone book of the internet: it converts names you type into addresses machines route to. Browsing needs two separate things — a live network connection and working name resolution — and this error means only the second has failed. Windows phrases it as "your computer appears to be correctly configured, but the device or resource (DNS server) is not responding"; Chrome shows the same fault as <code>DNS_PROBE_FINISHED_NO_INTERNET</code>, a misleading name because the internet path itself is usually still up.</p>
+    <p>The lookup chain has three links, and the error text does not tell you which one broke:</p>
+    <ul>
+      <li><strong>The client's own cache and configuration</strong> — a stale or poisoned answer, or a resolver address that points at nothing.</li>
+      <li><strong>The configured resolver</strong> — usually your router, which forwards to your ISP's servers, or a public resolver if you set one.</li>
+      <li><strong>The upstream path</strong> — the ISP or public resolver, which can be down or overloaded independently of your line.</li>
+    </ul>
+    <p>Every step below narrows down which link is failing, in order of speed and reversibility.</p>
+
+    <h2>Step 1 — Prove it is DNS before changing anything</h2>
+    <p>Open <code>https://1.1.1.1</code> — Cloudflare's resolver homepage, served directly at that numeric address, so loading it involves no name lookup at all. The result splits the diagnosis in ten seconds:</p>
+    <ul>
+      <li><strong>The page loads, names fail.</strong> Confirmed DNS fault. Continue with Step 2.</li>
+      <li><strong>Nothing loads, not even the raw IP.</strong> Your connectivity is down; DNS error messages are a side effect. Follow the general <a href="/guides/wifi-connected-no-internet/">no-internet troubleshooting guide</a> first.</li>
+      <li><strong>Some sites load, others do not.</strong> Suspicious of a partially overwritten hosts file or a cache holding a mix of good and stale answers — see the hosts-file section below.</li>
+    </ul>
+    <p>Run the test on a second device on the same network too. If both fail, suspect the router or the ISP resolver; if only one device fails, that device's configuration is the target.</p>
+
+    <h2>Step 2 — Flush the DNS cache</h2>
+    <p>Devices remember lookup answers for a set lifetime. If a cached answer went stale — an IP that changed, or a resolver that died mid-session — the failure persists even after the underlying problem is fixed, so clearing the cache is always worth one minute.</p>
+    <pre><code># Windows (Command Prompt or PowerShell)
+ipconfig /flushdns
+
+# macOS (Terminal)
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+# Linux (systemd-resolved)
+sudo resolvectl flush-caches</code></pre>
+    <p>The Windows command is documented on <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig" rel="noopener">Microsoft Learn</a> among the ipconfig options. Browsers keep an internal DNS cache too, so fully quit and reopen the browser afterwards — a cached failure survives the command-line flush otherwise.</p>
+
+    <h2>Step 3 — Switch to a public resolver</h2>
+    <p>If flushing does not help, the configured resolver itself is the suspect. Replacing it with a large public resolver both fixes the fault and tells you where it was:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Resolver</th><th>Primary / secondary</th><th>Operator</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cloudflare</td><td><code>1.1.1.1</code> / <code>1.0.0.1</code></td><td>Cloudflare</td><td>Per-OS instructions on the official <a href="https://developers.cloudflare.com/1.1.1.1/setup/" rel="noopener">1.1.1.1 setup page</a></td></tr>
+          <tr><td>Google Public DNS</td><td><code>8.8.8.8</code> / <code>8.8.4.4</code></td><td>Google</td><td>Long-running, widely compatible</td></tr>
+          <tr><td>Quad9</td><td><code>9.9.9.9</code> / <code>149.112.112.112</code></td><td>Quad9 Foundation</td><td>Also blocks known malware domains; see <a href="https://www.quad9.net/" rel="noopener">quad9.net</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>On Windows</h3>
+    <p>Open <em>Settings &gt; Network &amp; internet &gt; Wi-Fi</em> (or <em>Ethernet</em>), select your network, and next to <em>DNS server assignment</em> choose <strong>Edit</strong>. Switch the dropdown to <em>Manual</em>, turn <em>IPv4</em> on, and enter a primary and secondary address from the table; save, then flush the cache again. The classic path still works too: press <code>Win+R</code>, run <code>ncpa.cpl</code>, open the adapter's Properties, and edit <em>Internet Protocol Version 4 (TCP/IPv4)</em>. From an elevated prompt the same change is:</p>
+    <pre><code>netsh interface ip set dns name="Wi-Fi" static 1.1.1.1
+netsh interface ip add dns name="Wi-Fi" 1.0.0.1 index=2</code></pre>
+
+    <h3>On macOS</h3>
+    <p>Open <em>System Settings &gt; Network &gt; Wi-Fi &gt; Details… &gt; DNS</em>. Remove any dead entries under DNS Servers, add <code>1.1.1.1</code> and <code>1.0.0.1</code> with the + button, and click OK. If the machine was pointed at a resolver that no longer exists — a LAN box that was retired, for instance — this is the moment the error disappears.</p>
+    <p>Set <strong>two</strong> servers, never one: with a single address, the next resolver outage becomes your next internet outage.</p>
+
+    <h2>Step 4 — When the router is the resolver</h2>
+    <p>Most home routers hand out their own LAN address as the DNS server via DHCP and forward queries upstream. That design has two failure modes worth checking when several devices show the error at once:</p>
+    <ol>
+      <li><strong>Reboot the router.</strong> Its DNS-forwarding component can hang independently of the internet connection, which is exactly the state where pages fail but video calls that connected earlier keep running. A 60-second power cycle restarts it.</li>
+      <li><strong>Check the WAN DNS entries in the router's admin pages</strong> (the address is on the router label). If they are empty, stale, or point at a server your ISP has retired, correct them or set the router to acquire DNS automatically.</li>
+      <li><strong>Update the firmware.</strong> Resolver-forwarding bugs are a recurring firmware fix; if the error returns after every reboot, check the vendor's support page for an update before replacing hardware.</li>
+    </ol>
+    <p>You can also set the public resolver addresses in the router's DHCP/DNS settings so every device inherits them — convenient, but it makes one bad router setting break browsing for the whole house, so device-level settings are easier to reason about when troubleshooting.</p>
+
+    <h2>Step 5 — Rule out VPN, firewall, and antivirus interference</h2>
+    <p>Anything that inserts itself into name resolution can produce this exact error:</p>
+    <ul>
+      <li><strong>A VPN client</strong> pushes its own resolver through the tunnel. If the tunnel is half-dead, queries go in and nothing answers — and the symptom can outlive the session if the client never restored your original settings. Quit the VPN fully, check that your DNS settings match what you set in Step 3, and see our <a href="/guides/vpn-connected-no-internet/">VPN-connected-but-no-internet guide</a> for the tunnel-specific cases.</li>
+      <li><strong>Security suites with web protection</strong> run a local filtering resolver. Update or reinstall the product's network driver if errors started right after an antivirus update, and check the vendor's documentation for how its DNS filtering coexists with manual settings.</li>
+      <li><strong>A network-level blocker</strong> is itself a resolver: if the box running it is off, every query dies with this error. Our <a href="/guides/dns-level-ad-blocking/">DNS blocker setup guide</a> covers how to verify which resolver each device is actually querying.</li>
+    </ul>
+    <div class="warn-box">
+      <h2>Do not leave security software disabled after testing</h2>
+      <p>Quitting your antivirus or its web-protection module for thirty seconds is a legitimate diagnostic — if the error vanishes, you have found the culprit. The mistake is leaving it off: the diagnosis is complete at that point, and browsing unprotected while you "see if it holds" trades a name-resolution annoyance for real exposure. Note the result, re-enable the software, and fix the configuration or update the product instead.</p>
+    </div>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>The hosts file: the edit everyone forgets</h2>
+    <p>The hosts file maps names to addresses manually and overrides DNS entirely. A stale entry — added for an old project, a blocked telemetry domain, a development server — produces failures that look exactly like a resolver problem, often affecting only one or two sites. Check both locations:</p>
+    <pre><code># Windows
+C:\Windows\System32\drivers\etc\hosts
+
+# macOS and Linux
+/etc/hosts</code></pre>
+    <p>Open the file and look for entries pointing at <code>0.0.0.0</code>, <code>127.0.0.1</code>, or any address you cannot explain. Comment them out by starting the line with <code>#</code>, save, flush the cache, and retest. If "some sites work, others hang" was your symptom, this is the most common explanation.</p>
+
+    <h2>When your ISP's resolver is the problem</h2>
+    <p>If every device on the network fails the same way and the router has been rebooted, the ISP's own resolver may be down or overloaded — often visible as errors that start in the evening and clear by morning. Switching your devices or router to the public resolvers in Step 3 routes around the ISP entirely, which is both the fix and the proof: if public resolvers work while the automatic ones do not, report the fault to the provider. You can keep the public resolvers permanently; there is no requirement to use the ISP's servers.</p>
+
+    <h2>DNS error or "connected, no internet"?</h2>
+    <p>The two problems overlap in casual description but not in mechanism. "Connected, no internet" covers every layer: dead DHCP, a router with no line, a captive portal, a crashed VPN. A DNS error is one specific link in that chain — connection alive, names failing — and the raw-IP test is the line between them. Getting the diagnosis right matters because the fixes diverge: changing DNS servers does nothing for a self-assigned IP address, and rebooting the modem does nothing for a poisoned cache. If nothing works at all, start with the broader <a href="/guides/wifi-connected-no-internet/">Wi-Fi and connectivity guide</a>, then come back here once the raw-IP test loads.</p>
+
+    <h2>If the error keeps coming back</h2>
+    <p>A one-off failure that flushing fixes is noise. A weekly recurrence has a cause you can find: check whether it coincides with a VPN auto-starting, antivirus updates, or evening-hour patterns that point at the ISP resolver. Router hardware that needs a weekly reboot is also a candidate for replacement — our <a href="/best/best-wifi-router/">Wi-Fi router roundup</a> covers what reliable firmware support looks like. Whatever the pattern, a manual resolver set on the device turns every recurrence from an outage into a five-second workaround.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

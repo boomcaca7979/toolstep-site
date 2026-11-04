@@ -1,0 +1,189 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/remove-file-metadata/';
+const title = 'Remove Metadata from PDFs, Word Files and Photos | ToolStep';
+const description = 'Documents and photos carry hidden author, company, revision and GPS data. See what each file type stores, remove it with built-in tools or exiftool, and verify.';
+const headline = 'How to Remove Metadata from PDFs, Word Files and Photos';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Do social media platforms remove photo metadata?',
+			acceptedAnswer: { '@type': 'Answer', text: 'The major platforms strip most EXIF data, including GPS location, when they process an upload, so a photo posted publicly usually loses its location tag. Email attachments, messaging apps, cloud folders, and file transfers generally do not strip anything — they deliver the file exactly as it is. Never rely on a platform to clean a file you are sending directly.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Can recipients see tracked changes after I export a Word file to PDF?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Not if the export is clean — a standard PDF export renders the document as it currently displays and does not carry the change history. The risk is in the source file: a shared .docx contains the full revision trail, comments, and sometimes deleted text. Use the Document Inspector on the Word file, or accept all changes and remove comments before sharing anything.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Does removing EXIF data reduce photo quality?',
+			acceptedAnswer: { '@type': 'Answer', text: 'No when it is done properly. Metadata lives in a separate part of the file from the image pixels, so tools like Windows Explorer removal, Preview\'s location removal, or exiftool rewrite the metadata without touching the picture. Quality loss happens when someone "cleans" a photo by screenshotting it or re-saving it through an editor at reduced quality — avoid both.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How can I see what metadata a file has before sharing it?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Windows: right-click the file, choose Properties, then the Details tab. macOS: open the file and use the Inspector (Preview) or Get Info. PDFs: check Document Properties in any reader. For the complete picture on photos, exiftool with no arguments prints every tag it finds — which is also how you verify a cleanup worked.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Remove Metadata from PDFs, Word Files and Photos</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows, macOS, Linux &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      Every file you share carries a second, invisible document with it: who created it, on what machine, when it was edited, and — for photos — exactly where you were standing. Most of the time that is harmless convenience. Sometimes it is your home address attached to a marketplace photo, your company's internal comments sent to a client, or a revision trail in a contract negotiation. This guide covers what metadata each common file type actually stores, how to strip it with tools already on your computer, and how to prove it is gone.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>Office documents:</strong> run Word's Document Inspector (<em>File &gt; Info &gt; Check for Issues &gt; Inspect Document</em>) and remove document properties and personal information. <strong>Photos:</strong> on Windows use <em>Properties &gt; Details &gt; Remove Properties and Personal Information</em>; on macOS use Preview's Inspector or remove location data; on any OS use <code>exiftool -all=</code>. <strong>PDFs:</strong> edit the Document Properties and, for thorough cleanup, use exiftool. Then verify by re-checking the properties before sending.</p>
+    </div>
+
+    <h2>What metadata is, in one paragraph</h2>
+    <p>Metadata is data about the file rather than in it. Some of it is structural and necessary — image dimensions, page count, compression format. Some is informational — title, author, creation date. And some is genuinely sensitive: GPS coordinates, editing history, reviewer names, the software and machine that produced the file. The file works perfectly without most of it; it exists because applications record it automatically, not because anyone chose to include it. The risk is asymmetry: the sender forgets it exists, and the recipient only has to look.</p>
+
+    <h2>What each file type carries</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>File type</th><th>Typical metadata</th><th>What can hurt you</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Word (.docx)</td><td>Author, company, last modified by, total editing time, revision history, comments, tracked changes, template path</td><td>Internal reviewer names, deleted-but-recoverable text, negotiation history</td></tr>
+          <tr><td>Excel / PowerPoint</td><td>Same author fields plus hidden rows/sheets, speaker notes, document statistics</td><td>Hidden worksheets, off-slide content, manager names</td></tr>
+          <tr><td>Photos (JPEG, HEIC, etc.)</td><td>EXIF: camera model, timestamp, GPS coordinates, serial numbers, editing software</td><td>Home address and routines derived from location and time patterns</td></tr>
+          <tr><td>PDF</td><td>Title, author, producer application, creation/modification dates, sometimes history and attachments</td><td>Internal author names, the tool that produced it, embedded source files</td></tr>
+          <tr><td>Screenshots</td><td>Often none beyond basic image data — but phones may still tag location on screenshots</td><td>Location tags; visible content is the real leak, not metadata</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Word and Office documents: the Document Inspector</h2>
+    <p>Office files are the worst offenders because they are designed for collaborative editing — the same features that make teamwork possible make leaks routine. The revision history in a .docx can contain every change, who made it, and sometimes text that was deleted. Comments name reviewers. The document properties name the author and their organisation.</p>
+    <p>Word's built-in answer is the Document Inspector, reached at <em>File &gt; Info &gt; Check for Issues &gt; Inspect Document</em>. It scans for categories including comments and annotations, document properties and personal information, headers and footers, hidden text, and custom XML data, then lets you remove each category with one click. Microsoft documents the Inspector and what each category covers in <a href="https://support.microsoft.com/" rel="noopener">Microsoft Support</a> — check the article for your Office version, because the category list has grown over the years. Three practical notes:</p>
+    <ul>
+      <li><strong>Inspect before every external send.</strong> Make it the last step before attaching, not a cleanup done once and trusted forever — later edits re-add author fields automatically.</li>
+      <li><strong>Accept or reject all tracked changes first.</strong> The Inspector removes change tracking, but you should decide the fate of the changes themselves before sending a "final" document.</li>
+      <li><strong>Save as PDF for true finality.</strong> A PDF export renders the document as displayed and does not carry the revision trail — pair it with the PDF cleanup below. If the PDF also contains scanned material that needs its text layer fixed first, see our <a href="/guides/make-scanned-pdf-searchable/">OCR guide</a> before finalising.</li>
+    </ul>
+    <p>The blunt alternative for high-stakes documents: create a fresh copy, select all, copy, and paste into a brand-new blank document, then fill in properties manually. Nothing hidden survives that trip.</p>
+
+    <h2>Photos: removing EXIF, especially location</h2>
+    <p>Phone cameras stamp every photo with EXIF metadata: timestamp, camera settings, and — if location services permit the camera app — GPS coordinates accurate to a few metres. A photo of your desk shared to a stranger can carry your home address; a series of photos can map your daily routine. Whether to strip it is a judgement per photo, but you should be making the judgement knowingly.</p>
+
+    <h3>Windows: Remove Properties and Personal Information</h3>
+    <p>In File Explorer, right-click the photo, choose <strong>Properties &gt; Details</strong>, and scroll the list — this is also your "look before sharing" view. At the bottom click <em>Remove Properties and Personal Information</em>: choose to create a cleaned copy or strip the selected properties in place. Windows documents the dialog in its support pages; the copy-first option is the safer default since it leaves your original intact.</p>
+
+    <h3>macOS: Preview's Inspector</h3>
+    <p>Open the photo in Preview and choose <em>Tools &gt; Show Inspector</em> (Cmd+I). The tabs show general, EXIF, and — where present — GPS data, including a small map. From the GPS tab you can remove the location information with one click. Apple's support documentation covers the Inspector. This handles the location tag cleanly; for stripping every EXIF field, move to the command line below.</p>
+
+    <h3>Any OS: exiftool</h3>
+    <p>ExifTool is the reference command-line tool for reading and writing image metadata, maintained at <a href="https://exiftool.org/" rel="noopener">exiftool.org</a>. It reads essentially every tag format that exists, which makes it both the best inspection tool and the best removal tool:</p>
+    <pre><code># See everything a photo carries
+exiftool photo.jpg
+
+# Remove all metadata, writing to a new file
+exiftool -all= -o clean.jpg photo.jpg
+
+# Remove all metadata in place (original kept as photo.jpg_original)
+exiftool -all= photo.jpg</code></pre>
+    <p>Note the mechanics: with <code>-o</code> it writes the cleaned file to a new name; in-place it preserves the original automatically with an <code>_original</code> suffix — delete that backup deliberately once you have verified the clean copy. The site's documentation lists tag names if you want to remove only specific fields, such as GPS data alone.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>PDFs: properties, hidden data, and exiftool</h2>
+    <p>A PDF's visible metadata lives in Document Properties (<em>File &gt; Properties</em> in Acrobat, or the equivalent in any reader): title, author, subject, keywords, and the producing application. In Acrobat you can edit or clear these fields directly and save. For deeper cleaning — custom metadata, embedded attachments, leftover revision objects — Acrobat's redaction and sanitise workflows handle hidden content alongside page redaction; our <a href="/guides/redact-pdf-permanently/">permanent redaction guide</a> covers that pairing, since anyone redacting a document should clean its properties in the same pass. ExifTool also reads and writes XMP metadata in PDFs, which makes it a cross-platform option for the fields the reader UI does not expose. Whatever you change, save to a new file and reopen it to confirm — properties edited in an open session are not on disk until you save.</p>
+
+    <h2>Why screenshots and shared files leak</h2>
+    <p>Screenshots feel anonymous because you cropped the visible parts, yet desktop screenshot tools record nothing sensitive while some phone screenshot pipelines still apply the camera roll's location tagging — worth checking once on your own device. The subtler leak is workflow: files passed through review collect collaborators' names; templates carry their creators; exports inherit the original document's properties. And the delivery channel matters as much as the file: social platforms generally strip EXIF when processing uploads, but <strong>email, direct file transfers, and cloud folder shares deliver metadata intact</strong> — the cleanup has to happen on the file before it is attached, not be delegated to the pipe. If the file is instead travelling by upload link, our <a href="/guides/share-large-files-securely/">secure file-sharing guide</a> covers how to pair a cleaned file with access controls, and our <a href="/guides/ai-file-upload-privacy/">AI upload privacy guide</a> covers the same thinking for pasting content into online tools.</p>
+
+    <h2>Verify the removal</h2>
+    <p>An unverified cleanup is a rumour. Before sending:</p>
+    <ol>
+      <li><strong>Re-open the cleaned copy</strong> — not the original — and check its properties or Details panel. This catches the classic failure of cleaning one copy and attaching another.</li>
+      <li><strong>For photos, run the metadata through a second reader.</strong> ExifTool on the output file shows exactly which tags survived; anything listed still travels with the file.</li>
+      <li><strong>For Office files, reopen the .docx and check</strong> <em>File &gt; Info</em> for author fields and run the Inspector once more if you edited after the first pass.</li>
+      <li><strong>For PDFs, check Document Properties in a different reader</strong> than the one you edited in, and search for attachments via the reader's attachment panel.</li>
+    </ol>
+
+    <div class="warn-box">
+      <h2>Do not "clean" images by screenshotting or re-saving them</h2>
+      <p>The internet's folk remedy for metadata — take a screenshot of the photo — does remove EXIF, but at the cost of re-encoding the image: quality drops, file size often grows, and on some phones the new screenshot gets its own location tag. The same applies to round-tripping a photo through an editor at reduced quality. Proper removal tools rewrite the metadata section and leave the pixels untouched; use them.</p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

@@ -4,7 +4,7 @@ import { compareData } from '../../data/compare';
 
 const pageTitle = 'Compare — ToolStep Product Comparisons';
 const pageDescription = 'Side-by-side product comparisons compared based on features, specifications, pricing, and use cases. Standing desks, chairs, keyboards, mice, docks, and more.';
-const lastUpdated = 'June 2026';
+const lastUpdated = 'November 2026';
 
 // Group by category preserving order
 const categories: { name: string; color: string; items: typeof compareData }[] = [];
@@ -21,7 +21,7 @@ for (const entry of compareData) {
 <PageLayout
   title="Tool Comparisons 2026: Side-by-Side Results — ToolStep"
   description={pageDescription}
-  subtitle="50 side-by-side comparisons across hardware and software. Each page has a quick winner, full spec table, pros/cons, and who wins each scenario."
+  subtitle={`${compareData.length} side-by-side comparisons across hardware and software. Each page has a quick winner, full spec table, pros/cons, and who wins each scenario.`}
   lastUpdated={lastUpdated}
   breadcrumbs={[
     { name: 'Home', href: '/' },

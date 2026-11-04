@@ -1,0 +1,205 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/safe-ai-browser-agent-setup/';
+const title = 'How to Safely Set Up an AI Browser Agent | ToolStep';
+const description = 'AI browser agents click, type, and spend inside your logged-in sessions. How to set one up with least privilege: separate profiles, approval gates, and review.';
+const headline = 'How to Safely Set Up an AI Browser Agent';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'What is an AI browser agent?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It is an AI tool that operates a web browser for you: opening pages, following links, filling forms, and clicking buttons to complete a task you describe. Some run as features inside a chatbot, some as browser extensions or dedicated products. Unlike a chatbot that only writes text, an agent takes actions inside real websites — including ones where you are signed in.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Why does a separate browser profile matter so much?',
+			acceptedAnswer: { '@type': 'Answer', text: 'An agent acts inside whatever session it runs in. In your daily profile, that means your logged-in banking, primary email, cloud storage, and every saved password. In a dedicated profile with only the accounts a task needs, the same failure or attack reaches a fraction of that. The profile is the blast radius.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Can a malicious website control my AI agent?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It can try. Pages an agent reads can contain hidden instructions designed to redirect it — indirect prompt injection — and no product currently guarantees that retrieved content cannot influence the agent. This is why least privilege, approval gates for consequential actions, and treating agent output as untrusted matter more than trusting the agent\'s judgment.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Should I let an agent handle purchases or payments?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Only with a confirmation gate you control, and ideally with a payment method whose exposure is limited. Prefer agents that pause and ask before submitting orders or spending money, keep the amount small on first runs, and review the completed transaction history afterwards. Never paste full card details or credentials into a prompt to "help" the agent — use the browser\'s own saved sessions instead.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Safely Set Up an AI Browser Agent</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to AI browser agents on Chrome, Edge, and similar browsers &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      AI browser agents are the most capable — and the most exposed — form of AI assistant yet: they open pages, fill forms, and click buttons inside your real browser, often while signed in as you. Used with the right setup, they save real time. Used carelessly, they put your email, your accounts, and your money one injected instruction away from a stranger. The setup takes twenty minutes and it is mostly about permissions, not technology.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>Run the agent in a dedicated browser profile that is not signed into banking or your primary email, grant it only the sites and access the task requires, and choose a product that asks for confirmation before destructive or payment actions. Review what it did afterwards, keep extensions in that profile nearly empty, never paste full credentials into prompts, and treat everything the agent reports as untrusted content to verify.</p>
+    </div>
+
+    <h2>What AI browser agents actually do</h2>
+    <p>A chatbot answers. An agent <em>acts</em>. Given a goal — "compare these three flights and fill in the booking form," "find my oldest unread invoices and download them" — an agent plans steps, navigates pages, reads content, types into fields, and clicks. That is the value and the risk in one sentence: every capability is exercised inside <em>your</em> session, with <em>your</em> cookies, on <em>your</em> behalf.</p>
+    <p>Three properties define the risk model:</p>
+    <ol>
+      <li><strong>They operate inside your logged-in session.</strong> Anything your browser can reach while signed in, the agent can reach — because it <em>is</em> your browser. There is no sandbox between the agent and your saved sessions.</li>
+      <li><strong>They read untrusted pages.</strong> Every page the agent opens is content it processes, and content can carry instructions aimed at the agent — see our <a href="/guides/prompt-injection-explained/">prompt injection explainer</a>.</li>
+      <li><strong>They can act irreversibly.</strong> Sending a message, submitting a form, confirming an order, deleting items — some actions do not have an undo button, and an agent acting on bad instructions does not hesitate.</li>
+    </ol>
+
+    <h2>The blast-radius table</h2>
+    <p>Most of the setup below follows from one idea: shrink what the agent can touch, so that a mistake or an attack reaches a small circle, not your whole digital life.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Setup choice</th><th>If the agent misbehaves or is injected</th><th>Setup cost</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Runs in your daily profile (all accounts signed in)</td><td>Reach into email, banking, cloud storage, saved passwords — everything at once</td><td>None (this is the mistake)</td></tr>
+          <tr><td>Dedicated profile, task accounts only</td><td>Reach limited to the few sites the task needs</td><td>One-time profile setup</td></tr>
+          <tr><td>Approval gate on submits and payments</td><td>Attacker's action stops at your confirmation prompt</td><td>Mild friction per task</td></tr>
+          <tr><td>Post-task history review</td><td>Unauthorized actions spotted and reported quickly</td><td>One minute per task</td></tr>
+          <tr><td>Minimal extensions in the profile</td><td>No third-party scripts amplifying page content or stealing data</td><td>None — just restraint</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Setup principle 1 — Use a dedicated browser profile</h2>
+    <p>Chrome, Edge, and Firefox all support separate profiles: isolated cookie jars, histories, and saved passwords. Create one profile for agent work and keep nothing in it that you would miss:</p>
+    <pre><code># Optional: a fully separate data directory for agent work (Chrome)
+chrome --user-data-dir="$HOME/agent-browser-profile" --no-first-run</code></pre>
+    <p>Sign the profile into only the accounts a task class requires — the shopping account for price work, the test or secondary email for anything that sends messages. Do not import your bookmarks, do not sync your saved passwords, and do not let the browser remember payment cards in this profile.</p>
+
+    <h3>Never in the agent profile</h3>
+    <ul>
+      <li><strong>Banking and brokerage logins.</strong> No agent task justifies this exposure.</li>
+      <li><strong>Your primary email.</strong> Email is the recovery channel for everything else — losing control of it cascades.</li>
+      <li><strong>Password-manager sessions</strong> with your full vault unlocked.</li>
+      <li><strong>Admin consoles</strong> for your company, domain, servers, or cloud accounts.</li>
+    </ul>
+
+    <h2>Setup principle 2 — Least privilege, per task</h2>
+    <p>Grant the agent the narrowest access that accomplishes the job, and revoke or let sessions lapse afterwards:</p>
+    <ul>
+      <li><strong>Scope the sign-ins.</strong> Working on flights? Only the airline and one comparison site need sessions in the agent profile.</li>
+      <li><strong>Use secondary accounts where possible.</strong> A secondary email, a virtual card, or a dedicated shopping account turns a compromise into an inconvenience.</li>
+      <li><strong>Time-box access.</strong> Sign out when the task class is done; don't leave standing sessions in the agent profile.</li>
+      <li><strong>Prefer passkeys on the accounts that must be there.</strong> Passkeys can't be phished or pasted into prompts — our <a href="/guides/passkeys-explained/">passkeys guide</a> covers setup.</li>
+    </ul>
+    <div class="warn-box">
+      <h2>Never paste full credentials into a prompt</h2>
+      <p>A prompt is context the model will carry, repeat, and act on — and it may be logged or reviewed depending on the product. Typing "my username is X and my password is Y, log in for me" hands your credentials to a third-party service in plaintext and puts them in the conversation history where an injected instruction could redirect their use. Let the browser's saved session do the authenticating; if a task requires credentials, enter them yourself at the confirmation step, not in the prompt.</p>
+    </div>
+
+    <h2>Setup principle 3 — Choose products with approval gates</h2>
+    <p>Products differ in how much autonomy they give the agent. Before committing to one, check its documentation for:</p>
+    <ul>
+      <li><strong>Confirmation before consequential actions</strong> — form submissions, sends, purchases, deletions. The agent should stop and show you what it is about to do.</li>
+      <li><strong>Configurable autonomy levels</strong> — a "read-only / ask me / full-auto" range you can dial per task.</li>
+      <li><strong>A transparent action log</strong> — every step the agent took, inspectable afterwards.</li>
+      <li><strong>Documented handling of untrusted content</strong> — what the vendor says about retrieved pages and instructions found in them; OWASP's Top 10 for LLM Applications project (<a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="noopener">owasp.org</a>) and vendor security documentation, such as Anthropic's (<a href="https://docs.anthropic.com/" rel="noopener">docs.anthropic.com</a>), describe the underlying risks these features address.</li>
+    </ul>
+    <p>Start every new task class in the most restricted mode, and only relax it after the agent has behaved correctly a few times on that kind of task.</p>
+
+    <h2>Setup principle 4 — Keep the agent profile minimal</h2>
+    <p>Extensions in the agent profile see the same pages the agent sees. Each one is an extra script running over the content — an extra party to trust with whatever the agent reads and types. In the agent profile:</p>
+    <ul>
+      <li><strong>Install nothing by default.</strong> A clean profile is the baseline.</li>
+      <li><strong>Audit your daily browser separately.</strong> Extensions accumulate silently everywhere else — our <a href="/guides/audit-chrome-extensions/">extension audit guide</a> walks the cleanup.</li>
+      <li><strong>Be suspicious of "helper" extensions</strong> that promise to make agents smarter; they widen the attack surface precisely where the agent is weakest.</li>
+    </ul>
+
+    <h2>Setup principle 5 — Review, then trust</h2>
+    <p>An agent's work product is a series of actions in a browser, and every one of them is checkable:</p>
+    <ol>
+      <li><strong>Read the agent's summary skeptically.</strong> It is generated text, not a report — verify claims that matter against the real sites, the way our <a href="/guides/fact-check-ai-answers/">fact-checking guide</a> describes for any AI output.</li>
+      <li><strong>Check the browser history</strong> in the agent profile: every page it visited and every form it touched is listed.</li>
+      <li><strong>Confirm outcomes at the destination</strong> — the order confirmation email on the merchant's real site, the sent folder of the secondary account, the downloaded files you expected.</li>
+      <li><strong>Watch for drift.</strong> If the agent visited pages unrelated to the task, stop, review its actions, and reconsider the permissions you gave it.</li>
+    </ol>
+
+    <h2>Choosing tasks: what suits an agent, what does not</h2>
+    <ul>
+      <li><strong>Good fit:</strong> research and comparison across many public pages, repetitive form-filling on low-stakes sites, downloading and organizing documents from accounts with limited scope.</li>
+      <li><strong>Requires gates:</strong> anything that spends money, sends messages from your name, or changes account settings. Allowed, but only with confirmation prompts on.</li>
+      <li><strong>Keep out entirely:</strong> banking, healthcare portals, tax filings, primary email, and anything involving other people's personal data — the last also raises the privacy questions covered in our <a href="/guides/ai-file-upload-privacy/">file upload checklist</a>.</li>
+    </ul>
+    <p>And remember that the agent's conclusions are only as good as its reading. Price comparisons, summaries of terms, "this is the cheapest option" — spot-check them before you act on them.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

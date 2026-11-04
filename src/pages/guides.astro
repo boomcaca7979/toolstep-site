@@ -12,6 +12,186 @@ const pageDescription =
 // Every entry mirrors the target page's own title, summary and publication date.
 const guides = [
 	{
+		title: 'Wi-Fi Connected but No Internet? A Layer-by-Layer Fix',
+		href: '/guides/wifi-connected-no-internet/',
+		topic: 'Network',
+		summary:
+			'The "connected, no internet" error has four possible causes — your device, the router, DNS, or your provider. Find the failing layer in minutes, then renew DHCP, repair DNS, or reset the network stack with exact Windows and macOS commands.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'DNS Server Not Responding: Complete Fix Guide',
+		href: '/guides/dns-server-not-responding/',
+		topic: 'Network',
+		summary:
+			'Fix the "DNS server is not responding" error and DNS_PROBE_FINISHED_NO_INTERNET: flush the cache on every OS, switch to a public resolver, repair the router as resolver, and rule out VPN or firewall interference.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'Why Is My Upload Speed So Slow? Causes and Fixes',
+		href: '/guides/slow-upload-speed/',
+		topic: 'Network',
+		summary:
+			'Uploads crawl while downloads fly? Diagnose asymmetric plans, bufferbloat, cloud-sync and VPN overhead, and Wi-Fi bottlenecks with a proper testing methodology — and learn when the fix is a call to your ISP.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'VPN Connected but No Internet? How to Fix It',
+		href: '/guides/vpn-connected-no-internet/',
+		topic: 'Network',
+		summary:
+			'The VPN tunnel establishes but pages will not load. Fix kill-switch lockouts, broken VPN DNS, protocol and port blocks on restrictive networks, MTU mismatch, and Windows adapter problems.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Make a Scanned PDF Searchable with OCR',
+		href: '/guides/make-scanned-pdf-searchable/',
+		topic: 'Files & documents',
+		summary:
+			'Check whether a scanned PDF already has a text layer with the Ctrl+F test, then run free OCR using Google Drive, macOS Preview, PowerToys, or Tesseract — and verify the output before deleting the original.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Redact a PDF Permanently and Safely',
+		href: '/guides/redact-pdf-permanently/',
+		topic: 'Files & documents',
+		summary:
+			'Black boxes drawn over text are not redaction — the words stay in the file and remain copyable. What proper redaction removes, how to verify it, and which tools actually do it.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Compress a PDF Without Losing Quality',
+		href: '/guides/compress-pdf-without-losing-quality/',
+		topic: 'Files & documents',
+		summary:
+			'Find out what actually makes a PDF huge, shrink it with Acrobat, macOS Preview, or Ghostscript, and learn which settings cut file size while keeping text sharp and images usable.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Remove Metadata from PDFs, Word Files and Photos',
+		href: '/guides/remove-file-metadata/',
+		topic: 'Files & documents',
+		summary:
+			'Documents and photos carry hidden author, company, revision and GPS data. What each file type stores, how to remove it with built-in tools or exiftool, and how to verify it is gone.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Share Large Files Securely',
+		href: '/guides/share-large-files-securely/',
+		topic: 'Files & documents',
+		summary:
+			'Email attachments hit size limits fast. Compare cloud links, encrypted archives, messengers, and transfer services — then set expiry, restrict access, and verify delivery.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'exFAT vs NTFS vs APFS: Which Format Should You Choose',
+		href: '/guides/exfat-vs-ntfs-vs-apfs/',
+		topic: 'Storage & backup',
+		summary:
+			'Cross-platform compatibility, file and volume limits, journaling, and encryption compared — with a use-case table for picking the right file system for any internal or external drive.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Check Laptop Battery Health on Windows and Mac',
+		href: '/guides/check-laptop-battery-health/',
+		topic: 'Hardware',
+		summary:
+			'Read the battery report on Windows with powercfg and on macOS through System Information: design versus full charge capacity, cycle count, what a healthy number looks like, and when degradation is a fault.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'Bluetooth Headphones Lag: How to Fix Audio Delay',
+		href: '/guides/fix-bluetooth-audio-delay/',
+		topic: 'Audio & conferencing',
+		summary:
+			'Why Bluetooth audio lags, how codecs and profiles add delay, and the fixes on Windows, macOS, Android, and iOS — plus which part of the latency is physics rather than a bug.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'Lost Your Phone? How to Recover Your Authenticator App',
+		href: '/guides/recover-authenticator-app/',
+		topic: 'Security & accounts',
+		summary:
+			'Lost the phone holding your 2FA codes? Recovery paths for Google Authenticator, Microsoft Authenticator, and Authy — and the backup-code discipline that keeps you from being locked out.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Audit Chrome Extensions and Their Permissions',
+		href: '/guides/audit-chrome-extensions/',
+		topic: 'Security & accounts',
+		summary:
+			'Walk through chrome://extensions, read each extension\'s permissions and site access, understand MV3 service workers, and decide what to keep, restrict, or remove.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Prepare Your Laptop for Sale: Wipe It Safely',
+		href: '/guides/prepare-laptop-for-sale/',
+		topic: 'Security & accounts',
+		summary:
+			'A safe-sale checklist for any laptop: back up, deauthorize licenses, remove Activation Lock, sign out everywhere, and securely erase with Reset this PC or Erase All Content and Settings.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Fact-Check AI Answers Using Reliable Sources',
+		href: '/guides/fact-check-ai-answers/',
+		topic: 'AI & models',
+		summary:
+			'AI answers can be confidently wrong. A practical verification workflow: find checkable claims, prefer primary sources, cross-check independently, and catch fake citations.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'Prompt Injection Explained: How It Tricks AI Agents',
+		href: '/guides/prompt-injection-explained/',
+		topic: 'AI & models',
+		summary:
+			'Prompt injection hides instructions inside web pages, emails, and PDFs that AI agents obey. How it works, why it is hard to fix, and the defenses that actually help.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'Before Uploading Files to AI: A Privacy Checklist',
+		href: '/guides/ai-file-upload-privacy/',
+		topic: 'AI & models',
+		summary:
+			'Uploading a file to an AI chatbot sends its contents to vendor servers. Classify the file, check the provider\'s data controls, redact first, and know the local alternatives.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'AI Coding Assistant Privacy: Where Does Your Code Go?',
+		href: '/guides/ai-coding-assistant-privacy/',
+		topic: 'AI & models',
+		summary:
+			'Coding assistants read your code and send it to remote servers. What gets transmitted, which retention and training controls exist per assistant, and how to decide what is safe.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
+		title: 'How to Safely Set Up an AI Browser Agent',
+		href: '/guides/safe-ai-browser-agent-setup/',
+		topic: 'AI & models',
+		summary:
+			'AI browser agents click, type, and spend inside your logged-in sessions. Set one up with least privilege: dedicated profiles, approval gates, and a review routine.',
+		date: 'November 2026',
+		dateISO: '2026-11-04',
+	},
+	{
 		title: 'Passkeys Explained: How They Work, What They Protect, and How Not to Get Locked Out',
 		href: '/guides/passkeys-explained/',
 		topic: 'Security & accounts',

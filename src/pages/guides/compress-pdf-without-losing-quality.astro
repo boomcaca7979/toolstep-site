@@ -1,0 +1,195 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/compress-pdf-without-losing-quality/';
+const title = 'How to Compress a PDF Without Losing Quality | ToolStep';
+const description = 'Find out why a PDF is huge, shrink it with Acrobat, Preview, or Ghostscript, and learn which settings cut size while keeping text sharp and images usable.';
+const headline = 'How to Compress a PDF Without Losing Quality: What Shrinks, What Suffers, What to Check';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Does compressing a PDF reduce its quality?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Only if images are downsampled or recompressed. Lossless steps — removing duplicate objects, cleaning up fonts and structure, re-encoding streams without loss — shrink the file with no visual change at all. The quality loss comes from the lossy settings: lower image resolution and heavier image compression. Choose those deliberately based on how the PDF will be used.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Why is printing to PDF a bad way to shrink a file?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Printing to PDF rebuilds the document through the printing pipeline, which can rasterise content, drop form fields and links, and flatten layers. It sometimes produces a smaller file, but at the cost of searchable text and interactivity. Use a compression or optimisation feature that edits the PDF in place instead.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How small should a PDF get?',
+			acceptedAnswer: { '@type': 'Answer', text: 'There is no universal target. A text-only report should compress to well under a megabyte, while a 40-page scan of photos may legitimately stay large because every page is a full-colour image. Compare the result against the original at the same zoom level; if text is still razor sharp and photos look right at 100%, the file is as small as it needs to be.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Is it safe to use an online PDF compressor?',
+			acceptedAnswer: { '@type': 'Answer', text: 'The file is uploaded to and processed on someone else\'s servers, so you are trusting that service with the document\'s contents. For personal files that may be an acceptable trade; for confidential, client, or regulated documents, use a local tool such as Acrobat, Preview, LibreOffice, or Ghostscript, which never upload anything.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Compress a PDF Without Losing Quality</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows, macOS, Linux &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      "Compress a PDF" usually means one of two very different operations: lossless cleanup that shrinks the file with zero visual change, or lossy downsampling that trades image resolution for megabytes. Tools blur the distinction, so people routinely destroy scan quality they needed to keep — or give up on a 60 MB file that could have lost half its size for free. This guide shows you what is actually inside an oversized PDF, which settings cut which weight, and how to check the result honestly.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>Use a real optimisation tool, not print-to-PDF: <strong>Acrobat's Reduce File Size or PDF Optimizer</strong> on Windows and macOS, <strong>Preview's Export with a Quartz filter</strong> on macOS, or <strong>Ghostscript with <code>-dPDFSETTINGS=/ebook</code></strong> on any OS. Keep text as text, downsample only images you do not need at full resolution, then zoom to 100% and verify text is still crisp and images still readable. If the PDF is only large because it embeds scanned pages, no tool can shrink it dramatically without softening those images.</p>
+    </div>
+
+    <h2>What actually makes a PDF big</h2>
+    <p>Text is astonishingly cheap. A page of characters is a few kilobytes even before compression; a 200-page text-only report is rarely more than a megabyte or two. When a PDF reaches 50 MB, the weight is almost never the words. The usual suspects:</p>
+    <ul>
+      <li><strong>Scanned page images.</strong> Each page of a scan is a full-resolution photograph. A 300 dpi colour page image can weigh megabytes on its own; multiply by page count and scans dominate everything.</li>
+      <li><strong>Embedded photos and figures.</strong> Screenshots and photos pasted into reports often arrive at their camera resolution — 12 megapixels for a figure displayed 6 cm wide.</li>
+      <li><strong>Fonts.</strong> A fully embedded CJK or decorative font family can add tens of megabytes; most documents need only the glyphs they use.</li>
+      <li><strong>Redundancy and bloat.</strong> Every edit-and-save cycle in some editors appends a new revision inside the file, so old objects accumulate; duplicated images, unused colour profiles, and embedded thumbnails pile on top.</li>
+    </ul>
+    <p>This is why the first diagnostic question is "what kind of PDF is it?" A text report with two photos has completely different compression headroom from a 90-page scan. If your large file is a scan you also want searchable, run OCR first and compress second — see our <a href="/guides/make-scanned-pdf-searchable/">guide to making a scanned PDF searchable</a> — because some compression settings degrade exactly the letter shapes OCR depends on.</p>
+
+    <h2>Lossless versus lossy: know what you are trading</h2>
+    <p><strong>Lossless</strong> compression reorganises the file without changing a single pixel or character: re-compressing content streams, removing duplicate and unused objects, dropping embedded thumbnails, subsetting fonts, discarding old revisions. Output looks identical to input. Savings range from negligible (an already-efficient file) to dramatic (a file that has been edited and re-saved dozens of times).</p>
+    <p><strong>Lossy</strong> compression changes image data: it downsamples images to a lower resolution (dropping pixels) and recompresses them more aggressively (dropping detail). This is where the big megabyte savings live, especially for scans — and also where quality is lost. The professional move is not choosing one but sequencing them: run lossless cleanup first, then apply lossy image settings only as aggressively as the document's purpose allows. A contract scanned for archiving deserves 300 dpi; the same contract emailed for a signature reads perfectly at 150.</p>
+
+    <h2>The routes at a glance</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool</th><th>Platform</th><th>Control level</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Acrobat Reduce File Size</td><td>Windows, macOS</td><td>One click, sensible defaults</td><td>Fast shrink when you trust the defaults</td></tr>
+          <tr><td>Acrobat PDF Optimizer</td><td>Windows, macOS</td><td>Per-image-type dpi and compression</td><td>Mixed documents needing surgical settings</td></tr>
+          <tr><td>Preview Export (Quartz filter)</td><td>macOS</td><td>Preset filter only</td><td>Quick job where image softness is acceptable</td></tr>
+          <tr><td>Ghostscript CLI</td><td>Windows, macOS, Linux</td><td>Presets plus full low-level options</td><td>Batch scripts; free and fully local</td></tr>
+          <tr><td>LibreOffice / Word re-export</td><td>All</td><td>Export-time image resolution and quality</td><td>When you still own the source document</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Adobe Acrobat: Reduce File Size and the PDF Optimizer</h2>
+    <p>Acrobat ships two levels of compression, both documented at <a href="https://helpx.adobe.com/acrobat/using.html" rel="noopener">Adobe Help</a> (check the Optimizer page for your version, as menu locations shift between releases):</p>
+    <ul>
+      <li><strong>Reduce File Size</strong> — the one-click option. It applies sensible defaults and offers a compatibility floor. Use it when the document just needs to be smaller and you do not want to think about dpi.</li>
+      <li><strong>PDF Optimizer</strong> (<em>Save as Other &gt; Optimized PDF</em>) — the control panel. Here you set per-image-type downsampling: colour, greyscale, and monochrome images each get their own target resolution and compression, and there are separate panels for fonts, transparency, and discarding objects. For a mixed document, lowering colour image resolution while leaving monochrome (text-scan) images alone is the classic "smaller but still sharp" recipe.</li>
+    </ul>
+    <p>Optimizer also reports what is inside the file before and after, which doubles as the diagnosis step: if it shows the size lives in colour images, you know where to aim.</p>
+
+    <h2>macOS: Preview's Export with a Quartz filter</h2>
+    <p>Preview can resample on export: open the PDF, choose <em>File &gt; Export</em>, pick the Quartz Filter menu and choose <strong>Reduce File Size</strong>. That built-in filter is famously blunt — it applies aggressive image compression that can make photographs visibly muddy — so treat it as a quick fix and inspect the result at 100%. The trade is worth knowing about either way, and Apple's support documentation covers the export dialog. For anything where image quality genuinely matters, Preview's filter is the tool to outgrow, not the tool to trust: move up to Ghostscript or Acrobat's Optimizer when the built-in setting over-compresses.</p>
+
+    <h2>Ghostscript on the command line (Windows, macOS, Linux)</h2>
+    <p>Ghostscript is the free, open-source interpreter used under the hood by many PDF tools; its documentation lives at <a href="https://www.ghostscript.com/" rel="noopener">ghostscript.com</a>. Its PDFWRITE device with a <code>PDFSETTINGS</code> preset is the standard scripted compression route:</p>
+    <pre><code>gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+   -dPDFSETTINGS=/ebook \
+   -dNOPAUSE -dQUIET -dBATCH \
+   -sOutputFile=output.pdf input.pdf</code></pre>
+    <p>The presets bundle image sampling choices: <code>/screen</code> targets low-resolution on-screen viewing, <code>/ebook</code> aims at e-reader quality (the middle choice that suits most documents), and <code>/printer</code> and <code>/prepress</code> keep progressively more image fidelity for print workflows. Exact behaviour per preset is documented on the Ghostscript site; treat the names as intent, not guarantees, and verify output. Ghostscript also strips some of the cruft lossless cleanup targets, so even the gentler presets often shrink edited files substantially. Always write to a new file — the command above does, and so should you.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>LibreOffice: re-export instead of compress</h2>
+    <p>If the source document is a word-processor or presentation file and the PDF was exported from it, the cleanest compression is to fix the export rather than post-process the PDF. In LibreOffice, <em>File &gt; Export as PDF</em> offers an image-compression section: choose JPEG compression quality and reduce image resolution — for example, downsampling placed photos from their camera resolution to 150 dpi for screen viewing. Producing the PDF once with sensible image settings beats running a compressor over a bloated export, because text was never rasterised in the first place. Microsoft Word's export dialog offers comparable options; check the current dialog in your version.</p>
+
+    <h2>What not to do: print-to-PDF</h2>
+    <div class="warn-box">
+      <h2>Skip the "print to PDF" shortcut</h2>
+      <p>Re-printing a PDF through the operating system's print-to-PDF pipeline sometimes yields a smaller file, but it works by re-drawing the document through a printer driver — which can rasterise pages, drop form fields and hyperlinks, flatten transparency, and discard the text layer. You have replaced a structured document with a printed imitation. Worse, the size change is unpredictable: print pipelines sometimes <em>enlarge</em> files. If you print to PDF and the output stays searchable and clickable, you got lucky; if the text no longer selects, the file was rasterised and no later tool will restore it. Use a compression feature that edits the PDF itself.</p>
+    </div>
+    <p>The same warning applies to "flatten" settings in editors: flattening is a print-preparation step that bakes layers and effects into fixed content. Flatten for a press workflow when required — not to save bytes.</p>
+
+    <h2>Verify quality after compressing</h2>
+    <ol>
+      <li><strong>Open both files side by side at 100% zoom.</strong> Text should be pixel-identical: still selectable, still razor sharp. Any fuzz on body text means something rasterised — stop and use a gentler setting.</li>
+      <li><strong>Check images at their display size and at 200–400% zoom.</strong> Look for blocking artefacts around edges, banding in gradients, and smudged fine detail like chart axis labels.</li>
+      <li><strong>Re-run the Ctrl+F test</strong> and confirm search and copy still work — this also proves the text layer survived.</li>
+      <li><strong>Confirm interactive elements</strong> if the PDF has them: form fields, links, bookmarks, and comments do not survive every pipeline.</li>
+      <li><strong>Compare file sizes honestly.</strong> If the reduction is trivial, the file was already efficient and no setting will perform miracles — consider whether the images can be removed or the scan redone at lower resolution instead.</li>
+    </ol>
+
+    <h2>What compression cannot fix</h2>
+    <p>Some PDFs are big because their content demands it. A scanned photo album at 300 dpi is megabytes per page by design; compressing it means softening those images, full stop. Compression cannot recover quality a scan never had, and it cannot make a 60-page photographic catalogue fit an email attachment politely — for that, change the delivery method instead. Our <a href="/guides/share-large-files-securely/">guide to sharing large files securely</a> covers links, encrypted archives, and transfer services that sidestep attachment limits entirely. For long-term storage of the heavy original alongside a light working copy, the <a href="/guides/3-2-1-backup-rule/">3-2-1 backup rule</a> applies — and if the source file itself is enormous, an <a href="/best/best-portable-ssd/">external SSD</a> is the pragmatic answer.</p>
+
+    <div class="warn-box">
+      <h2>Think twice before uploading confidential PDFs to online compressors</h2>
+      <p>A web-based compressor receives the full contents of your document on its servers. For a menu or a flyer that is a routine trade; for contracts, medical or financial records, or client material it is a decision someone should make deliberately, not by default. Every tool recommended above — Acrobat, Preview, LibreOffice, Ghostscript — works entirely on your machine with no upload. Our guide on <a href="/guides/ai-file-upload-privacy/">AI and file-upload privacy</a> covers the broader pattern of thinking about where your documents travel.</p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

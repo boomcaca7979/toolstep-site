@@ -1,0 +1,182 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/slow-upload-speed/';
+const title = 'Why Is My Upload Speed So Slow? Causes and Fixes | ToolStep';
+const description = 'Uploads crawl while downloads fly? Diagnose asymmetric plans, bufferbloat, cloud-sync and VPN overhead, and Wi-Fi bottlenecks — and learn when to call your ISP.';
+const headline = 'Why Is My Upload Speed So Slow? Diagnosing Asymmetric Plans, Bufferbloat, and Upstream Bottlenecks';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Why is my upload speed so much lower than my download speed?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Because most residential plans are asymmetric by design: providers allocate far more of the line to downloads, which is what typical households consume the most. A 500/20 plan is not malfunctioning at 20 Mbps up — that is the tier you bought. Symmetrical service usually means fibre or a business plan.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'What upload speed do I need for video calls?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It depends on the service and resolution, so check your conferencing provider\u2019s current system requirements rather than old rules of thumb. What matters in practice is that the call gets its share of a non-congested upstream: a modest tier with nothing else sending data beats a fast tier that cloud sync is saturating.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Can a router really fix slow uploads?',
+			acceptedAnswer: { '@type': 'Answer', text: 'A router cannot raise the speed your plan delivers, but a router with good queue management (QoS or SQM) can stop one device\u2019s upload from filling the line and adding lag for everyone else. If speed tests show your full upstream tier and the problem is freezing calls while uploads run, queue management is the fix.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Why is my upload slow only in the evening?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Evening slowdowns usually mean congestion on the provider\u2019s network as the neighborhood loads up, or your own household\u2019s backups and sync jobs running on a schedule. Rule out your own devices first by testing late at night with everything else idle, then run tests at several hours of day and take the results to your ISP if the pattern holds.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Why Is My Upload Speed So Slow?</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows 10/11, macOS, home routers &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      Slow uploads announce themselves in the most annoying ways: video calls that freeze the moment someone shares a file, cloud backups that run for days, attachments that hang at 90 percent — all while download speed tests come back looking great. That asymmetry between healthy downloads and miserable uploads is itself the biggest diagnostic clue, and it narrows to a short list of causes.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>First, find out what your line actually delivers.</strong> Test on a wired connection with every other device idle, pausing cloud sync apps like OneDrive, iCloud, and Google Drive. If the test matches your plan's advertised upload tier, the "problem" is your plan's asymmetry or something competing for the upstream — cloud sync, a VPN, or bufferbloat when uploads run alongside calls. If the test shows far less than the tier you pay for, run the test again over Wi-Fi to see whether wireless is the bottleneck, then contact your ISP with the wired results.</p>
+    </div>
+
+    <h2>Why uploads are slow by design</h2>
+    <p>Most residential connections are <strong>asymmetric</strong>: the provider splits the line so downloads get several times the capacity of uploads. Cable and DSL plans in particular sell tiers like 500/20 or 300/10, and on DSL the gap is often wider still. The split reflects how most people use the internet — streaming and browsing pull data down; only calls, backups, and file transfers push it up.</p>
+    <p>For context on what counts as adequate service: in March 2024 the FCC raised its broadband benchmark to 100 Mbps download and 20 Mbps upload, a four-fold increase over the 25/3 benchmark it set in 2015. Treat that figure as what it is — a regulatory benchmark for assessing deployment, not a promise about your plan or a minimum for every household. If your plan's upload tier is in the single or low double digits, no amount of troubleshooting will make large uploads fast; the honest options are a higher tier or a symmetrical technology such as fibre where it is available. The FCC's announcement is published on <a href="https://docs.fcc.gov/public/attachments/DOC-401205A1.pdf" rel="noopener">docs.fcc.gov</a>.</p>
+
+    <h2>Test before you troubleshoot</h2>
+    <p>Half of all "slow upload" complaints trace back to a test that measured something else. Get one clean measurement first.</p>
+
+    <h3>Get wired, even briefly</h3>
+    <p>Connect a computer to the router with an Ethernet cable and disable Wi-Fi on that machine for the duration of the test. Wi-Fi shares airtime, and a weak signal or a busy 2.4 GHz band can cap uploads well below what the line delivers. If you have a switch or spare port on the router, use it; our <a href="/best/best-ethernet-switch/">Ethernet switch picks</a> cover what to buy if every port is taken.</p>
+
+    <h3>Quiet everything else</h3>
+    <p>One device on, every other device's syncing paused. Cloud storage, phone camera-roll backups, and Time Machine or File History jobs all compete for the same upstream, and some restart themselves the moment you pause them. On Windows, <strong>Resource Monitor</strong>'s Network tab sorts processes by bytes sent; on macOS, the built-in <code>nettop</code> tool shows per-connection traffic:</p>
+    <pre><code># Windows: launch Resource Monitor, then open the Network tab
+resmon
+
+# macOS: live per-process TCP traffic
+nettop -P -m tcp</code></pre>
+    <p>If a speed test runs while one of these tools shows another process sending megabytes per second, your measurement is measuring that process too.</p>
+
+    <h3>Run the test and read both numbers</h3>
+    <p>Use a reputable tester such as <a href="https://www.speedtest.net/" rel="noopener">Speedtest by Ookla</a>, run it two or three times, and note the upload figure against your plan's advertised tier. Providers advertise speeds as "up to", so landing at 80–90 percent of the tier is normal; landing at 10 percent on a wired, quiet connection is a fault worth escalating.</p>
+
+    <h2>What the symptoms point to</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Symptom</th><th>Most likely cause</th><th>Section</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Upload test matches your plan's tier, but it is still low</td><td>Asymmetric plan — tier is the tier</td><td>Plan asymmetry</td></tr>
+          <tr><td>Calls freeze exactly while a backup or sync runs</td><td>Bufferbloat — upload saturating the line</td><td>Bufferbloat</td></tr>
+          <tr><td>Uploads were fast until a VPN was installed</td><td>VPN overhead or a distant VPN server</td><td>VPN overhead</td></tr>
+          <tr><td>Wired test is fine, Wi-Fi upload is terrible</td><td>Wireless signal, band, or router capacity</td><td>Wi-Fi bottleneck</td></tr>
+          <tr><td>Slow at all hours, well below the tier you pay for</td><td>Line fault or provisioning problem — contact the ISP</td><td>Contacting the ISP</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Bufferbloat: one upload chokes the whole connection</h2>
+    <p>When an upload fills your upstream completely, packets from everything else — including the tiny packets that keep a video call alive — queue behind it. Latency soars, calls stutter, and web pages stall, even though the speed test says the upload is "working". This queuing delay is called bufferbloat, and it is the classic explanation for "uploads are fine on their own but kill everything else".</p>
+    <p>Test for it with the <a href="https://www.waveform.com/tools/bufferbloat" rel="noopener">Waveform bufferbloat test</a>, which measures how latency changes under load and grades the result. If the grade is poor, the fixes are:</p>
+    <ul>
+      <li><strong>Enable QoS or SQM on the router</strong> and set upload and download limits slightly below your measured line speed, so the router — not the modem — manages the queue. Check your router's current manual for the exact feature names, which vary by vendor.</li>
+      <li><strong>Cap the biggest senders.</strong> Limit cloud-sync upload rates in each app's settings, and schedule large backups for hours nobody is on a call.</li>
+      <li><strong>Upgrade a router that cannot manage queues.</strong> Our <a href="/best/best-wifi-router/">Wi-Fi router roundup</a> and <a href="/best/best-mesh-wifi/">mesh system picks</a> note which models include proper SQM support.</li>
+    </ul>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>The apps that quietly eat your upstream</h2>
+    <p>Upload bandwidth is scarce, and several categories of software consume it without visible progress bars: cloud-sync clients catching up on a folder of changes, phone backups starting the moment a device joins the Wi-Fi, versioned backup tools re-reading changed files, and any service syncing video libraries. When uploads feel slow, assume something is already using the pipe. Pause every sync client explicitly, check the Resource Monitor or nettop output from the previous section, and retest — the difference is usually the size of the hidden load. Keep the pausers paused during work hours if your upstream is small; most sync apps let you limit their upload rate permanently, which is a better long-term arrangement than a daily fight.</p>
+
+    <h2>VPN overhead on uploads</h2>
+    <p>A VPN wraps every outgoing packet in encryption and detours it through the provider's server, so uploads lose some throughput and gain latency. The cost varies with protocol, server distance, and server load — a nearby WireGuard server might cost little, while a loaded OpenVPN server on another continent can halve your upstream. Compare a speed test with the VPN off and on, on the same wired connection: a small consistent loss is the price of the tunnel, while a huge loss suggests trying a different server or protocol. If turning the VPN on does worse than slow things down — if browsing dies entirely — that is a different fault covered in our <a href="/guides/vpn-connected-no-internet/">VPN-connected-but-no-internet guide</a>, and our <a href="/guides/how-to-test-your-vpn/">VPN testing guide</a> shows how to measure what the tunnel really does to your traffic.</p>
+
+    <h2>When Wi-Fi is the bottleneck</h2>
+    <p>If the wired test shows your full tier but the Wi-Fi test does not, stop troubleshooting the ISP — the radio link is the limit. The usual culprits, in order: distance and walls (signal strength falls fast through floors), 2.4 GHz congestion from neighbours, an old device dragging the whole network's efficiency down, and routers placed inside cabinets. Reposition the router, prefer the 5 GHz band for the device doing the uploading, and consider a mesh system for coverage problems. For a permanent upload-heavy workstation, wired Ethernet ends the argument — and if your Wi-Fi is fundamentally underpowered for your home, see the router and mesh links above.</p>
+
+    <h2>Plan tier vs delivered speed: when to contact the ISP</h2>
+    <p>Contact the provider when you have done the groundwork: a wired test, quiet network, VPN off, showing an upload rate far below your tier repeatedly, at different times of day. Have the numbers ready — advertised tier, measured result, dates and times — and ask whether the line is provisioned correctly for your plan. On cable connections, persistent low uploads can also indicate signal-level problems that a technician must measure. Keep expectations calibrated: providers commit to their tiers as "up to" figures, and congestion-based evening slowdowns are harder to escalate than a flat, all-hours shortfall — but a wired test showing a fraction of the paid tier at 3 a.m. is a legitimate fault report.</p>
+    <div class="warn-box">
+      <h2>Do not diagnose over Wi-Fi</h2>
+      <p>The most common mistake in upload troubleshooting is concluding the plan or the ISP is at fault based on a Wi-Fi test from a laptop two rooms away. Wireless conditions — signal, band, interference, other devices — can cut uploads to a fraction of the line speed, and no amount of ISP escalation fixes a radio problem. Always establish the wired baseline first; only then do the numbers say anything about your plan.</p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

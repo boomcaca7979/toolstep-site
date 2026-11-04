@@ -4,7 +4,7 @@ import { alternativesData } from '../../data/alternatives';
 
 const pageTitle = 'Alternatives — ToolStep Software Alternatives';
 const pageDescription = 'Side-by-side software alternatives analyzed by our team. Productivity, communication, design, development, security, and more.';
-const lastUpdated = 'June 2026';
+const lastUpdated = 'November 2026';
 
 // Group by category preserving order
 const categories: { name: string; color: string; items: typeof alternativesData }[] = [];
@@ -21,7 +21,7 @@ for (const entry of alternativesData) {
 <PageLayout
   title="Software Alternatives 2026: Free & Paid Options — ToolStep"
   description={pageDescription}
-  subtitle="100 in-depth alternatives roundups across software categories. Each page ranks the top 10 alternatives with pros, cons, pricing, and FAQ."
+  subtitle={`${alternativesData.length} in-depth alternatives roundups across software categories. Each page ranks the top 10 alternatives with pros, cons, pricing, and FAQ.`}
   lastUpdated={lastUpdated}
   breadcrumbs={[
     { name: 'Home', href: '/' },

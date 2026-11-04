@@ -1,0 +1,208 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/wifi-connected-no-internet/';
+const title = 'Wi-Fi Connected but No Internet? How to Fix It (Windows, Mac, Router) | ToolStep';
+const description = 'A layer-by-layer fix for the "connected, no internet" error: identify whether the problem is one device, the router, or your ISP, then renew DHCP, repair DNS, and reset the network stack with exact commands.';
+const headline = 'Wi-Fi Connected but No Internet? A Layer-by-Layer Fix for Windows, Mac, and Your Router';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'What does "connected, no internet" actually mean?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Your device successfully joined the Wi-Fi network, which only proves a radio link to the router. It says nothing about whether the router has a working line to your internet provider, whether your device received a valid IP address, or whether DNS is resolving. The error can originate at any of those three layers.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Why does my phone say no internet but my laptop works?',
+			acceptedAnswer: { '@type': 'Answer', text: 'When one device works, the router and the ISP line are fine, so the fault is local to the failing device: a stale DHCP lease, a cached bad DNS answer, a VPN or proxy that is still routing traffic somewhere dead, or a corrupted network profile. Fix that device first before touching the router.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Should I change my DNS server to fix this?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Only if the diagnosis points at DNS. A quick test is to open a raw IP address such as https://1.1.1.1 in a browser: if that loads but names do not resolve, DNS is the problem and switching to a public resolver helps. If the raw IP also fails, DNS is not the issue and you should repair the IP configuration instead.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How do I know if the problem is my internet provider?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Check whether every device on the network is offline and look at the router status page or the WAN/Internet indicator light. If the router shows no WAN address or the light is red or off after a full reboot, contact your provider. Your account status page and the provider outage map are also worth checking from a mobile connection.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Wi-Fi Connected but No Internet? A Layer-by-Layer Fix</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows 10/11, macOS, iOS, Android &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      The "connected, no internet" message is misleading: it sounds like one problem, but it is one symptom with at least four possible causes — your device, your router, your DNS, or your provider. Rebooting everything sometimes works, but blindly rebooting hides which layer failed. This guide walks the layers in order so you fix the actual fault and know how to recognise it next time.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>Check whether other devices on the same Wi-Fi have internet.</strong> If they do, the problem is your device: forget and rejoin the network, renew the DHCP lease, flush DNS, and disable VPN or proxy software. If nothing has internet, reboot the modem and router (60 seconds, modem first); if that fails, check the router's WAN status and contact your provider. Only after the IP layer works should you suspect DNS.</p>
+    </div>
+
+    <h2>What "connected, no internet" really means</h2>
+    <p>Joining a Wi-Fi network only establishes a radio link between your device and the router. Actual internet access requires three more things, and a failure at any of them produces the same symptom:</p>
+    <ol>
+      <li><strong>An IP address from the router.</strong> Your device asks for one via DHCP. If the request fails, the device quietly assigns itself a link-local address (on Windows you will see <code>169.254.x.x</code> in <code>ipconfig</code>; macOS calls it "self-assigned IP") and has no route out.</li>
+      <li><strong>A working path from the router to the internet.</strong> The router itself needs a WAN connection from your modem or the provider's line. If the provider is down, every device shows the same error.</li>
+      <li><strong>Working name resolution.</strong> Even with a valid IP, pages fail if DNS is broken — although apps that connect by raw IP keep working, which is the diagnostic telltale.</li>
+    </ol>
+    <p>Because the layers fail independently, the fastest diagnostic is a scope check: is it one device or all of them? Everything else follows from that answer.</p>
+
+    <h2>Step 1 — Find the failing layer</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Observation</th><th>Most likely layer</th><th>Go to</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Other devices browse fine, one device does not</td><td>That device's IP or DNS configuration</td><td>Step 2</td></tr>
+          <tr><td>Every device is offline</td><td>Router, modem, or provider outage</td><td>Step 3</td></tr>
+          <tr><td>Raw IP like <code>https://1.1.1.1</code> loads, names do not</td><td>DNS only</td><td>Step 5</td></tr>
+          <tr><td>Error appeared right after connecting to a VPN or hotspot</td><td>VPN/proxy or captive portal</td><td>Step 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Run the raw-IP test early. Opening <code>https://1.1.1.1</code> (Cloudflare's resolver homepage, which serves its page directly at that address) splits "no connectivity at all" from "DNS is broken" in ten seconds. Microsoft and Apple both structure their own troubleshooting around exactly this distinction, so it is worth internalising.</p>
+
+    <h2>Step 2 — Fix a single affected device</h2>
+    <p>Work through these in order; each one is reversible and takes under a minute.</p>
+
+    <h3>Forget the network and rejoin</h3>
+    <p>Corrupted saved credentials and stale network profiles are the most common single-device cause. On Windows, use <em>Settings &gt; Network &amp; internet &gt; Wi-Fi &gt; Manage known networks</em>; on macOS, <em>System Settings &gt; Wi-Fi &gt; Details… &gt; Forget This Network</em>. Then rejoin and enter the password again.</p>
+
+    <h3>Renew the DHCP lease</h3>
+    <p>If the device is holding a dead lease — common after the router rebooted and handed out different addresses — force a renewal. On Windows:</p>
+    <pre><code>ipconfig /release
+ipconfig /renew
+ipconfig /flushdns</code></pre>
+    <p>On macOS, open <em>System Settings &gt; Network &gt; Wi-Fi &gt; Details… &gt; TCP/IP</em> and click <strong>Renew DHCP Lease</strong>. On iOS and Android, toggling Wi-Fi off and on re-requests the lease, or use the network's "renew lease" option in the network details screen.</p>
+
+    <h3>Check for a self-assigned address</h3>
+    <p>While the lease is renewed, confirm you actually got a real address. Run <code>ipconfig /all</code> on Windows and look at <code>IPv4 Address</code>; on macOS the address is on the same TCP/IP page. An address beginning <code>169.254.</code> means DHCP failed entirely — the device never talked to the router. If rejoining does not fix it, reboot the device once before moving on.</p>
+
+    <h3>Disable VPN and proxy software</h3>
+    <p>A VPN client that crashed mid-session can leave the system routing traffic into a tunnel that no longer exists — traffic goes in and nothing comes back. Quit the VPN app entirely and, on Windows, check <em>Settings &gt; Network &amp; internet &gt; Proxy</em> and make sure no manual proxy is set. On macOS check <em>System Settings &gt; Network &gt; Details… &gt; Proxies</em>. If you rely on a VPN daily, our <a href="/guides/how-to-test-your-vpn/">guide to testing a VPN's leak and kill-switch behaviour</a> covers how to confirm the tunnel actually carries traffic.</p>
+
+    <h3>Reset the network stack (last resort, Windows)</h3>
+    <p>If the device still fails after the steps above, Windows can rebuild its networking components from scratch:</p>
+    <pre><code>netsh winsock reset
+netsh int ip reset
+ipconfig /flushdns</code></pre>
+    <p>Restart afterwards. Windows also offers the blunter <em>Settings &gt; Network &amp; internet &gt; Advanced network settings &gt; Network reset</em>, which removes and reinstalls all network adapters and returns every known network to factory state — you will need to re-enter Wi-Fi passwords afterwards. These commands are documented in Microsoft's support documentation, and they resolve the stubborn cases where an uninstaller or a security product left broken LSP entries behind.</p>
+
+    <h2>Step 3 — Fix the router and modem (all devices offline)</h2>
+    <p>When nothing on the network has internet, the fault sits behind every device at once.</p>
+    <ol>
+      <li><strong>Power-cycle in the right order.</strong> Unplug the modem and the router, wait about 60 seconds, plug the modem in first and let its status lights settle, then plug in the router. This forces the modem to re-register with the provider and the router to request a fresh WAN lease.</li>
+      <li><strong>Check the WAN/Internet light.</strong> After the reboot, the Internet indicator on the router should be solid (the colour varies by vendor). Off, red, or blinking erratically usually means the router has no line — note it before calling support, because it is the first thing they ask.</li>
+      <li><strong>Log into the router status page.</strong> The address is on the router label (commonly <code>192.168.0.1</code> or <code>192.168.1.1</code>). Look at the WAN section: if it shows no public IP or shows an error state, the problem is between the router and the provider, not your Wi-Fi.</li>
+      <li><strong>Rule out an outage.</strong> Check the provider's status page from a phone on mobile data before waiting on hold.</li>
+    </ol>
+    <div class="warn-box">
+      <h2>Do not factory-reset the router first</h2>
+      <p>A factory reset wipes the Wi-Fi password, port forwards, DNS settings, and ISP credentials (on some connection types) in one move — and a reset router with unknown ISP requirements can leave you completely offline until it is reconfigured. Rebooting achieves nearly everything a reset does for a connectivity fault. Keep the reset pin for the case where the router's own management interface is unreachable or misconfigured beyond repair.</p>
+    </div>
+
+    <h2>Step 4 — The two causes everyone forgets</h2>
+
+    <h3>Captive portals</h3>
+    <p>Hotel, airport, campus, and café networks require a sign-in step before they pass your traffic. Devices that have joined the network but not completed the portal show exactly this "connected, no internet" state. Open any plain HTTP site or the OS's captive-portal check page (iOS and macOS pop it up automatically; on Windows open a browser and try any site) and complete the sign-in. A stale portal session can also time out mid-day — re-authenticating fixes an "outage" that was never technical.</p>
+
+    <h3>Wrong system clock</h3>
+    <p>If the device's date or time is badly wrong, every HTTPS site fails certificate validation, and browsers report connection errors that resemble a dead connection. If pages fail with security warnings alongside the connectivity symptom, sync the clock (<em>Settings &gt; Time &amp; language &gt; Date &amp; time</em> on Windows; <em>System Settings &gt; General &gt; Date &amp; Time</em> on macOS) and retry.</p>
+
+    <h2>Step 5 — Repair DNS when names fail but IPs work</h2>
+    <p>If the raw-IP test loads but hostnames do not, connectivity exists and name resolution is the fault. Options, fastest first:</p>
+    <ul>
+      <li><strong>Flush the local cache.</strong> Windows: <code>ipconfig /flushdns</code>. macOS: <code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code>. Browsers also cache DNS internally — fully closing and reopening the browser clears it.</li>
+      <li><strong>Switch to a public resolver.</strong> Setting the device or router DNS to <code>1.1.1.1</code> (Cloudflare) or <code>8.8.8.8</code> (Google) bypasses a misbehaving ISP resolver. Cloudflare documents the per-OS setup on its <a href="https://developers.cloudflare.com/1.1.1.1/setup/" rel="noopener">1.1.1.1 setup page</a>.</li>
+      <li><strong>Check what is intercepting your DNS.</strong> If you run a network-level blocker, its rules or upstream can be the fault — our <a href="/guides/dns-level-ad-blocking/">DNS blocker setup guide</a> explains how to verify which resolver each device is actually using. And if the symptom is specifically a DNS timeout rather than a wrong answer, work through our <a href="/guides/dns-server-not-responding/">DNS server not responding guide</a>.</li>
+    </ul>
+
+    <h2>Common mistakes</h2>
+    <ul>
+      <li><strong>Rebooting the router but not the modem.</strong> On cable and fibre connections the modem holds its own registration state; a router-only reboot cannot fix a modem that has lost its line.</li>
+      <li><strong>Chasing DNS when the IP layer is dead.</strong> Changing DNS servers does nothing if the device has a self-assigned <code>169.254</code> address. Do the raw-IP test first.</li>
+      <li><strong>Leaving a half-configured static IP.</strong> A manually entered address with the wrong gateway produces permanent "connected, no internet". Return the device to DHCP unless you deliberately need a static address.</li>
+      <li><strong>Ignoring the 2.4 GHz / 5 GHz split.</strong> Some routers offer a guest or IoT SSID isolated from the main network — devices joined to an isolated SSID reach the router but are firewalled from the internet path. Check which SSID the failing device actually joined.</li>
+    </ul>
+
+    <h2>If it keeps happening</h2>
+    <p>Recurring dropouts change the diagnosis. If one device repeatedly falls off while others stay online, suspect its wireless adapter driver — update it from the PC maker's support page rather than generic driver utilities. If the whole network drops at busy times, check for channel congestion or an ageing router: a newer router or a mesh system that manages channels properly often eliminates the pattern, and our <a href="/best/best-wifi-router/">Wi-Fi router roundup</a> and <a href="/best/best-mesh-wifi/">mesh Wi-Fi picks</a> cover what to look for. A wired connection through a switch (see our <a href="/best/best-ethernet-switch/">Ethernet switch recommendations</a>) is also the quickest way to prove whether the fault is radio-related at all.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

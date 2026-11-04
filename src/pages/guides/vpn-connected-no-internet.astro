@@ -1,0 +1,198 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/vpn-connected-no-internet/';
+const title = 'VPN Connected but No Internet? How to Fix It | ToolStep';
+const description = 'The VPN connects but pages will not load? Fix kill-switch lockouts, broken VPN DNS, protocol and port blocks, MTU mismatch, and Windows adapter problems.';
+const headline = 'VPN Connected but No Internet: How to Fix the Dead-Tunnel Problem';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Why does my VPN say connected but nothing loads?',
+			acceptedAnswer: { '@type': 'Answer', text: 'A "connected" status only means the encrypted tunnel was established. Traffic can still fail inside it: the client\u2019s kill switch may be blocking non-tunnel traffic, the DNS servers the VPN hands out may be unreachable, the network may block the protocol\u2019s ports, or packets may be too large for the path (an MTU mismatch). Each failure has a distinct test.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'What is a kill switch and why does it block my internet?',
+			acceptedAnswer: { '@type': 'Answer', text: 'A kill switch blocks all traffic that is not inside the VPN tunnel, so your real IP never leaks if the tunnel drops. That is exactly the behavior you want in a tunnel failure — and exactly why a stuck or overly aggressive kill switch produces "connected but no internet". Disconnecting, quitting the client fully, and reconnecting usually releases it; the setting belongs in the VPN app, not the operating system.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Should I switch VPN protocol — and to which one?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Yes, protocol switching is the highest-value fix on restrictive networks. WireGuard is fast and modern but uses UDP, which some networks block; OpenVPN can run on TCP port 443 and look like ordinary HTTPS traffic; IKEv2 reconnects quickly on mobile. Try WireGuard first, fall back to OpenVPN over TCP where UDP is blocked, and check the provider\u2019s documentation for supported options.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How do I know if the problem is the VPN server itself?',
+			acceptedAnswer: { '@type': 'Answer', text: 'If one server location fails consistently while another works from the same network, the server (or its current load) is the problem — switch locations and let the provider know. Quick confirmation: the client shows connected, the tunnel address responds to ping, but the exit IP check returns nothing, while a different location works immediately.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>VPN Connected but No Internet: How to Fix It</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows 10/11, macOS, iOS, Android &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      The client cheerfully reports "connected", yet every page hangs. This is the dead-tunnel problem, and it has a short list of causes: a kill switch doing its job a little too well, DNS servers inside the tunnel that never answer, a network that blocks the protocol's ports, packets sized just wrong enough to die silently, or a server that is broken today. Work the list in order — each step isolates a specific failure.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>Disconnect, quit the VPN client completely, and reconnect.</strong> That releases a stuck kill switch — the single most common cause. Still dead? Switch to another server location, then switch protocol (WireGuard, then OpenVPN over TCP). If some sites load but others hang, suspect an MTU mismatch and lower the tunnel's MTU. If the tunnel connects on every server but never passes traffic, check whether the network itself blocks VPN ports, and verify with an exit-IP test before blaming your connection.</p>
+    </div>
+
+    <h2>Why a connected VPN can still block browsing</h2>
+    <p>A VPN connection is two facts, not one: an encrypted tunnel exists, and your traffic actually flows through it. The client's green status only proves the first. Inside that tunnel, four more things must work — routing, DNS, the protocol surviving the local network's firewall, and packets arriving intact. A failure in any of them looks identical from the browser: connected, but nothing loads. That is also why the general <a href="/guides/wifi-connected-no-internet/">Wi-Fi connected, no internet guide</a> only partially applies here — with a VPN, your own client is usually the cause, not the router.</p>
+    <p>One principle before any fixes: change one thing at a time, and retest after each change. VPN stacks interact — a kill switch, custom DNS, and a split-tunnel rule can each mask the other.</p>
+
+    <h2>Prove whether traffic actually traverses the tunnel</h2>
+    <p>Start by finding out if the tunnel carries anything at all. With the client showing connected, check the exit IP address — what the outside world sees as yours:</p>
+    <pre><code># Any platform, from a terminal (or visit the page in a browser):
+curl https://am.i.mullvad.net/ip
+
+# Which DNS server is answering?
+ipconfig /all          # Windows: look at "DNS Servers" on the VPN adapter
+scutil --dns           # macOS: look at the nameserver entries</code></pre>
+    <p>The outcome splits cleanly:</p>
+    <ul>
+      <li><strong>The curl returns an address belonging to the VPN provider.</strong> The tunnel works; the fault is DNS or specific routes. Go to the DNS section.</li>
+      <li><strong>The curl hangs or fails, but the VPN shows connected.</strong> Traffic is not traversing the tunnel. Suspect the kill switch, protocol blocking, or MTU — the next three sections.</li>
+      <li><strong>The curl returns your real IP.</strong> Traffic is bypassing the tunnel (split-tunnel rules or a configuration error) — the opposite problem, and a leak worth fixing. Our <a href="/guides/how-to-test-your-vpn/">VPN leak-testing guide</a> covers the full check.</li>
+    </ul>
+
+    <h2>The kill switch that never released</h2>
+    <p>A kill switch blocks all traffic outside the tunnel so your real IP never leaks during a drop. The failure mode is a switch that stays engaged after the session ends, or engages on a network hiccup and never lets go: the tunnel is nominally up, the firewall rules still strangle everything, and nothing loads. The fix sequence:</p>
+    <ol>
+      <li><strong>Disconnect from within the app</strong> — not by killing your Wi-Fi, which the switch interprets as another drop.</li>
+      <li><strong>Quit the client entirely</strong> and reopen it, then reconnect. On Windows, also check Task Manager for a background service still running after the window closed.</li>
+      <li><strong>Reboot once</strong> if the client refuses to release the rules; leftover filter rules from a crashed session clear with a restart.</li>
+    </ol>
+    <p>Afterwards, look at the kill-switch setting itself. Many clients offer a choice between "block on disconnect" and "block only while connected" modes; the stricter mode is safer but produces this symptom more often. The vendor's documentation explains the options — Mullvad's <a href="https://mullvad.net/help" rel="noopener">support pages</a> are a good example of how providers document their kill-switch behaviour, whatever service you use.</p>
+
+    <h2>When the VPN's own DNS fails</h2>
+    <p>Most VPN clients push their own resolver through the tunnel so that name queries are not leaked to the local network. If that resolver is unreachable — overloaded, blocked, or broken on that server — you get exactly "connected but dead": pages fail because names fail, while the tunnel itself is fine. The telltale is the exit-IP test from the previous section returning the provider's address while pages still will not load.</p>
+    <p>Fixes, in order: reconnect to a different server (DNS failures are often per-server); check the app's DNS settings for a custom resolver someone entered and does not exist any more; and if the client offers a "DNS leak protection" toggle, confirm it is on rather than off. Flushing the OS cache afterwards clears the failures the dead resolver left behind: <code>ipconfig /flushdns</code> on Windows, or <code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code> on macOS. For the deeper diagnosis of resolver problems in general — including when to swap in a public resolver — see our <a href="/guides/dns-server-not-responding/">DNS server not responding guide</a>.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Switch protocols and ports</h2>
+    <p>Restrictive networks — offices, campuses, hotels, some countries — block the ports and traffic shapes VPNs use. The client can still complete a handshake on some networks' residual openings or report a connection that the firewall then starves. Protocol switching is the highest-value fix here:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Protocol</th><th>Transport</th><th>Strengths</th><th>When it fails</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>WireGuard</td><td>UDP</td><td>Fast, modern, quick roaming between networks</td><td>Networks that block or throttle non-standard UDP</td></tr>
+          <tr><td>OpenVPN</td><td>UDP or TCP (commonly port 443)</td><td>TCP mode blends with HTTPS traffic; very configurable</td><td>Slower than WireGuard; some networks flag its fingerprint</td></tr>
+          <tr><td>IKEv2</td><td>UDP 500/4500</td><td>Fast reconnects on mobile; built into many OSes</td><td>Networks blocking IPsec ports entirely</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Try WireGuard first for speed, then OpenVPN over TCP when UDP seems blocked — port 443 is the port HTTPS uses, so networks rarely close it. The setting lives in the client's connection or preferences screen; which protocols a given provider supports varies, so check their documentation. WireGuard's own <a href="https://www.wireguard.com/quickstart/" rel="noopener">quick start page</a> describes the protocol's configuration model if you run it outside a commercial client.</p>
+
+    <h2>MTU mismatch: some sites load, others hang</h2>
+    <p>Tunneling adds a header to every packet, so the largest packet that fits inside the tunnel is smaller than on the bare connection. If a link along the path cannot handle the size and drops oversized packets silently, you get the classic split symptom: small pages and searches load, image-heavy sites and downloads hang forever, SSH connects but stalls on output. That is an MTU mismatch, and lowering the tunnel's MTU fixes it.</p>
+    <p>Find the largest size that survives, using the tunnel's own gateway address (often <code>10.8.0.1</code> — check your client's details):</p>
+    <pre><code># Windows: -f forbids fragmentation, -l sets the payload size
+ping 10.8.0.1 -f -l 1400
+
+# macOS (-D forbids fragmentation, -s sets payload size)
+ping -D -s 1400 10.8.0.1
+
+# Linux
+ping -M do -s 1400 10.8.0.1</code></pre>
+    <p>If 1400 fails, step down — 1380, 1360 — until the ping succeeds, then set the client's or profile's MTU slightly above the largest working value. Most clients expose MTU in advanced or connection settings; the provider's documentation will say where. Values around 1300–1400 clear the overwhelming majority of tunnel-path problems, at a tiny cost in efficiency.</p>
+
+    <h2>Windows adapters and driver problems</h2>
+    <p>Windows VPNs depend on virtual network adapters, and their drivers are a recurring source of dead tunnels:</p>
+    <ul>
+      <li><strong>Stale adapters.</strong> Each reinstall can leave a ghost TAP or WireGuard adapter. In Device Manager, under Network adapters, remove hidden duplicates of the VPN's adapter (View &gt; Show hidden devices), then reinstall the client from the vendor's current installer.</li>
+      <li><strong>IPv6 leaking around the tunnel.</strong> If the client binds IPv4 only, IPv6 requests can fail in ways that look like a dead connection. Disable IPv6 on the physical adapter as a diagnostic, or enable the client's IPv6 handling if it offers one.</li>
+      <li><strong>Third-party network filter drivers</strong> — antivirus firewalls, packet inspectors — sitting in the path. If the tunnel works in Safe Mode but not normally, a filter driver is the suspect; update or reconfigure the security product.</li>
+    </ul>
+
+    <h2>Conflicts: split tunneling, clocks, and other clients</h2>
+    <p>Three quieter causes cover most of the rest. <strong>Split-tunnel rules</strong>: if the client is set to route only some traffic through the tunnel, a domain-based rule that resolves wrong, or an app list missing your browser, leaves traffic going nowhere in particular — reset split tunneling to "route everything" while diagnosing. <strong>System clock</strong>: TLS handshakes through the tunnel fail if the clock is badly wrong, producing certificate errors inside an otherwise working tunnel; sync the clock and retry. <strong>Another VPN or proxy</strong>: two active clients fight over the routing table, and a leftover manual proxy (check <em>Settings &gt; Network &amp; internet &gt; Proxy</em> on Windows, or <em>System Settings &gt; Network &gt; Details… &gt; Proxies</em> on macOS) sends traffic to a dead end. One active client, no manual proxy — then retest.</p>
+
+    <h2>When the server itself is the problem</h2>
+    <p>VPN servers fail individually: overloaded at peak hours, broken by an update, or blocked outright by the site you are reaching. The test is cheap — switch to a different location and retest. If another server works immediately from the same machine on the same network, you are done debugging your side; report the location to the provider. Persistent per-server failures usually mean the destination is blocking known VPN address ranges, which no client setting will fix — a different location is the practical answer, and our <a href="/best/best-vpn-service/">VPN service roundup</a> discusses providers by server fleet and reliability. If tunnels die on every network you join, the client or account is the suspect; if they only die on one network, that network's firewall is.</p>
+    <div class="warn-box">
+      <h2>Do not leave your protection disabled after diagnosing</h2>
+      <p>The fastest "fix" for a stuck kill switch is disabling the kill switch, the firewall, or leak protection permanently — and leaving it off is the mistake. Each of those exists to stop your traffic escaping the tunnel in plain text. Diagnose with them toggled, note which one caused the failure, then restore the setting and solve the underlying conflict instead. If a provider's kill switch is too unreliable to leave on, that is a reason to switch providers, not to browse unprotected.</p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

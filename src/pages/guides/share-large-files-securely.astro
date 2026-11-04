@@ -1,0 +1,193 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/share-large-files-securely/';
+const title = 'How to Share Large Files Securely | ToolStep';
+const description = 'Email attachments hit size limits fast. Compare cloud links, encrypted archives, messengers and transfer services, then set expiry and verify delivery.';
+const headline = 'How to Share Large Files Securely: Links, Encrypted Archives, Messengers, and Transfers';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'What is the maximum email attachment size?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It depends on the provider, and the effective limit is smaller than the headline number because attachments are encoded during transmission, inflating them by roughly a third. Gmail documents a 25 MB attachment cap, and many business providers sit near 20 MB — always check your provider\'s current documented limit. Files beyond that need a different channel, which is the point of this guide.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Is it safe to send a password-protected archive by email?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Only if the password travels another way. An encrypted archive and its password sent through the same channel share the same fate: whoever intercepts one has both. Email the archive, then text, call, or message the passphrase — or share the passphrase verbally before sending anything at all.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Are cloud storage links private?',
+			acceptedAnswer: { '@type': 'Answer', text: 'A "anyone with the link" share is exactly what it says: possession of the URL is the only credential. Links get forwarded, pasted into group chats, and leaked in screenshots. For anything sensitive, share to specific named accounts, add a password and an expiry date where the service supports them, and audit the shared item afterwards. Google documents the sharing options in Google Drive Help.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How do I make sure the recipient got an intact copy?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Compare checksums. Before sending, compute a SHA-256 hash of the file, send the hash through a second channel, and have the recipient compute the hash of what arrived and compare. If the strings match, the copy is byte-for-byte identical. Our guide to verifying downloads walks through the exact commands on Windows, macOS, and Linux.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Share Large Files Securely</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows, macOS, Linux, iOS, Android &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      Sharing a big file is easy; sharing it securely is a decision. Every route — a cloud link, an encrypted archive, a messenger, a transfer service — makes a different trade between convenience, control, and who else can reach the data. This guide walks through the realistic options, the settings that actually matter on each, and how to confirm the recipient got an intact copy.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>For everyday files, share a <strong>cloud storage link</strong> (Drive, OneDrive, Dropbox) scoped to specific people, with an expiry date where supported. For confidential files, wrap them in a <strong>7-Zip archive with AES-256 encryption</strong> and send the password over a different channel. For moderate sizes between people who already use one, an <strong>end-to-end encrypted messenger like Signal</strong> handles it in one step. Whatever the route, send a <strong>checksum</strong> so the recipient can verify the copy, and revoke access when the job is done.</p>
+    </div>
+
+    <h2>Why email attachments fail first</h2>
+    <p>Email was not designed to carry files, and every provider enforces a size ceiling — Gmail documents a 25 MB attachment limit, and most business providers set comparable ceilings, though the exact number varies, so check your provider's current documented limit. Two more constraints bite before the headline number does: encoding inflates attachments during transit, so a 24 MB file can bounce anyway; and receiving providers set their own incoming limits, so a file your server accepts may still be rejected at the far end. When an attachment does get through, it delivers zero access control: the recipient has the file forever, forwarded copies are out of your reach, and a misdirected send is unrecoverable. Attachment limits are the push, but access control is the real reason to change methods.</p>
+
+    <h2>Choose by sensitivity, not by habit</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Scenario</th><th>Recommended route</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Photos or videos for family, no personal data</td><td>Cloud link, any major provider</td><td>Convenience wins; exposure is trivial</td></tr>
+          <tr><td>Work documents to named colleagues</td><td>Cloud share to specific accounts</td><td>Least-privilege access, revocable, audited</td></tr>
+          <tr><td>Confidential client or personal data</td><td>AES-256 archive + separate-channel password, or named-account cloud share</td><td>Protects the file even if a link or mailbox leaks</td></tr>
+          <tr><td>One-to-one personal transfer, moderate size</td><td>End-to-end encrypted messenger (Signal)</td><td>Encrypted in transit and at rest; no link to leak</td></tr>
+          <tr><td>One-off transfer to someone with no shared platform</td><td>Reputable transfer service, link protected</td><td>No setup required on either side</td></tr>
+          <tr><td>Anything regulated (medical, financial, legal)</td><td>Follow your organisation's policy first</td><td>Policy outranks any general advice, including this guide</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Before any route: clean the file itself. Metadata rides along with everything you send — our guide to <a href="/guides/remove-file-metadata/">removing metadata from PDFs, Word files, and photos</a> covers the author fields, revision history, and GPS tags that should not travel.</p>
+
+    <h2>Option 1 — Cloud storage links, configured properly</h2>
+    <p>Google Drive, OneDrive, and Dropbox all turn an uploaded file into a download link, which solves the size problem and adds something email never had: access control. The feature that matters is not the link but the <em>scoping</em>. Google documents the model in <a href="https://support.google.com/drive" rel="noopener">Google Drive Help</a>, and the equivalents exist in the other services — check each provider's current help pages for the exact controls:</p>
+    <ul>
+      <li><strong>Share to specific people by account</strong> rather than "anyone with the link". A link is a bearer token: whoever holds the URL gets in, and links leak through forwards, chat history, and screenshots.</li>
+      <li><strong>Set view-only</strong> unless the recipient genuinely needs to edit.</li>
+      <li><strong>Add a password and an expiry date</strong> where the service supports them, so a leaked link has a short life and a lock on it.</li>
+      <li><strong>Disable downloading</strong> only if your service genuinely enforces it — treat that setting as a speed bump, not a wall, since screenshots defeat it entirely.</li>
+      <li><strong>Revoke when done.</strong> A share nobody remembers granting is the most common long-term leak in any cloud account. Audit shared items occasionally; if you are choosing a provider for this workflow at all, our <a href="/best/best-cloud-storage/">cloud storage comparison</a> covers which services handle sharing controls and history well.</li>
+    </ul>
+    <p>The honest limitation: cloud storage means trusting the provider's servers with the plaintext file. For personal documents that is a normal trade. For genuinely confidential material, either keep it to named recipients you have verified, or encrypt before upload — the next option.</p>
+
+    <h2>Option 2 — Encrypted archives with the password sent separately</h2>
+    <p>An encrypted archive protects the contents even if the delivery channel fails completely: the file can sit on any server, in any inbox, and remain unreadable without the key. The standard free tool is <a href="https://www.7-zip.org/" rel="noopener">7-Zip</a> (Windows; macOS and Linux have compatible ports and command-line equivalents), whose archive format supports AES-256 encryption:</p>
+    <ol>
+      <li>Select the files, right-click, and create a .7z archive (or .zip with AES where the recipient needs zip compatibility).</li>
+      <li>In the archive dialog, <strong>enter a strong passphrase and enable encryption of file names</strong> as well as contents, so the archive does not advertise what is inside.</li>
+      <li>Send the archive through the convenient channel — email, cloud link, anything.</li>
+      <li>Send the passphrase through a <strong>different channel</strong>: a phone call, an SMS, a chat message. Never the same channel as the archive.</li>
+    </ol>
+    <p>That last rule is the entire security model. An archive and its password emailed together are one intercepted message away from zero protection. Confirm the recipient can actually open the archive before you assume the job is done — compatibility surprises (an older unzip tool, a phone viewer) are the commonest failure, and they are silent: the recipient just sees a file that will not open.</p>
+
+    <h2>Option 3 — End-to-end encrypted messengers for moderate sizes</h2>
+    <p>If both parties already use a messenger with end-to-end encryption, it is the simplest secure route that exists: the file is encrypted on your device, decrypted on theirs, and no server in between holds a readable copy or a shareable link. <a href="https://signal.org/" rel="noopener">Signal</a> supports file attachments of meaningful size (check its current documentation for limits), and other E2E messengers offer similar features with varying ceilings. The trade-offs: both sides need the app, there is no link to revoke — deleting is per-conversation — and nobody gets an audit trail beyond the chat itself. For personal transfers and small-business one-offs, that is usually fine. For anything you need provable delivery records for, use a route with real access logs.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>Option 4 — Transfer services and the third-party trade-off</h2>
+    <p>Dedicated large-file transfer services occupy the space between email and cloud storage: upload a file, get a link, no account required on either side. They are genuinely convenient for one-off transfers to people who use no shared platform. The trade is explicit: you are uploading the file to a third party's servers, which now hold a copy under their retention policy, their breach surface, and their terms. Before using one for anything beyond casual material, read the current terms — retention periods, encryption claims, and whether free tiers expose your file publicly vary by service and change over time. For confidential documents, prefer the encrypted-archive route with the transfer service carrying only ciphertext, which makes the provider's policies almost irrelevant.</p>
+
+    <div class="warn-box">
+      <h2>The mistake that undoes all of this</h2>
+      <p>Most insecure shares are not exotic attacks — they are configuration slips. The open "anyone with the link" share left live for two years. The password pasted into the same email as the archive. The client folder shared to a personal email address that left the company. The transfer service's free tier used for a payroll file. Each is one deliberate setting away from safe, which is why the checklist — named recipients, expiry, separate-channel key, revocation — matters more than which service you picked.</p>
+    </div>
+
+    <h2>Set expiry, revoke access, keep records</h2>
+    <p>Secure sharing is not finished when the file arrives:</p>
+    <ol>
+      <li><strong>Set expiry during the share</strong>, not after — availability windows are a setting at share time on most services, and a date beats memory.</li>
+      <li><strong>Revoke as soon as the recipient confirms</strong> they have the file. Access you no longer need is pure risk.</li>
+      <li><strong>Delete the cloud copy</strong> when the transfer's purpose is done, unless you deliberately want it as part of your own storage — which is a different decision with its own <a href="/guides/3-2-1-backup-rule/">backup planning</a>.</li>
+      <li><strong>Note what you shared, with whom, and when.</strong> Six months later, "did we already send them the contract?" is answered by a note, not an inbox archaeology dig.</li>
+    </ol>
+
+    <h2>Recipient-side verification: checksums</h2>
+    <p>Large files fail quietly: a truncated upload, a re-download that came from a stale cache, a corrupted transfer that plays half a video. The professional habit is to send a checksum with the file and have the recipient compare. Compute a SHA-256 hash before sending:</p>
+    <pre><code># Windows (PowerShell)
+Get-FileHash .\report.zip -Algorithm SHA256
+
+# macOS / Linux
+shasum -a 256 report.zip</code></pre>
+    <p>Send the hash string through a second channel along with the password, and the recipient runs the same command on what arrived. Matching hashes mean a byte-for-byte identical copy — the full commands and workflow are in our <a href="/guides/how-to-verify-a-download/">download verification guide</a>. This step costs a minute and eliminates the entire class of "the file you sent me is broken" follow-ups.</p>
+
+    <h2>Choosing by sensitivity level, summarised</h2>
+    <p>Public or trivially personal material: any convenient route, cloud link included, with nothing more than common-sense scoping. Internal work material: named-recipient cloud shares with expiry and an occasional audit. Confidential material: encryption you control — AES-256 archive with a separately delivered passphrase, or an E2E messenger — plus checksums to prove delivery. Regulated material: your organisation's documented policy first. And whatever the level, the file itself gets cleaned before it travels: metadata out, and anything sensitive within a PDF properly redacted rather than boxed over — see our <a href="/guides/redact-pdf-permanently/">permanent redaction guide</a>. If the same files also need durable local copies, our <a href="/best/best-external-ssd/">external SSD picks</a> and <a href="/best/best-nas/">NAS recommendations</a> cover the storage layer, and if you are clearing a machine that held these files, our <a href="/guides/prepare-laptop-for-sale/">laptop-preparation guide</a> covers wiping it properly.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

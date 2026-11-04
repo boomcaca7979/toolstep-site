@@ -1,0 +1,193 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/ai-coding-assistant-privacy/';
+const title = 'AI Coding Assistant Privacy: Where Does Your Code Go? | ToolStep';
+const description = 'Coding assistants read your code and send it to remote servers. What gets transmitted, which controls exist per assistant, and how to decide what is safe.';
+const headline = 'AI Coding Assistant Privacy: What Happens to Your Code?';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'What does a coding assistant actually send to its servers?',
+			acceptedAnswer: { '@type': 'Answer', text: 'At minimum, your prompt plus whatever code context the product decides is relevant: the current file, related files in the workspace, open editor tabs, and sometimes repository structure or documentation. The exact scope differs by product and settings, which is why the privacy documentation of your specific assistant — not generic assumptions — is the right source.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Do coding assistants train on my code?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It depends on the product and the plan, and it changes over time, so check current documentation. The major assistants offer some form of training exclusion — via settings on consumer plans or via contract on business and enterprise plans — and GitHub documents Copilot\'s plan differences on its official docs. Verify the setting exists and is enabled rather than assuming either direction.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Is Cursor\'s privacy mode enough for proprietary code?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Privacy mode is a meaningful control — Cursor documents it in its official docs as excluding your data from training — but "not used for training" is not the same as "never stored or processed on remote servers." For proprietary code, combine privacy mode with your organization\'s review of the vendor\'s terms, retention practices, and compliance posture, or use a local model where the code never leaves the machine.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How do I stop my API keys from reaching an assistant?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Keep secrets out of the files an assistant indexes: store them in environment variables or a secrets manager, never hard-coded in source. Before enabling a new assistant on an existing repo, scan for leaked credentials, rotate anything that has ever been committed, and treat .env files as unsharable. If a key was sent upstream, rotation is the only real fix.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>AI Coding Assistant Privacy: What Happens to Your Code?</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to GitHub Copilot, Cursor, Windsurf, local models on Windows/macOS/Linux &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      A coding assistant is a service that reads your code. That is how it works — the model cannot suggest a completion for a function it has never seen. So the real privacy question is not <em>whether</em> your code leaves your machine, but <em>which parts</em>, <em>under what terms</em>, and <em>with what controls</em>. Those answers differ meaningfully between assistants and plans, and this guide maps the controls without pretending any single answer stays current forever.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>Assistants send your prompt plus surrounding code context to remote servers for processing. Every major product offers controls — training opt-outs, retention settings, privacy modes, or no-training contracts on business plans — but the specifics live in each vendor's documentation and change over time. For proprietary code, use a business or enterprise tier with a no-training agreement, or a local model; for public or open-source work, a consumer tier with the training opt-out checked is a reasonable choice.</p>
+    </div>
+
+    <h2>What gets sent upstream</h2>
+    <p>Understanding the payload makes the trade-offs concrete. Depending on the product and moment, an assistant may transmit:</p>
+    <ul>
+      <li><strong>Your prompt</strong> — the chat message or inline instruction, which often contains as much business context as code.</li>
+      <li><strong>The current file</strong> — usually the full text or the relevant region around your cursor.</li>
+      <li><strong>Surrounding context</strong> — related files, imports, open tabs, project structure, and sometimes README or docs the tool deems relevant to answer well.</li>
+      <li><strong>Editor and telemetry metadata</strong> — IDE version, feature usage, and diagnostics, governed by separate telemetry settings.</li>
+    </ul>
+    <p>Better answers require more context, so vendors face a constant pull toward sending more of your workspace. The settings that matter are the ones that bound this: what is indexed, what is retained, and what is used for training.</p>
+
+    <h2>The controls, per major assistant</h2>
+    <p>Defaults change; the <em>types</em> of controls are stable. Verify each in the linked official documentation before trusting it.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Assistant</th><th>Key control types</th><th>Where to verify</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GitHub Copilot</td><td>Per-plan data handling; settings controlling prompt/context collection; a public-code filter for suggestions; business/enterprise plans with contractual training exclusions</td><td><a href="https://docs.github.com/copilot" rel="noopener">docs.github.com/copilot</a></td></tr>
+          <tr><td>Cursor</td><td>A documented privacy mode that excludes your code from training; team/business plans with different terms; retention information in its docs</td><td><a href="https://docs.cursor.com" rel="noopener">docs.cursor.com</a></td></tr>
+          <tr><td>Windsurf</td><td>Training opt-out and data-retention settings, tier-based differences between individual and enterprise plans</td><td>Check Windsurf's official documentation for current specifics</td></tr>
+          <tr><td>Local models (Ollama and similar)</td><td>No upstream transmission of code at all; capability limited by local hardware and model size</td><td><a href="https://ollama.com" rel="noopener">ollama.com</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>GitHub Copilot: plan determines the terms</h3>
+    <p>Copilot's handling differs by plan, and GitHub documents those differences — individual versus business versus enterprise — on its official docs, along with settings that govern data collection and a filter that is supposed to suppress suggestions matching public code. The practical habit: if you use Copilot on proprietary work, confirm which plan your seat is on and read that plan's data pages, because the individual and business experiences are not interchangeable.</p>
+
+    <h3>Cursor: privacy mode and its limits</h3>
+    <p>Cursor's privacy mode is the control most cited for this product: per its documentation, enabling it excludes your code from training use. What it does not change is that inference happens on remote servers — your code is still transmitted and processed there. Privacy mode plus a team plan's terms is a common setup for small companies; the docs cover the current specifics of retention and processing.</p>
+
+    <h3>Windsurf and the rest</h3>
+    <p>The same pattern holds across the market: a training opt-out, retention documentation, and tier-based differences. Rather than asserting each product's current defaults — which shift — the durable advice is to look for those three items in any assistant's documentation before using it on code you would not publish.</p>
+
+    <h3>Local models: the only "nothing leaves" option</h3>
+    <p>Tools like <a href="https://ollama.com" rel="noopener">Ollama</a> run open-weight models on your own machine, and editor integrations can point autocomplete and chat at a local endpoint. Nothing is transmitted, which resolves the privacy question entirely — at the cost of capability, hardware requirements, and setup time. For a contractor handling client IP or a company with hard data-residency constraints, that trade is often worth it.</p>
+
+    <h2>Secrets: the risk that outranks everything else</h2>
+    <p>A training opt-out does nothing about the most acute problem: an assistant happily ingests hard-coded credentials and sends them to a remote server. <code>.env</code> files, config dumps, and commented-out keys are all in scope for workspace indexing.</p>
+    <pre><code># Before enabling an assistant on an existing repo, look for what
+# it will find. Rough sweep for common secret shapes:
+grep -rniE "(api[_-]?key|secret|token|password)\s*[:=]\s*['\"][A-Za-z0-9_\-]&#123;16,&#125;" \
+  --include="*.py" --include="*.js" --include="*.ts" --include="*.json" .</code></pre>
+    <ul>
+      <li><strong>Keep secrets out of indexed files entirely</strong> — environment variables, a secrets manager, or credential files the tool is configured to ignore.</li>
+      <li><strong>Rotate anything that was ever committed</strong>, whether or not the assistant saw it — commit history outlives settings.</li>
+      <li><strong>Treat a key sent upstream as compromised</strong> and rotate it, even under a no-training contract. Transmission is not training, but it is still disclosure to a third party.</li>
+    </ul>
+
+    <h2>License and provenance questions</h2>
+    <p>Assistants trained on public code can reproduce code that resembles licensed open-source work, and suggestions carry no provenance label. The major vendors approach this differently — GitHub, for example, documents a public-code filter and different intellectual-property commitments across plans — so the honest guidance is to check what your specific tool and plan promise, and to apply your own judgment for anything shipped commercially: review generated code as you would a contributor's patch, and run license-compliance scanning where your organization already does. The competitive landscape here shifts fast; our <a href="/compare/cursor-vs-github-copilot/">Cursor vs Copilot</a> and <a href="/compare/cursor-vs-windsurf/">Cursor vs Windsurf</a> comparisons track the product differences.</p>
+
+    <div class="warn-box">
+      <h2>Telemetry is a separate switch from training</h2>
+      <p>Disabling training use does not disable telemetry. Assistants collect editor diagnostics and feature-usage data under their own settings, and some telemetry can include code fragments in crash reports or performance traces. If your concern is "my code reaching third parties," audit both switches: the training/data-use setting <em>and</em> the telemetry setting, in that product's own settings panel and documentation.</p>
+    </div>
+
+    <h2>Team and policy considerations</h2>
+    <p>For organizations, three questions deserve written answers rather than habit:</p>
+    <ul>
+      <li><strong>Which plans?</strong> Business or enterprise tiers with contractual training exclusions for anything proprietary; consumer seats are for public or non-sensitive work.</li>
+      <li><strong>Which repos?</strong> A short allow/deny list — assistants off for repos containing client data, credentials, or regulated information until review says otherwise.</li>
+      <li><strong>Who verifies?</strong> Data handling terms change with contract renewals; assign someone to re-check the settings and terms at renewal, the way security questionnaires are re-run.</li>
+    </ul>
+    <p>Developers working solo should still make one decision deliberately: which projects are "assistant-free" (client IP, regulated data, anything under NDA) and which are fair game. Writing that line down prevents the 2 a.m. exception you regret.</p>
+
+    <h2>A decision framework</h2>
+    <ol>
+      <li><strong>Proprietary or client code</strong> → business/enterprise tier with a no-training contract, plus a secrets sweep before rollout — or a local model if data must not leave the machine.</li>
+      <li><strong>Public or open-source work</strong> → consumer tier is acceptable; still check the training opt-out and telemetry settings, since "acceptable" and "invisible" are not the same.</li>
+      <li><strong>Regulated data (health, finance, legal)</strong> → local model or no assistant, unless your compliance process has explicitly approved a vendor and configuration.</li>
+      <li><strong>Learning and prototypes</strong> → anything works; this is the tier where capability matters more than controls.</li>
+    </ol>
+    <p>The same classification discipline applies to documents in chatbots, not just code — our <a href="/guides/ai-file-upload-privacy/">file upload privacy checklist</a> covers that side. And when an assistant's output is unfamiliar, verify it before shipping: our <a href="/guides/fact-check-ai-answers/">fact-checking guide</a> and the general rule of validating anything pulled from the internet — see <a href="/guides/how-to-verify-a-download/">how to verify a download</a> — both apply to generated dependencies and scripts.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

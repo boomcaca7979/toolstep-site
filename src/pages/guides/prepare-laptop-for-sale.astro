@@ -1,0 +1,178 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/prepare-laptop-for-sale/';
+const title = 'How to Prepare Your Laptop for Sale: Wipe It Safely | ToolStep';
+const description = 'A safe-sale checklist for any laptop: back up, deauthorize licenses, remove Activation Lock, sign out everywhere, and securely erase with Reset this PC or Erase All Content.';
+const headline = 'How to Prepare Your Laptop for Sale: Securely Erase Mac and Windows';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Is deleting my files before selling enough?',
+			acceptedAnswer: { '@type': 'Answer', text: 'No. Deleting files and emptying the trash removes the pointers to the data, not the data itself, and file-recovery tools can often read it back from the drive. The only safe approach is to erase the entire volume using the operating system\u2019s reset or erase feature — Reset this PC with the clean-data option on Windows, or Erase All Content and Settings on a recent Mac.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'What is Activation Lock and why does it matter so much?',
+			acceptedAnswer: { '@type': 'Answer', text: 'On Apple hardware, Activation Lock ties a Mac to the iCloud account that signed in to it: after a wipe, the machine refuses to set up without that account\u2019s password. If you reset a Mac without first signing out of iCloud and disabling Find My, the buyer receives a device they cannot use — and cannot fix. Signing out before the erase is the only correct order.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Do I need special wiping software for an SSD?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Usually not. Modern laptops ship with SSDs, and the multi-pass overwriting tools designed for spinning hard drives are unnecessary — and on SSDs unreliable, because wear leveling means writes do not land where you think. The operating system\u2019s erase feature, which issues the drive\u2019s own secure-erase or reset command, is the supported and effective method. Verify afterwards that the device boots to a clean setup screen.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Should I sell the charger and box with the laptop?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Yes. A complete listing — the correct charger, the original box, and any accessories that originally shipped with it — is worth real money to buyers and signals that the machine was cared for. Note honestly in the listing that the charger is included, and run a battery health check first so you can describe the battery condition accurately.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Prepare Your Laptop for Sale: Securely Erase Mac and Windows</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows 10/11 and macOS laptops &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      Selling a laptop is easy; selling one safely is a checklist. Your files, your licenses, and your accounts are all still on the machine, and two mistakes in particular — wiping a Mac before signing out of iCloud, or "erasing" by dragging files to the trash — hurt either you or the buyer. This guide walks the steps in the order they must happen, for both Windows and macOS.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>The order is: back up, deauthorize, sign out, then erase.</strong> Copy everything you need to another device, deauthorize software that limits activations, and sign out of iCloud (disabling Find My, which removes Activation Lock) or your Microsoft account. Only then wipe: on Windows use <em>Reset this PC</em> with "Remove everything" and the clean-data option; on an Apple Silicon or T2 Mac use <em>Erase All Content and Settings</em>, or reinstall macOS from recovery on older models. Verify the machine boots to a clean setup screen before handing it over.</p>
+    </div>
+
+    <h2>Step 1 — Back up first, always</h2>
+    <p>Every step after this one destroys data. Before touching anything else, copy your documents, photos, and anything else you need to an external drive or cloud storage. If you do not have a backup habit at all, set one up now — our <a href="/guides/3-2-1-backup-rule/">3-2-1 backup guide</a> explains the structure, and if you need hardware, our <a href="/best/best-portable-ssd/">portable SSD roundup</a> covers what to buy. Verify the backup actually opens on another device before you erase anything: a backup you have never restored from is a hope, not a backup.</p>
+
+    <h2>Step 2 — Deauthorize accounts and licenses</h2>
+    <p>Several kinds of software limit how many computers may use a license. If you wipe the machine without releasing the activation, you burn one of your slots:</p>
+    <ul>
+      <li><strong>Apple's music and book apps:</strong> in the Music or TV app, use <em>Account &gt; Authorizations &gt; Deauthorize This Computer</em> (iTunes on older systems).</li>
+      <li><strong>Adobe apps:</strong> open the app and sign out — or deactivate the machine from the Creative Cloud device list in your account page — so the license seat is freed.</li>
+      <li><strong>Everything else with a seat:</strong> audio plugins, pro tools, some games and office suites. Check the vendor's documentation for a "deactivate" step; if a vendor offers a device list in your account portal, prune the laptop from it there.</li>
+    </ul>
+
+    <h2>Step 3 — Sign out of accounts and remove device locks</h2>
+
+    <h3>On a Mac: sign out of iCloud before anything else</h3>
+    <p>This is the step that cannot be done out of order. Sign out of iCloud in <em>System Settings</em> and confirm you want to disable <strong>Find My Mac</strong> — that action removes <strong>Activation Lock</strong>, the anti-theft mechanism that otherwise keeps the device bound to your Apple Account after every erase. Apple's support site (<a href="https://support.apple.com/" rel="noopener">support.apple.com</a>) maintains a "what to do before you sell, give away, or trade in your Mac" page that walks the current menus; follow it for your macOS version. Also sign out of Messages and any app-store accounts, and if you use a hardware token or an authenticator app for two-factor codes that lives on this machine, migrate it first — see our <a href="/guides/recover-authenticator-app/">guide to moving an authenticator app</a>.</p>
+
+    <h3>On Windows: leave no account attached</h3>
+    <p>If you sign in with a Microsoft account, sign out of it (or switch the machine to a local account) and remove the laptop from your Microsoft account's device list in a browser. Sign out of the Store, OneDrive, and any third-party accounts that auto-sign-in. If you use an authenticator app for work or personal two-factor codes, move those entries before the wipe — our <a href="/guides/recover-authenticator-app/">authenticator migration guide</a> covers the transfer.</p>
+
+    <h2>Step 4 — Handle encryption the right way</h2>
+    <ul>
+      <li><strong>Windows:</strong> if the drive is encrypted with BitLocker, you have two clean options — decrypt first, or leave encryption on and let the reset wipe the keys (documented below). In either case, <strong>save your BitLocker recovery key</strong> somewhere outside the laptop before you reset, because if you ever need the drive again, the key is the only way in.</li>
+      <li><strong>macOS:</strong> if FileVault is on, you do not need to turn it off — the erase process removes the volume and its keys together. If you keep the recovery key anywhere, note it before erasing.</li>
+    </ul>
+
+    <h2>Step 5 — Erase the drive</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Platform</th><th>Method</th><th>Key option</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Windows 10/11</td><td>Windows 11: Settings &gt; System &gt; Recovery &gt; Reset this PC; Windows 10: Settings &gt; Update &amp; Security &gt; Recovery</td><td>"Remove everything", then change settings to enable data cleaning</td></tr>
+          <tr><td>Mac (Apple Silicon or T2)</td><td>System Settings &gt; General &gt; Transfer or Reset &gt; Erase All Content and Settings</td><td>Wipes and returns the Mac to setup assistant in one step</td></tr>
+          <tr><td>Mac (older, Intel without T2)</td><td>Recovery mode: erase the disk in Disk Utility, then reinstall macOS</td><td>Reinstall so the buyer reaches a working setup screen</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Windows: Reset this PC with "Remove everything"</h3>
+    <p>Open <em>Recovery</em> in Settings — <em>System &gt; Recovery</em> on Windows 11, <em>Update &amp; Security &gt; Recovery</em> on Windows 10 — and choose <em>Reset this PC</em>, picking <strong>Remove everything</strong>. When prompted, select the option to <strong>clean the data</strong> rather than "just remove my files" — Microsoft's support documentation (<a href="https://support.microsoft.com/" rel="noopener">support.microsoft.com</a>, see "Recovery options in Windows") describes the difference: plain file removal is fast but leaves data recoverable, while the cleaning option overwrites the drive. The laptop then reinstalls Windows itself; let it run to completion so the buyer gets a machine that boots to setup.</p>
+
+    <h3>macOS: Erase All Content and Settings, or recovery reinstall</h3>
+    <p>On Apple Silicon Macs and Intel Macs with the T2 security chip, <em>Erase All Content and Settings</em> (in System Settings &gt; General &gt; Transfer or Reset) erases the disk and every setting in minutes, leaving the setup assistant running. On older Intel Macs: restart into macOS Recovery (hold Command-R, or the correct key combination for your model), use Disk Utility to erase the startup volume as APFS or Mac OS Extended as appropriate, then reinstall macOS from recovery. Apple's "before you sell" support page links the exact key combinations per model.</p>
+
+    <h2>Step 6 — The physical handover</h2>
+    <ul>
+      <li><strong>Remove your things from the hardware:</strong> SD cards, USB drives, stickers with personal information, and anything taped inside the case.</li>
+      <li><strong>Include the correct charger.</strong> A matching charger is expected in a laptop sale and affects price.</li>
+      <li><strong>Keep the original box if you have it</strong> — complete listings command better prices and photograph well.</li>
+      <li><strong>Write an honest description:</strong> battery condition (our <a href="/guides/check-laptop-battery-health/">battery health guide</a> tells you how to read it), cosmetic wear, and the exact model and year.</li>
+    </ul>
+
+    <div class="warn-box">
+      <h2>What NOT to do</h2>
+      <p>Three mistakes account for almost every bad laptop sale. <strong>Just deleting files:</strong> trash and even "permanent" deletion leave data on the disk that recovery tools can read — only a full reset or erase counts. <strong>Leaving an account signed in:</strong> a buyer with access to your session can read your mail and reset your passwords; sign out everywhere, then verify at the login screen. <strong>Resetting a Mac without removing Activation Lock:</strong> after the wipe, the Mac demands the previous owner's iCloud password, and no buyer can get past it — the machine is effectively bricked for them until you undo it remotely. Sign out of iCloud first; there is no workaround for the buyer.</p>
+    </div>
+
+    <h2>Why SSDs make this simpler — and how to verify</h2>
+    <p>Old advice about multi-pass wiping belonged to spinning hard drives, where leftover magnetic traces were the risk. Modern laptops have SSDs, and the operating system's own erase — which issues the drive's built-in secure-erase or cryptographic-reset command — is the supported, effective method; overwriting tools designed for spinning disks are both unnecessary and unreliable on SSDs. Do one verification before handing the machine over: restart it and confirm it reaches a clean setup screen with no trace of your name, your files, or a password prompt you did not expect. If the laptop's storage has been behaving oddly, check its condition before you sell — our <a href="/guides/how-to-check-drive-health/">drive health guide</a> shows how — and if you plan to format the backup drive you used for step 1, our <a href="/guides/exfat-vs-ntfs-vs-apfs/">file system comparison</a> explains which format it should get.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

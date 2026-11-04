@@ -1,0 +1,192 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/recover-authenticator-app/';
+const title = 'Lost Your Phone? How to Recover Your Authenticator App | ToolStep';
+const description = 'Lost the phone with your 2FA codes? Recover Google Authenticator, Microsoft Authenticator, or Authy through cloud backups, transfer QRs, or saved backup codes.';
+const headline = 'Lost Your Phone? How to Recover Your Authenticator App and Your 2FA Codes';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Can I get my Google Authenticator codes back without the old phone?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Only if you previously enabled sync to your Google Account or made an export QR transfer — then the codes can be restored on a new device. Without either, the codes in the old app cannot be retrieved remotely, and each service protected by those codes must be recovered through its own account-recovery process using the backup codes issued at enrollment, if you saved them.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Are backup codes enough to regain access to an account?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Yes. Backup codes are generated when you first turn on two-factor authentication and are accepted at the sign-in screen in place of an authenticator code. Each code works once, so sign in with a code, remove the old device from your two-step verification settings, and enroll a new authenticator immediately.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Does Microsoft Authenticator back up my codes automatically?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Not by default. Cloud backup only exists after you turn it on inside the app and sign in with the Microsoft account it should be tied to. Restoring on a new phone then requires signing into that same account and completing the recovery step, and some work or school accounts restrict whether backups are permitted at all.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Should I move my 2FA codes into my password manager?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It is a reasonable trade-off for most people: a password manager with TOTP support fills codes automatically and backs them up encrypted. The cost is that your second factor then lives in the same vault as your passwords, so the vault becomes a single point of failure. If you keep them separate, print your backup codes and store them offline instead.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>Lost Your Phone? How to Recover Your Authenticator App</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Google Authenticator, Microsoft Authenticator, Authy, iOS, Android &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      An authenticator app is the one app whose contents cannot simply be re-downloaded. It holds secrets that were generated on your device and never stored in plain form by the service that issued them, which is exactly what makes the codes hard to steal — and hard to recover. This guide covers every realistic recovery path, in the order that actually works, and how to avoid the dead end next time.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>Sign in to each protected account using a backup code issued at two-factor enrollment.</strong> If you did not save codes, check the app's own backup: Google Authenticator codes can restore from your Google Account where sync was enabled, Microsoft Authenticator restores from its cloud backup, and Authy approves a new device from an existing one or via its backup password. If none of those exist, each service's account-recovery flow is your last option — and some accounts, honestly, cannot be recovered.</p>
+    </div>
+
+    <h2>What your authenticator app actually holds</h2>
+    <p>Time-based one-time password (TOTP) apps do not store your passwords or your accounts. Each entry holds a <strong>shared secret</strong> — a short random string established when you scanned a QR code at enrollment. The app combines that secret with the current time to produce the six-digit code you type at sign-in, following the same open TOTP standard every mainstream app implements.</p>
+    <p>The QR code you scanned encodes the secret in a standard URI format:</p>
+    <pre><code>otpauth://totp/Example:alice@example.com?secret=JBSWY3DPEHPK3PXP&amp;issuer=Example</code></pre>
+    <p>Anyone who holds that secret can generate valid codes for your account — which is why the secret must be protected on both sides. The service also holds a copy of the same secret, because it needs it to validate the codes you type; it is stored server-side under the provider's own protections, never displayed again after enrollment. Recovering the app therefore means recovering the <em>secret</em>: reinstalling the app from an app store gets you an empty app. The codes come back only from a backup of the secrets (a synced copy, an export file, or a multi-device clone) or by re-enrolling from scratch, which requires signing in to the account first.</p>
+
+    <h2>The recovery order that works</h2>
+    <p>Do these in sequence; each step only matters if the previous one failed:</p>
+    <ol>
+      <li><strong>Use a backup code.</strong> Codes issued at enrollment are accepted directly on the sign-in screen in place of an authenticator code. This is the universal fallback for every service and needs no app at all.</li>
+      <li><strong>Restore the app's own backup</strong> — Google Account sync, Microsoft's cloud backup, or Authy's multi-device clone — onto the new phone.</li>
+      <li><strong>Sign in and re-enroll.</strong> Once you are inside an account, remove the dead device from its two-factor settings and scan a fresh QR code with the new phone.</li>
+      <li><strong>Transfer before wiping</strong> if you still have the old phone — more on this below, because it is the cheapest path and the one most people skip.</li>
+    </ol>
+    <p>Work through accounts one at a time, starting with email. Your email account is the master key: password resets for everything else arrive there.</p>
+
+    <h2>Recovery path per app</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>App</th><th>Backup mechanism</th><th>Recovery on a new phone</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Authenticator</td><td>Optional one-time-code sync to your Google Account; manual export via transfer QR codes</td><td>Sign in with sync enabled and codes reappear; or import exported QRs; otherwise per-service recovery</td></tr>
+          <tr><td>Microsoft Authenticator</td><td>Cloud backup tied to your Microsoft account, enabled inside the app</td><td>Install, sign in to the same account, and restore from backup after verifying your identity</td></tr>
+          <tr><td>Authy</td><td>Encrypted multi-device sync; optional backup password set at setup</td><td>Install, verify your phone number, and approve the new device from an existing one — or recover with the backup password if you have no devices left</td></tr>
+          <tr><td>Any service, at enrollment</td><td>Backup codes generated once when 2FA was turned on</td><td>Type a code at the sign-in screen, then re-enroll a new authenticator</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Exact menu names move between app versions, so treat the descriptions below as location guides rather than click-by-click scripts, and check the vendor's own help pages — Google's <a href="https://support.google.com/accounts" rel="noopener">Account Help</a> and Microsoft's <a href="https://support.microsoft.com/" rel="noopener">Microsoft Support</a> both document their current screens.</p>
+
+    <h2>Recovering Google Authenticator</h2>
+    <h3>If sync to your Google Account was on</h3>
+    <p>Google Authenticator can sync one-time codes to your Google Account, and it is an opt-in setting — the app works without it unless you turned it on. If you did, install the app on the new phone, sign in to the same Google Account, and allow sync; the saved codes reappear. Verify each entry produces a code the service accepts, because a synced list is only as complete as the last time sync ran.</p>
+    <h3>If you made a transfer or export</h3>
+    <p>The app also supports exporting entries as QR codes so another device can scan them. If you ever generated that export and still have the old phone or a saved image of the QR, importing it on the new phone restores the entries. An export is a snapshot, though — entries added after it was made are not in it.</p>
+    <h3>If there was neither</h3>
+    <p>Nothing about the codes exists anywhere you can reach: Google has no copy and cannot reissue them. For each account the app was protecting, you must recover the account itself using its own two-step-verification recovery flow — Google's account recovery process is documented in <a href="https://support.google.com/accounts" rel="noopener">Google Account Help</a> — or a backup code if you saved one at enrollment.</p>
+
+    <h2>Recovering Microsoft Authenticator</h2>
+    <h3>Restore from cloud backup</h3>
+    <p>Microsoft Authenticator can back up account credentials and app settings to the Microsoft account signed in on the device, again only after the backup switch has been turned on in the app. On the new phone, install the app, sign in with the same Microsoft account, and start the recovery; Microsoft's process requires you to verify your identity to that account first. Personal and work accounts behave differently — some organizations control whether backups are allowed — so the presence of a backup depends on both your setting and your account type. Details and current limitations are on <a href="https://support.microsoft.com/en-us/account-billing/back-up-and-recover-account-credentials-in-the-authenticator-app-bb939936-7a8d-4e88-bc43-49bc1a700a40" rel="noopener">Microsoft's Authenticator backup page</a>.</p>
+    <h3>Backup restored, accounts still need re-verification</h3>
+    <p>A successful restore brings the entries back, but services will usually treat the reinstalled app as a new device the first time you sign in with it. Expect to re-verify each account once; where a service refuses, fall back to a backup code or that service's recovery flow.</p>
+
+    <h2>Recovering Authy</h2>
+    <p>Authy was built around device loss. Accounts are tied to your phone number, and the app supports multiple devices: install it on the new phone, verify your number, and approve the new device from a device you still have. If no existing device remains, recovery depends on the backup password you were offered at setup — with it, Authy can decrypt your tokens on the new device; without it and without another device, the tokens are unrecoverable, because they are encrypted against exactly this scenario. If your phone number itself was ported or recycled, treat that as a security event: re-verify every Authy-protected account and re-enroll fresh secrets rather than trusting the old ones.</p>
+
+    <h2>If you still have the old phone: transfer first, wipe second</h2>
+    <p>The smoothest recovery is the one done before the phone stops working. While the old device still runs:</p>
+    <ol>
+      <li><strong>Install the same app on the new phone</strong> and use its built-in transfer or export feature to move entries across, or re-scan each service's QR code by signing in and re-enrolling directly.</li>
+      <li><strong>Sign in to every important account once</strong> from a trusted device and confirm the new code source works before retiring anything.</li>
+      <li><strong>Remove the old device</strong> from each service's two-factor settings — an enrolled device you no longer control is a standing risk, not a spare.</li>
+      <li><strong>Only then wipe or sell the old phone.</strong> Once it is wiped, the un-exported secrets are gone for good.</li>
+    </ol>
+
+    <h2>When there is no backup at all</h2>
+    <p>Without codes, without a backup, and without the old phone, the app is a dead end and the recovery moves to each service. Every major provider runs an account-recovery flow — identity verification through Google or Microsoft, a support-assisted reset elsewhere — and the outcome depends on what the service can independently verify: your password, your recovery email or phone, device history, sometimes a human review. These flows exist precisely because second factors get lost, so start them from the service's own help pages rather than any link sent to you.</p>
+    <div class="warn-box">
+      <h2>Some accounts are genuinely unrecoverable</h2>
+      <p>Say it plainly: for accounts with no recovery email or phone on file, no saved backup codes, and no human support channel — certain email aliases, developer accounts, and especially self-custody crypto services — losing the authenticator seed with no backup means losing the account permanently. No support agent can regenerate a secret only your device held. This is not a reason to avoid two-factor authentication; it is a reason to treat the enrollment screen, where backup codes are shown once, as the most important step of the whole setup.</p>
+    </div>
+
+    <h2>Prevent it next time</h2>
+    <h3>Save backup codes offline, at enrollment</h3>
+    <p>Every service that offers authenticator-based 2FA offers backup codes at the moment you enable it. Print them or write them down and store them like important documents — not in the same device that holds the authenticator, and not in a screenshot folder synced to a cloud you might lose. Our <a href="/guides/3-2-1-backup-rule/">3-2-1 backup rule guide</a> explains the same principle for data: two copies is one, one is none.</p>
+    <h3>Enroll more than one second factor</h3>
+    <p>Most services allow several: an authenticator on your phone plus one on a tablet or a hardware key, or at minimum authenticator plus printed codes. Two enrolled factors mean a lost phone is an inconvenience, not a crisis.</p>
+    <h3>Move seeds into a password manager where acceptable</h3>
+    <p>Password managers with TOTP support store the same secrets, generate the codes, and back everything up encrypted — recovery becomes a password-manager restore, and our <a href="/guides/password-manager-migration/">password manager migration guide</a> covers moving credentials safely. The trade-off is concentration: the vault now holds both factors. If you prefer separation, keep the standalone app but still print the codes. Our <a href="/best/best-password-manager/">password manager picks</a> compare TOTP support across the major options.</p>
+    <h3>Consider passkeys where offered</h3>
+    <p>Passkeys replace the code-typing step entirely and sync through your platform's account — no seed to lose, no QR to re-scan. Where a service supports them, they are the more recoverable choice, and our <a href="/guides/passkeys-explained/">passkeys explainer</a> covers how the credentials are stored and backed up. A well-run setup pairs a hardware-backed passkey with printed backup codes; if you are auditing what else on your phone needs the same treatment, our <a href="/guides/audit-chrome-extensions/">Chrome extension audit guide</a> is the browser-side companion.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

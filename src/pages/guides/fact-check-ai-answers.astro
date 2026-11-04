@@ -1,0 +1,197 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/fact-check-ai-answers/';
+const title = 'How to Fact-Check AI Answers Using Reliable Sources | ToolStep';
+const description = 'AI answers can be confidently wrong. Learn a practical verification workflow: find checkable claims, use primary sources, cross-check, and catch fake citations.';
+const headline = 'How to Fact-Check AI Answers Using Reliable Sources';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Why do AI chatbots state wrong facts so confidently?',
+			acceptedAnswer: { '@type': 'Answer', text: 'These models generate the most plausible-sounding continuation of your prompt; they do not look up facts against a verified database before answering. When the training data is thin, outdated, or contradictory, the model can produce a fluent, confident statement that is simply false. Vendors, including Anthropic and OpenAI, document this limitation in their own developer guides.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Can a model make up its own citations?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Yes, and fabricated citations are one of the best-documented failure modes. A model can produce an author list, a journal, a volume number, and even a plausible DOI for a paper that does not exist, because all of those look like the right shape for a citation. Always open the link or search the title yourself before repeating a reference.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Does asking the same question again prove the answer is right?',
+			acceptedAnswer: { '@type': 'Answer', text: 'No. Consistency is not evidence. If a mistake comes from patterns in the training data, the model will often repeat it no matter how you rephrase the question. Independent sources, not the model itself, are the only reliable check.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Is a search-enabled AI answer automatically trustworthy?',
+			acceptedAnswer: { '@type': 'Answer', text: 'It is more verifiable, not more trustworthy. The model can still summarize a source incorrectly, blend two sources together, or cite a page that says something narrower than the answer implies. The verification workflow is the same: open the cited source and confirm it actually supports each claim.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Fact-Check AI Answers Using Reliable Sources</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to any AI chatbot or assistant &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      An AI chatbot can write a fluent paragraph about a legal deadline, a medical dosage, or a library function that simply does not exist — and it will read exactly as confident as a correct answer would. This is not a bug the vendors have quietly fixed; it is a property of how these models work. The good news is that verifying an AI answer takes minutes once you know which claims to check and which sources actually settle them.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>Treat every AI answer as a draft written by a fast, overconfident research assistant. Pull out the checkable claims — numbers, dates, names, legal or medical statements, and every citation — then verify each one against primary sources such as vendor documentation, standards bodies, and government statistics, and cross-check anything important in at least two independent places. Never repeat a citation you have not opened yourself, and remember that asking the model again proves nothing.</p>
+    </div>
+
+    <h2>Why AI answers can be confidently wrong</h2>
+    <p>Understanding the failure mode matters, because it tells you <em>which parts</em> of an answer deserve scrutiny. Large language models predict text; they do not retrieve verified records. The vendors say this plainly in their own documentation — Anthropic covers hallucinations and model limitations in its developer docs (<a href="https://docs.anthropic.com/" rel="noopener">docs.anthropic.com</a>), and OpenAI's help center (<a href="https://help.openai.com/" rel="noopener">help.openai.com</a>) describes similar limitations for its models. Three consequences follow.</p>
+
+    <h3>Fluency is not evidence</h3>
+    <p>The model is optimized to produce text that reads well, not text that is true. A wrong answer therefore arrives with the same polished structure, hedged qualifiers, and authoritative tone as a right one. There is no "error voice" to listen for. If anything, the most confident-sounding passages are often the ones built on the thinnest training data, because the model fills gaps the way it fills any other text: plausibly.</p>
+
+    <h3>Knowledge cutoffs make time-sensitive facts stale</h3>
+    <p>Each model has a training cutoff date — the point after which it has seen no new data. Facts that were correct when training ended can be wrong today: a library version, a tax threshold, a company's CEO, a law's enforcement status. Some products add web search or retrieval, which narrows the gap, but a fetched page can still be summarized inaccurately. Any answer about "current" facts carries a hidden question: was this true when the model learned it, and is it true now?</p>
+
+    <h3>Gaps get filled, not flagged</h3>
+    <p>When the model lacks information, it usually does not say so. It produces something shaped like an answer. That is why hallucinated APIs, invented statistics, and fake citations all look structurally perfect — the model knows what the <em>form</em> of a citation is, even when the paper itself never existed.</p>
+
+    <h2>A five-step verification workflow</h2>
+    <p>This workflow scales with stakes: use steps 1 and 2 for casual questions, all five for anything you will publish, sign, ship, or act on.</p>
+
+    <h3>Step 1 — Extract the checkable claims</h3>
+    <p>Rewrite the answer as a list of discrete assertions, then mark each one. Most paragraphs mix solid reasoning with two or three load-bearing factual claims, and only those need external verification:</p>
+    <pre><code>AI claim: "PostgreSQL 17 added incremental backups;
+pg_dump gained a --filter option in v15."
+
+Claim ledger:
+1. PostgreSQL 17 supports incremental backups .... checkable -&gt; release notes
+2. pg_dump --filter arrived in v15 ............... checkable -&gt; changelog
+3. "incremental backups are a best practice" ..... opinion -&gt; no check needed</code></pre>
+    <p>If you cannot turn a sentence into something you could look up, it is either an opinion (fine to accept or reject on judgment) or too vague to be useful (ask the model to be specific).</p>
+
+    <h3>Step 2 — Prefer primary and official sources</h3>
+    <p>The strongest check is a source that originates the fact: official documentation for how a product works, standards bodies for specifications, government agencies for laws and statistics, and the primary research paper rather than a write-up of it. Secondary sources — news articles, blog posts, tutorials — are useful for context but inherit each other's errors, including errors that started life as AI output.</p>
+
+    <h3>Step 3 — Cross-check independent sources</h3>
+    <p>Two sources agreeing matters only if they are independent. Ten articles echoing one press release are one source. Look for agreement across different kinds of publishers, and treat disagreement between independent sources as a signal to go back to step 2 and find the primary record.</p>
+
+    <h3>Step 4 — Verify citations actually exist and say what was claimed</h3>
+    <p>Fake citations are a known failure mode: plausible author names, real-sounding journals, and DOIs that resolve to nothing. Open every link. Then read enough of the source to confirm it supports the specific claim — a paper about topic X is not a citation for a precise statistic about X. If a link dead-ends or a title searches to nothing, the citation is fabricated, and you should treat the surrounding paragraph as unverified too.</p>
+
+    <h3>Step 5 — Check facts that sit near the training cutoff</h3>
+    <p>For anything time-sensitive — versions, prices, officeholders, law status, product availability — verify against a source updated after the model's cutoff. Do not know the cutoff? It is published in each vendor's model documentation. If the answer hinges on something that could have changed recently, the AI answer is a hypothesis, not a fact, until a current source confirms it.</p>
+
+    <h2>What "source hierarchy" means</h2>
+    <p>Not all sources settle a question equally. The hierarchy is simple, and it applies to fact-checking AI just as it does to any research:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tier</th><th>Examples</th><th>Use it for</th><th>Watch out for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Primary / official</td><td>Vendor docs, standards bodies (W3C, ISO), government statistics and statutes, original research papers</td><td>Settling a claim</td><td>Marketing language mixed into documentation; papers that only cover a narrow case</td></tr>
+          <tr><td>Secondary</td><td>Reputable news, technical books, peer reviews, established reference works</td><td>Context and cross-checking</td><td>Errors copied between outlets; AI-generated content laundering into "sources"</td></tr>
+          <tr><td>Aggregators / forums</td><td>Q&amp;A threads, wikis, comparison sites, SEO content farms</td><td>Finding leads to the real source</td><td>Outdated answers, anonymous accuracy, affiliate-driven rankings</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A practical rule: descend the hierarchy. Start wherever search puts you, but do not stop until the claim has touched a primary source or two independent secondaries.</p>
+
+    <h2>Special cases that need extra care</h2>
+    <h3>Numbers, dates, and statistics</h3>
+    <p>Models produce well-formed numbers that no real dataset supports. Check every figure against the issuing organization: census bureaus for demographics, standards bodies for technical limits, changelogs for versions. A statistic with a precise decimal is not a verified statistic.</p>
+    <h3>Legal and medical claims</h3>
+    <p>Both domains mix durable principles with fast-changing specifics, and both punish confident errors. Verify statutes against the official text, case law against the court's own record, and dosages or contraindications against drug references and health authorities. Then treat the verified answer as background for a professional conversation, not as a substitute for one.</p>
+    <h3>Quotes</h3>
+    <p>Attributed quotations are a frequent hallucination. A famous-sounding line attached to a famous name can be entirely invented. Search the exact wording in quotation marks; if it only appears on quote-collection sites, be suspicious.</p>
+
+    <h2>Using AI to fact-check AI</h2>
+    <p>Asking a second model — or the same model with a different prompt — to critique an answer can surface weak claims worth checking, and search-enabled assistants can fetch sources you would not have found. Used this way, AI is a lead generator for your own verification, which is genuinely useful. What it cannot do is certify the result: a second model can hallucinate the confirmation as easily as the first hallucinated the claim. The chain of evidence still has to end at a source you read yourself. If you are weighing which assistant to trust with which tasks, our comparisons of <a href="/compare/claude-vs-chatgpt/">Claude vs ChatGPT</a> and <a href="/compare/claude-vs-perplexity/">Claude vs Perplexity</a> cover how different products handle sources and grounding, and our <a href="/guides/prompt-injection-explained/">prompt injection guide</a> explains a different failure mode where content manipulates the model rather than the model failing on its own.</p>
+
+    <div class="warn-box">
+      <h2>Consistency is not evidence — the trap that catches experts</h2>
+      <p>The most seductive "check" is asking the model again: rephrase the question, open a new chat, and see if it says the same thing. It usually will — and that proves nothing. When a hallucination comes from patterns in the training data, every rephrasing draws on the same patterns and reproduces the same error with equal confidence. Equally, a polite acknowledgment of an error ("you're right, I apologize") is the model agreeing with <em>you</em>, not with reality. Pressure a wrong answer and you can often get it "corrected" in either direction. The only check that counts is independent of the model.</p>
+    </div>
+
+    <h2>A minimum standard worth adopting</h2>
+    <ul>
+      <li><strong>Every citation gets opened.</strong> Unopened citations do not get repeated — not in your notes, not in your drafts.</li>
+      <li><strong>Numbers get a primary source or get deleted.</strong> "I saw it in an AI answer" is not provenance.</li>
+      <li><strong>Time-sensitive facts get a post-cutoff source</strong> before they are treated as current.</li>
+      <li><strong>Stakes set depth.</strong> Casual curiosity needs a spot check; anything published, signed, or acted on needs the full five steps.</li>
+      <li><strong>Keep the model in its lane.</strong> It is excellent at explaining, summarizing, drafting, and generating things to check — and unreliable as a database.</li>
+    </ul>
+    <p>The same skepticism applies to what you feed these tools: uploading sensitive documents to get an answer has its own trade-offs, covered in our <a href="/guides/ai-file-upload-privacy/">file upload privacy checklist</a>.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

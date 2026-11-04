@@ -1,0 +1,192 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/check-laptop-battery-health/';
+const title = 'How to Check Laptop Battery Health on Windows and Mac | ToolStep';
+const description = 'Read your laptop battery report on Windows and Mac: design vs full charge capacity, cycle count, what a healthy number looks like, and when degradation is a fault.';
+const headline = 'How to Check Laptop Battery Health on Windows and Mac, Step by Step';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'What is a good battery health percentage?',
+			acceptedAnswer: { '@type': 'Answer', text: 'A laptop whose full charge capacity still sits close to its design capacity — roughly 80 percent or more — is behaving normally. Lithium batteries are consumable parts, and manufacturers rate them to retain around 80 percent of capacity after a stated number of cycles, which Apple publishes per notebook model on its battery service page. Below that range, shorter runtime is expected wear, not a defect.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Does the cycle count matter more than the percentage?',
+			acceptedAnswer: { '@type': 'Answer', text: 'They measure different things and both are useful. The percentage tells you how much charge the battery holds today; the cycle count tells you how much of its rated life has been consumed. A five-year-old laptop with a high cycle count but 85 percent capacity is healthier than a newer one with a sudden capacity drop, because wear that tracks cycles is predictable.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Why does my full charge capacity change between reports?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Full charge capacity is an estimate the battery controller calculates from recent discharge behavior, so it drifts a little between reports — small moves of a few percent are normal. What matters is the trend over months. Judge the battery on repeated readings, not on a single report, and treat a steep drop between adjacent readings as a reason to keep watching.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Can I improve my battery health once it has degraded?',
+			acceptedAnswer: { '@type': 'Answer', text: 'No. Capacity loss is chemical wear inside the cells and cannot be reversed by calibration, apps, or deep discharges. What you can do is slow further wear: avoid leaving the laptop at 100 percent charge and high heat for long periods, and use the charge-limiting features built into modern Windows and macOS laptops when the machine stays plugged in most of the time.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Check Laptop Battery Health on Windows and Mac</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows 10/11 and macOS laptops &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      "Battery health" is not one number an app makes up — it is a comparison between what your battery was built to hold and what it holds today, plus a count of how many charge cycles it has burned through. Both Windows and macOS can report those values without any third-party software. This guide shows you exactly where to look on each platform, how to read the numbers, and how to tell ordinary wear from a battery that needs replacing.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>On Windows, run <code>powercfg /batteryreport</code> in a terminal and open the generated HTML file</strong> — compare DESIGN CAPACITY against FULL CHARGE CAPACITY. <strong>On a Mac, open System Settings &gt; Battery &gt; Battery Health</strong> for the condition summary, and System Information &gt; Power for the exact cycle count. Divide full charge capacity by design capacity: above roughly 80 percent is normal wear; a sudden collapse between reports, or any physical swelling, means stop using it.</p>
+    </div>
+
+    <h2>What battery health actually means</h2>
+
+    <h3>Design capacity vs full charge capacity</h3>
+    <p>Every lithium battery leaves the factory with a <strong>design capacity</strong> — the charge it was manufactured to hold, measured in milliamp-hours (mWh on most reports). As the battery is used, its actual <strong>full charge capacity</strong> declines. Battery health is simply the ratio of the two: a laptop reporting 4,200 mWh full charge against a 5,000 mWh design capacity is at 84 percent health. That number directly predicts runtime: at 84 percent, you get roughly 84 percent of the battery life the laptop had when new.</p>
+
+    <h3>Cycle count</h3>
+    <p>A <strong>cycle</strong> is one full discharge of the battery's capacity, accumulated across many partial charges — using 50 percent today and 50 percent tomorrow counts as one cycle, not two. Manufacturers rate their batteries for a specific number of cycles before capacity is expected to fall to around 80 percent of design. Apple publishes the cycle-count limit for each of its notebook models on its <a href="https://www.apple.com/batteries/service-and-recycling/" rel="noopener">battery service and recycling page</a>; Windows laptop makers document equivalent ratings in their own hardware specifications. Lithium batteries are consumable parts: losing capacity over hundreds of cycles is their designed behavior, not a fault.</p>
+
+    <h2>Windows: generate the battery report</h2>
+    <p>Windows has shipped a built-in battery report for years. The <code>powercfg</code> command that produces it is documented by Microsoft on its <a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options" rel="noopener">powercfg command-line options page</a>.</p>
+    <ol>
+      <li>Right-click the Start button and open <em>Terminal</em> or <em>Command Prompt</em>.</li>
+      <li>Run:</li>
+    </ol>
+    <pre><code>powercfg /batteryreport /output "C:\Users\%USERNAME%\Desktop\battery-report.html"</code></pre>
+    <p>The command writes an HTML file to your desktop and prints the path. Double-click it to open in a browser.</p>
+
+    <h3>Reading the report</h3>
+    <p>Three parts of the report matter:</p>
+    <ul>
+      <li><strong>Installed batteries</strong> — at the top, this section lists DESIGN CAPACITY and FULL CHARGE CAPACITY side by side. The ratio between them is your headline health number.</li>
+      <li><strong>Recent usage</strong> — a timeline of battery drains and charges. Use it to spot abnormal drain: if the machine loses charge rapidly while nominally asleep, something is waking it or draining it in modern standby.</li>
+      <li><strong>Battery capacity history</strong> — a day-by-day table of full charge capacity. Read the trend, not one row: capacity estimates drift a little between readings, so a few percent of wobble is normal, while a steady downward slope over months is real wear.</li>
+    </ul>
+
+    <h3>Windows 11 Settings battery page</h3>
+    <p>For a quicker, less detailed view, open <em>Settings &gt; System &gt; Power &amp; battery</em>. The battery usage chart shows drain per app over the last day or week, which is the fastest way to find a misbehaving program — though for the capacity numbers themselves, the generated report is still the authoritative source.</p>
+
+    <h2>macOS: check battery health and cycle count</h2>
+
+    <h3>Battery Health in System Settings</h3>
+    <p>Open <em>System Settings &gt; Battery &gt; Battery Health</em> (on older macOS versions, hold Option and click the battery icon in the menu bar, then choose the battery health item). macOS shows the battery's condition — Normal, or a service recommendation — and lets you enable optimized charging, which pauses at 80 percent until shortly before you typically unplug.</p>
+
+    <h3>The Option-click battery icon</h3>
+    <p>Hold the Option key and click the battery icon in the menu bar. On current macOS versions this is where the battery condition summary appears; on some older versions the menu also shows the battery's status at a glance. It is the fastest check when you just want to know whether the system itself thinks something is wrong.</p>
+
+    <h3>System Information &gt; Power</h3>
+    <p>For the raw numbers, hold the Option key, click the Apple menu, and open <em>System Information</em>. Select <strong>Power</strong> in the sidebar. The Battery Information section lists the <strong>cycle count</strong>, the <strong>condition</strong> (Normal / Service Recommended), and the full charge capacity in mAh alongside the design capacity, so you can compute the same health ratio as the Windows report. Compare the cycle count against your model's published limit on Apple's <a href="https://www.apple.com/batteries/service-and-recycling/" rel="noopener">battery service page</a>.</p>
+
+    <h2>Third-party readers</h2>
+    <p>On the Mac, <strong>coconutBattery</strong> is a long-standing, well-known utility that surfaces the same capacity and cycle-count figures in the menu bar and tracks them over time. If you install any third-party reader, download it from the developer's official site and verify what you downloaded before running it — our <a href="/guides/how-to-verify-a-download/">download verification guide</a> walks through that check. None of these tools can read anything the battery controller does not report; they present the same data more conveniently.</p>
+
+    <h2>What good and bad numbers look like</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Reading</th><th>Interpretation</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Full charge ≥ 90% of design</td><td>Healthy; light wear</td><td>Nothing — keep normal usage habits</td></tr>
+          <tr><td>80–90% of design, wear tracks age</td><td>Normal degradation for the cycle count</td><td>Nothing; expect proportionally shorter runtime</td></tr>
+          <tr><td>Below ~80% of design</td><td>Consumed most of the battery's rated life</td><td>Plan a replacement when runtime annoys you</td></tr>
+          <tr><td>Steep drop between recent reports</td><td>Worth watching</td><td>Re-check in a few weeks; a one-off dip can be an estimate drift</td></tr>
+          <tr><td>Sudden collapse well before the rated cycle count</td><td>Possible cell fault</td><td>Have the battery tested by the manufacturer's service channel</td></tr>
+          <tr><td>Trackpad or case bulging, case not sitting flat</td><td>Swelling</td><td>Stop using the laptop now — see below</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Put the two numbers together: Apple's per-model cycle limits and the Windows makers' equivalents are all set near the point where the battery should still hold roughly 80 percent of design capacity. Wear that matches age and cycles is normal; wear that outruns them is not.</p>
+
+    <h2>Normal wear vs a fault</h2>
+    <ul>
+      <li><strong>Normal:</strong> capacity declines gradually over hundreds of cycles, runtime shrinks proportionally, and capacity readings wobble slightly between reports.</li>
+      <li><strong>Suspect a fault:</strong> capacity falls in sudden steps, the reported charge jumps around wildly, the laptop shuts down at 20–30 percent remaining, or the battery refuses to charge while the system reports it as present.</li>
+    </ul>
+
+    <div class="warn-box">
+      <h2>A swollen battery is a stop-everything signal</h2>
+      <p>If the trackpad is lifting, the case bottom bulges, or the chassis no longer sits flat on a table, the battery is swelling. Stop charging the laptop, power it off, and back up your data to an external drive immediately — see our <a href="/guides/3-2-1-backup-rule/">3-2-1 backup guide</a> if you do not yet have one. Do not press the bulge back down, do not puncture or attempt to remove a swollen battery yourself, and take the machine to the manufacturer's service channel or a qualified repair shop for replacement.</p>
+    </div>
+
+    <h2>Before you sell — and after</h2>
+    <p>A battery health report is also useful context when passing a laptop on: run the check, note the numbers, and describe them honestly rather than claiming "battery is like new." Our <a href="/guides/prepare-laptop-for-sale/">laptop sale preparation guide</a> covers the secure-erase and account steps that matter far more to the buyer than the battery figure.</p>
+    <p>Finally, remember that checking health does not slow wear — habits do. Keeping the machine cool, avoiding weeks at 100 percent charge, and using the charge-limiting options both operating systems now offer will stretch the cycles you have left further than any utility will.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

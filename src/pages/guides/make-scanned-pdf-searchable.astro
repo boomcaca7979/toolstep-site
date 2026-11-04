@@ -1,0 +1,202 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/make-scanned-pdf-searchable/';
+const title = 'How to Make a Scanned PDF Searchable with OCR | ToolStep';
+const description = 'Check if a scanned PDF has a text layer with the Ctrl+F test, then run free OCR using Google Drive, Preview, PowerToys, or Tesseract and verify the output.';
+const headline = 'How to Make a Scanned PDF Searchable with OCR: Free Tools for Every Platform';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Does OCR change how my scanned PDF looks?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Usually not. Most OCR tools keep the original page image and place an invisible text layer on top, so the page prints and displays exactly as scanned while Ctrl+F and copy-paste now work. Tools that export to a format like Google Docs instead rebuild the page, and the layout will differ from the scan.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Can OCR read handwriting?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Rarely, and never reliably. Modern engines handle neat block capitals sometimes, but cursive or rushed handwriting produces heavy errors. Treat any handwriting-heavy document as a manual transcription job, and always proofread whatever the engine returns.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Is it safe to upload confidential documents to Google Drive for OCR?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Google processes the file on its servers, so the document leaves your computer. For files covered by contracts, client confidentiality, or privacy law, prefer a tool that runs entirely on your device, such as Tesseract or Adobe Acrobat, and review the provider terms before uploading anything sensitive.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Why does Ctrl+F find some words but not others in my scanned PDF?',
+			acceptedAnswer: { '@type': 'Answer', text: 'That means a text layer exists but is incomplete or inaccurate — often the result of OCR run at a low scan resolution or with the wrong language set. Re-run OCR on a better scan with the correct language selected, and proofread the pages where search previously failed.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Make a Scanned PDF Searchable with OCR</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows, macOS, Linux, Android, iOS &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      A scanned PDF is a photograph of a page wearing a PDF filename. It displays fine, but search, copy-paste, and screen readers all fail because there is no text underneath — only pixels. OCR (optical character recognition) adds that missing text layer, and every major platform now has a free way to run it. This guide shows you how to confirm you actually need OCR, pick the right free tool for your system, and check the result before you throw the original away.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>First, press <strong>Ctrl+F</strong> (Cmd+F on Mac) in the PDF and search for a word you can see on the page. If nothing is found, the PDF has no text layer. Run OCR to create one: upload to <strong>Google Drive</strong> and open with Google Docs, use <strong>Microsoft OneNote</strong> or <strong>Windows PowerToys Text Extractor</strong>, select text directly in <strong>macOS Preview</strong> with Live Text, or run <strong>Tesseract</strong> from the command line. Keep the original file until you have proofread the output.</p>
+    </div>
+
+    <h2>Why scanned PDFs cannot be searched</h2>
+    <p>When a scanner or a phone camera captures a document, it produces an image — a grid of coloured dots. Wrapping that image in a PDF container makes a valid PDF file, but a PDF page can hold either text objects or image objects, and a scan contains only the latter. A searchable PDF is different: it stores the page image <em>plus</em> an invisible text layer positioned over it, so the words are really there for software to read even though you only see the picture.</p>
+    <p>OCR is the process that generates that layer. The engine looks at the image, recognises character shapes, and writes matching text at matching coordinates. Nothing about the visual page changes; the document simply gains a machine-readable twin. A PDF you downloaded from a website may already have this layer, which is why checking comes first.</p>
+
+    <h2>Step 1 — Check whether the PDF already has a text layer</h2>
+    <p>Before running anything, do the thirty-second test:</p>
+    <ol>
+      <li>Open the PDF in any reader and press <strong>Ctrl+F</strong> (Cmd+F on macOS).</li>
+      <li>Search for a distinctive word you can clearly see printed on the page — not a word so common it might match by accident elsewhere.</li>
+      <li>Then try selecting a sentence with the mouse and copying it into a plain text editor.</li>
+    </ol>
+    <p>Three outcomes. <strong>Found and pastes correctly:</strong> a text layer already exists; you are done. <strong>Not found, and dragging the mouse highlights the whole page in one block:</strong> the PDF is a pure image — you need OCR. <strong>Found some words but not others:</strong> a partial or sloppy text layer exists, usually from a poor earlier OCR pass; re-running OCR with better settings is still worthwhile. Note that a large file size alone proves nothing — our guide on <a href="/guides/compress-pdf-without-losing-quality/">compressing PDFs without losing quality</a> explains why image-heavy PDFs are big whether or not they contain text.</p>
+
+    <h2>Step 2 — Pick a free OCR route for your platform</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Route</th><th>Platform</th><th>Output</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Drive + Google Docs</td><td>Any, in a browser</td><td>Editable Google Doc (export to PDF from there)</td><td>Quick one-off conversions, mixed layouts</td></tr>
+          <tr><td>Microsoft OneNote</td><td>Windows, macOS</td><td>Copyable text you paste back in</td><td>Grabbing passages from a few pages</td></tr>
+          <tr><td>Windows PowerToys Text Extractor</td><td>Windows 10/11</td><td>Text on the clipboard</td><td>Snatching text without leaving the desktop</td></tr>
+          <tr><td>macOS Preview / Live Text</td><td>macOS (recent versions)</td><td>Selectable text in place</td><td>Mac users who want zero new software</td></tr>
+          <tr><td>Tesseract</td><td>Windows, macOS, Linux</td><td>Text, or a searchable PDF</td><td>Batch jobs, privacy-sensitive files, automation</td></tr>
+          <tr><td>Adobe Acrobat Scan &amp; OCR</td><td>Windows, macOS (paid)</td><td>Searchable PDF in place</td><td>Already have a licence; many pages</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Google Drive (any platform)</h3>
+    <p>Upload the scanned PDF or image to Google Drive, right-click it, and choose <em>Open with Google Docs</em>. Google runs OCR during the conversion and opens an editable document with the recognised text; images from the page sit alongside it. This route is documented in <a href="https://support.google.com/docs" rel="noopener">Google Docs Help</a>. Two caveats: complex layouts arrive shuffled, and the file leaves your device for Google's servers — fine for a restaurant menu, a real consideration for a contract. When the text looks right, download the result via <em>File &gt; Download</em> if you need it back as a PDF or Word file.</p>
+
+    <h3>Microsoft OneNote and Word (Windows, macOS)</h3>
+    <p>OneNote recognises text inside any image you paste onto a page: right-click the picture and choose <em>Copy Text from Picture</em>, then paste the result wherever you need it. It is per-image rather than whole-document, so it suits extracts rather than 80-page scans. Microsoft Word can also open PDFs and convert them into editable documents — it works well on PDFs that already contain text, but on pure image scans the results are inconsistent, so prefer OneNote or Drive for those. Both behaviours are described in <a href="https://support.microsoft.com/" rel="noopener">Microsoft Support</a>.</p>
+
+    <h3>Windows PowerToys Text Extractor</h3>
+    <p>Microsoft's free PowerToys utilities include Text Extractor, which grabs text from any region of the screen — including a scanned PDF open in a reader. Press the shortcut, drag a rectangle over the text, and it lands on your clipboard. See the tool's page in <a href="https://learn.microsoft.com/windows/powertoys/" rel="noopener">Microsoft's PowerToys documentation</a> for the current key binding and language support. Like OneNote, it produces paste-ready text rather than a searchable PDF, so pair it with a PDF editor if you need the file itself made searchable.</p>
+
+    <h3>macOS Preview with Live Text</h3>
+    <p>Recent versions of macOS bring Live Text to Preview: open the scanned page, and text in the image becomes selectable like ordinary text — select, copy, and paste, or use it for lookups. Apple documents Live Text in its <a href="https://support.apple.com/" rel="noopener">Apple Support</a> guides, and it runs on the device with no upload. Its limits: it works image by image rather than producing a batch-searchable PDF, and accuracy depends on scan quality just like any other engine.</p>
+
+    <h3>Tesseract on the command line (Windows, macOS, Linux)</h3>
+    <p>Tesseract is the open-source OCR engine that powers many commercial tools, maintained at <a href="https://github.com/tesseract-ocr/tesseract" rel="noopener">the tesseract-ocr repository on GitHub</a>. It runs entirely on your machine, which makes it the right choice for confidential documents. After installing it, the basic invocation reads an image and writes text:</p>
+    <pre><code># Basic: read image.png, write out.txt
+tesseract image.png out
+
+# German-language page, explicit language flag
+tesseract seite.png out -l deu
+
+# Produce a searchable PDF from a page image
+tesseract page1.png result pdf</code></pre>
+    <p>Tesseract works on single images rather than multi-page PDFs directly, so the usual pattern is to export pages as images (or split the PDF), run Tesseract per page, and merge the results. That extra friction buys privacy, repeatability, and the option to script a whole folder of scans — the README and wiki in the repository cover the PDF output options and the language data packages you need to install.</p>
+
+    <h3>Adobe Acrobat Scan &amp; OCR</h3>
+    <p>If you already have an Acrobat licence, its built-in <em>Scan &amp; OCR</em> tool (under Tools) recognises text across a whole document in place: open the file, run the tool, choose the document language, and Acrobat adds the text layer to the same PDF. Adobe's own documentation on scanning and recognition lives at <a href="https://helpx.adobe.com/acrobat/using.html" rel="noopener">Adobe Help</a>. This is the cleanest output for archival purposes because the file remains a single PDF with the original page images intact — check your current licence, as Acrobat is a subscription product.</p>
+
+    <AdsterraBanner pageType="guides" />
+
+    <h2>What makes OCR succeed or fail</h2>
+    <p>The engine matters less than the scan. Four factors dominate the accuracy gap between a flawless conversion and word soup:</p>
+    <ul>
+      <li><strong>Resolution.</strong> Aim for roughly 300 dpi scans of standard text. Phone photos of documents taken at low resolution, or faxes, give the engine too few pixels per letter to be certain.</li>
+      <li><strong>Straightness.</strong> Skewed pages make letters lean; most engines correct small tilt, but dramatic rotation degrades recognition before anything else. Straighten the scan first if your tool offers it.</li>
+      <li><strong>Language settings.</strong> Running an English engine on a German document produces plausible-looking nonsense with every umlaut wrong. Set the document's actual language — every tool above has a language option except the most basic grab-text utilities, which inherit your system languages.</li>
+      <li><strong>Print quality.</strong> Faint toner, highlighter pen, stamps over text, and two-sided bleed-through all confuse recognition. No setting fully rescues a bad original.</li>
+    </ul>
+
+    <h2>Know the limits before you trust the output</h2>
+    <p>OCR excels at clean printed text and stumbles elsewhere. Handwriting is the big one: cursive notes defeat essentially every consumer tool, and neat block capitals come out with enough errors that manual correction is faster. Mathematics and chemical formulas are similarly unreliable — engines are built for linear text, not layered notation. Tables frequently lose their structure, arriving as jumbled lines. Low-contrast or decorative typefaces degrade quietly: the text layer fills with subtle errors that neither the tool nor a spell-checker flags, which is why verification is a step, not a formality.</p>
+
+    <div class="warn-box">
+      <h2>Never delete the original on the same day</h2>
+      <p>An OCR text layer can be wrong in ways that are invisible when you read the page — a dropped "not" in a contract clause, a swapped digit in an invoice number. Keep the untouched scan until you have searched for and spot-checked key figures, names, and dates in the converted file, and ideally keep the original scan in your archive regardless; a searchable copy is a convenience, not a replacement for the source image. This matters double for anything you might later need to <a href="/guides/redact-pdf-permanently/">redact permanently</a> — you want the cleanest possible source.</p>
+    </div>
+
+    <h2>Verify the searchable PDF before relying on it</h2>
+    <ol>
+      <li><strong>Run the Ctrl+F test again</strong> on words from the first, middle, and last pages — this also confirms every page got processed, not just the first few.</li>
+      <li><strong>Copy a paragraph and paste it into a text editor</strong> to see the raw text layer, where dropped characters and merged words are obvious.</li>
+      <li><strong>Spot-check numbers against the image</strong>: totals, dates, account numbers, phone numbers. Digits are where OCR errors do the most damage.</li>
+      <li><strong>Search for likely misreads</strong>: a "1" recognised as "l" or "O" for "0" will break future searches, so try both spellings of anything numeric.</li>
+    </ol>
+    <p>Once the copy passes, keep it alongside — not instead of — the original, and if the document contained personal data you no longer need, our guide on <a href="/guides/remove-file-metadata/">removing metadata from files</a> covers the scanner and software traces that can ride along in the file itself. If your end goal is filing these documents somewhere durable, our <a href="/best/best-external-ssd/">external SSD picks</a> and the <a href="/guides/3-2-1-backup-rule/">3-2-1 backup rule</a> cover the storage side.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

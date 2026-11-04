@@ -1,0 +1,192 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/redact-pdf-permanently/';
+const title = 'How to Redact a PDF Permanently and Safely | ToolStep';
+const description = 'Black boxes over text are not redaction — the words stay in the file. Learn what real redaction removes, how to verify it, and which tools do it properly.';
+const headline = 'How to Redact a PDF Permanently and Safely: Remove Text, Not Just Cover It';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Why is drawing a black box over text not redaction?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Because the box is just a shape drawn on top of the page. The text underneath is still part of the file: anyone can select it, copy it, search it, or extract it with a script. Real redaction deletes the text objects from the document, so nothing remains to uncover.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How do I check that a PDF is properly redacted?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Select all text on the page and copy it into a plain text editor, search for the sensitive names or numbers with the reader search box, and confirm nothing matches. If you have command-line tools available, extracting the raw text again with a separate utility gives an independent check.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Can I redact a PDF for free?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Not reliably across all systems. Free viewers typically offer only shape-drawing markup, which does not remove content, and free online redactors require uploading a sensitive file to an unknown server. For genuinely sensitive documents, use a licensed tool such as Acrobat Pro, Foxit PDF Editor, or PDF-XChange Editor, and verify the saved output with a copy-paste test.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Does redaction also remove file metadata?',
+			acceptedAnswer: { '@type': 'Answer', text: 'Not always. The redaction tool removes what you marked on the page; author fields, revision history, and attached comments may survive. After redacting, inspect the document properties and remove remaining metadata separately — our guide to removing metadata from PDFs and Office files walks through it.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Redact a PDF Permanently and Safely</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Windows, macOS, Linux &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      Redaction fails in a uniquely damaging way: the document looks clean, the recipient extracts the "hidden" text in ten seconds, and the sensitive material was published after all. The gap between how a redacted PDF looks and what it contains is the whole story. This guide explains what proper redaction actually removes, how to do it with tools that do it correctly, and how to verify the result before the file leaves your hands.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p>Use a redaction tool that <strong>removes the content and then applies the mark</strong> — Adobe Acrobat's Redact tool is the reference implementation, and Foxit PDF Editor and PDF-XChange Editor offer equivalent features. Mark the text or areas, run <em>Apply</em>, save under a new filename, then verify: select all and copy the page text into a plain editor and search the file for the sensitive strings. Never ship a PDF where you only drew black rectangles over the words.</p>
+    </div>
+
+    <h2>Why a black box is not redaction</h2>
+    <p>Most annotation and markup tools can draw a filled rectangle anywhere on a page. Visually, the result is identical to real redaction: black bar, words gone. Structurally, the opposite is true. A PDF page stores its content as objects — text runs, images, paths — and your rectangle is just one more object painted last, on top. Every character you "covered" is still present in the file, in order, in the same encoding as the rest of the page.</p>
+    <p>That means anyone can recover it without special software:</p>
+    <ol>
+      <li>Open the PDF and press <strong>Ctrl+A</strong>, then <strong>Ctrl+C</strong>.</li>
+      <li>Paste into any plain text editor. The covered text appears alongside everything else.</li>
+      <li>Or simply press <strong>Ctrl+F</strong> and search for the name you hid — the reader finds it happily under the box.</li>
+    </ol>
+    <p>Copy machines, screen readers, and indexing tools read the same text layer, so the leak does not even require curiosity. This is not a hypothetical failure mode; news stories about botched government and legal redactions are almost always this exact mistake. Proper redaction means the text objects are <em>deleted from the file</em> and the area is then painted over — after removal, there is nothing left to uncover.</p>
+
+    <h2>What proper redaction actually does</h2>
+    <p>A real redaction tool performs a destructive edit, in this order:</p>
+    <ol>
+      <li><strong>Mark</strong> — you select the text, areas, pages, or search hits (such as a phone-number pattern) to be redacted. Nothing changes yet; marks are usually listed so you can review them.</li>
+      <li><strong>Apply</strong> — the tool parses the page content, removes the text objects and image pixels inside each marked region, and draws an opaque fill in the area. The characters no longer exist in the file.</li>
+      <li><strong>Save</strong> — the redaction is written to disk. Until you save, the applied redactions exist only in the open session.</li>
+      <li><strong>Sanitise</strong> — good tools also strip hidden content: comments, attachments, metadata, embedded indexes, and deleted-but-recoverable objects.</li>
+    </ol>
+    <p>The sequencing trap is step order. Applying redaction to the file you are still editing and then saving over your only copy destroys the unredacted original — which is why the working rule is one file in, a new file out, original preserved.</p>
+
+    <h2>Redacting with Adobe Acrobat</h2>
+    <p>Acrobat Pro's redaction workflow is the one most compliance policies assume, and Adobe documents it directly at <a href="https://helpx.adobe.com/acrobat/using/redact-pdf-new-experience.html" rel="noopener">Redact sensitive content in Acrobat Pro (Adobe Help)</a>. The steps:</p>
+    <ol>
+      <li>Open the PDF and choose <em>All tools &gt; Redact a PDF</em>.</li>
+      <li>Mark content with <em>Redact text and images</em> by selecting it, or use the search option to pattern-match — for example, every occurrence of an email address or a card-number pattern across the whole document. Whole pages can be marked too.</li>
+      <li>Open the redaction properties to set the fill: usually black, but you can leave marked areas blank or use an overlay code.</li>
+      <li>Click <strong>Apply</strong> and confirm. Acrobat removes the marked content and, in the same dialog, offers to sanitise the document by removing hidden information.</li>
+      <li>Save the result — Acrobat writes the redacted output to a new file, leaving the original untouched.</li>
+    </ol>
+    <p>The sanitise step also removes metadata and attachments; Adobe's page and its separate Sanitize PDFs document explain each category. Check your own Acrobat version's menus against the Adobe Help page, because the exact placement of these commands shifts between releases.</p>
+
+    <h2>Other desktop tools that do real redaction</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool</th><th>Platform</th><th>Redaction model</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Adobe Acrobat Pro</td><td>Windows, macOS</td><td>Mark &gt; Apply &gt; Sanitise, per above</td><td>Subscription; the reference workflow most policies cite</td></tr>
+          <tr><td>Foxit PDF Editor</td><td>Windows, macOS</td><td>Mark, then apply; permanent on save</td><td>Perpetual-licence editions exist; verify in current docs</td></tr>
+          <tr><td>PDF-XChange Editor</td><td>Windows</td><td>Redaction tool applies marks and removes content</td><td>Check which features your licence tier includes</td></tr>
+          <tr><td>Viewer-only apps and markup tools</td><td>All</td><td>Draw a shape — <strong>not redaction</strong></td><td>Fine for notes; never for release</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The dividing line is not brand but behaviour: the tool must offer an explicit redaction feature whose documentation says it removes content when applied — features named "markup", "highlight", or "shape" do not qualify. Check the vendor's current feature list before relying on any of these, since capability and licensing tiers change.</p>
+
+    <div class="warn-box">
+      <h2>The honest position on free redaction</h2>
+      <p>There is no free desktop tool we can recommend across every operating system that performs verified, content-removing redaction the way Acrobat does. Uploading a confidential document to a random free online redactor swaps one risk for a worse one: you have handed the unredacted file to an unknown third party. If the document is genuinely sensitive, the defensible options are a licensed tool's redaction feature, or — as a last resort on a copy — printing the affected pages to paper, physically covering the text, and rescanning, accepting that the result is an image with a manual quality bar. Do not let "no tool available tonight" push you into shipping a boxed-not-redacted file.</p>
+    </div>
+
+    <h2>Verify the redaction before the file leaves</h2>
+    <p>Treat verification as part of the job, not a checkpoint to skip when busy. Run every test on the saved output file, not the in-editor session:</p>
+    <ol>
+      <li><strong>Select-all and copy.</strong> Ctrl+A, Ctrl+C, paste into a plain text editor. Search the pasted text for every sensitive string you intended to remove.</li>
+      <li><strong>Search inside the PDF.</strong> Use the reader's find box for names, account numbers, and partial strings — the second half of a redacted email address can survive even when the visible part is gone, if the text run was split.</li>
+      <li><strong>Re-extract with an independent tool.</strong> If you are comfortable on a command line, pulling the raw text with a separate utility gives a second opinion that does not share code with the redactor:</li>
+    </ol>
+    <pre><code># Poppler's pdftotext (install via your package manager)
+pdftotext redacted.pdf - | grep -i "sensitive-name"
+
+# No output above means the string does not exist in the text layer</code></pre>
+    <ol start="4">
+      <li><strong>Check the pages you did not mark.</strong> Search errors and pattern misses land on other pages: search the whole document, not just the ones you edited.</li>
+      <li><strong>Confirm metadata is clean</strong> — the next section covers what can survive a correct redaction.</li>
+    </ol>
+
+    <h3>Text, images, and metadata redact differently</h3>
+    <p>Marking visible text is the easy case. Images are harder: redaction must remove the underlying pixels, and a low-resolution mark over a scan can leave partial letterforms readable at high zoom — after applying, zoom to 400% over each image redaction and confirm the area is uniformly filled. Text that overlaps images, or text drawn as vector curves rather than a font, can behave unexpectedly in some tools, which is another reason the copy-paste test matters. And note that a redaction applied to the visible page does not automatically purge every trace elsewhere in the file: bookmarks, comments, form fields, and document properties can all carry content. Adobe's own redaction guide includes removing hidden information for exactly this reason.</p>
+    <p>For the metadata side — author, company, revision history, attached comments — our <a href="/guides/remove-file-metadata/">guide to removing metadata from PDFs, Word files, and photos</a> covers the cleanup step by step.</p>
+
+    <h2>What to do with the original file</h2>
+    <p>You now hold two files: the unredacted original and the redacted release copy. Never let them get mixed. Rename the redacted copy clearly, keep the original out of any folder you sync or share, and think about the destination: if the redacted file is going to a client or the public, the original should live somewhere only you can reach. If the original has outlived its use, delete it deliberately — and if you keep archives at all, our <a href="/guides/3-2-1-backup-rule/">3-2-1 backup guide</a> explains how to keep copies that survive a dead drive without multiplying exposure. When the same document also needs to travel, compress it after redacting, not before — our <a href="/guides/compress-pdf-without-losing-quality/">PDF compression guide</a> explains why order matters for verification. And if the recipient only needs to confirm the file they received is intact, our <a href="/guides/how-to-verify-a-download/">download verification guide</a> covers checksums.</p>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>

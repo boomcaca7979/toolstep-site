@@ -1,0 +1,207 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AdsterraBanner from '../../components/ads/AdsterraBanner.astro';
+
+const canonicalPath = '/guides/audit-chrome-extensions/';
+const title = 'How to Audit Chrome Extensions and Their Permissions | ToolStep';
+const description = 'Walk through chrome://extensions, read each extension\'s permissions and site access, understand MV3 service workers, and decide what to keep or remove.';
+const headline = 'How to Audit Chrome Extensions and Check Their Permissions';
+const published = '2026-11-04';
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faq = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Can an extension with "read and change all your data on all websites" see my passwords?',
+			acceptedAnswer: { '@type': 'Answer', text: 'On the sites it has access to, such an extension can read page content, and content includes filled-in fields. That is the risk you accept with all-sites access. Restricting an extension to on-click or specific-sites access shrinks the window, and extensions you only run manually never need all-sites access at all.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Does removing an extension undo what it already did?',
+			acceptedAnswer: { '@type': 'Answer', text: 'No. Removal stops future access and deletes the extension locally, but anything already sent to a remote server is beyond your reach. If an extension behaved suspiciously, review recent activity on the accounts it could see and change passwords where the exposure was serious, in addition to removing it.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'Is turning on Developer mode in chrome://extensions dangerous?',
+			acceptedAnswer: { '@type': 'Answer', text: 'No. The toggle only unlocks detail views and inspection tools for extensions already installed; it changes nothing by itself. What it also enables — loading unpacked extensions from disk — is only a risk if you deliberately load code from an untrusted source, so simply leave any unpacked extensions you did not install yourself alone.' },
+		},
+		{
+			'@type': 'Question',
+			name: 'How often should I audit my browser extensions?',
+			acceptedAnswer: { '@type': 'Answer', text: 'A quarterly pass through chrome://extensions is enough for most people, plus an immediate review whenever you install something new or Chrome shows a changed-permissions prompt. The audit takes minutes: check each extension is still used, still needed, and still deserves the access it holds.' },
+		},
+	],
+};
+---
+
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} ogType="article" articleSchema={{ headline, description, datePublished: published, dateModified: published, authorName: 'ToolStep Editorial Team' }} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faq)} />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 1.05rem; line-height: 1.7; color: #374151; background: #fff; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .article-header { text-align: center; margin-bottom: 32px; }
+    .tag { display: inline-block; background: #f3f4f6; color: #374151; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; text-decoration: none; }
+    .tag:hover { background: #e5e7eb; }
+    h1 { font-size: 2.25rem; font-weight: 800; color: #111; line-height: 1.2; margin-bottom: 8px; }
+    .meta { color: #6b7280; font-size: 0.9rem; }
+    .lead { font-size: 1.15rem; color: #4b5563; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+    h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-top: 24px; margin-bottom: 8px; }
+    p { margin-bottom: 16px; }
+    ul, ol { margin-bottom: 24px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .table-wrap { overflow-x: auto; margin: 20px 0 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: #f9fafb; padding: 10px 12px; text-align: left; font-weight: 600; color: #111; border-bottom: 2px solid #e5e7eb; font-size: 0.85rem; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    tr:hover td { background: #f9fafb; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin-bottom: 20px; font-size: 0.85rem; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    pre code { background: none; padding: 0; }
+    .answer-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .answer-box h2 { margin-top: 0; color: #166534; }
+    .warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; padding: 24px; margin: 32px 0; }
+    .warn-box h2 { margin-top: 0; color: #92400e; }
+    @media (max-width: 640px) { h1 { font-size: 1.75rem; } table { font-size: 0.78rem; } th, td { padding: 8px 8px; } }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+  <article class="container">
+    <header class="article-header">
+      <a class="tag" href="/guides/">Guides</a>
+      <h1>How to Audit Chrome Extensions and Check Their Permissions</h1>
+      <p class="meta">Published November 4, 2026 &middot; ToolStep Editorial Team &middot; Applies to Chrome on Windows, macOS, Linux and Chromium browsers &middot; Facts verified November 2026</p>
+    </header>
+
+    <p class="lead">
+      Extensions are the most trusted software you never think about. Each one you install is code that can run in the background of your browser and, where you granted site access, read and modify the pages you look at — including pages that hold your mail, your banking session, or your admin panels. A fifteen-minute audit of the list tells you exactly which extensions hold that power and whether they still deserve it.
+    </p>
+
+    <div class="answer-box">
+      <h2>Quick answer</h2>
+      <p><strong>Open <code>chrome://extensions</code>, turn on Developer mode, and open each extension's Details page.</strong> Read its permissions: an entry saying it can "Read and change all your data on all websites" can access every page you visit, so decide whether that trust is earned — Chrome's site-access control lets you limit it to on-click or specific sites. Remove anything unused, duplicative, or from a publisher you cannot verify.</p>
+    </div>
+
+    <h2>Why extensions are a real attack surface</h2>
+    <p>A web page is sandboxed: one site's JavaScript cannot read another site's content. An extension with host access to a site sits outside that boundary — within the access you granted, it can read the page's content, inject its own scripts, and rewrite what you see before or after the page loads. That capability is exactly why useful extensions exist (form fillers, ad blockers, screenshot tools), and exactly why a compromised or malicious extension is dangerous: it can harvest what you type, watch pages that hold session cookies, or quietly redirect you.</p>
+    <p>Extensions can also change after installation. A legitimate tool is acquired by a new owner, an update ships new code, or a clean extension turns into an ad injector — so the permission list you approved at install time is not a promise about what runs today. That is why auditing the installed list matters more than vetting at install time, and why a page-injecting extension is also a delivery vector for attacks on what you read, including the <a href="/guides/prompt-injection-explained/">prompt-injection techniques that target AI assistants</a>.</p>
+
+    <h2>Step 1 — Open chrome://extensions and enable Developer mode</h2>
+    <p>Type <code>chrome://extensions</code> in the address bar. You will see a card for every installed extension with its icon, name, state, and a Details button. In the top-right corner, toggle <strong>Developer mode</strong> on. This is a display setting, not an installation of anything: it unlocks per-extension IDs, the inspection links, and the update controls you want for an audit. On the same page you can also pin the extensions menu from the puzzle-piece icon in the toolbar, which makes it obvious what is actually enabled day to day.</p>
+
+    <h3>What each card tells you</h3>
+    <ul>
+      <li><strong>Enabled or disabled state.</strong> A disabled extension holds its permissions but runs no code — a reasonable middle state while you decide.</li>
+      <li><strong>Source of the install.</strong> Cards loaded from a folder on disk (unpacked) deserve immediate scrutiny, because they bypass store review entirely.</li>
+      <li><strong>Details page.</strong> Where the permissions, site access, and version live — the substance of the audit.</li>
+    </ul>
+
+    <h3>Inspecting the service worker</h3>
+    <p>With Developer mode on, modern extensions expose a <em>service worker</em> link on their card, which opens the background script in DevTools. You do not need to read code to use this: the link proves the extension is running background code right now, and the Network tab shows which remote servers it contacts. An extension whose background worker talks to domains unrelated to its stated job is telling you something its store listing will not.</p>
+
+    <h2>Step 2 — Read the permissions on each extension</h2>
+    <p>Open <strong>Details</strong>, then scroll to <em>Permissions</em>. Chrome groups what the extension asked for into two families, and understanding the difference is the whole audit:</p>
+    <ul>
+      <li><strong>API permissions.</strong> Capabilities like reading browsing history, managing downloads, or showing notifications. These are declared in the extension's manifest — the kind of entries below, drawn from Chrome's documented <a href="https://developer.chrome.com/docs/extensions/reference/permissions-list" rel="noopener">permissions reference</a> — and each one should map to a feature you actually use:</li>
+    </ul>
+    <pre><code>&#123;
+  "permissions": ["storage", "scripting", "tabs"],
+  "host_permissions": ["https://mail.example.com/*"]
+&#125;</code></pre>
+    <ul>
+      <li><strong>Host permissions.</strong> The sites the extension may touch, shown to you in plain language. <em>"Read and change all your data on all websites"</em> is the broadest possible grant; <em>"Read and change your data on …"</em> followed by specific sites is the narrow one. Everything else on the Details page is secondary to this line.</li>
+    </ul>
+    <p>A simple test for each entry: name the feature that justifies it. A screenshot tool that needs <code>tabs</code> makes sense; a calculator that needs to read all sites does not. If you cannot name the reason, restrict or remove it.</p>
+
+    <h2>Step 3 — Use Chrome's site-access controls</h2>
+    <p>On the same Details page, under <em>Site access</em>, Chrome lets you shrink a broad grant without losing the extension. This is the highest-value change most audits produce:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Setting</th><th>What it means</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>On click</td><td>The extension can access a site only after you click its icon on that page</td><td>Tools you use deliberately — screenshot, page analysis, coupon checkers</td></tr>
+          <tr><td>On specific sites</td><td>Access limited to sites you list</td><td>Tools built for one site — a mail checker, a store price tracker</td></tr>
+          <tr><td>On all sites</td><td>Full host access everywhere, always</td><td>Only tools whose core function requires it, such as content blockers</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Chrome's own help documentation for <a href="https://support.google.com/chrome" rel="noopener">managing extensions</a> walks these settings, and the choices are per extension. Note the limits of honesty here: an extension can still request broader access later, and Chrome will show you a changed-permissions prompt — treat that prompt as an audit event, not a click-through.</p>
+
+    <h2>MV3 service workers and why the background changed</h2>
+    <p>Older extensions ran a persistent background page — code alive the entire session. Chrome's Manifest V3 replaced it with a <strong>service worker</strong>, a background script that starts when an event needs it and is shut down when idle. For your audit this matters in two ways. First, an MV3 extension without an active service worker is genuinely dormant between events, so the inspect link only appears when the worker is running or can be woken. Second, the change does not by itself make an extension safe: host permissions still grant page access, and a service worker can still fetch data from remote servers on schedule. The architecture reduced constant background presence; it did not change what site access means.</p>
+
+    <h2>Keep, restrict, or remove: deciding per extension</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Signal</th><th>Verdict</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>You cannot remember installing it, or haven't used it in months</td><td>Remove</td><td>Unused trust is pure risk</td></tr>
+          <tr><td>Two extensions do the same job</td><td>Keep one</td><td>Duplicate page-readers compound each other's access</td></tr>
+          <tr><td>Publisher or listing you cannot verify</td><td>Remove</td><td>Check the store listing's publisher history before keeping anything</td></tr>
+          <tr><td>Useful tool with all-sites access it doesn't need</td><td>Restrict</td><td>Switch site access to on-click or specific sites</td></tr>
+          <tr><td>Core tool whose broad access is its function</td><td>Keep</td><td>Verify updates come from the same publisher</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>When vetting something new instead, apply the same checks you would to any download — our <a href="/guides/how-to-verify-a-download/">download verification guide</a> covers confirming you actually got the publisher's software — and install from the official Chrome Web Store rather than mirrors or "free tool" pages.</p>
+
+    <h2>Removing an extension cleanly</h2>
+    <ol>
+      <li>On the extension's card in <code>chrome://extensions</code>, choose <strong>Remove</strong> and confirm.</li>
+      <li>Check whether the service behind it still expects the browser: sign-out states, companion desktop apps, or account settings that reference the extension.</li>
+      <li>If the extension synced data to an online account, revoke its access in that account's connected-apps settings so the server side stops too.</li>
+    </ol>
+    <p>Remember what removal does not do: it stops future access but cannot recall data already collected. If an extension behaved suspiciously before you removed it, change the passwords of the accounts whose pages it could read, and review recent sign-in activity. Browser-side credentials deserve the same recovery discipline as phone-side ones — our <a href="/guides/recover-authenticator-app/">authenticator recovery guide</a> covers what to do when a trusted device or app is compromised or lost.</p>
+
+    <h2>Auditing Edge and other Chromium browsers</h2>
+    <p>Microsoft Edge, Brave, Opera, and other Chromium-based browsers install from the same extension ecosystem and use the same model, so the audit transfers with small changes. Edge's equivalent lives at <code>edge://extensions</code>, with its own Developer mode toggle and a details page listing permissions and site access in the same plain-language style; Brave and Opera use <code>brave://extensions</code> and <code>opera://extensions</code> respectively. Chromium's shared foundation means the permission semantics you just learned apply unchanged — audit each browser you use daily rather than assuming your Chrome audit covered them.</p>
+
+    <h2>Make permission hygiene a habit</h2>
+    <ul>
+      <li><strong>Audit quarterly.</strong> Put a recurring reminder on it; the pass takes minutes once you know the screens.</li>
+      <li><strong>Audit on every install.</strong> Read the permission list before clicking Add, and set site access at install time instead of accepting the default.</li>
+      <li><strong>Treat permission-change prompts as events.</strong> An update that asks for more access should be justified by a feature you want.</li>
+      <li><strong>Keep the endpoint defense real.</strong> Extensions are one layer; a current <a href="/best/best-antivirus-software/">antivirus pick</a> still matters for what reaches the machine. And since password and code entry are the prize, tighten the credentials themselves — our <a href="/guides/passkeys-explained/">passkeys guide</a> explains removing the typeable secret entirely.</li>
+    </ul>
+    <div class="warn-box">
+      <h2>What "read and change all your data" should mean for trust</h2>
+      <p>Granting all-sites access is not a formality — it is handing the extension the ability to see and alter nearly everything you do in the browser, including login pages. Before granting it, ask: does this extension's core function require seeing every page, all the time? If the honest answer is no, use on-click or specific-sites access. An extension should earn that permission with its function, not receive it by default.</p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    {faq.mainEntity.map((item) => (
+      <>
+        <h3>{item.name}</h3>
+        <p>{item.acceptedAnswer.text}</p>
+      </>
+    ))}
+
+    <p><a href="/guides/">Back to all guides</a> &middot; <a href="/how-we-test/">How we test</a></p>
+  </article>
+  </main>
+  <Footer />
+</body>
+</html>
