@@ -1,0 +1,161 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Build a Small Business Website (Local-First Guide)';
+const description =
+	'A small business site has one job: turn a local search into a call, a booking, or a visit. The page map, the service-page recipe, the local signals that matter, and the trust elements customers check.';
+
+const faq = [
+	{
+		q: 'How many pages does a small business website need?',
+		a: 'Usually five to eight: home, one page per service, an about page, a contact page with your address and hours, and the policy pages. The service pages are the ones that earn search traffic; the home page mostly confirms that the visitor is in the right place.',
+	},
+	{
+		q: 'Do I need a separate page for each service?',
+		a: 'If customers search for the services separately, yes. A plumber who offers boiler repair, bathroom installation, and emergency call-outs is competing in three different searches, and one combined “Services” page cannot answer all three well. Each page should target one service and one area.',
+	},
+	{
+		q: 'Is a Google Business Profile enough instead of a website?',
+		a: 'No. The profile is a directory listing that you do not control — it can be suspended, and it cannot hold your service detail, pricing policy, or portfolio. It is still essential for local visibility, so run both: the profile sends people to the site, and the site gives them a reason to call.',
+	},
+	{
+		q: 'How much should a small business website cost?',
+		a: 'A hosted builder site with five to eight pages is a subscription plus your time. A professionally built site adds design and copywriting, which is where most of the cost sits. The expensive mistake is not the platform fee — it is paying for a site that never gets updated because nobody can edit it.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-make-a-website-from-scratch/', label: 'How to Make a Website From Scratch' },
+	{ href: '/guides/how-to-choose-a-domain-name/', label: 'How to Choose a Domain Name' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/how-much-does-a-website-cost/', label: 'How Much Does a Website Cost?' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/how-to-build-a-small-business-website/"
+	published="2026-11-10"
+	lead="A small business site is not a smaller version of a corporate site. It is a conversion tool for people who are already nearby and already looking — which changes what goes on the page, in what order, and what you can safely leave out."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#job', label: 'What the site has to do' },
+		{ href: '#pages', label: 'The page map' },
+		{ href: '#service-page', label: 'The service-page recipe' },
+		{ href: '#local', label: 'Local signals that decide visibility' },
+		{ href: '#trust', label: 'Trust elements customers check' },
+		{ href: '#mobile', label: 'Mobile and calls' },
+		{ href: '#measure', label: 'What to measure' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Build <strong>one page per service</strong>, each naming the service and the area you cover, with a
+			phone number that works on a tap. Add a contact page with your address and opening hours in text.
+			Then connect a Google Business Profile to the same details. Most small business sites fail because
+			they have one “Services” page and no location detail.
+		</p>
+	</div>
+
+	<h2 id="job">What the site has to do</h2>
+	<p>Three jobs, in priority order:</p>
+	<ol>
+		<li><strong>Confirm you are the right kind of business, in the right place.</strong> This happens in seconds, from the headline and the first line of text.</li>
+		<li><strong>Answer the questions that stop a call</strong> — price range, availability, area covered, what happens next.</li>
+		<li><strong>Make contact frictionless</strong> — tap-to-call, a short form, or a booking link, without a maze.</li>
+	</ol>
+	<p>
+		Everything else — brand story, team photos, values — supports those three jobs or gets in their way.
+	</p>
+
+	<h2 id="pages">The page map</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Page</th><th>Purpose</th><th>Must contain</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Home</td><td>Confirm relevance, route to the right service</td><td>What you do, where, proof, phone</td></tr>
+				<tr><td>Service page (one per service)</td><td>Rank for the service query, answer objections</td><td>Scope, process, price signal, area, CTA</td></tr>
+				<tr><td>About</td><td>Establish a real business and real people</td><td>Names, experience, location, credentials</td></tr>
+				<tr><td>Contact</td><td>Make contact easy and unambiguous</td><td>Address in text, hours, phone, map, form</td></tr>
+				<tr><td>Privacy / terms</td><td>Legal baseline, especially with forms and analytics</td><td>What you collect, why, how to opt out</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Skip the blog unless you will publish consistently. An abandoned blog with three posts from two years
+		ago is a credibility problem, not an SEO asset.
+	</p>
+
+	<h2 id="service-page">The service-page recipe</h2>
+	<p>Each service page should follow the same internal logic, without reading like a template:</p>
+	<ol>
+		<li><strong>H1 names the service and the place</strong> — “Emergency boiler repair in Bristol”, not “Our Services”.</li>
+		<li><strong>The first paragraph answers the practical question</strong> — what you do, how fast, what it costs roughly, and what area you cover.</li>
+		<li><strong>Scope</strong> — what is included and, more usefully, what is not. This is what filters out mismatched enquiries.</li>
+		<li><strong>Process</strong> — three or four steps from first contact to finished job. People want to know what happens after they call.</li>
+		<li><strong>Price signal</strong> — a starting price, a call-out fee, or a clear “quoted after a site visit”. Any honest signal beats silence.</li>
+		<li><strong>Proof</strong> — one review with a first name and area, or a photo of a completed job.</li>
+		<li><strong>CTA</strong> — phone number and form, repeated at the bottom.</li>
+	</ol>
+	<p>
+		Aim for 400–700 words per service page. Longer is fine if it contains real detail; padding with generic
+		industry description is what makes service pages indistinguishable from each other.
+	</p>
+
+	<h2 id="local">Local signals that decide visibility</h2>
+	<ul>
+		<li><strong>Google Business Profile</strong> — claim it, verify it, keep the category, hours, and service list accurate. Most local discovery starts here, not on your site.</li>
+		<li><strong>Consistent name, address, phone (NAP)</strong> — identical wording on the site, the profile, and any directory. Inconsistency splits the signal.</li>
+		<li><strong>Location in text</strong> — “Bristol” in the page copy and title, not only inside an image or a map embed. Search engines read text.</li>
+		<li><strong>Service area pages only if genuinely different</strong> — ten near-identical town pages are a liability. Two or three pages for areas where you have real work and real detail are fine.</li>
+		<li><strong>Reviews</strong> — ask every satisfied customer, respond to all of them, and never buy them.</li>
+	</ul>
+
+	<h2 id="trust">Trust elements customers check</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Element</th><th>Why it works</th><th>Failure mode</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Full address and hours</td><td>Proves you are a real, reachable business</td><td>Hidden in an image or behind a contact form</td></tr>
+				<tr><td>Photos of real work</td><td>Distinguishes you from directory listings</td><td>Obvious stock photos of unrelated premises</td></tr>
+				<tr><td>Named reviews</td><td>Specific and checkable</td><td>Anonymous quotes with no source</td></tr>
+				<tr><td>Insurance / certification</td><td>Relevant for trades and health services</td><td>Badges with no issuing body or number</td></tr>
+				<tr><td>Clear pricing policy</td><td>Removes the fear of being overcharged</td><td>“Contact us for a quote” on every page</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="mobile">Mobile and calls</h2>
+	<p>
+		Most local searches happen on a phone, often on a weak connection while the customer is standing in
+		front of the problem. That makes three things non-negotiable:
+	</p>
+	<ul>
+		<li><strong>Tap-to-call in the header</strong>, using a <code>tel:</code> link, visible without scrolling.</li>
+		<li><strong>Pages under a few hundred kilobytes of images</strong>, so the site loads on a weak signal. Compression and correct sizing matter more than any platform feature.</li>
+		<li><strong>Forms with three fields</strong> — name, contact, what you need. Every extra field costs completions.</li>
+	</ul>
+
+	<h2 id="measure">What to measure</h2>
+	<p>
+		Set up analytics before launch and watch four things: calls from mobile, form submissions, which service
+		pages get traffic, and which pages people leave immediately. The last one usually reveals a page that
+		promises the wrong thing in its title. The
+		<a href="/guides/google-analytics-4-setup/">GA4 setup guide</a> covers how to record calls and form
+		submissions as events so they show up as conversions rather than page views.
+	</p>
+	<p>
+		One structural warning: if the site is built on a platform the owner cannot edit, it will be stale
+		within a year. Update the service pages when prices change — that alone keeps more sites credible than
+		any redesign.
+	</p>
+</GuideLayout>

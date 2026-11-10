@@ -1,0 +1,399 @@
+---
+// GuideLayout.astro — shared chrome for editorial /guides/ articles.
+//
+// Additive only: existing guide pages keep their standalone markup. New guides
+// use this layout so that BaseHead (self-canonical, OG, Organization+WebSite
+// JSON-LD), breadcrumb + FAQ schema, the single Adsterra slot and the article
+// chrome stay identical across pages and cannot drift.
+//
+// The Adsterra slot is rendered once, after the intro block, via the existing
+// AdsterraBanner component (pageType="guides"). No second copy is emitted.
+
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AdsterraBanner from '../components/ads/AdsterraBanner.astro';
+
+interface FaqItem {
+	q: string;
+	a: string;
+}
+
+interface RelatedLink {
+	href: string;
+	label: string;
+}
+
+interface TocItem {
+	href: string;
+	label: string;
+}
+
+interface Props {
+	title: string;
+	description: string;
+	headline: string;
+	/** Canonical pathname with trailing slash, e.g. '/guides/seo-checklist-new-website/' */
+	canonicalPath: string;
+	published: string;
+	updated?: string;
+	lead: string;
+	eyebrow?: string;
+	faq?: FaqItem[];
+	related?: RelatedLink[];
+	toc?: TocItem[];
+}
+
+const {
+	title,
+	description,
+	headline,
+	canonicalPath,
+	published,
+	updated = published,
+	lead,
+	eyebrow = 'Guides',
+	faq = [],
+	related = [],
+	toc = [],
+} = Astro.props;
+
+const formatDate = (value: string) =>
+	new Date(`${value}T00:00:00Z`).toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		timeZone: 'UTC',
+	});
+
+const publishedLabel = formatDate(published);
+const updatedLabel = formatDate(updated);
+
+const breadcrumb = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 2, name: 'Guides', item: new URL('/guides/', Astro.site).toString() },
+		{ '@type': 'ListItem', position: 3, name: headline, item: new URL(canonicalPath, Astro.site).toString() },
+	],
+};
+
+const faqSchema = faq.length
+	? {
+			'@context': 'https://schema.org',
+			'@type': 'FAQPage',
+			mainEntity: faq.map((item) => ({
+				'@type': 'Question',
+				name: item.q,
+				acceptedAnswer: { '@type': 'Answer', text: item.a },
+			})),
+		}
+	: null;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			ogType="article"
+			articleSchema={{
+				headline,
+				description,
+				datePublished: published,
+				dateModified: updated,
+				authorName: 'ToolStep Editorial Team',
+			}}
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+		{faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article class="container guide-article">
+				<header class="article-header">
+					<a class="tag" href="/guides/">{eyebrow}</a>
+					<h1>{headline}</h1>
+					<p class="meta">
+						Published {publishedLabel}
+						{updated !== published && <> &middot; Updated {updatedLabel}</>}
+						&middot; ToolStep Editorial Team
+					</p>
+				</header>
+
+				<p class="lead">{lead}</p>
+
+				<slot name="answer" />
+
+				{
+					toc.length > 0 && (
+						<nav class="toc" aria-label="On this page">
+							<p class="toc-title">On this page</p>
+							<ol>
+								{toc.map((item) => (
+									<li>
+										<a href={item.href}>{item.label}</a>
+									</li>
+								))}
+							</ol>
+						</nav>
+					)
+				}
+
+				<AdsterraBanner pageType="guides" />
+
+				<slot />
+
+				{
+					faq.length > 0 && (
+						<section class="faq-block">
+							<h2 id="faq">Frequently asked questions</h2>
+							{faq.map((item) => (
+								<>
+									<h3>{item.q}</h3>
+									<p>{item.a}</p>
+								</>
+							))}
+						</section>
+					)
+				}
+
+				{
+					related.length > 0 && (
+						<aside class="related-block">
+							<h2>Related reading</h2>
+							<ul>
+								{related.map((item) => (
+									<li>
+										<a href={item.href}>{item.label}</a>
+									</li>
+								))}
+							</ul>
+						</aside>
+					)
+				}
+
+				<p class="article-foot">
+					<a href="/guides/">Back to all guides</a> &middot;
+					<a href="/how-we-test/">How we research</a> &middot;
+					<a href="/editorial-policy/">Editorial policy</a>
+				</p>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	.guide-article {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 40px 24px 64px;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: #374151;
+		background: #fff;
+	}
+	.guide-article .article-header {
+		text-align: center;
+		margin-bottom: 28px;
+	}
+	.guide-article .tag {
+		display: inline-block;
+		background: #f3f4f6;
+		color: #374151;
+		padding: 6px 16px;
+		border-radius: 20px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		margin-bottom: 12px;
+		text-decoration: none;
+	}
+	.guide-article .tag:hover {
+		background: #e5e7eb;
+	}
+	.guide-article h1 {
+		font-size: 2.25rem;
+		font-weight: 800;
+		color: #111;
+		line-height: 1.2;
+		margin: 0 0 10px;
+	}
+	.guide-article .meta {
+		color: #6b7280;
+		font-size: 0.9rem;
+		margin: 0;
+	}
+	.guide-article .lead {
+		font-size: 1.15rem;
+		color: #4b5563;
+		margin-bottom: 24px;
+		padding-bottom: 24px;
+		border-bottom: 1px solid #e5e7eb;
+	}
+	.guide-article h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #111;
+		margin-top: 40px;
+		margin-bottom: 14px;
+		line-height: 1.3;
+	}
+	.guide-article h3 {
+		font-size: 1.15rem;
+		font-weight: 600;
+		color: #111;
+		margin-top: 26px;
+		margin-bottom: 8px;
+	}
+	.guide-article p {
+		margin: 0 0 16px;
+	}
+	.guide-article ul,
+	.guide-article ol {
+		margin: 0 0 24px;
+		padding-left: 24px;
+	}
+	.guide-article li {
+		margin-bottom: 8px;
+	}
+	.guide-article a {
+		color: #1d4ed8;
+		text-decoration: underline;
+	}
+	.guide-article strong {
+		color: #111;
+	}
+	.guide-article code {
+		background: #f3f4f6;
+		padding: 2px 6px;
+		border-radius: 6px;
+		font-size: 0.9em;
+	}
+	.guide-article .table-wrap {
+		overflow-x: auto;
+		margin: 20px 0 32px;
+		-webkit-overflow-scrolling: touch;
+	}
+	.guide-article table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.9rem;
+	}
+	.guide-article th {
+		background: #f9fafb;
+		padding: 10px 12px;
+		text-align: left;
+		font-weight: 600;
+		color: #111;
+		border-bottom: 2px solid #e5e7eb;
+		font-size: 0.85rem;
+	}
+	.guide-article td {
+		padding: 10px 12px;
+		border-bottom: 1px solid #f3f4f6;
+		vertical-align: top;
+	}
+	.guide-article .answer-box {
+		background: #f0fdf4;
+		border: 1px solid #bbf7d0;
+		border-radius: 16px;
+		padding: 22px 24px;
+		margin: 28px 0;
+	}
+	.guide-article .answer-box h2 {
+		margin-top: 0;
+		color: #166534;
+		font-size: 1.25rem;
+	}
+	.guide-article .answer-box p:last-child,
+	.guide-article .answer-box ul:last-child {
+		margin-bottom: 0;
+	}
+	.guide-article .warn-box,
+	.guide-article .note-box {
+		background: #fffbeb;
+		border: 1px solid #fde68a;
+		border-radius: 16px;
+		padding: 22px 24px;
+		margin: 28px 0;
+	}
+	.guide-article .warn-box h2,
+	.guide-article .note-box h2 {
+		margin-top: 0;
+		color: #92400e;
+		font-size: 1.25rem;
+	}
+	.guide-article .warn-box p:last-child,
+	.guide-article .warn-box ul:last-child,
+	.guide-article .note-box p:last-child {
+		margin-bottom: 0;
+	}
+	.guide-article .toc {
+		background: #f9fafb;
+		border: 1px solid #e5e7eb;
+		border-radius: 16px;
+		padding: 18px 24px;
+		margin: 0 0 8px;
+	}
+	.guide-article .toc-title {
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #6b7280;
+		margin: 0 0 8px;
+	}
+	.guide-article .toc ol {
+		margin: 0;
+		padding-left: 20px;
+		font-size: 0.95rem;
+	}
+	.guide-article .toc li {
+		margin-bottom: 4px;
+	}
+	.guide-article .related-block {
+		margin-top: 40px;
+		padding-top: 20px;
+		border-top: 1px solid #e5e7eb;
+	}
+	.guide-article .related-block h2 {
+		font-size: 1.2rem;
+		margin-top: 0;
+	}
+	.guide-article .related-block ul {
+		margin-bottom: 0;
+	}
+	.guide-article .faq-block h2 {
+		margin-top: 44px;
+	}
+	.guide-article .article-foot {
+		margin-top: 32px;
+		padding-top: 20px;
+		border-top: 1px solid #e5e7eb;
+		font-size: 0.9rem;
+		color: #6b7280;
+	}
+	@media (max-width: 640px) {
+		.guide-article {
+			padding: 32px 18px 48px;
+			font-size: 1rem;
+		}
+		.guide-article h1 {
+			font-size: 1.75rem;
+		}
+		.guide-article h2 {
+			font-size: 1.35rem;
+		}
+		.guide-article table {
+			font-size: 0.8rem;
+		}
+		.guide-article th,
+		.guide-article td {
+			padding: 8px 8px;
+		}
+	}
+</style>

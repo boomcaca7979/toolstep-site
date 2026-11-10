@@ -1,0 +1,246 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Make a Website From Scratch (2026 Step-by-Step)';
+const description =
+	'A realistic build order for a new website: decide the job, pick the platform, buy the domain, build pages in priority order, and launch without breaking SEO. Includes what to skip.';
+
+const faq = [
+	{
+		q: 'How long does it take to make a website from scratch?',
+		a: 'A five-page brochure site on a hosted builder is a weekend of focused work if you already have the copy and images. The same site self-hosted with WordPress usually takes one to two weeks, because setup, theme configuration, plugins and testing are separate tasks. Content is the variable that breaks every estimate: writing five real service pages takes longer than installing any platform.',
+	},
+	{
+		q: 'Do I need to know how to code to build a website?',
+		a: 'No for a brochure site, a portfolio, or a small store. You need code only when you want behaviour the platform does not offer — custom integrations, unusual layouts, or performance work beyond what the builder exposes. Choosing a no-code tool is a trade, not a shortcut: you accept its templates, its hosting, and its export limits.',
+	},
+	{
+		q: 'Should I build the website myself or hire someone?',
+		a: 'Build it yourself if the site is a standard brochure, portfolio, or small catalogue and you can write the copy. Hire help if you need custom design, complex integrations, or a store with tax and shipping rules across regions. A common split is to build the structure yourself and pay for copywriting or a design pass, which are the parts visitors judge fastest.',
+	},
+	{
+		q: 'What is the cheapest legitimate way to get a website online?',
+		a: 'A free hosted plan or a static site on free hosting, plus a paid domain if you want to own the address. Free plans usually add provider branding or ads and limit custom domains. The domain is the one cost worth paying from day one — it is the only part of the setup you keep if you change platforms.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-choose-a-domain-name/', label: 'How to Choose a Domain Name' },
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/reviews/best-website-builders-2026/', label: 'Best Website Builders 2026: ranked by use case' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/how-to-make-a-website-from-scratch/"
+	published="2026-11-10"
+	lead="Most “make a website” advice starts with a platform. That is the third decision, not the first. This is the order that keeps you from rebuilding in three months: define the job, choose the build path, then buy the two things you actually own — the domain and the content."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#decide', label: 'Step 1: Decide what the site has to do' },
+		{ href: '#path', label: 'Step 2: Choose the build path' },
+		{ href: '#domain', label: 'Step 3: Domain and hosting' },
+		{ href: '#pages', label: 'Step 4: Build pages in priority order' },
+		{ href: '#content', label: 'Step 5: Write the content that decides rankings' },
+		{ href: '#launch', label: 'Step 6: Launch in the right order' },
+		{ href: '#mistakes', label: 'Mistakes that force a rebuild' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			You need four things: a domain, a place to host the files, a platform that produces the pages, and
+			content that answers a real question. The build order is <strong>job → platform → domain → pages →
+			launch</strong>. Anything that starts with “pick a template” ends with a site that looks finished and
+			converts nothing.
+		</p>
+	</div>
+
+	<h2 id="decide">Step 1: Decide what the site has to do</h2>
+	<p>
+		Write one sentence before you open any signup form. “A five-page site that gets local plumbing
+		enquiries” and “a 40-page resource library that earns ad revenue” lead to completely different
+		platforms. Use the table below to place your project.
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Job</th><th>What it implies</th><th>Wrong choice looks like</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Get found locally and take calls</td>
+					<td>One page per service, address and hours in text, fast mobile load</td>
+					<td>A single-page site with a contact form and no service pages</td>
+				</tr>
+				<tr>
+					<td>Show work to win clients</td>
+					<td>Case studies with outcome, role, and a clear next step</td>
+					<td>A gallery of images with no context</td>
+				</tr>
+				<tr>
+					<td>Sell physical products</td>
+					<td>Catalogue, variants, tax and shipping rules, order email</td>
+					<td>A brochure builder with a PayPal button bolted on</td>
+				</tr>
+				<tr>
+					<td>Publish articles and rank in search</td>
+					<td>Structured content, clean URLs, sitemap control, editing speed</td>
+					<td>A design-first builder with one long page</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Two constraints belong in the same sentence: who updates the site after launch, and how often. A site
+		its owner cannot edit becomes a site that is out of date within a quarter.
+	</p>
+
+	<h2 id="path">Step 2: Choose the build path</h2>
+	<p>There are three real paths. Each one trades control for time in a different place.</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Path</th><th>Best when</th><th>What you give up</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Hosted builder</strong> (Wix, Squarespace, Framer, Carrd)</td>
+					<td>You want a finished site this week and no server work</td>
+					<td>Portability — most do not export a working site, so leaving means rebuilding</td>
+				</tr>
+				<tr>
+					<td><strong>Self-hosted CMS</strong> (WordPress.org, Ghost, Craft)</td>
+					<td>You need plugins, custom content types, or full ownership of the files</td>
+					<td>Maintenance — updates, backups, and security become your job</td>
+				</tr>
+				<tr>
+					<td><strong>Custom or static build</strong> (Astro, Next.js, hand-coded)</td>
+					<td>Performance and layout control matter, or the site is mostly content</td>
+					<td>Editing comfort — a non-technical owner usually cannot publish alone</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		If you are undecided between hosted and self-hosted, the honest question is not “which is more
+		powerful” but “who fixes this at 11pm when it breaks”. Our
+		<a href="/reviews/best-website-builders-2026/">ranked comparison of website builders</a> breaks the
+		hosted options down by design flexibility, SEO control, and cost, and
+		<a href="/guides/wordpress-com-vs-wordpress-org/">WordPress.com vs WordPress.org</a> covers the
+		confusion that catches most people at this exact step.
+	</p>
+
+	<h2 id="domain">Step 3: Domain and hosting</h2>
+	<p>
+		The domain is the address; hosting is the building. On a hosted builder both come bundled, which is why
+		the choice feels invisible — you are still renting both.
+	</p>
+	<ol>
+		<li>
+			<strong>Register the domain at a registrar, not through a friend’s account.</strong> You want the
+			registration email in your own inbox. A .com is still the default for commercial sites; country
+			codes help when you serve one market and hurt when you serve several.
+		</li>
+		<li>
+			<strong>Turn on auto-renew and registrar lock immediately.</strong> Expired domains get bought by
+			drop-catchers within hours, and the recovery price is not the renewal price.
+		</li>
+		<li>
+			<strong>Pick hosting by the resource you will actually exhaust</strong> — usually monthly visits,
+			not storage. Shared hosting is fine for a brochure site; it stops being fine when a single traffic
+			spike makes the site time out.
+		</li>
+		<li>
+			<strong>Check that HTTPS is included and automatic.</strong> A paid certificate is unnecessary for
+			a new site; every mainstream host issues and renews free certificates.
+		</li>
+	</ol>
+	<p>
+		The naming decisions have their own traps — hyphens, trademarks, and cheap first-year renewals. They are
+		covered in <a href="/guides/how-to-choose-a-domain-name/">how to choose a domain name</a>, and the
+		hosting tiers in <a href="/guides/web-hosting-explained/">web hosting explained</a>.
+	</p>
+
+	<h2 id="pages">Step 4: Build pages in priority order</h2>
+	<p>
+		Do not build page one to ten in navigation order. Build in the order that lets you launch something
+		useful early and test the structure before you write everything.
+	</p>
+	<ol>
+		<li><strong>Home</strong> — one sentence on what you do and for whom, proof, and one primary action.</li>
+		<li><strong>The money page</strong> — the service, product, or portfolio page that has to convert.</li>
+		<li><strong>Supporting detail pages</strong> — one per service or project. These are what search engines rank for specific queries.</li>
+		<li><strong>About and contact</strong> — who is behind the site, how to reach them, and where you operate.</li>
+		<li><strong>Policy pages</strong> — privacy, terms, and affiliate disclosure if you monetise. Add these before launch, not after a complaint.</li>
+	</ol>
+	<p>
+		Set the URL structure once, at the start: lowercase, hyphenated, no dates, no <code>/page-id-123</code>.
+		Changing URLs later means redirects, and redirects you forget become 404s.
+	</p>
+
+	<h2 id="content">Step 5: Write the content that decides rankings</h2>
+	<p>
+		Design gets attention; text gets traffic. Three rules do most of the work:
+	</p>
+	<ul>
+		<li>
+			<strong>Answer the query in the first two sentences of each page.</strong> A visitor who has to
+			scroll to understand what you offer leaves, and so does the ranking.
+		</li>
+		<li>
+			<strong>Give every page a unique title and description.</strong> Duplicated titles across service
+			pages are the most common self-inflicted SEO problem on small sites.
+		</li>
+		<li>
+			<strong>Name pages after what people search, not after your internal structure.</strong>
+			“Emergency boiler repair” beats “Solutions” every time.
+		</li>
+	</ul>
+	<p>
+		If you are building on WordPress, install one SEO plugin and use it for titles, descriptions, and the
+		sitemap — nothing else. Stacking plugins is how sites end up with two sitemaps and three canonical tags.
+	</p>
+
+	<h2 id="launch">Step 6: Launch in the right order</h2>
+	<p>The sequence matters because each step depends on the previous one being correct.</p>
+	<ol>
+		<li>Point the domain at the host and wait for DNS to resolve.</li>
+		<li>Confirm the site loads on <code>https://</code> and that <code>http://</code> and <code>www</code> both land on one canonical hostname.</li>
+		<li>Submit the sitemap in Google Search Console and verify the property.</li>
+		<li>Check the site on a real phone, on mobile data, not just a resized desktop window.</li>
+		<li>Send a test enquiry or test order and confirm the email arrives.</li>
+		<li>Run through the <a href="/guides/website-launch-checklist/">launch checklist</a> before you announce anything.</li>
+	</ol>
+
+	<h2 id="mistakes">Mistakes that force a rebuild</h2>
+	<div class="warn-box">
+		<h2>Skip these</h2>
+		<ul>
+			<li><strong>Building on a free subdomain.</strong> Every link you earn points at an address you do not control.</li>
+			<li><strong>Choosing a template before deciding the page list.</strong> You end up bending the content to fit the demo.</li>
+			<li><strong>Importing demo content and editing it.</strong> Leftover demo pages, duplicate headings, and placeholder images ship to production more often than anyone admits.</li>
+			<li><strong>Launching with no analytics.</strong> Without a baseline you cannot tell whether the redesign helped or hurt.</li>
+			<li><strong>Treating SEO as a post-launch task.</strong> Titles, headings, and internal links are cheapest to fix before the site is indexed.</li>
+		</ul>
+	</div>
+
+	<h2>What it realistically costs</h2>
+	<p>
+		For a brochure site: a domain plus one hosted plan, and optionally paid copywriting. For self-hosted
+		WordPress: domain, hosting, a premium theme or plugin or two, and your time on maintenance. The
+		recurring costs are the ones people forget — renewals, premium plugins, and the hours spent on updates.
+		Our <a href="/guides/how-much-does-a-website-cost/">cost breakdown</a> separates one-off from recurring
+		spend so the second year does not surprise you.
+	</p>
+	<p>
+		Build the smallest site that does the job, launch it, and add pages once you know which queries people
+		actually use. A site with five strong pages outperforms a half-finished twenty-page site every time.
+	</p>
+</GuideLayout>

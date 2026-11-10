@@ -1,0 +1,193 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Set Up Google Analytics 4 on a New Website';
+const description =
+	'Create the property, install the tag once, verify with realtime, and define the four events that matter. Includes the GA4 settings that silently truncate your data and the mistakes that double-count visits.';
+
+const faq = [
+	{
+		q: 'Is Universal Analytics still available?',
+		a: 'No. Universal Analytics stopped processing standard property data in 2023, and its historical interface has been withdrawn. GA4 is the current product, and its data model is event-based rather than session-based. If you still have UA tags on the site, they are collecting nothing.',
+	},
+	{
+		q: 'How long does GA4 keep my data?',
+		a: 'Two months by default on the free tier, configurable up to fourteen months in the property settings. That is retention for exploration and user-scoped data, not for standard aggregate reports. Change it on day one, because the setting applies going forward, not retroactively.',
+	},
+	{
+		q: 'Do I need Google Tag Manager?',
+		a: 'Not for a basic install. A single gtag.js snippet is simpler and faster. GTM becomes worthwhile when you need multiple tags, consent sequencing, or non-developers adding events. Adding both without care is how sites end up sending every pageview twice.',
+	},
+	{
+		q: 'Why does my traffic look lower than before?',
+		a: 'GA4 counts differently: it does not process the same way as Universal Analytics, it handles sessions and engaged sessions separately, and bot filtering plus consent choices affect totals. Compare trends within GA4 rather than against old UA numbers — they are not the same metric.',
+	},
+];
+
+const related = [
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/core-web-vitals/', label: 'Core Web Vitals: Why Your Site Feels Slow' },
+	{ href: '/guides/how-to-build-a-small-business-website/', label: 'How to Build a Small Business Website' },
+	{ href: '/guides/website-accessibility-basics/', label: 'Website Accessibility Basics' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/google-analytics-4-setup/"
+	published="2026-11-10"
+	lead="Installing GA4 takes ten minutes. Making it useful takes another thirty, and most sites skip that part — which is why their reports show pageviews and nothing that resembles a business outcome."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#model', label: 'What changed with GA4' },
+		{ href: '#create', label: 'Step 1: Create the property and stream' },
+		{ href: '#install', label: 'Step 2: Install the tag once' },
+		{ href: '#verify', label: 'Step 3: Verify in realtime' },
+		{ href: '#events', label: 'Step 4: The events worth configuring' },
+		{ href: '#reports', label: 'Step 5: Reports that answer questions' },
+		{ href: '#privacy', label: 'Privacy and consent' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Create a property, add a web data stream, and copy the <code>G-</code> measurement ID. Paste the
+			Google tag once in the <code>&lt;head&gt;</code> of every page. Set data retention to 14 months,
+			then mark form submissions and phone clicks as key events — without those, GA4 tells you how many
+			people came and nothing about what they did.
+		</p>
+	</div>
+
+	<h2 id="model">What changed with GA4</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Universal Analytics</th><th>GA4</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Sessions and pageviews as the base unit</td><td>Events as the base unit; pageviews are one event among many</td></tr>
+				<tr><td>Separate property types for web and app</td><td>One property can receive web and app streams</td></tr>
+				<tr><td>Goals configured in the interface</td><td>Events collected first, then marked as key events</td></tr>
+				<tr><td>Reports fixed by product</td><td>Explorations for anything custom</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		The practical consequence: if you do not define events, GA4 has nothing interesting to report. It is a
+		blank instrument panel until you wire it up.
+	</p>
+
+	<h2 id="create">Step 1: Create the property and stream</h2>
+	<ol>
+		<li>In the Analytics admin, create an account (the company) and a property (the site). Keep one property per site; mixing sites makes every report ambiguous.</li>
+		<li>Choose the reporting time zone and currency carefully. They cannot be changed retroactively for existing data.</li>
+		<li>Add a <em>Web</em> data stream with your full site URL — <code>https://</code> and the exact hostname you serve.</li>
+		<li>Copy the measurement ID. It starts with <code>G-</code> and is what every install method needs.</li>
+		<li>Open <em>Admin → Data settings → Data retention</em> and set it to 14 months.</li>
+		<li>Enable <em>Enhanced measurement</em>, then review which options are on. It captures outbound clicks, file downloads, site search, video engagement, and form interactions — useful, but noisy if you also fire custom events for the same actions.</li>
+	</ol>
+
+	<h2 id="install">Step 2: Install the tag once</h2>
+	<p>Pick one method. Running two of them is the most common cause of doubled traffic.</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Method</th><th>Use when</th><th>Watch out for</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Platform integration</strong></td>
+					<td>The builder or CMS has a GA4 field (most do)</td>
+					<td>The platform may also inject its own tag — check the rendered HTML</td>
+				</tr>
+				<tr>
+					<td><strong>gtag.js in the head</strong></td>
+					<td>You control the template</td>
+					<td>Must appear once, on every page, before other scripts that fire events</td>
+				</tr>
+				<tr>
+					<td><strong>Google Tag Manager</strong></td>
+					<td>Multiple tags, consent sequencing, non-developers managing events</td>
+					<td>Do not also paste gtag.js directly</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		After installing, view source on the live page and search for the measurement ID. If it appears twice,
+		remove one before you look at any report.
+	</p>
+
+	<h2 id="verify">Step 3: Verify in realtime</h2>
+	<ol>
+		<li>Open the GA4 <em>Realtime</em> report.</li>
+		<li>Visit the site in a private window with tracking protection off.</li>
+		<li>Confirm your pageview appears within about 30 seconds, with the right page path and country.</li>
+		<li>Click a link and confirm the new page registers.</li>
+		<li>If nothing appears: check for an ad blocker, confirm the tag is in the rendered HTML (not just the source), and check the browser console for blocked requests.</li>
+	</ol>
+
+	<h2 id="events">Step 4: The events worth configuring</h2>
+	<p>
+		Four events cover most small sites. Everything else is optional.
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Event</th><th>Fires when</th><th>Why it matters</th></tr>
+			</thead>
+			<tbody>
+				<tr><td><code>generate_lead</code></td><td>A contact or enquiry form is submitted successfully</td><td>The primary outcome for most service sites</td></tr>
+				<tr><td><code>contact</code> (call click)</td><td>Someone taps a <code>tel:</code> link</td><td>On mobile, calls often outnumber forms</td></tr>
+				<tr><td><code>purchase</code></td><td>Order confirmation page or checkout event</td><td>Revenue reporting, if you sell</td></tr>
+				<tr><td><code>sign_up</code></td><td>Account creation completes</td><td>Tracks the top of a subscription funnel</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Fire the event on success, not on click. A form-validated-on-click event counts failed submissions as
+		leads, which is worse than having no data. Most form tools expose a success callback or a thank-you
+		page you can use as the trigger.
+	</p>
+	<p>
+		Then mark each event as a <strong>key event</strong> (the interface previously called these
+		conversions). Without that step, the events appear in reports but not in your conversion columns.
+	</p>
+
+	<h2 id="reports">Step 5: Reports that answer questions</h2>
+	<ul>
+		<li><strong>Traffic acquisition</strong> — which channels bring people, and whether they engage. Compare engaged sessions, not raw sessions.</li>
+		<li><strong>Landing page</strong> — which entry pages produce key events rather than just visits.</li>
+		<li><strong>Pages and screens</strong> — where people leave. A high exit rate on a service page usually means the page answered a different question than the title promised.</li>
+		<li><strong>Events</strong> — confirm your four events are firing with plausible counts. A form event count of zero is a configuration bug, not a traffic problem.</li>
+		<li><strong>Explorations</strong> — funnel or path analysis when you need to see the sequence, not the totals.</li>
+	</ul>
+
+	<h2 id="privacy">Privacy and consent</h2>
+	<ul>
+		<li>Disclose analytics in the privacy policy, including the provider and the data collected.</li>
+		<li>If you serve users in regions requiring consent, do not fire analytics before consent — use Consent Mode and a consent banner that actually blocks the tag.</li>
+		<li>IP anonymisation is default behaviour in GA4, but that does not replace a lawful basis or a policy.</li>
+		<li>Do not send personal data in event parameters — no email addresses, names, or free-text form content.</li>
+	</ul>
+	<div class="warn-box">
+		<h2>Mistakes that ruin the data</h2>
+		<ul>
+			<li>Two tags on the page, doubling every pageview.</li>
+			<li>Tracking internal traffic as external because staging and production share a property.</li>
+			<li>Firing conversion events on button clicks rather than confirmed submissions.</li>
+			<li>Leaving data retention at two months, then wondering why last quarter is missing.</li>
+			<li>Never filtering your own office IP, so your team looks like the best customer.</li>
+		</ul>
+	</div>
+	<p>
+		Once the numbers are trustworthy, they become the input to everything else — which pages to rewrite,
+		which <a href="/guides/core-web-vitals/">speed problems</a> are worth fixing, and whether the
+		<a href="/guides/seo-checklist-new-website/">SEO work</a> is producing visits that convert rather than
+		visits that bounce.
+	</p>
+</GuideLayout>

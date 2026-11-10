@@ -1,0 +1,186 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Migrate a Website to a New Host Without Downtime';
+const description =
+	'A migration runbook: lower TTL first, copy files and database, test on the new server before DNS changes, switch in one step, then verify redirects, email, and certificates. With a rollback plan.';
+
+const faq = [
+	{
+		q: 'How long does a website migration take?',
+		a: 'The copy and test usually take an hour or two for a small site; the DNS cutover takes minutes to propagate. Plan for a window of a few hours and avoid Friday afternoons — not because migrations are fragile, but because you want support staff awake if something needs a second look.',
+	},
+	{
+		q: 'Will I lose SEO rankings when I change hosts?',
+		a: 'If the domain, URLs, and content stay the same, a host change should not affect rankings beyond brief crawl irregularities. Rankings suffer when URLs change without redirects, when the site is down for days, or when the new server is much slower. Keep the URL structure identical and the risk is small.',
+	},
+	{
+		q: 'Can I test the new host before switching DNS?',
+		a: 'Yes, and you should. Either use a temporary hostname the new provider gives you, or edit your local hosts file to point the domain at the new server’s IP. Both let you click through the real site before anyone else sees it.',
+	},
+	{
+		q: 'What breaks most often in a migration?',
+		a: 'Email, in three ways: MX records left behind at the old DNS provider, mailboxes not migrated, and SPF/DKIM records not recreated. The second most common is a WordPress search-replace that corrupts serialised data. Both are avoidable with a checklist and a backup.',
+	},
+];
+
+const related = [
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/website-maintenance-checklist/', label: 'Website Maintenance Checklist' },
+	{ href: '/guides/ssl-https-explained/', label: 'SSL and HTTPS Explained' },
+	{ href: '/guides/wordpress-com-vs-wordpress-org/', label: 'WordPress.com vs WordPress.org' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/migrate-website-to-new-host/"
+	published="2026-11-10"
+	lead="A migration is a copy, a test, and a switch — in that order, with the old site still running until the new one has been proven. Most migrations that go wrong skipped the test or changed two things at once."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#two', label: 'Two different migrations' },
+		{ href: '#inventory', label: 'Inventory before you touch anything' },
+		{ href: '#ttl', label: 'Step 1: Lower the TTL' },
+		{ href: '#copy', label: 'Step 2: Copy the site' },
+		{ href: '#test', label: 'Step 3: Test before the switch' },
+		{ href: '#switch', label: 'Step 4: Switch DNS' },
+		{ href: '#verify', label: 'Step 5: Verify' },
+		{ href: '#rollback', label: 'Rollback plan' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Lower DNS TTL 24–48 hours ahead. Copy files and database to the new host. Test the site on the new
+			server using a temporary hostname or a local hosts-file entry. Then change the A record (or
+			nameservers) in one step. Keep the old host running for a week before you cancel it.
+		</p>
+	</div>
+
+	<h2 id="two">Two different migrations</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Type</th><th>What changes</th><th>Risk</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Host move</strong></td>
+					<td>The server, not the domain or URLs</td>
+					<td>Low, if the copy is complete and DNS is switched cleanly</td>
+				</tr>
+				<tr>
+					<td><strong>Domain change</strong></td>
+					<td>A new address for the same site</td>
+					<td>High — every URL changes and every old URL needs a redirect</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		This guide covers the host move. If the domain is changing too, do it as a second, separate project —
+		one variable at a time is what makes failures diagnosable.
+	</p>
+
+	<h2 id="inventory">Inventory before you touch anything</h2>
+	<ul>
+		<li><strong>Where DNS is managed</strong> — registrar or a third-party DNS provider. This is what you will edit.</li>
+		<li><strong>Where email lives</strong> — the same provider, or a separate service. Note every MX and TXT record.</li>
+		<li><strong>What the site is</strong> — static files, a CMS with a database, or a managed platform with no export.</li>
+		<li><strong>Current PHP, database, and cron jobs</strong> — the new host must support them.</li>
+		<li><strong>Traffic baseline</strong> — visits per day, so you can tell whether the new server copes.</li>
+		<li><strong>Anything scheduled</strong> — newsletter sends, imports, backups that will fire during the window.</li>
+	</ul>
+	<p>Take a full backup before step one, and download it. A backup you have not downloaded is a backup you do not have.</p>
+
+	<h2 id="ttl">Step 1: Lower the TTL</h2>
+	<p>
+		Set the TTL on the records you will change to a low value — 300 seconds is typical — at least a day
+		before the switch. This tells resolvers to re-check often, so the cutover propagates in minutes rather
+		than hours. Changing the TTL at the same moment as the record achieves nothing: resolvers have already
+		cached the old TTL.
+	</p>
+
+	<h2 id="copy">Step 2: Copy the site</h2>
+	<ol>
+		<li><strong>Files.</strong> Copy the whole web root, including uploads and any config files outside it that the app needs.</li>
+		<li><strong>Database.</strong> Export via the host’s tools or <code>mysqldump</code>, then import on the new server. Check the character set matches.</li>
+		<li><strong>Configuration.</strong> Update database credentials, site URL, and any absolute paths in config — <code>wp-config.php</code> for WordPress, <code>.env</code> for most frameworks.</li>
+		<li><strong>URLs inside the database.</strong> If the domain is unchanged, nothing to do. If it changed, use a tool that handles serialised data — a raw SQL <code>UPDATE</code> will corrupt serialised fields. WP-CLI’s <code>search-replace</code> is the safe route for WordPress.</li>
+		<li><strong>Email.</strong> If mailboxes move too, migrate them separately and verify before switching MX records.</li>
+		<li><strong>Scheduled tasks.</strong> Recreate cron jobs; they do not travel with files.</li>
+	</ol>
+
+	<h2 id="test">Step 3: Test before the switch</h2>
+	<p>
+		Do not switch DNS and then look at the site. Test it first, using either the temporary hostname the new
+		provider supplies or a local hosts-file entry that points the domain at the new IP for your machine
+		only.
+	</p>
+	<ul>
+		<li>Home page, a deep page, and a 404 load correctly.</li>
+		<li>Forms submit and the notification arrives.</li>
+		<li>Login works and the admin area loads without mixed-content warnings.</li>
+		<li>Images and CSS load from the new host, not the old one.</li>
+		<li>HTTPS works on the temporary hostname, or you know how to issue the certificate after the switch.</li>
+		<li>A page that queries the database returns the expected rows.</li>
+	</ul>
+
+	<h2 id="switch">Step 4: Switch DNS</h2>
+	<ol>
+		<li>Change the A record at the apex to the new server’s IP, and the <code>www</code> CNAME or A record to match.</li>
+		<li>If you are changing nameservers instead, recreate every record — including MX, SPF, DKIM, and verification TXT — at the new provider before you change the NS records.</li>
+		<li>Change one thing. Do not also update the theme, install plugins, or “fix” anything during the window.</li>
+		<li>Watch the old host’s access log. Traffic should fall to near zero as propagation completes.</li>
+	</ol>
+
+	<h2 id="verify">Step 5: Verify</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Check</th><th>Pass condition</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>DNS resolution</td><td>Resolves to the new IP from at least two networks</td></tr>
+				<tr><td>HTTP status</td><td>200 on the home page, 404 on a fake path</td></tr>
+				<tr><td>Certificate</td><td>Valid, issued after the switch, no warnings</td></tr>
+				<tr><td>Canonical hostname</td><td><code>www</code> and non-<code>www</code> both resolve to one URL</td></tr>
+				<tr><td>Email</td><td>Send and receive from an external account</td></tr>
+				<tr><td>Search Console</td><td>No new server errors; sitemap still resolves</td></tr>
+				<tr><td>Speed</td><td>Server response time comparable to or better than before</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Leave the old host running for at least a week. Late-resolving caches and old bookmarks will still hit
+		it, and killing it early turns a small cleanup into a 404.
+	</p>
+
+	<h2 id="rollback">Rollback plan</h2>
+	<p>
+		Rolling back is changing the record back — which is why the TTL was lowered and why the old host is
+		still running. Write down the exact old record values before you change them. A rollback that requires
+		reconstructing values from memory is not a plan.
+	</p>
+	<div class="warn-box">
+		<h2>Common failures</h2>
+		<ul>
+			<li><strong>Email dies.</strong> MX records were never recreated at the new DNS provider.</li>
+			<li><strong>“Database connection error”.</strong> Credentials in the config file still point at the old server.</li>
+			<li><strong>Broken layout.</strong> The theme or plugins were not copied, or the cache still holds old asset URLs.</li>
+			<li><strong>Infinite redirect.</strong> The new host forces HTTPS while the CDN or proxy forces HTTP.</li>
+			<li><strong>Corrupted content.</strong> A naive search-replace ran over serialised data.</li>
+		</ul>
+	</div>
+	<p>
+		After the dust settles, update your documentation and monitoring to point at the new host, and remove
+		the old DNS records you no longer use. The
+		<a href="/guides/website-maintenance-checklist/">maintenance checklist</a> is the right follow-up —
+		migrations tend to surface the tasks nobody had been doing.
+	</p>
+</GuideLayout>

@@ -1,0 +1,181 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'SSL and HTTPS Explained: What the Padlock Actually Proves';
+const description =
+	'How TLS certificates are issued, why the padlock is about identity and encryption rather than trustworthiness, what mixed content does to it, and how to fix the certificate errors people actually see.';
+
+const faq = [
+	{
+		q: 'Do I have to pay for an SSL certificate?',
+		a: 'No. Free automated certificates from Let’s Encrypt and similar authorities are accepted by every mainstream browser and are what most hosts install by default. Paid certificates buy validation paperwork, warranties, or support — not stronger encryption. The cryptographic strength is the same.',
+	},
+	{
+		q: 'Does HTTPS improve SEO?',
+		a: 'It is a confirmed but lightweight ranking signal, and it has been one since 2014. The bigger effects are practical: browsers mark HTTP pages as “not secure”, referral data survives the hop, and features such as service workers and many APIs require a secure context.',
+	},
+	{
+		q: 'Why does my site show “mixed content” warnings?',
+		a: 'The page is served over HTTPS but loads some resources over HTTP — usually images, fonts, or a script from an old template. Browsers block active mixed content (scripts, stylesheets, iframes) and may warn about or auto-upgrade passive content. Fix by changing every hard-coded <code>http://</code> URL to <code>https://</code> or a protocol-relative path.',
+	},
+	{
+		q: 'Should I enable HSTS?',
+		a: 'Yes, once you are certain every subdomain can serve HTTPS. HSTS tells browsers to refuse HTTP for a period, which closes the downgrade window — but a long max-age with a broken subdomain locks users out until it expires. Start with a short max-age and raise it after everything works.',
+	},
+];
+
+const related = [
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/website-maintenance-checklist/', label: 'Website Maintenance Checklist' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/ssl-https-explained/"
+	published="2026-11-10"
+	lead="The padlock means the connection is encrypted and the certificate matches the hostname. It does not mean the site is honest, safe, or well run — a distinction that matters both for how you read it and for what you should expect it to do for you."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#does', label: 'What TLS does — and does not do' },
+		{ href: '#types', label: 'Certificate types' },
+		{ href: '#issuance', label: 'How a certificate gets issued' },
+		{ href: '#mixed', label: 'Mixed content' },
+		{ href: '#hsts', label: 'HSTS' },
+		{ href: '#errors', label: 'Certificate errors, decoded' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			HTTPS encrypts traffic between the browser and the server and proves the server controls the
+			hostname on the certificate. You get it by installing a certificate — free and automatic on
+			essentially every host — then serving every resource over <code>https://</code>. A missing or
+			mismatched certificate produces a full-page browser warning, which costs you the visit entirely.
+		</p>
+	</div>
+
+	<h2 id="does">What TLS does — and does not do</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>It does</th><th>It does not</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Encrypt the connection so intermediaries cannot read or alter it</td><td>Prove the business is legitimate, or that the content is accurate</td></tr>
+				<tr><td>Confirm the certificate is valid for the hostname you requested</td><td>Protect against a compromised server or a malicious site owner</td></tr>
+				<tr><td>Prevent downgrade attacks when combined with HSTS</td><td>Hide the domain you are visiting from your network</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		This is why phishing sites use HTTPS too. The padlock answers “is this connection private and is this
+		the site the certificate was issued to”, not “should I trust this site”.
+	</p>
+
+	<h2 id="types">Certificate types</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Type</th><th>What is validated</th><th>Practical difference</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Domain validated (DV)</strong></td>
+					<td>Control of the hostname</td>
+					<td>Issued in minutes; what free automated certificates provide</td>
+				</tr>
+				<tr>
+					<td><strong>Organization validated (OV)</strong></td>
+					<td>The organisation behind the domain</td>
+					<td>Days of paperwork; browsers show it identically to DV</td>
+				</tr>
+				<tr>
+					<td><strong>Extended validation (EV)</strong></td>
+					<td>Stricter organisational checks</td>
+					<td>No longer displayed differently in mainstream browsers</td>
+				</tr>
+				<tr>
+					<td><strong>Wildcard</strong></td>
+					<td>All first-level subdomains of one name</td>
+					<td>Convenient, and a single point of failure if the key leaks</td>
+				</tr>
+				<tr>
+					<td><strong>Multi-domain (SAN)</strong></td>
+					<td>Several hostnames on one certificate</td>
+					<td>Useful for a canonical plus variants</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		For a normal website, a DV certificate is the right answer. Paying more does not change the encryption;
+		it changes the validation process and the support contract.
+	</p>
+
+	<h2 id="issuance">How a certificate gets issued</h2>
+	<ol>
+		<li><strong>You prove control of the hostname.</strong> Either by serving a token at a specific URL (HTTP-01) or by publishing a DNS TXT record (DNS-01). DNS validation is required for wildcards.</li>
+		<li><strong>The authority issues a signed certificate</strong> with a validity period. Publicly trusted certificates are capped at 398 days by the CA/Browser Forum baseline requirements, and the trend has been downward.</li>
+		<li><strong>Your server presents it</strong> during the TLS handshake, along with intermediate certificates. A missing intermediate is the classic cause of “works in Chrome, fails on Android”.</li>
+		<li><strong>Renewal must be automated.</strong> Free certificates commonly last 90 days. A manual renewal process is a scheduled outage waiting to happen.</li>
+	</ol>
+	<p>
+		Hosts that offer “free SSL” are almost always running this flow for you via ACME. If yours requires a
+		manual upload, set a calendar reminder two weeks before expiry.
+	</p>
+
+	<h2 id="mixed">Mixed content</h2>
+	<p>
+		A page served over HTTPS that pulls a script or stylesheet over HTTP is a security hole, so browsers
+		block it — often silently, leaving you with an unstyled page or a dead widget. The usual sources are
+		old template markup, hard-coded image URLs, and third-party embeds.
+	</p>
+	<ol>
+		<li>Open the browser console and read the blocked-resource messages; they name the exact URLs.</li>
+		<li>Replace <code>http://</code> with <code>https://</code> in templates, widgets, and embeds.</li>
+		<li>For a CMS, search the database for hard-coded HTTP URLs in content, not just in theme files.</li>
+		<li>Re-test in a private window, since cached stylesheets can hide the fix.</li>
+	</ol>
+
+	<h2 id="hsts">HSTS</h2>
+	<p>
+		<code>Strict-Transport-Security</code> tells browsers to use HTTPS for your domain for a set period,
+		even if a link says <code>http://</code>. That closes the window where a first request can be
+		intercepted. Two cautions:
+	</p>
+	<ul>
+		<li><strong>It applies to subdomains</strong> if you include <code>includeSubDomains</code>. A dev subdomain without HTTPS will become unreachable.</li>
+		<li><strong>The preload list is effectively permanent</strong> in the short term. Submit to it only after the header has been stable for months.</li>
+	</ul>
+
+	<h2 id="errors">Certificate errors, decoded</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Certificate expired</td><td>Auto-renewal failed or was never configured</td><td>Re-issue; then verify renewal is automated</td></tr>
+				<tr><td>Name mismatch</td><td>Certificate issued for <code>example.com</code>, requested <code>www.example.com</code></td><td>Issue a certificate covering both names</td></tr>
+				<tr><td>Incomplete chain</td><td>Intermediate certificate not sent by the server</td><td>Install the full chain, not just the leaf</td></tr>
+				<tr><td>Self-signed</td><td>A manually generated certificate not from a public CA</td><td>Replace with an ACME-issued certificate</td></tr>
+				<tr><td>Issued before DNS settled</td><td>Validation ran while the domain still pointed elsewhere</td><td>Re-run issuance after DNS resolves correctly</td></tr>
+				<tr><td>CAA blocks issuance</td><td>A CAA record restricts which authorities may issue</td><td>Add the CA to the CAA record or remove it</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Most of these failures surface within minutes of a DNS change. If you are mid-migration, read
+		<a href="/guides/connect-custom-domain/">connecting a custom domain</a> for the ordering that avoids
+		them, and keep certificate expiry in the
+		<a href="/guides/website-maintenance-checklist/">maintenance checklist</a> so it never becomes a
+		surprise.
+	</p>
+</GuideLayout>

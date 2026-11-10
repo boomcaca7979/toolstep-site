@@ -6,11 +6,191 @@ import { SITE_TITLE } from '../consts';
 
 const pageTitle = `Tool Guides & Tutorials — ${SITE_TITLE}`;
 const pageDescription =
-	'Step-by-step ToolStep guides and tutorials — how AI models, software, and standards actually work, documented from official specifications rather than marketing copy.';
+	'Step-by-step ToolStep guides — how AI models, software, and standards actually work, plus practical walkthroughs for building, launching, and maintaining a website.';
 
 // Only guides that are actually published and live on the site belong here.
 // Every entry mirrors the target page's own title, summary and publication date.
 const guides = [
+	{
+		title: 'How to Make a Website From Scratch (2026 Step-by-Step)',
+		href: '/guides/how-to-make-a-website-from-scratch/',
+		topic: 'Website creation',
+		summary:
+			'A realistic build order for a new website: define the job, choose the build path, register the domain, build pages in priority order, and launch without breaking SEO.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'Best AI Website Builders in 2026: What They Actually Generate',
+		href: '/guides/best-ai-website-builders/',
+		topic: 'Website creation',
+		summary:
+			'Six AI builders compared on generation depth, post-generation editability, copy quality, ownership and SEO surface — plus the four failure modes that show up on day two.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'WordPress.com vs WordPress.org: The Difference That Decides Your Site',
+		href: '/guides/wordpress-com-vs-wordpress-org/',
+		topic: 'Website creation',
+		summary:
+			'One is a hosted service, the other is software you install. What that changes for plugins, themes, ads, plan boundaries, cost and migration.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Build a One-Page Website With Carrd (Step by Step)',
+		href: '/guides/carrd-one-page-website/',
+		topic: 'Website creation',
+		summary:
+			'Build a focused single-page site in Carrd: the single job, stripping the template, section order, metadata, domain connection — and exactly where Carrd stops.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Create a Website With Google Sites (and When Not To)',
+		href: '/guides/google-sites-website/',
+		topic: 'Website creation',
+		summary:
+			'Google Sites is free and genuinely useful for internal pages and simple public sites. The build path, the publishing permission people get wrong, and the SEO ceiling.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Build a Portfolio Website That Gets You Hired',
+		href: '/guides/how-to-build-a-portfolio-website/',
+		topic: 'Website creation',
+		summary:
+			'Choose three to six pieces, write case studies that survive a two-minute review, structure the site, and avoid the presentation mistakes that cost interviews.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Build a Small Business Website (Local-First Guide)',
+		href: '/guides/how-to-build-a-small-business-website/',
+		topic: 'Website creation',
+		summary:
+			'One page per service, a contact page with real hours, and the local signals that decide visibility. The page map, the service-page recipe, and what to measure.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Choose a Domain Name (and Register It Properly)',
+		href: '/guides/how-to-choose-a-domain-name/',
+		topic: 'Website creation',
+		summary:
+			'Memorability, spelling, extension choice, the trademark check most people skip, and the registration settings that stop you losing the domain.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'Web Hosting Explained: How to Choose Hosting Without Overpaying',
+		href: '/guides/web-hosting-explained/',
+		topic: 'Website operations',
+		summary:
+			'Shared, VPS, cloud, managed and static hosting compared; which spec numbers matter; what “unlimited” means in practice; and the pricing traps in the renewal column.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Connect a Custom Domain to Your Website',
+		href: '/guides/connect-custom-domain/',
+		topic: 'Website operations',
+		summary:
+			'Which DNS records to create, apex versus www, nameservers versus individual records, propagation, and the six failures behind almost every “domain not working” ticket.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'Website Launch Checklist: What to Verify Before You Go Live',
+		href: '/guides/website-launch-checklist/',
+		topic: 'Website operations',
+		summary:
+			'Ordered by what breaks visits: forms and email first, indexing second, then the polish. Grouped checks for content, technical, tracking, legal, and the first 72 hours.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'SEO Checklist for a New Website: The Order That Matters',
+		href: '/guides/seo-checklist-new-website/',
+		topic: 'Website operations',
+		summary:
+			'Crawlability, URL structure, on-page elements, content differentiation, internal links, structured data — and the tactics worth ignoring entirely.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How Much Does a Website Cost? A Realistic Budget Breakdown',
+		href: '/guides/how-much-does-a-website-cost/',
+		topic: 'Website operations',
+		summary:
+			'The four cost buckets, what drives a build quote up, planning ranges for DIY, freelancer and agency work, and the recurring costs that decide year two.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Migrate a Website to a New Host Without Downtime',
+		href: '/guides/migrate-website-to-new-host/',
+		topic: 'Website operations',
+		summary:
+			'Lower TTL first, copy files and database, test on the new server, switch in one step, then verify redirects, email and certificates. Includes the rollback plan.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'SSL and HTTPS Explained: What the Padlock Actually Proves',
+		href: '/guides/ssl-https-explained/',
+		topic: 'Website operations',
+		summary:
+			'How certificates are issued, why the padlock is about identity rather than trustworthiness, what mixed content breaks, and how to read certificate errors.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Set Up Google Analytics 4 on a New Website',
+		href: '/guides/google-analytics-4-setup/',
+		topic: 'Website operations',
+		summary:
+			'Create the property, install the tag once, verify in realtime, and define the four events that matter — plus the settings that silently truncate your data.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'Core Web Vitals: What LCP, INP and CLS Actually Measure',
+		href: '/guides/core-web-vitals/',
+		topic: 'Website operations',
+		summary:
+			'The three metrics and their thresholds, field versus lab data, the fixes that work in order, and what to stop optimising entirely.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'Website Maintenance Checklist: What to Do Weekly, Monthly and Yearly',
+		href: '/guides/website-maintenance-checklist/',
+		topic: 'Website operations',
+		summary:
+			'A maintenance schedule that keeps a site alive: backups you can restore, updates that do not break the layout, security basics, and content that does not rot.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'Website Accessibility Basics: The Fixes That Cover Most of It',
+		href: '/guides/website-accessibility-basics/',
+		topic: 'Website operations',
+		summary:
+			'WCAG 2.2 in plain terms: contrast, keyboard access, focus, labels, alt text, headings, captions and target size — with a twenty-minute test routine.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
+	{
+		title: 'How to Create a Landing Page That Converts',
+		href: '/guides/how-to-create-a-landing-page/',
+		topic: 'Website operations',
+		summary:
+			'One promise, one action: message match, page anatomy, headline structure, form friction, honest testing, and the failures that actually kill conversion.',
+		date: 'November 2026',
+		dateISO: '2026-11-10',
+	},
 	{
 		title: 'Wi-Fi Connected but No Internet? A Layer-by-Layer Fix',
 		href: '/guides/wifi-connected-no-internet/',

@@ -1,0 +1,159 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'SEO Checklist for a New Website: The Order That Matters';
+const description =
+	'A new site has a fixed set of SEO decisions, and most of them are cheap only before launch. Crawlability, URL structure, on-page basics, content differentiation, internal links, and what to ignore.';
+
+const faq = [
+	{
+		q: 'How long until a new website ranks?',
+		a: 'For a new domain, expect weeks before pages are reliably indexed and months before competitive queries move. Sites targeting low-competition, specific phrases can see results sooner; sites competing on broad commercial terms take longer and need links or authority you may not have yet. Anyone promising a fixed timeline is guessing.',
+	},
+	{
+		q: 'Do meta keywords or keyword density still matter?',
+		a: 'No. Google has said for years that the keywords meta tag is ignored, and there is no target density for a term. Write for the reader, make the topic unmistakable in the title and headings, and stop. Stuffing a phrase is a reliable way to make text worse and rankings no better.',
+	},
+	{
+		q: 'Should every page have a meta description?',
+		a: 'Write one for every page you care about, because it is what appears in the snippet when Google uses it. It is not a ranking factor, and Google rewrites it often, but a specific description earns more clicks than a scraped fragment.',
+	},
+	{
+		q: 'Do I need backlinks to rank a new site?',
+		a: 'Not to be indexed, and not to rank for specific long-tail phrases. You do need them to compete for broad commercial terms, because links remain one of the strongest signals for authority. The safe route is being worth linking to: original data, a genuinely useful tool, or a reference page people cite.',
+	},
+];
+
+const related = [
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/core-web-vitals/', label: 'Core Web Vitals: Why Your Site Feels Slow' },
+	{ href: '/guides/google-analytics-4-setup/', label: 'How to Set Up Google Analytics 4' },
+	{ href: '/guides/how-to-build-a-small-business-website/', label: 'How to Build a Small Business Website' },
+	{ href: '/guides/website-accessibility-basics/', label: 'Website Accessibility Basics' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/seo-checklist-new-website/"
+	published="2026-11-10"
+	lead="SEO on a new site is mostly a sequence of irreversible-ish decisions made in the first week: hostname, URL structure, page inventory, and whether the content says anything. Fixing them later costs redirects and lost history."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#crawl', label: '1. Crawlability and indexing' },
+		{ href: '#structure', label: '2. Structure and URLs' },
+		{ href: '#onpage', label: '3. On-page elements' },
+		{ href: '#content', label: '4. Content that can rank' },
+		{ href: '#links', label: '5. Internal linking' },
+		{ href: '#schema', label: '6. Structured data' },
+		{ href: '#measure', label: '7. Measurement' },
+		{ href: '#ignore', label: 'What to ignore' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Get indexed first, then get the structure right, then write pages that answer one query each.
+			Concretely: one hostname, self-referential canonicals, a sitemap that matches what you serve,
+			unique titles, one H1 per page, and internal links between related pages. Everything else is
+			optimisation.
+		</p>
+	</div>
+
+	<h2 id="crawl">1. Crawlability and indexing</h2>
+	<ul>
+		<li><strong>One hostname serves the site.</strong> <code>http</code>, <code>https</code>, and the <code>www</code> variant all redirect to a single canonical origin with a 301 or 308.</li>
+		<li><strong>No stray <code>noindex</code>.</strong> Check the meta tag and the <code>X-Robots-Tag</code> response header. Staging leftovers are the classic cause of a site that “does not appear in Google”.</li>
+		<li><strong><code>robots.txt</code> allows crawling.</strong> Do not disallow CSS or JavaScript — Google renders pages and needs them to judge the layout.</li>
+		<li><strong>Canonical tags are self-referential</strong> on every page, and absolute. A relative or missing canonical on a paginated or filtered page is a common source of wrong consolidation.</li>
+		<li><strong>The sitemap lists real, live, canonical URLs.</strong> No redirects, no 404s, no <code>noindex</code> pages. Submit it once in Search Console.</li>
+		<li><strong>404s return 404.</strong> A “soft 404” — a 200 response with an error message — keeps bad URLs in the index.</li>
+	</ul>
+
+	<h2 id="structure">2. Structure and URLs</h2>
+	<p>
+		Decide the URL pattern once. Lowercase, hyphen-separated, no dates, no IDs, and no unnecessary depth.
+		<code>/guides/seo-checklist-new-website/</code> survives a redesign;
+		<code>/?p=1234</code> does not.
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Decision</th><th>Choose</th><th>Why</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Trailing slash</td><td>One form, enforced at the server</td><td>Two URLs for the same page splits signals</td></tr>
+				<tr><td>Depth</td><td>Two or three levels maximum</td><td>Depth is not a ranking factor, but long paths are harder to maintain</td></tr>
+				<tr><td>Category vs flat</td><td>Group only where a hub page adds value</td><td>Empty archive pages waste crawl budget</td></tr>
+				<tr><td>Language</td><td>Subdirectory (<code>/fr/</code>) unless you need country targeting</td><td>Simpler to consolidate than subdomains</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="onpage">3. On-page elements</h2>
+	<ul>
+		<li><strong>Title</strong> — unique per page, specific, front-loading the phrase people search. Around 50–60 characters before truncation, but clarity beats length.</li>
+		<li><strong>Description</strong> — one sentence written to earn the click. Not a ranking factor; still worth writing.</li>
+		<li><strong>H1</strong> — one per page, matching the page’s promise. Not the site name.</li>
+		<li><strong>Subheadings</strong> — describe what each section covers, in the words a reader would use. They are also how skimmers navigate.</li>
+		<li><strong>Images</strong> — descriptive filenames, meaningful alt text, correct dimensions, modern formats. Compressed images help <a href="/guides/core-web-vitals/">Core Web Vitals</a> more than any plugin setting.</li>
+		<li><strong>Links</strong> — descriptive anchor text. “Read the hosting guide” beats “click here”, for readers and for search engines.</li>
+	</ul>
+
+	<h2 id="content">4. Content that can rank</h2>
+	<p>
+		One page, one intent. The test: could someone arrive from a search and find their question answered
+		without scrolling to the bottom?
+	</p>
+	<ul>
+		<li><strong>Answer first, then explain.</strong> A two-sentence direct answer at the top, then the detail. This matches how both readers and snippet extraction work.</li>
+		<li><strong>Be specific where it is cheap to be specific.</strong> Names, numbers, versions, prices, timelines, failure modes. Generic advice is what every competing page already has.</li>
+		<li><strong>Cover the adjacent questions</strong> — the ones a reader asks next. That is what separates a page that ranks from one that gets replaced by an AI summary.</li>
+		<li><strong>Do not fake experience.</strong> If you did not test something, say what you based the claim on. Invented testing is detectable and unnecessary.</li>
+		<li><strong>Keep one topic per URL.</strong> Combining two intents produces a page that ranks for neither.</li>
+	</ul>
+
+	<h2 id="links">5. Internal linking</h2>
+	<ul>
+		<li>Link from new pages to the pages they depend on, and from older pages back to new ones.</li>
+		<li>Use the words you want the target page to rank for in the anchor, not “learn more”.</li>
+		<li>Keep the link graph shallow: every important page should be reachable within two clicks of the home page.</li>
+		<li>Fix orphan pages. A page nothing links to is a page search engines rarely revisit.</li>
+	</ul>
+
+	<h2 id="schema">6. Structured data</h2>
+	<p>
+		Add schema only where it describes something real on the page: <code>Organization</code> and
+		<code>WebSite</code> sitewide, <code>Article</code> on editorial pages,
+		<code>Product</code> on product pages, <code>FAQPage</code> where the questions and answers are
+		visible. Validate it, and keep it in sync with the content — a mismatch between markup and page is a
+		manual-action risk, not a shortcut to rich results.
+	</p>
+
+	<h2 id="measure">7. Measurement</h2>
+	<p>
+		Verify the property in Google Search Console on day one, submit the sitemap, and check indexing after a
+		few days. In analytics, track the actions that matter — form submissions, calls, purchases — rather
+		than sessions alone. The <a href="/guides/google-analytics-4-setup/">GA4 setup guide</a> covers how to
+		record them as events.
+	</p>
+
+	<h2 id="ignore">What to ignore</h2>
+	<div class="warn-box">
+		<h2>Low-value or risky</h2>
+		<ul>
+			<li><strong>Meta keywords.</strong> Ignored, and a visible signal that the site is outdated.</li>
+			<li><strong>Keyword density targets.</strong> There is no correct percentage; repetition just reads badly.</li>
+			<li><strong>Submitting to hundreds of directories.</strong> Most are link farms. A handful of real listings — your industry association, a local chamber, a genuine directory — is enough.</li>
+			<li><strong>Buying links or “guest post packages”.</strong> Paid links that pass ranking signals violate Google’s spam policies.</li>
+			<li><strong>Chasing every point of a page-speed score.</strong> Optimise the metrics users feel; a perfect lab score with a slow server helps nobody.</li>
+		</ul>
+	</div>
+	<p>
+		Run this list once before launch and again after the first thirty days of data. The second pass is where
+		you find the pages that got impressions but no clicks — usually a title problem, not a content problem.
+	</p>
+</GuideLayout>

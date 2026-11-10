@@ -1,0 +1,214 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'Best AI Website Builders in 2026: What They Actually Generate';
+const description =
+	'AI website builders compared on what they generate, how editable the result is, and where each one breaks down. Six platforms, six different trade-offs — no demo-only claims.';
+
+const faq = [
+	{
+		q: 'Can an AI website builder produce a site I can rank with?',
+		a: 'It can produce the structure and copy skeleton, which is the slow part. It cannot produce the thing search engines reward: specific, first-hand information about your service, prices, area, or process. Treat the generated site as a filled-in template and rewrite the service pages yourself. Sites that publish the generated copy unchanged tend to read identically to every other site built from the same prompt.',
+	},
+	{
+		q: 'Are AI website builders free?',
+		a: 'Most offer a free generation step and charge to publish on your own domain. The pattern is consistent across vendors: you can build and preview for free, and a paid plan unlocks the custom domain, removes provider branding, and raises limits. Plan boundaries move often, so check the vendor’s current pricing page rather than a review from last year.',
+	},
+	{
+		q: 'What happens to my site if I stop paying?',
+		a: 'On hosted builders, the site usually stops resolving on your custom domain and reverts to a provider subdomain, or becomes read-only until you renew. On platforms with code export you keep a copy but lose the hosting. Check the export and downgrade policy before you build, because it decides how expensive leaving will be.',
+	},
+	{
+		q: 'Is an AI-generated site bad for SEO?',
+		a: 'The generation method is not the problem. Duplicate boilerplate copy, missing page-level titles, and thin service pages are. Google’s guidance is about usefulness, not authorship. An AI-assisted site with real service detail, correct headings, and unique titles is fine; a generated site published without edits usually is not.',
+	},
+];
+
+const related = [
+	{ href: '/reviews/best-website-builders-2026/', label: 'Best Website Builders 2026: full ranking' },
+	{ href: '/guides/how-to-make-a-website-from-scratch/', label: 'How to Make a Website From Scratch' },
+	{ href: '/guides/how-to-build-a-small-business-website/', label: 'How to Build a Small Business Website' },
+	{ href: '/reviews/framer-vs-webflow/', label: 'Framer vs Webflow compared' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/best-ai-website-builders/"
+	published="2026-11-10"
+	lead="Every AI builder demo looks the same: type a sentence, watch a site appear. The differences show up on day two, when you try to change the layout, add a real service page, or move the site somewhere else. This comparison is about that second day."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#what', label: 'What “AI website builder” covers now' },
+		{ href: '#criteria', label: 'How these were compared' },
+		{ href: '#shortlist', label: 'The shortlist, by job' },
+		{ href: '#limits', label: 'Where AI generation breaks' },
+		{ href: '#workflow', label: 'A workflow that produces a usable site' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			<strong>Framer</strong> for marketing sites where design matters and you will keep editing.
+			<strong>Squarespace</strong> for a conventional business site with predictable structure.
+			<strong>Wix</strong> when you want the widest app ecosystem around a generated starting point.
+			<strong>Webflow</strong> when the AI should assist a build you control, not replace it.
+			<strong>Hostinger</strong> when budget decides. <strong>Durable</strong> when you need one page for a
+			local service business today and nothing more.
+		</p>
+	</div>
+
+	<h2 id="what">What “AI website builder” covers now</h2>
+	<p>
+		The label hides four different products, and they are not interchangeable:
+	</p>
+	<ul>
+		<li><strong>Prompt-to-site generators.</strong> You answer a few questions, the platform assembles pages, copy, and images. Fastest start, least control.</li>
+		<li><strong>AI inside a design canvas.</strong> The AI proposes sections and copy, but the canvas and its styling model remain the product. Steeper learning curve, far better results once learned.</li>
+		<li><strong>AI inside a traditional editor.</strong> Generation is an accelerator bolted onto an existing builder. The builder’s limits still apply.</li>
+		<li><strong>AI copy and layout assistants.</strong> They write and rearrange, but do not produce a site. Useful only if you already have a platform.</li>
+	</ul>
+	<p>
+		Knowing which category a vendor belongs to predicts most of the experience. A prompt-to-site tool will
+		always feel easier on day one and more restrictive on day thirty.
+	</p>
+
+	<h2 id="criteria">How these were compared</h2>
+	<p>
+		The comparison uses documented capabilities, published plan boundaries, and each platform’s own
+		documentation — not hands-on benchmark scores, which do not exist for this category. Five dimensions
+		mattered most:
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Dimension</th><th>Why it decides the outcome</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Generation depth</td><td>Does it produce one page or a linked structure with service pages?</td></tr>
+				<tr><td>Post-generation editability</td><td>Can you move a section, change a grid, or add a content type without fighting the tool?</td></tr>
+				<tr><td>Copy quality</td><td>Is the output usable as a draft, or generic filler you must replace entirely?</td></tr>
+				<tr><td>Ownership and exit</td><td>Code export, content export, and what happens when you stop paying.</td></tr>
+				<tr><td>SEO surface</td><td>Per-page titles and descriptions, redirects, sitemap control, clean URLs.</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="shortlist">The shortlist, by job</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Platform</th><th>Type</th><th>Choose it when</th><th>Avoid it when</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Framer</strong></td>
+					<td>AI in a design canvas</td>
+					<td>You are building a product, SaaS, or agency site and will iterate on design monthly</td>
+					<td>You need deep blog structures, complex ecommerce, or a non-designer to edit daily</td>
+				</tr>
+				<tr>
+					<td><strong>Squarespace</strong></td>
+					<td>AI draft in a conventional builder</td>
+					<td>You want a clean business site, blog, or portfolio with predictable patterns</td>
+					<td>You need bespoke layouts or heavy third-party integrations</td>
+				</tr>
+				<tr>
+					<td><strong>Wix</strong></td>
+					<td>Prompt-to-site plus app market</td>
+					<td>You want generation followed by a large app and integration catalogue</td>
+					<td>You care about clean markup, fast mobile loads, or leaving later</td>
+				</tr>
+				<tr>
+					<td><strong>Webflow</strong></td>
+					<td>AI assistant on a controlled build</td>
+					<td>The site is a long-term asset and someone will maintain a design system</td>
+					<td>You have no one to learn the tool — the learning curve is real</td>
+				</tr>
+				<tr>
+					<td><strong>Hostinger AI Builder</strong></td>
+					<td>Prompt-to-site bundled with hosting</td>
+					<td>Budget is the constraint and the site is a simple brochure</td>
+					<td>You need to scale content, customise deeply, or migrate later</td>
+				</tr>
+				<tr>
+					<td><strong>Durable</strong></td>
+					<td>One-page generator for service businesses</td>
+					<td>You need a credible single page for a local trade or clinic this week</td>
+					<td>You need multiple service pages, a blog, or real SEO control</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h3>Framer: the design-led option</h3>
+	<p>
+		Framer’s generation produces sections you then edit on a canvas with real layout primitives. That is
+		why the output can look like a designed site rather than a template: you are not trapped inside fixed
+		blocks. The cost is a learning curve closer to a design tool than a website builder, and a CMS that is
+		comfortable for marketing pages but not for a thousand-post archive.
+	</p>
+
+	<h3>Squarespace: the predictable choice</h3>
+	<p>
+		Squarespace’s AI produces a starting layout and copy inside its normal editor. Nothing about the
+		workflow is novel, which is the point: the result is a conventional site that behaves conventionally,
+		with solid built-in SEO fields and a stable editor. If your site is five service pages, an about page,
+		and a blog, this is the least risky route.
+	</p>
+
+	<h3>Wix: the widest ecosystem</h3>
+	<p>
+		Wix generates a multi-page draft from a short brief and then hands you a drag-and-drop editor plus an
+		app market. For a business that needs booking, events, or a members area without integrating anything,
+		that breadth is the argument. The counter-argument is weight: pages carry a lot of framework, and the
+		site does not leave with you.
+	</p>
+
+	<h3>Webflow: assistance, not replacement</h3>
+	<p>
+		Webflow’s AI features sit on top of a build you control — class-based styling, a real CMS, and clean
+		output. It is the strongest option for a site that must stay fast and consistent over years, and the
+		weakest for someone who wants to type a sentence and be finished.
+	</p>
+
+	<h3>Hostinger and Durable: the fast, cheap end</h3>
+	<p>
+		Both optimise for time-to-first-page. Hostinger bundles generation with inexpensive hosting; Durable
+		generates a single page aimed at local service businesses. They are honest products for what they do,
+		and both hit a ceiling quickly: limited page structures, limited content modelling, limited SEO
+		surface.
+	</p>
+
+	<h2 id="limits">Where AI generation breaks</h2>
+	<div class="warn-box">
+		<h2>Four failure modes</h2>
+		<ul>
+			<li><strong>Generic copy that says nothing.</strong> Generated service descriptions avoid specifics because the model has none. Replace every sentence that could apply to a competitor.</li>
+			<li><strong>Invented facts and imagery.</strong> Plausible-sounding certifications, years in business, or stock photos presented as your team. Verify or delete.</li>
+			<li><strong>Structure that ignores search intent.</strong> A generated “services” page often lumps five services into one page, when five separate pages are what rank.</li>
+			<li><strong>Accessibility regressions.</strong> Low-contrast palettes and unlabelled form fields are common in generated designs. Check contrast and form labels before launch.</li>
+		</ul>
+	</div>
+
+	<h2 id="workflow">A workflow that produces a usable site</h2>
+	<ol>
+		<li><strong>Generate once, for structure.</strong> Use the prompt step to get a page skeleton, not final copy.</li>
+		<li><strong>Rewrite the home page first.</strong> One sentence on what you do, for whom, and where. Everything else follows from it.</li>
+		<li><strong>Split services into separate pages.</strong> One page per service, each with its own title, description, and a real answer at the top.</li>
+		<li><strong>Replace every image you did not choose.</strong> Generated stock imagery is the fastest way to look like a template.</li>
+		<li><strong>Fix the technical surface.</strong> Titles, descriptions, canonical host, sitemap, and one H1 per page — the <a href="/guides/seo-checklist-new-website/">new-site SEO checklist</a> is the short list.</li>
+		<li><strong>Test on a phone before you buy the plan.</strong> Most builder previews let you do this; do not skip it because the desktop canvas looks good.</li>
+	</ol>
+	<p>
+		If you are choosing between the two design-first platforms, our
+		<a href="/reviews/framer-vs-webflow/">Framer vs Webflow comparison</a> covers the specific
+		differences in CMS, hosting, and pricing structure. And if you are still deciding whether a hosted
+		builder fits at all, start with
+		<a href="/guides/how-to-make-a-website-from-scratch/">the build order</a> rather than the tool list.
+	</p>
+</GuideLayout>

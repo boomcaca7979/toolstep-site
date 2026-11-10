@@ -1,0 +1,180 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Build a One-Page Website With Carrd (Step by Step)';
+const description =
+	'Build a focused single-page site in Carrd: choose the one job, strip the template, order the sections, set the metadata, connect the domain, and know exactly where Carrd stops.';
+
+const faq = [
+	{
+		q: 'Is Carrd good for SEO?',
+		a: 'For a one-page site it is adequate but limited: you can set the page title, description, and social image, and the markup is clean, but there is no blog, no per-page metadata beyond the single page, and no content structure to rank for multiple queries. A one-page site can rank for your brand and one service phrase; it will not rank for ten different services.',
+	},
+	{
+		q: 'Can I use my own domain with Carrd?',
+		a: 'Yes, on a paid plan. Carrd publishes free sites on a carrd.co subdomain; connecting a domain you own requires a subscription. The DNS step is the same as any host: point the apex and www records as Carrd instructs, then wait for propagation.',
+	},
+	{
+		q: 'Can I add a blog to Carrd?',
+		a: 'Not natively. Carrd builds single pages. People work around it with an embedded feed from another platform or a link out to a Substack or Medium publication, but that is a link, not a blog on your site. If publishing articles is part of the plan, choose a different platform.',
+	},
+	{
+		q: 'Is a one-page site bad for a business?',
+		a: 'It is bad when the business sells several distinct services, because each deserves its own page and its own search query. It is good when there is one offer: a launch, an event, a single product, a personal profile, or a landing page for paid traffic.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-create-a-landing-page/', label: 'How to Create a Landing Page That Converts' },
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/how-to-build-a-portfolio-website/', label: 'How to Build a Portfolio Website' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/reviews/best-website-builders-2026/', label: 'Best Website Builders 2026' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/carrd-one-page-website/"
+	published="2026-11-10"
+	lead="Carrd is the fastest way to put one page on the internet that looks deliberate. It is also the wrong tool for most businesses, for one structural reason: it builds a page, not a site. This walkthrough gets the page right and tells you where the ceiling is."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#right-tool', label: 'Is Carrd the right tool?' },
+		{ href: '#job', label: 'Step 1: Define the single job' },
+		{ href: '#template', label: 'Step 2: Start from a template and strip it' },
+		{ href: '#sections', label: 'Step 3: Order the sections' },
+		{ href: '#metadata', label: 'Step 4: Set the metadata' },
+		{ href: '#domain', label: 'Step 5: Connect the domain' },
+		{ href: '#test', label: 'Step 6: Test and publish' },
+		{ href: '#limits', label: 'Where Carrd stops' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Build one page with one action. Sections in this order: <strong>claim → proof → what you get →
+			objections → close</strong>. Set the title and description before publishing, connect the domain
+			last, and test the form on a phone. If you need more than one page, Carrd is the wrong platform —
+			not a platform you should fight.
+		</p>
+	</div>
+
+	<h2 id="right-tool">Is Carrd the right tool?</h2>
+	<p>Carrd fits when the entire offer can be understood in one scroll:</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Good fit</th><th>Bad fit</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>A product launch or waitlist</td><td>A business with five distinct services</td></tr>
+				<tr><td>A personal profile or link hub with substance</td><td>A portfolio with a case study per project</td></tr>
+				<tr><td>An event or wedding page</td><td>A store with variants and shipping rules</td></tr>
+				<tr><td>A landing page for paid traffic</td><td>A blog or content site</td></tr>
+				<tr><td>A single-service local business</td><td>Anything requiring user accounts</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		The test is simple: if a visitor could plausibly want to read about two different things, you need two
+		pages. Search engines have the same problem with one-pagers — a single URL can only target one intent
+		well.
+	</p>
+
+	<h2 id="job">Step 1: Define the single job</h2>
+	<p>
+		Write the action you want before you open Carrd. It has to be one verb: book a call, join the waitlist,
+		buy the thing, download the file, email me. If you cannot pick one, the page will present three
+		half-strength options and convert none of them.
+	</p>
+	<p>
+		Then write the one sentence that follows the headline, answering “what is this and who is it for”. Keep
+		it literal. “A booking page for a mobile bike repair service in Bristol” outperforms “redefining how
+		cyclists experience maintenance”.
+	</p>
+
+	<h2 id="template">Step 2: Start from a template and strip it</h2>
+	<ol>
+		<li>Create a new site and pick the closest template by <em>structure</em>, not by colour. Structure is expensive to change; colours are not.</li>
+		<li>Delete every section you cannot justify with real content. Starting from a full template and filling it is how pages end up with an empty “testimonials” strip.</li>
+		<li>Set the global style first: one accent colour, one body font, consistent spacing. Carrd’s section system rewards restraint — mixed backgrounds and three font sizes look amateur faster than any other mistake.</li>
+		<li>Check the mobile breakpoint immediately. Carrd is responsive by default, but stacked sections expose ordering problems you cannot see on desktop.</li>
+	</ol>
+
+	<h2 id="sections">Step 3: Order the sections</h2>
+	<p>
+		The order below is not a style preference; each section answers the question the previous one creates.
+	</p>
+	<ol>
+		<li><strong>Claim</strong> — headline stating the outcome, subhead stating the mechanism, one button.</li>
+		<li><strong>Proof</strong> — a number, a logo row, a testimonial with a name and role, or a screenshot. One is enough; three weak ones are worse than one strong one.</li>
+		<li><strong>What you get</strong> — three to five concrete items, each one sentence. This is where generated copy usually fails: be specific about deliverables, timescales, or location.</li>
+		<li><strong>Objections</strong> — price, commitment, “will this work for me”. A short FAQ of three real questions does this better than a features grid.</li>
+		<li><strong>Close</strong> — repeat the button, restate the outcome, and remove every other link from the page.</li>
+	</ol>
+	<p>
+		Put the form or button no more than one screen from the top and repeat it at the end. Long one-pagers
+		without a mid-page action lose the visitors who were already convinced.
+	</p>
+
+	<h2 id="metadata">Step 4: Set the metadata</h2>
+	<p>
+		Carrd exposes the page’s search and social metadata in the site settings. Fill in all of it before
+		publishing:
+	</p>
+	<ul>
+		<li><strong>Title</strong> — the phrase someone would search, plus your name or location. Keep it under roughly 60 characters so it is not truncated in results.</li>
+		<li><strong>Description</strong> — one sentence, written to earn the click, not to repeat the title.</li>
+		<li><strong>Social image</strong> — 1200×630, with text large enough to read in a feed. The default screenshot looks like an unfinished page.</li>
+		<li><strong>Favicon</strong> — a simple mark. A missing favicon reads as neglect.</li>
+	</ul>
+	<p>
+		One page means one title and one canonical URL. That is fine, but it also means you cannot target a
+		second query without a second page — the reason the <a href="/guides/seo-checklist-new-website/">SEO
+		checklist</a> starts with page structure rather than metadata.
+	</p>
+
+	<h2 id="domain">Step 5: Connect the domain</h2>
+	<ol>
+		<li>Buy the domain from a registrar you control, not from a reseller bundled with something else.</li>
+		<li>In Carrd’s site settings, add the domain. Carrd shows the exact DNS records it expects.</li>
+		<li>At the registrar, create those records — typically an <code>A</code> record for the apex and a <code>CNAME</code> for <code>www</code>.</li>
+		<li>Wait for propagation. It is usually minutes and occasionally hours; TTL is the variable, not the platform.</li>
+		<li>Decide which hostname is canonical — <code>example.com</code> or <code>www.example.com</code> — and redirect the other to it.</li>
+	</ol>
+	<p>
+		The record types and the common failure modes are covered in detail in
+		<a href="/guides/connect-custom-domain/">how to connect a custom domain</a>.
+	</p>
+
+	<h2 id="test">Step 6: Test and publish</h2>
+	<ul>
+		<li>Submit the form and confirm the notification arrives in the inbox you actually read.</li>
+		<li>Open the page on a phone over mobile data, not office Wi-Fi.</li>
+		<li>Tab through the page with a keyboard: focus should be visible and the form reachable.</li>
+		<li>Check the page title in the browser tab and the social preview in a link debugger.</li>
+		<li>Only then connect the domain publicly and share the link.</li>
+	</ul>
+
+	<h2 id="limits">Where Carrd stops</h2>
+	<div class="warn-box">
+		<h2>Hard limits to accept before you start</h2>
+		<ul>
+			<li><strong>No blog or CMS.</strong> Adding articles means leaving the platform.</li>
+			<li><strong>No per-service pages.</strong> One URL cannot rank for six services.</li>
+			<li><strong>No ecommerce.</strong> You can link to a checkout, not run one.</li>
+			<li><strong>Limited technical control.</strong> No server, no redirect rules beyond the basics, no content API.</li>
+			<li><strong>Export is limited.</strong> The site is not portable in a form you can host elsewhere.</li>
+		</ul>
+	</div>
+	<p>
+		If two or more of those limits apply to you, the right move is a platform with real page structure —
+		compare <a href="/reviews/best-website-builders-2026/">the builder ranking</a> or read
+		<a href="/guides/how-to-make-a-website-from-scratch/">the build order</a> before committing a year of
+		subscription to a one-pager.
+	</p>
+</GuideLayout>

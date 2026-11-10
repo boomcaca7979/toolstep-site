@@ -1,0 +1,180 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Create a Website With Google Sites (and When Not To)';
+const description =
+	'Google Sites is free, fast, and genuinely useful for internal pages and simple public sites. Here is the build path, the publishing settings people get wrong, and the SEO ceiling you should know first.';
+
+const faq = [
+	{
+		q: 'Is Google Sites free?',
+		a: 'Yes, with any Google account. You can build and publish a site at a sites.google.com address at no cost. A custom domain is the exception: mapping your own domain to Google Sites requires a Google Workspace subscription, so the free tier is limited to Google’s URL.',
+	},
+	{
+		q: 'Can I use a custom domain with Google Sites?',
+		a: 'Only with Google Workspace. Google documents the mapping process for Workspace customers; a free consumer Google account cannot attach its own domain. If owning the address matters, factor the Workspace cost into the decision rather than discovering it after the content is written.',
+	},
+	{
+		q: 'Why is my Google Site not showing up in Google Search?',
+		a: 'The usual cause is the publish setting. If the site is restricted to your organisation or to specific people, search engines cannot crawl it, and that is intentional. Check the published site’s viewer settings first, then confirm the page is not marked noindex and that the URL is reachable in a private browser window.',
+	},
+	{
+		q: 'Does Google Sites support custom code or plugins?',
+		a: 'Only in a limited way. You can embed HTML snippets and third-party content through the Embed block, but there is no theme code editing, no plugin system, and no control over the generated markup. Anything that depends on custom CSS, scripts, or server behaviour is out of scope.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-make-a-website-from-scratch/', label: 'How to Make a Website From Scratch' },
+	{ href: '/guides/carrd-one-page-website/', label: 'How to Build a One-Page Website With Carrd' },
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/how-to-build-a-small-business-website/', label: 'How to Build a Small Business Website' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/google-sites-website/"
+	published="2026-11-10"
+	lead="Google Sites is the least glamorous website tool available and one of the most useful. It is also the tool most often misjudged — chosen for a public business site when it is built for internal pages, or dismissed when it would have solved a problem in an afternoon."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#fit', label: 'What Google Sites is good at' },
+		{ href: '#build', label: 'Step 1–3: Build the structure' },
+		{ href: '#content', label: 'Step 4: Add content blocks' },
+		{ href: '#publish', label: 'Step 5: Publish — the setting that matters' },
+		{ href: '#domain', label: 'Step 6: Custom domain' },
+		{ href: '#seo', label: 'The SEO ceiling' },
+		{ href: '#move', label: 'When to move off it' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Use Google Sites for internal handbooks, project hubs, event pages, and simple public information
+			sites where speed beats control. Do not use it for a business that needs to rank for multiple
+			services, run a store, or control its markup. The build takes an hour; the publishing permissions
+			are the part that decides whether anyone can actually see it.
+		</p>
+	</div>
+
+	<h2 id="fit">What Google Sites is good at</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Strong fit</th><th>Weak fit</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Team handbook, onboarding hub, internal wiki</td><td>Marketing site that must rank for several services</td></tr>
+				<tr><td>Event or conference information page</td><td>Online store</td></tr>
+				<tr><td>Project or client portal with Drive files</td><td>Design-led brand site</td></tr>
+				<tr><td>Class, club, or community page run by non-technical people</td><td>Anything needing custom code, redirects, or schema control</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		The pattern is consistent: Google Sites wins when the audience is known and the content is
+		informational. It loses when the audience is search traffic you have to earn.
+	</p>
+
+	<h2 id="build">Step 1–3: Build the structure</h2>
+	<ol>
+		<li>
+			<strong>Create the site.</strong> In Google Drive, choose <em>New → Google Sites</em>. Name it
+			before you add anything — the name seeds the default URL and the browser title, and renaming later
+			is possible but leaves the old address behind.
+		</li>
+		<li>
+			<strong>Pick a theme and stick to it.</strong> Google Sites offers a small set of themes with
+			limited font and colour control. Choose one, set two text sizes and one accent colour, and stop.
+			The temptation to mix section backgrounds is what makes Sites pages look improvised.
+		</li>
+		<li>
+			<strong>Build the page tree before the content.</strong> Use the Pages panel to create the handful
+			of pages you need — typically Home, one page per topic, and Contact. Google Sites generates the
+			navigation from this tree, so a shallow structure produces a clean menu. Keep the top level to five
+			items or fewer.
+		</li>
+	</ol>
+
+	<h2 id="content">Step 4: Add content blocks</h2>
+	<p>
+		The insert panel is the whole product, and a few blocks do most of the work:
+	</p>
+	<ul>
+		<li><strong>Text and headings</strong> — use the heading levels rather than bold paragraphs. Heading structure is one of the few SEO levers Sites gives you.</li>
+		<li><strong>Embed</strong> — accepts a URL or an HTML snippet. This is how you add a form, a map, a video, or a booking widget. Embeds are sandboxed, so scripts that need top-level access will not work.</li>
+		<li><strong>Drive files and folders</strong> — the reason to use Sites inside an organisation. Sharing permissions carry over, which is convenient internally and a liability if the site is public.</li>
+		<li><strong>Google Forms</strong> — the least fragile way to collect enquiries or signups. Responses land in a Sheet you can actually use.</li>
+		<li><strong>Calendar</strong> — embeds a shared calendar without any third-party code.</li>
+	</ul>
+	<p>
+		One caution with Drive embeds: a public page that embeds a private file shows a permission error to
+		visitors. Check every embed in a logged-out browser before you call the page finished.
+	</p>
+
+	<h2 id="publish">Step 5: Publish — the setting that matters</h2>
+	<p>
+		Publishing is where most Google Sites problems originate. The <em>Publish</em> dialog controls both the
+		address and who can view the site, and the two are independent:
+	</p>
+	<ol>
+		<li>Choose the site address. The free form is <code>sites.google.com/view/your-name</code>; you can pick the final segment.</li>
+		<li>Set the viewer permission. “Anyone” makes it public and crawlable; restricting it to your organisation or to invited people makes it invisible to search engines — which is correct for an internal hub and wrong for a public page.</li>
+		<li>Publish, then open the URL in a private window while signed out. If you see a sign-in screen, the site is not public regardless of what the editor shows you.</li>
+		<li>Republish after every edit. Google Sites does not auto-publish changes; the live site keeps serving the last published version until you press the button.</li>
+	</ol>
+	<div class="warn-box">
+		<h2>The most common mistake</h2>
+		<p>
+			Building a site inside a Workspace domain, publishing it “for the organisation”, and then wondering
+			why it never appears in search results. Nothing is broken — the permission is doing its job.
+		</p>
+	</div>
+
+	<h2 id="domain">Step 6: Custom domain</h2>
+	<p>
+		Attaching your own domain requires Google Workspace, and Google documents the mapping steps for
+		Workspace admins. The mechanics are the usual ones: verify domain ownership, then create the
+		<code>CNAME</code> record Google specifies for the address you want to use, and allow time for DNS
+		propagation. The full sequence, including the apex-versus-<code>www</code> decision, is in
+		<a href="/guides/connect-custom-domain/">how to connect a custom domain</a>.
+	</p>
+
+	<h2 id="seo">The SEO ceiling</h2>
+	<p>
+		Google Sites gives you a page title and a description, sensible heading markup, and clean URLs under
+		your chosen address. That is the extent of it. What you cannot control:
+	</p>
+	<ul>
+		<li><strong>Canonical tags and redirects.</strong> There is no interface for either, so URL changes are migrations you cannot manage.</li>
+		<li><strong>Structured data.</strong> No control over schema markup, which rules out rich results for products, articles, or FAQs.</li>
+		<li><strong>Performance tuning.</strong> No caching, image pipeline, or script control beyond what the blocks expose.</li>
+		<li><strong>URL structure.</strong> Paths follow the page tree; you cannot flatten or rename them freely.</li>
+	</ul>
+	<p>
+		A single public page can still rank for a specific phrase, especially for a local event or a niche
+		topic with little competition. A multi-service business site cannot, because the structure needed to
+		target several intents is not available. The
+		<a href="/guides/seo-checklist-new-website/">new-site SEO checklist</a> lists which of these controls
+		matter most if you are evaluating platforms.
+	</p>
+
+	<h2 id="move">When to move off it</h2>
+	<p>
+		Move when any of these becomes true: you need more than about ten pages of public content, you need a
+		store, you need to rank for several distinct services, or a client asks for design control. Because
+		Google Sites has no export to a portable site format, the move means rebuilding — so the decision is
+		better made before you write forty pages, not after.
+	</p>
+	<p>
+		For a public business site, a hosted builder will usually be the better home; the
+		<a href="/reviews/best-website-builders-2026/">builder comparison</a> covers which one suits which
+		job, and <a href="/guides/how-to-make-a-website-from-scratch/">the build order</a> explains what to
+		decide before picking a platform.
+	</p>
+</GuideLayout>

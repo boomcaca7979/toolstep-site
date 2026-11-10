@@ -1,0 +1,180 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'Website Launch Checklist: What to Verify Before You Go Live';
+const description =
+	'A launch checklist that catches the failures people actually ship: broken forms, duplicate hostnames, missing 404s, unindexed pages, and analytics that record nothing. Grouped by severity, with the order to run it in.';
+
+const faq = [
+	{
+		q: 'What is the single most common launch mistake?',
+		a: 'Broken forms and untested email. A site can look perfect and still lose every enquiry because the notification address was wrong or the form was never connected. Send a real submission from a phone and confirm it arrives in the inbox you monitor before you announce anything.',
+	},
+	{
+		q: 'Should I launch with a “coming soon” page first?',
+		a: 'A short pre-launch page is fine if it collects emails and is clearly temporary. What hurts is leaving a “coming soon” page indexed for months — it teaches search engines the site has no content, and the first impression in search results is a placeholder.',
+	},
+	{
+		q: 'Do I need to submit the site to Google?',
+		a: 'You do not submit a site, you submit a sitemap and let crawling happen. Verify the property in Google Search Console, submit the sitemap, and check that key pages are indexed a few days later. There is no paid fast-track, and repeated resubmission does not speed anything up.',
+	},
+	{
+		q: 'How soon after launch should I check analytics?',
+		a: 'The same day. Install the tag before launch and verify in real time that your own visit appears. Discovering a missing or duplicated tag three weeks later means you have no baseline for everything you changed.',
+	},
+];
+
+const related = [
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/google-analytics-4-setup/', label: 'How to Set Up Google Analytics 4' },
+	{ href: '/guides/core-web-vitals/', label: 'Core Web Vitals: Why Your Site Feels Slow' },
+	{ href: '/guides/website-maintenance-checklist/', label: 'Website Maintenance Checklist' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/website-launch-checklist/"
+	published="2026-11-10"
+	lead="Launch checklists fail when they are lists of things to look at. This one is ordered by what breaks visits: forms and email first, indexing second, then the polish. Everything here is verifiable in an afternoon."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#content', label: 'Content and structure' },
+		{ href: '#technical', label: 'Technical' },
+		{ href: '#seo', label: 'Indexing and search' },
+		{ href: '#tracking', label: 'Tracking' },
+		{ href: '#legal', label: 'Legal and trust' },
+		{ href: '#day', label: 'Launch-day sequence' },
+		{ href: '#after', label: 'First 72 hours' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The five failures worth blocking launch for</h2>
+		<ol>
+			<li>A form that does not deliver email.</li>
+			<li>Two hostnames serving the site (with and without <code>www</code>).</li>
+			<li>Pages returning 200 but showing a placeholder or demo content.</li>
+			<li>No analytics, or a tag installed twice.</li>
+			<li>The site blocked from indexing by a leftover setting.</li>
+		</ol>
+		<p>Everything else can be fixed after launch without losing traffic.</p>
+	</div>
+
+	<h2 id="content">Content and structure</h2>
+	<ul>
+		<li><strong>Every page has one H1</strong> that states what the page is for. Not the logo, not a slogan.</li>
+		<li><strong>No demo content remains</strong> — sample blog posts, Lorem ipsum, placeholder team members, template testimonials.</li>
+		<li><strong>Navigation works at every breakpoint.</strong> Open the menu on a phone; the links should be tappable without zooming.</li>
+		<li><strong>Every internal link resolves.</strong> Click them; do not trust a crawler alone on a five-page site.</li>
+		<li><strong>Images have alt text</strong> where they carry meaning, and empty alt attributes where they are decorative.</li>
+		<li><strong>Contact details are in text</strong>, not only inside an image or a map iframe.</li>
+		<li><strong>Policy pages exist</strong> if you collect data or monetise: privacy, terms, and affiliate disclosure where relevant.</li>
+	</ul>
+
+	<h2 id="technical">Technical</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Check</th><th>How to verify</th><th>Pass condition</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>HTTPS everywhere</td>
+					<td>Load every template on <code>https://</code></td>
+					<td>No certificate warning; no mixed-content icons</td>
+				</tr>
+				<tr>
+					<td>One canonical hostname</td>
+					<td>Request <code>example.com</code>, <code>www.example.com</code>, and <code>http://</code></td>
+					<td>All three end at one URL with a 301/308</td>
+				</tr>
+				<tr>
+					<td>Status codes</td>
+					<td>Request a real page and a made-up path</td>
+					<td>200 for the page, 404 for the fake path</td>
+				</tr>
+				<tr>
+					<td>Forms</td>
+					<td>Submit from a phone, signed out</td>
+					<td>Email arrives; success message shown</td>
+				</tr>
+				<tr>
+					<td>Mobile layout</td>
+					<td>Real device on mobile data</td>
+					<td>No horizontal scroll; text readable without zoom</td>
+				</tr>
+				<tr>
+					<td>Favicon and social image</td>
+					<td>Browser tab and a link preview debugger</td>
+					<td>Correct image, not a default</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="seo">Indexing and search</h2>
+	<ul>
+		<li><strong>No <code>noindex</code> left over</strong> from staging. Check both the meta tag and the <code>X-Robots-Tag</code> header — platforms sometimes set the header globally.</li>
+		<li><strong>Titles and descriptions are unique</strong> on every page. Duplicates are the norm on template-built sites, and they are free to fix before launch.</li>
+		<li><strong>Canonical tags are self-referential</strong> on every page. A canonical pointing at the homepage from a service page removes that page from the index.</li>
+		<li><strong><code>robots.txt</code> allows the site</strong> and does not disallow CSS or JS, which breaks rendering.</li>
+		<li><strong>The sitemap resolves and lists the real URLs</strong> — with the same hostname and trailing-slash form you actually serve.</li>
+		<li><strong>Structured data validates</strong> if you use it: Organization, Article, Product, FAQ. Broken markup is worse than none.</li>
+	</ul>
+	<p>
+		The <a href="/guides/seo-checklist-new-website/">SEO checklist for a new website</a> goes deeper into
+		content and internal linking; this list only covers what blocks indexing at launch.
+	</p>
+
+	<h2 id="tracking">Tracking</h2>
+	<ul>
+		<li><strong>Analytics installed once.</strong> Two copies of the same tag double-count every visit and are hard to spot later.</li>
+		<li><strong>Real-time check.</strong> Visit the site in a private window and confirm the pageview appears within a minute.</li>
+		<li><strong>Conversions defined.</strong> Form submissions, calls, and checkout completions should be events, not something you infer from page views.</li>
+		<li><strong>Search Console verified</strong>, sitemap submitted, and the property type (domain vs URL prefix) matches how you will read the data.</li>
+		<li><strong>Consent handling</strong> matches the regions you serve. If you show a banner, confirm analytics does not fire before consent where that is required.</li>
+	</ul>
+	<p>
+		The <a href="/guides/google-analytics-4-setup/">GA4 setup guide</a> covers the install and the four
+		events most sites need.
+	</p>
+
+	<h2 id="legal">Legal and trust</h2>
+	<ul>
+		<li>Privacy policy naming what you collect and why, including analytics and any embedded third-party script.</li>
+		<li>Business identity — legal name, address, and contact — visible somewhere a customer can find it.</li>
+		<li>Affiliate or sponsorship disclosure on any page with monetised links.</li>
+		<li>Cookie behaviour that matches the policy text. A policy that describes a banner you do not show is worse than no policy.</li>
+	</ul>
+
+	<h2 id="day">Launch-day sequence</h2>
+	<ol>
+		<li>Take a full backup of the staging site.</li>
+		<li>Point DNS at production and confirm resolution from two networks.</li>
+		<li>Verify HTTPS, the canonical hostname redirect, and a 404.</li>
+		<li>Submit the sitemap and request indexing for the three most important URLs.</li>
+		<li>Send a test enquiry and a test order if applicable.</li>
+		<li>Check analytics real-time for your own visit.</li>
+		<li>Only now announce, post, or send the newsletter.</li>
+	</ol>
+
+	<h2 id="after">First 72 hours</h2>
+	<ul>
+		<li>Watch the server or platform error log for 404s caused by links you missed.</li>
+		<li>Check Search Console for coverage errors and mobile usability flags.</li>
+		<li>Read the first real enquiries: they reveal whether the site set the right expectation.</li>
+		<li>Record a baseline — traffic, conversion rate, and page speed — before you start changing things.</li>
+	</ul>
+	<div class="warn-box">
+		<h2>Do not do these on launch day</h2>
+		<p>
+			Do not redesign, do not change the URL structure, and do not install a plugin “while you are in
+			there”. Launch day is for verification. Changes made during a launch make it impossible to tell
+			what caused a problem.
+		</p>
+	</div>
+</GuideLayout>

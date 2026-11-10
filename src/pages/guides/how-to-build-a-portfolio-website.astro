@@ -1,0 +1,176 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Build a Portfolio Website That Gets You Hired';
+const description =
+	'A portfolio is an argument, not a gallery. How to choose the work, write case studies that survive a two-minute review, structure the site, and avoid the presentation mistakes that cost interviews.';
+
+const faq = [
+	{
+		q: 'How many projects should a portfolio have?',
+		a: 'Three to six. Fewer than three looks like you have not done the work; more than six dilutes the argument and invites comparison with your weakest piece. If you are early in your career, three strong projects with real constraints beat eight class assignments.',
+	},
+	{
+		q: 'Do I need a custom domain for a portfolio?',
+		a: 'A custom domain is worth it once you are applying seriously. It signals permanence, gives you an address you can put on a CV, and removes the platform’s branding from your own work. It is not required to start — a clean subdomain address is fine while you are still assembling the portfolio.',
+	},
+	{
+		q: 'Should I show unfinished or personal projects?',
+		a: 'Only if they demonstrate a skill your professional work does not. Label them clearly as personal or concept work, and never present them as client projects. One honest side project with a clear brief is stronger than a fictional client logo wall.',
+	},
+	{
+		q: 'What do employers look at first?',
+		a: 'They scan for relevance and evidence, usually in that order: does this person do the kind of work we need, and is there proof they did it well. That means the first screen should show your discipline and two or three pieces, not an animated introduction. Recruiters rarely scroll past the second project before deciding whether to keep reading.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-build-a-small-business-website/', label: 'How to Build a Small Business Website' },
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/carrd-one-page-website/', label: 'How to Build a One-Page Website With Carrd' },
+	{ href: '/guides/core-web-vitals/', label: 'Core Web Vitals: Why Your Site Feels Slow' },
+	{ href: '/reviews/best-website-builders-2026/', label: 'Best Website Builders 2026' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/how-to-build-a-portfolio-website/"
+	published="2026-11-10"
+	lead="Most portfolios fail for the same reason: they show everything and argue nothing. A reviewer gives you about two minutes, decides whether your work is relevant, and looks for evidence that you can finish something. Design the site around that decision."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#job', label: 'What the portfolio has to prove' },
+		{ href: '#select', label: 'Choose three to six pieces' },
+		{ href: '#case-study', label: 'The anatomy of a case study' },
+		{ href: '#structure', label: 'Site structure' },
+		{ href: '#presentation', label: 'Presentation rules' },
+		{ href: '#platform', label: 'Which platform' },
+		{ href: '#omit', label: 'What to leave out' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Build four pages: <strong>work index → individual case studies → about → contact</strong>. Show
+			three to six projects, each with a stated problem, your specific decisions, and an outcome. Write
+			the case study before you choose the template — the platform is the easy part.
+		</p>
+	</div>
+
+	<h2 id="job">What the portfolio has to prove</h2>
+	<p>There are two audiences, and they reward different things:</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Audience</th><th>They are asking</th><th>What convinces them</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Hiring manager</td>
+					<td>Can this person do the work we need, at our level, without supervision?</td>
+					<td>Relevant projects, clear role, evidence of judgement and collaboration</td>
+				</tr>
+				<tr>
+					<td>Prospective client</td>
+					<td>Will this person solve my problem and be easy to work with?</td>
+					<td>Outcomes, process, testimonials, a clear next step and price signal</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Pick one primary audience. A site written for both ends up vague for both — the classic “passionate
+		about design and technology” opening that says nothing about either.
+	</p>
+
+	<h2 id="select">Choose three to six pieces</h2>
+	<p>Selection is the highest-leverage decision on the site. Score each candidate out of five on three criteria:</p>
+	<ul>
+		<li><strong>Relevance</strong> — is it the kind of work you want more of? A perfect logo project does not help if you want product design work.</li>
+		<li><strong>Your role</strong> — can you honestly describe what you personally did? Team projects where your contribution is unclear invite doubt.</li>
+		<li><strong>Outcome</strong> — is there a result, a constraint you worked within, or a decision worth explaining? “I made a poster” is not a case study.</li>
+	</ul>
+	<p>
+		Drop anything that scores below three on relevance, no matter how proud you are of it. A portfolio is a
+		shortlist, not an archive — the archive belongs in a PDF you send on request.
+	</p>
+
+	<h2 id="case-study">The anatomy of a case study</h2>
+	<p>
+		Write each project in four blocks. This structure works for design, development, writing, and
+		photography, because it forces evidence instead of adjectives.
+	</p>
+	<ol>
+		<li><strong>The problem.</strong> Two or three sentences: who was affected, what was broken, what the constraint was. Name the budget, timeline, or technical limit if there was one.</li>
+		<li><strong>The decision.</strong> The interesting part. What did you consider, what did you reject, and why? One clear trade-off per project is enough.</li>
+		<li><strong>The work.</strong> Two to five images or artefacts that show the thing itself. Annotate them — an unlabelled screenshot makes the reader guess.</li>
+		<li><strong>The outcome.</strong> What changed: shipped, hired, launched, measured. If there is no metric, say what happened next. Honesty about scope beats invented numbers.</li>
+	</ol>
+	<p>
+		Keep each case study to roughly 300–600 words. If it needs more, the project is probably two projects.
+	</p>
+
+	<h2 id="structure">Site structure</h2>
+	<ol>
+		<li><strong>Home</strong> — your discipline in one line, location if relevant, two or three featured projects, and a contact link.</li>
+		<li><strong>Work index</strong> — every project as a card with a title, one-line description, and year. Grid, not carousel.</li>
+		<li><strong>Case study pages</strong> — one URL per project. This matters for search too: a single page of thumbnails cannot rank for the individual project names.</li>
+		<li><strong>About</strong> — how you work, what you are available for, and where you are. A photo is optional; specifics are not.</li>
+		<li><strong>Contact</strong> — an email address in plain text plus a form. Some reviewers will never use a form.</li>
+	</ol>
+	<p>
+		URLs should be readable and stable: <code>/work/project-name/</code>. Not <code>/portfolio-item-4/</code>,
+		and not a hash link inside a single scrolling page.
+	</p>
+
+	<h2 id="presentation">Presentation rules</h2>
+	<ul>
+		<li><strong>Images carry the portfolio.</strong> Export at 2× the display size, compress to WebP or AVIF, and cap the longest edge around 2000px. A 40 MB hero image is a rejected application.</li>
+		<li><strong>Consistent aspect ratios.</strong> Mixed ratios in a grid look accidental. Pick one and crop deliberately.</li>
+		<li><strong>Type does more than colour.</strong> Two sizes and one weight axis will hold a portfolio together better than a palette.</li>
+		<li><strong>Let the work breathe.</strong> Generous margins read as confidence; dense collages read as a student portfolio.</li>
+		<li><strong>Respect reduced motion.</strong> If you animate, honour the system setting. It is an accessibility baseline, not a preference.</li>
+	</ul>
+
+	<h2 id="platform">Which platform</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Platform</th><th>Best for</th><th>Trade-off</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Framer</td><td>Design-led portfolios with motion and custom layout</td><td>Learning curve; CMS is fine for dozens of projects, not thousands</td></tr>
+				<tr><td>Squarespace</td><td>Fast, conventional portfolio with a blog attached</td><td>Less layout freedom; template shapes the result</td></tr>
+				<tr><td>Webflow</td><td>Long-term site you will keep refining</td><td>Requires learning a real design system</td></tr>
+				<tr><td>Adobe Portfolio</td><td>Creative Cloud subscribers who want zero setup</td><td>Limited structure and SEO control</td></tr>
+				<tr><td>Carrd</td><td>A single-page profile with a few projects</td><td>No per-project pages, no blog</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		The <a href="/reviews/best-website-builders-2026/">builder ranking</a> covers the wider field, and
+		<a href="/reviews/framer-vs-webflow/">Framer vs Webflow</a> goes deeper on the two design-first
+		options.
+	</p>
+
+	<h2 id="omit">What to leave out</h2>
+	<div class="warn-box">
+		<h2>Common portfolio mistakes</h2>
+		<ul>
+			<li><strong>An intro animation that delays the work.</strong> It costs you the two minutes you had.</li>
+			<li><strong>A skills percentage bar.</strong> It is unverifiable and reads as filler.</li>
+			<li><strong>Client logos you cannot name.</strong> Under NDA, describe the industry instead of inventing a client.</li>
+			<li><strong>Broken password-protected projects.</strong> If a case study needs a password, put the password on the card or leave it out.</li>
+			<li><strong>Contact details only inside a form.</strong> Some reviewers work from a phone and will not fill it in.</li>
+		</ul>
+	</div>
+	<p>
+		After launch, check the basics: mobile layout, image weight, a working email link, and a page title that
+		includes your name and discipline. The
+		<a href="/guides/website-launch-checklist/">launch checklist</a> covers the rest in order.
+	</p>
+</GuideLayout>

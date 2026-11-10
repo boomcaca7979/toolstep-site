@@ -1,0 +1,185 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How Much Does a Website Cost? A Realistic Budget Breakdown';
+const description =
+	'What you pay for, what drives the price up, and what the recurring bill looks like in year two. Planning ranges for DIY, freelancer, and agency builds — with the hidden costs that decide the real total.';
+
+const faq = [
+	{
+		q: 'How much does a basic website cost?',
+		a: 'A five-page brochure site built on a hosted platform is a domain plus a monthly subscription, plus whatever your time is worth. Commissioned builds add design and copywriting, which is where most of the money goes. The gap between the cheapest and most expensive option at the same page count is almost entirely labour and custom design, not hosting.',
+	},
+	{
+		q: 'Why do quotes for the same site vary so much?',
+		a: 'Because “a website” is not a specification. One quote assumes you supply the copy, images, and page structure; another includes strategy, copywriting, photography, and a design system. Ask every supplier to list what they are not doing — the cheapest quote usually excludes the most work.',
+	},
+	{
+		q: 'What are the ongoing costs after launch?',
+		a: 'Platform or hosting subscription, domain renewal, TLS if not bundled, premium plugins or apps, backups, and the time or retainer for updates. Budget for them before you commit to an expensive build, because a site nobody maintains loses value quickly.',
+	},
+	{
+		q: 'Is it cheaper to build it myself?',
+		a: 'In cash, usually yes. In total cost, it depends on your hourly value and how much design and copy you can produce. DIY is the right call for a simple brochure site; it is a false economy for a store with tax rules across regions or a site that must convert paid traffic.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-make-a-website-from-scratch/', label: 'How to Make a Website From Scratch' },
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/how-to-choose-a-domain-name/', label: 'How to Choose a Domain Name' },
+	{ href: '/guides/website-maintenance-checklist/', label: 'Website Maintenance Checklist' },
+	{ href: '/reviews/best-website-builders-2026/', label: 'Best Website Builders 2026' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/how-much-does-a-website-cost/"
+	published="2026-11-10"
+	lead="Website pricing is opaque because the product is undefined. The useful question is not “what does a website cost” but “which of these four cost buckets am I actually buying, and which am I forgetting”."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#buckets', label: 'The four cost buckets' },
+		{ href: '#drivers', label: 'What drives the build cost' },
+		{ href: '#scenarios', label: 'Three realistic scenarios' },
+		{ href: '#recurring', label: 'Recurring costs people forget' },
+		{ href: '#cheap', label: 'Where cheap gets expensive' },
+		{ href: '#budget', label: 'How to budget' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Four buckets: <strong>platform and hosting</strong> (recurring), <strong>domain</strong> (recurring,
+			small), <strong>build</strong> (one-off, usually labour), and <strong>maintenance</strong>
+			(recurring, usually labour). On a simple site the build is 70–90% of the first-year total. Budget the
+			second year separately — it is all recurring cost and no launch excitement.
+		</p>
+	</div>
+
+	<h2 id="buckets">The four cost buckets</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Bucket</th><th>What it covers</th><th>One-off or recurring</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Platform / hosting</td>
+					<td>Server or builder subscription, CDN, storage, email if bundled</td>
+					<td>Recurring, monthly or annual</td>
+				</tr>
+				<tr>
+					<td>Domain</td>
+					<td>Registration and renewal; privacy usually included now</td>
+					<td>Recurring, annual</td>
+				</tr>
+				<tr>
+					<td>Build</td>
+					<td>Design, copywriting, development, photography, migration</td>
+					<td>One-off</td>
+				</tr>
+				<tr>
+					<td>Maintenance</td>
+					<td>Updates, backups, fixes, content changes, monitoring</td>
+					<td>Recurring, monthly or ad hoc</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		The buckets are independent. A cheap platform does not reduce the build cost, and an expensive build
+		does not reduce the hosting bill. Most budget conversations go wrong because someone compares a
+		subscription price with a project quote.
+	</p>
+
+	<h2 id="drivers">What drives the build cost</h2>
+	<ul>
+		<li><strong>Page count and page type.</strong> Ten templated pages cost far less than ten designed ones. Service pages, case studies, and landing pages each carry different work.</li>
+		<li><strong>Who writes the copy.</strong> Supplying final text yourself is the single biggest saving available. Professional copy adds cost and usually improves conversion more than extra design.</li>
+		<li><strong>Design expectations.</strong> A custom design system is a different product from a configured template, and priced accordingly.</li>
+		<li><strong>Integrations.</strong> Payments, CRM, booking, memberships, multilingual — each adds configuration and testing.</li>
+		<li><strong>Migration.</strong> Moving an existing site with URLs, redirects, and email is often a third of the work and none of the visible result.</li>
+		<li><strong>Content volume.</strong> Product catalogues and article archives scale cost with quantity, not with design complexity.</li>
+	</ul>
+
+	<h2 id="scenarios">Three realistic scenarios</h2>
+	<p>
+		The ranges below are planning ranges for a small business site in a high-cost English-speaking market,
+		excluding tax and excluding your own time. They are not quotes, and they move with region, scope, and
+		who does the work. Local rates in lower-cost markets are substantially lower for the same scope.
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Approach</th><th>Typical range</th><th>What you get</th><th>What you own afterwards</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>DIY on a hosted platform</strong></td>
+					<td>Domain + platform subscription + your time</td>
+					<td>Template-configured site, 5–8 pages, basic SEO fields</td>
+					<td>Limited export; the platform hosts it</td>
+				</tr>
+				<tr>
+					<td><strong>Freelancer</strong></td>
+					<td>Low four figures for 5–10 pages; more with copy and photography</td>
+					<td>Configured theme or light custom design, your structure, real copy</td>
+					<td>Depends on platform; insist on owning the account and domain</td>
+				</tr>
+				<tr>
+					<td><strong>Small agency</strong></td>
+					<td>Mid four to low five figures</td>
+					<td>Strategy, copy, custom design, development, analytics, launch support</td>
+					<td>Usually full code and account ownership, contract permitting</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		A store, a membership site, or a multilingual site sits above these ranges regardless of who builds it,
+		because the work is configuration and testing rather than pages.
+	</p>
+
+	<h2 id="recurring">Recurring costs people forget</h2>
+	<ul>
+		<li><strong>Renewal pricing.</strong> Introductory hosting rates expire. Check the second-year price before you commit to a three-year term.</li>
+		<li><strong>Premium plugins and apps.</strong> Licences renew annually and often price per site.</li>
+		<li><strong>Email.</strong> Transactional and marketing email are usually separate from hosting.</li>
+		<li><strong>Backups and monitoring.</strong> Sometimes bundled, sometimes a separate subscription.</li>
+		<li><strong>Maintenance time.</strong> Updates, plugin compatibility, and content edits. If nobody owns this, it accumulates as technical debt.</li>
+		<li><strong>Paid traffic.</strong> If the site exists to sell, the advertising budget usually dwarfs the hosting bill — and the site’s job is to make that spend work.</li>
+	</ul>
+
+	<h2 id="cheap">Where cheap gets expensive</h2>
+	<div class="warn-box">
+		<h2>False economies</h2>
+		<ul>
+			<li><strong>A cheap build on a platform you cannot leave.</strong> The rebuild cost is the exit fee.</li>
+			<li><strong>No staging environment.</strong> One plugin update takes the site down and you have no way to test the fix.</li>
+			<li><strong>Copy written by nobody.</strong> A beautiful site with generic text converts worse than a plain site with specific text.</li>
+			<li><strong>Skipping analytics.</strong> You cannot tell which half of the spend worked.</li>
+			<li><strong>Registering the domain in the developer’s account.</strong> The most expensive mistake on this list, because it can cost the entire site.</li>
+		</ul>
+	</div>
+
+	<h2 id="budget">How to budget</h2>
+	<ol>
+		<li>Write the page list and decide who writes the copy. That fixes most of the build cost before you ask for quotes.</li>
+		<li>Separate the first-year total from the annual run rate, and check you can carry the second.</li>
+		<li>Ask every supplier what is excluded: copy, images, redirects, email, training, and post-launch fixes.</li>
+		<li>Reserve roughly a tenth of the build cost for the first three months of fixes. Every site needs them.</li>
+		<li>Spend on content and structure before decoration. Content is what earns traffic; decoration is what dates.</li>
+	</ol>
+	<p>
+		If you are at the start of the process, the
+		<a href="/guides/how-to-make-a-website-from-scratch/">build order</a> will save more money than any
+		price comparison, because it prevents the rebuild. The
+		<a href="/guides/website-maintenance-checklist/">maintenance checklist</a> covers what the recurring
+		budget actually buys.
+	</p>
+</GuideLayout>

@@ -1,0 +1,175 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'Web Hosting Explained: How to Choose Hosting Without Overpaying';
+const description =
+	'Shared, VPS, cloud, managed WordPress, static — what each one actually gives you, which spec numbers matter, what “unlimited” means in practice, and how to size hosting for real traffic.';
+
+const faq = [
+	{
+		q: 'Is cheap shared hosting good enough?',
+		a: 'For a brochure site with a few hundred visits a day, usually yes. It stops being enough when your site competes for resources with noisy neighbours, when you need staging or SSH access, or when a traffic spike makes PHP time out. The failure is rarely storage — it is concurrent processes and memory.',
+	},
+	{
+		q: 'What does “unlimited bandwidth” actually mean?',
+		a: 'It means the host will not bill you per gigabyte, within a fair-use policy that limits CPU, concurrent connections, or inode counts. In practice the constraint you hit is processing power, not transfer. Read the acceptable use policy before you plan a launch that depends on “unlimited”.',
+	},
+	{
+		q: 'Do I need a VPS?',
+		a: 'Only if you need control or isolation that shared hosting cannot give: custom server software, specific PHP extensions, a daemon, or predictable memory. A VPS also means you own the maintenance — updates, firewalls, backups, and monitoring. If you would not enjoy that, a managed plan is cheaper than the hours.',
+	},
+	{
+		q: 'How much uptime does a 99.9% SLA give me?',
+		a: 'About 43 minutes of downtime in a 30-day month. 99.95% is roughly 22 minutes, and 99.99% about four. Those numbers are a useful sanity check on marketing claims: a “99.9% uptime guarantee” is a normal baseline, not a premium feature.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-choose-a-domain-name/', label: 'How to Choose a Domain Name' },
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/wordpress-com-vs-wordpress-org/', label: 'WordPress.com vs WordPress.org' },
+	{ href: '/guides/website-maintenance-checklist/', label: 'Website Maintenance Checklist' },
+	{ href: '/guides/how-to-make-a-website-from-scratch/', label: 'How to Make a Website From Scratch' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/web-hosting-explained/"
+	published="2026-11-10"
+	lead="Hosting is the least interesting decision on a website and the one that causes the most avoidable failures. The spec sheets are written to make cheap plans look equivalent to expensive ones; they are not."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#what', label: 'What you are actually renting' },
+		{ href: '#types', label: 'The five types of hosting' },
+		{ href: '#measure', label: 'What to size for' },
+		{ href: '#specs', label: 'Reading the spec sheet' },
+		{ href: '#support', label: 'Support, backups and staging' },
+		{ href: '#pricing', label: 'Pricing traps' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Match the plan to the platform, not to the price. A static or builder site needs almost nothing; a
+			WordPress site needs PHP memory, decent I/O, and backups. Size for <strong>concurrent requests and
+			monthly visits</strong>, not storage. Pay for staging, daily backups, and a support channel you can
+			reach — those are the features you will actually use.
+		</p>
+	</div>
+
+	<h2 id="what">What you are actually renting</h2>
+	<p>Every hosting plan is a bundle of five things, and the marketing only ever describes two of them:</p>
+	<ul>
+		<li><strong>Compute</strong> — CPU shares and memory. This decides whether your site stays up under load.</li>
+		<li><strong>Storage</strong> — disk space and, more importantly, disk speed. Slow I/O makes a database-backed site feel broken.</li>
+		<li><strong>Transfer</strong> — bandwidth out. Rarely the real limit.</li>
+		<li><strong>Environment</strong> — PHP version, database, SSH, cron, staging. This decides what you can build.</li>
+		<li><strong>Operational cover</strong> — backups, patching, TLS renewal, monitoring. This decides what happens when something breaks at 2am.</li>
+	</ul>
+
+	<h2 id="types">The five types of hosting</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Type</th><th>How it works</th><th>Best for</th><th>Main limitation</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Shared</strong></td>
+					<td>Many sites on one server with pooled resources</td>
+					<td>Brochure sites, small blogs, first WordPress site</td>
+					<td>Noisy neighbours; limited memory and processes</td>
+				</tr>
+				<tr>
+					<td><strong>VPS</strong></td>
+					<td>A virtual server with reserved CPU and RAM</td>
+					<td>Sites that outgrow shared, custom stacks</td>
+					<td>You administer it — updates, firewall, backups</td>
+				</tr>
+				<tr>
+					<td><strong>Dedicated</strong></td>
+					<td>An entire physical machine</td>
+					<td>Heavy, predictable workloads with compliance needs</td>
+					<td>Cost and idle capacity</td>
+				</tr>
+				<tr>
+					<td><strong>Cloud / autoscaling</strong></td>
+					<td>Metered resources across a provider’s infrastructure</td>
+					<td>Spiky traffic, applications with variable load</td>
+					<td>Cost is variable and can surprise you</td>
+				</tr>
+				<tr>
+					<td><strong>Managed platform</strong></td>
+					<td>Host handles the stack, patching, caching, and often the CDN</td>
+					<td>WordPress or a specific CMS without server work</td>
+					<td>Less control; per-site pricing; migration friction</td>
+				</tr>
+				<tr>
+					<td><strong>Static hosting</strong></td>
+					<td>Pre-built files served from a CDN</td>
+					<td>Generated sites, docs, marketing pages</td>
+					<td>No server-side logic or database</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Most sites do not need to move up this list. They need better caching and smaller images, which cost
+		nothing per month. Moving to a bigger plan to fix a slow site is the most common wasted upgrade.
+	</p>
+
+	<h2 id="measure">What to size for</h2>
+	<ol>
+		<li><strong>Monthly visits</strong> — the number hosts quote against. Estimate from your analytics, then double it.</li>
+		<li><strong>Concurrent requests</strong> — the number that actually breaks cheap plans. A launch, a newsletter send, or a social post can put hundreds of visitors on the site at once.</li>
+		<li><strong>Page weight</strong> — a 4 MB page costs four times the transfer of a 1 MB page, and usually loads four times slower.</li>
+		<li><strong>Database size</strong> — grows with posts, orders, and revisions. Some shared plans cap it quietly.</li>
+		<li><strong>Email</strong> — if the host provides mailboxes, that is a separate reliability question. Many teams host the site and use a dedicated email provider.</li>
+	</ol>
+
+	<h2 id="specs">Reading the spec sheet</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Claim</th><th>What it usually means</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>“Unlimited bandwidth”</td><td>No per-GB billing, but CPU and connection limits apply under fair use</td></tr>
+				<tr><td>“Unlimited websites”</td><td>One account, shared resources — each site competes with the others</td></tr>
+				<tr><td>“NVMe storage”</td><td>Faster disk, genuinely relevant for databases</td></tr>
+				<tr><td>“Free domain”</td><td>Usually included only for the first year, and often locked to the host</td></tr>
+				<tr><td>“Free SSL”</td><td>An automated certificate; this should be standard, not a selling point</td></tr>
+				<tr><td>“Daily backups”</td><td>Check retention and how restoration works — a backup you cannot restore is not a backup</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="support">Support, backups and staging</h2>
+	<p>These three decide how painful the next two years will be:</p>
+	<ul>
+		<li><strong>Support channel.</strong> Live chat that answers in minutes is worth more than a ticket queue that answers in days. Test it during the trial, before you migrate.</li>
+		<li><strong>Backups.</strong> Daily, off-account, with a documented restore path. Do a test restore once — that is the only proof.</li>
+		<li><strong>Staging.</strong> A copy of the site where you can test an update or a plugin before it reaches production. Without it, every change is a live experiment.</li>
+	</ul>
+
+	<h2 id="pricing">Pricing traps</h2>
+	<div class="warn-box">
+		<h2>Check these before you commit</h2>
+		<ul>
+			<li><strong>Renewal price.</strong> Introductory rates typically last one billing term. Compare the renewal column, not the headline.</li>
+			<li><strong>Term length.</strong> The cheapest rate usually requires a multi-year prepayment. Make sure you will still want the plan in three years.</li>
+			<li><strong>Migration limits.</strong> “Free migration” sometimes covers one site and one email account, not the mailbox data you actually need moved.</li>
+			<li><strong>Overage billing.</strong> Cloud plans bill for what you use; set a budget alert before you launch anything that might spike.</li>
+			<li><strong>Exit friction.</strong> Confirm you can export the database, files, and email. A host that will not give you a full backup is a host that owns your site.</li>
+		</ul>
+	</div>
+	<p>
+		Once hosting is in place, the next steps are DNS and TLS — both covered in
+		<a href="/guides/connect-custom-domain/">connecting a custom domain</a>, with the certificate side in
+		<a href="/guides/ssl-https-explained/">SSL and HTTPS explained</a>.
+	</p>
+</GuideLayout>

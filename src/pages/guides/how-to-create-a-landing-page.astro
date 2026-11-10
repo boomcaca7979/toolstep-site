@@ -1,0 +1,180 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Create a Landing Page That Converts';
+const description =
+	'A landing page is one promise and one action. How to match the ad that sent the visitor, structure the page, write a headline that survives a two-second scan, and test without fooling yourself.';
+
+const faq = [
+	{
+		q: 'What is the difference between a landing page and a homepage?',
+		a: 'A homepage serves everyone and routes them; a landing page serves one traffic source and asks for one action. That is why landing pages usually have no site navigation — every link is a way to leave before converting.',
+	},
+	{
+		q: 'How long should a landing page be?',
+		a: 'Long enough to answer the objections that stop the action, and no longer. A free download may need 300 words; a high-ticket service may need 1,500. The test is not word count but whether a sceptical reader still has an unanswered question at the end.',
+	},
+	{
+		q: 'How much traffic do I need before A/B testing?',
+		a: 'More than most small sites have. Comparing two variants reliably usually needs thousands of conversions, not thousands of visitors. Below that, test one change at a time and judge by direction over weeks, or run qualitative tests — watch recordings, ask five customers what stopped them.',
+	},
+	{
+		q: 'Should a landing page have a form or a booking link?',
+		a: 'Whichever has less friction for the buyer. A booking link removes a step for high-intent traffic; a short form captures people who are not ready to book. Two competing calls to action on one page usually reduce both.',
+	},
+];
+
+const related = [
+	{ href: '/guides/carrd-one-page-website/', label: 'How to Build a One-Page Website With Carrd' },
+	{ href: '/guides/how-to-build-a-small-business-website/', label: 'How to Build a Small Business Website' },
+	{ href: '/guides/google-analytics-4-setup/', label: 'How to Set Up Google Analytics 4' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/core-web-vitals/', label: 'Core Web Vitals: What LCP, INP and CLS Measure' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/how-to-create-a-landing-page/"
+	published="2026-11-10"
+	lead="A landing page is not a short page. It is a page with one job, written for one audience, arriving from one place. Most pages that “do not convert” fail one of those three conditions long before design becomes the issue."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#what', label: 'What makes it a landing page' },
+		{ href: '#match', label: 'Message match' },
+		{ href: '#anatomy', label: 'The anatomy' },
+		{ href: '#headline', label: 'Writing the headline' },
+		{ href: '#friction', label: 'Form length and friction' },
+		{ href: '#testing', label: 'Testing honestly' },
+		{ href: '#failures', label: 'Common failures' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Repeat the promise from the ad in the headline, show the outcome in the first screen, prove one
+			claim with evidence, answer the three objections that stop people, and ask for one action — twice.
+			Remove the navigation. Measure the action, not the pageviews.
+		</p>
+	</div>
+
+	<h2 id="what">What makes it a landing page</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Condition</th><th>Implication</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>One traffic source</td><td>You know the ad, search query, or email that sent them, and can mirror its language</td></tr>
+				<tr><td>One audience</td><td>No “for businesses and individuals” hedging</td></tr>
+				<tr><td>One action</td><td>Every other link is a leak; navigation usually goes</td></tr>
+				<tr><td>One measurable outcome</td><td>A form submission, booking, or purchase — not time on page</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		If any of those is missing, you have a web page, not a landing page, and the conversion rate will
+		reflect the ambiguity rather than the design.
+	</p>
+
+	<h2 id="match">Message match</h2>
+	<p>
+		The visitor clicked something specific. The first screen has to confirm they arrived where the link
+		promised. Match three things:
+	</p>
+	<ul>
+		<li><strong>The words.</strong> If the ad says “book a call in 15 minutes”, the headline says that — not “Let’s talk”.</li>
+		<li><strong>The offer.</strong> If the ad promises a template, the page must be about that template, not the whole product.</li>
+		<li><strong>The visual.</strong> The hero image should resemble the creative, so the page feels like the same campaign.</li>
+	</ul>
+	<p>
+		Breaking message match is the most expensive mistake on this list, because it happens before the
+		visitor reads anything. They do not evaluate the page; they leave.
+	</p>
+
+	<h2 id="anatomy">The anatomy</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Block</th><th>Job</th><th>Typical mistake</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Headline + subhead</td><td>State the outcome and the mechanism</td><td>A slogan that could belong to any company</td></tr>
+				<tr><td>Primary CTA</td><td>Visible without scrolling</td><td>“Learn more” instead of the actual action</td></tr>
+				<tr><td>Proof</td><td>One credible, specific piece of evidence</td><td>Five anonymous five-star quotes</td></tr>
+				<tr><td>What you get</td><td>Concrete deliverables, scope, timing</td><td>Feature list with no outcome attached</td></tr>
+				<tr><td>Objections</td><td>Price, commitment, fit, risk</td><td>Hiding pricing behind “contact us”</td></tr>
+				<tr><td>Second CTA</td><td>Catch the reader who is now convinced</td><td>No repeat, so they scroll back up</td></tr>
+				<tr><td>Microcopy</td><td>Set expectations: what happens next, how long it takes</td><td>Nothing — so the form feels like a commitment</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="headline">Writing the headline</h2>
+	<p>
+		Three questions, answered in order, produce a usable headline:
+	</p>
+	<ol>
+		<li><strong>Who is this for?</strong> Make the audience explicit — “for freelance designers”, “for Shopify stores”.</li>
+		<li><strong>What changes?</strong> The outcome, not the feature: “invoices that get paid without chasing”.</li>
+		<li><strong>What makes it believable?</strong> The mechanism or the timeframe: “one template, ten minutes, no plugin”.</li>
+	</ol>
+	<p>
+		Then cut it to one sentence. A useful test: if a stranger reads only the headline, can they say what
+		the page offers and to whom? If not, the page is relying on the reader to do work they will not do.
+	</p>
+
+	<h2 id="friction">Form length and friction</h2>
+	<p>
+		Every field costs completions, but the cost is not equal. Ask for the minimum needed to continue the
+		conversation, and move the rest to the call or the checkout.
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Field</th><th>Keep it when</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Email</td><td>Almost always — it is the delivery mechanism</td></tr>
+				<tr><td>Name</td><td>You will use it in a reply, or a person will call</td></tr>
+				<tr><td>Phone</td><td>The offer is a call or a quote, and you will actually ring</td></tr>
+				<tr><td>Company</td><td>You qualify by size or industry before replying</td></tr>
+				<tr><td>Budget</td><td>You genuinely cannot serve everyone — offer ranges, not a blank field</td></tr>
+				<tr><td>“How did you hear about us?”</td><td>Never on the primary form; ask in the follow-up</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="testing">Testing honestly</h2>
+	<ul>
+		<li><strong>Fix the obvious first.</strong> Message match, a visible CTA, and a working form will move more than any A/B test on button colour.</li>
+		<li><strong>Test one variable at a time.</strong> Headline, offer, form length, and hero image are the four worth testing, in roughly that order.</li>
+		<li><strong>Know your sample size limits.</strong> Small sites should judge direction over weeks, not significance over days.</li>
+		<li><strong>Watch recordings and read the exit pages.</strong> Qualitative evidence explains the “why” that a conversion rate cannot.</li>
+		<li><strong>Track the whole funnel</strong> — click, form start, form submit. A drop between start and submit is a form problem, not a traffic problem.</li>
+	</ul>
+
+	<h2 id="failures">Common failures</h2>
+	<div class="warn-box">
+		<h2>What actually kills conversion</h2>
+		<ul>
+			<li><strong>Navigation on the page.</strong> Every menu item is an exit.</li>
+			<li><strong>Two equal calls to action.</strong> “Book a demo” and “Download the guide” split the intent.</li>
+			<li><strong>A form that fails silently.</strong> The visitor sees no confirmation and assumes it broke — which it did.</li>
+			<li><strong>Unverifiable claims.</strong> “Trusted by thousands” with no names, numbers, or logos.</li>
+			<li><strong>Slow mobile load.</strong> A hero video that takes six seconds reads as a broken page.</li>
+			<li><strong>No thank-you page.</strong> Without one, you cannot measure the conversion or tell the visitor what happens next.</li>
+		</ul>
+	</div>
+	<p>
+		Build the page in the same platform as the rest of the site if you can — a separate tool adds a second
+		place to maintain and a second analytics install. If it is a single page with one action,
+		<a href="/guides/carrd-one-page-website/">Carrd</a> is often enough; for anything tied to a larger site,
+		keep it on the main domain so tracking and cookies stay consistent. The
+		<a href="/guides/google-analytics-4-setup/">GA4 setup guide</a> covers recording the conversion as an
+		event rather than inferring it from pageviews.
+	</p>
+</GuideLayout>

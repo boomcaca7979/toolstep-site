@@ -1,0 +1,178 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Connect a Custom Domain to Your Website';
+const description =
+	'Point a domain at a host without breaking email: which DNS records to create, apex versus www, nameservers versus records, propagation, and the six failures that explain almost every “domain not working” ticket.';
+
+const faq = [
+	{
+		q: 'How long does DNS propagation take?',
+		a: 'Usually minutes, sometimes hours, occasionally up to a day or two. The delay is not the host — it is cached records held by resolvers, governed by the TTL you set. Lowering TTL to a few minutes before a planned change shortens the window.',
+	},
+	{
+		q: 'Should I use www or the bare domain?',
+		a: 'Pick one and redirect the other permanently. Both are defensible: www is easier to point at a CDN because it can be a CNAME, while the bare domain is shorter to say. What matters is that only one hostname serves the site and the other 301s to it.',
+	},
+	{
+		q: 'Will changing DNS break my email?',
+		a: 'It can, and this is the most common way people lose a day. If you switch nameservers, every record — including MX and TXT for mail and domain verification — has to exist at the new provider first. If you only add an A or CNAME record for the website, email is untouched.',
+	},
+	{
+		q: 'Why does my domain show the host’s parking page?',
+		a: 'Either the registrar’s default records are still in place, or the host has not been told the domain belongs to the site. Check the A record at the apex and confirm the domain is added in the host’s dashboard; most hosts only serve a site once the domain is registered on their side.',
+	},
+];
+
+const related = [
+	{ href: '/guides/how-to-choose-a-domain-name/', label: 'How to Choose a Domain Name' },
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/ssl-https-explained/', label: 'SSL and HTTPS Explained' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/carrd-one-page-website/', label: 'How to Build a One-Page Website With Carrd' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/connect-custom-domain/"
+	published="2026-11-10"
+	lead="Connecting a domain is two changes that must agree: records at the DNS provider, and the domain registered at the host. Get either one wrong and the site resolves to a parking page, a 404, or nothing at all."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#meaning', label: 'What “connecting” means' },
+		{ href: '#two-ways', label: 'Two ways to do it' },
+		{ href: '#steps', label: 'Step by step' },
+		{ href: '#apex', label: 'Apex or www — pick one' },
+		{ href: '#https', label: 'HTTPS after DNS' },
+		{ href: '#troubleshoot', label: 'Troubleshooting' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Add an <strong>A record</strong> at the apex pointing to your host’s IP, and a <strong>CNAME</strong>
+			at <code>www</code> pointing to the host’s hostname — or change the domain’s nameservers to the host
+			and let it manage everything. Then add the domain in the host dashboard, wait for propagation, and
+			enable HTTPS. Redirect one hostname to the other so only one version serves the site.
+		</p>
+	</div>
+
+	<h2 id="meaning">What “connecting” means</h2>
+	<p>
+		DNS is a set of instructions that tell the internet where your domain’s traffic should go. Three record
+		types do nearly all the work for a website:
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Record</th><th>Maps</th><th>Used for</th></tr>
+			</thead>
+			<tbody>
+				<tr><td><code>A</code></td><td>Hostname → IPv4 address</td><td>The bare domain, usually</td></tr>
+				<tr><td><code>AAAA</code></td><td>Hostname → IPv6 address</td><td>Optional, and increasingly default</td></tr>
+				<tr><td><code>CNAME</code></td><td>Hostname → another hostname</td><td><code>www</code>, and CDN endpoints</td></tr>
+				<tr><td><code>TXT</code></td><td>Hostname → arbitrary text</td><td>Domain verification, SPF, DKIM</td></tr>
+				<tr><td><code>MX</code></td><td>Domain → mail server</td><td>Email — do not touch unless you mean to</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		A <code>CNAME</code> cannot normally sit at the bare domain, because DNS does not allow a name to have
+		both a CNAME and the other records the apex requires. That is why apex records are almost always
+		<code>A</code>/<code>AAAA</code>, or a provider-specific “flattened” CNAME.
+	</p>
+
+	<h2 id="two-ways">Two ways to do it</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Approach</th><th>What you change</th><th>When to use it</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Individual records</strong></td>
+					<td>Add or edit A / CNAME at your current DNS provider</td>
+					<td>You want to keep DNS (and email) where it is</td>
+				</tr>
+				<tr>
+					<td><strong>Nameservers</strong></td>
+					<td>Point the domain’s NS records at the host</td>
+					<td>The host manages DNS, CDN, and certificates as a package</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Changing nameservers moves <em>everything</em>, including mail. If your email lives with your current
+		DNS provider, either recreate every record at the new one first or stay with individual records. This
+		is the single most common way a website migration takes down email for a day.
+	</p>
+
+	<h2 id="steps">Step by step</h2>
+	<ol>
+		<li><strong>Get the exact values from the host.</strong> Copy the A record IP or CNAME target from the host’s domain panel. Do not reuse values from a tutorial — they differ per host and per site.</li>
+		<li><strong>Add the domain at the host first.</strong> Most platforms only serve a site after the domain is listed in their dashboard. Doing DNS first produces the “parking page” symptom.</li>
+		<li><strong>Create the apex record.</strong> An <code>A</code> record on <code>@</code> (or the bare domain) pointing to the host’s IP.</li>
+		<li><strong>Create the www record.</strong> A <code>CNAME</code> on <code>www</code> pointing to the host’s target hostname, if the host asks for one.</li>
+		<li><strong>Add verification records if requested.</strong> A <code>TXT</code> record proves ownership for the host or for a search console property.</li>
+		<li><strong>Remove conflicting records.</strong> Old parking A records, duplicate A records pointing elsewhere, or a stale CNAME will fight the new setup.</li>
+		<li><strong>Wait, then verify.</strong> Check the resolved record and the HTTP response — see the checks below.</li>
+	</ol>
+	<p>
+		If you use Cloudflare in front of the host, set the record to “DNS only” during setup. A proxied
+		(orange-cloud) record hides the origin and will mask the misconfiguration you are trying to diagnose.
+	</p>
+
+	<h2 id="apex">Apex or www — pick one</h2>
+	<p>
+		Both work; only one should serve the site. Decide, then redirect the other with a permanent 301. This
+		matters beyond tidiness: two hostnames serving identical content create duplicate URLs, split links,
+		and confuse canonical signals. Our
+		<a href="/guides/seo-checklist-new-website/">SEO checklist</a> treats hostname consolidation as a
+		launch blocker for that reason.
+	</p>
+	<p>
+		If you expect to use a CDN or a platform that hands you a target hostname, <code>www</code> is the
+		easier primary because it can be a CNAME. If the domain is short and spoken aloud often, the apex is
+		prettier. Either is fine; inconsistency is not.
+	</p>
+
+	<h2 id="https">HTTPS after DNS</h2>
+	<p>
+		Certificates are issued to hostnames, so they can only be issued once DNS resolves to the host. The
+		sequence is: DNS first, then certificate. Most hosts automate this and issue within minutes of the
+		domain resolving; some require you to press a button. If issuance fails, the cause is almost always
+		one of three things: the domain does not resolve yet, a second A record points elsewhere, or a
+		<code>CAA</code> record blocks the certificate authority.
+	</p>
+	<p>
+		The details of certificate types, mixed content, and HSTS are in
+		<a href="/guides/ssl-https-explained/">SSL and HTTPS explained</a>.
+	</p>
+
+	<h2 id="troubleshoot">Troubleshooting</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Symptom</th><th>Most likely cause</th><th>Check</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Host’s parking page</td><td>Domain not added at the host, or registrar default records still active</td><td>Dashboard domain list, then the apex A record</td></tr>
+				<tr><td>“Site can’t be reached”</td><td>Wrong IP, or the record has not propagated</td><td>Resolve the A record from a different network</td></tr>
+				<tr><td>Works without www, fails with it</td><td>Missing or wrong CNAME on <code>www</code></td><td>The <code>www</code> record value against the host’s instructions</td></tr>
+				<tr><td>Certificate error</td><td>Issued before DNS settled, or CAA blocking</td><td>Re-issue after DNS resolves; check CAA</td></tr>
+				<tr><td>Email stopped</td><td>Nameservers changed without recreating MX/TXT</td><td>MX records at the new DNS provider</td></tr>
+				<tr><td>Intermittent behaviour</td><td>Two A records pointing at different servers</td><td>Full record list, not just the first entry</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Verify with two independent checks: resolve the record itself, then request the page and look at the
+		status code and the final URL. A record that looks correct but serves a 404 means the host is not
+		configured for that hostname yet.
+	</p>
+</GuideLayout>

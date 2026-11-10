@@ -1,0 +1,157 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'How to Choose a Domain Name (and Register It Properly)';
+const description =
+	'What actually matters in a domain: memorability, spelling, the extension you can defend, and the registration settings that stop you losing it. Includes the trademark check most people skip.';
+
+const faq = [
+	{
+		q: 'Does a keyword in the domain still help SEO?',
+		a: 'Only marginally, and far less than page content, titles, and links. A keyword domain can help someone understand what you do at a glance, which is a click-through benefit rather than a ranking one. Do not sacrifice memorability or brand longevity for an exact-match phrase.',
+	},
+	{
+		q: 'Is a .com still necessary?',
+		a: 'For a commercial site aimed at an international audience, .com is still the default people assume. If your customers are in one country and search locally, a country-code domain is a reasonable alternative — but check the registration requirements, which vary by registry. A newer generic extension is fine when the name is short and the audience is technical.',
+	},
+	{
+		q: 'Should I use hyphens in a domain?',
+		a: 'Only when the unhyphenated version is taken and the phrase is genuinely unreadable without them. Hyphens cause people to say the name incorrectly and to mistype it when they hear it. If you must, use one hyphen, never two.',
+	},
+	{
+		q: 'Can I lose a domain I have paid for?',
+		a: 'Yes, in three common ways: the registration lapses because auto-renew was off or a card expired, the domain is transferred out after an email account is compromised, or a trademark holder files a complaint. Auto-renew, registrar lock, two-factor authentication on the registrar account, and a name you have the right to use address all three.',
+	},
+];
+
+const related = [
+	{ href: '/guides/connect-custom-domain/', label: 'How to Connect a Custom Domain' },
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/how-to-make-a-website-from-scratch/', label: 'How to Make a Website From Scratch' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/how-to-build-a-small-business-website/', label: 'How to Build a Small Business Website' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/how-to-choose-a-domain-name/"
+	published="2026-11-10"
+	lead="A domain is the only part of a website you keep when you change everything else. That makes it a naming decision and an asset decision at the same time — and the registration settings matter as much as the name itself."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#does', label: 'What a domain actually does' },
+		{ href: '#criteria', label: 'Six criteria that decide the name' },
+		{ href: '#tld', label: 'Choosing the extension' },
+		{ href: '#checks', label: 'Checks before you pay' },
+		{ href: '#register', label: 'Registering it properly' },
+		{ href: '#change', label: 'Changing a domain later' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			Pick something short, pronounceable on a phone call, and spelled the obvious way. Prefer
+			<strong>.com</strong> unless you serve one country or a technical niche. Check the trademark before
+			you buy, turn on auto-renew and registrar lock immediately, and register it in your own name — not
+			your developer’s, your host’s, or a friend’s account.
+		</p>
+	</div>
+
+	<h2 id="does">What a domain actually does</h2>
+	<p>Three jobs, and they pull in different directions:</p>
+	<ul>
+		<li><strong>It is an address.</strong> It has to be sayable, spellable, and memorable after hearing it once.</li>
+		<li><strong>It is a brand asset.</strong> It appears on invoices, vehicles, packaging, and email signatures for years.</li>
+		<li><strong>It is rented, not owned.</strong> You hold a renewable registration. Stop paying and it returns to the market.</li>
+	</ul>
+	<p>
+		The third point is the one people underestimate. A domain you do not control is a domain you can lose
+		along with the email addresses attached to it.
+	</p>
+
+	<h2 id="criteria">Six criteria that decide the name</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Criterion</th><th>Test</th><th>Why it matters</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Sayable</td><td>Can someone type it after hearing it once on a call?</td><td>Most first visits are verbal or offline</td></tr>
+				<tr><td>Short</td><td>Two words, ideally under 15 characters</td><td>Fits on a card, in a signature, in a search result</td></tr>
+				<tr><td>Unambiguous spelling</td><td>No “was that one n or two?”</td><td>Typed traffic leaks to competitors</td></tr>
+				<tr><td>No awkward doubling</td><td>Does it read badly when joined without a hyphen?</td><td>“PenIsland” is the classic, and it is not rare</td></tr>
+				<tr><td>Right extension</td><td>Does it match the audience and the market?</td><td>Signals geography and intent before the click</td></tr>
+				<tr><td>Legally clear</td><td>No existing trademark in your class</td><td>A domain does not grant the right to a name</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		Do not use a name that only makes sense once someone has seen the logo. If the word needs explaining,
+		it will be typed wrong.
+	</p>
+
+	<h2 id="tld">Choosing the extension</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Extension</th><th>Good for</th><th>Watch out for</th></tr>
+			</thead>
+			<tbody>
+				<tr><td><strong>.com</strong></td><td>Almost everything; the assumed default</td><td>Short names are taken or priced as premium</td></tr>
+				<tr><td><strong>Country code</strong> (e.g. .uk, .de, .ca)</td><td>Businesses serving one country, local trust</td><td>Registration rules and presence requirements vary by registry</td></tr>
+				<tr><td><strong>.io / .ai / .dev</strong></td><td>Software, startups, technical audiences</td><td>Higher renewal prices; weaker recognition outside tech</td></tr>
+				<tr><td><strong>New generic</strong> (.studio, .shop)</td><td>A name that is unavailable on .com</td><td>Renewal cost and how people remember it</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		The renewal price is the number that matters, not the first-year price. Registrars routinely discount
+		year one and bill the standard rate afterwards, so check the renewal column before you commit to a
+		multi-year plan.
+	</p>
+
+	<h2 id="checks">Checks before you pay</h2>
+	<ol>
+		<li><strong>Check availability at the registry level</strong>, not only at one registrar. A “premium” quote from a reseller is often a standard registration elsewhere.</li>
+		<li><strong>Search the trademark office for your market.</strong> In the US that is the USPTO’s search; the EU and UK have equivalents. Search the distinctive part of the name, in the classes you will trade in.</li>
+		<li><strong>Search the obvious social handles</strong> for the same name. You do not need every one, but a contradictory brand on the same name is a problem.</li>
+		<li><strong>Say it out loud, then spell it to someone.</strong> Ask them to type it. This finds the ambiguities no checklist catches.</li>
+		<li><strong>Check the name does not mean something unfortunate</strong> in the main language of a market you plan to enter.</li>
+	</ol>
+
+	<h2 id="register">Registering it properly</h2>
+	<ol>
+		<li><strong>Use an ICANN-accredited registrar</strong> and create the account in your own name, with an email you will still control in five years.</li>
+		<li><strong>Turn on auto-renew.</strong> The most common cause of lost domains is a card that expired two years earlier.</li>
+		<li><strong>Enable registrar lock and two-factor authentication.</strong> The lock blocks unauthorised transfers; 2FA blocks the account takeover that precedes them.</li>
+		<li><strong>Enable WHOIS privacy</strong> if it is offered free. It hides your personal contact details from public lookups, which reduces spam and scam attempts.</li>
+		<li><strong>Register the misspelling or the other extension</strong> only if you have a real brand to defend. Otherwise it is an annual cost for a hypothetical.</li>
+		<li><strong>Keep the registration email address separate</strong> from the site’s contact address, so losing access to one does not lock you out of the other.</li>
+	</ol>
+	<div class="warn-box">
+		<h2>Do not let anyone else register it for you</h2>
+		<p>
+			Agencies and developers should add you as the registrant, or you should buy it yourself and delegate
+			DNS access. Accounts registered “on your behalf” are the most common cause of a business losing its
+			domain during a dispute with a supplier.
+		</p>
+	</div>
+
+	<h2 id="change">Changing a domain later</h2>
+	<p>
+		Changing domains means redirecting every old URL, updating every mention, and waiting for search
+		engines to consolidate. It is doable and survivable, but it costs months of momentum. Two rules reduce
+		the risk if you do it: keep the old domain registered and redirect it permanently, and move one
+		variable at a time so you can tell what broke.
+	</p>
+	<p>
+		Once the domain is registered, the next step is pointing it at a host — see
+		<a href="/guides/connect-custom-domain/">how to connect a custom domain</a>. If you have not chosen
+		hosting yet, <a href="/guides/web-hosting-explained/">web hosting explained</a> covers the tiers
+		without the marketing.
+	</p>
+</GuideLayout>

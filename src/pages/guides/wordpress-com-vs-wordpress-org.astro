@@ -1,0 +1,204 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'WordPress.com vs WordPress.org: The Difference That Decides Your Site';
+const description =
+	'One is a hosted service, the other is software you install. What that changes for plugins, themes, ads, cost, ownership and migration — with the plan boundaries that actually matter.';
+
+const faq = [
+	{
+		q: 'Is WordPress.com the same as WordPress?',
+		a: 'No. WordPress.org distributes the open-source software, which you download and run on hosting you pay for. WordPress.com is a hosting service built on that software by Automattic. The dashboard looks similar because it is the same core, but what you are allowed to install and what you own differ substantially.',
+	},
+	{
+		q: 'Can I install any plugin on WordPress.com?',
+		a: 'Only from the Business plan upward. Lower tiers run a curated set of features and do not allow arbitrary plugin or theme uploads. On WordPress.org you can install any plugin immediately, which is also why you become responsible for their security and updates.',
+	},
+	{
+		q: 'Which is cheaper?',
+		a: 'WordPress.com looks cheaper in year one because hosting is included and the entry tiers are modest. WordPress.org looks cheaper at scale because hosting and domains are commodity costs and no per-site platform fee applies — but you pay in maintenance time. Compare total cost, including the plugin licences and hours you will spend on updates.',
+	},
+	{
+		q: 'Can I move from WordPress.com to WordPress.org later?',
+		a: 'Yes, with limits. You can export content and import it into a self-hosted install, but themes, plugins, and plan-specific features do not transfer. On lower plans, custom design settings may not survive either. Plan the move before you publish hundreds of posts, not after.',
+	},
+];
+
+const related = [
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/how-to-make-a-website-from-scratch/', label: 'How to Make a Website From Scratch' },
+	{ href: '/reviews/wix-vs-wordpress/', label: 'Wix vs WordPress compared' },
+	{ href: '/guides/website-maintenance-checklist/', label: 'Website Maintenance Checklist' },
+	{ href: '/reviews/best-website-builders-2026/', label: 'Best Website Builders 2026' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/wordpress-com-vs-wordpress-org/"
+	published="2026-11-10"
+	lead="This is not a comparison between two products. It is a comparison between renting a managed service and running software yourself — and the decision is mostly about who is responsible when something breaks."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#difference', label: 'The difference in one paragraph' },
+		{ href: '#side-by-side', label: 'Side by side' },
+		{ href: '#plans', label: 'The WordPress.com plan boundaries' },
+		{ href: '#ownership', label: 'Ownership and exit' },
+		{ href: '#choose', label: 'Which one fits you' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The short answer</h2>
+		<p>
+			<strong>WordPress.org</strong> is the free, open-source software. You choose a host, install it, and
+			control everything — plugins, themes, database, and the bill.
+			<strong>WordPress.com</strong> is a hosting company running that software for you, with plan tiers
+			that gate plugins, themes, and your domain. Same core, different owner of the problems.
+		</p>
+	</div>
+
+	<h2 id="difference">The difference in one paragraph</h2>
+	<p>
+		Both produce a WordPress site. The difference is where the files live and who may change them. With
+		WordPress.org you rent a server (often a few dollars a month), upload the software, and gain unlimited
+		control — along with responsibility for updates, backups, caching, and security. With WordPress.com you
+		get a managed dashboard, automatic updates, and a support channel, in exchange for plan-based limits on
+		what you can install and a monthly fee that scales with your needs.
+	</p>
+	<p>
+		The naming is the single most confusing thing in the ecosystem: <code>wordpress.org</code> is where the
+		software, themes, and plugins are distributed; <code>wordpress.com</code> is where you buy hosting from
+		Automattic. Both are legitimate. Neither is “the real WordPress”.
+	</p>
+
+	<h2 id="side-by-side">Side by side</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th></th><th>WordPress.org (self-hosted)</th><th>WordPress.com (hosted)</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>What you pay for</strong></td>
+					<td>Hosting, domain, optional premium plugins and themes</td>
+					<td>A subscription that bundles hosting, domain on paid tiers, and support</td>
+				</tr>
+				<tr>
+					<td><strong>Plugins</strong></td>
+					<td>Any plugin, any time</td>
+					<td>Business plan and above; lower tiers use built-in features only</td>
+				</tr>
+				<tr>
+					<td><strong>Themes</strong></td>
+					<td>Any theme, including custom-built</td>
+					<td>Curated set; uploads restricted by plan</td>
+				</tr>
+				<tr>
+					<td><strong>Ads</strong></td>
+					<td>None unless you add them</td>
+					<td>Free plan displays WordPress.com ads; paid plans remove them</td>
+				</tr>
+				<tr>
+					<td><strong>Maintenance</strong></td>
+					<td>Yours: core, plugin, and PHP updates, backups, security</td>
+					<td>Theirs: updates handled, backups included per plan</td>
+				</tr>
+				<tr>
+					<td><strong>Server access</strong></td>
+					<td>Full — SSH, database, cron, server config</td>
+					<td>None; you work inside the dashboard</td>
+				</tr>
+				<tr>
+					<td><strong>Ceiling</strong></td>
+					<td>Whatever your server and budget allow</td>
+					<td>Whatever the top plan allows; heavy customisation is out of scope</td>
+				</tr>
+				<tr>
+					<td><strong>Exit cost</strong></td>
+					<td>Move files and database; the site is yours</td>
+					<td>Export content; rebuild theme, plugins, and settings elsewhere</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="plans">The WordPress.com plan boundaries</h2>
+	<p>
+		WordPress.com sells five tiers — Free, Personal, Premium, Business, and Commerce — and the useful
+		question is not which is cheapest but which boundary you will hit first. WordPress publishes the full
+		comparison on its <a href="https://wordpress.com/pricing/" rel="noopener">pricing page</a>; the
+		structural differences that matter are:
+	</p>
+	<ul>
+		<li><strong>Free</strong> — a <code>wordpress.com</code> subdomain, provider ads, minimal storage, no plugin access. Fine for testing the editor, not for a business.</li>
+		<li><strong>Personal</strong> — custom domain and no ads, but still no plugin installation.</li>
+		<li><strong>Premium</strong> — adds monetisation and more storage; themes and plugins are still restricted.</li>
+		<li><strong>Business</strong> — the first tier with plugin and theme installation, plus SFTP/SSH and WP-CLI access on supported plans. This is where WordPress.com starts behaving like WordPress.</li>
+		<li><strong>Commerce</strong> — WooCommerce extensions and store-specific tooling.</li>
+	</ul>
+	<p>
+		That boundary — plugins only from Business — is the decisive fact for most people. If your plan depends
+		on a specific plugin (SEO, forms, memberships, multilingual), price the Business tier before you commit,
+		not the Personal tier you saw in the advert.
+	</p>
+
+	<h2 id="ownership">Ownership and exit</h2>
+	<p>
+		On WordPress.org you own the installation, the database, and the files. Your exit is a migration:
+		export the database, copy <code>wp-content</code>, point DNS at the new host. Done carefully, visitors
+		notice nothing — the <a href="/guides/migrate-website-to-new-host/">migration runbook</a> covers the
+		order of operations.
+	</p>
+	<p>
+		On WordPress.com you own the content. You can export posts, pages, and media, and import them into a
+		self-hosted site. What does not travel is the theme configuration, plan-gated features, and any
+		block patterns tied to the service. If you expect to outgrow the platform, that export is a content
+		migration, not a site migration — budget the rebuild accordingly.
+	</p>
+
+	<h2 id="choose">Which one fits you</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Your situation</th><th>Better fit</th><th>Reason</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>First site, no technical help, brochure content</td>
+					<td>WordPress.com (Personal or Premium)</td>
+					<td>No server work, updates handled, support available</td>
+				</tr>
+				<tr>
+					<td>You need a specific plugin or custom theme</td>
+					<td>WordPress.org</td>
+					<td>Plugin access is unrestricted from day one</td>
+				</tr>
+				<tr>
+					<td>Client sites you maintain for others</td>
+					<td>WordPress.org</td>
+					<td>Per-site subscriptions do not scale; you need server access</td>
+				</tr>
+				<tr>
+					<td>Content site that must stay online without you</td>
+					<td>WordPress.com (Business)</td>
+					<td>Managed updates and backups reduce the failure surface</td>
+				</tr>
+				<tr>
+					<td>Store with complex shipping and tax rules</td>
+					<td>WordPress.org + WooCommerce, or a dedicated platform</td>
+					<td>Plugin-level control over checkout logic</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>
+		One more consideration: neither option is fast by default. A self-hosted WordPress site needs caching
+		and image optimisation to compete on <a href="/guides/core-web-vitals/">Core Web Vitals</a>, while a
+		WordPress.com site inherits the platform’s infrastructure but has fewer levers. If speed is the primary
+		requirement, a static or design-first platform is often the better starting point — see
+		<a href="/reviews/best-website-builders-2026/">the builder ranking</a> for how the alternatives compare.
+	</p>
+</GuideLayout>

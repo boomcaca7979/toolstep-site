@@ -1,0 +1,177 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'Website Accessibility Basics: The Fixes That Cover Most of It';
+const description =
+	'WCAG 2.2 in plain terms: contrast, keyboard access, focus, labels, alt text, headings, captions and target size. The eight changes that remove most barriers, plus a twenty-minute test routine.';
+
+const faq = [
+	{
+		q: 'What does WCAG 2.2 AA actually require?',
+		a: 'A defined set of success criteria at levels A and AA. In practice, for a typical site: sufficient colour contrast, full keyboard operation, visible focus, programmatic labels on form fields, text alternatives for meaningful images, correct heading structure, captions for video with speech, and touch targets of at least 24 by 24 CSS pixels.',
+	},
+	{
+		q: 'Do accessibility overlays make a site compliant?',
+		a: 'No. An overlay is a script that tries to patch problems in the browser. It cannot fix missing labels, a broken heading order, or keyboard traps in the underlying markup, and it can conflict with the assistive technology it claims to support. Fixing the source is both cheaper in the long run and the only approach that holds up.',
+	},
+	{
+		q: 'How do I test accessibility without special tools?',
+		a: 'Three passes get you most of the way: navigate the whole page with Tab and Enter only, zoom to 200% and check nothing overlaps or disappears, and read the page with images disabled to see whether the alt text makes sense. Automated checkers catch perhaps a third of issues; manual checks catch the rest.',
+	},
+	{
+		q: 'Is accessibility only a legal requirement?',
+		a: 'It is a legal requirement in several jurisdictions for many organisations, but the practical argument comes first: keyboard and screen-reader users are customers, and the fixes — contrast, labels, clear headings — also improve usability for everyone on a small screen in bright light.',
+	},
+];
+
+const related = [
+	{ href: '/guides/core-web-vitals/', label: 'Core Web Vitals: What LCP, INP and CLS Measure' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/how-to-build-a-portfolio-website/', label: 'How to Build a Portfolio Website' },
+	{ href: '/guides/website-maintenance-checklist/', label: 'Website Maintenance Checklist' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/website-accessibility-basics/"
+	published="2026-11-10"
+	lead="Accessibility has a reputation for being an enormous, specialised project. Most of the practical damage on an ordinary website comes from about eight habits, and every one of them is cheaper to fix in the template than on a hundred pages."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#wcag', label: 'WCAG in one paragraph' },
+		{ href: '#fixes', label: 'The eight fixes' },
+		{ href: '#forms', label: 'Forms' },
+		{ href: '#keyboard', label: 'Keyboard and focus' },
+		{ href: '#test', label: 'A twenty-minute test' },
+		{ href: '#overlays', label: 'Why overlays do not work' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>If you fix eight things</h2>
+		<ol>
+			<li>Contrast of at least 4.5:1 for body text.</li>
+			<li>Every interactive element reachable and operable by keyboard.</li>
+			<li>A visible focus indicator that is not removed.</li>
+			<li>A programmatic label on every form field.</li>
+			<li>Alt text on meaningful images, empty alt on decorative ones.</li>
+			<li>One H1 and a heading order that does not skip levels.</li>
+			<li>Captions on video that contains speech.</li>
+			<li>Touch targets at least 24×24 CSS pixels.</li>
+		</ol>
+	</div>
+
+	<h2 id="wcag">WCAG in one paragraph</h2>
+	<p>
+		The Web Content Accessibility Guidelines are organised around four principles — content must be
+		<strong>perceivable</strong>, <strong>operable</strong>, <strong>understandable</strong>, and
+		<strong>robust</strong> — and three conformance levels. Level A is the minimum, AA is the level most
+		legislation references, and AAA is rarely achievable across a whole site. WCAG 2.2 added criteria
+		around focus visibility, dragging alternatives, target size, and not forcing users to re-enter
+		information they already provided.
+	</p>
+
+	<h2 id="fixes">The eight fixes</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Fix</th><th>Common failure</th><th>How to check</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Contrast</strong></td>
+					<td>Grey-on-grey body text and placeholder text</td>
+					<td>A contrast checker on the actual hex values; 4.5:1 for body, 3:1 for large text</td>
+				</tr>
+				<tr>
+					<td><strong>Keyboard access</strong></td>
+					<td>Custom dropdowns and modal traps that only work with a mouse</td>
+					<td>Tab through; can you open, use, and close everything?</td>
+				</tr>
+				<tr>
+					<td><strong>Visible focus</strong></td>
+					<td><code>outline: none</code> in the reset stylesheet</td>
+					<td>Tab once — if you cannot see where you are, neither can anyone else</td>
+				</tr>
+				<tr>
+					<td><strong>Form labels</strong></td>
+					<td>Placeholder text used as the only label</td>
+					<td>Placeholders vanish on input; a real <code>&lt;label&gt;</code> does not</td>
+				</tr>
+				<tr>
+					<td><strong>Alt text</strong></td>
+					<td><code>alt="image"</code> or a missing attribute on informative images</td>
+					<td>Describe the content, not the file: “invoice total highlighted in red”</td>
+				</tr>
+				<tr>
+					<td><strong>Heading structure</strong></td>
+					<td>H2s chosen for font size, not structure</td>
+					<td>Read the outline; it should make sense as a table of contents</td>
+				</tr>
+				<tr>
+					<td><strong>Captions</strong></td>
+					<td>Auto-generated captions left uncorrected on a product demo</td>
+					<td>Watch with sound off and check names and numbers</td>
+				</tr>
+				<tr>
+					<td><strong>Target size</strong></td>
+					<td>Icon buttons under 24 px with tight spacing</td>
+					<td>Measure in dev tools; increase padding rather than the icon</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="forms">Forms</h2>
+	<p>Forms are where accessibility failures cost money, because a blocked form is a lost enquiry.</p>
+	<ul>
+		<li><strong>Label every field</strong> with a <code>&lt;label for&gt;</code> tied to the input id. Placeholders are hints, not labels.</li>
+		<li><strong>Group related fields</strong> — radio buttons and checkboxes need a fieldset and legend so the question is announced with the options.</li>
+		<li><strong>Describe errors in text</strong> next to the field and in a summary at the top, and connect them with <code>aria-describedby</code>. Colour alone does not communicate an error.</li>
+		<li><strong>Do not rely on autofocus</strong> jumping users past the page; it disorients screen-reader users.</li>
+		<li><strong>Let password managers work.</strong> Blocking paste or autofill is both an accessibility and a security regression.</li>
+	</ul>
+
+	<h2 id="keyboard">Keyboard and focus</h2>
+	<ul>
+		<li>Tab order should follow visual order. CSS reordering that breaks the DOM order breaks the tab sequence.</li>
+		<li>Modals must trap focus inside while open, close on Escape, and return focus to the trigger on close.</li>
+		<li>Skip links let keyboard users bypass a long navigation — one line of markup, disproportionate benefit.</li>
+		<li>Hover-only menus are unusable without a pointer. Add click and keyboard support.</li>
+		<li>Never remove the focus ring; restyle it if it clashes with the design.</li>
+	</ul>
+
+	<h2 id="test">A twenty-minute test</h2>
+	<ol>
+		<li><strong>Unplug the mouse.</strong> Tab through the home page and one form. Note where you get stuck.</li>
+		<li><strong>Zoom to 200%.</strong> Check for overlapping text, clipped buttons, and horizontal scrolling.</li>
+		<li><strong>Turn images off</strong> and read the page: alt text should make sense in context.</li>
+		<li><strong>Run an automated checker</strong> on two templates. Treat its output as a starting list, not a verdict.</li>
+		<li><strong>Try one screen reader</strong> — VoiceOver on macOS or NVDA on Windows — on a single form. It is uncomfortable the first time and informative immediately.</li>
+	</ol>
+
+	<h2 id="overlays">Why overlays do not work</h2>
+	<div class="warn-box">
+		<h2>What an overlay cannot do</h2>
+		<ul>
+			<li>Add a label that does not exist in the markup.</li>
+			<li>Fix a heading hierarchy that skips levels.</li>
+			<li>Make a custom widget operable by keyboard when it was never built to be.</li>
+			<li>Guarantee compatibility with the assistive technology it claims to support.</li>
+		</ul>
+		<p>
+			Worse, overlays add a third-party script to every page, which is a performance and privacy cost on
+			top of an unsolved problem.
+		</p>
+	</div>
+	<p>
+		The efficient route is to fix components once, in the design system, and then reuse them. A button
+		component with a focus style and a 44 px touch target fixes every button on the site. That is the same
+		argument as <a href="/guides/core-web-vitals/">performance work</a>: template-level fixes scale,
+		page-level fixes do not.
+	</p>
+</GuideLayout>

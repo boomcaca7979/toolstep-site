@@ -1,0 +1,162 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'Core Web Vitals: What LCP, INP and CLS Actually Measure';
+const description =
+	'The three metrics Google reports on, the thresholds that define “good”, the difference between field and lab data, and the fixes that work in order — plus what to stop optimising entirely.';
+
+const faq = [
+	{
+		q: 'What are the Core Web Vitals thresholds?',
+		a: 'LCP should be 2.5 seconds or less, INP 200 milliseconds or less, and CLS 0.1 or less. Above 4.0 seconds, 500 milliseconds, and 0.25 respectively is “poor”. The assessment uses the 75th percentile of real page loads, so a fast average does not save a slow tail.',
+	},
+	{
+		q: 'Do Core Web Vitals directly affect rankings?',
+		a: 'They are part of page experience, which Google uses as a tie-breaker rather than a primary ranking factor. A slow site can still rank on relevance, but it loses clicks and conversions, and it will lose ties to a faster competitor. Treat them as a conversion and retention issue that also has a modest ranking effect.',
+	},
+	{
+		q: 'Why does PageSpeed Insights disagree with my own testing?',
+		a: 'PageSpeed Insights shows both lab data (a single throttled run) and field data (aggregated real-user measurements from the Chrome UX Report). Lab data is reproducible but synthetic; field data is what Google actually uses. A page can score 100 in the lab and fail in the field if real devices are slower.',
+	},
+	{
+		q: 'Does INP replace something?',
+		a: 'Yes. Interaction to Next Paint replaced First Input Delay as the responsiveness metric in March 2024. FID measured only the delay before the first interaction was processed; INP measures responsiveness across the whole visit, which is why sites with heavy JavaScript often see worse scores than before.',
+	},
+];
+
+const related = [
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/google-analytics-4-setup/', label: 'How to Set Up Google Analytics 4' },
+	{ href: '/guides/web-hosting-explained/', label: 'Web Hosting Explained: How to Choose Hosting' },
+	{ href: '/guides/website-accessibility-basics/', label: 'Website Accessibility Basics' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/core-web-vitals/"
+	published="2026-11-10"
+	lead="Core Web Vitals are three numbers about how a page feels: how fast the main content appears, how quickly it responds to a tap, and how much it jumps while loading. They are measured on real devices, at the 75th percentile, which is exactly where slow phones live."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#metrics', label: 'The three metrics' },
+		{ href: '#data', label: 'Field data vs lab data' },
+		{ href: '#lcp', label: 'Fixing LCP' },
+		{ href: '#inp', label: 'Fixing INP' },
+		{ href: '#cls', label: 'Fixing CLS' },
+		{ href: '#measure', label: 'Measuring without fooling yourself' },
+		{ href: '#skip', label: 'What to stop optimising' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>The thresholds</h2>
+		<div class="table-wrap">
+			<table>
+				<thead>
+					<tr><th>Metric</th><th>Good</th><th>Poor</th><th>Measures</th></tr>
+				</thead>
+				<tbody>
+					<tr><td><strong>LCP</strong> — Largest Contentful Paint</td><td>≤ 2.5 s</td><td>&gt; 4.0 s</td><td>When the main content is visible</td></tr>
+					<tr><td><strong>INP</strong> — Interaction to Next Paint</td><td>≤ 200 ms</td><td>&gt; 500 ms</td><td>How fast the page responds to input</td></tr>
+					<tr><td><strong>CLS</strong> — Cumulative Layout Shift</td><td>≤ 0.1</td><td>&gt; 0.25</td><td>How much visible content moves</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<h2 id="metrics">The three metrics</h2>
+	<p>
+		Each metric has a short list of causes, which is why diagnosis is usually faster than people expect.
+	</p>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Metric</th><th>The usual culprits</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>LCP</td>
+					<td>Slow server response, render-blocking CSS or fonts, an oversized hero image, client-side rendering that shows nothing until JavaScript runs</td>
+				</tr>
+				<tr>
+					<td>INP</td>
+					<td>Long JavaScript tasks on the main thread, heavy third-party tags, large DOM updates on tap, hydration of an entire page for one widget</td>
+				</tr>
+				<tr>
+					<td>CLS</td>
+					<td>Images without dimensions, web fonts swapping with different metrics, banners or ads injected above existing content, late-loading cookie bars</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="data">Field data vs lab data</h2>
+	<p>
+		Two different instruments, two different jobs:
+	</p>
+	<ul>
+		<li><strong>Field data</strong> — real users, aggregated over 28 days, from the Chrome UX Report. This is what Search Console reports and what Google evaluates. It is slow to reflect fixes.</li>
+		<li><strong>Lab data</strong> — a synthetic run under defined throttling, from Lighthouse or PageSpeed Insights. Fast feedback, reproducible, but not your users.</li>
+	</ul>
+	<p>
+		Use lab data to find and fix causes; use field data to confirm the fix reached real devices. If field
+		data disagrees with the lab, trust the field data — it includes the mid-range Android on a congested
+		network that no lab run simulates well.
+	</p>
+
+	<h2 id="lcp">Fixing LCP</h2>
+	<p>Work in this order; each step is cheaper than the next.</p>
+	<ol>
+		<li><strong>Server response.</strong> If the first byte takes more than ~600 ms, nothing downstream matters. Check hosting, caching, and database queries. A static page behind a CDN is hard to beat here.</li>
+		<li><strong>Render-blocking resources.</strong> Inline critical CSS, defer the rest, and stop loading fonts you do not use. Every blocking stylesheet delays the first paint.</li>
+		<li><strong>The hero image.</strong> Serve it in AVIF or WebP at the size it is displayed, mark it <code>fetchpriority="high"</code>, and never lazy-load the element that is the LCP candidate. A 2 MB hero is the most common single cause of a failed LCP.</li>
+		<li><strong>Fonts.</strong> Preload the one weight used above the fold, subset it, and set <code>font-display: swap</code> so text is not invisible while waiting.</li>
+		<li><strong>Client-side rendering.</strong> If the main content only appears after a JavaScript bundle executes, the LCP is bound to your JS. Server-render or pre-render the page.</li>
+	</ol>
+
+	<h2 id="inp">Fixing INP</h2>
+	<ul>
+		<li><strong>Find the long tasks.</strong> Anything blocking the main thread for more than 50 ms delays the response to a tap. Record a performance trace while clicking the slow control.</li>
+		<li><strong>Break up big bundles.</strong> Ship less JavaScript, and ship it later. Most sites have analytics, chat widgets, and A/B tools competing for the same thread.</li>
+		<li><strong>Defer third parties.</strong> A chat widget loaded on page load competes with every interaction. Load it on intent, or after the main thread is idle.</li>
+		<li><strong>Keep DOM updates small.</strong> Re-rendering a long list on every keystroke is a self-inflicted INP problem in search and filter interfaces.</li>
+	</ul>
+
+	<h2 id="cls">Fixing CLS</h2>
+	<ul>
+		<li><strong>Set width and height on every image and video</strong>, or reserve space with an aspect-ratio box. This removes the single largest source of shift.</li>
+		<li><strong>Reserve space for anything injected later</strong> — ads, embeds, cookie notices, error banners. A fixed minimum height for an ad slot means the creative cannot push the article down when it loads. This is a design decision, not a script fix.</li>
+		<li><strong>Match font metrics.</strong> Use <code>size-adjust</code> or a fallback stack with similar metrics so the swap does not reflow the page.</li>
+		<li><strong>Never insert content above what the user is reading.</strong> Banners that appear at the top after load are the worst offender, and they are also the most annoying.</li>
+	</ul>
+
+	<h2 id="measure">Measuring without fooling yourself</h2>
+	<ol>
+		<li>Record a baseline in Search Console’s Core Web Vitals report, and note the date — field data lags by up to 28 days.</li>
+		<li>Test the templates that matter, not the home page only: article, category, and product pages often have different LCP elements.</li>
+		<li>Throttle to a mid-tier mobile profile in Lighthouse. Desktop results flatter almost every site.</li>
+		<li>Fix one cause at a time and re-measure, so you know which change worked.</li>
+		<li>Re-check field data after four weeks. A lab improvement that never reaches the field usually means real users load something you did not simulate.</li>
+	</ol>
+
+	<h2 id="skip">What to stop optimising</h2>
+	<div class="warn-box">
+		<h2>Low-value work</h2>
+		<ul>
+			<li><strong>Chasing a perfect Lighthouse score.</strong> The score is a weighted composite; the three vitals are the goal.</li>
+			<li><strong>Micro-optimising CSS selectors.</strong> Rendering engines solved this years ago; image weight and JavaScript cost dwarf it.</li>
+			<li><strong>Preloading everything.</strong> Over-preloading competes for bandwidth and delays the resource that actually matters.</li>
+			<li><strong>Optimising a page nobody visits.</strong> Start with the templates that receive the most traffic and the most conversions.</li>
+		</ul>
+	</div>
+	<p>
+		Speed work compounds: a faster template improves every page built from it, which is why the fixes above
+		belong in the template rather than in individual pages. Once the numbers are stable, connect them to
+		outcomes in <a href="/guides/google-analytics-4-setup/">GA4</a> — a faster page that does not convert
+		better is a hint that the problem was never speed.
+	</p>
+</GuideLayout>

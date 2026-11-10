@@ -1,0 +1,158 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const headline = 'Website Maintenance Checklist: What to Do Weekly, Monthly and Yearly';
+const description =
+	'A maintenance schedule that keeps a site alive: backups you can restore, updates that do not break the layout, security basics, content that does not rot, and the annual tasks people discover too late.';
+
+const faq = [
+	{
+		q: 'How often should I update a website?',
+		a: 'Security updates as they are released, everything else on a schedule. For a CMS, that means checking weekly and applying patches within days, after testing on staging. For a hosted builder, the platform handles updates and your job is reviewing that nothing visually broke.',
+	},
+	{
+		q: 'How many backups do I need?',
+		a: 'Daily automated backups with at least 30 days of retention, stored somewhere other than the host, plus one manual copy before any major change. The number that matters is not how many backups exist but whether you have ever restored one successfully.',
+	},
+	{
+		q: 'Is maintenance really necessary for a small site?',
+		a: 'Yes, but the scope is smaller: monthly checks on plugins, certificates, forms, and broken links take under an hour. The failures that hurt are quiet ones — an expired certificate, a form that stopped sending, a plugin abandoned by its author.',
+	},
+	{
+		q: 'What should I check after an update?',
+		a: 'The pages that generate money: home, the main service or product page, checkout or contact, and one article template. Check layout at mobile width, submit a form, and confirm no console errors. A five-minute check catches almost every regression.',
+	},
+];
+
+const related = [
+	{ href: '/guides/website-launch-checklist/', label: 'Website Launch Checklist' },
+	{ href: '/guides/core-web-vitals/', label: 'Core Web Vitals: What LCP, INP and CLS Measure' },
+	{ href: '/guides/ssl-https-explained/', label: 'SSL and HTTPS Explained' },
+	{ href: '/guides/seo-checklist-new-website/', label: 'SEO Checklist for a New Website' },
+	{ href: '/guides/migrate-website-to-new-host/', label: 'How to Migrate a Website to a New Host' },
+];
+---
+
+<GuideLayout
+	title={`${headline} | ToolStep`}
+	description={description}
+	headline={headline}
+	canonicalPath="/guides/website-maintenance-checklist/"
+	published="2026-11-10"
+	lead="Websites do not fail dramatically. They expire a certificate, stop sending form email, accumulate broken links, and drift out of date until someone notices the site has been quietly broken for months. A short schedule prevents all of it."
+	faq={faq}
+	related={related}
+	toc={[
+		{ href: '#weekly', label: 'Weekly' },
+		{ href: '#monthly', label: 'Monthly' },
+		{ href: '#quarterly', label: 'Quarterly' },
+		{ href: '#yearly', label: 'Annually' },
+		{ href: '#backups', label: 'Backups and restore drills' },
+		{ href: '#updates', label: 'Updating without breaking things' },
+		{ href: '#content', label: 'Content decay' },
+	]}
+>
+	<div slot="answer" class="answer-box">
+		<h2>Minimum viable maintenance</h2>
+		<p>
+			If you do nothing else: <strong>verify the backup restores</strong>, <strong>renew the
+			certificate</strong>, <strong>test the contact form</strong>, and <strong>apply security
+			updates</strong>. Those four cover the failures that actually take a site offline or silently stop
+			enquiries. Everything below is additional.
+		</p>
+	</div>
+
+	<h2 id="weekly">Weekly — ten minutes</h2>
+	<ul>
+		<li>Check that the site loads. Sounds trivial; it is the fastest way to catch an expired certificate or a failed deploy.</li>
+		<li>Scan the inbox for form notifications. A week of silence from a form that used to send daily is a signal.</li>
+		<li>Apply security updates if your platform requires manual action, after a staging check.</li>
+		<li>Glance at the error log for repeating 500s or PHP warnings. One recurring warning is a future outage.</li>
+	</ul>
+
+	<h2 id="monthly">Monthly — under an hour</h2>
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr><th>Task</th><th>How</th><th>What “pass” looks like</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Restore test</td><td>Restore the latest backup to staging</td><td>The site loads and a database query works</td></tr>
+				<tr><td>Form test</td><td>Submit from a phone, signed out</td><td>Email arrives within a minute</td></tr>
+				<tr><td>Certificate</td><td>Check expiry date and auto-renewal</td><td>More than 30 days left, or automated</td></tr>
+				<tr><td>Broken links</td><td>Crawl the site or check Search Console 404s</td><td>No new 404s from internal links</td></tr>
+				<tr><td>Plugin and theme updates</td><td>Apply on staging, then production</td><td>Key templates unchanged</td></tr>
+				<tr><td>Analytics sanity check</td><td>Compare this month to the last</td><td>No sudden zero, no sudden doubling</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2 id="quarterly">Quarterly</h2>
+	<ul>
+		<li><strong>Performance review.</strong> Re-check <a href="/guides/core-web-vitals/">Core Web Vitals</a> field data. Weight creeps up as images and scripts are added.</li>
+		<li><strong>Accessibility spot check.</strong> Keyboard through the main templates, zoom to 200%, check contrast on any new component.</li>
+		<li><strong>Account audit.</strong> Remove users who left, revoke old API keys, confirm two-factor authentication on the registrar, host, and analytics.</li>
+		<li><strong>Dependency review.</strong> Note plugins or themes that have not been updated in a year. An abandoned dependency is a future migration.</li>
+		<li><strong>Content review.</strong> Find the five pages with the most traffic and the five with the least. Update the first, fix or merge the second.</li>
+	</ul>
+
+	<h2 id="yearly">Annually</h2>
+	<ol>
+		<li><strong>Domain and hosting renewals.</strong> Check the renewal price before it auto-charges, and confirm the domain is registered to your organisation.</li>
+		<li><strong>Full content audit.</strong> Retire pages that no longer reflect the business; redirect them rather than deleting them outright.</li>
+		<li><strong>Privacy policy review.</strong> New tools, new analytics, new regions — the policy follows the practice, not the other way round.</li>
+		<li><strong>Disaster plan.</strong> Confirm you can rebuild the site if the host disappears tomorrow: who has the credentials, where the code lives, where the backups are.</li>
+		<li><strong>Budget review.</strong> Subscriptions accumulate quietly. Cancel what you stopped using.</li>
+	</ol>
+
+	<h2 id="backups">Backups and restore drills</h2>
+	<p>
+		Three rules, in order of importance:
+	</p>
+	<ol>
+		<li><strong>Automated and daily.</strong> Manual backups do not happen during the week you need them.</li>
+		<li><strong>Stored off the host.</strong> A backup on the same server as the site is not a backup; it is a second copy of the thing that is about to disappear.</li>
+		<li><strong>Restorable.</strong> Test a restore quarterly. A corrupt archive discovered during an outage turns a bad day into a lost site.</li>
+	</ol>
+	<p>
+		Before any update that touches the database or the theme, take one manual backup and label it. It costs
+		a minute and removes the decision-making from a stressful moment.
+	</p>
+
+	<h2 id="updates">Updating without breaking things</h2>
+	<ol>
+		<li>Update on staging first, always. If there is no staging, create one — most managed hosts include it.</li>
+		<li>Update one component at a time: core, then theme, then plugins in order of importance.</li>
+		<li>Check the four pages that matter after each step, at mobile width.</li>
+		<li>Keep the previous version until the new one has run for a week.</li>
+		<li>Read the changelog for major version jumps. “Minor update” is a label, not a guarantee.</li>
+	</ol>
+
+	<h2 id="content">Content decay</h2>
+	<p>
+		Content rots in three ways: facts go stale, links break, and the business changes while the page does
+		not. A quarterly pass on your top pages catches all three.
+	</p>
+	<ul>
+		<li><strong>Prices, dates, and product names</strong> are the most common stale facts. Outdated pricing is worse than no pricing.</li>
+		<li><strong>External links</strong> rot silently. Check the ones that carry a factual claim.</li>
+		<li><strong>Screenshots and interface references</strong> age fastest. A screenshot of a 2023 interface undermines a 2026 article.</li>
+		<li><strong>Pages that never get traffic</strong> are candidates for merging into a stronger page, not for endless expansion.</li>
+	</ul>
+	<div class="warn-box">
+		<h2>Signs maintenance is being skipped</h2>
+		<ul>
+			<li>Certificate warnings in the browser.</li>
+			<li>Form submissions that stop arriving, with no error anywhere.</li>
+			<li>Two versions of the same page, both indexed.</li>
+			<li>A copyright year in the footer that is more than a year old.</li>
+			<li>Plugin update notices that have been dismissed for months.</li>
+		</ul>
+	</div>
+	<p>
+		If maintenance is not something you will do, budget for it rather than pretending. The
+		<a href="/guides/how-much-does-a-website-cost/">cost breakdown</a> treats it as a recurring line for a
+		reason, and the <a href="/guides/website-launch-checklist/">launch checklist</a> is where the baseline
+		for all of this is set.
+	</p>
+</GuideLayout>
